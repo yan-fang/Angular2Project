@@ -1,3 +1,10 @@
+# IDE
+.idea
+
+# build
+_dist
+_compile
+
 # Logs
 logs
 *.log

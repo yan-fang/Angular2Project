@@ -1,0 +1,61 @@
+{
+  "name": "ease-web",
+  "version": "1.0.0-alpha",
+  "description": "Angular 2 Shell",
+  "main": "index.js",
+  "scripts": {
+    "compile": "tsc",
+    "dev": "webpack-dashboard -- webpack-dev-server --inline --colors --progress --port 3000  --content-base src",
+    "lint": "tslint \"src/**/*.ts\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.kdc.capitalone.com:ease-ui/ease-web-v2.git"
+  },
+  "keywords": [
+    "typescript",
+    "angular",
+    "shell",
+    "ease"
+  ],
+  "engines": {
+    "node": "6.9.4"
+  },
+  "author": "Capital One",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/core-js": "^0.9.35",
+    "@types/jasmine": "^2.5.41",
+    "@types/node": "^7.0.2",
+    "@types/reflect-metadata": "^0.0.5",
+    "@types/zone.js": "^0.0.27",
+    "awesome-typescript-loader": "^3.0.0-beta.18",
+    "css-loader": "^0.26.1",
+    "jasmine": "^2.5.3",
+    "json-loader": "^0.5.4",
+    "raw-loader": "^0.5.1",
+    "to-string-loader": "^1.1.5",
+    "ts-loader": "^2.0.0",
+    "ts-node": "^2.0.0",
+    "tslint": "^4.3.1",
+    "typescript": "^2.1.5",
+    "webpack": "^2.2.0",
+    "webpack-dashboard": "^0.2.1",
+    "webpack-dev-server": "^2.2.0"
+  },
+  "dependencies": {
+    "@angular/common": "^2.4.4",
+    "@angular/compiler": "^2.4.4",
+    "@angular/core": "^2.4.4",
+    "@angular/forms": "^2.4.4",
+    "@angular/http": "^2.4.4",
+    "@angular/platform-browser": "^2.4.4",
+    "@angular/platform-browser-dynamic": "^2.4.4",
+    "@angular/router": "^3.4.4",
+    "core-js": "^2.4.1",
+    "reflect-metadata": "^0.1.9",
+    "rxjs": "^5.0.3",
+    "zone.js": "^0.7.6"
+  }
+}
