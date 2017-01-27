@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'ease-web-app',
+    selector: 'c1-web-app',
     template: `
     <div>
-        <ease-web-example></ease-web-example>
+        <c1-web-example></c1-web-example>
     </div>
     `
 })
