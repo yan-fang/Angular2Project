@@ -4,10 +4,13 @@
   "description": "Angular 2 Shell",
   "main": "index.js",
   "scripts": {
+    "commit": "node_modules/.bin/git-cz",
     "compile": "tsc",
     "dev": "webpack-dashboard -- webpack-dev-server --inline --colors --progress --port 3000  --content-base src",
-    "lint": "tslint \"src/**/*.ts\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "node_modules/.bin/tslint \"src/**/*.ts\"",
+    "precommit": "yarn run test",
+    "pretest": "yarn run lint",
+    "test": "echo \"Warning: no test specified\" && exit 0"
   },
   "repository": {
     "type": "git",
@@ -31,7 +34,9 @@
     "@types/reflect-metadata": "^0.0.5",
     "@types/zone.js": "^0.0.27",
     "awesome-typescript-loader": "^3.0.0-beta.18",
+    "c1-git-commit-conventions": "git+https://github.kdc.capitalone.com/ease-ui/git-commit-conventions#v1.0.0",
     "codelyzer": "^2.0.0-beta.4",
+    "commitizen": "^2.9.5",
     "css-loader": "^0.26.1",
     "jasmine": "^2.5.3",
     "json-loader": "^0.5.4",
@@ -58,5 +63,10 @@
     "reflect-metadata": "^0.1.9",
     "rxjs": "^5.0.3",
     "zone.js": "^0.7.6"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/c1-git-commit-conventions"
+    }
   }
 }
