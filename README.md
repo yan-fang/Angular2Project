@@ -8,8 +8,31 @@
 
 ## Start the project
   - Run `yarn`
-  - Run `yarn run dev`
+  - Run `yarn dev`
   - Browse to http://localhost:3000
 
+## Lint
+  - Run `yarn lint`
+
+## Test
+
+#### Single Run Test
+  - Run `yarn test`
+
+#### Watch Tests
+  - Run `yarn test:watch`
+
+## Coverage
+
+This creates a `coverage` folder in the root directory containing coverage information.
+Open the top index.html in `./coverage` in a browser.
+
+#### Single Run Test & Coverage
+  - Run `yarn cover`
+
+#### Watch Tests & Coverage
+  - Run `yarn cover:watch`
+
 ## Commit Message Guidelines
-  - Run `yarn run commit`
+  - Run `yarn commit`
+  - `yarn lint` and `yarn test` run as pre-hooks for commits

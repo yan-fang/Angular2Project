@@ -9,7 +9,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        { pattern: 'src/base.spec.ts' },
+        'src/base.spec.ts',
         { pattern: 'src/app/**/*.+(ts|html)' },
     ],
 
@@ -25,7 +25,39 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['spec'],
+    reporters: ['spec', 'karma-typescript'],
+
+    specReporter: {
+      maxLogLines: 5,         // limit number of lines logged per test
+      suppressErrorSummary: false,  // do not print error summary
+      suppressFailed: false,  // do not print information about failed tests
+      suppressPassed: false,  // do not print information about passed tests
+      suppressSkipped: true,  // do not print information about skipped tests
+      showSpecTiming: false // print the time elapsed for each spec
+    },
+
+    // Karma-typescript tsconfig location
+    karmaTypescriptConfig: {
+        tsconfig: "./tsconfig.json",
+        coverageOptions: {
+          instrumentation: true,
+          exclude: /\.(d|spec)\.ts/
+        },
+        reports: {
+          "html": "coverage",
+          "json-summary": "coverage",
+          "text": "",
+          "text-summary": ""
+        },
+    },
+
+    coverageReporter: {
+      instrumenterOptions: {
+        istanbul: {
+          noCompact: true // (useful to debug when true)
+        }
+      }
+    },
 
     // web server port
     port: 9876,

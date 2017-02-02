@@ -25,6 +25,9 @@
     "node_modules",
     "dist"
   ],
+  "include": [
+    "src"
+  ],
   "compileOnSave": false,
   "buildOnSave": false
 }

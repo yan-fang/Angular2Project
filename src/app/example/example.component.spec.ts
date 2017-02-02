@@ -14,10 +14,18 @@ describe('Testing the example component', () => {
   });
 
   it('should have a defined component', () => {
-    expect(component).toBeDefined();
+    expect(component).toBeDefined('ExampleComponent is not defined');
   });
 
   it('should have falsy initial showCheck variable', () => {
-    expect(component.showCheck).toBeFalsy;
+    expect(component.showCheck).toBeFalsy('showCheck should be false');
+  });
+
+  describe('Testing toggleCheck function', () => {
+    it('should return true showCheck', () => {
+      component.showCheck = false;
+      component.toggleCheck();
+      expect(component.showCheck).toBeTruthy('showCheck should be true');
+    });
   });
 });

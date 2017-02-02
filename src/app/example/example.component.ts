@@ -18,6 +18,6 @@ export class ExampleComponent {
   public showCheck: Boolean = false;
 
   public toggleCheck() {
-      this.showCheck = !this.showCheck;
+    this.showCheck = !this.showCheck;
   }
 }
