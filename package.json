@@ -25,7 +25,7 @@
     "ease"
   ],
   "engines": {
-    "node": "6.9.4"
+    "node": "6.9.5"
   },
   "author": "Capital One",
   "license": "ISC",
@@ -48,7 +48,7 @@
     "karma-jasmine": "^1.1.0",
     "karma-phantomjs-launcher": "^1.0.2",
     "karma-spec-reporter": "^0.0.26",
-    "karma-typescript": "^2.1.7",
+    "karma-typescript": "https://github.com/melxx001/karma-typescript.git#2.1.8",
     "raw-loader": "^0.5.1",
     "to-string-loader": "^1.1.5",
     "tslint": "^4.3.1",

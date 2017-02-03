@@ -3,7 +3,7 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 ## Prerequisites
- - node version >= 6.4.9
+ - node version >= 6.9.5
  - yarn installed
 
 ## Start the project
