@@ -2,6 +2,10 @@
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
+master | development
+:------: | :---:
+[![CircleCI](https://circle-poc.cloud.capitalone.com/gh/ease-ui/ease-web-v2/tree/master.svg?style=shield)](https://circle-poc.cloud.capitalone.com/gh/ease-ui/ease-web-v2/tree/master) | [![CircleCI](https://circle-poc.cloud.capitalone.com/gh/ease-ui/ease-web-v2/tree/development.svg?style=shield)](https://circle-poc.cloud.capitalone.com/gh/ease-ui/ease-web-v2/tree/development)
+
 ## Prerequisites
  - node version >= 6.9.5
  - yarn installed
