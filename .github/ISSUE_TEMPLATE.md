@@ -16,7 +16,7 @@ These "Issues" are meant only for technical problems, bugs, and proposals.
 ```
 [ ] bug report
 [ ] feature request
-[ ] support request
+[ ] support request => Please do not submit support request here, instead see https://github.kdc.capitalone.com/ease-ui/ease-web-v2/blob/development/CONTRIBUTING.md#question
 ```
 
 **Current behavior**

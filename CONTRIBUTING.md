@@ -9,21 +9,20 @@ We'd love for you to contribute to our source code! Here are the guidelines we'd
  - [Submission Guidelines](#submit)
  - [Coding Rules](#rules)
  - [Commit Message Guidelines](#commit)
- - [Signing the CLA](#cla)
 
 ## <a name="prerequisites"></a> Prerequisites
 
 In order to contribute, we would love it if the contributor has some strong fundamentals in the following technologies:
 
-<a href="https://angular.io/docs/ts/latest/">Angular</a>
-<a href="https://webpack.js.org/configuration/">Webpack</a>
-<a href="https://www.typescriptlang.org/docs/tutorial.html">Typescript</a>
+* <a href="https://angular.io/docs/ts/latest/">Angular</a>
+* <a href="https://webpack.js.org/configuration/">Webpack</a>
+* <a href="https://www.typescriptlang.org/docs/tutorial.html">Typescript</a>
 
 Capital One offers great resources to learn these technologies, such as [Pluralsight][pluralsight] and [Code School][codeschool].
 
 ## <a name="question"></a> Got a Question or Problem?
 
-If you have questions about how to use EASE Web V2, please email us at TBD
+If you have questions about how to use EASE Web V2, please slack us on `ease-web-2` channel
 
 ## <a name="issue"></a> Found a Bug?
 If you find a bug in the source code, you can help us by
@@ -45,7 +44,7 @@ and help you to craft the change so that it is successfully accepted into the pr
 
 ### <a name="submit-issue"></a> Submitting an Issue
 
-Before you submit an issue, please search the issue tracker, maybe an issue for your problem already exists and the discussion might inform you of workarounds readily available.
+Before you submit an issue, please search the [github issue tracker][issue-tracker] and [team x-wing JIRA][jira], maybe an issue for your problem already exists and the discussion might inform you of workarounds readily available.
 
 We want to fix all the issues as soon as possible, but before fixing a bug we need to reproduce and confirm it.
 In order to reproduce bugs we will systematically ask you to provide a minimal reproduction scenario using a standalone git repository demonstrating the problem.
@@ -71,6 +70,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
 
 * Create your patch, **including appropriate test cases**.
 * Follow our [Coding Rules](#rules).
+
 * Run the full EASE WEb V2 test suite, as described in the [developer documentation][dev-doc],
   and ensure that all tests pass.
 * Commit your changes using a descriptive commit message.
@@ -155,7 +155,7 @@ Any line of the commit message cannot be longer 100 characters! This allows the 
 to read on GitHub as well as in various git tools.
 
 
-Running ` yarn commit -a` will walk you through the commit process.
+Running ` yarn commit` will walk you through the commit process.
 
 
 ### Revert
@@ -180,5 +180,7 @@ If any content is added to the footer, the prefix `BREAKING CHANGE:` is automati
 [pluralsight]: https://pulse.kdc.capitalone.com/docs/DOC-143657
 [codeschool]: https://pulse.kdc.capitalone.com/docs/DOC-146806
 [new-issue-form]: https://github.kdc.capitalone.com/ease-ui/ease-web-v2/issues/new
+[issue-tracker]: https://github.kdc.capitalone.com/ease-ui/ease-web-v2/issues
 [dev-doc]: https://github.kdc.capitalone.com/ease-ui/ease-web-v2/development/DEVELOPER.md
 [github]: https://github.kdc.capitalone.com/ease-ui/ease-web-v2
+[jira]: https://jira.kdc.capitalone.com/secure/Dashboard.jspa?selectPageId=33200
