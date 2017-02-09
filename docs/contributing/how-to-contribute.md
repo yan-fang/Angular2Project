@@ -1,14 +1,8 @@
-# Contributing to Ease Web Version 2
+---
+title: How to contribute
+---
 
-<!---
-
-Note: This is commented out util the documentation site is actually available to use.
-
-Want to contribute to Ease Web Version 2? There are a few things you need to know.
-
-We wrote a **[contribution guide](https://github.kdc.capitalone.com/pages/ease-ui/ease-web-v2/contributing/how-to-contribute)** to help you get started.
--->
-
+# Contributing to {{site.title}}
 
 We'd love for you to contribute to our source code! Here are the guidelines we'd like you to follow:
 
@@ -33,7 +27,7 @@ Capital One offers great resources to learn these technologies, such as [Plurals
 
 ## <a name="question"></a> Got a Question or Problem?
 
-If you have questions about how to use Ease Web Version 2, please email us at TBD
+If you have questions about how to use {{site.title}}, please email us at TBD
 
 ## <a name="issue"></a> Found a Bug?
 If you find a bug in the source code, you can help us by
@@ -55,7 +49,7 @@ and help you to craft the change so that it is successfully accepted into the pr
 
 ### <a name="submit-issue"></a> Submitting an Issue
 
-Before you submit an issue, please search the issue tracker, maybe an issue for your problem already exists and the discussion might inform you of workarounds readily available.
+Before you submit an issue, please search the [github issue tracker][issue-tracker] and [team x-wing JIRA][jira], maybe an issue for your problem already exists and the discussion might inform you of workarounds readily available.
 
 We want to fix all the issues as soon as possible, but before fixing a bug we need to reproduce and confirm it.
 In order to reproduce bugs we will systematically ask you to provide a minimal reproduction scenario using a standalone git repository demonstrating the problem.
@@ -81,7 +75,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
 
 * Create your patch, **including appropriate test cases**.
 * Follow our [Coding Rules](#rules).
-* Run the full Ease Web Version 2 test suite, as described in the [developer documentation][dev-doc],
+* Run the full {{site.title}} test suite, as described in the [developer documentation][dev-doc],
   and ensure that all tests pass.
 * Commit your changes using a descriptive commit message.
 
@@ -99,7 +93,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
 * In GitHub, send a pull request to `ease-web-v2:development`.
 * If we suggest changes then:
   * Make the required updates.
-  * Re-run the Ease Web Version 2 test suites to ensure tests are still passing.
+  * Re-run the {{site.title}} test suites to ensure tests are still passing.
   * Rebase your branch and force push to your GitHub repository (this will update your Pull Request):
 
     ```shell
@@ -188,6 +182,7 @@ If any content is added to the footer, the prefix `BREAKING CHANGE:` is automati
 [pluralsight]: https://pulse.kdc.capitalone.com/docs/DOC-143657
 [codeschool]: https://pulse.kdc.capitalone.com/docs/DOC-146806
 [new-issue-form]: https://github.kdc.capitalone.com/ease-ui/ease-web-v2/issues/new
+[issue-tracker]: https://github.kdc.capitalone.com/ease-ui/ease-web-v2/issues
 [dev-doc]: https://github.kdc.capitalone.com/ease-ui/ease-web-v2/development/DEVELOPER.md
 [github]: https://github.kdc.capitalone.com/ease-ui/ease-web-v2
-
+[jira]: https://jira.kdc.capitalone.com/secure/Dashboard.jspa?selectPageId=33200

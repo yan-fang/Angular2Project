@@ -1,9 +1,11 @@
 # IDE
 .idea
+.vscode
 
 # build
 _dist
 _compile
+_site
 
 # Logs
 logs

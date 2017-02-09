@@ -1,0 +1,15 @@
+# Site settings
+title: Ease Web Version 2
+baseurl: /pages/ease-ui/ease-web-v2
+
+# set defaults
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      layout: "default"
+
+# Build settings
+markdown: kramdown
+permalink: pretty
