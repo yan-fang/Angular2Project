@@ -12,28 +12,28 @@ We wrote a **[contribution guide](https://github.kdc.capitalone.com/pages/ease-u
 
 We'd love for you to contribute to our source code! Here are the guidelines we'd like you to follow:
 
-  - [Prerequisites](#prerequisites)
-  - [Question or Problem?](#question)
-  - [Issues and Bugs](#issue)
-  - [Feature Requests](#feature)
-  - [Submission Guidelines](#submit)
-  - [Coding Rules](#rules)
-  - [Commit Message Guidelines](#commit)
-  - [Signing the CLA](#cla)
+ - [Prerequisites](#prerequisites)
+ - [Question or Problem?](#question)
+ - [Issues and Bugs](#issue)
+ - [Feature Requests](#feature)
+ - [Submission Guidelines](#submit)
+ - [Coding Rules](#rules)
+ - [Commit Message Guidelines](#commit)
 
 ## <a name="prerequisites"></a> Prerequisites
 
 In order to contribute, we would love it if the contributor has some strong fundamentals in the following technologies:
 
- - <a href="https://angular.io/docs/ts/latest/">Angular</a>
- - <a href="https://webpack.js.org/configuration/">Webpack</a>
- - <a href="https://www.typescriptlang.org/docs/tutorial.html">Typescript</a>
+ - [Accessibility][accessibility]
+ - [Angular][angular]
+ - [Webpack][webpack]
+ - [Typescript][typescript]
 
 Capital One offers great resources to learn these technologies, such as [Pluralsight][pluralsight] and [Code School][codeschool].
 
 ## <a name="question"></a> Got a Question or Problem?
 
-If you have questions about how to use Ease Web Version 2, please email us at TBD
+If you have questions about how to use EASE Web Version 2, please slack us on `ease-web-2` channel
 
 ## <a name="issue"></a> Found a Bug?
 If you find a bug in the source code, you can help us by
@@ -55,7 +55,7 @@ and help you to craft the change so that it is successfully accepted into the pr
 
 ### <a name="submit-issue"></a> Submitting an Issue
 
-Before you submit an issue, please search the issue tracker, maybe an issue for your problem already exists and the discussion might inform you of workarounds readily available.
+Before you submit an issue, please search the [github issue tracker][issue-tracker] and [team x-wing JIRA][jira], maybe an issue for your problem already exists and the discussion might inform you of workarounds readily available.
 
 We want to fix all the issues as soon as possible, but before fixing a bug we need to reproduce and confirm it.
 In order to reproduce bugs we will systematically ask you to provide a minimal reproduction scenario using a standalone git repository demonstrating the problem.
@@ -164,7 +164,8 @@ format that includes a **type**, a **JIRA#**, a **scope** and a **subject**:
 Any line of the commit message cannot be longer 100 characters! This allows the message to be easier
 to read on GitHub as well as in various git tools.
 
-Running ` yarn commit -a` will walk you through the commit process.
+
+Running ` yarn commit` will walk you through the commit process.
 
 ### Revert
 If the commit reverts a previous commit, it should begin with `revert: `, followed by the header of the reverted commit. In the body it should say: `This reverts commit <hash>.`, where the hash is the SHA of the commit being reverted.
@@ -188,6 +189,11 @@ If any content is added to the footer, the prefix `BREAKING CHANGE:` is automati
 [pluralsight]: https://pulse.kdc.capitalone.com/docs/DOC-143657
 [codeschool]: https://pulse.kdc.capitalone.com/docs/DOC-146806
 [new-issue-form]: https://github.kdc.capitalone.com/ease-ui/ease-web-v2/issues/new
+[issue-tracker]: https://github.kdc.capitalone.com/ease-ui/ease-web-v2/issues
 [dev-doc]: https://github.kdc.capitalone.com/ease-ui/ease-web-v2/development/DEVELOPER.md
 [github]: https://github.kdc.capitalone.com/ease-ui/ease-web-v2
-
+[jira]: https://jira.kdc.capitalone.com/secure/Dashboard.jspa?selectPageId=33200
+[accessibility]: https://pulse.kdc.capitalone.com/community/resources/ease/ease-web/projects/ease-accessibility-development-resources
+[angular]: https://angular.io/docs/ts/latest/
+[webpack]: https://webpack.js.org/configuration/
+[typescript]: https://www.typescriptlang.org/docs/tutorial.html
