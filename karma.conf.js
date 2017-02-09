@@ -11,6 +11,7 @@ module.exports = function(config) {
     files: [
         'src/base.spec.ts',
         { pattern: 'src/app/**/*.+(ts|html)' },
+        { pattern: 'src/creditcard/**/*.+(ts|html)' }
     ],
 
     // list of files to exclude
