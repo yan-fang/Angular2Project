@@ -19,7 +19,11 @@
     "noImplicitThis": false,
     "noFallthroughCasesInSwitch": true,
     "typeRoots": [ "./node_modules/@types" ],
-    "outDir": "_compile"
+    "outDir": "_compile",
+    "baseUrl": "./",
+    "paths": {
+      "*": ["./src/*"]
+    }
   },
   "exclude": [
     "node_modules",

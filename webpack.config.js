@@ -19,7 +19,7 @@ const config = {
   },
   module: {
     loaders: [
-      { test: /\.ts$/,   loader: 'awesome-typescript-loader' },
+      { test: /\.ts$/,   loaders: ['awesome-typescript-loader', 'angular-router-loader'] },
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.html/,  loader: 'raw-loader' },
       { test: /\.css$/,  loader: 'to-string-loader!css-loader' },
@@ -39,6 +39,10 @@ const config = {
   ],
 
   resolve: {
+    modules: [
+      path.resolve(__dirname, 'src'),
+      path.resolve(__dirname, 'node_modules')
+    ],
     extensions: ['.ts', '.js', '.json']
   },
 
