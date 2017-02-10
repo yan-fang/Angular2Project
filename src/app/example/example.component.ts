@@ -4,12 +4,14 @@ import { Component } from '@angular/core';
   selector: 'c1-web-example',
   template: `
     <h1>{{title}}</h1>
-    <button (click)="toggleCheck()">
-        click me <span *ngIf="showCheck">to hide</span>
-    </button>
-    <span *ngIf="showCheck">
-        <b>{{intro}}</b>
-    </span>
+    <div>
+      <button (click)="toggleCheck()">
+          click me <span *ngIf="showCheck">to hide</span>
+      </button>
+      <span *ngIf="showCheck">
+          <b>{{intro}}</b>
+      </span>
+    </div>
   `
 })
 export class ExampleComponent {

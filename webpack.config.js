@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const dashboardPlugin = require('webpack-dashboard/plugin');
+const browserSyncPlugin = require('browser-sync-webpack-plugin');
 
 const config = {
   cache: true,
@@ -35,7 +36,22 @@ const config = {
       name: ['polyfills', 'vendor', 'main'].reverse(),
       minChunks: Infinity
     }),
-    new dashboardPlugin()
+    new dashboardPlugin(),
+    new browserSyncPlugin(
+      // BrowserSync options
+      {
+        host: 'localhost',
+        port: 3001, // Site will be available at http://localhost:3001/
+        proxy: 'http://localhost:3000/', // proxy the Webpack Dev Server endpoint through BrowserSync
+        open: true, // Open the browser from automatically. Possible values "ui", "local", true, false
+        // browser: ["google chrome", "firefox"], // Open the site in Chrome & Firefox
+      },
+      // plugin options
+      {
+        // prevent BrowserSync from reloading the page and let Webpack Dev Server take care of this
+        reload: false
+      }
+    )
   ],
 
   resolve: {
