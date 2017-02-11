@@ -20,10 +20,36 @@ const config = {
   },
   module: {
     loaders: [
-      { test: /\.ts$/,   loaders: ['awesome-typescript-loader', 'angular-router-loader'] },
-      { test: /\.json$/, loader: 'json-loader' },
-      { test: /\.html/,  loader: 'raw-loader' },
-      { test: /\.css$/,  loader: 'to-string-loader!css-loader' },
+      { test: /\.ts$/,
+        loaders: [
+          'awesome-typescript-loader',
+          'angular-router-loader',
+          'angular2-template-loader'
+        ]
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
+      },
+      {
+        test: /\.html/,
+        loader: 'raw-loader'
+      },
+      {
+        test: /\.css$/,
+        loaders: [
+          'to-string-loader',
+          'css-loader'
+        ]
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        loaders: [
+          'raw-loader',
+          'sass-loader'
+        ]
+      }
     ],
   },
 
