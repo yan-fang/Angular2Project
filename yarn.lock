@@ -32,9 +32,9 @@
   version "3.4.4"
   resolved "https://registry.yarnpkg.com/@angular/router/-/router-3.4.4.tgz#8564889d5bf322a1a4b679bd82c053df03eabb72"
 
-"@c1/git-commit-conventions@git+https://github.kdc.capitalone.com/ease-ui/git-commit-conventions#v3.0.0":
-  version "3.0.0"
-  resolved "git+https://github.kdc.capitalone.com/ease-ui/git-commit-conventions#6518b41c8ee4dcd2ceb9e7c37be41cbdc10a8b89"
+"@c1/git-commit-conventions@git+https://github.kdc.capitalone.com/ease-ui/git-commit-conventions#v3.2.1":
+  version "3.2.1"
+  resolved "git+https://github.kdc.capitalone.com/ease-ui/git-commit-conventions#f9fec9d82a2bb57500ee9fe729a02e5b11daff2c"
   dependencies:
     editor "1.0.0"
     find-config "0.3.0"

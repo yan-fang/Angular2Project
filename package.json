@@ -30,7 +30,7 @@
   "author": "Capital One",
   "license": "ISC",
   "devDependencies": {
-    "@c1/git-commit-conventions": "git+https://github.kdc.capitalone.com/ease-ui/git-commit-conventions#v3.0.0",
+    "@c1/git-commit-conventions": "git+https://github.kdc.capitalone.com/ease-ui/git-commit-conventions#v3.2.1",
     "@types/core-js": "^0.9.35",
     "@types/jasmine": "^2.5.41",
     "@types/node": "^7.0.2",
