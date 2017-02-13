@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   `
 })
 export class CloseAccountComponent {
-  public title: string = 'Close Account Title';
+  public title: string = 'Close Account Title (L3)';
 }

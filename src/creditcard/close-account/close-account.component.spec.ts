@@ -14,6 +14,6 @@ describe('CloseAccountComponent', () => {
   });
 
   it('should have the correct title', () => {
-    expect(closeAccountComponent.title).toEqual('Close Account Title');
+    expect(closeAccountComponent.title).toEqual('Close Account Title (L3)');
   });
 });

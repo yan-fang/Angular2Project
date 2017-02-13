@@ -3,6 +3,12 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'c1-web-example',
   template: `
+    <nav>
+      <a routerLink="/" routerLinkActive="active">Example (L1)</a>
+      <a routerLink="/creditcard" routerLinkActive="active">CreditCard</a>
+      <a routerLink="/creditcard/close-account" routerLinkActive="active">Close Account (CC)</a>
+    </nav>
+
     <h1>{{title}}</h1>
     <div>
       <button (click)="toggleCheck()">

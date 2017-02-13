@@ -8,9 +8,6 @@ import { creditCardRoutes } from './creditcard.routes';
   declarations: [
     CreditCardComponent
   ],
-  entryComponents: [
-    CreditCardComponent
-  ],
   imports: [
     RouterModule.forChild(creditCardRoutes)
   ]
