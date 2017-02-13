@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CloseAccountComponent } from 'creditcard/close-account/close-account.component';
+import { CloseAccountComponent } from './close-account.component';
 
 describe('CloseAccountComponent', () => {
   let closeAccountComponent: CloseAccountComponent;

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { CloseAccountComponent } from 'creditcard/close-account/close-account.component';
+import { CloseAccountComponent } from './close-account.component';
 
 @NgModule({
   declarations: [

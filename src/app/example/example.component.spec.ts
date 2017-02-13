@@ -1,4 +1,4 @@
-import { ExampleComponent } from 'app/example/example.component';
+import { ExampleComponent } from './example.component';
 import { TestBed } from '@angular/core/testing';
 
 describe('Testing the example component', () => {

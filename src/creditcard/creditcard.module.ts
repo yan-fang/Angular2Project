@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { CreditCardComponent } from 'creditcard/creditcard.component';
-import { creditCardRoutes } from 'creditcard/creditcard.routes';
+import { CreditCardComponent } from './creditcard.component';
+import { creditCardRoutes } from './creditcard.routes';
 
 @NgModule({
   declarations: [

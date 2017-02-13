@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CreditCardComponent } from 'creditcard/creditcard.component';
+import { CreditCardComponent } from './creditcard.component';
 
 describe('CreditCardComponent', () => {
   let creditCardComponent: CreditCardComponent;
