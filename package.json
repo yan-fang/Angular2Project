@@ -9,6 +9,7 @@
     "cover": "karma start ./karma.conf.js",
     "cover:watch": "karma start ./karma.conf.js --single-run false",
     "dev": "webpack-dashboard -- webpack-dev-server --inline --colors --progress --port 3000  --content-base src",
+    "docs": "./docs/init.sh",
     "lint": "tslint \"src/**/*.ts\"",
     "precommit": "yarn lint && yarn test",
     "test": "karma start ./karma.conf.js --reporters spec",
