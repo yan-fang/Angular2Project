@@ -1,5 +1,5 @@
 ---
-title: Documentation
+title: Ease Web Version 2 Documentation
 ---
 
 # {{site.title}} Documentation
@@ -21,6 +21,10 @@ Developer guidelines and resources are available <a href="{{ site.baseurl }}/dev
 ## Continous Integration & Deployment
 
 Click <a href="{{ site.baseurl }}/continous-integration">here</a> for more information on {{site.title}}'s continous integration and deployment process.
+
+## Readme
+
+Check out the [Readme]({{ site.baseurl }}/readme) to develop locally
 
 ## Github
 

@@ -91,6 +91,13 @@ code, pre {
   color: #222;
 }
 
+blockquote {
+    padding: 10.5px 21px;
+    margin: 0 0 21px;
+    border-left: 5px solid #004977;
+    color: #004977;
+}
+
 code {
   padding: 0 3px;
   background-color: #f2f2f2;
