@@ -31,9 +31,26 @@ In order to contribute, we would love it if the contributor has some strong fund
 
 Capital One offers great resources to learn these technologies, such as [Pluralsight][pluralsight] and [Code School][codeschool].
 
+The following is a list of Pluralsight recommended classes:
+
+ - [Angular 2 Fundamentals][angular-2-fundamentals]
+ - [Typescript Fundamentals][typescript-fundamentals]
+
 ## <a name="question"></a> Got a Question or Problem?
 
-If you have questions about how to use EASE Web Version 2, please slack us on `ease-web-2` channel
+Please, do not open issues for the general support questions as we want to keep GitHub issues for bug reports and feature requests.
+
+You've got much better chances of getting your question answered on [Capital One StackExchange](https://questions.kdc.capitalone.com/) where the questions should be tagged with tag `angular`.
+
+Capital One StackExchange is a much better place to ask questions since:
+
+- there are hundreds of engineers willing to help on Capital One StackExchange
+- questions and answers stay available for public viewing so your question / answer might help someone else
+- Capital One StackExchange's voting system assures that the best answers are prominently visible.
+
+To save your and our time we will be systematically closing all the issues that are requests for general support and redirecting people to [Capital One StackExchange](https://questions.kdc.capitalone.com/).
+
+If you would like to chat about the question in real-time, you can slack us on `ease-web-2` or email us at `x-wing@CapitalOne.com`.
 
 ## <a name="issue"></a> Found a Bug?
 If you find a bug in the source code, you can help us by
@@ -197,3 +214,5 @@ If any content is added to the footer, the prefix `BREAKING CHANGE:` is automati
 [angular]: https://angular.io/docs/ts/latest/
 [webpack]: https://webpack.js.org/configuration/
 [typescript]: https://www.typescriptlang.org/docs/tutorial.html
+[angular-2-fundamentals]: https://www.pluralsight.com/courses/angular-fundamentals
+[typescript-fundamentals]: https://www.pluralsight.com/courses/typescript

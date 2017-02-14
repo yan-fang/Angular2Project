@@ -6,28 +6,45 @@ title: How to contribute
 
 We'd love for you to contribute to our source code! Here are the guidelines we'd like you to follow:
 
-  - [Prerequisites](#prerequisites)
-  - [Question or Problem?](#question)
-  - [Issues and Bugs](#issue)
-  - [Feature Requests](#feature)
-  - [Submission Guidelines](#submit)
-  - [Coding Rules](#rules)
-  - [Commit Message Guidelines](#commit)
-  - [Signing the CLA](#cla)
+ - [Prerequisites](#prerequisites)
+ - [Question or Problem?](#question)
+ - [Issues and Bugs](#issue)
+ - [Feature Requests](#feature)
+ - [Submission Guidelines](#submit)
+ - [Coding Rules](#rules)
+ - [Commit Message Guidelines](#commit)
 
 ## <a name="prerequisites"></a> Prerequisites
 
 In order to contribute, we would love it if the contributor has some strong fundamentals in the following technologies:
 
- - <a href="https://angular.io/docs/ts/latest/">Angular</a>
- - <a href="https://webpack.js.org/configuration/">Webpack</a>
- - <a href="https://www.typescriptlang.org/docs/tutorial.html">Typescript</a>
+ - [Accessibility][accessibility]
+ - [Angular][angular]
+ - [Webpack][webpack]
+ - [Typescript][typescript]
 
 Capital One offers great resources to learn these technologies, such as [Pluralsight][pluralsight] and [Code School][codeschool].
 
+The following is a list of Pluralsight recommended classes:
+
+ - [Angular 2 Fundamentals][angular-2-fundamentals]
+ - [Typescript Fundamentals][typescript-fundamentals]
+
 ## <a name="question"></a> Got a Question or Problem?
 
-If you have questions about how to use {{site.title}}, please email us at TBD
+Please, do not open issues for the general support questions as we want to keep GitHub issues for bug reports and feature requests.
+
+You've got much better chances of getting your question answered on [Capital One StackExchange](https://questions.kdc.capitalone.com/) where the questions should be tagged with tag `angular`.
+
+Capital One StackExchange is a much better place to ask questions since:
+
+- there are hundreds of engineers willing to help on Capital One StackExchange
+- questions and answers stay available for public viewing so your question / answer might help someone else
+- Capital One StackExchange's voting system assures that the best answers are prominently visible.
+
+To save your and our time we will be systematically closing all the issues that are requests for general support and redirecting people to [Capital One StackExchange](https://questions.kdc.capitalone.com/).
+
+If you would like to chat about the question in real-time, you can slack us on `ease-web-2` or email us at `x-wing@CapitalOne.com`.
 
 ## <a name="issue"></a> Found a Bug?
 If you find a bug in the source code, you can help us by
@@ -158,7 +175,8 @@ format that includes a **type**, a **JIRA#**, a **scope** and a **subject**:
 Any line of the commit message cannot be longer 100 characters! This allows the message to be easier
 to read on GitHub as well as in various git tools.
 
-Running ` yarn commit -a` will walk you through the commit process.
+
+Running ` yarn commit` will walk you through the commit process.
 
 ### Revert
 If the commit reverts a previous commit, it should begin with `revert: `, followed by the header of the reverted commit. In the body it should say: `This reverts commit <hash>.`, where the hash is the SHA of the commit being reverted.
@@ -186,3 +204,10 @@ If any content is added to the footer, the prefix `BREAKING CHANGE:` is automati
 [dev-doc]: https://github.kdc.capitalone.com/ease-ui/ease-web-v2/development/DEVELOPER.md
 [github]: https://github.kdc.capitalone.com/ease-ui/ease-web-v2
 [jira]: https://jira.kdc.capitalone.com/secure/Dashboard.jspa?selectPageId=33200
+[accessibility]: https://pulse.kdc.capitalone.com/community/resources/ease/ease-web/projects/ease-accessibility-development-resources
+[angular]: https://angular.io/docs/ts/latest/
+[webpack]: https://webpack.js.org/configuration/
+[typescript]: https://www.typescriptlang.org/docs/tutorial.html
+[angular-2-fundamentals]: https://www.pluralsight.com/courses/angular-fundamentals
+[typescript-fundamentals]: https://www.pluralsight.com/courses/typescript
+

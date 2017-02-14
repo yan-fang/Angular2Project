@@ -8,7 +8,7 @@ title: EASE Web Version 2 Documentation Readme
 
 GitHub Pages is a static site hosting service. It is designed to host personal, organization, or project pages directly from a GitHub repository.
 
-They are powered by [Jekyll](https://jekyllrb.com/){:target="_blank"} behind the scenes, and in addition of supporting [Markdown](https://daringfireball.net/projects/markdown/){:target="_blank"}, regular HTML content is supported.
+They are powered by [Jekyll](https://jekyllrb.com/) behind the scenes, and in addition of supporting [Markdown](https://daringfireball.net/projects/markdown/), regular HTML content is supported.
 
 ### So what is Jekyll, exactly?
 
@@ -18,7 +18,21 @@ Jekyll is a simple, blog-aware, static site generator. It takes a template direc
 
 To get up and running with a local jekyll site that mimics the main site, you will need to install Ruby & jekyll on your machine.
 
-If you don't have an updated version of Ruby (>2.0.0), install a new version:
+### Automated
+
+If you're on a Mac, The following yarn command installs both dependencies and launches the doc site:
+
+```bash
+$ yarn docs
+```
+
+You should see an output similar to what's described in [how to run the site](#how-to-run-the-site)
+
+### Manual
+
+If you prefer to install both Ruby and Jekyll manually, here are the steps to follow:
+
+Install Ruby (>2.0.0)
 
 ```bash
 $ brew install ruby   # Installs the latest version using Homebrew
@@ -28,17 +42,17 @@ $ brew install ruby   # Installs the latest version using Homebrew
 $ ruby -v   # Checks the ruby version
 ```
 
-Once you have an updated version of Ruby, you can install Jekyll:
+Install Jekyll:
 
 ```bash
 $ gem install jekyll    # Uses ruby to install Jekyll
 ```
 
-If you're on a Windows machine, following the instructions [here](https://jekyllrb.com/docs/windows/#installation){:target="_blank"} and good luck!
+If you're on a Windows machine, follow the instructions [here](https://jekyllrb.com/docs/windows/#installation) and good luck!
 
 ## How to run the site
 
-Now that you have ruby and jekyll installed. you're need to start the server to get the site running. You **must run the command to start the server from the `docs` directory.**
+Now that you have ruby and jekyll installed. you need to start the server to get the site running. You **must run the command to start the server from the `docs` directory.**
  Run in a terminal:
 
 ```bash
