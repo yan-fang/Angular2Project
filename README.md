@@ -37,6 +37,10 @@ Open the top index.html in `./coverage` in a browser.
 #### Watch Tests & Coverage
   - Run `yarn cover:watch`
 
+## Run Webpack Dashboard
+
+ - Run `yarn dashboard`
+
 ## Commit Message Guidelines
   - Run `yarn commit`
   - `yarn lint` and `yarn test` run as pre-hooks for commits
