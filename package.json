@@ -11,10 +11,15 @@
     "dashboard": "webpack-dashboard -- yarn dev",
     "dev": "webpack-dev-server --inline --colors --progress --port 3000  --content-base src",
     "docs": "./docs/init.sh",
+    "e2e": "protractor",
+    "e2e-live": "protractor --elementExplorer",
     "lint": "tslint \"src/**/*.ts\"",
     "precommit": "yarn lint && yarn test",
+    "pree2e": "yarn webdriver-update",
     "test": "karma start ./karma.conf.js --reporters spec",
-    "test:watch": "karma start ./karma.conf.js --single-run false --reporters spec"
+    "test:watch": "karma start ./karma.conf.js --single-run false --reporters spec",
+    "webdriver-update": "webdriver-manager update",
+    "webdriver-start": "webdriver-manager start"
   },
   "repository": {
     "type": "git",
@@ -56,6 +61,7 @@
     "karma-spec-reporter": "^0.0.26",
     "karma-typescript": "https://github.com/melxx001/karma-typescript.git#2.1.8",
     "node-sass": "3.7.0",
+    "protractor": "^5.1.1",
     "raw-loader": "^0.5.1",
     "sass-loader": "^5.0.1",
     "to-string-loader": "^1.1.5",
@@ -76,8 +82,10 @@
     "@angular/router": "^3.4.4",
     "angular-router-loader": "^0.5.0",
     "core-js": "^2.4.1",
+    "jasmine-spec-reporter": "^3.2.0",
     "reflect-metadata": "^0.1.9",
     "rxjs": "^5.0.3",
+    "ts-node": "^2.1.0",
     "zone.js": "^0.7.6"
   },
   "config": {
