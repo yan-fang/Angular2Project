@@ -13,28 +13,39 @@ We wrote a **[contribution guide](https://github.kdc.capitalone.com/pages/ease-u
 We'd love for you to contribute to our source code! Here are the guidelines we'd like you to follow:
 
  - [Prerequisites](#prerequisites)
+ - [Write privileges](#write)
  - [Question or Problem?](#question)
  - [Issues and Bugs](#issue)
  - [Feature Requests](#feature)
  - [Submission Guidelines](#submit)
  - [Coding Rules](#rules)
  - [Commit Message Guidelines](#commit)
+ - [Help Wanted!](#help)
 
 ## <a name="prerequisites"></a> Prerequisites
 
 In order to contribute, we would love it if the contributor has some strong fundamentals in the following technologies:
 
- - [Accessibility][accessibility]
  - [Angular][angular]
  - [Webpack][webpack]
  - [Typescript][typescript]
+ - [Accessibility][accessibility]
 
-Capital One offers great resources to learn these technologies, such as [Pluralsight][pluralsight] and [Code School][codeschool].
+Capital One offers great resources to learn these technologies, such as [Pluralsight][pluralsight], [Code School][codeschool] and [Safari Books][safari-books].
 
-The following is a list of Pluralsight recommended classes:
+The following is a list of recommended classes and books:
 
- - [Angular 2 Fundamentals][angular-2-fundamentals]
- - [Typescript Fundamentals][typescript-fundamentals]
+ - [Angular 2 Fundamentals By Jim Cooper and Joe Eames][angular-2-fundamentals]
+ - [Typescript Fundamentals By Dan Wahlin and John Papa][typescript-fundamentals]
+ - [Test-Driven Development By Example Kent Beck, Three Rivers Institute][unit-testing]
+ - [e2e, BDD and ATDD testing - Specification by Example: How Successful Teams Deliver the Right Software][e2e]
+    - [Anecdote][anecdote]
+
+Also, we follow the same [angular][angular-styleguide] and [scss][scss-styleguide] style guide. Please make sure you go over those as well.
+
+## <a name="write"></a> Write privileges
+
+If you are interested in getting write privileges, please email us at x-wing@CapitalOne.com
 
 ## <a name="question"></a> Got a Question or Problem?
 
@@ -203,6 +214,12 @@ The footer should contain any information about **Breaking Changes**
 
 If any content is added to the footer, the prefix `BREAKING CHANGE:` is automatically appended to the footer.
 
+## <a name="help">Help Wanted!</a>
+
+We are looking for contributors!!
+If you would like to help, please check our [help wanted section][help-wanted-section].
+
+
 [pluralsight]: https://pulse.kdc.capitalone.com/docs/DOC-143657
 [codeschool]: https://pulse.kdc.capitalone.com/docs/DOC-146806
 [new-issue-form]: https://github.kdc.capitalone.com/ease-ui/ease-web-v2/issues/new
@@ -216,3 +233,10 @@ If any content is added to the footer, the prefix `BREAKING CHANGE:` is automati
 [typescript]: https://www.typescriptlang.org/docs/tutorial.html
 [angular-2-fundamentals]: https://www.pluralsight.com/courses/angular-fundamentals
 [typescript-fundamentals]: https://www.pluralsight.com/courses/typescript
+[angular-styleguide]: https://angular.io/styleguide
+[scss-styleguide]: http://sass-lang.com/guide
+[help-wanted-section]: https://github.kdc.capitalone.com/ease-ui/ease-web-v2/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
+[safari-books]: https://pulse.kdc.capitalone.com/docs/DOC-146808
+[unit-testing]: http://www.eecs.yorku.ca/course_archive/2003-04/W/3311/sectionM/case_studies/money/KentBeck_TDD_byexample.pdf
+[e2e]: https://gojko.net/books/specification-by-example/
+[anecdote]: https://www.thoughtworks.com/insights/blog/specification-example
