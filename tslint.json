@@ -12,7 +12,7 @@
         "singleline": "never"
       }
     ],
-    "interface-name": true,
+    "interface-name": false,
 
     "component-class-suffix": true,
     "component-selector": [
@@ -30,6 +30,7 @@
     ],
     "import-destructuring-spacing": true,
     "invoke-injectable": true,
+    "member-ordering": false,
     "no-access-missing-member": true,
     "no-attribute-parameter-decorator": true,
     "no-forward-ref": true,

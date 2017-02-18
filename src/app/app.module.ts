@@ -7,18 +7,21 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 import { ExampleComponent } from './example/example.component';
+import { MockabilityModule } from 'mockability';
+import { requests } from 'mocks/accounts';
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        FormsModule,
-        HttpModule,
-        RouterModule.forRoot(appRoutes)
-    ],
-    declarations: [
-      AppComponent,
-      ExampleComponent
-    ],
-    bootstrap: [ AppComponent ]
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    MockabilityModule.forRoot(requests),
+    RouterModule.forRoot(appRoutes)
+  ],
+  declarations: [
+    AppComponent,
+    ExampleComponent
+  ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule {}
