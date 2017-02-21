@@ -14,7 +14,7 @@
     "e2e": "protractor",
     "e2e-live": "protractor --elementExplorer",
     "lint": "tslint \"src/**/*.ts\"",
-    "precommit": "yarn lint && yarn test",
+    "precommit": "yarn lint && yarn compile && yarn test",
     "pree2e": "yarn webdriver-update",
     "test": "karma start ./karma.conf.js --reporters spec",
     "test:watch": "karma start ./karma.conf.js --single-run false --reporters spec",

@@ -21,13 +21,6 @@ export const MOCKABILITY_RESPONSES = new OpaqueToken('mockability.responses');
   ]
 })
 export class MockabilityModule {
-  constructor(
-    private backend: MockBackend,
-    @Inject(MOCKABILITY_RESPONSES) private responses: MockabilityResponse[]
-  ) {
-    this.subscribeToMockBackend();
-  }
-
   public static forRoot(responses: MockabilityResponse[]): ModuleWithProviders {
     return {
       ngModule: MockabilityModule,
@@ -53,7 +46,6 @@ export class MockabilityModule {
       }
     });
   }
-
   private static responseMatches(
     connection: MockConnection,
     response: MockabilityResponse
@@ -61,7 +53,12 @@ export class MockabilityModule {
     return connection.request.method === response.method
       && response.url.test(connection.request.url);
   }
-
+  constructor(
+    private backend: MockBackend,
+    @Inject(MOCKABILITY_RESPONSES) private responses: MockabilityResponse[]
+  ) {
+    this.subscribeToMockBackend();
+  }
   private subscribeToMockBackend() {
     this.backend.connections.subscribe((connection: MockConnection) => {
       MockabilityModule.respondForMatchingRequest(connection, this.responses);

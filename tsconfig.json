@@ -17,6 +17,8 @@
     "noImplicitUseStrict": false,
     "noImplicitThis": false,
     "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "skipLibCheck": true,
     "strictNullChecks": true,
     "typeRoots": [ "./node_modules/@types" ],

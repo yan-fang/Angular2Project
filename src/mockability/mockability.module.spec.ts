@@ -1,7 +1,7 @@
 import { TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { Http, Response, ResponseOptions, RequestMethod } from '@angular/http';
 
-import { MockabilityModule, MOCKABILITY_RESPONSES } from './mockability.module';
+import { MockabilityModule } from './mockability.module';
 import { MockabilityResponse } from './mockability-response';
 
 describe('MockabilityModule', () => {
