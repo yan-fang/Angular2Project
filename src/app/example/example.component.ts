@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'c1-web-example',
+  styleUrls: ['example.component.scss'],
   template: `
     <nav>
       <a routerLink="/" routerLinkActive="active">Example (L1)</a>
@@ -18,6 +19,7 @@ import { Component } from '@angular/core';
           <b>{{intro}}</b>
       </span>
     </div>
+    <p class="example--color-red">Nested SCSS Sample</p>
   `
 })
 export class ExampleComponent {

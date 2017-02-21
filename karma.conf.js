@@ -10,7 +10,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
         'src/base.spec.ts',
-        { pattern: 'src/**/!(main).+(ts|html)' },
+        { pattern: 'src/**/!(main).+(ts|html|scss)' },
     ],
 
     // list of files to exclude
@@ -19,7 +19,8 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'src/**/*.ts': ['karma-typescript']
+      'src/**/*.ts': ['karma-typescript'],
+      'src/**/*.scss': ['scss']
     },
 
     // test results reporter to use
@@ -49,12 +50,19 @@ module.exports = function(config) {
           "text": "",
           "text-summary": ""
         },
+        transforms: [
+          // This transform setting is here temporarily until karma-typescript version 2.1.8
+          // This will change to something like angulat-mode: true and these will be on by default
+          require("karma-typescript/transforms/angular2-template-url-rewriter"),
+          require("karma-typescript/transforms/angular2-style-urls-rewriter")
+        ]
+
     },
 
     coverageReporter: {
       instrumenterOptions: {
         istanbul: {
-          noCompact: true // (useful to debug when true)
+          noCompact: true // (useful for debugging when true)
         }
       }
     },

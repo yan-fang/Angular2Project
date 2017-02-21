@@ -59,7 +59,7 @@
     "karma-phantomjs-launcher": "^1.0.2",
     "karma-scss-preprocessor": "^2.0.0",
     "karma-spec-reporter": "^0.0.26",
-    "karma-typescript": "https://github.com/melxx001/karma-typescript.git#2.1.8",
+    "karma-typescript": "https://github.com/melxx001/karma-typescript#2.1.8-feb15",
     "node-sass": "3.7.0",
     "protractor": "^5.1.1",
     "raw-loader": "^0.5.1",
