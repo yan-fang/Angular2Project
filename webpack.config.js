@@ -11,7 +11,6 @@ const config = {
     vendor: './src/vendor',
     main: './src/main'
   },
-
   output: {
     path: path.join(__dirname, '_dist'),
     filename: '[name].bundle.js',
@@ -52,7 +51,6 @@ const config = {
       }
     ],
   },
-
   plugins: [
     new webpack.ContextReplacementPlugin(
       /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
@@ -79,7 +77,6 @@ const config = {
       }
     )
   ],
-
   resolve: {
     modules: [
       path.resolve(__dirname, 'src'),
@@ -87,13 +84,12 @@ const config = {
     ],
     extensions: ['.ts', '.js', '.json']
   },
-
   devServer: {
     historyApiFallback: true,
     watchOptions: {
       aggregateTimeout: 300,
       poll: 1000,
-      ignored: /node_modules/
+      ignored: /node_modules|\.git|\.vscode|\.idea/
     }
   }
 };
