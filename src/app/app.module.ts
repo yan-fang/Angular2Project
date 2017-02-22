@@ -7,6 +7,8 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 import { ExampleComponent } from './example/example.component';
+import { C1ComponentsModule } from 'components/components.module';
+
 import { MockabilityModule } from 'mockability';
 import { requests } from 'mocks/accounts';
 
@@ -15,6 +17,7 @@ import { requests } from 'mocks/accounts';
     BrowserModule,
     FormsModule,
     HttpModule,
+    C1ComponentsModule,
     MockabilityModule.forRoot(requests),
     RouterModule.forRoot(appRoutes)
   ],
