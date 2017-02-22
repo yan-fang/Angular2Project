@@ -10,7 +10,7 @@ import { ExampleComponent } from './example/example.component';
 import { C1ComponentsModule } from 'components/components.module';
 
 import { MockabilityModule } from 'mockability';
-import { requests } from 'mocks/accounts';
+import { mocks } from 'mocks';
 
 @NgModule({
   imports: [
@@ -18,7 +18,7 @@ import { requests } from 'mocks/accounts';
     FormsModule,
     HttpModule,
     C1ComponentsModule,
-    MockabilityModule.forRoot(requests),
+    MockabilityModule.forRoot(mocks),
     RouterModule.forRoot(appRoutes)
   ],
   declarations: [

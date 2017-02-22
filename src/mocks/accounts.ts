@@ -1,8 +1,8 @@
 import { RequestMethod, Response, ResponseOptions } from '@angular/http';
 
-import { MockabilityResponse } from 'mockability';
+import { MockabilityResponses } from 'mockability';
 
-export const requests: MockabilityResponse[] = [
+export const requests: MockabilityResponses = [
   {
     url: /api\/card-accounts/,
     method: RequestMethod.Get,

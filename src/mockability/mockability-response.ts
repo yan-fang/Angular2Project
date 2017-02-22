@@ -7,3 +7,5 @@ export interface MockabilityResponse {
   url: RegExp;
   response: Response | ResponseFunction;
 }
+
+export type MockabilityResponses = MockabilityResponse[];
