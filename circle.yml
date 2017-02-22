@@ -16,6 +16,7 @@ dependencies:
 
 test:
   override:
+    - yarn compile
     - yarn lint
     - yarn cover
     - cp -R coverage $CIRCLE_ARTIFACTS
