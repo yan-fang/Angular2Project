@@ -1,14 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { CreditCardComponent } from './creditcard.component';
-import { closeAccountEntryRoutes } from './close-account/close-account.routes';
-
-export const creditCardEntryRoutes: Routes = [
-  {
-    path: 'creditcard',
-    loadChildren: './creditcard.module#CreditCardModule'
-  }
-];
+import { closeAccountEntryRoutes } from './close-account/close-account.entry-routes';
 
 export const creditCardRoutes: Routes = [
   {
