@@ -8,7 +8,7 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { Observable } from 'rxjs';
 
-import { ToggleGuard, ToggleRepositoryService } from 'creditcard/toggle';
+import { ToggleGuard, ToggleRepositoryService } from './index';
 
 describe('ToggleGuard', () => {
   let backend: MockBackend;

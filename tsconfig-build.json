@@ -2,7 +2,7 @@
   "compilerOptions": {
     "moduleResolution": "node",
     "target": "es5",
-    "module": "commonjs",
+    "module": "es2015",
     "declaration": false,
     "removeComments": true,
     "noLib": false,
@@ -36,7 +36,8 @@
   },
   "exclude": [
     "node_modules",
-    "_dist"
+    "_dist",
+    "./src/*.spec.ts"
   ],
   "include": [
     "src"
@@ -47,5 +48,9 @@
     "src/main.ts",
     "src/creditcard/index.ts",
     "src/creditcard/close-account/close-account.module.ts"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "genDir": "./_dist/aot",
+    "skipMetadataEmit" : true
+  }
 }

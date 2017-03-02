@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { creditCardEntryRoutes } from 'creditcard/creditcard.entry-routes';
+import { creditCardEntryRoutes } from '@c1/creditcard';
 
 export const appRoutes: Routes = [
   ...creditCardEntryRoutes

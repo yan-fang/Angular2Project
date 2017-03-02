@@ -7,10 +7,10 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 import { ExampleComponent } from './example/example.component';
-import { C1ComponentsModule } from 'components/components.module';
+import { C1ComponentsModule } from '@c1/components';
 
-import { MockabilityModule } from 'mockability';
-import { mocks } from 'mocks';
+import { MockabilityModule } from '@c1/mockability';
+import { mocks } from '@c1/mocks';
 
 @NgModule({
   imports: [

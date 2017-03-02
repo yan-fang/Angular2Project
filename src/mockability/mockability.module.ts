@@ -6,6 +6,10 @@ import { MockabilityResponse, ResponseFunction } from './mockability-response';
 
 export const MOCKABILITY_RESPONSES = new OpaqueToken('mockability.responses');
 
+export function mockHttpFactory(backend: MockBackend, options: BaseRequestOptions) {
+  return new Http(backend, options);
+}
+
 @NgModule({
   imports: [
     HttpModule
@@ -16,16 +20,16 @@ export const MOCKABILITY_RESPONSES = new OpaqueToken('mockability.responses');
     {
       provide: Http,
       deps: [MockBackend, BaseRequestOptions],
-      useFactory: (backend: MockBackend, options: BaseRequestOptions) => new Http(backend, options)
+      useFactory: mockHttpFactory
     }
   ]
 })
 export class MockabilityModule {
-  public static forRoot(responses: MockabilityResponse[]): ModuleWithProviders {
+  public static forRoot(responses: () => MockabilityResponse[]): ModuleWithProviders {
     return {
       ngModule: MockabilityModule,
       providers: [
-        { provide: MOCKABILITY_RESPONSES, useValue: responses }
+        { provide: MOCKABILITY_RESPONSES, useFactory: responses, deps: [] }
       ]
     };
   }

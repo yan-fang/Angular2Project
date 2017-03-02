@@ -2,17 +2,19 @@ const path = require('path');
 const webpack = require('webpack');
 const dashboardPlugin = require('webpack-dashboard/plugin');
 const browserSyncPlugin = require('browser-sync-webpack-plugin');
+const ngtools = require('@ngtools/webpack');
 
 const config = {
   cache: true,
   devtool: 'hidden-source-map',
   entry: {
-    polyfills: './src/polyfills',
-    vendor: './src/vendor',
-    main: './src/main'
+    polyfills: './src/polyfills.ts',
+    vendor: './src/vendor.ts',
+    main: './src/main.ts'
   },
   output: {
-    path: path.join(__dirname, '_dist'),
+    path: path.join(process.cwd(), '_dist'),
+    publicPath: 'dist/',
     filename: '[name].bundle.js',
     sourceMapFilename: '[name].map',
     chunkFilename: '[id].chunk.js'
@@ -21,9 +23,7 @@ const config = {
     loaders: [
       { test: /\.ts$/,
         loaders: [
-          'awesome-typescript-loader',
-          'angular-router-loader',
-          'angular2-template-loader'
+          '@ngtools/webpack'
         ]
       },
       {
@@ -52,6 +52,10 @@ const config = {
     ],
   },
   plugins: [
+    new ngtools.AotPlugin({
+      tsConfigPath: './tsconfig.json',
+      mainPath: "./src/main.ts"
+    }),
     new webpack.ContextReplacementPlugin(
       /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
       __dirname

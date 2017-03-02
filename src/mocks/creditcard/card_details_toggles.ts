@@ -1,6 +1,6 @@
 import { RequestMethod, Response, ResponseOptions } from '@angular/http';
 
-import { MockabilityResponses } from 'mockability';
+import { MockabilityResponses } from '@c1/mockability';
 import { response } from './card_details_toggles.model';
 
 export const cardDetailsToggles: MockabilityResponses = [

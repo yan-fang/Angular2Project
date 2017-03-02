@@ -3,7 +3,7 @@ import { CanLoad, Route } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { ToggleRepositoryService } from './toggle-repository.service';
-import { CardRouteData } from 'creditcard/models';
+import { CardRouteData } from '../models';
 
 @Injectable()
 export class ToggleGuard implements CanLoad {

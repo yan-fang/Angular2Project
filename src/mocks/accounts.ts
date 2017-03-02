@@ -1,6 +1,6 @@
 import { RequestMethod, Response, ResponseOptions } from '@angular/http';
 
-import { MockabilityResponses } from 'mockability';
+import { MockabilityResponses } from '@c1/mockability';
 
 export const requests: MockabilityResponses = [
   {
