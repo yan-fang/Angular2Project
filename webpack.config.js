@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const dashboardPlugin = require('webpack-dashboard/plugin');
 const browserSyncPlugin = require('browser-sync-webpack-plugin');
 const ngtools = require('@ngtools/webpack');
+const copyPlugin = require('copy-webpack-plugin');
 
 const config = {
   cache: true,
@@ -64,6 +65,8 @@ const config = {
       name: ['polyfills', 'vendor', 'main'].reverse(),
       minChunks: Infinity
     }),
+    // Copy over the public assets to the build directory
+    new copyPlugin([{ from: 'public', to: 'public' }]),
     new dashboardPlugin(),
     new browserSyncPlugin(
       // BrowserSync options

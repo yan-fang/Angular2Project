@@ -1,0 +1,107 @@
+
+@font-face {
+	font-family: "Optimist";
+	src:
+		url('./TTF/Optimist_W_Rg.ttf') format('truetype'),
+		url('./WOFF/Optimist_W_Rg.woff') format('woff'),
+		url('./WOFF2/Optimist_W_Rg.woff2') format('svg');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Optimist";
+	src:
+		url('./TTF/Optimist_W_It.ttf') format('truetype'),
+		url('./WOFF/Optimist_W_It.woff') format('woff'),
+		url('./WOFF2/Optimist_W_It.woff2') format('svg');
+	font-weight: 400;
+	font-style: italic;
+}
+
+
+
+@font-face {
+	font-family: "Optimist";
+	src:
+		url('./TTF/Optimist_W_XLt.ttf') format('truetype'),
+		url('./WOFF/Optimist_W_XLt.woff') format('woff'),
+		url('./WOFF2/Optimist_W_XLt.woff2') format('svg');
+	font-weight: 100;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Optimist";
+	src:
+		url('./TTF/Optimist_W_XLtIt.ttf') format('truetype'),
+		url('./WOFF/Optimist_W_XLtIt.woff') format('woff'),
+		url('./WOFF2/Optimist_W_XLtIt.woff2') format('svg');
+	font-weight: 100;
+	font-style: italic;
+}
+
+
+
+@font-face {
+	font-family: "Optimist";
+	src:
+		url('./TTF/Optimist_W_Lt.ttf') format('truetype'),
+		url('./WOFF/Optimist_W_Lt.woff') format('woff'),
+		url('./WOFF2/Optimist_W_Lt.woff2') format('svg');
+	font-weight: 200;
+	font-style: regular;
+}
+
+@font-face {
+	font-family: "Optimist";
+	src:
+		url('./TTF/Optimist_W_LtIt.ttf') format('truetype'),
+		url('./WOFF/Optimist_W_LtIt.woff') format('woff'),
+		url('./WOFF2/Optimist_W_LtIt.woff2') format('svg');
+	font-weight: 200;
+	font-style: italic;
+}
+
+
+@font-face {
+	font-family: "Optimist";
+	src:
+		url('./TTF/Optimist_W_SBd.ttf') format('truetype'),
+		url('./WOFF/Optimist_W_SBd.woff') format('woff'),
+		url('./WOFF2/Optimist_W_SBd.woff2') format('svg');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Optimist";
+	src:
+		url('./TTF/Optimist_W_SBdIt.ttf') format('truetype'),
+		url('./WOFF/Optimist_W_SBdIt.woff') format('woff'),
+		url('./WOFF2/Optimist_W_SBdIt.woff2') format('svg');
+	font-weight: 500;
+	font-style: italic;
+}
+
+
+
+@font-face {
+	font-family: "Optimist";
+	src:
+		url('./TTF/Optimist_W_Bd.ttf') format('truetype'),
+		url('./WOFF/Optimist_W_Bd.woff') format('woff'),
+		url('./WOFF2/Optimist_W_Bd.woff2') format('svg');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Optimist";
+	src:
+		url('./TTF/Optimist_W_BdIt.ttf') format('truetype'),
+		url('./WOFF/Optimist_W_BdIt.woff') format('woff'),
+		url('./WOFF2/Optimist_W_BdIt.woff2') format('svg');
+	font-weight: bold;
+	font-style: italic;
+}

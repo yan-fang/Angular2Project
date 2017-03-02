@@ -1,0 +1,20 @@
+<div class="left-grid">
+  <div class="heading">
+    <h2 class="name">{{ account.displayName }}</h2>
+    <p class="last-four">{{ account.accountNumberTLNPI }}</p>
+  </div>
+  <div class="currency-container">
+    <span class="currency-symbol">$</span><span class="dollar-amount">{{ dollars }}</span><span class="cent-amount">{{ cents }}</span>
+  </div>
+  <p class="descriptor">
+    current balance
+  </p>
+</div>
+<div class="right-grid">
+  <p class="action-label">min $86.87 due dec 15</p>
+  <div>
+    <c1-button ghost="true" type="white">
+      Make Payment
+    </c1-button>
+  </div>
+</div>

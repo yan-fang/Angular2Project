@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
         <p class="sample--color-blue">SCSS Sample</p>
         <c1-web-example></c1-web-example>
         <router-outlet></router-outlet>
+        <c1-account-summary></c1-account-summary>
     </div>
     `
 })

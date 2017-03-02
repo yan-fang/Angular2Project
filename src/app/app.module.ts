@@ -4,10 +4,17 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { StoreModule } from '@ngrx/store';
+import { routerReducer, RouterStoreModule } from '@ngrx/router-store';
+import { C1ComponentsModule } from '@c1/components';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 import { ExampleComponent } from './example/example.component';
-import { C1ComponentsModule } from '@c1/components';
+import { AccountSummaryModule } from './account-summary/account-summary.module';
+import { StateManagerService } from './state-manager-service';
 
 import { MockabilityModule } from '@c1/mockability';
 import { mocks } from '@c1/mocks';
@@ -17,13 +24,23 @@ import { mocks } from '@c1/mocks';
     BrowserModule,
     FormsModule,
     HttpModule,
-    C1ComponentsModule,
     MockabilityModule.forRoot(mocks),
-    RouterModule.forRoot(appRoutes)
+
+    C1ComponentsModule,
+    AccountSummaryModule,
+
+    RouterModule.forRoot(appRoutes),
+    StoreModule.provideStore({router: routerReducer}),
+    RouterStoreModule.connectRouter(),
+    EffectsModule,
+    StoreDevtoolsModule.instrumentOnlyWithExtension()
   ],
   declarations: [
     AppComponent,
     ExampleComponent
+  ],
+  providers: [
+    StateManagerService
   ],
   bootstrap: [ AppComponent ]
 })

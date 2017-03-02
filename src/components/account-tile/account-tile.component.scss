@@ -1,0 +1,141 @@
+@import '../core/_core.scss';
+
+:host {
+  display: flex;
+  height: 175px;
+  padding: 25px 25px 45px 25px;
+  text-decoration: none;
+  width: 49%;
+  margin: 12px 0;
+  cursor: pointer;
+  color: $white;
+  background: #003362; //$brandBlueDark
+  background-size: 100% auto;
+
+  &:nth-child(odd) {
+    margin: 12px 2% 12px 0;
+  }
+}
+
+.left-grid {
+  flex: 1 1 auto;
+  width: 100%;
+
+  .tile-name {
+    .wrapper {
+      display: flex;
+      align-items: flex-end;
+      margin: 0;
+    }
+    .account-number {
+      font-size: 0.875rem;
+      margin: 0 0 2px 5px;
+    }
+    .heading {
+      font-weight: 400;
+      margin: 0;
+    }
+    .product-logo-smaller {
+      font-size: 0.8rem;
+      margin: 0 0 5px 0;
+    }
+  }
+
+  .currency {
+    display: block;
+    position: relative;
+    font-weight: 100;
+
+    .symbol {
+      position: relative;
+      font-size: inherit;
+    }
+
+    .dollars {
+      position: relative;
+      font-size: inherit;
+      font-feature-settings: 'pnum';
+    }
+
+    .cents {
+      position: relative;
+      font-size: inherit;
+      font-feature-settings: 'pnum';
+      vertical-align: top;
+    }
+
+    .negative-symbol {
+      position: relative;
+      font-size: inherit;
+    }
+  }
+
+  .balance-name {
+    font-size: 12px;
+  }
+}
+
+.right-grid {
+  flex: 1 1 auto;
+  min-width: 175px;
+  justify-content: flex-end;
+
+  .action-label {
+    text-transform: uppercase;
+    margin: 0 0 12px 0;
+    padding: 0;
+    text-align: center;
+    font-size: 12px;
+  }
+}
+
+.heading {
+  display: flex;
+  margin: 0;
+  align-items: flex-end;
+
+  .name {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 400;
+  }
+
+  .last-four {
+    font-size: 0.875rem;
+    margin: 0 0 2px 5px;
+  }
+}
+
+.currency-container {
+  display: block;
+  position: relative;
+  font-weight: 100;
+  font-size: 3.250rem;
+
+  .currency-symbol {
+    font-size: 1.625rem;
+    vertical-align: super;
+    font-feature-settings: 'pnum';
+  }
+
+  .dollar-amount {
+    letter-spacing: -.025rem;
+    font-feature-settings: 'pnum';
+  }
+
+  .cent-amount {
+    font-size: 1.625rem;
+    vertical-align: super;
+    margin-left: .126rem;
+    font-feature-settings: 'pnum';
+  }
+}
+
+.descriptor {
+  font-size: 12px;
+  line-height: 27px;
+  margin: 6px 0;
+  text-transform: uppercase;
+}
+
+
