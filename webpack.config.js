@@ -4,6 +4,7 @@ const dashboardPlugin = require('webpack-dashboard/plugin');
 const browserSyncPlugin = require('browser-sync-webpack-plugin');
 const ngtools = require('@ngtools/webpack');
 const copyPlugin = require('copy-webpack-plugin');
+const htmlPlugin = require('html-webpack-plugin');
 
 const config = function(env)  {
   const locale = (env || {}).locale;
@@ -29,7 +30,6 @@ const config = function(env)  {
     },
     output: {
       path: path.join(process.cwd(), '_dist'),
-      publicPath: 'dist/',
       filename: '[name].bundle.js',
       sourceMapFilename: '[name].map',
       chunkFilename: '[id].chunk.js'
@@ -93,7 +93,10 @@ const config = function(env)  {
           // prevent BrowserSync from reloading the page and let Webpack Dev Server take care of this
           reload: false
         }
-      )
+      ),
+      new htmlPlugin({
+        template: 'src/index.html'
+      })
     ],
     resolve: {
       modules: [

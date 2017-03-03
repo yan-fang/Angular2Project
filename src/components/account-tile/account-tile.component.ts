@@ -17,7 +17,7 @@ export class AccountTileComponent implements OnInit {
   private amountArray: string[];
 
   ngOnInit() {
-    this.backgroundImage = 'url(/dist/public/static/img/product/L1-tile-bank-checking.jpg)';
+    this.backgroundImage = 'url(/public/static/img/product/L1-tile-bank-checking.jpg)';
     this.amountArray = this.account.availableBalance.toString().split('.');
 
     this.formatCents(this.amountArray[1]);
