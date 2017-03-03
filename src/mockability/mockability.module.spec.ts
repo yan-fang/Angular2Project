@@ -1,6 +1,8 @@
 import { TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { Http, Response, ResponseOptions, RequestMethod } from '@angular/http';
 
+import 'rxjs/add/operator/toPromise';
+
 import { MockabilityModule } from './mockability.module';
 import { MockabilityResponse } from './mockability-response';
 

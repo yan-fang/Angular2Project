@@ -1,3 +1,6 @@
+import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/throw';
+
 import { Route } from '@angular/router';
 import {
   BaseRequestOptions, ConnectionBackend,
@@ -6,7 +9,7 @@ import {
 } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 import { ToggleGuard, ToggleRepositoryService } from './index';
 
