@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { Store } from '@ngrx/store';
 
@@ -11,11 +12,13 @@ import { AccountSummaryRepository } from './account-summary.repository';
 import { State } from './state';
 
 import { StateManagerService } from '../state-manager-service';
+import { accountSummaryRoutes } from './account-summary.routes';
 
 @NgModule({
   imports: [
     CommonModule,
-    C1ComponentsModule
+    C1ComponentsModule,
+    RouterModule.forChild(accountSummaryRoutes)
   ],
   declarations: [
     AccountSummaryComponent

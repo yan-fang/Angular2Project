@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
       <a routerLink="/" routerLinkActive="active">Example (L1)</a>
       <a routerLink="/creditcard" routerLinkActive="active">CreditCard</a>
       <a routerLink="/creditcard/close-account" routerLinkActive="active">Close Account (CC)</a>
+      <a routerLink="/accountSummary" routerLinkActive="active">Account Summary</a>
     </nav>
 
     <h1>{{title}}</h1>

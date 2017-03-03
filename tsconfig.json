@@ -31,7 +31,9 @@
       "@c1/creditcard": [ "src/creditcard" ],
       "@c1/mockability": [ "src/mockability" ],
       "@c1/mocks": [ "src/mocks" ],
-      "@c1/creditcard/creditcard.module": [ "src/creditcard/creditcard.module"]
+      "@c1/creditcard/creditcard.module": [ "src/creditcard/creditcard.module"],
+      "@c1/app/account-summary": [ "src/app/account-summary" ],
+      "@c1/app/account-summary/account-summary.module": [ "src/app/account-summary/account-summary.module" ]
     }
   },
   "exclude": [
