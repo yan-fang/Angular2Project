@@ -13,6 +13,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 import { ExampleComponent } from './example/example.component';
+import { I18nExampleComponent } from './i18n-example/i18n-example.component';
 import { AccountSummaryModule } from './account-summary/account-summary.module';
 import { StateManagerService } from './state-manager-service';
 
@@ -37,7 +38,8 @@ import { mocks } from '@c1/mocks';
   ],
   declarations: [
     AppComponent,
-    ExampleComponent
+    ExampleComponent,
+    I18nExampleComponent
   ],
   providers: [
     StateManagerService

@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
         <c1-web-example></c1-web-example>
         <router-outlet></router-outlet>
         <c1-account-summary></c1-account-summary>
+        <c1-i18n-example></c1-i18n-example>
     </div>
     `
 })

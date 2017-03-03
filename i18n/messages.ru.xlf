@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="1ea31081e50390f86dac9d44f30ce6d662d9b486" datatype="html">
+        <source>Simple</source>
+        <target>SimpleRu</target>
+      </trans-unit>
+      <trans-unit id="62ac868a04aa2be10ddefb0ddf9baf70a70882ca" datatype="html">
+        <source>Simple with intent</source>
+        <target>Simple with intentRu</target>
+        <note priority="1" from="description">some intent</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

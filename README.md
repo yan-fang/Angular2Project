@@ -44,3 +44,9 @@ Open the top index.html in `./coverage` in a browser.
 ## Commit Message Guidelines
   - Run `yarn commit`
   - `yarn lint` and `yarn test` run as pre-hooks for commits
+
+## I18n
+
+- Run `i18n/extract.sh` to extract all the strings from the application.
+- Create a copy of the translated file (see `messages.ru.xlf` as an example).
+- Pass a locale to `yarn dev` (`yarn dev -- --env.locale=ru`).
