@@ -1,17 +1,17 @@
-<div class="left-grid">
-  <div class="heading">
-    <h2 class="name">{{ account.displayName }}</h2>
-    <p class="last-four">{{ account.accountNumberTLNPI }}</p>
+<div class="tile--grid-left">
+  <div class="tile--heading">
+    <h2 class="tile--heading-name">{{ account.displayName }}</h2>
+    <p class="tile--heading-lastfour">{{ account.accountNumberTLNPI }}</p>
   </div>
-  <div class="currency-container">
-    <span class="currency-symbol">$</span><span class="dollar-amount">{{ dollars }}</span><span class="cent-amount">{{ cents }}</span>
+  <div class="tile--currency-container">
+    <span class="tile--currency-symbol">$</span><span class="tile--currency-dollars">{{ dollars | c1FormatDollars }}</span><span class="tile--currency-cents">{{ cents | c1FormatCents }}</span>
   </div>
-  <p class="descriptor">
+  <p class="tile--account-descriptor">
     current balance
   </p>
 </div>
-<div class="right-grid">
-  <p class="action-label">min $86.87 due dec 15</p>
+<div class="tile--grid-right">
+  <p class="tile--action-label">min $86.87 due dec 15</p>
   <div>
     <c1-button ghost="true" type="white">
       Make Payment

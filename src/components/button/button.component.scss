@@ -38,6 +38,7 @@ $types: (
   progressive: $ease-blue--progressive,
   regressive: $ease-gray--regressive,
   destructive: $ease-red--destructive,
+  white: $white
 );
 
 // For each type, create `.c1-button` classes using BEM.

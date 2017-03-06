@@ -17,125 +17,135 @@
   }
 }
 
-.left-grid {
-  flex: 1 1 auto;
-  width: 100%;
+.tile {
+  &--grid {
+    &-left {
+      flex: 1 1 auto;
+      width: 100%;
+    }
 
-  .tile-name {
-    .wrapper {
-      display: flex;
-      align-items: flex-end;
-      margin: 0;
-    }
-    .account-number {
-      font-size: 0.875rem;
-      margin: 0 0 2px 5px;
-    }
-    .heading {
-      font-weight: 400;
-      margin: 0;
-    }
-    .product-logo-smaller {
-      font-size: 0.8rem;
-      margin: 0 0 5px 0;
+    &-right {
+      flex: 1 1 auto;
+      justify-content: flex-end;
+      min-width: 175px;
     }
   }
 
-  .currency {
+  &--currency {
     display: block;
     position: relative;
     font-weight: 100;
 
-    .symbol {
+    &-symbol {
       position: relative;
       font-size: inherit;
+
+      &_negative {
+        position: relative;
+        font-size: inherit;
+      }
     }
 
-    .dollars {
+    &-dollars {
       position: relative;
       font-size: inherit;
       font-feature-settings: 'pnum';
     }
 
-    .cents {
+    &-cents {
       position: relative;
       font-size: inherit;
       font-feature-settings: 'pnum';
       vertical-align: top;
     }
+  }
 
-    .negative-symbol {
-      position: relative;
-      font-size: inherit;
+  &--action {
+    &-label {
+      text-transform: uppercase;
+      margin: 0 0 12px 0;
+      padding: 0;
+      text-align: center;
+      font-size: 12px;
     }
   }
 
-  .balance-name {
-    font-size: 12px;
+  &--balance {
+    &-name {
+      font-size: 12px;
+    }
   }
-}
 
-.right-grid {
-  flex: 1 1 auto;
-  min-width: 175px;
-  justify-content: flex-end;
-
-  .action-label {
-    text-transform: uppercase;
-    margin: 0 0 12px 0;
-    padding: 0;
-    text-align: center;
-    font-size: 12px;
+  &--name {
+    &-wrapper {
+      display: flex;
+      align-items: flex-end;
+      margin: 0;
+    }
   }
-}
 
-.heading {
-  display: flex;
-  margin: 0;
-  align-items: flex-end;
-
-  .name {
+  &--heading {
+    display: flex;
     margin: 0;
-    font-size: 24px;
-    font-weight: 400;
+    align-items: flex-end;
+
+    &-name {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 400;
+    }
+
+    &-lastfour {
+      font-size: 0.875rem;
+      margin: 0 0 2px 5px;
+    }
   }
 
-  .last-four {
-    font-size: 0.875rem;
-    margin: 0 0 2px 5px;
+  &--account {
+    &-number {
+      font-size: 0.875rem;
+      margin: 0 0 2px 5px;
+    }
+
+    &-descriptor {
+      font-size: 12px;
+      line-height: 27px;
+      margin: 6px 0;
+      text-transform: uppercase;
+    }
+  }
+
+  &--productlogo {
+    &-smaller {
+      font-size: 0.8rem;
+      margin: 0 0 5px 0;
+    }
+  }
+
+  &--currency {
+    &-container {
+      display: block;
+      position: relative;
+      font-weight: 100;
+      font-size: 3.250rem;
+    }
+
+    &-symbol {
+      font-size: 1.625rem;
+      vertical-align: super;
+      font-feature-settings: 'pnum';
+    }
+
+    &-dollars {
+      letter-spacing: -.025rem;
+      font-feature-settings: 'pnum';
+    }
+
+    &-cents {
+      font-size: 1.625rem;
+      vertical-align: super;
+      margin-left: .126rem;
+      font-feature-settings: 'pnum';
+    }
   }
 }
-
-.currency-container {
-  display: block;
-  position: relative;
-  font-weight: 100;
-  font-size: 3.250rem;
-
-  .currency-symbol {
-    font-size: 1.625rem;
-    vertical-align: super;
-    font-feature-settings: 'pnum';
-  }
-
-  .dollar-amount {
-    letter-spacing: -.025rem;
-    font-feature-settings: 'pnum';
-  }
-
-  .cent-amount {
-    font-size: 1.625rem;
-    vertical-align: super;
-    margin-left: .126rem;
-    font-feature-settings: 'pnum';
-  }
-}
-
-.descriptor {
-  font-size: 12px;
-  line-height: 27px;
-  margin: 6px 0;
-  text-transform: uppercase;
-}
-
-
