@@ -1,13 +1,14 @@
 const path = require('path');
 const webpack = require('webpack');
-const dashboardPlugin = require('webpack-dashboard/plugin');
 const browserSyncPlugin = require('browser-sync-webpack-plugin');
 const ngtools = require('@ngtools/webpack');
 const copyPlugin = require('copy-webpack-plugin');
 const htmlPlugin = require('html-webpack-plugin');
+const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
 
-const config = function(env)  {
-  const locale = (env || {}).locale;
+module.exports = function(env = {}) {
+  const locale = env.locale;
+  const mode = env.mode;
 
   const aotConfiguration = !locale || locale === 'en' ? ({
     tsConfigPath: './tsconfig.json',
@@ -20,9 +21,9 @@ const config = function(env)  {
     locale: locale
   });
 
-  return {
+  const config =  {
     cache: true,
-    devtool: 'hidden-source-map',
+    devtool: 'source-map',
     entry: {
       polyfills: './src/polyfills.ts',
       vendor: './src/vendor.ts',
@@ -36,11 +37,6 @@ const config = function(env)  {
     },
     module: {
       loaders: [
-        { test: /\.ts$/,
-          loaders: [
-            '@ngtools/webpack'
-          ]
-        },
         {
           test: /\.json$/,
           loader: 'json-loader'
@@ -67,18 +63,12 @@ const config = function(env)  {
       ],
     },
     plugins: [
-      new ngtools.AotPlugin(aotConfiguration),
-      new webpack.ContextReplacementPlugin(
-        /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-        __dirname
-      ),
       new webpack.optimize.CommonsChunkPlugin({
         name: ['polyfills', 'vendor', 'main'].reverse(),
         minChunks: Infinity
       }),
       // Copy over the public assets to the build directory
       new copyPlugin([{ from: 'public', to: 'public' }]),
-      new dashboardPlugin(),
       new browserSyncPlugin(
         // BrowserSync options
         {
@@ -94,6 +84,7 @@ const config = function(env)  {
           reload: false
         }
       ),
+      // write generated bundles to index.html
       new htmlPlugin({
         template: 'src/index.html'
       })
@@ -114,6 +105,51 @@ const config = function(env)  {
       }
     }
   };
-}
 
-module.exports = config;
+  if (mode === 'aot') {
+    console.log('   Mode: AOT');
+
+    config.module.loaders.push(
+      { test: /\.ts$/, loader: ['@ngtools/webpack'] }
+    );
+
+    config.plugins.push(
+      new ngtools.AotPlugin(aotConfiguration),
+
+      // This plugin needs to be added right after the ts loader has been added
+      // https://github.com/angular/angular/issues/11580
+      new webpack.ContextReplacementPlugin(
+        /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+        __dirname
+      )
+    );
+  } else {
+    console.log('   Mode: JIT');
+
+    config.module.loaders.push(
+      {
+        test: /\.ts$/, loader: [
+        'awesome-typescript-loader',
+        'angular-router-loader',
+        'angular2-template-loader'
+      ]}
+    );
+
+    // This plugin needs to be added right after the ts loader has been added
+    // https://github.com/angular/angular/issues/11580
+    config.plugins.push(
+      new webpack.ContextReplacementPlugin(
+        /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+        __dirname
+      )
+    );
+
+    // [at-loader] Needs this to support new paths and baseUrl feature of TS 2.0
+    config.resolve.plugins = [
+      new TsConfigPathsPlugin()
+    ];
+  }
+
+  return config;
+};
+

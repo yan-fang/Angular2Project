@@ -5,7 +5,7 @@ import { ToggleGuard } from '../toggle';
 export const closeAccountEntryRoutes: Routes = [
   {
     path: 'close-account',
-    loadChildren: './close-account/close-account.module#CloseAccountModule',
+    loadChildren: '@c1/creditcard/close-account/close-account.module#CloseAccountModule',
     canLoad: [ ToggleGuard ],
     data: {
       toggle: 'closeAccountLink'

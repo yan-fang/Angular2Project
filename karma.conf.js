@@ -39,7 +39,7 @@ module.exports = function(config) {
 
     // Karma-typescript tsconfig location
     karmaTypescriptConfig: {
-        tsconfig: "./tsconfig.json",
+        tsconfig: "./tsconfig-spec.json",
         coverageOptions: {
           instrumentation: true,
           exclude: /\.(d|spec)\.ts/

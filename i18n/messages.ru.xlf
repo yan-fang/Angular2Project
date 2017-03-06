@@ -2,13 +2,15 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
-      <trans-unit id="1ea31081e50390f86dac9d44f30ce6d662d9b486" datatype="html">
+      <trans-unit id="66714bb4756b763d17bd5d211e9f4627ccf419ee" datatype="html">
         <source>Simple</source>
-        <target>SimpleRu</target>
+        <target>SimpleRU</target>
+        <note priority="1" from="description"> Put a description of the message here, so translators can translate it correctly</note>
+        <note priority="1" from="meaning">i18n demo</note>
       </trans-unit>
       <trans-unit id="62ac868a04aa2be10ddefb0ddf9baf70a70882ca" datatype="html">
         <source>Simple with intent</source>
-        <target>Simple with intentRu</target>
+        <target>Simple with intentRU</target>
         <note priority="1" from="description">some intent</note>
       </trans-unit>
     </body>

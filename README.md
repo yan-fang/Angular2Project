@@ -47,6 +47,6 @@ Open the top index.html in `./coverage` in a browser.
 
 ## I18n
 
-- Run `i18n/extract.sh` to extract all the strings from the application.
+- Run `yarn i18n:extract` to extract all the strings from the application.
 - Create a copy of the translated file (see `messages.ru.xlf` as an example).
-- Pass a locale to `yarn dev` (`yarn dev -- --env.locale=ru`).
+- Pass a locale to `yarn dev` (`yarn dev:aot -- --env.locale=ru`).

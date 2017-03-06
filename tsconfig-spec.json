@@ -1,8 +1,9 @@
 {
+  "extends": "./tsconfig.json",
   "compilerOptions": {
     "moduleResolution": "node",
     "target": "es5",
-    "module": "es2015",
+    "module": "commonjs",
     "declaration": false,
     "removeComments": true,
     "noLib": false,
@@ -26,31 +27,11 @@
     "rootDir": ".",
     "baseUrl": ".",
     "paths": {
-      "@c1/app": [ "src/app" ],
-      "@c1/components": [ "src/components" ],
-      "@c1/creditcard": [ "src/creditcard" ],
-      "@c1/mockability": [ "src/mockability" ],
-      "@c1/mocks": [ "src/mocks" ],
-      "@c1/creditcard/creditcard.module": [ "src/creditcard/creditcard.module"]
+      "@c1/*": [ "src/*" ]
     }
   },
   "exclude": [
     "node_modules",
-    "_dist",
-    "./src/*.spec.ts"
-  ],
-  "include": [
-    "src"
-  ],
-  "compileOnSave": false,
-  "buildOnSave": false,
-  "files": [
-    "src/main.ts",
-    "src/creditcard/index.ts",
-    "src/creditcard/close-account/close-account.module.ts"
-  ],
-  "angularCompilerOptions": {
-    "genDir": "./_dist/aot",
-    "skipMetadataEmit" : true
-  }
+    "_dist"
+  ]
 }
