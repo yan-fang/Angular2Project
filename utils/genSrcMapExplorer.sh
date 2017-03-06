@@ -24,23 +24,20 @@ function msg {
 
 
 # Generate Source Maps
-msg "Generate source map explorer [y/n]? Yes?"
-read answer
-answer=${answer:-y}
+msg "Generating Source Map Explorers:"
 
-if  [ $answer == 'y' ]; then
-    mkdir -p ./_dist/dev/src-map-explorers
-    for file in _dist/*.js; do
-        fileNameWithExt=${file##*/}
-        fileName=${fileNameWithExt%.js}
-        fileNameHtml=$fileName".html"
+mkdir -p ./_dist/dev/src-map-explorers
+for file in _dist/*.js; do
+    fileNameWithExt=${file##*/}
+    fileName=${fileNameWithExt%.js}
+    fileNameHtml=$fileName".html"
 
-        LINKS+=("<p><a href=\""$fileNameHtml"\">"$fileNameWithExt"</a></p>")
-        echo "Generating source map explorer for: " $fileNameWithExt
-        yarn explore -- --html $file > "./_dist/dev/src-map-explorers/"$fileNameHtml
-    done
+    LINKS+=("<p><a href=\""$fileNameHtml"\">"$fileNameWithExt"</a></p>")
+    echo "Generating source map explorer for: " $fileNameWithExt
+    yarn explore -- --html $file > "./_dist/dev/src-map-explorers/"$fileNameHtml
+done
 
-    cat > ./_dist/dev/src-map-explorers/index.html <<EOF
+cat > ./_dist/dev/src-map-explorers/index.html <<EOF
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,19 +50,6 @@ if  [ $answer == 'y' ]; then
 </html>
 EOF
 
-    msg "Done! Source Map Explorers can be viewed at http://<HOST>/dev/src-map-explorers"
-else
-    msg "No Source Map Explorers have been generated!"
-fi
-
-
-# Launch Server
-msg "Launch Server [y/n]? Yes?"
-read serverAnswer
-serverAnswer=${serverAnswer:-y}
-
-if  [ $serverAnswer == 'y' ]; then
-  yarn serve
-fi
+msg "Done!"
 
 
