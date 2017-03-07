@@ -1,0 +1,27 @@
+$spacing-sizes: (
+  xsmall: 3px,
+  small: 6px,
+  medium: 12px,
+  large: 24px,
+  xlarge: 48px
+);
+
+@mixin padding($size, $direction: null) {
+  $size-value: map-get($spacing-sizes, $size);
+
+  @if ($direction == null) {
+    padding: $size-value;
+  } @else {
+    padding-#{$direction}: $size-value;
+  }
+}
+
+@mixin margin($size, $direction: null) {
+  $size-value: map-get($spacing-sizes, $size);
+
+  @if ($direction == null) {
+    margin: $size-value;
+  } @else {
+    margin-#{$direction}: $size-value;
+  }
+}

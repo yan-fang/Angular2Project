@@ -2,19 +2,32 @@
 
 :host {
   display: flex;
-  height: 175px;
-  padding: 25px 25px 45px 25px;
+  @include padding("large", "top");
+  @include padding("large", "left");
+  @include padding("large", "right");
+  @include padding("xlarge", "bottom");
   text-decoration: none;
-  width: 49%;
-  margin: 12px 0;
+  @include margin("medium", "top");
+  @include margin("medium", "bottom");
   cursor: pointer;
-  color: $white;
-  background: #003362; //$brandBlueDark
+  color: $ease-white;
+  font-family: $font-stack;
+  background: $brand-blue;
   background-size: 100% auto;
+  box-sizing: border-box;
 
-  &:nth-child(odd) {
-    margin: 12px 2% 12px 0;
+  width: 100%;
+  flex-direction: column;
+  @include breakpoint("small") {
+    flex-direction: row;
   }
+  @include breakpoint("medium") {
+    width: 49%;
+    &:nth-child(odd) {
+      margin-right: 2%;
+    }
+  }
+
 }
 
 .tile {
@@ -34,7 +47,7 @@
   &--currency {
     display: block;
     position: relative;
-    font-weight: 100;
+    font-weight: $font-weight--thin;
 
     &-symbol {
       position: relative;
@@ -63,16 +76,17 @@
   &--action {
     &-label {
       text-transform: uppercase;
-      margin: 0 0 12px 0;
+      @include margin("medium", "top");
+      @include margin("medium", "bottom");
       padding: 0;
       text-align: center;
-      font-size: 12px;
+      font-size: $font-size--xsmall;
     }
   }
 
   &--balance {
     &-name {
-      font-size: 12px;
+      font-size: $font-size--xsmall;
     }
   }
 
@@ -91,34 +105,30 @@
 
     &-name {
       margin: 0;
-      font-size: 24px;
-      font-weight: 400;
+      font-size: $font-size--xlarge;
+      font-weight: $font-weight--regular;
     }
 
     &-lastfour {
-      font-size: 0.875rem;
-      margin: 0 0 2px 5px;
+      font-size: $font-size--xsmall;
+      @include margin("xsmall", "bottom");
+      @include margin("small", "left");
     }
   }
 
   &--account {
     &-number {
-      font-size: 0.875rem;
-      margin: 0 0 2px 5px;
+      font-size: $font-size--xsmall;
+      @include margin("xsmall", "bottom");
+      @include margin("small", "left");
     }
 
     &-descriptor {
-      font-size: 12px;
-      line-height: 27px;
-      margin: 6px 0;
+      font-size: $font-size--small;
+      line-height: $font-size--xlarge;
+      @include margin("small", "top");
+      @include margin("small", "bottom");
       text-transform: uppercase;
-    }
-  }
-
-  &--productlogo {
-    &-smaller {
-      font-size: 0.8rem;
-      margin: 0 0 5px 0;
     }
   }
 
@@ -126,7 +136,7 @@
     &-container {
       display: block;
       position: relative;
-      font-weight: 100;
+      font-weight: $font-weight--thin;
       font-size: 3.250rem;
     }
 

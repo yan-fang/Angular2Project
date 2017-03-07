@@ -1,6 +1,23 @@
+// @TODO use absolute path, not relative. SASS CONFIG ISSUE
+
+@import '../../components/core/_core.scss';
+
 $red : red;
+$green : green;
 
 .example--color-red {
   font-size: 2em;
   color: $red;
+  @include breakpoint("small") {
+    color: $green;
+    @include padding(small);
+  }
+  @include breakpoint("medium") {
+    color: purple;
+    @include padding(medium);
+  }
+  @include breakpoint("large") {
+    color: blue;
+    @include padding(large, top);
+  }
 }

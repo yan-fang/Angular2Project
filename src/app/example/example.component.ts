@@ -12,6 +12,7 @@ import { Component } from '@angular/core';
     </nav>
 
     <h1>{{title}}</h1>
+    <p>Example of <em>some</em> kind of <strong>text</strong></p>
     <div>
       <button (click)="toggleCheck()">
           click me <span *ngIf="showCheck">to hide</span>
@@ -20,7 +21,7 @@ import { Component } from '@angular/core';
           <b>{{intro}}</b>
       </span>
     </div>
-    <p class="example--color-red">Nested SCSS Sample</p>
+    <p class="example--color-red">Responsive Nested SCSS Sample</p>
   `
 })
 export class ExampleComponent {

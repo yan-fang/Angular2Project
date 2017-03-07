@@ -1,4 +1,13 @@
+@import "../../components/core/_core.scss";
+
 :host {
-  background-color: #f5f5f5;
-  display: block;
+  background-color: $ease-background;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  @include breakpoint("medium") {
+    flex-direction: row;
+    flex-flow: wrap;
+  }
+
 }

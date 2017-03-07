@@ -1,26 +1,34 @@
-////////////////////////////
-// EASE Colors
-////////////////////////////
+// EASE Colors https://ilab-confluence.kdc.capitalone.com/display/EW/EASE+Design+Kit
+// Note: EASE Colors and OneDesign Colors are not 100% identical
 
-// Note: These are offical EASE colors.
-// Note: Source is https://ilab-confluence.kdc.capitalone.com/display/EW/EASE+Design+Kit
-// Note: EASE Colors and OneDesign colors are not the same.
-
-// TO DO: Add the rest of the EASE colors. This is WIP.
-
-$white: #FFFFFF;
+// ONE DESIGN COLORS
+$brand-blue: #004977;
+$brand-red: #D03027;
+$accent-blue--light: #018BBB;
+$accent-green: #0EA218;
+$accent-yellow: #FFDC24;
+$neutral-gray: #DCD8DB;
+$neutral-charcoal: #273B49;
 
 $ease-red--destructive: #D03027;
 $ease-blue--progressive: #0D74AF;
 $ease-gray--regressive: #687680;
 $ease-green--action: #128020;
 
-$ease-red--destructive--hover: #D03027;
-$ease-blue--progressive--hover: #0D74AF;
-$ease-gray--regressive--hover: #687680;
-$ease-green--action--hover: #128020;
+// EASE Design Kit Colors
+$ease-charcoal: #011728;                    // used by main text color
+$ease-background: #F2F2F3;                  // used by app background color
+$ease-white: #FFFFFF;                       // used by all kinds of elements
+$ease-charcoal--light: $neutral-charcoal;   // used by headings
+$ease-silver: #CFCCCF;                      // used by horizontal rules, other light elements
+$ease-yellow--alert: #F8CC01;               // used by alerts icon
+$ease-blue--xlight: #E2F4FE;                // used by calendar day background
 
-$ease-red--destructive--disabled: #D03027;
-$ease-blue--progressive--disabled: #0D74AF;
-$ease-gray--regressive--disabled: #687680;
-$ease-green--action--disabled: #128020;
+// Input Specs
+$input-text--default: $ease-charcoal;
+$input-text--placeholder: #687680;
+$input-background--default: $ease-white;
+$input-background--disabled: #F5F5F6;
+$input-border--default: #C2C0C6;
+$input-border--focused: $ease-blue--progressive;
+$input-border--invalid: $ease-red--destructive;

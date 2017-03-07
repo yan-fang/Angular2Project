@@ -1,1 +1,37 @@
-// TBD
+$default-breakpoint: root;
+$current-breakpoint: $default-breakpoint;
+
+$breakpoints: (
+  xsmall: "320px",  // iphone 5
+  small: "600px",   // iphone 6 / big androids
+  medium: "1000px", // ipad / tablet
+  large: "1400px",  // laptop / desktop
+  xlarge: "1600px"  // fullscreen hi-res monitor
+);
+
+@mixin breakpoint($breakpoint) {
+  // Get the width from the keyword `$breakpoint`
+  // Or `null` if the keyword doesn't exist in `$breakpoints` map
+  $value: map-get($breakpoints, $breakpoint);
+
+  // If `$breakpoint` exists as a key in `$breakpoints`
+  @if $value != null {
+    // Update `$current-breakpoint`
+    $current-breakpoint: $breakpoint !global;
+
+    // Open a media query block
+    @media only screen and (min-width: $value) {
+      // Let the user dump content
+      @content;
+    }
+
+    // Then reset `$current-breakpoint` to `$default-breakpoint` (root)
+    $current-breakpoint: $default-breakpoint !global;
+  }
+
+  // If `$breakpoint` doesn't exist in `$breakpoints`,
+  // Warn the user and do nothing
+  @else {
+    @warn "Invalid breakpoint `#{$breakpoint}`.";
+  }
+}

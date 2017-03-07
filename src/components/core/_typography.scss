@@ -1,4 +1,23 @@
-// TO DO: Add to this, finalize the font varaible.
-// TO DO: Import actual font files(?)
+// Available Fonts
+$proxima-nova: "Proxima Nova";
+$optimist: "Optimist"; // DO NOT USE UNTIL IT'S TIME
 
-$proximaNova: "Proxima Nova", Arial, "Helvetica Neue", Helvetica, sans-serif;
+// Font Family
+$font-stack: $proxima-nova, Arial, "Helvetica Neue", Helvetica, sans-serif;
+
+// Font Sizes
+// Note: < 12px is prohibited bc accessability
+
+$font-size--xsmall: 12px;
+$font-size--small: 14px;
+$font-size--medium: 16px;
+$font-size--large: 18px;
+$font-size--xlarge: 24px;
+$font-size--xxlarge: 32px;
+$font-size--xxxlarge: 64px;
+
+// Font Weights (Proxima Nova specific)
+$font-weight--thin: 100;
+$font-weight--light: 200;
+$font-weight--regular: 400;
+$font-weight--sbold: 600;
