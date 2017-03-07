@@ -1,0 +1,17 @@
+<div class="cf card {{element.sassName}}">
+  <div class="bal" tabindex="0" aria-label="{{summary.getAriaTileMsg(summary.i18n.ariaMsg.tile.creditcard, element.displayName, summary.i18n.amountSymbol, element.dollarAmount, element.cents, element.negativeBalance);}}">
+    <p class="title">
+      <brand-image element-val="element" page="AccountSummary"></brand-image>
+      <span class="accnumbertrail">...{{ element.accountNumberTLNPI.substring(element.accountNumberTLNPI.length-4, element.accountNumberTLNPI.length) }}</span>
+    </p>
+
+    <div class="amount" ng-if="element.showPrimaryData"  checkAmountDigits="{{element.checkAmountDigits()}}">
+      <span class="sign">{{element.amountSign}}</span>
+      <span class="symbol">{{summary.i18n.amountSymbol}}</span>
+      <span id="dollarAmountDefault_{{summary.trimmmedAccountNumber(element.accountNumberTLNPI)}}" name="dollarAmountDefault_{{summary.trimmmedAccountNumber(element.accountNumberTLNPI)}}" class="dollar" data-ng-bind="element.dollarAmount"></span>
+      <span class="cents" data-ng-bind="element.cents"></span>
+    </div>
+
+    <p class="label" ng-if="element.showPrimaryData">{{summary.contentData["ease.core.acctsummary.currbal.label"]}}</p>
+  </div>
+</div>

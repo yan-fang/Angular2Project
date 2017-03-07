@@ -1,0 +1,15 @@
+{
+  "name": "EASECoreLite",
+  "version": "1.0.2",
+  "description": "EASE Lite",
+  "main": "ease.js",
+  "scripts": {},
+  "devDependencies": {},
+  "dependencies": {},
+  "gitHead": "1de15f5d428bb336489dbc69cc21fd8d1428091a",
+  "readme": "ERROR: No README data found!",
+  "_id": "EASECoreLite@1.0.2",
+  "_shasum": "2b0de2cc7b33ad99210ed9ec2be04fb7ab2a05a3",
+  "_from": "git+https://github.kdc.capitalone.com/puggles/core-lite.git",
+  "_resolved": "git+https://github.kdc.capitalone.com/puggles/core-lite.git#1de15f5d428bb336489dbc69cc21fd8d1428091a"
+}

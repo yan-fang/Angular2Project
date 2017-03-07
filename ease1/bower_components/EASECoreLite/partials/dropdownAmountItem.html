@@ -1,0 +1,12 @@
+<div data-ng-class="typeId" tabindex="-1" data-ng-click="selectItem(item)">
+	<span  id="{{'amountDD_' + typeId}}">
+		<span class="{{accClass}}">
+    <span class="headerTruncate">{{amountType}}</span>
+  </span>
+	  <span class="{{amntClass}}">
+	    <input amount-pay service="service"  id="ddInputValue"  type="text" placeholder="0.00" data-ng-click="stopPropagation($event)"/>
+	    <span class="symbol" data-ng-if="showSymbol()" data-ng-class="formatDollar">{{localize.amountSymbol}}</span>
+	    <span class="value" data-ng-if="showAmount()" aria-label="{{amountValue | number:2}}">{{amountValue | number:2}}</span>
+	  </span>
+	</span>
+</div>

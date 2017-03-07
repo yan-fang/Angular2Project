@@ -1,0 +1,10 @@
+<div id="{{widgetId}}" name="{{widgetId}}" role="combobox" class="dropdownContainer animated" data-ng-click="openDropdown($event)" aria-required="true" tabindex="0" aria-expanded="{{open}}" >
+    <span data-ng-if="ngModel" class="selectedItem" data-ng-bind="ngModel[displayField]"></span>
+    <span id="dropDown_{{widgetId}}" name="dropDown_{{widgetId}}" data-ng-if="ngModel == null || ngModel == 'undefined'" class="placeholder selectedItem" data-ng-bind="placeholder"></span>
+    <ul class="dropdown slideable" data-ng-class="{'headerslideup': close, 'headerslidedown': open}" data-ng-show="datasource && datasource.length"
+    role="listbox" >
+        <li data-ng-repeat="item in datasource" role="option" >
+            <div class="dropdownItem" tabindex="-1" aria-label="{{item[displayField]}}" data-ng-click="select(item, $event)" data-ng-bind="item[displayField]"></div>
+        </li>
+    </ul>
+</div>

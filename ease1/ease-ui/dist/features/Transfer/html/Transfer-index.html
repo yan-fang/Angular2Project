@@ -1,0 +1,202 @@
+<ease-ui-modal
+  close-modal="closeModal()"
+  modal-id="'transferIndex'"
+  modal-role="'document'"
+  modal-title="contentData['ease.core.transfer.form.header.label']"
+  class="transferModal transferModalIndex"
+>
+  <div ng-switch on='selectedView'>
+    <!-- Transer One time transfer view -->
+    <div ng-switch-when="one-time">
+      <ease-error-message global-holder-id="globalMessageHolder" data-ng-if="showTransfersLimit()"
+                  message-area-id="messageArea" message-close-id="messageClose" message-icon-id="messageIcon"
+                  alert-content="{{::contentData['ease.core.transfer.savings.alert.message']}}">
+      </ease-error-message>
+      <form id="transferForm" name="transferForm" autocomplete="off" novalidate>
+        <div class="form-container">
+          <ease-ui-dropdown-input
+                  is-open= fromDropdown.isOpen
+                  model-value="fromDropdown.selectedValue"
+                  id= "transferDropdownFrom"
+                  title = {{::contentData['ease.core.transfer.form.transferacct.from.label']}}
+                  sub-title = "{{availableBalance(fromDropdown.selectedAccountBalance)}}"
+                  primary-data = "{{fromDropdown.selectedPrimary}}"
+                  secondary-data= "{{fromDropdown.selectedSecondary}}"
+                  disable-search = "true"
+                  place-holder = "{{::fromDropdown.selectedPrimary}}"
+                  data-ng-class="{disablingLabel:transferSubmitted}">
+            <ease-ui-dropdown-menu
+                    id= "transferFromDropdownMenu"
+                    select="onTransferFromSelected(item)"
+                    items="transferFromList"
+                    template = true
+                    is-open = fromDropdown.isOpen
+                    component-id = "fourth">
+              <li data-ng-repeat = "item in transferFromList"
+                  data-index = {{$index}}
+                  role = "option"
+                  tabindex="0">
+                <span tabindex = "-1" class="ease-itemlabel" >
+                  {{item.displayName}}
+                </span>
+                <span tabindex = "-1"
+                      class="ease-itemSubLabel transfer-list-account"
+                      ng-if="item.accountNumber">
+                  {{item.accountNumber}}
+                </span>
+                <span tabindex = "-1" class="ease-item-amount">
+                  {{item.displayBalance | currency}}
+                </span>
+              </li>
+            </ease-ui-dropdown-menu>
+          </ease-ui-dropdown-input>
+        </div>
+        <div class="form-container">
+          <ease-ui-dropdown-input
+                  is-open= toDropdown.isOpen
+                  model-value="toDropdown.selectedValue"
+                  id= "transferDropdownTo"
+                  title = {{::contentData['ease.core.transfer.form.transferacct.to.label']}}
+                  sub-title = "{{availableBalance(toDropdown.selectedAccountBalance)}}"
+                  primary-data = "{{toDropdown.selectedPrimary}}"
+                  secondary-data= "{{toDropdown.selectedSecondary}}"
+                  disable-search = "true"
+                  place-holder = "Select an Account"
+                  data-ng-class="{disablingLabel:transferSubmitted}">
+            <ease-ui-dropdown-menu
+                    select="onTransferToSelected(item)"
+                    items="transferToList.list"
+                    template = true
+                    is-open = toDropdown.isOpen
+                    component-id = "transferToDropdownMenu">
+              <li data-ng-repeat = "item in transferToList.list"
+                  data-index = {{$index}}
+                  role = "option"
+                  tabindex="0">
+                <span tabindex = "-1" class="ease-itemlabel" > {{item.displayName}}</span>
+                <span tabindex = "-1" class="ease-itemSubLabel transfer-list-account"  ng-if="item.accountNumber"> {{item.accountNumber}}</span>
+                <span tabindex = "-1" class="ease-item-amount">
+                  {{item.displayBalance  | currency}}
+                </span>
+              </li>
+            </ease-ui-dropdown-menu>
+          </ease-ui-dropdown-input>
+          </div>
+        <div id="datePicker" class="form-container">
+          <label class="transfer-label" tabindex="0">{{::contentData["ease.core.transfer.form.transdate.label"]}}</label>
+          <label class="transfer-sublabel" data-ng-if="showArriveOnDate" tabindex="0">
+            {{::contentData['ease.core.transfer.form.arriveby.label']}} {{arriveOnDate}}
+          </label>
+          <div class="easeDatePicker transfer-input-field">
+            <input
+              class="datePickerInput"
+              type="text"
+              id="datePickerInputId"
+              data-ng-model="date"
+              aria-label="{{::contentData['ease.core.transfer.form.transdate.label']}}"
+              readonly="true"
+              tabindex="0">
+
+              <span data-ng-if="displayCalendarIcon()"
+                    role="button"
+                    data-ng-click="open($event)"
+                    id="btnDatePicker"
+                    class="dateControlButton"
+                    aria-label="{{contentData['ease.core.transfer.form.calendar.label']}}"
+                    alt="{{contentData['ease.core.transfer.form.calendar.label']}}"
+                    title="{{contentData['ease.core.transfer.form.calendar.label']}}"
+                    focus-input="callback">
+                <i class="icon-calendar"></i>
+              </span>
+            </input>
+          </div>
+        </div>
+        <currency-input id="currencyInputId"
+                        label={{::contentData['ease.core.transfer.form.amount.label']}}
+                        amount="amount.payAmount"
+                        lower-bound="{{lowerBound}}"
+                        upper-bound="{{upperBound}}"
+                        texas-heloc-error="{{::contentData['ease.core.transfer.heloc.notminimum.label']}}"
+                        lower-bound-error="{{::contentData['ease.core.transfer.form.amount.min.aria.label']}}"
+                        upper-bound-error="{{::contentData['ease.core.transfer.form.amount.max.aria.label']}}"
+                        is-input-valid="amount.isInputValid"
+                        is-amount-empty = "amount.isAmountEmpty"
+                        available-amount="from.displayBalance"
+                        placeholder="{{::contentData['ease.core.transfer.form.amount.ghost.label']}}"
+                        exceed-error="{{::contentData['ease.core.transfer.form.amount.over.aria.label']}}"
+                        daily-limit-remaining-amount = "dailyLimitRemainingAmount"
+                        monthly-limit-remaining-amount = "monthlyLimitRemainingAmount"
+                        daily-limit-remaining-message = "{{::contentData['ease.core.transfer.amount.error.label']}}"
+                        daily-limit-error = "{{::contentData['ease.core.transfer.amount.error.daily.label']}}"
+                        monthly-limit-error = "{{::contentData['ease.core.transfer.amount.error.monthly.label']}}"
+                        show-remaining-limit = "showRemainingLimit"
+                        submitted = "submitted.isSubmitted"
+                        texas-heloc-minimum-amount = "helocMinimumAmount"
+                        data-is-disabled="transferSubmitted"
+                        tooltip-notice="{{::contentData['ease.core.transfer.tooltip.notice.label']}}"
+                        tooltip-monthly-limit="{{::contentData['ease.core.transfer.tooltip.limit.label']}}"
+                        error-message="amount.errorMessage"
+                        is-instant-transfer="isInstantTransfer()"
+                        is-external-transfer="amount.isExternalTransfer"
+                        heloc-minimum-amount="helocMinimumAmount"
+                        heloc-minimum-withdrawal-label="{{::contentData['ease.core.transfer.heloc.minimumwithdrawal.label']}}"
+        >
+        </currency-input>
+        <div id="memoAreaId" class="form-container" data-ng-show="displayMemoField()">
+          <span id="addMemo" name="addMemo" data-ng-class="{'transfer-label memo-link' : !isMemoOpen, 'transfer-label memo-label' : isMemoOpen}"
+                tabindex="0" aria-label="{{!isMemoOpen ? contentData['ease.core.transfer.form.addmemo.link'] : contentData['ease.core.transfer.memo.label']}}"
+                aria-disabled="{{isMemoOpen}}" data-ng-click="openMemoField($event)" role="{{isMemoOpen ? 'group' : 'button'}}">
+            {{!isMemoOpen ? contentData['ease.core.transfer.form.addmemo.link'] : contentData['ease.core.transfer.memo.label']}}
+          </span>
+          <input id="memoInputId"
+                 tabindex="0"
+                 aria-live="polite"
+                 maxlength="25"
+                 data-ng-model="memo.memoText"
+                 data-ng-class="{inputError: isMemoError}"
+                 placeholder="{{::contentData['ease.core.transfer.form.memo.ghost.label']}}"
+                 data-ng-trim="false"
+                 data-ng-disabled="transferSubmitted"
+                 data-ng-show="isMemoOpen"
+                 aria-label="{{::contentData['ease.core.transfer.form.memo.ghost.label']}}">
+        </div>
+        <button type="button"
+                id="btnMakePayment"
+                data-ng-disabled="isTransferEnable()"
+                tabindex="0"
+                data-ng-click="makePayment()"
+                aria-labelledby="transfer-terms"
+                class="transfer-button transfer-button-transfer">
+          <span data-ng-class="{ loading: loadingClass }"></span>
+          <span>{{::contentData['ease.core.transfer.form.submit.button']}}</span>
+        </button>
+        <div id="transfer-terms" class="transfer-terms-message" ng-if="isTransferType">
+          {{ isTransferType === 'one-time' ? contentData['ease.core.transfer.success.tos.label'] : '' }}
+        </div>
+      </form>
+    </div>
+    <!-- Transfer One time transfer view End -->
+
+    <!-- Transfer Date Picker View -->
+    <div ng-switch-when="date-picker">
+      <ease-calendar
+        class="transferDatePicker"
+        data-ng-model="date"
+        data-ng-change="selectDate(date)"
+        calendar-options="options"
+        tabindex="-1"
+      >
+      </ease-calendar>
+      <button
+        type="button"
+        tabindex="0"
+        id="datePickerDoneButton"
+        data-ng-click="datePickerDone()"
+        class="button progressive datePickerDoneButton">
+          {{::contentData['ease.core.transfer.form.calendar.select.button']}}
+      </button>
+    </div>
+  </div>
+    <!-- Transfer Date Picker View End -->
+
+</ease-ui-modal>

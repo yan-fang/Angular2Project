@@ -1,0 +1,29 @@
+<div class="{{element.sassName}} cf">
+  <div class="bal" tabindex="0"
+  aria-label="{{summary.getAriaTileMsg(summary.i18n.ariaMsg.tile.cd, element.displayName, summary.i18n.amountSymbol, element.dollarAmount, element.cents, element.negativeBalance);}}">
+    <p class="title">
+      <brand-image element-val="element" page="AccountSummary"></brand-image>
+      <span class="accnumbertrail">...{{ element.accountNumberTLNPI.substring(element.accountNumberTLNPI.length-4, element.accountNumberTLNPI.length) }}</span>
+    </p>
+
+    <div class="amount" data-ng-if="element.showPrimaryData"  checkAmountDigits="{{element.checkAmountDigits()}}">
+      <span class="sign">{{element.amountSign}}</span>
+      <span class="symbol">{{summary.i18n.amountSymbol}}</span>
+      <span id="dollarAmountCD_{{summary.trimmmedAccountNumber(element.accountNumberTLNPI)}}" name="dollarAmountCD_{{summary.trimmmedAccountNumber(element.accountNumberTLNPI)}}" class="dollar" data-ng-bind="element.dollarAmount"></span>
+      <span class="cents" data-ng-bind="element.cents"></span>
+    </div>
+
+    <p class="label" data-ng-if="element.showPrimaryData">{{summary.contentData["ease.core.acctsummary.cdbal.label"]}}</p>
+  </div>
+  <div class="msgsContainer" data-ng-if="summary.showSecondaryData">
+    <div class="msgContainer txtLeft" tabindex="0"
+    aria-label="{{summary.getAriaTileMsg(summary.i18n.ariaMsg.tile.cdDetailData, summary.contentData['ease.core.acctsummary.currbal.label'], summary.i18n.amountSymbol, (summary.accountSummaryAccountDetail.secondaryData.secValue | getAmount), (summary.accountSummaryAccountDetail.secondaryData.secValue | getCents), element.displayName, false);}}">
+      <div class="msgItem amount" data-ng-class="summary.accountDetailloadingClass">
+        <span class="symbol">{{summary.accountSummaryAccountDetail.amountSymbol}}</span>
+        <span class="value">{{summary.accountSummaryAccountDetail.secondaryData.secValue | getAmount}}</span>
+        <span class="cents">{{summary.accountSummaryAccountDetail.secondaryData.secValue | getCents}}</span>
+      </div>
+      <div class="msgItem labelMsg"><span>{{summary.accountSummaryAccountDetail.secondaryData.secLabel}}</span></div>
+    </div>
+  </div>
+</div>

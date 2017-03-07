@@ -1,0 +1,25 @@
+<ease-ui-modal
+        close-modal="close()"
+        modal-id="'transferError'"
+        modal-role="'document'"
+        modal-title="!featureUnavailableMsg ? i18n.transferErr: i18n.featureUnavailableMsgHeader"
+        show-icon-mobile="'true'"
+        class="transferModal transferModalCancelConfirm">
+  <div ng-if="!featureUnavailableMsg">
+    <div>
+      <p tabindex="0" class="transfer-subheading">
+        {{i18n.transferMsgErr}}
+      </p>
+    </div>
+  </div>
+  <div ng-if="featureUnavailableMsg">
+    <p tabindex="0" class="transfer-subheading">
+      {{featureUnavailableMsg}}
+    </p>
+    <div class="transfer-button-wrapper">
+      <button id="errorBtn" ng-click="close()">
+        {{::contentData['ease.core.transfer.error.button']}}
+      </button>
+    </div>
+  </div>
+</ease-ui-modal>

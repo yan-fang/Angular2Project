@@ -1,0 +1,15 @@
+<div id="closeModal" role="presentation" class="modal-backdrop" data-ng-if="on" data-ng-click="closeModal()"></div>
+
+<div id="dialogTitle" role="{{modalRole || 'dialog'}}" class="modal fade modalFadeSlideUp" data-ng-if="on" data-ng-class="modalType" aria-hidden="false">
+  <div class="circle" tabindex="0" aria-label="Modal window icon">
+    <div class="modalIcon" aria-label="Modal Icon"></div>
+    <i class="modalClass"></i>
+  </div>
+  <div class="loadingHolder">
+    <span id="modalLoading" data-ng-class="modalLoadingClass"></span>
+  </div>
+  <button id="closeModalWindow_{{modalType}}" name="closeModalWindow_{{modalType}}" type="button" aria-label="Close modal window" data-ng-click="closeModal()" tabindex="0" class="close-dialog">X</button>
+  <div class="modal-container" role="document" data-ng-class="{'blur-modal': isBlur }" data-ng-transclude>
+  </div>
+  <span tabindex="0" class="modalEnd"> </span>
+</div>

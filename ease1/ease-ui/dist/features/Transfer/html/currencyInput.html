@@ -1,0 +1,41 @@
+<div id="inputFormId" class="form-container" data-ng-form="inputForm">
+  <label class="transfer-label" tabindex="0">{{::label}}</label>
+  <div data-ng-show="showRemainingLimit" class="transfer-sublabel transfer-sublabel-remaininglimit" >
+    <span id="dailyLimitRemainingId" role="alert"
+          aria-label="{{dailyLimitRemainingMessage}} {{dailyLimitRemainingAmount | currency}}" tabindex="0">
+      {{dailyLimitRemainingMessage}} {{dailyLimitRemainingAmount | currency}}
+    </span>
+    <span class="tooltip position" tabindex="0" alt="{{::tooltipNotice}} {{::tooltipMonthlyLimit}} {{monthlyLimitRemainingAmount | currency}}"
+          data-content="{{::tooltipNotice}} {{::tooltipMonthlyLimit}} {{monthlyLimitRemainingAmount | currency}}." tabindex="0">
+      <i class="icon-info-circle transferIconAmount" ></i>
+    </span>
+  </div>
+
+  <div id="showHelocMinimumAmount" data-ng-show="helocMinimumAmount" class="transfer-sublabel transfer-sublabel-remaininglimit" role="alert" tabindex="0"
+       aria-label="{{helocMinimumWithdrawalLabel}} {{helocMinimumAmount | currency}}">
+    {{helocMinimumWithdrawalLabel}} {{helocMinimumAmount | currency}}  <i class="icon-info-circle" ></i>
+  </div>
+
+  <div class="transfer-input-field">
+    <input id="txtTransferAmount" type="text" name="txtTransferAmount" class="inputCurrencyText" upper-bound="{{::upperBound}}" draggable="false"
+            min="{{::lowerBound}}" tabindex="0" data-ng-model="amount" maxlength="14" select-on-click data-ng-model-options="{ allowInvalid: true }"
+            placeholder="{{::placeholder}}" data-ng-keyup="submitted = false" ease-transfer-validation available-amount="{{availableAmount}}"
+            daily-limit= "{{dailyLimitRemainingAmount}}" monthly-limit="{{monthlyLimitRemainingAmount}}" is-instant-transfer = "isInstantTransfer"
+            is-input-valid="isInputValid" is-amount-empty = "isAmountEmpty" texas-heloc-minimum-amount="{{texasHelocMinimumAmount}}" aria-invalid="false"
+            is-external-transfer="isExternalTransfer" data-ng-class= "{inputError: (!isInputValid && submitted)}" data-ng-disabled="isDisabled" aria-label="{{amount || 0.00}}">
+  </div>
+
+  <!--TODO Remove Hard Coded Value once the Error Comes from API.-->
+  <div class="amtExceed" data-ng-if="errorMessage"> System cannot schedule duplicate transfers. </div>
+  <div transfer-jaws-if="submitted">
+    <div class="amtExceed" data-ng-messages="inputForm.txtTransferAmount.$error">
+        <div id="reqErrorMessage" data-ng-message="required" role="alert" tabindex="0">Please enter a value for this field.</div>
+        <div id="maxErrorMessage" data-ng-message="max" role="alert" aria-label="{{::upperBoundError}}" tabindex="0">{{::upperBoundError}}</div>
+        <div id="minErrorMessage" data-ng-message="easemininumamount" role="alert" aria-label="{{::lowerBoundError}}" tabindex="0">{{::lowerBoundError}}</div>
+        <div id="exceedErrorMessage" data-ng-message="easemaximumbalance" role="alert" aria-label="{{::exceedError}}" tabindex="0">{{::exceedError}}</div>
+        <div id="dlErrorMessage" data-ng-message="easeremainingdailylimit" role="alert" aria-label="{{::dailyLimitError}}" tabindex="0">{{::dailyLimitError}}</div>
+        <div id="mlErrorMessage" data-ng-message="easeremainingmonthlylimit" role="alert" aria-label="{{::monthlyLimitError}}" tabindex="0">{{::monthlyLimitError}}</div>
+        <div id="texasHelocMessage" data-ng-message="texashelocmin" role="alert" aria-label="{{::texasHelocError}}" tabindex="0">{{::texasHelocError}}</div>
+    </div>
+  </div>
+</div>

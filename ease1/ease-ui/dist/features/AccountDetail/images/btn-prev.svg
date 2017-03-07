@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="24px" height="43px" viewBox="0 0 24 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.2 (15857) - http://www.bohemiancoding.com/sketch -->
+    <title>prev</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Bank-Detail-Page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Bank-Desktop-FINAL" sketch:type="MSArtboardGroup" transform="translate(-98.000000, -184.000000)" fill="#FFFFFF">
+            <g id="Bank-Account-Detail" sketch:type="MSLayerGroup" transform="translate(0.000000, 72.000000)">
+                <path d="M101.483241,133.188075 L121.564141,114.445525 C122.134088,113.91301 122.165163,113.018894 121.632648,112.449654 C121.100839,111.877588 120.206016,111.847926 119.636776,112.380441 L98.4491771,132.155533 C98.1631445,132.422497 98,132.796105 98,133.188075 C98,133.580046 98.1631445,133.953654 98.4491771,134.220618 L119.636776,153.99571 C119.908684,154.249961 120.254748,154.375675 120.600106,154.375675 C120.977951,154.375675 121.35509,154.225243 121.632648,153.926497 C122.165163,153.357257 122.134088,152.463141 121.564141,151.930626 L101.483241,133.188075 Z" id="prev" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

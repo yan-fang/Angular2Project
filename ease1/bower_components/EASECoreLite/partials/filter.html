@@ -1,0 +1,55 @@
+<div class="search search-filter" data-ng-class="{'filter-active': filterCtrl.filterButton}">
+  <input tabindex="0" role="search"
+  aria-label="Search transactions"
+  type="text"
+  class="transSearch" id="transactionSearch"
+  placeholder="Search transactions"
+  data-ng-model="filterCtrl.filterParams.searchText"/>
+  <button tabindex="0" data-ng-click="filterCtrl.displayToggle('filterButton')" class="filter-control" role="button" aria-label="Transactions Filter Toggle"> <i class="icon-filter"></i> <span>Filter </span> </button>
+</div>
+
+<div  class="filter-drawer-container">
+  <div data-ng-show="filterCtrl.isFilterVisible()" class="filter-elements">
+<ul role="listbox">
+  <li><span class="filter-by">Filter By:</span></li>
+  <li>
+      <button tabindex="0" data-ng-hide="filterCtrl.displayDates" data-ng-click="filterCtrl.displayToggle('dateButton')" class="filterby-button" role="button" aria-label="Filter by Date" id="DateButton">Date</button>
+
+        <div data-ng-show="filterCtrl.displayDates">
+          <span  data-ng-if="filterCtrl.dateRangeDisplay" tabindex="0" data-ng-click="filterCtrl.displayToggle('dateButton')" aria-label="Date Range {{filterCtrl.dateRangeDisplay}}">{{filterCtrl.dateRangeDisplay}}</span>
+          <span  data-ng-if="filterCtrl.selectedStatement" tabindex="0" data-ng-click="filterCtrl.displayToggle('dateButton')" aria-label="Statement selected: {{filterCtrl.selectedStatement.title}}">{{filterCtrl.selectedStatement.title}}</span>
+          <i tabindex="0" class="icon-close" aria-label= "close icon" data-ng-click="filterCtrl.clearDates()"></i>
+        </div> 
+
+
+        <div data-ng-show="filterCtrl.buttons.dateButton" >
+          <ul role="listbox" class="dropdown" >
+            <li class="list-option date-button-option" date-range-picker 
+            ending-date = "filterCtrl.endDate" starting-date = "filterCtrl.startDate"
+            maximum-acceptable-date="filterCtrl.maximumAcceptableDate" 
+            minimum-acceptable-date="filterCtrl.minimumAcceptableDate" 
+            data-ng-click="filterCtrl.displayToggle('dateButton')" 
+            role="option" aria-label="{{filterCtrl.dateRangeText}}" 
+            tabindex = "0" filter-button-blur> {{filterCtrl.dateRangeText}}</li>
+            <li data-ng-show="filterCtrl.showStatementLink" class="list-option date-button-option" data-ng-click="filterCtrl.selectStatementLink()" role="option" aria-label="{{filterCtrl.statement}}" tabindex = "0" filter-button-blur><a class="hand-pointer">{{filterCtrl.statement}}</a></li>
+          </ul>
+        </div>
+  </li>
+  <li data-ng-show="filterCtrl.showCategory">
+    <button tabindex="0" data-ng-hide="filterCtrl.categoryDisplay" data-ng-click="filterCtrl.displayToggle('categoryButton')" class="filterby-button" role="button" aria-label="Filter by Category" id="CategoryButton">Category</button>
+    <div data-ng-show="filterCtrl.categoryDisplay">
+      <span tabindex="0" data-ng-click="filterCtrl.displayToggle('categoryButton')" aria-label="Category: {{filterCtrl.categorySelected.category}}">{{filterCtrl.categorySelected.category}}</span>
+      <i tabindex="0" class="icon-close" aria-label= "close icon" data-ng-click="filterCtrl.clearCategory()"></i>
+    </div>
+    <div data-ng-show="filterCtrl.buttons.categoryButton">
+      <ul role="listbox" class="dropdown" id="category-dropdown">
+        <li id="category-{{category.value}}" class="list-option category-button-option" role="option" data-ng-repeat="category in filterCtrl.categories" aria-label="{{category.category}}" data-ng-click="filterCtrl.selectCategory(category)" tabindex="0" filter-button-blur>
+          <a class="hand-pointer">{{category.category}}</a>
+        </li>
+      </ul>
+    </div>
+  </li>
+  <ng-include class = "lobButton" src="filterCtrl.customMenuUrl"></ng-include>
+</ul>
+</div>  
+</div>

@@ -1,0 +1,16 @@
+<div class="accountDetailParent" id="mainAccountDetail">
+  <div class="overlay" data-ng-show="carouselLoadingClass == 'loading'">
+    <div data-ng-class="carouselLoadingClass"></div>
+  </div>
+  <div data-ng-include data-src="productType"></div>
+  <account-details-prev-acct></account-details-prev-acct>
+  <account-details-next-acct></account-details-next-acct>
+  <div class="row">
+    <div  class="col-md-12">
+      <div class="transactionsView fadeInSlideUpSlow" ng-if="on">
+        <div id="transactions" slideup-directive ui-view></div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

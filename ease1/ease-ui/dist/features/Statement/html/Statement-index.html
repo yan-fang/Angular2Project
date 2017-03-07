@@ -1,0 +1,41 @@
+<div ease-modal toggle-close="stCtrl.close()" init-close="stCtrl.initClose" modal-class="stCtrl.modalClass" modal-type="stCtrl.modalType" focus-id="focusId" tabindex="0" role="text" aria-label="You are in Statement Modal Window at full screen">
+  <div class="mainPane" id = "stmtModal" tab-through>
+    <div class="info">
+      <h2 tabindex="0" role="text">{{stCtrl.accountDetailsData.accountNickname}}</h2>
+      <p tabindex="0" role="text">{{stCtrl.lob()}} ...{{stCtrl.accountDetailsData.displayAccountNumber.slice(-4)}}</p>
+    </div>
+    <div class="navigation" data-ng-if="!stCtrl.showMessage" data-ng-include="stCtrl.templateCalendar" close-month-picker = "stCtrl.toggle"></div>
+    <div class="toolbar">
+      <div class="controls" data-ng-show="stCtrl.pdfUrl">
+        <ul>
+          <li class="noMobilePdf">
+            <a data-ng-click="stCtrl.zoomIn()" tabindex = "0" aria-label="Click to Zoom In your statement"><i class="icon-circle-add"></i></a>
+            <a data-ng-click="stCtrl.zoomOut()" tabindex = "0" aria-label="Click to Zoom out of your statement"><i class="icon-circle-minus"></i></a> {{stCtrl.i18n.zoom}}
+          </li>
+          <li class="noMobilePdf">
+            <a data-ng-click="stCtrl.printStatement()" tabindex="0" aria-label="{{ stCtrl.i18n.printAria + stCtrl.currentStatement.statementTitle}}"><i class="icon-print"></i>{{stCtrl.i18n.print}}</a>
+          </li>
+          <li class="download">
+            <a data-ng-href="{{stCtrl.pdfUrl}}" download target="_blank" tabindex="0" aria-label="{{ stCtrl.i18n.downloadAria + stCtrl.currentStatement.statementTitle}}"><i class="icon-circle-arrowdown zindexnegative" ></i><span class="noMobilePdf">{{stCtrl.i18n.download}}</span></a>
+          </li>
+        </ul>
+      </div>
+      <div class="accessibleStatement" data-ng-if="!stCtrl.showMessage">
+        <label for="ada">
+          <input name="ada" type="checkbox" aria-checked="true" data-ng-model="stCtrl.isAdaStatement" id="idIsAda" title="{{stCtrl.i18n.useAda}}" data-ng-change="stCtrl.reset()" tabindex="0" aria-label="{{stCtrl.i18n.ariaUseAda}}" />{{stCtrl.i18n.useAda}}
+        </label>
+      </div>
+    </div>
+    <div class="pdfFile">
+      <div class="message" tabindex="0" data-ng-if="stCtrl.showMessage">
+        <div class="title" role="text">{{stCtrl.message.title}}</div>
+        <div class="content" role="text">{{stCtrl.message.content}}</div>
+        <div class="pdfButton" tabindex="0" role="button" aria-label="{{stCtrl.i18n.messageClose}}" data-ng-click="stCtrl.close()">
+          {{stCtrl.i18n.okay}}
+        </div>
+      </div>
+      <div tabindex="0" data-ng-if="stCtrl.isServiceWorking" data-ng-show="stCtrl.pdfUrl" ease-pdf-viewer id="ease-pdf-viewer" pdf-url="stCtrl.pdfUrl" scale="stCtrl.scalePdf" accessor="stCtrl.accessor" loading="stCtrl.isLoading" headers="stCtrl.httpHeaders">
+      </div>
+    </div>
+  </div>
+</div>

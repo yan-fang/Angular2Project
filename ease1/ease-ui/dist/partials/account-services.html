@@ -1,0 +1,15 @@
+<div ease-modal toggle-close="accountServices.close()" init-close="accountServices.initClose" modal-class="accountServices.modalClass" modal-type="accountServices.modalType" focus-id="focusId">
+  <h1 class = "title"  tabindex="0" aria-label="{{i18n.moreAccountServices}}">Account Services</h1>
+  <ul role="list" class="account-services-list">
+    <li role="listitem" data-ng-repeat="accountService in accountServices.accountServicesData" data-ng-class="{'weird-column': $index >= 3}">
+      <h2 tabindex="0" aria-label="{{accountService.title}}">{{accountService.title}}</h2>
+      <ul role="list">
+        <li role="listitem" data-ng-repeat="service in accountService.services">
+          <a id="{{accountServices.getServiceId($index, accountService.title)}}" ui-sref="{{service.action}}"
+          data-ng-hide="service.isDisabled" tabindex="0" aria-label="{{service.name}}" role="link" >{{service.name}}</a>
+          <p class="disabledService" data-ng-show="service.isDisabled" tabindex="0" aria-label="Disabled {{service.name}} Link">{{service.name}}</p>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

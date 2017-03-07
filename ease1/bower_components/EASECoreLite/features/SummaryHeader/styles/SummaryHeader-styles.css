@@ -1,0 +1,17 @@
+
+header.ng-scope {
+	position:static;
+  margin: 0 auto;
+  box-shadow: none;
+  background:transparent;
+}
+
+header.ng-scope .navbar-default {
+  background-color: #FFF;
+  border: medium none;
+	height: 77px;
+}
+
+header.ng-scope .navbar {
+  margin-bottom: 0px;
+}

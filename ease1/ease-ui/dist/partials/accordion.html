@@ -1,0 +1,31 @@
+<ul>
+    <li tabindex="0"
+        role="listitem"
+        class="transaction-entry"
+        ng-class="accordionVM.getDrawerClass($index)"
+        aria-describedby="trxRow"
+        aria-haspopup="true"
+        data-ng-repeat="transaction in accordionVM.accordionElements"
+        ng-click="accordionVM.setOpenIndex($index)">
+        <p>
+            <span class="transactions-date">{{transaction.transactionDate | date : "MMM"}}
+                <span class="day">{{transaction.transactionDate | date : "dd"}}</span>
+            </span>
+            <span class="transaction-logo">
+                <img alt="logo" class="scalable" ng-class="accordionVM.getDrawerClass($index)"
+                     src="{{transaction.merchant.logoURL.href}}"/>
+            </span>
+            <span class="transaction-name">
+                <span class="transaction-description">{{transaction.merchantName}}</span>
+                <span class="transaction-category">{{transaction.merchant.category}}</span>
+            </span>
+            <span class="transaction-amount-details">
+                <span ng-class="accordionVM.accordionParent.getTransactionAmountClass(transaction)"
+                      class="transaction-amount">{{transaction.transactionAmount | currency}}</span>
+                <span class="transaction-balance">{{transaction.accountBalance | currency}}</span>
+            </span>
+        </p>
+        <ng-include src="'/ease-ui/dist/partials/accordion-drawer.html'"></ng-include>
+        <span class="element-invisible" id="trxRow">You have a transaction of {{transaction.transactionAmount | currency}}, the description reads ${{transaction.transactionDescription}}</span>
+    </li>
+</ul>

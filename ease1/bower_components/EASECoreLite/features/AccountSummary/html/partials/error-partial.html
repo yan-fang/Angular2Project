@@ -1,0 +1,7 @@
+<div ease-modal toggle-close="error.close()" init-close="error.initClose" modal-class="error.modalClass" modal-type="error.modalType" focus-id="error.focusId">
+  <div  tabindex="0" class="heading" role="alert" aria-label="{{error.errorMsg.msgHeader}}">{{error.errorMsg.msgHeader}}</div>
+  <div  tabindex="0" class="subheading" aria-label="{{error.errorMsg.msgBody}}">{{error.errorMsg.msgBody}}</div>
+   <div class="buttons">
+    <button tabindex="0" id="errorBtn"  data-ng-click="error.close()" alt="Okay"  >Okay</button>
+  </div>
+</div>

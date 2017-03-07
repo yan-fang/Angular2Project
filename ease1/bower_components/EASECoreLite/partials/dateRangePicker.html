@@ -1,0 +1,61 @@
+<div ease-modal modal-class = "controller.modalClass" modal-type = "controller.modalType" toggle-close="controller.close()">
+  <h2 class = "title" tabindex = "0"> Select Date Range </h2>
+  <section class = "date-picker-body">
+    <form class = "date-range-block" name = "rangeForm" novalidate>
+      <div class = "date-range-field-block">
+        <label>Start Date</label>
+        <input
+          class = "date-field-input"
+          name = "start_date"
+          type="text"
+          placeholder = "MM/DD/YYYY"
+          data-ng-model = "controller.startDate"
+          data-ng-blur = "controller.setInputDate(controller.startDate)"
+          data-ng-focus = "controller.setRangeType('START')"
+          tabindex = "0"
+          aria-label = "Start Date Input box"
+          ng-class = "{'fake-focus': controller.hasFocus, 'invalid-date-range': controller.startDateBeforeMinDate||controller.startDateAfterMaxDate}"
+          autofocus
+          required>
+        <span ng-show="controller.startDateBeforeMinDate" class="invalid-range-message">Please enter a start date on or after {{controller.minDate | date:'MM/dd/yyyy'}}.</span>
+        <span ng-show="controller.startDateAfterMaxDate" class="invalid-range-message">Please enter a start date on or before {{controller.maxDate | date:'MM/dd/yyyy'}}.</span>
+      </div>
+      <div class = "date-range-field-block">
+        <label>
+          End Date
+        </label>
+        <input
+          class = "date-field-input"
+          name = "end_date"
+          type = "text"
+          placeholder = "MM/DD/YYYY"
+          data-ng-model = "controller.endDate"
+          data-ng-blur = "controller.setInputDate(controller.endDate)"
+          data-ng-focus = "controller.setRangeType('END')"
+          tabindex = "0"
+          aria-label = "End Date Input box"
+          data-ng-disabled = "controller.isStartDateInvalid"
+          ng-class = "{'fake-focus': !controller.hasFocus, 'invalid-date-range': controller.endDateAfterMaxDate||controller.endDateBeforeMinDate}"
+          required>
+        <span ng-show="controller.endDateAfterMaxDate" class="invalid-range-message">Please enter an end date on or before {{controller.maxDate | date:'MM/dd/yyyy'}}.</span>
+        <span ng-show="controller.endDateBeforeMinDate" class="invalid-range-message">Please enter an end date on or after {{controller.minDate | date:'MM/dd/yyyy'}}.</span>
+      </div>
+    </form>
+  </section>
+  <section class = 'date-picker'>
+    <datepicker tabindex = "0" aria-label = "Date Range Picker"
+    data-ng-model = "controller.date"
+    data-ng-change = "controller.setRange(controller.date)"
+    multi-select = "controller.selectedDatesRange"
+    min-date = "controller.minDate"
+    max-date = "controller.maxDate"
+    date-disabled = "controller.disableDates(date)"
+    days-of-month-only = "true"
+    format-day-title = "MMMM, yyyy"
+    >
+    </datepicker>
+  </section>
+  <section class = "action-block">
+    <button class = "submit" ng-click = "$modalCancel()" data-ng-disabled="!controller.isFormValid" tabindex = "0" role="button" aria-label = "Date Range Done Button"> Done </button>
+  </section>
+</div>

@@ -1,0 +1,11 @@
+<div class="dropdownItem" tabindex="-1" data-ng-click="selectItem(item, $event)">
+  <span class="{{accClass}}">
+    <span id="dropDown_{{type}}_{{idIndex}}" data-ng-class="accountNameClass" name="dropDown_{{type}}">{{ item.displayDefaultName || (item.displayName | limitTo: lengthItem) }}</span>
+    <span ng-if="item.accountNumber!=undefined"
+    class="accnumbertrail">...{{ item.accountNumber.substring(item.accountNumber.length-4, item.accountNumber.length) }}</span>
+  </span>
+  <div  role="alert" class="{{amntClass}}"  data-ng-if="item.displayBalance && item.displayBalance !== ''">
+    <span id="amountId_{{type}}_{{idIndex}}<" class="availableAmountTransfer" ng-bind-template=" {{item.displayBalance | currency}}"
+      aria-label="Available Balance  {{item.displayBalance | currency}}" ></span>
+  </div >
+</div>

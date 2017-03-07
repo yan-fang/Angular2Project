@@ -1,0 +1,18 @@
+<div class="cf card {{element.sassName}}">
+  <div class="bal" tabindex="0">
+    <p class="title" ng-if="summary.GetImage(element.displayName)">
+      <brand-image element-val="element" page="AccountSummary"></brand-image>
+      <span class="accnumbertrail">...{{ element.accountNumberTLNPI.substring(element.accountNumberTLNPI.length-4, element.accountNumberTLNPI.length) }}</span>
+    </p>
+  </div>
+  <div class="content" tabindex="0">
+    <h3>{{summary.i18n.accRestricted}}</h3>
+    <p class="label" data-ng-bind="element.accountMessage[0].message" >
+    </p>
+  </div>
+  <div class="action">
+    <p class="label"></p>
+    <div class="btn-container">
+    </div>
+  </div>
+</div>

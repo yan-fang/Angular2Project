@@ -1,0 +1,43 @@
+<div class="cf {{element.sassName}}">
+  <div class="bal" tabindex="0"
+  aria-label="{{summary.getAriaTileMsg(summary.i18n.ariaMsg.tile.checking, element.displayName, summary.i18n.amountSymbol, element.dollarAmount, element.cents, element.negativeBalance);}}">
+    <p class="title">
+      <brand-image element-val="element" page="AccountSummary"></brand-image>
+      <span class="accnumbertrail">...{{ element.accountNumberTLNPI.substring(element.accountNumberTLNPI.length-4, element.accountNumberTLNPI.length) }}</span>
+    </p>
+
+    <div class="amount" data-ng-if="element.showPrimaryData"  checkAmountDigits="{{element.checkAmountDigits()}}">
+      <span class="sign">{{element.amountSign}}</span>
+      <span class="symbol">{{summary.i18n.amountSymbol}}</span>
+      <span id="dollarAmountChecking_{{summary.trimmmedAccountNumber(element.accountNumberTLNPI)}}" name="dollarAmountChecking_{{summary.trimmmedAccountNumber(element.accountNumberTLNPI)}}" class="dollar" data-ng-bind="element.dollarAmount"></span>
+      <span class="cents" data-ng-bind="element.cents"></span>
+    </div>
+
+    <p class="label left" data-ng-if="element.showPrimaryData">{{summary.contentData['ease.core.acctsummary.availbal.label']}}</p>
+    <p title="{{element.actionButton.textAboveButton}}" data-ng-if="element.actionButton.textAboveButton" class="mobileActionShow label right">
+      <span tabindex="0">{{element.actionButton.textAboveButton}}</span></p>
+  </div>
+  <div class="action" data-ng-show="element.actionButton.textAboveButton || element.actionButton.buttonText">
+    <p title="{{element.actionButton.textAboveButton}}" class="mobileActionHide label">
+      <span data-ng-if="element.actionButton.textAboveButton" tabindex="0">{{element.actionButton.textAboveButton}}</span></p>
+    <div data-ng-show="element.actionButton.buttonText" class="btn-container">
+      <button id="summary-{{element.referenceId}}" class="atddAccountSummaryTileButton" tabindex="0"
+      aria-label="{{element.actionButton.buttonText}}" data-ng-click="summary.actionButton($event, element, $index)">
+         <div data-ng-class="summary.loadingButton[$index]">
+            <span>{{element.actionButton.buttonText}}</span>
+         </div>
+      </button>
+    </div>
+  </div>
+  <div class="msgsContainer" data-ng-if="summary.showSecondaryData">
+    <div class="msgContainer txtLeft" tabindex="0"
+         aria-label="{{summary.getAriaTileMsg(summary.i18n.ariaMsg.tile.checkingDetailData, summary.contentData['ease.core.acctsummary.currbal.label'], summary.i18n.amountSymbol, (summary.accountSummaryAccountDetail.secondaryData.secValue | getAmount), (summary.accountSummaryAccountDetail.secondaryData.secValue | getCents), element.displayName, false);}}">
+      <div class="msgItem amount" data-ng-class="summary.accountDetailloadingClass">
+        <span class="symbol">{{summary.accountSummaryAccountDetail.amountSymbol}}</span>
+        <span class="value">{{summary.accountSummaryAccountDetail.secondaryData.secValue | getAmount}}</span>
+        <span class="cents">{{summary.accountSummaryAccountDetail.secondaryData.secValue | getCents}}</span>
+      </div>
+      <div class="msgItem labelMsg"><span>{{summary.accountSummaryAccountDetail.secondaryData.secLabel}}</span></div>
+    </div>
+  </div>
+</div>

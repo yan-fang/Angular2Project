@@ -1,0 +1,90 @@
+<div class="container transactions extensibility-transactions searchBar">
+  <ul class="filter">
+    <li>
+      <select tabindex="0" role="text" aria-label="Drop box to show transactions">
+        <option class="select">Show last 30 days</option>
+        <option class="select">Show last 60 days</option>
+        <option class="select">Show last 90 days</option>
+      </select>
+      <i class="icon-drop-arrow"></i>
+    </li>
+    <li>
+      <input role="search" type="search" class="transSearch" placeholder="Search" aria-label="Begin typing to search through your transactions" data-ng-model="AccountTransactions.filterText">
+    </li>
+  </ul>
+  <ul class="transactionsList" tabindex="0" role="text" aria-label="List of transactions" ng-show="AccountTransactions.haveSearchResults()">
+    <li class="sortTransactions" tabindex="0" role="text" aria-label="Sort through transactions">
+      <p>
+        <span class="transactions-date" tabindex="0" role="text" aria-label="Sort transactions by date descending">Date</span>
+        <span class="transactions-name">
+          <span class="transactions-description" tabindex="0" role="text" aria-label="Sort transactions by descriptions descending">Description</span>
+          <span class="transactions-category" tabindex="0" role="text" aria-label="Sort transactions by category descending">Category</span>
+        </span>
+        <span class="transactions-amount-details">
+          <span class="transactions-amount" tabindex="0" role="text" aria-label="Sort transactions by amount descending">Amount</span>
+          <span class="transactions-balance" tabindex="0" role="text" aria-label="Sort transactions by balance descending">Balance</span>
+        </span>
+      </p>
+    </li>
+    <li data-ng-repeat="transaction in AccountTransactions.pendingTransactions | filterTransactions: AccountTransactions.filterText : AccountTransactions.searchProps"></li>
+    <li data-ng-repeat="transaction in AccountTransactions.displayTransactions | filterTransactions: AccountTransactions.filterText : AccountTransactions.searchProps"></li>
+
+    <!-- Original code, still needed?
+    <li class="pending" tabindex="0" role="text" aria-label="You have a pending deposit of $250.00, the description reads Memo Credit CAPITAL ONE CAPONE4935">
+      <p>
+        <span class="transactions-date">Pending</span>
+        <span class="transactions-name">
+          <span class="transactions-description">Memo Credit CAPITAL ONE CAPONE4935</span>
+          <span class="transactions-category">Direct Deposit</span>
+        </span>
+        <span class="transactions-amount-details">
+          <span class="transactions-amount">$250.00</span>
+          <span class="transactions-balance">---</span>
+        </span>
+      </p>
+    </li>
+    <li>
+      <p>
+        <span class="transactions-date">Feb <span class="day">09</span></span>
+        <span class="transactions-name">
+          <span class="transactions-description">SQ *DISTRICT DOUGHNUT</span>
+          <span class="transactions-category">Food</span>
+        </span>
+        <span class="transactions-amount-details">
+          <span class="transactions-amount">$15.49</span>
+          <span class="transactions-balance">$1165.98</span>
+        </span>
+      </p>
+    </li>
+    <li>
+      <p>
+        <span class="transactions-date">Feb <span class="day">10</span></span>
+        <span class="transactions-name">
+          <span class="transactions-description">Starbucks</span>
+          <span class="transactions-category">Coffee</span>
+        </span>
+        <span class="transactions-amount-details">
+          <span class="transactions-amount">$5.01</span>
+          <span class="transactions-balance">$1181.47</span>
+        </span>
+      </p>
+    </li>
+    <li>
+      <p>
+        <span class="transactions-date">Feb <span class="day">11</span></span>
+        <span class="transactions-name">
+          <span class="transactions-description">Refund ATM Surcharge</span>
+          <span class="transactions-category">Deposit</span>
+        </span>
+        <span class="transactions-amount-details">
+          <span class="transactions-amount">$2.75</span>
+          <span class="transactions-balance">$1186.48</span>
+        </span>
+      </p>
+    </li> -->
+  </ul>
+  <div class="noResults" ng-show="!(AccountTransactions.haveSearchResults())" tabindex="0" aria-label="{{AccountTransactions.i18n.noSearchResults}}">
+    <p>We're Sorry.</p>
+    <p>There are no results for your search.</p>
+  </div>
+</div>

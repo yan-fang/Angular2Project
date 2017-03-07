@@ -1,0 +1,41 @@
+<ul id="name_drop"  slide-toggle="#name_drop" class="headerslideup" role="menu">
+  <li role="menuitem">
+    <a tabindex="-1"
+       data-ui-sref="customerSettings.profile"
+       alt="{{headerCtrl.dropdownContentData['ease.core.profiledropdown.profile.label']}}"
+       aria-label="{{headerCtrl.dropdownContentData['ease.core.profiledropdown.peronalinfo.aria.label']}}"
+       id="profile" >{{headerCtrl.dropdownContentData['ease.core.profiledropdown.profile.label']}}
+    </a>
+  </li>
+  <li role="menuitem">
+    <a tabindex="-1" data-ui-sref="security"
+       alt="{{headerCtrl.dropdownContentData['ease.core.profiledropdown.securitysettings.label']}}"
+       aria-label="{{headerCtrl.dropdownContentData['ease.core.profiledropdown.securitysettings.aria.label']}}"
+       id="dropdownSecurity">{{headerCtrl.dropdownContentData['ease.core.profiledropdown.securitysettings.label']}}
+    </a>
+  </li>
+  <li role="menuitem">
+    <a tabindex="-1"
+       data-ui-sref="customerSettings.settings"
+       alt="{{headerCtrl.dropdownContentData['ease.core.profiledropdown.accountprefs.label']}}"
+       aria-label="{{headerCtrl.dropdownContentData['ease.core.profiledropdown.accountprefs.aria.label']}}"
+       id="accountprefs">{{headerCtrl.dropdownContentData['ease.core.profiledropdown.accountprefs.label']}}
+    </a>
+  </li>
+  <li role="menuitem" data-ng-if="headerCtrl.enableDisplayAlerts">
+    <a tabindex="-1"
+       data-ui-sref="alerts"
+       alt="{{headerCtrl.dropdownContentData['ease.core.profiledropdown.messagesalerts.label']}}"
+       aria-label="{{headerCtrl.dropdownContentData['ease.core.profiledropdown.messagesalerts.aria.label']}}"
+       id="messagesalerts">{{headerCtrl.dropdownContentData['ease.core.profiledropdown.messagesalerts.label']}}
+    </a>
+  </li>
+  <li role="menuitem">
+    <a tabindex="-1"
+       data-ng-click="headerCtrl.logout()"
+       alt="{{headerCtrl.dropdownContentData['ease.core.profiledropdown.signout.label']}}"
+       aria-label="{{headerCtrl.dropdownContentData['ease.core.profiledropdown.signout.aria.label']}}"
+       id="signout">{{headerCtrl.dropdownContentData['ease.core.profiledropdown.signout.label']}}
+    </a>
+  </li>
+</ul>

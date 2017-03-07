@@ -1,0 +1,17 @@
+<ease-ui-modal
+  close-modal="close()"
+  modal-id="'transferScheduleUnavailable'"
+  modal-role="'document'"
+  modal-title="i18n.featureUnavailableMsgHeader"
+  show-icon-mobile="'true'"
+  class="transferModal transferModalUnavailable"
+>
+  <p tabindex="0" class="transfer-subheading">
+    {{i18n.transferScheduleUnavailableMsg}}
+  </p>
+  <div class="transfer-button-wrapper">
+    <button id="errorBtn" class="transfer-button transfer-button-error" data-ng-click="openTransferModal()">
+      {{::contentData['ease.core.transfer.error.button']}}
+    </button>
+  </div>
+</ease-ui-modal>

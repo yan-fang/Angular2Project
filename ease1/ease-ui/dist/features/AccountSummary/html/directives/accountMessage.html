@@ -1,0 +1,24 @@
+<div class="atddAccountType acct module tileBackground info"  data-ng-class="getStateMessageClass()" style="background-image:url({{::element.bground}})">
+  <div data-ng-class="loading">
+    <div ng-transclude></div>
+    <div id="accountMudFlap_{{::element.referenceId}}" class="product-alert" data-ng-hide="showStateMessage()" role="presentation" data-ng-click="navigateToMudFlapLink($event, messageObj)">
+      <div class="alert-message">
+        <div class="content" role="text" aria-label="{{getTruncatedMessage()}}">
+          <div class="icon-message" data-ng-show="showIconMessage()">
+            <img alt= "AlertIcon" data-ng-src="{{alertIcon}}">
+          </div>
+          <div>
+            <p class="alertMessage" data-ng-hide="messageObj.msgLink.value" data-ng-bind-html="messageObj.message" role="text">
+              <p id="mudFlapMessage_{{::element.referenceId}}" data-ng-hide="!messageObj.msgLink.value" role="text"> 
+              {{messageObj.message.trim()}} <a class="mudflap-link" data-ng-if="messageObj.msgLink.value" >{{messageObj.msgLink.value.trim()}}</a>
+              </p>
+            </p>
+          </div>
+        </div>
+        <div class="close" title="Close" data-ng-show="showCloseIcon()" data-ng-click="closeMessage($event)" >
+          <i class="icon-close"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
