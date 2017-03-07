@@ -6,24 +6,49 @@ const copyPlugin = require('copy-webpack-plugin');
 const htmlPlugin = require('html-webpack-plugin');
 const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
 
+const configureEnv = (() => {
+  // Used primarily to set runtime environment variable. Just looks for `-p` flag.
+  let isProd = Object.keys(process.argv).indexOf('-p') > -1;
+  return {
+    isProd,
+
+    // Used with AOTPlugin to override runtime environment variable.
+    pathToEnvModule: isProd ? 'src/app/environments/environment.prod.ts' : 'src/app/environments/environment.ts'
+  };
+})();
+
 module.exports = function(env = {}) {
   const locale = env.locale;
   const mode = env.mode;
 
-  const aotConfiguration = !locale || locale === 'en' ? ({
-    tsConfigPath: './tsconfig.json',
-    mainPath: "./src/main.ts"
-  }) : ({
-    tsConfigPath: './tsconfig.json',
-    mainPath: './src/main.ts',
-    i18nFile: './i18n/messages.' + locale + '.xlf',
-    i18nFormat: 'xlf',
-    locale: locale
-  });
+  const aotConfiguration = (() => {
+    const common = {
+      tsConfigPath: './tsconfig.json',
+      mainPath: "./src/main.ts",
+      hostReplacementPaths: {
+        // Replaces env file with prod environment file
+        'src/app/environments/environment.ts': configureEnv.pathToEnvModule
+      }
+    };
+
+    return !locale || locale === 'en' ? common : Object.assign({}, common, {
+      i18nFile: './i18n/messages.' + locale + '.xlf',
+      i18nFormat: 'xlf',
+      locale: locale
+    });
+  })();
 
   const config =  {
     cache: true,
     devtool: 'source-map',
+    performance: {
+      /**
+       * Combines size of all entry bundles and makes sure
+       * they are below default threshold of 250k.
+       * TODO: change to 'error' once bundles can be reduced further.
+       */
+      hints: 'warning'
+    },
     entry: {
       polyfills: './src/polyfills.ts',
       vendor: './src/vendor.ts',
@@ -32,7 +57,7 @@ module.exports = function(env = {}) {
     output: {
       path: path.join(process.cwd(), '_dist'),
       filename: '[name].bundle.js',
-      sourceMapFilename: '[name].map',
+      sourceMapFilename: '[name].bundle.js.map',
       chunkFilename: '[id].chunk.js'
     },
     module: {

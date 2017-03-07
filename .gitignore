@@ -44,3 +44,6 @@ node_modules
 
 # Optional REPL history
 .node_repl_history
+
+# Lighthouse generated reports
+lighthouse/_dist

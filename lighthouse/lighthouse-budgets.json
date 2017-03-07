@@ -1,0 +1,11 @@
+{
+  "firstPaint": {
+    "sinceNavStart": 400
+  },
+  "angular-meaningful-content": {
+    "sinceNavStart": 1600
+  },
+  "angular-interactive": {
+    "sinceNavStart": 1600
+  }
+}

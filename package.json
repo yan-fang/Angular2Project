@@ -6,6 +6,7 @@
   "scripts": {
     "build": "yarn cleanup && webpack && yarn explore:all",
     "build:aot": "yarn cleanup && webpack --env.mode=aot && yarn explore:all",
+    "build:prod": "yarn cleanup && webpack -p --env.mode=aot && yarn explore:all",
     "cleanup": "rm -rf _dist",
     "commit": "git-cz",
     "compile": "tsc",
@@ -23,12 +24,15 @@
     "precommit": "yarn lint && yarn ngc && yarn test",
     "pree2e": "yarn webdriver-update",
     "serve": "browser-sync start --server \"_dist\" --serveStatic \"_dist\"",
+    "serve:prod": "yarn serve -- --no-ui --no-open",
     "explore": "source-map-explorer",
     "explore:all": "./utils/genSrcMapExplorer.sh",
     "test": "karma start ./karma.conf.js --reporters spec",
     "test:watch": "karma start ./karma.conf.js --single-run false --reporters spec",
     "webdriver-update": "webdriver-manager update",
-    "webdriver-start": "webdriver-manager start"
+    "webdriver-start": "webdriver-manager start",
+    "lighthouse:sequence": "yarn build:aot && cd lighthouse && ./run-lighthouse.sh http://127.0.0.1:3000/ && cd ..",
+    "lighthouse": "run-p --race serve:prod lighthouse:sequence"
   },
   "repository": {
     "type": "git",
@@ -77,7 +81,9 @@
     "karma-scss-preprocessor": "^2.0.0",
     "karma-spec-reporter": "^0.0.26",
     "karma-typescript": "https://github.com/melxx001/karma-typescript#2.1.8-feb15",
+    "lighthouse": "^1.5.1",
     "node-sass": "3.7.0",
+    "npm-run-all": "^4.0.2",
     "protractor": "^5.1.1",
     "raw-loader": "^0.5.1",
     "sass-loader": "^5.0.1",
