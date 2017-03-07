@@ -6,9 +6,8 @@ import { Component } from '@angular/core';
   template: `
     <nav>
       <a routerLink="/" routerLinkActive="active">Example (L1)</a>
-      <a routerLink="/creditcard" routerLinkActive="active">CreditCard</a>
-      <a routerLink="/creditcard/close-account" routerLinkActive="active">Close Account (CC)</a>
-      <a routerLink="/accountSummary" routerLinkActive="active">Account Summary</a>
+      <a routerLink="/credit-card" routerLinkActive="active">CreditCard</a>
+      <a routerLink="/account-summary" routerLinkActive="active">Account Summary</a>
     </nav>
 
     <h1>{{title}}</h1>

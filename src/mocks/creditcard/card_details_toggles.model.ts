@@ -1,3 +1,4 @@
 export const response = {
-  closeAccountLink: true
+  closeAccountLink: true,
+  changePaymentDueDateLink: true
 };

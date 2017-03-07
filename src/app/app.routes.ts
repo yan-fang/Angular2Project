@@ -6,15 +6,15 @@ import { Routes } from '@angular/router';
 export const appRoutes: Routes = [
   {
     path: '',
-    redirectTo: '/accountSummary',
+    redirectTo: '/account-summary',
     pathMatch: 'full'
   },
   {
-    path: 'creditcard',
+    path: 'credit-card',
     loadChildren: '@c1/creditcard/creditcard.module#CreditCardModule'
   },
   {
-    path: 'accountSummary',
+    path: 'account-summary',
     loadChildren: '@c1/app/account-summary/account-summary.module#AccountSummaryModule'
   }
   // TODO: Research: The spread operator seem to break chunk generation when running in JIT mode

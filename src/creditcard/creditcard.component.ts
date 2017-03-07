@@ -5,6 +5,8 @@ import { Component } from '@angular/core';
   template: `
     <h2>{{title}}</h2>
     <router-outlet></router-outlet>
+    <a routerLink="close-account" routerLinkActive="active">Close Account (CC)</a>
+    <a routerLink="change-payment-due-date" routerLinkActive="active">Change Payment Due Date (CC)</a>
   `
 })
 export class CreditCardComponent {
