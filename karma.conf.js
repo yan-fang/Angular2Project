@@ -39,23 +39,31 @@ module.exports = function(config) {
 
     // Karma-typescript tsconfig location
     karmaTypescriptConfig: {
-        tsconfig: "./tsconfig-spec.json",
-        coverageOptions: {
-          instrumentation: true,
-          exclude: /\.(d|spec)\.ts/
-        },
-        reports: {
-          "html": "coverage",
-          "json-summary": "coverage",
-          "text": "",
-          "text-summary": ""
-        },
-        transforms: [
-          // This transform setting is here temporarily until karma-typescript version 2.1.8
-          // This will change to something like angulat-mode: true and these will be on by default
-          require("karma-typescript/transforms/angular2-template-url-rewriter"),
-          require("karma-typescript/transforms/angular2-style-urls-rewriter")
-        ]
+      tsconfig: "./tsconfig-spec.json",
+      coverageOptions: {
+        instrumentation: true,
+        exclude: /\.(d|spec)\.ts/
+      },
+      reports: {
+        "html": "coverage",
+        "json-summary": "coverage",
+        "text": "",
+        "text-summary": ""
+      },
+      transforms: [
+        // This transform setting is here temporarily until karma-typescript version 2.1.8
+        // This will change to something like angulat-mode: true and these will be on by default
+        require("karma-typescript/transforms/angular2-template-url-rewriter"),
+        require("karma-typescript/transforms/angular2-style-urls-rewriter")
+      ],
+      bundlerOptions: {
+        resolve: {
+          alias: {
+            '@angular/upgrade/static': '@angular/upgrade/bundles/upgrade-static',
+            '@angular/router/upgrade': '@angular/router/bundles/router-upgrade'
+          }
+        }
+      }
 
     },
 

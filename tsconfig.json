@@ -31,6 +31,7 @@
   },
   "exclude": [
     "node_modules",
+    "ease1",
     "_dist",
     "./src/*.spec.ts"
   ],

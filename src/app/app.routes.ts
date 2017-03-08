@@ -1,8 +1,6 @@
 import { Routes } from '@angular/router';
 
-// import { creditCardEntryRoutes } from '../creditcard';
-// import { accountSummaryEntryRoutes } from './account-summary';
-
+// TODO: EWE-1911 - figure out how to import routes from other modules
 export const appRoutes: Routes = [
   {
     path: '',
@@ -17,7 +15,4 @@ export const appRoutes: Routes = [
     path: 'account-summary',
     loadChildren: '@c1/app/account-summary/account-summary.module#AccountSummaryModule'
   }
-  // TODO: Research: The spread operator seem to break chunk generation when running in JIT mode
-  // ...creditCardEntryRoutes,
-  // ...accountSummaryEntryRoutes
 ];

@@ -32,6 +32,7 @@
   },
   "exclude": [
     "node_modules",
-    "_dist"
+    "_dist",
+    "ease1"
   ]
 }

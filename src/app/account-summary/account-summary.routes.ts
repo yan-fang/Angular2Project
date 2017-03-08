@@ -5,6 +5,12 @@ import { AccountSummaryComponent } from './account-summary.component';
 export const accountSummaryRoutes: Routes = [
   {
     path: '',
-    component: AccountSummaryComponent
+    component: AccountSummaryComponent,
+    children: [
+      {
+        path: ':id/Transfer',
+        loadChildren: '@c1/bank/transfer-dialog/transfer-dialog.module#TransferDialogModule'
+      }
+    ]
   }
 ];

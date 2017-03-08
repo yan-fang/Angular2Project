@@ -63,6 +63,10 @@ module.exports = function(env = {}) {
     module: {
       loaders: [
         {
+          test: /requirejs\/require/,
+          use: 'script-loader'
+        },
+        {
           test: /\.json$/,
           loader: 'json-loader'
         },
@@ -92,8 +96,12 @@ module.exports = function(env = {}) {
         name: ['polyfills', 'vendor', 'main'].reverse(),
         minChunks: Infinity
       }),
-      // Copy over the public assets to the build directory
-      new copyPlugin([{ from: 'public', to: 'public' }]),
+      // Copy over the public assets to the build directory: ./_dist
+      new copyPlugin([
+        { from: 'public', to: 'public' },
+        { from: 'ease1/bower_components', to: 'bower_components' },
+        { from: 'ease1/ease-ui', to: 'ease-ui' }
+      ]),
       new browserSyncPlugin(
         // BrowserSync options
         {
@@ -116,6 +124,7 @@ module.exports = function(env = {}) {
     ],
     resolve: {
       modules: [
+        path.resolve(__dirname, 'ease1'),
         path.resolve(__dirname, 'src'),
         path.resolve(__dirname, 'node_modules')
       ],
@@ -127,8 +136,14 @@ module.exports = function(env = {}) {
         aggregateTimeout: 300,
         poll: 1000,
         ignored: /node_modules|\.git|\.vscode|\.idea/
+      },
+      proxy: {
+        "/ease-app-web": {
+          target: "http://localhost:8000/",
+          secure: false
+        }
       }
-    }
+    },
   };
 
   if (mode === 'aot') {
