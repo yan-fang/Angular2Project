@@ -15,4 +15,4 @@ import { CurrencyService, FormatCentsPipe, FormatDollarsPipe } from './currency'
     CurrencyService
   ]
 })
-export class CoreModule {}
+export class SharedModule {}

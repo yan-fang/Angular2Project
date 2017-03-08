@@ -9,16 +9,15 @@ import { C1ComponentsModule } from '@c1/components';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { AppComponent } from './app.component';
-import { appRoutes } from './app.routes';
 import { PerfMeasureModule } from '@c1/perf-measure';
-import { ExampleComponent } from './example/example.component';
-import { I18nExampleComponent } from './i18n-example/i18n-example.component';
-import { StateManagerService } from './state-manager-service';
-import { environment, Environments } from '@c1/shared';
-
+import { environment, Environments, StateManagerService } from '@c1/shared';
 import { MockabilityModule } from '@c1/mockability';
 import { mocks } from '@c1/mocks';
+
+import { AppComponent } from './app.component';
+import { appRoutes } from './app.routes';
+import { ExampleComponent } from './example/example.component';
+import { I18nExampleComponent } from './i18n-example/i18n-example.component';
 
 @NgModule()
 export class NoOpMockability {}

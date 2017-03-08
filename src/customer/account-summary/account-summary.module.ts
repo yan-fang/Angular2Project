@@ -11,7 +11,7 @@ import { accountSummary } from './account-summary.reducer';
 import { AccountSummaryRepository } from './account-summary.repository';
 import { State } from './state';
 
-import { StateManagerService } from '../state-manager-service';
+import { StateManagerService } from '@c1/shared';
 import { accountSummaryRoutes } from './account-summary.routes';
 
 @NgModule({
