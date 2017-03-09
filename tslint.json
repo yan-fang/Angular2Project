@@ -1,8 +1,10 @@
 {
   "rulesDirectory": [
-    "node_modules/codelyzer"
+    "node_modules/codelyzer",
+    "tslintrules/_dist"
   ],
   "rules": {
+    "c1-no-internal-imports": true,
     "trailing-comma": [
       false, {
         "multiline": "always",

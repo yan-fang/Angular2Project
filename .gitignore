@@ -50,3 +50,6 @@ node_modules
 
 # Lighthouse generated reports
 lighthouse/_dist
+
+# tslint generated js files
+tslintrules/_dist
