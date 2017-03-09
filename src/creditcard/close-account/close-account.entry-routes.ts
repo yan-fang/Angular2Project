@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { ToggleGuard } from '@c1/creditcard/toggle';
+import { ToggleGuard } from '../toggle';
 
 export const closeAccountEntryRoutes: Routes = [
   {

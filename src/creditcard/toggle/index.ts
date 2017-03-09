@@ -1,3 +1,3 @@
-export * from './toggle.module';
-export * from './toggle-repository.service';
-export * from './toggle.guard';
+export { ToggleModule } from './toggle.module';
+export { ToggleRepositoryService } from './toggle-repository.service';
+export { ToggleGuard } from './toggle.guard';

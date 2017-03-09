@@ -5,12 +5,12 @@ import { RouterModule } from '@angular/router';
 
 import { StoreModule } from '@ngrx/store';
 import { routerReducer, RouterStoreModule } from '@ngrx/router-store';
-import { C1ComponentsModule } from '@c1/components';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+import { C1ComponentsModule } from '@c1/components';
 import { PerfMeasureModule } from '@c1/perf-measure';
-import { environment, Environments, StateManagerService } from '@c1/shared';
+import { environment, NoOpModule, Environments, StateManagerService } from '@c1/shared';
 import { MockabilityModule } from '@c1/mockability';
 import { mocks } from '@c1/mocks';
 
@@ -19,17 +19,11 @@ import { appRoutes } from './app.routes';
 import { ExampleComponent } from './example/example.component';
 import { I18nExampleComponent } from './i18n-example/i18n-example.component';
 
-@NgModule()
-export class NoOpMockability {}
-
-@NgModule()
-export class NoOpStoreDevtools {}
-
 @NgModule({
   imports: [
     BrowserModule,
     HttpModule,
-    environment === Environments.Production ? NoOpMockability : MockabilityModule.forRoot(mocks),
+    environment === Environments.Production ? NoOpModule : MockabilityModule.forRoot(mocks),
 
     C1ComponentsModule,
 
@@ -37,7 +31,7 @@ export class NoOpStoreDevtools {}
     StoreModule.provideStore({router: routerReducer}),
     RouterStoreModule.connectRouter(),
     EffectsModule,
-    environment === Environments.Production ? NoOpStoreDevtools : StoreDevtoolsModule.instrumentOnlyWithExtension(),
+    environment === Environments.Production ? NoOpModule : StoreDevtoolsModule.instrumentOnlyWithExtension(),
     PerfMeasureModule
   ],
   declarations: [
