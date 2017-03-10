@@ -1,3 +1,5 @@
+const webpackConfig = require("./webpack.config")({mode: 'karma'});
+
 module.exports = function(config) {
   config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -5,12 +7,11 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine', 'karma-typescript'],
+    frameworks: ['jasmine'],
 
     // list of files / patterns to load in the browser
     files: [
-        'src/base.spec.ts',
-        { pattern: 'src/**/!(main).+(ts|html|scss)' },
+        { pattern: './src/test.ts', watched: false},
     ],
 
     // list of files to exclude
@@ -19,14 +20,13 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'src/**/*.ts': ['karma-typescript'],
-      'src/**/*.scss': ['scss']
+      './src/test.ts': ['webpack', 'sourcemap']
     },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['spec', 'karma-typescript'],
+    reporters: ['spec'],
 
     specReporter: {
       maxLogLines: 5,         // limit number of lines logged per test
@@ -37,42 +37,10 @@ module.exports = function(config) {
       showSpecTiming: false // print the time elapsed for each spec
     },
 
-    // Karma-typescript tsconfig location
-    karmaTypescriptConfig: {
-      tsconfig: "./tsconfig-spec.json",
-      coverageOptions: {
-        instrumentation: true,
-        exclude: /\.(d|spec)\.ts/
-      },
-      reports: {
-        "html": "coverage",
-        "json-summary": "coverage",
-        "text": "",
-        "text-summary": ""
-      },
-      transforms: [
-        // This transform setting is here temporarily until karma-typescript version 2.1.8
-        // This will change to something like angulat-mode: true and these will be on by default
-        require("karma-typescript/transforms/angular2-template-url-rewriter"),
-        require("karma-typescript/transforms/angular2-style-urls-rewriter")
-      ],
-      bundlerOptions: {
-        resolve: {
-          alias: {
-            '@angular/upgrade/static': '@angular/upgrade/bundles/upgrade-static',
-            '@angular/router/upgrade': '@angular/router/bundles/router-upgrade'
-          }
-        }
-      }
+    webpack: webpackConfig,
 
-    },
-
-    coverageReporter: {
-      instrumenterOptions: {
-        istanbul: {
-          noCompact: true // (useful for debugging when true)
-        }
-      }
+    webpackMiddleware: {
+      stats: 'errors-only'
     },
 
     // web server port

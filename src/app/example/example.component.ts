@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'c1-web-example',
-  styleUrls: ['example.component.scss'],
+  styleUrls: ['./example.component.scss'],
   template: `
     <nav>
       <a routerLink="/" routerLinkActive="active">Example (L1)</a>
