@@ -95,3 +95,75 @@ for injection, but the methods of the service will essentially be no-ops.
   ]
 })
 ```
+
+## Invoking Angular 1 (L2 and Action)
+
+### Invoking Action
+
+To open a dialog written in Angular 1 from Angular 2 add a new module that registers an empty-path route (see `transfer-dialog.module.ts`), a component that does the wrapping, and a prepare function that loads the needed Angular 1 code.
+
+```typescript
+@Component({
+  selector: 'c1-transfer-dialog',
+  template: `
+    <div ui-view></div>
+  `,
+  styles: [`
+    @import '/bower_components/EASECoreLite/styles/main.css';
+    @import '/bower_components/easeUIComponents/dist/ease-ui-components.css';
+  `]
+})
+export class TransferDialogComponent {
+  constructor(el: ElementRef, upgrade: UpgradeModule) {
+    prepareTransferDialog().then((moduleName: string) => {
+      upgrade.bootstrap(el.nativeElement, [moduleName]);
+      setUpLocationSync(upgrade);
+    });
+  }
+}
+```
+
+A prepare function uses `requirejs` to load the necessary resources. It sets up the needed UI-router states and registers a `run` hook setting the initial state.
+
+The wrapping component should invoke a prepare function and then bootstrap the prepared Angular 1 module using `ngUpgrade`. After the bootstrap is done, it should invoke `setUpLocationSync` to make sure that the UI-router and the Angular router stay in sync.
+
+### Routes
+
+For the two routers not to clash, you should follow these rules:
+
+* The URL of the wrapping component's route should be equal to the initial route's URL of the Angular 1 dialog (e.g., `/accountSummary/12121/Transfer`).
+* Everything should work out of the box if the Angular 1 dialog only appends to the initial URL (e.g., `/accountSummary/12121/Transfer`, `/accountSummary/12121/Transfer/Complete`, `/accountSummary/12121/Transfer?=1`)
+* If the dialog needs to navigate to a completely different URL `/accountSummary/12121/Different`, a custom url handling strategy should be defined.
+
+#### Opening a Dialog
+
+This is how it works:
+
+* The user clicks a button
+* The Angular router updates the URL and creates a new router state
+* The Angular router instantiates the wrapping component
+* The wrapping component calls its prepare function
+* The prepare function returns a module name
+* The wrapping component bootstraps the prepared Angular 1 module using the given module name
+* The UI-router gets initialized, the dialog appears
+
+#### Closing a Dialog (User Action)
+
+This is how it works:
+
+* The user closes the dialog
+* The UI-router updates its state
+* The UI-router updates the URL
+* The Angular router picks up the URL change and creates a new router state
+* The Angular router destroys the wrapping component
+* The Angular 1 application containing the dialog gets destroyed
+
+#### Closing a Dialog (Browser Event)
+
+This is how it works:
+
+* The user clicks on "Back"
+* The Angular router picks up the URL change and creates a new router state
+* The Angular router destroys the wrapping component
+* The wrapping component calls close on the rootScope of the Angular1 app
+* The dialog gets closed

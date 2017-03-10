@@ -19,7 +19,7 @@ export function prepareTransferDialog(): Promise<string> {
 
   configureRequireJS();
   requirejs(requireDeps, (_require: any, angular: any) => {
-    angular.module('TransferDialog', angularDeps).config(configFunction()).run(navigate());
+    angular.module('TransferDialog', angularDeps).config(configFunction()).run(navigate(angular));
     resolve('TransferDialog');
   });
 
@@ -67,18 +67,18 @@ function configFunction(): Function {
       jsLoader: requirejs
     });
 
-    const mainState = {
-      name: 'mainState',
-      url: '',
+    const accountSummaryState = {
+      name: 'accountSummary',
+      url: '/accountSummary',
       template: `<div class='container' ui-view></div>`
     };
 
-    $stateProvider.state(mainState);
+    $stateProvider.state(accountSummaryState);
 
-    transferStateProvider.set(mainState, 'mainState.transfer',
-    'mainState.transferSuccess', 'mainState.transferCancel',
-    'mainState.transferCancelConfirm', 'mainState.transferError',
-    'mainState.transferEdit', '/Transfer');
+    transferStateProvider.set(accountSummaryState, 'accountSummary.transfer',
+    'accountSummary.transferSuccess', 'accountSummary.transferCancel',
+    'accountSummary.transferCancelConfirm', 'accountSummary.transferError',
+    'accountSummary.transferEdit', ':transferId/Transfer');
 
     const transferMoneyStates = transferStateProvider.get();
     const transferStart = transferMoneyStates.transferStart;
@@ -99,10 +99,21 @@ function configFunction(): Function {
   return configFn;
 }
 
-function navigate() {
-  function runFn($state: any) {
-    setTimeout(() => $state.go('mainState.transfer',  {}, {location: false}), 0);
+function navigate(angular: any) {
+  function runFn($state: any, $rootScope: any, $log: any) {
+    setTimeout(() => $state.go('accountSummary.transfer',  {}, {location: false}), 0);
+
+    $rootScope.close = () => {
+      const modal = document.querySelector('ease-ui-modal');
+      if (modal) {
+        const modalScope: any = angular.element(modal).scope();
+        modalScope.close();
+      } else {
+        $log.error(`Failed to close TransferDialog. No 'ease-ui-modal' element found.`);
+      }
+    };
   }
-  (<any>runFn).$inject = ['$state'];
+
+  (<any>runFn).$inject = ['$state', '$rootScope', '$log'];
   return runFn;
 }
