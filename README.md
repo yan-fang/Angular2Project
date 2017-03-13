@@ -28,8 +28,8 @@ master | development
 
 ## Coverage
 
-This creates a `coverage` folder in the root directory containing coverage information.
-Open the top index.html in `./coverage` in a browser.
+This creates a `coverage` folder in the `_dist/dev` directory containing coverage information.
+Open the top index.html in `./_dist/dev/coverage` in a browser.
 
 #### Single Run Test & Coverage
   - Run `yarn cover`

@@ -20,4 +20,4 @@ test:
     - yarn ngc
     - yarn build:prod
     - yarn cover
-#    - cp -R coverage $CIRCLE_ARTIFACTS <= [Youssef] Commenting this out for now, until I merge Karma webpack coverage
+    - cp -R _dist/dev $CIRCLE_ARTIFACTS

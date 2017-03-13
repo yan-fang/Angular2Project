@@ -137,9 +137,22 @@ const output = {
 module.exports = function (env = {}) {
   const locale = env.locale;
   const mode = env.mode;
+  const enableCoverage = env.enableCoverage;
 
   if (mode === "karma") {
     console.log('   Mode: Karma');
+
+    const coverageLoader = enableCoverage ? [
+      {
+        enforce: 'post',
+        test: /\.ts/,
+        include: path.resolve('src/'),
+        exclude: [
+          /\.spec\.ts$/
+        ],
+        loader: 'istanbul-instrumenter-loader?esModules=true'
+      }
+    ] : [];
 
     return ({
       cache: true,
@@ -152,8 +165,9 @@ module.exports = function (env = {}) {
               'awesome-typescript-loader?configFileName=tsconfig-spec.json',
               'angular2-template-loader'
             ]
-          }
-        ],
+          },
+          ...coverageLoader
+        ]
       },
       plugins: [
         new webpack.ContextReplacementPlugin(

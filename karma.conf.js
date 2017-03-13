@@ -1,6 +1,7 @@
-const webpackConfig = require("./webpack.config")({mode: 'karma'});
-
 module.exports = function(config) {
+  const enableCoverage = config.reporters.indexOf('coverage-istanbul') > -1;
+  const webpackConfig = require("./webpack.config")({mode: 'karma', enableCoverage: enableCoverage});
+
   config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
@@ -26,7 +27,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['spec'],
+    reporters: ['spec', 'coverage-istanbul'],
 
     specReporter: {
       maxLogLines: 5,         // limit number of lines logged per test
@@ -35,6 +36,17 @@ module.exports = function(config) {
       suppressPassed: false,  // do not print information about passed tests
       suppressSkipped: true,  // do not print information about skipped tests
       showSpecTiming: false // print the time elapsed for each spec
+    },
+
+    coverageIstanbulReporter: {
+      reports: [ 'html', 'text-summary' ],
+      fixWebpackSourcePaths: true,
+      dir: './_dist/dev/',
+      'report-config': {
+        html: {
+          subdir: 'coverage'
+        }
+      }
     },
 
     webpack: webpackConfig,
