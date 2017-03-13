@@ -1,11 +1,11 @@
-import { browser, element, by } from 'protractor';
+import { browser, element, ElementFinder, by } from 'protractor';
 
 export class EasePage {
-  public navigateTo(url: string) {
-    return browser.get(url);
+  public navigateTo(url: string): void {
+    browser.get(url);
   }
 
-  public get(selector: string) {
+  public get(selector: string): ElementFinder {
     return element(by.css(selector));
   }
 }

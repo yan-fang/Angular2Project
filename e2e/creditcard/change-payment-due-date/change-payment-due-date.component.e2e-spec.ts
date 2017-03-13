@@ -8,7 +8,7 @@ describe('change-payment-due-date.component', () => {
   beforeAll(() => {
     page = new EasePage();
 
-    page.navigateTo('/creditcard/change-payment-due-date');
+    page.navigateTo('/credit-card/change-payment-due-date');
   });
 
   describe('Validate element for selector "c1-creditcard-change-payment-due-date"', () => {

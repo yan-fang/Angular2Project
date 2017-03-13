@@ -8,7 +8,7 @@ describe('creditcard.component', () => {
   beforeAll(() => {
     page = new EasePage();
 
-    page.navigateTo('/creditcard');
+    page.navigateTo('/credit-card');
   });
 
   describe('Validate element for selector "c1-creditcard"', () => {

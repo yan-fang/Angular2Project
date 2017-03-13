@@ -19,7 +19,7 @@ exports.config = {
   useAllAngular2AppRoots: true,
   beforeLaunch: function() {
     require('ts-node').register({
-      project: '.'
+      project: './e2e'
     });
   },
   onPrepare: function() {

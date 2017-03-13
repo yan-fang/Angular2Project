@@ -8,7 +8,7 @@ describe('close-account.component', () => {
   beforeAll(() => {
     page = new EasePage();
 
-    page.navigateTo('/creditcard/close-account');
+    page.navigateTo('/credit-card/close-account');
   });
 
   describe('Validate element for selector "c1-creditcard-close-account"', () => {
