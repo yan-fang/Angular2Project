@@ -31,10 +31,11 @@ for file in _dist/*.js; do
     fileNameWithExt=${file##*/}
     fileName=${fileNameWithExt%.js}
     fileNameHtml=$fileName".html"
+    fileNameMap=$fileNameWithExt".map"
 
     LINKS+=("<p><a href=\""$fileNameHtml"\">"$fileNameWithExt"</a></p>")
     echo "Generating source map explorer for: " $fileNameWithExt
-    yarn explore -- --html $file > "./_dist/dev/src-map-explorers/"$fileNameHtml
+    yarn explore -- --html $file "./_dist/"$fileNameMap > "./_dist/dev/src-map-explorers/"$fileNameHtml
 done
 
 cat > ./_dist/dev/src-map-explorers/index.html <<EOF

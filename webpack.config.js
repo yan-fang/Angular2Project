@@ -6,15 +6,21 @@ const copyPlugin = require('copy-webpack-plugin');
 const htmlPlugin = require('html-webpack-plugin');
 const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
 
+// Used primarily to set runtime environment variable. Just looks for `--env.build=prod` flag.
+// TODO: We will switch to `-p` flag once the following issue is fixed: https://github.com/webpack/webpack/issues/4468.
+const isProd = process.argv.includes('--env.build=prod');
+const devPort = 3000;
+
+// TODO: [Youssef] Discuss with Devops where will static files be deployed to
+const srcMapPath = isProd ? 'http://<PROD_INTERNAL_DOMAIN>/' : `http://localhost:${devPort}/`;
+
 function aotConfiguration(locale) {
   const configureEnv = (() => {
-    // Used primarily to set runtime environment variable. Just looks for `-p` flag.
-    const isProd = Object.keys(process.argv).indexOf('-p') > -1;
     return {
       isProd,
 
       // Used with AOTPlugin to override runtime environment variable.
-      pathToEnvModule: isProd ? 'src/app/environments/environment.prod.ts' : 'src/app/environments/environment.ts'
+      pathToEnvModule: isProd ? 'src/shared/environments/environment.prod.ts' : 'src/shared/environments/environment.ts'
     };
   })();
 
@@ -23,7 +29,7 @@ function aotConfiguration(locale) {
     mainPath: "./src/main.ts",
     hostReplacementPaths: {
       // Replaces env file with prod environment file
-      'src/app/environments/environment.ts': configureEnv.pathToEnvModule
+      'src/shared/environments/environment.ts': configureEnv.pathToEnvModule
     }
   };
 
@@ -64,37 +70,75 @@ const baseLoaders = [
   }
 ];
 
-const basePlugins = [
-  new webpack.optimize.CommonsChunkPlugin({
-    name: ['polyfills', 'vendor', 'main'].reverse(),
-    minChunks: Infinity
-  }),
-  // Copy over the public assets to the build directory: ./_dist
-  new copyPlugin([
-    { from: 'public', to: 'public' },
-    { from: 'ease1/bower_components', to: 'bower_components' },
-    { from: 'ease1/ease-ui', to: 'ease-ui' }
-  ]),
-  new browserSyncPlugin(
+const basePlugins = (() => {
+  const baseDefaultPlugins = [
+    new webpack.SourceMapDevToolPlugin({
+      filename: '[file].map', // if no value is provided the sourcemap is inlined
+      append: `\n//# sourceMappingURL=${srcMapPath}[url]`,
+      test: /\.(ts|js)($|\?)/i // process .js and .ts files only
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: ['polyfills', 'vendor', 'main'].reverse(),
+      minChunks: Infinity
+    }),
+    // Copy over the public assets to the build directory: ./_dist
+    new copyPlugin([
+      { from: 'public', to: 'public' },
+      { from: 'ease1/bower_components', to: 'bower_components' },
+      { from: 'ease1/ease-ui', to: 'ease-ui' }
+    ]),
     // BrowserSync options
-    {
-      host: 'localhost',
-      port: 3001, // Site will be available at http://localhost:3001/
-      proxy: 'http://localhost:3000/', // proxy the Webpack Dev Server endpoint through BrowserSync
-      open: true, // Open the browser from automatically. Possible values "ui", "local", true, false
-      // browser: ["google chrome", "firefox"], // Open the site in Chrome & Firefox
-    },
-    // plugin options
-    {
-      // prevent BrowserSync from reloading the page and let Webpack Dev Server take care of this
-      reload: false
-    }
-  ),
-  // write generated bundles to index.html
-  new htmlPlugin({
-    template: 'src/index.html'
-  })
-];
+    new browserSyncPlugin(
+      {
+        host: 'localhost',
+        port: 3001, // Site will be available at http://localhost:3001/
+        proxy: `http://localhost:${devPort}/`, // proxy the Webpack Dev Server endpoint through BrowserSync
+        open: true, // Open the browser from automatically. Possible values "ui", "local", true, false
+        // browser: ["google chrome", "firefox"], // Open the site in Chrome & Firefox
+      },
+      // plugin options
+      {
+        // prevent BrowserSync from reloading the page and let Webpack Dev Server take care of this
+        reload: false
+      }
+    ),
+    // write generated bundles to index.html
+    new htmlPlugin({
+      template: 'src/index.html'
+    })
+  ];
+
+  const prodPlugins = [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
+      beautify: false,
+      mangle: {
+        screw_ie8: true,
+        keep_fnames: true
+      },
+      compress: {
+        screw_ie8: true
+      },
+      comments: false
+    })
+  ];
+
+  if (isProd) {
+    return [
+      ...prodPlugins,
+      ...baseDefaultPlugins
+    ];
+  }
+
+  return baseDefaultPlugins;
+})();
 
 const devServer = {
   historyApiFallback: true,
@@ -138,6 +182,8 @@ module.exports = function (env = {}) {
   const locale = env.locale;
   const mode = env.mode;
   const enableCoverage = env.enableCoverage;
+
+  console.log(`   isProd: ${isProd}`);
 
   if (mode === "karma") {
     console.log('   Mode: Karma');
@@ -194,7 +240,6 @@ module.exports = function (env = {}) {
 
     return ({
       cache: true,
-      devtool: 'source-map',
       performance: {
         /**
          * Combines size of all entry bundles and makes sure
@@ -230,7 +275,6 @@ module.exports = function (env = {}) {
 
     return ({
       cache: true,
-      devtool: 'source-map',
       performance: {
         /**
          * Combines size of all entry bundles and makes sure

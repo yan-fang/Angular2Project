@@ -6,7 +6,7 @@
   "scripts": {
     "build": "yarn cleanup && webpack && yarn explore:all",
     "build:aot": "yarn cleanup && webpack --env.mode=aot && yarn explore:all",
-    "build:prod": "yarn cleanup && webpack -p --env.mode=aot && yarn explore:all",
+    "build:prod": "yarn cleanup && webpack --env.build=prod --env.mode=aot --progress --profile --colors && yarn explore:all",
     "cleanup": "rm -rf _dist",
     "commit": "git-cz",
     "compile": "tsc",
