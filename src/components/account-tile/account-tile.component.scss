@@ -27,135 +27,83 @@
       margin-right: 2%;
     }
   }
-
 }
 
-.tile {
-  &--grid {
-    &-left {
-      flex: 1 1 auto;
-      width: 100%;
-    }
+.account-tile__grid {
+  flex: 1 1 auto;
+}
 
-    &-right {
-      flex: 1 1 auto;
-      justify-content: flex-end;
-      min-width: 175px;
-    }
-  }
+.account-tile__grid--left {
+  width: 100%;
+}
 
-  &--currency {
-    display: block;
-    position: relative;
-    font-weight: $font-weight--thin;
+.account-tile__grid--right {
+  justify-content: flex-end;
+  min-width: 175px;
+}
 
-    &-symbol {
-      position: relative;
-      font-size: inherit;
+.account-tile__heading {
+  display: flex;
+  margin: 0;
+  align-items: flex-end;
+}
 
-      &_negative {
-        position: relative;
-        font-size: inherit;
-      }
-    }
+.account-tile__name {
+  margin: 0;
+  font-size: $font-size--xlarge;
+  font-weight: $font-weight--regular;
+}
 
-    &-dollars {
-      position: relative;
-      font-size: inherit;
-      font-feature-settings: 'pnum';
-    }
+.account-tile__lastfour {
+  font-size: $font-size--xsmall;
+  @include margin("xsmall", "bottom");
+  @include margin("small", "left");
+}
 
-    &-cents {
-      position: relative;
-      font-size: inherit;
-      font-feature-settings: 'pnum';
-      vertical-align: top;
-    }
-  }
+.account-tile__action-label {
+  text-transform: uppercase;
+  @include margin("medium", "top");
+  @include margin("medium", "bottom");
+  padding: 0;
+  text-align: center;
+  font-size: $font-size--xsmall;
+}
 
-  &--action {
-    &-label {
-      text-transform: uppercase;
-      @include margin("medium", "top");
-      @include margin("medium", "bottom");
-      padding: 0;
-      text-align: center;
-      font-size: $font-size--xsmall;
-    }
-  }
+.account-tile__balance {
+  display: block;
+  position: relative;
+  font-weight: $font-weight--thin;
+  font-size: 3.250rem;
+}
 
-  &--balance {
-    &-name {
-      font-size: $font-size--xsmall;
-    }
-  }
+.account-tile__balance-symbol {
+  position: relative;
+  font-size: inherit;
+  font-size: 1.625rem;
+  vertical-align: super;
+  font-feature-settings: 'pnum';
+}
 
-  &--name {
-    &-wrapper {
-      display: flex;
-      align-items: flex-end;
-      margin: 0;
-    }
-  }
+.account-tile__balance-dollars{
+  position: relative;
+  font-size: inherit;
+  letter-spacing: -.025rem;
+  font-feature-settings: 'pnum';
+}
 
-  &--heading {
-    display: flex;
-    margin: 0;
-    align-items: flex-end;
+.account-tile__balance-cents {
+  position: relative;
+  font-size: inherit;
+  font-size: 1.625rem;
+  vertical-align: super;
+  margin-left: .126rem;
+  font-feature-settings: 'pnum';
+}
 
-    &-name {
-      margin: 0;
-      font-size: $font-size--xlarge;
-      font-weight: $font-weight--regular;
-    }
-
-    &-lastfour {
-      font-size: $font-size--xsmall;
-      @include margin("xsmall", "bottom");
-      @include margin("small", "left");
-    }
-  }
-
-  &--account {
-    &-number {
-      font-size: $font-size--xsmall;
-      @include margin("xsmall", "bottom");
-      @include margin("small", "left");
-    }
-
-    &-descriptor {
-      font-size: $font-size--small;
-      line-height: $font-size--xlarge;
-      @include margin("small", "top");
-      @include margin("small", "bottom");
-      text-transform: uppercase;
-    }
-  }
-
-  &--currency {
-    &-container {
-      display: block;
-      position: relative;
-      font-weight: $font-weight--thin;
-      font-size: 3.250rem;
-    }
-
-    &-symbol {
-      font-size: 1.625rem;
-      vertical-align: super;
-      font-feature-settings: 'pnum';
-    }
-
-    &-dollars {
-      letter-spacing: -.025rem;
-      font-feature-settings: 'pnum';
-    }
-
-    &-cents {
-      font-size: 1.625rem;
-      vertical-align: super;
-      margin-left: .126rem;
-      font-feature-settings: 'pnum';
-    }
-  }
+.account-tile__balance-descriptor {
+  font-size: $font-size--small;
+  line-height: $font-size--xlarge;
+  @include margin("small", "top");
+  @include margin("small", "bottom");
+  text-transform: uppercase;
 }
