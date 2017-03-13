@@ -1,0 +1,33 @@
+@import '../../components/core/_core.scss';
+
+:host {
+  display: block;
+  overflow: visible;
+  box-sizing: border-box;
+  font-family: $proxima-nova;
+  position: relative;
+  background: $ease-white;
+  width: 100%;
+  @include padding("medium", "left");
+  @include padding("medium", "right");
+  border-bottom: 2px solid $ease-silver;
+}
+
+.c1-header__wrapper {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  max-width: map-get($breakpoints, "medium") + map-get($spacing-sizes, "xlarge");
+  height: map-get($spacing-sizes, "medium") + map-get($spacing-sizes, "large") + map-get($spacing-sizes, "xlarge");
+}
+
+.c1-header__logo {
+  display: inline-block;
+  height: 40px;
+  width: 114px;
+  text-indent: -9999px;
+  color: transparent;
+  background-image: url('/public/static/img/DigitalTwoColor.svg');
+  background-size:contain;
+  background-repeat: no-repeat;
+}

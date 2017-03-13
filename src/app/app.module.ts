@@ -18,6 +18,8 @@ import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 import { ExampleComponent } from './example/example.component';
 import { I18nExampleComponent } from './i18n-example/i18n-example.component';
+import { HeaderComponent } from './header/header.component';
+import { UserMenuComponent } from './user-menu/user-menu.component';
 
 @NgModule({
   imports: [
@@ -37,7 +39,9 @@ import { I18nExampleComponent } from './i18n-example/i18n-example.component';
   declarations: [
     AppComponent,
     ExampleComponent,
-    I18nExampleComponent
+    I18nExampleComponent,
+    HeaderComponent,
+    UserMenuComponent
   ],
   providers: [
     StateManagerService

@@ -2,11 +2,11 @@ $default-breakpoint: root;
 $current-breakpoint: $default-breakpoint;
 
 $breakpoints: (
-  xsmall: "320px",  // iphone 5
-  small: "600px",   // iphone 6 / big androids
-  medium: "1000px", // ipad / tablet
-  large: "1400px",  // laptop / desktop
-  xlarge: "1600px"  // fullscreen hi-res monitor
+  xsmall: 320px,  // iphone 5
+  small: 600px,   // iphone 6 / big androids
+  medium: 1000px, // ipad / tablet
+  large: 1400px,  // laptop / desktop
+  xlarge: 1600px  // fullscreen hi-res monitor
 );
 
 @mixin breakpoint($breakpoint) {

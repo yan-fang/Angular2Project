@@ -1,0 +1,65 @@
+@import '../../components/core/_core.scss';
+
+
+.c1-user-menu {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.c1-user-menu__avatar {
+  height: map-get($spacing-sizes, "xlarge");
+  width: map-get($spacing-sizes, "xlarge");
+  background-size:contain;
+  background-image: url('/public/static/img/DefaultAvatar.png');
+}
+
+.c1-user-menu__user {
+  font-size: 1.125em;
+  white-space: nowrap;
+  @include padding("medium", "left");
+  @include padding("medium", "right");
+  padding-top: map-get($spacing-sizes, "medium") + map-get($spacing-sizes, "small");
+  padding-bottom: map-get($spacing-sizes, "medium") + map-get($spacing-sizes, "small");
+  margin: 0;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 0 0;
+  list-style: none;
+  background: $ease-white;
+  @include padding("small", "top");
+  @include padding("small", "bottom");
+  @include padding("medium", "left");
+  @include padding("medium", "right");
+  width: 150px;
+  border-top: none;
+  border-right: 2px solid $ease-silver;
+  border-left: 2px solid $ease-silver;
+  border-bottom: 2px solid $ease-silver;
+  border-radius: 0 0 3px 3px;
+}
+
+a {
+  text-align: right;
+  display: block;
+  font-size: 14px;
+  width: 100%;
+  line-height: map-get($spacing-sizes, "large");
+  outline: 0;
+  border: none;
+  margin: 3px 0;
+  cursor: pointer;
+  text-decoration: none;
+  &:visited {
+    color: $ease-charcoal;
+  }
+  &:active {
+    color: $ease-charcoal;
+  }
+}
