@@ -15,6 +15,11 @@ master | development
   - Run `yarn dev`
   - Browse to http://localhost:3000
 
+## Start the proxy
+**Username must be defined in users.config.json.**
+  - Run `yarn run proxy -- <username>`
+
+
 ## Lint
   - Run `yarn lint`
 
