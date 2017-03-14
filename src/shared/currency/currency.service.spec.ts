@@ -7,6 +7,22 @@ describe('CurrencyService', () => {
     currencyService = new CurrencyService();
   });
 
+  describe('splitDecimalPoint()', () => {
+    it('should return an array with value split between dollars and cents', () => {
+      let splitDollarAmount = CurrencyService.splitAtDecimalPoint(2678.97);
+      expect(splitDollarAmount.length).toBe(2);
+      expect(splitDollarAmount[0]).toBe('2678');
+      expect(splitDollarAmount[1]).toBe('97');
+    });
+  });
+  describe('unFormatAmount()', () => {
+    it('should return 1234567 when given 1,234,567', () => {
+      let convertedAmount = currencyService.formatDollars('1234567');
+      expect(convertedAmount).toBe('1,234,567');
+      expect(CurrencyService.unFormatAmount(convertedAmount)).toBe('1234567');
+    });
+  });
+
   describe('formatCents()', () => {
     it('should return "90" when given "9"', () => {
       expect(currencyService.formatCents('9')).toEqual('90');

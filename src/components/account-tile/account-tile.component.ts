@@ -1,6 +1,7 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
 
 import { Account } from '@c1/app';
+import { CurrencyService } from '@c1/shared';
 
 @Component({
   selector: 'c1-account-tile',
@@ -16,7 +17,7 @@ export class AccountTileComponent implements OnInit {
 
 
   ngOnInit() {
-    let amount = this.account.availableBalance.toString().split('.');
+    let amount = CurrencyService.splitAtDecimalPoint(this.account.availableBalance);
 
     this.dollars = amount[0];
     this.cents = amount[1];
