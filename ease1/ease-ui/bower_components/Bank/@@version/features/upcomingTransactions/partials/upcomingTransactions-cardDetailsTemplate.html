@@ -1,0 +1,34 @@
+<div style="clear:both;"></div>
+<div data-ng-class="upcomingCardDetailsCtrl.loadingWrapper()">
+  <div class="loading"></div>
+</div>
+<div class="transaction-logo">
+  <img class="img-logo" alt="{{::upComingTrans.payeeName}}" ng-src="{{::upcomingCardDetailsCtrl.UpcomingHelpers.getTransactionLogo(upComingTrans)}}"/>
+</div>
+<div class="group">
+
+  <span class="element-invisible" id="{{createtheID($index)}}" aria-hidden="false"> 
+  </span>
+
+  <ul>
+    <li class="payee-name-wordwrap">
+      <p class="payee-name" title="{{upcomingCardDetailsCtrl.getPayeeName(upComingTrans)}}{{::upComingTrans.cardLastFour}}">
+        {{::upComingTrans.payeeName | truncate : upcomingCardDetailsCtrl.actionModalPayeeNameLength}}</p>
+      <p class="payee-name card-last-four" data-ng-if="upcomingCardDetailsCtrl.isCardLastFour(upComingTrans.cardLastFour)">{{::upComingTrans.cardLastFour}}</p>
+    </li>
+    <li>
+      <p class="transaction-category">{{upComingTrans.checkDepositType || upcomingCardDetailsCtrl.getTransactionCategoryValue(upComingTrans, 'transactionCategory', upComingTrans.checkNumber)}}</p>
+    </li>
+    <li>
+      <p class="transaction-amount" ng-class="upcomingCardDetailsCtrl.UpcomingHelpers.getTransactionAmountClass(upComingTrans)" data-ng-if="!upcomingCardDetailsCtrl.UpcomingHelpers.isAmountDue(upComingTrans)">{{::upcomingCardDetailsCtrl.UpcomingHelpers.getTransactionSign(upComingTrans)}}{{upComingTrans.transactionAmount | currency}}
+      </p>
+      <p class="transaction-amount" ng-class="upcomingCardDetailsCtrl.UpcomingHelpers.getTransactionAmountClass(upComingTrans)" data-ng-if="upcomingCardDetailsCtrl.UpcomingHelpers.isAmountDue(upComingTrans)">{{upcomingCardDetailsCtrl.i18nUpcomingTransactions['ease.bank.upcomingTransactions.card.amountDue']}}
+      </p>
+    </li>
+    <li title="{{upcomingCardDetailsCtrl.getMemoTextCategory(upComingTrans.memoText)}}">
+      <p class="memoText-category" aria-label="{{::upcomingCardDetailsCtrl.getScreenReaderMemoText(upComingTrans.memoText)}}">{{::upcomingCardDetailsCtrl.getMemoTextCategory(upComingTrans.memoText)}}</p>
+    </li>
+  </ul>
+</div>
+
+<div data-ng-include="upcomingCardDetailsCtrl.UpcomingHelpers.getUpcomingTransactionDetailsTemplate(upComingTrans)"></div>

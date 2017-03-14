@@ -1,0 +1,19 @@
+<div id="upcomingContainer transactions">
+  <div class="bank-upcoming-title-bar">
+    <ul>
+      <li>
+        <h3 tabindex="0" data-content="{{::upcomingCtrl.i18nUpcomingTransactions['ease.bank.upcomingTransactions.text']}}">
+          <span class="element-invisible" aria-hidden="false">{{::upcomingCtrl.i18nUpcomingTransactions['ease.bank.upcomingTransactions.text']}}</span>
+          <ease-tooltip
+            tip-message="upcomingCtrl.i18nUpcomingTransactions['ease.bank.upcomingTransactions.upcomingToolTip.text']"
+            options="upcomingCtrl.tooltipOptions">
+          </ease-tooltip>
+        </h3>
+      </li>
+      <li>
+        <button data-content="{{::upcomingCtrl.i18nUpcomingTransactions['ease.bank.upcomingTransactions.viewMoreTransaction.text']}}" phone-content="{{::upcomingCtrl.i18nUpcomingTransactions['ease.bank.upcomingTransactions.viewMoreTransaction.shortText']}}" data-ng-if="isUpcomingButtonActive"><i class="icon-view-all"></i></button>
+      </li>
+    </ul>
+  </div>
+  <div id="upcomingcard" class="upcoming-card-carousal" ng-include src="upcomingCardTemplate"></div>
+</div>

@@ -1,0 +1,33 @@
+<div id="transaction-{{::transaction.transactionId}}"
+     role="row"
+     class="bank-transaction"
+     ng-class="{open : accordionVM.isOpen($index)}"
+     tabindex="-1"
+     aria-label="Transaction {{::transaction.transactionId}} at {{::transaction.transactionOverview.transactionTitle}} for {{::transaction.transactionOverview.transactionAmount | currency}} on {{::transaction.transactionOverview.transactionDate | date : 'MMMM d'}}"
+     data-ng-repeat="transaction in accordionVM.accordionElements | limitTo : accordionVM.accordionParent.moreTransactionsProperties.maxVisibleTransactions"
+     ng-click="accordionVM.setOpenIndex($index); accordionVM.accordionParent.getTransactionDetails(transaction, accordionVM.isOpen($index))">
+    <div role='gridcell' class="transaction-date" aria-label="transaction date {{::transaction.transactionOverview.transactionDate | date : 'MMMM d'}}">
+        <div class="month" tabindex="-1">{{::transaction.transactionOverview.transactionDate | date : "MMM"}}</div>
+        <div class="day" tabindex="-1">{{::transaction.transactionOverview.transactionDate | date : "dd"}}</div>
+    </div>
+    <div class="transaction-logo">
+        <img alt=""
+         class="img-logo" ng-src="{{::transaction.transactionIcon.href}}"/>
+    </div>
+    <div class="transaction-description-container">
+        <div role='gridcell' aria-labelledby="header-description" class="transaction-title">
+            <span id="transactionName-{{::transaction.transactionId}}" role="link" aria-expanded="{{accordionVM.isOpen($index)}}"
+                  tabindex="0" aria-controls="transaction-{{::transaction.transactionId}}"
+                  aria-label="Open and closes extra information area for transaction {{::transaction.transactionId}}">
+                {{::transaction.transactionOverview.transactionTitle}}
+            </span>
+            <span ng-class="{'memo-ledger-icon': transaction.transactionDescriptionDetail.memoText}"></span>
+        </div>
+        <div role='gridcell' aria-labelledby="header-category" class="transaction-category">{{::accordionVM.accordionParent.getTransactionCategory(transaction)}}</div>
+    </div>
+    <div class="transaction-amount-details">
+        <div role='gridcell' aria-labelledby="header-amount" ng-class="accordionVM.accordionParent.getTransactionAmountClass(transaction)" class="transaction-amount">{{::transaction.transactionOverview.transactionAmount | currency}}</div>
+        <div role='gridcell' aria-labelledby="header-balance" class="transaction-balance">{{::transaction.transactionOverview.accountBalance | currency}}</div>
+    </div>
+    <div data-ng-include='accordionVM.accordionParent.getTemplate(transaction)' stop-event-prop></div>
+</div>

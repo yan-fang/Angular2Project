@@ -1,0 +1,119 @@
+<h1 class="title"
+    tabindex="0">
+  {{debitActivation.i18n.pin.title}}
+</h1>
+<div class="set-pin">
+  <p class="debit-description"
+     tabindex="0">
+     {{debitActivation.i18n.pin.description.intro}}
+     <ease-tooltip
+       tip-message="'{{debitActivation.i18n.pin.description.strengthenPin.zeros}}<br />
+               {{debitActivation.i18n.pin.description.strengthenPin.sequence}}<br />
+               {{debitActivation.i18n.pin.description.strengthenPin.same}}'"
+       options="debitActivation.tooltipOptions"
+     ></ease-tooltip>
+     {{debitActivation.i18n.pin.description.benefits}}
+  </p>
+
+  <form name="setPin"
+        id="set-pin-form"
+        class="set-pin-form"
+        novalidate>
+    <div class="entry form-input pin-input">
+
+      <div class="set-pin-container">
+        <label for="pin" class="label">
+          {{debitActivation.i18n.pin.labels.setPIN}}
+        </label>
+        <div class="input-holder">
+          <input type="password"
+                 id="pin_TLPCI"
+                 class="input pin-input"
+                 name="pin_TLPCI"
+                 maxlength="4"
+                 minlength="4"
+                 tabindex="0"
+                 required
+                 data-debit-numbers-only="numbers-only"
+                 data-ng-model="debitActivation.models.pin.entry" />
+        </div>
+        <div class="pin-error-message">
+          <span class="invalid-pin-error"
+                aria-live="assertive"
+                data-ng-show="setPin.pin_TLPCI.$invalid &&
+                              setPin.pin_TLPCI.$touched">
+                {{debitActivation.i18n.pin.errors.invalid}}
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="entry form-input confirm-pin-input">
+
+      <div class="set-pin-container">
+        <label for="confirmpin" class="label" >
+          {{debitActivation.i18n.pin.labels.confirmPIN}}
+        </label>
+        <div class="input-holder">
+          <input type="password"
+                 id="confirmpin_TLPCI"
+                 class="input pin-input"
+                 name="confirmpin_TLPCI"
+                 maxlength="4"
+                 minlength="4"
+                 tabindex="0"
+                 required
+                 data-debit-numbers-only="numbers-only"
+                 data-ng-model="debitActivation.models.pin.confirm"
+                 data-ng-pattern="debitActivation.models.pin.entry"/>
+        </div>
+        <div class="pin-error-message">
+          <span class="invalid-confirmpin-error"
+                aria-live="assertive"
+                data-ng-show="setPin.confirmpin_TLPCI.$invalid &&
+                              !setPin.confirmpin_TLPCI.$error.pattern &&
+                              setPin.confirmpin_TLPCI.$touched">
+                {{debitActivation.i18n.pin.errors.invalid}}
+          </span>
+          <span class="match-error"
+                aria-live="assertive"
+                data-ng-show="!setPin.confirmpin_TLPCI.$error.minlength &&
+                              setPin.confirmpin_TLPCI.$error.pattern">
+                {{debitActivation.i18n.pin.errors.match}}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-action">
+      
+      <div class="error-text" ng-if="debitActivation.errors.SET_PIN">
+        {{debitActivation.errors.SET_PIN}}
+      </div>
+
+      <div class="set-pin-container">
+        <button type="submit"
+                id="set-card-pin"
+                class="btn action"
+                tabindex="0"
+                data-ng-disabled="setPin.$invalid || debitActivation.submitDisabled"
+                data-ng-click="debitActivation.activateCard()">
+          <span data-ng-class="{ loading : debitActivation.submitDisabled }">
+            {{debitActivation.i18n.pin.action}}
+          </span>
+        </button>
+      </div>
+    </div>
+    <div class="set-pin-container">
+      <div class="disclaimer">
+        <p class="small-text"
+           data-ng-if="debitActivation.selectedCard.cardType === '360'">
+          {{debitActivation.i18n.pin.disclaimer.digital}}
+        </p>
+        <p class="small-text"
+           data-ng-if="debitActivation.selectedCard.cardType === 'Retail'">
+          {{debitActivation.i18n.pin.disclaimer.retail}}
+        </p>
+      </div>
+    </div>
+  </form>
+</div>

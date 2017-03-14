@@ -1,0 +1,21 @@
+<accordion-drawer id='transaction-drawer-{{::transaction.transactionId}}'
+                  class="bank-enhanced-transaction"
+                  role="region"
+                  aria-label="Transaction {{::transaction.transactionId}} extra information area."
+                  aria-live="polite" is-open="accordionVM.isOpen($index)"
+                  accordion-open="accordionVM.accordionParent.logDrawerOpenEvent( 'overdraft')"
+                  accordion-close="accordionVM.accordionParent.logDrawerCloseEvent( 'transactions:Drawer:Close')"
+                  aria-hidden="{{!accordionVM.isOpen($index)}}">
+    <div class="cleansed-data max-width">
+
+      <span ><b>{{accordionVM.accordionParent.i18nPastTransactions["ease.bank.pastTransactions.overdraft"]}}</b></span>
+
+        <span class="grey-out statement-description"><b>{{::accordionVM.accordionParent.i18nPastTransactions["ease.bank.pastTransactions.appearsOnStatementAs"]}}
+          </b><i class="italic">{{transaction.statementDescription}}</i></span>
+
+        <transaction-memo
+                data-memo-label="accordionVM.accordionParent.i18nPastTransactions['memoLabel']"
+                data-memo="transaction.transactionDescriptionDetail.memoText"></transaction-memo>
+    </div>
+
+</accordion-drawer>

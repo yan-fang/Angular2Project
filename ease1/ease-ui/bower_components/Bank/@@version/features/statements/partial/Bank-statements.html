@@ -1,0 +1,54 @@
+<ease-ui-modal close-modal="stCtrl.close()" class="statementPane" full-screen="true">
+    <div class="mainPane" id = "stmtModal" tab-through>
+        <div class="info">
+            <h1 tabindex="0" role="listitem"
+                aria-label="{{stCtrl.accountDetailsData.accountDetails.productName}}">{{stCtrl.accountDetailsData.accountDetails.productName}}</h1>
+            <p tabindex="0" role="listitem">...{{stCtrl.accountDetailsData.accountDetails.accountNumberTLNPI.slice(-4)}}</p>
+        </div>
+        <div class="navigation" id="statementDatePicker" data-ng-if="!stCtrl.showMessage" data-ng-include="stCtrl.templateCalendar"
+             close-month-picker = "stCtrl.toggle"></div>
+        <div class="toolbar">
+            <div class="controls" data-ng-show="stCtrl.pdfUrl && !stCtrl.showMessage">
+                <ul>
+                    <li class="noMobilePdf">
+                        <a id="zoomInPDFButton" role="link" data-ng-class="{'nextTabableElement': stCtrl.pdfUrl}" data-ng-click="stCtrl.zoomIn()"
+                           ng-keypress="stCtrl.zoomIn($event)" tabindex = "0" aria-label="{{stCtrl.i18n.zoomIn}}">
+                            <i class="icon-circle-add"></i>
+                        </a>
+                        <a id="zoomOutPDFButton" role="link" data-ng-click="stCtrl.zoomOut()" ng-keypress="stCtrl.zoomOut($event)"
+                           tabindex = "0" aria-label="{{stCtrl.i18n.zoomOut}}">
+                            <i class="icon-circle-minus"></i>
+                        </a>
+                        {{stCtrl.i18n.zoom}}
+                    </li>
+                    <li class="noMobilePdf">
+                        <a id="printStatementButton" role="link" data-ng-click="stCtrl.printStatement()" ng-keypress="stCtrl.printStatement($event)"
+                           tabindex="0"><i class="icon-print"></i>{{stCtrl.i18n.print}}</a>
+                    </li>
+                    <li class="download">
+                        <a id="downloadStatementLink" role="link" data-ng-href="{{stCtrl.pdfUrl}}" download target="_blank" tabindex="0">
+                            <i class="icon-circle-arrowdown zindexnegative" ></i>
+                            <span class="noMobilePdf">{{stCtrl.i18n.download}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="pdfFile">
+            <div class="message" data-ng-if="stCtrl.showMessage">
+                <div class="title" role="text">{{stCtrl.errorMessage.title}}</div>
+                <div class="content" role="text">{{stCtrl.errorMessage.content}}</div>
+                <div class="pdfButton nextTabableElement" tabindex="0" role="button" aria-label="{{stCtrl.i18n.messageClose}}" data-ng-click="stCtrl.close()">
+                    {{stCtrl.i18n.okay}}
+                </div>
+            </div>
+            <div class="load-spinner-section" data-ng-show="stCtrl.showSpinner">
+                <div class="bank-spinner black_loading">
+                </div>
+            </div>
+            <div tabindex="0" data-ng-if="stCtrl.isServiceWorking" ease-pdf-viewer id="ease-pdf-viewer" scale="stCtrl.scalePdf"
+                 pdf-url="stCtrl.pdfUrl" accessor="stCtrl.accessor" loading="stCtrl.isLoading" ng-class="{hideCanvas: stCtrl.showSpinner}">
+            </div>
+        </div>
+    </div>
+</ease-ui-modal>

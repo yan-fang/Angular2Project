@@ -1,0 +1,27 @@
+<h2>{{::BankDispute.pageProperties.modalTitle[BankDispute.disputeType]}}</h2>
+<div class='sub-title'>{{::BankDispute.pageProperties.modalSubTitle}}</div>
+
+<div class="separator"></div>
+<div class="checklist">
+    <div class="checklist-item" ng-repeat="message in BankDispute.pageProperties.checkList[BankDispute.disputeType]">
+        <span class="icon-check"></span><div class="checklist-message">{{::message}}</div>
+    </div>
+</div>
+
+<div class="separator bottom-bar"></div>
+<div class="call-us">
+    <div>
+        {{::BankDispute.pageProperties.callUs.USA.message}}
+        <a aria-label="In state customer care number" role="link" class="phone-number usa"
+              data-ng-href="{{::BankDispute.pageProperties.callUs.USA.numberLink}}">
+            {{::BankDispute.pageProperties.callUs.USA.number}}
+        </a>
+    </div>
+    <div class="overseas">
+        {{::BankDispute.pageProperties.callUs.overseas.message}}<br>
+        <a aria-label="Overseas customer care number" role="link" class="phone-number"
+              data-ng-href="{{::BankDispute.pageProperties.callUs.overseas.numberLink}}">
+            {{::BankDispute.pageProperties.callUs.overseas.number}}
+        </a>
+    </div>
+</div>

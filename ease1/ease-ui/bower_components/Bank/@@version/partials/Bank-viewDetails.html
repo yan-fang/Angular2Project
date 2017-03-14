@@ -1,0 +1,175 @@
+<ease-ui-modal style="z-index:100;" close-modal="bankViewDetails.close()" init-close="bankViewDetails.initClose"
+     modal-id="viewDetails" ng-class="bankViewDetails.modalType" double-wide="true">
+  <div class="container">
+    <div class="group">
+      <h2 id="nickName">{{::bankViewDetails.displayName}}</h2>
+      <ul>
+        <li><p class="available-balance-label" ng-if="!bankViewDetails.isCDAccount">{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.availableBal']}}</p>
+          <p class="available-balance-label" ng-if="bankViewDetails.isCDAccount">{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.cd.availableBal']}}</p></li>
+        <li>
+          <p class="balance-amount">
+            {{::bankViewDetails.bankAccountData.availableBalance | currency}}
+          </p>
+        </li>
+      </ul>
+    </div>
+    <!--<h4><i class="icon-avatar"></i> Account Info</h4>-->
+    <div class="group">
+      <h4>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.accountInfo']}}</h4>
+      <div class="row">
+        <div class="col-6">
+           <div class="field">
+            <h5>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.currentBalance']}}</h5>
+           <div id="currentBalance">{{::bankViewDetails.bankAccountData.currentBalance | currency}}</div>
+          </div>
+          <div class="field">
+            <h5>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.accountNumber']}}</h5>
+           <div id="accountNumber_TLNPI" name="accountNumber_TLNPI">{{::bankViewDetails.bankAccountData.accountNumberTLNPI}}</div>
+          </div>
+          <div class="field" ng-if="!bankViewDetails.isTrustAccount">
+            <h5>{{::bankViewDetails.accountHolderLabel}}</h5>
+            <div id="primaryAccountHolder">{{::bankViewDetails.primaryAccountHolder}}</div>
+          </div>
+          <div class="field" ng-if="bankViewDetails.isTrustAccount">
+            <h5>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.trust.name']}}</h5>
+            <div id="trustName">
+              {{::bankViewDetails.bankAccountData.accountTitle.accountTitleLine3}}
+              <span data-ng-repeat="i in [4,5,6]" ng-if="bankViewDetails.bankAccountData.accountTitle['accountTitleLine'+i]"><br>{{::bankViewDetails.bankAccountData.accountTitle['accountTitleLine'+i]}}</span>
+            </div>
+          </div>
+          <div class="field" ng-if="bankViewDetails.isTrustAccount">
+            <h5>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.grantor.name']}}</h5>
+            <div id="grantorName">
+              {{::bankViewDetails.bankAccountData.accountTitle.accountTitleLine1}}
+              <span ng-if="bankViewDetails.bankAccountData.accountTitle.accountTitleLine2"><br>{{::bankViewDetails.bankAccountData.accountTitle.accountTitleLine2}}</span>
+            </div>
+          </div>
+          <div class="field"  ng-if="!bankViewDetails.isTrustAccount && bankViewDetails.secondaryAccountHolder">
+            <h5>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.secondaryAccountHolder']}}</h5>
+            <div id="secondaryAccountHolder">{{::bankViewDetails.secondaryAccountHolder}}</div>
+          </div>
+          <div class="field">
+            <h5>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.accountType']}}</h5>
+            <div id="accountType">{{::bankViewDetails.bankAccountData.productName}}</div>
+          </div>
+          <div class="field" ng-if="bankViewDetails.isCDAccount">
+            <h5>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.cdTerm']}}</h5>
+            <div id="cdTerm">{{::bankViewDetails.bankAccountData.cdTerm}}</div>
+          </div>
+        </div>
+        <div class="col-6" ng-if="!bankViewDetails.isCDAccount">
+          <div class="routingNumberfield">
+            <h5>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.routingNumber']}}</h5>
+            <div id="routingNumber">{{::bankViewDetails.isRoutingNumberActivated}}</div>
+          </div>
+          <div class="field">
+            <h5>{{::bankViewDetails.debitCardLabel}}</h5>
+            <div id="primaryDebitCardNumber">{{::bankViewDetails.primaryAccountHolderCardNumber}}</div>
+          </div>
+            <div class="field" ng-if="bankViewDetails.isJointAccount">
+            <h5>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.secondaryDebitCardNumber']}}</h5>
+            <div id="secondaryDebitCardNumber">{{::bankViewDetails.secondaryAccountHolderCardNumber}}</div>
+          </div>
+          <div class="field" ng-if="bankViewDetails.hideOwnershipType">
+            <h5>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.ownershipType']}}</h5>
+            <div id="ownershipType1">{{::bankViewDetails.getOwnerShipType}}</div>
+          </div>
+        </div>
+        <div class="col-6" ng-if="bankViewDetails.isCDAccount">
+          <div class="field" ng-if="bankViewDetails.isCDAccount">
+            <h5>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.earlyRedemptionValue']}}</h5>
+          <div id="todaysEarlyRedemptionValue">{{::bankViewDetails.bankAccountData.earlyRedemptionBalance | currency}}</div>
+          </div>
+          <div class="field">
+            <h5>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.maturityDate']}}</h5>
+            <div id="maturityDate">{{::bankViewDetails.bankAccountData.maturityDate | date : MM/DD/YYYY}}</div>
+          </div>
+          <div class="field">
+            <h5>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.initialDeposit']}}</h5>
+            <div id="initialDepositAmount">{{::bankViewDetails.bankAccountData.initialDepositAmount | currency}}</div>
+          </div>
+          <div class="field" ng-if="bankViewDetails.bankAccountData.maturityAmount">
+            <h5>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.maturityValue']}}</h5>
+            <div id="maturityAmount">{{::bankViewDetails.bankAccountData.maturityAmount | currency}}</div>
+          </div>
+          <div class="field" ng-if="bankViewDetails.hideOwnershipType">
+            <h5>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.ownershipType']}}</h5>
+            <div id="ownershipType2">{{::bankViewDetails.getOwnerShipType}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="group" data-ng-if="bankViewDetails.bankAccountData.overDraftDetails[0]">
+      <h4>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.overdraftProtection']}}</h4>
+      <div class="row">
+        <div class="col-6">
+          <div class="field">
+            <h5>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.overdraftLineOfCredit']}}</h5>
+            <div id="overdraftLOC">{{::bankViewDetails.bankAccountData.overDraftDetails[0].overDraftLineOfCreditAmount | currency}}</div>
+          </div>
+          <div class="field">
+            <h5>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.overdraftInterestRate']}}</h5>
+            <div id="overdraftInterestRate">{{::bankViewDetails.bankAccountData.overDraftDetails[0].overDraftInterestRate}}%</div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="field">
+            <h5>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.overdraftAmount']}}</h5>
+            <div id="overdraftAmount">{{::bankViewDetails.bankAccountData.overDraftDetails[0].totalOverDraftAmount | currency}}</div>
+          </div>
+          <div class="field">
+            <h5>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.overdraftInterestPaid']}} {{bankViewDetails.currentYear}}</h5>
+            <div id="overdraftInterestPaid">{{::bankViewDetails.bankAccountData.overDraftDetails[0].overDraftInterestPaidYTD | currency}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="group">
+      <h4>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.interest']}}</h4>
+      <div class="row">
+        <div class="col-6">
+          <div class="field">
+            <h5>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.annualPercentageYield']}}</h5>
+            <div id="annualPercentageYield" ng-if="bankViewDetails.bankAccountData.currentAnnualPercentageYield">{{::bankViewDetails.bankAccountData.currentAnnualPercentageYield}}%</div>
+          </div>
+          <div class="field" ng-if="bankViewDetails.isCDAccount">
+            <h5>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.costToRedeemEarly']}}</h5>
+            <div id="earlyRedemptionPenalty">{{::bankViewDetails.bankAccountData.earlyRedemptionPenalty}}</div>
+          </div>
+          <div class="field" ng-if="!bankViewDetails.isCDAccount">
+            <h5>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.interestCaps']}} {{bankViewDetails.currentMonth}}</h5>
+            <div id="interestPaidAmountCurrentMonth">{{::bankViewDetails.bankAccountData.interestEarnedCurrentMonth | currency}}</div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="field" ng-if="!bankViewDetails.isCDAccount">
+            <h5>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.interestCaps']}} {{bankViewDetails.lastYear}} </h5>
+            <div id="interestPaidAmountLastYear">{{::bankViewDetails.bankAccountData.interestPaidinPreviousYear | currency}}</div>
+          </div>
+          <div class="field">
+            <h5>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.interestCaps']}} {{bankViewDetails.currentYear}}</h5>
+            <div id="interestCurrentYear">{{::bankViewDetails.bankAccountData.interestPaidYeartoDate | currency}}</div>
+          </div>
+          <div class="field" ng-if="bankViewDetails.isCDAccount">
+            <h5>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.interestAccruedAmount']}}</h5>
+            <div id="interestEarnedtoDate">{{::bankViewDetails.bankAccountData.interestAccruedAmount | currency}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="group">
+      <div class="row">
+        <div class="col-6">
+          <div class="terms-conditions" ng-if="!bankViewDetails.isRetailAccount">
+            <a tabindex="0" id="AccountTermsWeb" href="#" class="linkCursor" data-ng-click="bankViewDetails.viewDisclosures($event)">{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.viewCurrentTerms&Conditions']}} </a>
+          </div>
+          <div class="terms-conditions" ng-if="bankViewDetails.showTruthInSavingsDisclosure">
+            <a tabindex="0" id="TruthInSavingDisclosure" class="linkCursor" data-ng-click="bankViewDetails.truthInSavingDisclosure()">{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.truthInSavingDisclosure']}} </a>
+          </div>
+            <a href="#" class="off-screen" focus-close-on-tab>{{::BankTransaction.i18nAccountDetails['ease.bank.accountDetails.hiddenElementforViewAccountDetail']}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</ease-ui-modal>

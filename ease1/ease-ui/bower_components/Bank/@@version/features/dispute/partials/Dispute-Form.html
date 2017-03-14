@@ -1,0 +1,47 @@
+<h2 id="modal-title">{{::BankDispute.pageProperties.modalTitle}}</h2>
+<div id="sub-title" class="sub-title">{{::BankDispute.pageProperties.modalSubTitle[BankDispute.cardHolder.type]}}</div>
+
+<ease-ui-dropdown
+        class = "dispute-dropdown"
+        is-open = "BankDispute.isDropdownOpen"
+        id = "dispute-reason-dropdown"
+        items ="BankDispute.disputeItemsMenu"
+        persist-items = "BankDispute.disputeItems"
+        select ="BankDispute.setSelectedItem(item)"
+        disable-search="true"
+        model-value = "BankDispute.selectedItemLabel"
+        combobox = "BankDispute.disputeData"
+        filter-by="label">
+      <ease-ui-dropdown-menu
+          class="ease-dropdown-menu"
+                select="BankDispute.setSelectedItem(item)"
+                items="BankDispute.disputeItemsMenu"
+                template="true"
+                is-open="BankDispute.isDropdownOpen"
+                component-id="dispute-reason"
+                text-overflow-ellipsis="false">
+                <li data-ng-repeat = "item in BankDispute.disputeItemsMenu"
+                    data-index = {{$index}}
+                    role = "option"
+                    tabindex="-1">
+                    <span tabindex = "-1" class="ease-itemlabel">{{item.label}}</span>
+                </li>
+      </ease-ui-dropdown-menu>
+</ease-ui-dropdown>
+
+<form id="dispute-form" class="dispute-form" name="disputeForm">
+    <formly-form model="BankDispute.formly.models[BankDispute.disputeReason]"
+                 fields="BankDispute.formly.fields[BankDispute.disputeReason]"></formly-form>
+    <character-counter
+            data-properties-to-watch="BankDispute.formly.models[BankDispute.disputeReason]"
+            data-display-toggle="BankDispute.showCounter"
+            data-max-count="BankDispute.maxCharacterCount"
+            data-assistive-text="BankDispute.pageProperties.remainingCharacters"
+            data-is-count-negative="BankDispute.isCountNegative"></character-counter>
+    <button id="dispute-form-submit"
+            type="submit"
+            class="final-button submit-form-button"
+            data-ng-disabled="disputeForm.$invalid || BankDispute.isDisputeFormSubmitDisabled()"
+            ng-click="BankDispute.submitNonFraudDispute()">{{::BankDispute.pageProperties.buttonText}}
+    </button>
+</form>

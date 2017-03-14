@@ -1,0 +1,20 @@
+ease-ui-dropdown.billpay-dropdown {
+  .ease-ui-dropdown-container {
+    .ease-ui-dropdown-title {
+      display: none;
+    }
+    .ease-ui-dropdown {
+      height: 48px;
+      padding-top: 15px;
+
+      @include breakpoint(phone) {
+        padding-top: 12px;
+
+        input {
+          height: 20px;
+        }
+      }
+
+    }
+  }
+}

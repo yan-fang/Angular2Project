@@ -1,0 +1,25 @@
+<div class="input-group amount-input">
+	<div class="label-group">
+		<div class="label-group">
+			<label id="{{$ctrl.id}}-label" for="{{$ctrl.id}}-input">
+			    <span class="label">{{$ctrl.label}}</span>
+			    <span class="label-info">{{$ctrl.subLabel}}</span>
+			</label>
+		</div>
+	</div>
+	<input id="{{$ctrl.id}}-input" 
+		class="on-foucs" 
+		name="{{$ctrl.id}}" 
+		tabindex="0" 
+		type="text" 
+		placeholder="$0.00" 
+		ng-model="$ctrl.amount"
+		ng-class="$ctrl.form[$ctrl.id].paymentAmountErrorMessage ? 'error-border' : '' "
+		aria-labelledby="{{$ctrl.id}}-label"
+		aria-describedby="{{$ctrl.id}}-error-msg"
+		format-amount 
+		required>
+	<div id="{{$ctrl.id}}-error-msg" class="error-summary">
+		<span ng-if="$ctrl.form[$ctrl.id].paymentAmountErrorMessage">{{$ctrl.form[$ctrl.id].paymentAmountErrorMessage}}</span>
+	</div>
+</div>

@@ -1,0 +1,26 @@
+<div class="group">
+  <ul>
+    <li>
+      <div class="field-key">
+        <p class="send-date-label-p2p">{{::upcomingCardDetailsCtrl.i18nUpcomingTransactions['ease.bank.upcomingTransactions.card.send']}}</p>
+      </div>
+      <div class="field-value">
+        <p class="send-date-value-p2p">{{::upComingTrans.availableFundsDate | date :  "MMM dd, y"}}</p>
+      </div>
+    </li>
+    <li>
+      <div class="field-key">
+        <p class="deliverBy-type-label">{{::upcomingCardDetailsCtrl.i18nUpcomingTransactions['ease.bank.upcomingTransactions.card.transfers.funds.availableOn']}}</p>
+      </div>
+      <div class="field-value">
+        <p class="deliverBy-type-value">{{::upComingTrans.availableFundsDate | date :  "MMM dd, y"}}</p>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="field"></div>
+<div class="scheduled-date-label processing-status-label">
+  <i ng-class="upcomingCardDetailsCtrl.UpcomingHelpers.getTransactionSource(upComingTrans)"></i>
+  {{::upComingTrans.transactionSource}}
+</div>

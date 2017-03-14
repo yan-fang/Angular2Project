@@ -1,0 +1,171 @@
+<ease-ui-modal
+  id="recurring-payment"
+  close-modal="RecurringCtl.close()"
+  modal-title="RecurringCtl.pageTitle"
+  ng-class="RecurringCtl.modalClass">
+
+  <div id="recurring-payment-content" class="recurring-payment">
+
+    <div class="main-page" ng-if="RecurringCtl.uiSwitch.page==='main'">
+
+      <p class="sub-heading" tabindex="0">To {{RecurringCtl.paymentInformation.payee | showPayeeName: 'displayName'}}<br/></p>
+
+      <form id="PaymentForm" name="PaymentForm" autocomplete="off">
+
+        <billpay-amount
+          id="payment-amount"
+          label="Amount"
+          sub-label="{{RecurringCtl.getAmountSubLabel()}}"
+          amount="RecurringCtl.paymentInformation.paymentAmount"
+          form="PaymentForm"
+        >
+        </billpay-amount>
+
+        <div class="payment-frequency">
+
+          <frequency-selection
+            id="frequency-selection"
+            datasource="RecurringCtl.frequencyOptions"
+            frequency="RecurringCtl.paymentInformation.frequency"
+            display-field="display"
+            value-field="value">
+          </frequency-selection>
+
+          <date-input
+            id="first-payment-date"
+            form="PaymentForm"
+            date="RecurringCtl.paymentInformation.firstPaymentDate"
+            sub-label="{{RecurringCtl.getStartDateSubLabel()}}"
+            icon-click="RecurringCtl.pickPaymentDate('firstPaymentDate')">
+          </date-input>
+
+          <stop-payment
+            id="stop-payment"
+            input-obj="RecurringCtl.paymentInformation"
+            field="duration"
+            no-stop-fn="RecurringCtl.clearStopPaymentInfo()"
+            stop-by-date-fn="RecurringCtl.changeStopPaymentDate(eventFrom)"
+            stop-by-payments-fn="RecurringCtl.changeNumberOfPayment(eventFrom)"
+            final-payment-date="{{RecurringCtl.paymentInformation.finalPaymentDate}}"
+            number-of-payments="{{RecurringCtl.paymentInformation.numberOfPayments}}"
+            last-payment-amount="{{RecurringCtl.paymentInformation.finalPaymentAmount}}"
+          >
+          </stop-payment>
+        </div>
+        
+        <pay-from
+          id="pay-from"
+          form="PaymentForm"
+          accounts="RecurringCtl.eligibleAccounts.accounts"
+          display-field="displayName"
+          input-obj="RecurringCtl.paymentInformation"
+          field="account"
+          account-on-change="RecurringCtl.accountOnChange()">
+        </pay-from>
+
+        <email-notifications
+          id="recurring-payment-notification"
+          email=""
+          checkbox-options="RecurringCtl.notificationOptions"
+          input-obj="RecurringCtl.paymentInformation">
+        </email-notifications>
+
+        <!-- <button id="PaymentSubmitBtn" aria-describedby="paymentDisclaimer" ng-click="RecurringCtl.schedulePayment()" class="btn action on-foucs" ng-disabled="PaymentForm.$invalid" tabindex="0">
+          <span>Schedule Recurring</span>
+        </button> -->
+
+        <submit-button
+          id="submit-recurring-recurring"
+          label="Schedule Recurring"
+          is-disabled="{{PaymentForm.$invalid || RecurringCtl.isPaymentProcessing}}"
+          is-loading="{{RecurringCtl.isPaymentProcessing}}"
+          submit-fn="RecurringCtl.schedulePayment()"
+          bg-color="action"
+        >
+        </submit-button>
+
+        <p id="paymentDisclaimer" class="note">By Clicking the "Schedule Recurring" button, I authorize Capital One to make recurring debits from my account as indicated above until the end date I have specified, if any.</p>
+      </form>
+    </div>
+
+    <div ng-if="RecurringCtl.uiSwitch.page==='endPaymentByDate'">
+
+      <p class="sub-heading">To {{RecurringCtl.paymentInformation.payee | showPayeeName: 'displayName'}}<br/></p>
+
+      <form id="EndPaymentByDateForm" name="EndPaymentByDateForm" autocomplete="off">
+        <date-input
+          id="end-payment-date-input"
+          form="EndPaymentByDateForm"
+          date="RecurringCtl.paymentInformation.finalPaymentDate"
+          label="Stop on"
+          icon-click="RecurringCtl.pickPaymentDate('finalPaymentDate')">
+        </date-input>
+
+        <last-payment-amount
+          id="end-payment-date-last-payment-amount"
+          form="EndPaymentByDateForm"
+          input-obj="RecurringCtl.paymentInformation"
+          field="finalPaymentAmount">
+        </last-payment-amount>
+      </form>
+
+      <button id="EndPaymentByDateDoneBtn"
+        class="btn btn-done action on-foucs"
+        tabindex="0"
+        ng-click="RecurringCtl.goToMainPage()"
+        ng-disabled="EndPaymentByDateForm.$invalid">
+        <span>Done</span>
+      </button>
+    </div>
+
+    <div ng-if="RecurringCtl.uiSwitch.page==='endPaymentByNumberOfPayments'">
+
+      <p class="sub-heading">To {{RecurringCtl.paymentInformation.payee | showPayeeName: 'displayName'}}<br/></p>
+
+      <form id="EndByNumberOfPaymentsForm" name="EndByNumberOfPaymentsForm" autocomplete="off">
+        <number-input
+          id="end-number-of-payment-number-input"
+          label="End After"
+          form="EndByNumberOfPaymentsForm"
+          input-obj="RecurringCtl.paymentInformation"
+          field="numberOfPayments"
+          go-to-onetime-fn="RecurringCtl.goToOnetimeFn()">
+        </number-input>
+
+        <last-payment-amount
+          id="end-number-of-payment-last-payment-amount"
+          form="EndByNumberOfPaymentsForm"
+          input-obj="RecurringCtl.paymentInformation"
+          field="finalPaymentAmount">
+        </last-payment-amount>
+      </form>
+      <button id="EndByNumberOfPaymentsFormDoneBtn" ng-click="RecurringCtl.goToMainPage()" class="btn btn-done action on-foucs" ng-disabled="EndByNumberOfPaymentsForm.$invalid" tabindex="0">
+        <span>Done</span>
+      </button>
+    </div>
+
+    <div class="billpay-datepicker-container" ng-if="RecurringCtl.uiSwitch.page==='datepicker'">
+      <p class="sub-heading" ng-if="RecurringCtl.uiSwitch.datepickerMode==='firstPaymentDate'">
+        Pick a Send Date
+      </p>
+      <p class="sub-heading" ng-if="RecurringCtl.uiSwitch.datepickerMode==='finalPaymentDate'">
+        Stop paying {{RecurringCtl.paymentInformation.payee | showPayeeName: 'displayName'}}
+      </p>
+
+      <ease-calendar 
+        class="billpay-datepicker"
+        ng-model="RecurringCtl.calendarOutPut.paymentDate"
+        calendar-options="RecurringCtl.calendarConfig"
+        tabindex="-1">
+      </ease-calendar>
+
+      <button
+        id="SelectDateDoneBtn"
+        data-ng-click="RecurringCtl.pickDateDone()"
+        class="button progressive datePicker-done-btn"
+        tabindex="0">
+        Done
+      </button>
+    </div>
+  </div>
+</ease-ui-modal>

@@ -1,0 +1,8 @@
+<ease-ui-modal focus-id="focusId" ease-modal-title="Card Details Modal" close-modal="upcomingCardDetailsCtrl.close()" modal-class="upcomingCardDetailsCtrl.modalClass" modal-id="'upcoming-card-details-action-modal'" ng-class="upcomingCardDetailsCtrl.modalType">
+  <div class="container">
+      <div ng-init="upComingTrans = upcomingCardDetailsCtrl.upcomingTransactions[upcomingCardDetailsCtrl.selectedCardIndex]">
+        <div class="inner-container" data-ng-include='upcomingCardDetailsCtrl.cardDetailsTemplateUrl'></div>
+        <div class="card-number">{{::upComingTrans.cardNumber}} of {{upcomingCardDetailsCtrl.totalCards}}</div>
+      </div>
+  </div>
+</ease-ui-modal>

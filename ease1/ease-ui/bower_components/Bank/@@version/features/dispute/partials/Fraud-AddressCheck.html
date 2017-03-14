@@ -1,0 +1,24 @@
+<h2>{{::BankDispute.pageProperties.modalTitle}}</h2>
+
+<div class="fraud-message">
+    {{::BankDispute.pageProperties.modalMessages[BankDispute.cardHolder.type]}}
+</div>
+
+<div ng-if="::BankDispute.transactionObj.purchaserAddress" class="mailing-address">
+    <div class="address">
+        {{::BankDispute.transactionObj.purchaserAddress.addressLine1}}
+        {{::BankDispute.transactionObj.purchaserAddress.addressLine2}}
+    </div>
+    <div class="address">
+        {{::BankDispute.transactionObj.purchaserAddress.city}}, {{::BankDispute.transactionObj.purchaserAddress.state}}
+        {{::BankDispute.transactionObj.purchaserAddress.postalCode}}
+    </div>
+</div>
+
+<button id='continue-button' role="button" type="button"
+        class="progressive" data-ng-disabled="BankDispute.disableButton" ng-click="BankDispute.submitFraudDispute()">
+    <div ng-class="BankDispute.loading">
+        <span class="button-text">{{::BankDispute.pageProperties.buttonText}}</span>
+    </div>
+</button>
+<a id="nevermind-link" class="nevermind-link" href="" ng-click="BankDispute.goToView('callToComplete')">{{::BankDispute.pageProperties.nevermind}}</a>

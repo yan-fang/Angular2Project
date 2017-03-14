@@ -1,0 +1,22 @@
+<div class="billpay-lastPaymentAmount">
+	<div class="input-group checkbox">
+		<label class="checkbox-label">
+			<input id="{{$ctrl.id}}-checkbox" 
+				class="on-foucs" 
+				type="checkbox"
+				tabindex="0"
+				role="checkbox"
+				ng-model="$ctrl.isDifferentAmount"
+				ng-click="$ctrl.toggleAmountInput()"/>
+			Last Payment is a different amount
+		</label>
+	</div>
+
+	<amount-input
+		id="{{$ctrl.id}}-amount-input"
+		form="$ctrl.form"
+		amount="$ctrl.inputObj[$ctrl.field]"
+		ng-if="$ctrl.isDifferentAmount">
+	</amount-input>
+
+</div>

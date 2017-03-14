@@ -1,0 +1,7 @@
+<ease-ui-modal
+  close-modal="error.close()"
+  ng-class="error.modalClass"
+  modal-title="error.modalTitle">
+  <p id="billpay-error-message" tabindex="0" class="subheading">{{error.error}}</p>
+  <button class="btn-close progressive" tabindex="1" id="BillPay-errorBtn" ng-click="error.close()">Okay</button>
+</ease-ui-modal>

@@ -1,0 +1,11 @@
+<textarea id="{{::id}}"
+       name="{{::id}}"
+       class="formly-custom-input"
+       data-ng-model="model[options.key]"></textarea>
+<character-counter
+  data-properties-to-watch="model[options.key]"
+  data-display-toggle='true'
+  data-max-count="to.countdownOptions.maxCharacterCount"
+  data-assistive-text="to.countdownOptions.assistiveText"
+  data-is-count-negative="to.countdownOptions.isCountNegative"></character-counter>
+

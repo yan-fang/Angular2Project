@@ -1,0 +1,61 @@
+<accordion-drawer id='transaction-drawer-{{::transaction.transactionId}}'
+                  class="bank-enhanced-transaction"
+                  role="region"
+                  aria-label="Transaction {{::transaction.transactionId}} extra information area."
+                  aria-live="polite" is-open="accordionVM.isOpen($index)"
+                  accordion-open="accordionVM.accordionParent.logDrawerOpenEvent('billpay')"
+                  accordion-close="accordionVM.accordionParent.logDrawerCloseEvent('transactions:Drawer:Close')"
+                  aria-hidden="{{!accordionVM.isOpen($index)}}">
+    <span ng-if="transaction.transactionStopRequested" class="alert-message stop-requested" aria-live="polite" role="alert">{{accordionVM.accordionParent.i18nPastTransactions["ease.bank.pastTransactions.stopPaymentMessage"]}}</span>
+    <div class="cleansed-data" ng-class="{'max-width': !transaction.merchant.address}">
+        <div class="merchant-block" ng-if="transaction.merchant.address || transaction.merchant.phoneNumber">
+            <a ng-if="transaction.merchant.phoneNumber" ng-href="tel:{{::transaction.merchant.phoneNumber}}"
+               ng-class="{hide : !accordionVM.isOpen($index)}" class="single-line phone-number">
+                {{transaction.merchant.phoneNumber}}
+            </a>
+            <a ng-if="transaction.merchant.websiteURL.href"
+               ng-class="{hide : !accordionVM.isOpen($index)}" class="single-line-link merchant-website" target="_blank"
+               ng-href={{transaction.merchant.websiteURL.href}}
+               stop-event-prop
+               data-ng-click="accordionVM.accordionParent.logClickEvent('merchant')"
+               title='Link to {{::transaction.merchantName}}, {{::accordionVM.accordionParent.i18nPastTransactions["ease.bank.pastTransactions.opensANewWindow"]}}'>
+                {{::accordionVM.accordionParent.i18nPastTransactions["ease.bank.pastTransactions.merchantWebsite"]}}
+            </a>
+        </div>
+
+        <table class="ets-table">
+            <tr class="ets-row" data-ng-show="transaction.transactionType.description">
+                <td class="key">{{::accordionVM.accordionParent.i18nPastTransactions["ease.bank.pastTransactions.transactionType"]}}</td>
+                <td class="value transaction-type">{{transaction.transactionType.description}}</td>
+            </tr>
+          <tr class="ets-row">
+            <td class="key">{{::accordionVM.accordionParent.i18nPastTransactions["ease.bank.pastTransactions.sentOn"]}}</td>
+            <td class="value sent-date">{{transaction.transactionOverview.transactionDate | date : 'EEE, MMM d, y'}}</td>
+          </tr>
+        </table>
+        <span ng-if="transaction.checkCleared" class="grey-out" aria-live="polite">{{accordionVM.accordionParent.i18nPastTransactions["ease.bank.pastTransactions.checkNotCashedMessage"]}}</span>
+        <span class="grey-out statement-description"><b>{{::accordionVM.accordionParent.i18nPastTransactions["ease.bank.pastTransactions.appearsOnStatementAs"]}}
+          </b><i class="italic">{{transaction.statementDescription}}</i></span>
+
+        <transaction-memo
+                data-memo-label="accordionVM.accordionParent.i18nPastTransactions['memoLabel']"
+                data-memo="transaction.transactionDescriptionDetail.memoText"></transaction-memo>
+
+      <span>
+        <a class="single-line-link"
+           target="_blank"
+           ng-href="{{accordionVM.accordionParent.longTailUrls.billPay}}"
+           data-ng-click="accordionVM.accordionParent.logClickEvent('bill payment management')"
+           tabindex="{{accordionVM.accordionParent.getTabIndex(accordionVM.isOpen($index))}}"
+           stop-event-prop>
+            <i class="icon-calendar"></i> {{::accordionVM.accordionParent.i18nPastTransactions["ease.bank.pastTransactions.ModifyFutureBillPay"]}}
+        </a> </span>
+        <br>
+        <div id='transaction-{{::transaction.transactionId}}-dispute'
+           class="single-line-link"
+           ng-click="$event.stopPropagation(); accordionVM.accordionParent.goToDisputeModal('billPay', $index, 'disputeCheckList')"
+           tabindex="{{accordionVM.accordionParent.getTabIndex(accordionVM.isOpen($index))}}">
+            <span class="icon-megaphone-outline"></span> {{::accordionVM.accordionParent.i18nPastTransactions["ease.bank.pastTransactions.reportproblem"]}}
+        </div>
+    </div>
+</accordion-drawer>

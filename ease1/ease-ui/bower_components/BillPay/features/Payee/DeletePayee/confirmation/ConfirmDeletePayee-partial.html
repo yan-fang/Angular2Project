@@ -1,0 +1,22 @@
+<ease-ui-modal
+  close-modal="ConfirmDeletePayeeCtl.close()"
+  modal-title="ConfirmDeletePayeeCtl.modalTitle"
+  ng-class="ConfirmDeletePayeeCtl.modalClass">
+  <div ng-if="ConfirmDeletePayeeCtl.eBillStatus !== 'EbillActive'">
+    <p class="sub-heading">You deleted <strong>{{ConfirmDeletePayeeCtl.nameToDisplay}}</strong> from your list of payees.</p>
+
+    <p class="sub-heading" ng-if="ConfirmDeletePayeeCtl.numberOfPendingPayments==1">1 pending payment was canceled.</p>
+
+    <p class="sub-heading" ng-if="ConfirmDeletePayeeCtl.numberOfPendingPayments>1">{{ConfirmDeletePayeeCtl.numberOfPendingPayments}} pending payments were canceled.</p>
+
+    <info-list
+      id="payeeInfo"
+      info="ConfirmDeletePayeeCtl.info"
+      number-of-rows="{{ConfirmDeletePayeeCtl.info.length}}">
+    </info-list>
+  </div>
+  <div ng-if="ConfirmDeletePayeeCtl.eBillStatus === 'EbillActive'">
+    <p class="sub-heading"><strong>{{ConfirmDeletePayeeCtl.nameToDisplay}}</strong> is enrolled in eBills and can’t be deleted until you unenroll. You can unenroll from eBills by visiting our <a href="https://secure.capitalone360.com">full site</a>.
+    </p>
+  </div>
+</ease-ui-modal>

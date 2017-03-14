@@ -1,0 +1,8 @@
+<div class="cancel-recurring-confirmation">
+  <p class="sub-heading" ng-if="$ctrl.selectedOption==='one'"> You deleted your payment to <strong>{{$ctrl.paymentDetail.payeeInfo.payeeName}}</strong> on <strong>{{$ctrl.paymentDetail.adjustedNextPaymentDate | date: "MMM dd, yyyy"}}</strong>.
+  	</br></br>
+  	Other remaining payments will not be affected.
+  </p>
+  <p class="sub-heading" ng-if="$ctrl.selectedOption==='all'"> You deleted all your recurring payments to <strong>{{$ctrl.paymentDetail.payeeInfo.payeeName}}</strong> which are scheduled <strong>{{$ctrl.getFrequencyDisplayValue($ctrl.paymentDetail.paymentPlanDetailModel.frequencyCode)}} </strong>starting <strong>{{$ctrl.paymentDetail.adjustedNextPaymentDate | stringDate: "MMM dd"}}</strong>.
+  </p>
+</div> 

@@ -1,0 +1,14 @@
+.stop-payment {
+  fieldset {
+    margin-top: 3rem;
+
+    .input-radio-block {
+      display: block;
+      height: 4rem;
+
+      .radio-input-block {
+        line-height: 1.2rem;
+      }
+    }
+  }
+}

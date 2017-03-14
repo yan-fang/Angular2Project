@@ -1,0 +1,48 @@
+<div id="debit-reorder-card">
+  <h1 class="title" tabindex="0">
+    {{debitOrder.i18n.reorder.confirm.title}}
+  </h1>
+
+  <ul class="confirm-order review-list">
+    <li class="review-item" tabindex="0">
+      {{debitOrder.i18n.reorder.confirm.description.closeCard}}
+    </li>
+    <li class="review-item" tabindex="0">
+      {{debitOrder.i18n.reorder.confirm.description.newNumber}}
+    </li>
+    <li class="review-item" tabindex="0">
+      {{debitOrder.models.isCardExpedited ?
+      debitOrder.i18n.ship.delivery.expedited.name :
+      debitOrder.i18n.ship.delivery.standard.name}}
+      {{debitOrder.i18n.reorder.confirm.description.arrival}}
+      {{debitOrder.models.isCardExpedited ?
+      debitOrder.i18n.ship.delivery.expedited.time :
+      debitOrder.i18n.ship.delivery.standard.time}}
+    </li>
+  </ul>
+
+  <div class="error-text" ng-if="debitOrder.errors.REORDER">
+    {{debitOrder.errors.REORDER}}
+  </div>
+
+  <div class="actions">
+    <button type="button"
+            id="reorder-card-button"
+            class="btn"
+            tabindex="0"
+            data-ng-disabled="debitOrder.submitDisabled"
+            data-ng-click="debitOrder.reorderCard()">
+      <span data-ng-class="{ loading: debitOrder.showLoading }">
+        {{debitOrder.i18n.reorder.confirm.action}}
+      </span>
+    </button>
+
+    <button type="button"
+            id="cancel-reorder"
+            class="learn-more-link"
+            tabindex="0"
+            data-ng-click="debitOrder.cancelOrder()">
+      {{debitOrder.i18n.reorder.confirm.cancel}}
+    </button>
+  </div>
+</div>

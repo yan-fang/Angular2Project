@@ -1,0 +1,19 @@
+.error-modal {
+  text-align: center;
+
+  .ease-modal-circle {
+    background-image: url('#{$images-folder}/snag.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  .subheading {
+    color: $btn-regressive;
+    font-size: 1.8rem;
+    margin: 2rem 0;
+  }
+
+  .btn-close {
+    width: 100%;
+  }
+}

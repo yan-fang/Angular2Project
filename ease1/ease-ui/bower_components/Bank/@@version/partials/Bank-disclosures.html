@@ -1,0 +1,24 @@
+<div style="z-index:100;" ease-modal toggle-close="bankDisclosuresCtrl.close()" init-close="bankDisclosuresCtrl.initClose"
+     modal-class="bankDisclosuresCtrl.modalClass" modal-type="bankDisclosuresCtrl.modalType"
+     focus-id="focusId" xmlns="http://www.w3.org/1999/html">
+  <h2 id="disclosureheader" class="account-disclosures">{{::bankDisclosuresCtrl.i18nTermsAndConditions['accountdisclosures']}}</h2>
+  <div class="downloadtermsandconditions">
+    <button id='downloadtermsandconditions' class="downloadtermsandconditions">Download PDF</button>
+  </div>
+  <div id="disclosureHeaderContentHide">
+    <p><a ng-click='bankDisclosuresCtrl.scrollTo("truthinsavingsdisclosure")'>{{::bankDisclosuresCtrl.i18nTermsAndConditions['truthinsavingsdisclosure']}}</a></p>
+    <p data-ng-if="bankDisclosuresCtrl.isCheckingTermsAndConditions"><a ng-click='bankDisclosuresCtrl.scrollTo("360checkingagreement")'>{{::bankDisclosuresCtrl.i18nTermsAndConditions['360checkingagreement']}}</a></p>
+    <p data-ng-if="!bankDisclosuresCtrl.isCheckingTermsAndConditions"><a ng-click='bankDisclosuresCtrl.scrollTo("accounttermsandconditions")'>{{::bankDisclosuresCtrl.i18nTermsAndConditions['accounttermsandconditions']}}</a></p>
+    <p><a ng-click='bankDisclosuresCtrl.scrollTo("electronicfundtransferdisclosure")'>{{::bankDisclosuresCtrl.i18nTermsAndConditions['electronicfundtransfer']}}</a></p>
+    <p data-ng-if="bankDisclosuresCtrl.isCheckingTermsAndConditions || bankDisclosuresCtrl.isMoneyTC">
+      <a ng-click='bankDisclosuresCtrl.scrollTo("depositavailabilitydisclosure")'>{{::bankDisclosuresCtrl.i18nTermsAndConditions['depositavailability']}}</a>
+    </p>
+    <div id="showcheckingcontent" data-ng-if="bankDisclosuresCtrl.isCheckingTermsAndConditions">
+      <p><a ng-click='bankDisclosuresCtrl.scrollTo("overdraftprotectionservice")'>{{::bankDisclosuresCtrl.i18nTermsAndConditions['overdraftprotectionservice']}}</a></p>
+      <p><a ng-click='bankDisclosuresCtrl.scrollTo("overdraftlineofcreditagreement")'>{{::bankDisclosuresCtrl.i18nTermsAndConditions['overdraftlocagreement']}}</a></p>
+      <p><a ng-click='bankDisclosuresCtrl.scrollTo("freesavingstransferagreement")'>{{::bankDisclosuresCtrl.i18nTermsAndConditions['freesavingstransferagreement']}}</a></p>
+    </div>
+    <p><a ng-click='bankDisclosuresCtrl.scrollTo("privacypolicy")'>{{::bankDisclosuresCtrl.i18nTermsAndConditions['privacypolicy']}}</a></p>
+  </div>
+  <div id="disclosurescontent" ng-bind-html="bankDisclosuresCtrl.viewDisclosures"></div>
+</div>

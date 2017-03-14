@@ -1,0 +1,362 @@
+payee-list {
+  display: block;
+  font-family: $text-light;
+  min-height: 200px;
+  padding: 0 0 1rem;
+
+  @include breakpoint(tablet) {
+    padding: 0 1rem 1rem;
+  }
+
+  @include breakpoint(phone) {
+    padding: 0 1rem 1rem;
+  }
+
+  [ease-accordion] {
+    background-color: $default-white;
+    border-radius: 8px;
+  }
+
+  .payee-list-item {
+    &:focus {
+      outline: $outline-color auto 5px;
+    }
+  }
+
+  .list-item {
+    padding: 10px 0 0;
+
+  }
+
+  .border-bottom {
+    border-bottom: 1px solid $grey-light;
+    margin: 15px;
+
+    &.open-border-bottom {
+      @include breakpoint(phone) {
+        margin: 0;
+      }
+
+      @include breakpoint(tablet) {
+        margin: 0;
+      }
+    }
+  }
+
+  .list-item-contain {
+    display: block;
+    height: 0;
+    overflow: hidden;
+    padding: 0 1rem;
+
+    // Necessary to allow context menu to show
+    &.drawer-open {
+      overflow: visible;
+    }
+
+    &.ng-inline-animate {
+      transition: height .75s ease-in-out;
+    }
+
+    .payee-displayname {
+      color: $text-color;
+      font-size: 13px;
+      padding: 15px 0;
+    }
+
+    .btn-loadable {
+      min-width: 180px;
+      width: auto;
+
+      @include breakpoint(phone) {
+        display: block;
+        width: 100%;
+      }
+
+      @include breakpoint(tablet) {
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+
+  .list-item-header {
+    padding: 0 1rem;
+
+    .payee-nickname {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .last-payment-info {
+      color: $light-text-color;
+      font-size: 13px;
+      height: 13px;
+      margin-bottom: 5px;
+    }
+
+    .hide-content {
+      visibility: hidden;
+    }
+
+    .show-content {
+      visibility: visible;
+    }
+  }
+
+  .payee-nickname {
+    background: none;
+    color: inherit;
+    font-family: $text-light;
+    padding: 0;
+    text-align: left;
+    transform: none;
+
+    @include breakpoint(phone) {
+      font-size: 13px;
+      text-align: left;
+    }
+
+    &:active,
+    &:focus,
+    &:hover {
+      cursor: default;
+      transform: none;
+    }
+
+    &:focus {
+      outline: $outline-color auto 5px;
+    }
+  }
+
+  .payee-action-links {
+    border-top: 1px solid $grey-light;
+    margin: 1rem 0 0;
+    padding-bottom: 5px;
+    padding-top: 0;
+    position: relative;
+
+    @include breakpoint(desktop) {
+      padding-top: 2rem;
+    }
+  }
+
+  .action-link {
+    background: none;
+    color: $link-color;
+    font-family: $text-light;
+    font-size: 100%;
+    position: relative;
+    transition: none;
+
+    @include breakpoint(desktop) {
+      display: inline-block;
+      margin: 0 48px 0 0;
+      min-height: 13px;
+      min-width: 50px;
+      padding: 0;
+    }
+
+    @include breakpoint(phone) {
+      border-bottom: 1px solid $grey-light;
+      display: block;
+      min-height: 48px;
+      padding: 1.5rem 0;
+      text-align: center;
+      width: 100%;
+    }
+
+    @include breakpoint(tablet) {
+      border-bottom: 1px solid $grey-light;
+      display: block;
+      min-height: 48px;
+      padding: 1.5rem 0;
+      text-align: center;
+      width: 100%;
+    }
+
+    &:last-child {
+      margin-right: 0;
+
+      @include breakpoint(phone) {
+        border-bottom: 0;
+      }
+
+      @include breakpoint(tablet) {
+        border-bottom: 0;
+      }
+    }
+
+    &:hover {
+      color: $link-hover-color;
+      cursor: pointer;
+      transform: none;
+
+      span {
+        text-decoration: underline;
+      }
+    }
+
+    &:active,
+    &:focus {
+      transform: none;
+
+      &.action-loading {
+        outline: none;
+      }
+    }
+
+    &:focus {
+      outline: $outline-color auto 5px;
+    }
+  }
+
+  .manage {
+    @include breakpoint(desktop) {
+      padding-left: 30px;
+    }
+
+    &:before {
+      background-image: url('#{$images-folder}/icon-more.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      content: '';
+      display: block;
+      height: 24px;
+      left: calc(50% - 65px);
+      position: absolute;
+      top: 14px;
+      width: 24px;
+
+      @include breakpoint(desktop) {
+        left: 0;
+        top: 0;
+      }
+    }
+  }
+
+  .settings-menu {
+    border-radius: 5px;
+    background: #f3f3f3;
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.50);
+    z-index: 100;
+    position: absolute;
+    left: -11px;
+    top: 100%;
+
+    @include breakpoint(phone) {
+      left: 0;
+      width: 100%;
+      top: calc(100% - 20px);
+    }
+
+    @include breakpoint(tablet) {
+      left: calc(50% - 140px);
+      top: calc(100% - 18px);
+    }
+
+    &:before, &:after {
+      bottom: 100%;
+      left: 26%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+
+      @include breakpoint(phone) {
+        left: 50%;
+      }
+
+      @include breakpoint(tablet) {
+        left: 50%;
+      }
+    }
+
+    &:after {
+      border-color: rgba(255, 255, 255, 0);
+      border-bottom-color: #f3f3f3;
+      border-width: 10px;
+      margin-left: -10px;
+    }
+
+    &:before {
+      border-color: rgba(243, 243, 243, 0);
+      border-width: 11px;
+      margin-left: -11px;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 10px 20px;
+    }
+
+    li {
+      margin: 13px 0;
+      min-height: 10px;
+      position: relative;
+
+      @include breakpoint(tablet) {
+        min-height: 30px;
+      }
+
+      @include breakpoint(phone) {
+        min-height: 30px;
+      }
+    }
+
+    .setting {
+      color: $btn-regressive;
+      display: block;
+      font-family: $text-reg;
+      min-height: 27px;
+      padding-left: 40px;
+
+      &:before {
+        background-repeat: no-repeat;
+        background-size: contain;
+        content: '';
+        display: block;
+        height: 20px;
+        left: 0;
+        position: absolute;
+        top: 4px;
+        width: 20px;
+      }
+
+      &.action-loading {
+        &:before {
+          display: none;
+        }
+      }
+    }
+
+    .setting-add-recurring {
+      &:before {
+        background-image: url('#{$images-folder}/icon-refresh.svg');
+      }
+    }
+
+    .setting-delete-payee {
+      &:before {
+        background-image: url('#{$images-folder}/icon-trash.svg');
+      }
+    }
+
+    .setting-edit-payee {
+      &:before {
+        background-image: url('#{$images-folder}/icon-pencil.svg');
+      }
+    }
+
+    .loading {
+      @include loading-border-spinner(#eee, .25em, 0, .4);
+      width: 17px;
+      height: 17px;
+      left: calc(50% - 8px);
+      top: 4px;
+    }
+  }
+}

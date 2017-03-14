@@ -1,0 +1,53 @@
+.billpay-amount {
+  display: block;
+  margin-bottom: 15px;
+
+  .label-group {
+    overflow: hidden;
+
+    .label {
+      float: left;
+      margin-top: 6px;
+      color: $label-dark;
+      font-size: 18px;
+      font-family: $text-reg;
+      line-height: 1;
+    }
+
+    .label-info {
+      float: right;
+      vertical-align: bottom;
+      margin-top: 6px;
+      color: $label-dark;
+      font-size: 1px;
+      font-family: $text-reg;
+      line-height: 1;
+    }
+  }
+
+  .ease-input {
+    // scss-lint:disable ImportantRule
+    // this is for fix core css issue
+    width: 100% !important;
+    // scss-lint:enable ImportantRule
+
+    i {
+      padding: 11px 15px;
+    }
+
+    input {
+      width: 100%;
+      border: 2px solid #CFCCCF;
+    }
+
+    input.floating {
+      padding-top: 11px;
+      padding-left: 25px;
+    }
+
+    input.guide {
+      padding-top: 0;
+      padding-left: 25px;
+    }
+  }
+}

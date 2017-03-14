@@ -1,0 +1,49 @@
+edit-payee-contact-info {
+  .input-group {
+    .payee-city {
+      border-radius: 4px 4px 0 0;
+      border-bottom-width: 0;
+
+      &:focus {
+        border-bottom-width: 2px;
+      }
+    }
+  }
+
+  .payee-state {
+    .ease-ui-dropdown {
+      border-radius: 0 0 4px 4px;
+    }
+
+    ease-ui-dropdown {
+      p {
+        display: none;
+      }
+
+      label {
+        display: none;
+      }
+
+      .ease-ui-dropdown-container {
+        .ease-ui-dropdown {
+          height: 4.7rem;
+          margin-top: 0;
+          border-color: $standard-border-color;
+        }
+
+        .ease-ui-dropdown-title {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .payee-phone {
+    .ease-input {
+      .ease-input-field {
+        margin: 0 0 1.6rem;
+        width: 100%;
+      }
+    }
+  }
+}

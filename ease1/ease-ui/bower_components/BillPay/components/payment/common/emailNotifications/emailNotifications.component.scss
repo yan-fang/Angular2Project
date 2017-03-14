@@ -1,0 +1,24 @@
+.email-notifications {
+
+  h4 {
+    margin-bottom: 1rem;
+    font-weight: bolder;
+    font-family: "ProxReg", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+  }
+
+  .label-group {
+    margin-bottom: 0.2rem;
+  }
+
+  .checkbox-list {
+    .input-group {
+      margin-bottom: 0.1rem;
+    }
+
+    .checkbox label {
+      line-height: 1.5;
+      font-size: 16px;
+    }
+  }
+}

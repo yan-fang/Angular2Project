@@ -1,0 +1,25 @@
+<i id='back-button'
+   role="button" type="button"
+   class="top-left-icon icon-arrow-back"
+   aria-describedby="back-button-description"
+   ng-click="RetailDispute.goToPreviousView()">
+  <span id="back-button-description" class="off-screen">Back to Previous Modal</span>
+</i>
+<h2 id="modal-title">{{RetailDispute.pageProperties.modalTitle}}</h2>
+<div id="sub-title"
+     ng-show="RetailDispute.pageProperties.modalSubtitle"
+     class="sub-title">
+  {{RetailDispute.pageProperties.modalSubtitle}}
+</div>
+
+<form id="dispute-form" class="dispute-form" name="superForm">
+  <formly-form model="RetailDispute.formly.models[RetailDispute.pageProperties.formlyFormId]"
+               fields="RetailDispute.formly.fields[RetailDispute.pageProperties.formlyFormId]">
+    <button id='continue-button' role="button" type="button"
+            class="progressive"
+            ng-disabled="superForm.$invalid || RetailDispute.pageProperties.isButtonDisabled(superForm.$invalid, RetailDispute.formly)"
+            ng-click="RetailDispute.goToView(RetailDispute.pageProperties.nextPage)">
+      {{RetailDispute.pageProperties.buttonText}}
+    </button>
+  </formly-form>
+</form>

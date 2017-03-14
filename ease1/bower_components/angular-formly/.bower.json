@@ -1,0 +1,13 @@
+{
+  "name": "angular-formly",
+  "version": "6.24.23",
+  "_release": "6.24.23",
+  "_resolution": {
+    "type": "version",
+    "tag": "6.24.23",
+    "commit": "8b2051b57c28b6f29061a81c9488183bfd68fa9f"
+  },
+  "_source": "https://github.kdc.capitalone.com/bower-dependencies/angular-formly.git",
+  "_target": "6.24.23",
+  "_originalSource": "https://github.kdc.capitalone.com/bower-dependencies/angular-formly.git"
+}

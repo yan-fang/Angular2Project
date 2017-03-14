@@ -1,0 +1,45 @@
+<ease-ui-modal id="debit-activation-modal" close-modal="debitActivation.close()" modal-title="'Activate Your Debit Card'" class="debit-modal debit-activation" data-ng-class="{ success : debitActivation.currentState === debitActivation.STATES.SUCCESS }">
+  <div class="debit-card-modal">
+    <div class="debit-modal-container card-listing">
+      <div id="debit-activation-loading"
+           data-ng-include="debitActivation.TEMPLATES.LOADING"
+           data-ng-if="debitActivation.currentState === debitActivation.STATES.LOADING">
+      </div>
+
+      <div id="debit-activation-empty"
+           data-ng-include="debitActivation.TEMPLATES.EMPTY"
+           data-ng-if="debitActivation.currentState === debitActivation.STATES.EMPTY">
+      </div>
+
+      <div id="choose-card"
+           class="select-card"
+           data-ng-include="debitActivation.TEMPLATES.CARD_LIST"
+           data-ng-if="debitActivation.currentState === debitActivation.STATES.CARD_LIST">
+      </div>
+
+      <div id="activate-card"
+           class="activate-card"
+           data-ng-include="debitActivation.TEMPLATES.ACTIVATE_CARD"
+           data-ng-if="debitActivation.currentState === debitActivation.STATES.ACTIVATE_CARD">
+      </div>
+
+      <div id="should-retail-set-pin"
+           class="should-retail-set-pin"
+           data-ng-include="debitActivation.TEMPLATES.ASK_RETAIL_PIN"
+           data-ng-if="debitActivation.currentState === debitActivation.STATES.ASK_RETAIL_PIN">
+      </div>
+
+      <div id="set-pin"
+           class="select-pin"
+           data-ng-include="debitActivation.TEMPLATES.SET_PIN"
+           data-ng-if="debitActivation.currentState === debitActivation.STATES.SET_PIN">
+      </div>
+
+      <div id="card-ready"
+           class="success"
+           data-ng-include="debitActivation.TEMPLATES.SUCCESS"
+           data-ng-if="debitActivation.currentState === debitActivation.STATES.SUCCESS">
+      </div>
+    </div>
+  </div>
+</ease-ui-modal>

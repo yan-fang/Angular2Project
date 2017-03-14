@@ -1,0 +1,23 @@
+<div id="debit-order-other-location">
+  <h1 class="title" tabindex="0">
+    {{debitOrder.i18n.otherLocation.title}}
+  </h1>
+
+  <p class="debit-description" tabindex="0">
+    {{debitOrder.i18n.otherLocation.description}}
+    <a href="tel:{{debitOrder.i18n.contactNumber}}">{{debitOrder.i18n.contactNumber}}</a>
+    {{debitOrder.action === 'reissue' ? 
+    debitOrder.i18n.otherLocation.needReissue :
+    debitOrder.i18n.otherLocation.needReorder}}
+  </p>
+
+  <div class="new-address">
+    <div class="icon-envelope icon"></div>
+    <p class="address-title" tabindex="0">{{debitOrder.i18n.otherLocation.callTitle}}</p>
+    <p class="description" tabindex="0">
+      {{debitOrder.i18n.otherLocation.callDescription}}
+    </p>
+  </div>
+
+  <a href="tel:{{debitOrder.i18n.contactNumber}}" id="call-us-btn" class="btn call-btn">{{debitOrder.i18n.otherLocation.title}}</a>
+</div>

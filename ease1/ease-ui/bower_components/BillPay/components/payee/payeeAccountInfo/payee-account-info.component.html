@@ -1,0 +1,170 @@
+<i
+  class="icon-arrow-back"
+  ng-if="$ctrl.showBackButton === 'true'"
+  title="Go back"
+  ng-click="$ctrl.back()">
+</i>
+
+<p ng-if="$ctrl.flowType === 'editRegistered'" class="sub-heading display-name">{{ $ctrl.payeeInfo.displayName }}</p>
+
+<p ng-if="$ctrl.flowType === 'addRegistered'" class="sub-heading">
+  {{ addPayeeCtrl.payeeInfo.payeeName }}<br/>
+  {{ addPayeeCtrl.payeeInfo.payeeLocation }}
+</p>
+
+
+<form name="payeeAccountInfo" id="payeeAccountInfo">
+
+  <div ng-if="$ctrl.flowType === 'addManual'">
+    <label for="name">Company or Person Name</label>
+
+    <div class="input-group" ng-class="!payeeAccountInfo.name.$valid ? 'error-border' : '' ">
+      <input id="name"
+        name="name"
+        type="text"
+        placeholder="Name"
+        ng-model="$ctrl.payeeInfo.payeeName"
+        ng-minlength="2"
+        ng-maxlength="33"
+        ng-pattern="$ctrl.alphaNumericRegex"
+        aria-describedby="{{ payeeAccountInfo.$valid ? '' : 'bp-ai-error-payeename' }}"
+        required />
+    </div><!-- /.input-group -->
+
+    <div class="error-summary" id="bp-ai-error-payeename">
+      <span id="bp-ai-error-payeename-minlength" ng-show="payeeAccountInfo.name.$error.minlength || (payeeAccountInfo.name.$error.required && payeeAccountInfo.name.$touched)">Name should be at least 2 characters</span>
+      <span id="bp-ai-error-payeename-maxlength" ng-show="!payeeAccountInfo.name.$error.minlength && payeeAccountInfo.name.$error.maxlength">Name should be less than 33 characters</span>
+      <span id="bp-ai-error-payeename-pattern" ng-show="!payeeAccountInfo.name.$error.minlength && !payeeAccountInfo.name.$error.maxlength && payeeAccountInfo.name.$error.pattern">Name can only contain numbers and letters</span>
+    </div><!-- /.error-summary -->
+  </div><!-- / payee name -->
+
+  <div ng-if="($ctrl.flowType === 'addRegistered')
+             || ($ctrl.flowType === 'editRegistered')
+             || $ctrl.payeeInfo.needAccountNumber">
+
+    <label for="accountNumberOne_TLNPI">Account Number</label>
+    <label for="accountNumberTwo_TLNPI" class="sr-only">Confirm account number</label>
+
+    <div class="input-group account-number-group"
+       ng-class="( (payeeAccountInfo.accountNumberOne_TLNPI.$error.length && payeeAccountInfo.accountNumberTwo_TLNPI.$touched)
+         || (payeeAccountInfo.accountNumberTwo_TLNPI.$touched && payeeAccountInfo.accountNumberTwo_TLNPI.$error.minlength)
+         || (!$ctrl.inputMatch && payeeAccountInfo.accountNumberTwo_TLNPI.$touched)
+         || $ctrl.fixableErrors.indexOf('accountNumberOne') !== -1) ? 'error-border' : '' ">
+
+        <div class="TLNPI">
+            <input id="accountNumberOne_TLNPI"
+              name="accountNumberOne_TLNPI"
+              class="input-top"
+              type="text"
+              placeholder="Enter Account Number"
+              ng-model="$ctrl.payeeInfo.accountNumber"
+              required
+              disable-paste
+              ng-maxlength="32"
+              ng-minlegnth="1"
+              ng-blur="$ctrl.compareAccountNumbers($ctrl.payeeInfo.accountNumber, $ctrl.payeeInfo.confirmAccountNumber)"
+              ng-change="$ctrl.compareAccountNumbers(addPayeeCtrl.payeeInfo.confirmAccountNumber, addPayeeCtrl.payeeInfo.accountNumber); $ctrl.clearError('accountNumberOne_TLNPI')"
+              aria-describedby="{{ (!payeeAccountInfo.accountNumberOne_TLNPI.$valid && payeeAccountInfo.accountNumberOne_TLNPI.$touched) || $ctrl.fixableErrors.indexOf('accountNumberOne') !== -1 || !$ctrl.inputMatch ? 'bp-ai-error-account' : ''}}" />
+        </div>
+
+        <div class="TLNPI">
+            <input id="accountNumberTwo_TLNPI"
+              name="accountNumberTwo_TLNPI"
+              class="input-bottom"
+              type="text"
+              aria-labelledby="confirmAccountNumber"
+              placeholder="Re-enter Account Number"
+              ng-model="$ctrl.payeeInfo.confirmAccountNumber"
+              required
+              disable-paste
+              ng-maxlength="32"
+              ng-minlength="1"
+              ng-blur="$ctrl.compareAccountNumbers($ctrl.payeeInfo.confirmAccountNumber, $ctrl.payeeInfo.accountNumber)"
+              ng-change="$ctrl.compareAccountNumbers($ctrl.payeeInfo.confirmAccountNumber, $ctrl.payeeInfo.accountNumber)"
+              aria-describedby="{{ (!payeeAccountInfo.accountNumberTwo_TLNPI.$valid && payeeAccountInfo.accountNumberTwo_TLNPI.$touched) || $ctrl.fixableErrors.indexOf('accountNumberTwo') !== -1 || !$ctrl.inputMatch ? 'bp-ai-error-account' : ''}}" />
+        </div>
+
+        <span id="confirmAccountNumber" class="sr-only">Confirm Account Number</span>
+    </div>
+
+        <div class="error-summary" id="bp-ai-error-account">
+          <span id="bp-ai-error-account-one-minlength" ng-show="payeeAccountInfo.accountNumberOne_TLNPI.$error.minlength || (payeeAccountInfo.accountNumberOne_TLNPI.$error.required && payeeAccountInfo.accountNumberOne_TLNPI.$touched)">Account number should be at least 1 character</span>
+          <span id="bp-ai-error-account-one-maxlength" ng-show="!payeeAccountInfo.accountNumberOne_TLNPI.$error.minlength && payeeAccountInfo.accountNumberOne_TLNPI.$error.maxlength">Account number should be less than 33 characters</span>
+          <span id="bp-ai-error-account-one-bad-number" ng-show="$ctrl.fixableErrors.indexOf('accountNumberOne') !== -1">Account number is incorrect. Please re-enter.</span>
+          <span id="bp-ai-error-account-two-minlength" ng-show="payeeAccountInfo.accountNumberTwo_TLNPI.$error.minlength">Account number should be at least 1 character</span>
+          <span id="bp-ai-error-account-mismatch" class="error-summary"
+            ng-show="(payeeAccountInfo.accountNumberOne_TLNPI.$error.isAccountValid
+            || payeeAccountInfo.accountNumberTwo_TLNPI.$error.isAccountValid
+            || !$ctrl.inputMatch) && payeeAccountInfo.accountNumberTwo_TLNPI.$touched">These account numbers do not match</span>
+        </div>
+      </div>
+
+      <div class="input-group" ng-if="$ctrl.flowType === 'addRegistered' && $ctrl.payeeInfo.requiresMerchantPostalCode === true">
+        <label for="zipcode">ZIP</label>
+        <div ng-class="((payeeAccountInfo.zipcode.$error.pattern && payeeAccountInfo.zipcode.$touched) || $ctrl.fixableErrors.indexOf('zipcode') !== -1 ) ? 'error-border' :'' ">
+          <input id="zipcode"
+            name="zipcode"
+            type="text"
+            placeholder="00000-0000"
+            input-mask="zipcode-plus"
+            ng-model="$ctrl.payeeInfo.zipcode"
+            ng-maxlength="10"
+            ng-pattern="$ctrl.zipRegex"
+            ng-change="$ctrl.clearError('zipcode')"
+            restrict-pattern="\d|[-]"
+            aria-describedby="{{ (!payeeAccountInfo.zipcode.$valid && payeeAccountInfo.zipcode.$touched) || $ctrl.fixableErrors.indexOf('zipcode') !== -1 ? 'bp-ai-error-zc' : '' }}"
+            required />
+        </div>
+      </div>
+
+      <div class="error-summary" id="bp-ai-error-zc">
+        <span id="bp-ai-error-zipcode" ng-show="payeeAccountInfo.zipcode.$touched && !payeeAccountInfo.zipcode.$valid">ZIP should be 9 digits</span>
+        <span id="bp-ai-error-bad-zipcode" ng-show="$ctrl.fixableErrors.indexOf('zipcode') !== -1">ZIP Code is invalid. Please re-enter.</span>
+      </div>
+
+      <div class="input-group">
+        <label for="nickname">Nickname <span class="field-note">Optional, not seen by payee</span></label>
+        <div ng-class="(payeeAccountInfo.nickname.$touched && !payeeAccountInfo.nickname.$valid) ? 'error-border' :'' ">
+          <input
+            id="nickname"
+            name="nickname"
+            type="text"
+            placeholder="32 Character Limit"
+            ng-model="$ctrl.payeeInfo.nickname"
+            ng-maxlength="30"
+            ng-pattern="$ctrl.alphaNumericRegex"
+            restrict-alpha-numeric
+            aria-describedby="{{ (payeeAccountInfo.nickname.$touched && !payeeAccountInfo.nickname.$valid) ? 'bp-ai-error-nickname' : '' }}" />
+        </div>
+      </div><!-- /.input-group -->
+
+      <div class="error-summary" id="bp-ai-error-nickname">
+        <span id="bp-ai-error-nickname-maxlength" ng-show="payeeAccountInfo.nickname.$error.maxlength">Nickname should be less than 31 characters</span>
+        <span id="bp-ai-error-nickname-pattern" ng-show="!payeeAccountInfo.nickname.$error.maxlength && payeeAccountInfo.nickname.$error.pattern">Nickname can only contain numbers and letters</span>
+      </div>
+
+  <button id="payeeAccountInfoBtnContinue"
+    ng-if="$ctrl.flowType === 'editRegistered'"
+    class="btn-loadable"
+    ng-disabled="payeeAccountInfo.$invalid
+      || !$ctrl.inputMatch
+      || $ctrl.fixableErrors.length
+      || payeeAccountInfo.$pristine
+      || !$ctrl.formChanged
+      || $ctrl.loading === 'loading'"
+    ng-click="$ctrl.submit()">
+    <span ng-class="{'loading': $ctrl.loading === 'loading'}">
+      {{ $ctrl.loading === 'loading'? '' : 'Save Changes' }}
+    </span>
+  </button>
+
+  <button id="payeeAccountInfoBtnContinue"
+    ng-if="$ctrl.flowType !== 'editRegistered'"
+    class="btn-loadable progressive"
+    ng-disabled="payeeAccountInfo.$invalid || !$ctrl.inputMatch || $ctrl.fixableErrors.length || !$ctrl.formChanged || payeeAccountInfo.$pristine"
+    ng-click="$ctrl.submit()">
+    <span ng-class="{'loading': $ctrl.loading === 'loading'}">
+      {{ $ctrl.loading === 'loading'? '' : 'Continue' }}
+    </span>
+  </button>
+</form>

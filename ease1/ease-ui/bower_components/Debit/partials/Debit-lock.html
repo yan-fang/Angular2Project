@@ -1,0 +1,33 @@
+<ease-ui-modal id="debit-lock-modal" close-modal="debitLock.close()" modal-title="'Lock Debit Card'" showIconMobile="false" class="debit-modal debit-lock" data-ng-class="{ success : debitLock.currentState === debitLock.STATES.SUCCESS }">
+  <div class="debit-card-modal">
+    <div class="debit-modal-container card-listing">
+    <div id="debit-lock-loading"
+         data-ng-include="debitLock.TEMPLATES.LOADING"
+         data-ng-if="debitLock.currentState === debitLock.STATES.LOADING">
+    </div>
+
+    <div id="debit-lock-empty"
+         data-ng-include="debitLock.TEMPLATES.EMPTY"
+         data-ng-if="debitLock.currentState === debitLock.STATES.EMPTY">
+    </div>
+
+    <div id="choose-card"
+         class="select-card"
+         data-ng-include="debitLock.TEMPLATES.CARD_LIST"
+         data-ng-if="debitLock.currentState === debitLock.STATES.CARD_LIST">
+    </div>
+
+    <div id="lock-card"
+         class="lock-card"
+         data-ng-include="debitLock.TEMPLATES.LOCK_CARD"
+         data-ng-if="debitLock.currentState === debitLock.STATES.LOCK_CARD">
+    </div>
+
+    <div id="card-ready"
+         class="success"
+         data-ng-include="debitLock.TEMPLATES.SUCCESS"
+         data-ng-if="debitLock.currentState === debitLock.STATES.SUCCESS">
+    </div>
+  </div>
+</div>
+</ease-ui-modal>

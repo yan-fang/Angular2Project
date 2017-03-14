@@ -1,0 +1,30 @@
+<div class="cancel-recurring-action">
+
+  <p class="sub-heading" ng-if="$ctrl.selectedOption === 'all'"> You're about to delete this recurring payment series.</p>
+  <p class="sub-heading" ng-if="$ctrl.selectedOption !== 'all'"> You're about to delete this payment.</p>
+
+  <form name="cancel-recurring-form">
+    <info-list
+      id="cancel-recurring"
+      info="$ctrl.infoList"
+      number-of-rows="{{$ctrl.infoList.length}}">
+    </info-list>
+
+    <radio-group
+      id="cancel-recurring-payment"
+      radio-options="$ctrl.cancelPaymentOptions"
+      selected-option="$ctrl.selectedOption" >
+    </radio-group>
+
+    <submit-button
+      id="submit-cancel-recurring"
+      label="{{$ctrl.selectedOption === 'all'? 'Cancel Payments' : 'Cancel Payment'}}"
+      is-disabled="{{!$ctrl.selectedOption || $ctrl.isCancelPaymentProcessing}}"
+      is-loading="{{$ctrl.isCancelPaymentProcessing}}"
+      submit-fn="$ctrl.cancelPayment()"
+      bg-color="destructive"
+    >
+    </submit-button>
+  </form>
+  
+</div> 

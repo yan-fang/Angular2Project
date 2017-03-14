@@ -1,0 +1,19 @@
+.submit-button {
+  margin: 15px 0;
+
+  button {
+    position: relative;
+    width: 100%;
+
+    .loading {
+      @include loading-border-spinner($default-white, .25em, 255, .4);
+
+      top: 4px;
+      left: 45%;
+
+      + span {
+        visibility: hidden;
+      }
+    }
+  }
+}

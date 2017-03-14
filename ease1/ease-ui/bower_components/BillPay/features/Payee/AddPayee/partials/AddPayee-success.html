@@ -1,0 +1,22 @@
+<ease-ui-modal
+  close-modal="addPayeeSuccessCtrl.close()"
+  modal-title="'Success'"
+  ng-class="addPayeeSuccessCtrl.modalClass">
+  <div class="add-payee-modal-container">
+    <p class="sub-heading">You added <strong>{{addPayeeCtrl.payeeInfo.payeeName}}</strong>.
+      <span ng-if="addPayeeCtrl.payeeInfo.nickname">
+        It'll show in your list of payees as <strong>{{addPayeeCtrl.payeeInfo.nickname}}.</strong>
+      </span>
+    </p>
+
+    <div class="loading-indicator">
+      <div class="loading" ng-if="addPayeeSuccessCtrl.loading"></div>
+    </div>
+
+    <div class="center-text">
+      <a href="" id="addAnotherPayeeBtn" class="add-payee-success-link" ng-click="addPayeeSuccessCtrl.goToAddAnotherPayee()">Add Another Payee</a>
+      <span>|</span>
+      <a href="" id="schedulePaymentBtn" class="add-payee-success-link" ng-click="addPayeeSuccessCtrl.goToSchedulePayment(addPayeeCtrl.payeeInfo)">Schedule Payment</a>
+    </div>
+  </div>
+</ease-ui-modal>

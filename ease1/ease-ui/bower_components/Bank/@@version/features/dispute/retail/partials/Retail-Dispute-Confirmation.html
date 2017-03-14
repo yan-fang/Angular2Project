@@ -1,0 +1,20 @@
+<h2>{{::RetailDispute.pageProperties.modalTitle}}</h2>
+
+<div>
+  <div id='subtitle' class="sub-title bold">
+    {{::RetailDispute.pageProperties.modalSubtitle}}
+  </div>
+
+  <div class="confirmation-messages">
+    <div class="confirmation-message" ng-repeat="message in RetailDispute.pageProperties.modalMessage[RetailDispute.getBillPayConfirmationMessage()]">
+      <div>{{::message}}</div>
+    </div>
+  </div>
+
+  <div class="call-us follow-up">
+    {{::RetailDispute.pageProperties.callUs.message}}
+    <a aria-label="In state customer care number" role="link" class="phone-number usa" data-ng-href="{{::RetailDispute.pageProperties.callUs.numberLink}}">
+      {{::RetailDispute.pageProperties.callUs.number}}
+    </a>
+  </div>
+</div>

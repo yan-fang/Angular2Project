@@ -1,0 +1,162 @@
+<ease-ui-modal
+  close-modal="addPayeeCtrl.close()"
+  modal-title="'Payee Contact Info'"
+  ng-class="addPayeeCtrl.modalClass">
+  <div class="add-payee-modal-container">
+    <i class="icon-arrow-back" title="Go back" ng-click="addPayeeContactInfoCtrl.goBack(addPayeeCtrl.payeeInfo.needAccountNumber)"></i>
+
+    <p class="sub-heading">{{addPayeeCtrl.payeeInfo.payeeName}}</p>
+
+    <form name="payeeContactInfo">
+      <label for="mailingAddress">Address</label>
+      <label for="mailingAddress1" hidden>Address 1</label>
+      <label for="mailingAddress2" hidden>Address 2</label>
+
+      <div class="input-group"
+        ng-class="(payeeContactInfo.mailingAddress1.$touched && !payeeContactInfo.mailingAddress1.$valid) || (payeeContactInfo.mailingAddress2.$touched && !payeeContactInfo.mailingAddress2.$valid) || (addPayeeContactInfoCtrl.fixableErrors.indexOf('address') !== -1) ? 'error-border' :'' ">
+        <input id="mailingAddress1"
+          name="mailingAddress1"
+          class="input-top"
+          ng-class="payeeContactInfo.mailingAddress1.$error.pattern || payeeContactInfo.mailingAddress1.$error.maxlength ? 'error-border' :'' "
+          type="text"
+          placeholder="Mailing Address, PO Box, etc."
+          aria-describedby="{{ (payeeContactInfo.mailingAddress1.$touched && !payeeContactInfo.mailingAddress1.$valid) || (addPayeeContactInfoCtrl.fixableErrors.indexOf('address') !== -1 && addPayeeContactInfoCtrl.fixableErrors.length === 1) ? 'bp-ci-error-address' : ''}}"
+          ng-model="addPayeeCtrl.payeeInfo.AddressInfo.line1"
+          ng-maxlength="40"
+          ng-minlength="2"
+          ng-pattern="addPayeeContactInfoCtrl.addressRegex"
+          ng-change="addPayeeContactInfoCtrl.clearError('address'); addPayeeContactInfoCtrl.clearError('zipcode')"
+          required />
+        <input id="mailingAddress2"
+          name="mailingAddress2"
+          class="input-bottom"
+          ng-class="payeeContactInfo.mailingAddress2.$error.pattern || payeeContactInfo.mailingAddress2.$error.maxlength ? 'error-border' :'' "
+          type="text"
+          placeholder="Appartment, Suite, etc."
+          aria-describedby="{{ (payeeContactInfo.mailingAddress2.$touched && !payeeContactInfo.mailingAddress2.$valid) ? 'bp-ci-error-address' : ''}}"
+          ng-model="addPayeeCtrl.payeeInfo.AddressInfo.line2"
+          ng-minlength="2"
+          ng-maxlength="40"
+          ng-change="addPayeeContactInfoCtrl.clearError('address'); addPayeeContactInfoCtrl.clearError('zipcode')"
+          ng-pattern="addPayeeContactInfoCtrl.addressRegex" />
+      </div>
+
+      <div class="error-summary" id="bp-ci-error-address">
+        <span id="bp-ci-error-addressone-minlength" ng-show="payeeContactInfo.mailingAddress1.$touched && (payeeContactInfo.mailingAddress1.$error.minlength || payeeContactInfo.mailingAddress1.$error.required)">Address should be at least 2 characters</span>
+        <span id="bp-ci-error-addressone-maxlength" ng-show="payeeContactInfo.mailingAddress1.$error.maxlength">Address should be less than 41 characters</span>
+        <span id="bp-ci-error-addressone-pattern" ng-show="!payeeContactInfo.mailingAddress1.$error.maxlength && payeeContactInfo.mailingAddress1.$error.pattern">
+          These characters aren't allowed: &lt;, &gt;, =, &amp;, ), (
+        </span>
+        <span id="bp-ci-error-bad-address" ng-show="addPayeeContactInfoCtrl.fixableErrors.indexOf('address') !== -1 && addPayeeContactInfoCtrl.fixableErrors.length === 1">There is a problem with the address you have entered</span>
+
+        <div ng-if="!payeeContactInfo.mailingAddress2.$valid"><br /></div>
+
+        <span id="bp-ci-error-addresstwo-minlength" ng-show="payeeContactInfo.mailingAddress2.$touched && payeeContactInfo.mailingAddress2.$error.minlength && !payeeContactInfo.mailingAddress1.$error.required">Address should be at least 2 characters</span>
+        <span id="bp-ci-error-addresstwo-maxlength" ng-show="!payeeContactInfo.mailingAddress1.$error.maxlength && payeeContactInfo.mailingAddress2.$error.maxlength">Address should be less than 41 characters</span>
+        <span id="bp-ci-error-addresstwo-pattern" ng-show="(!payeeContactInfo.mailingAddress2.$error.maxlength || !payeeContactInfo.mailingAddress2.$error.minlength) && payeeContactInfo.mailingAddress2.$error.pattern">
+          These characters aren't allowed: &lt;, &gt;, =, &amp;, ), (
+        </span>
+      </div>
+
+      <div class="input-group">
+        <label for="ci-zipcode">ZIP</label>
+        <div ng-class="((!payeeContactInfo.zipcode.$valid && payeeContactInfo.zipcode.$touched) || addPayeeContactInfoCtrl.fixableErrors.indexOf('zipcode') !== -1 ) ? 'error-border' :'' ">
+          <input id="ci-zipcode" name="zipcode" type="text" placeholder="00000"
+            input-mask="zipcode-plus"
+            ng-model="addPayeeCtrl.payeeInfo.zipcode" ng-maxlength="10"
+            ng-pattern="addPayeeContactInfoCtrl.zipRegex"
+            ng-change="addPayeeContactInfoCtrl.clearError('zipcode'); addPayeeContactInfoCtrl.clearError('address')"
+            required
+            aria-describedby="{{ (payeeContactInfo.zipcode.$touched && !payeeContactInfo.zipcode.$valid) ? 'bp-ci-error-zc' : '' }}" />
+        </div>
+      </div>
+
+      <div class="error-summary" id="bp-ci-error-zc">
+        <span id="bp-ci-error-zipcode" ng-show="payeeContactInfo.zipcode.$touched && (payeeContactInfo.zipcode.$error.pattern || payeeContactInfo.zipcode.$error.required)">ZIP should be 5 or 9 digits</span>
+        <span id="bp-ci-error-bad-zipcode" ng-show="addPayeeContactInfoCtrl.fixableErrors.indexOf('zipcode') !== -1 && addPayeeContactInfoCtrl.fixableErrors.length === 1">ZIP Code is invalid. Please re-enter.</span>
+        <span id="bp-ci-error-zipcode-address-mismatch" ng-show="addPayeeContactInfoCtrl.fixableErrors.indexOf('address') !== -1 && addPayeeContactInfoCtrl.fixableErrors.indexOf('zipcode') !== -1">
+          Address and ZIP Code don't match. Please check your billing statement and re-enter.
+        </span>
+      </div>
+
+      <div class="input-group" role="group" aria-labelledby="group-label">
+        <label id="group-label" for="">City &amp; State</label>
+        <label for="city" hidden>City</label>
+        <div ng-class="(payeeContactInfo.city.$touched && !payeeContactInfo.city.$valid) ? 'error-border' :'' ">
+          <input id="city"
+            name="city"
+            type="text"
+            class="payee-city"
+            placeholder="Enter City"
+            ng-model="addPayeeCtrl.payeeInfo.AddressInfo.city"
+            ng-minlength="2"
+            ng-maxlength="32"
+            aria-describedby="{{ payeeContactInfo.city.$touched && !payeeContactInfo.city.$valid ? 'bp-ci-error-city' : '' }}"
+            ng-pattern="addPayeeContactInfoCtrl.addressRegex"
+            required />
+        </div>
+
+        <div class="payee-state" role="application">
+          <ease-ui-dropdown
+              class="input-bottom"
+              is-open="addPayeeContactInfoCtrl.stateListOpen"
+              persist-items="addPayeeContactInfoCtrl.stateList"
+              items="addPayeeContactInfoCtrl.stateListItems"
+              filter-by="abbreviation"
+              id="state-list"
+              placeholder="addPayeeCtrl.payeeInfo.AddressInfo.state"
+              model-value="addPayeeCtrl.payeeInfo.AddressInfo.state"
+              required="addPayeeContactInfoCtrl.stateListRequired"
+              disable-search="false"
+              combobox="addPayeeContactInfoCtrl.stateListComboBox">
+              <ease-ui-dropdown-menu
+                select="addPayeeContactInfoCtrl.stateListSelected(item, addPayeeCtrl.payeeInfo)"
+                items="addPayeeContactInfoCtrl.stateListItems"
+                template="true"
+                is-open="addPayeeContactInfoCtrl.stateListOpen"
+                component-id="">
+                <li data-ng-repeat = "item in addPayeeContactInfoCtrl.stateListItems"
+                  data-index="{{$index}}"
+                  role="listitem"
+                  tabindex="-1">
+                  <span class="ease-itemlabel">{{item.abbreviation}}</span>
+                </li>
+              </ease-ui-dropdown-menu>
+          </ease-ui-dropdown>
+        </div>
+      </div>
+
+      <div class="error-summary" id="bp-ci-error-city">
+        <span id="bp-ci-error-city-required" ng-show="payeeContactInfo.city.$touched && (payeeContactInfo.city.$error.minlength || payeeContactInfo.city.$error.required)">City should be at least two characters</span>
+        <span id="bp-ci-error-city-maxlength" ng-show="payeeContactInfo.city.$error.maxlength">City should be less than 33 letters</span>
+        <span id="bp-ci-error-city-pattern" ng-show="!payeeContactInfo.city.$error.maxlength && payeeContactInfo.city.$error.pattern">City can only contain letters</span>
+      </div>
+
+      <div class="input-group payee-phone">
+        <ease-input
+           static-content="addPayeeContactInfoCtrl.phoneObj"
+           input-id="addPayeeContactInfoCtrl.phoneId"
+           input-val="addPayeeCtrl.payeeInfo.phoneNumber"
+           input-type="phone"
+           input-status=""
+           label="addPayeeContactInfoCtrl.phoneLabel"
+           char-limit="addPayeeContactInfoCtrl.phoneMaxLength"
+           length="30"
+           is-required="addPayeeContactInfoCtrl.fieldRequired"
+           required-msg="'Phone number is required'">
+        </ease-input>
+      </div>
+
+      <button
+        id="payeeContactInfoBtnSubmit"
+        ng-click="addPayeeContactInfoCtrl.submit(addPayeeCtrl.payeeInfo)"
+        class="btn-loadable"
+        ng-disabled="payeeContactInfo.$invalid || !addPayeeContactInfoCtrl.validatePhone(addPayeeCtrl.payeeInfo.phoneNumber) || !addPayeeContactInfoCtrl.validateState(addPayeeCtrl.payeeInfo) || addPayeeContactInfoCtrl.fixableErrors.length || addPayeeContactInfoCtrl.requestInProgress"
+        aria-disabled="{{ (payeeContactInfo.$invalid || !addPayeeContactInfoCtrl.validatePhone(addPayeeCtrl.payeeInfo.phoneNumber) || !addPayeeContactInfoCtrl.validateState(addPayeeCtrl.payeeInfo) || addPayeeContactInfoCtrl.fixableErrors.length || addPayeeContactInfoCtrl.requestInProgress) ? 'true' : 'false' }}">
+        <span ng-class="{'loading': addPayeeContactInfoCtrl.requestInProgress}">
+          {{ addPayeeContactInfoCtrl.requestInProgress ? '' : 'Add Payee' }}
+        </span>
+      </button>
+    </form>
+  </div>
+</ease-ui-modal>

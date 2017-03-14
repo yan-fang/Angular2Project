@@ -1,0 +1,28 @@
+<accordion-drawer id='transaction-drawer-{{::transaction.transactionId}}'
+                  class="bank-enhanced-transaction"
+                  role="region"
+                  aria-label="Transaction {{::transaction.transactionId}} extra information area."
+                  aria-live="polite" is-open="accordionVM.isOpen($index)"
+                  accordion-open="accordionVM.accordionParent.logDrawerOpenEvent( 'paperpayment')"
+                  accordion-close="accordionVM.accordionParent.logDrawerCloseEvent('transactions:Drawer:Close')"
+                  aria-hidden="{{!accordionVM.isOpen($index)}}">
+    <span ng-if="transaction.transactionDisputed" class="alert-message in-dispute" aria-live="polite" role="alert">{{::accordionVM.accordionParent.i18nPastTransactions["ease.bank.pastTransactions.underDisputeMessage"]}}</span>
+    <div class="cleansed-data" ng-class="{'max-width': !transaction.checkFront}">
+        <table class="ets-table">
+            <tr class="ets-row">
+                <td class="key">{{::accordionVM.accordionParent.i18nPastTransactions["ease.bank.pastTransactions.transactionType"]}}</td>
+                <td class="value transaction-type">{{::transaction.transactionType.description}}</td>
+            </tr>
+        </table>
+        <span class="grey-out statement-description"><b>{{::accordionVM.accordionParent.i18nPastTransactions["ease.bank.pastTransactions.appearsOnStatementAs"]}}
+        </b><i class="italic">{{::transaction.statementDescription}}</i></span>
+
+        <transaction-memo
+                data-memo-label="accordionVM.accordionParent.i18nPastTransactions['memoLabel']"
+                data-memo="transaction.transactionDescriptionDetail.memoText"></transaction-memo>
+
+    </div>
+
+    <check-image ng-if="transaction.checkFront" check-front="transaction.checkFront" check-back="transaction.checkBack"></check-image>
+
+</accordion-drawer>

@@ -1,0 +1,11 @@
+<div class="billPay-header">
+	<section id="BillPayHeader" class="container billPay-title-bar">
+		<div class="title-wrap">
+			<h3 id="greetingMessage" class="greeting fadeInSlideUp">Pay Bills</h3>
+		</div>
+	</section>
+</div>
+
+<div class="billPay-view" ui-view></div>
+
+<div data-ng-controller="BillPayErrorHandlerController as error" data-ng-include="error.errorModal"></div>

@@ -1,0 +1,31 @@
+.radio-group {
+  margin: 10px 0;
+  padding: 10px 0;
+
+  .input-group {
+    margin-bottom: 10px;
+  }
+
+  .input-group:last-of-type {
+    margin-bottom: 0;
+  }
+
+  [type='radio'] {
+    border-radius: 50%;
+    margin-top: .5rem;
+
+    &:-moz-ui-invalid {
+      box-shadow: none;
+    }
+
+    &:checked::after {
+      border-color: $payment-coaf;
+    }
+  }
+
+  .input-block {
+    display: block;
+    margin-top: 2rem;
+  }
+}
+

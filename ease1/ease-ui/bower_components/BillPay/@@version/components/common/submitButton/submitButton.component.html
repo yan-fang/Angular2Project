@@ -1,0 +1,6 @@
+<div class="submit-button">
+  <button id="{{$ctrl.id}}" class="{{$ctrl.bgColor}}" ng-click="$ctrl.submitFn()" ng-disabled="$ctrl.isDisabled === 'true'">
+    <span ng-class="{'loading': $ctrl.isLoading === 'true'}"></span>
+    <span>{{$ctrl.label}}</span>
+  </button>
+</div> 

@@ -1,0 +1,11 @@
+<span id="form-character-count"
+      aria-live="polite"
+      aria-atomic="true"
+      ng-show="vm.displayToggle"
+      class="form-character-count"
+      ng-class="{negative : vm.isCountNegative}">
+        {{vm.getRemainingCharacterCount()}}
+        <span class="off-screen">
+            {{::vm.assistiveText}}
+        </span>
+</span>

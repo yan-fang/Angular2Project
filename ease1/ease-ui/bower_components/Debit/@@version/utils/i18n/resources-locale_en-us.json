@@ -1,0 +1,411 @@
+{
+  "debit": {
+    "activation": {
+      "empty": {
+        "title": "Activate Card",
+        "description": "You have no new cards to activate",
+        "action": "Back to Account Details"
+      },
+      "selection": {
+        "title": "Select a Card",
+        "description": "Activating a new card will automatically deactivate your old one.",
+        "cardTitle": "Debit Card Ending in...",
+        "activate": "Activate this card"
+      },
+      "activate": {
+        "backLink": "Back",
+        "title": "Expiration  Date",
+        "ariaDescription": "Please enter the expiration date for your card ending in ",
+        "ariaLabels": {
+          "expirationMonth": "2 digit Expiration Month",
+          "expirationYear": "2 digit Expiration Year"
+        },
+        "actions": {
+          "next": "Next",
+          "activate": "Activate"
+        },
+        "disclaimer": {
+          "new": "You cannot use your card for debit purchases that require a PIN until you set a PIN. If you do not or cannot set your PIN here, call 1-877-383-4802 to receive a PIN in the mail.",
+          "replacement": "Activating your new card will automatically deactivate your old one. Your current PIN is the same, but you should update the expiration date and CVV where your card information is stored."
+        },
+        "error": "Looks like you entered an invalid date."
+      },
+      "ask": {
+        "title": "Do You Want To Keep Your Existing PIN?",
+        "change": "Change my PIN",
+        "keep": "Keep my old PIN"
+      },
+      "pin": {
+        "title": "Set Your PIN",
+        "description": {
+          "intro": "A ",
+          "learnMore": "strong PIN",
+          "benefits": " can help keep your card safe.",
+          "strengthenPin" : {
+            "zeros": "Don’t start with a 0.",
+            "sequence": "Avoid sequential numbers.",
+            "same": "Don’t use the same number."
+          }
+        },
+        "labels": {
+          "setPIN": "Enter your four-digit PIN",
+          "confirmPIN": "Re-enter your four-digit PIN"
+        },
+        "disclaimer": {
+          "digital": "You cannot use your card for debit purchases that require a PIN until you set a PIN. If you do not or cannot set your PIN here, call 1-877-383-4802 to receive a PIN in the mail.",
+          "retail": "Remember, you'll need to know this PIN to make purchases and use ATMs."
+        },
+        "action": "Activate",
+        "errors": {
+          "invalid": "The information you entered is invalid.",
+          "match": "Your PIN entries don't match. Try again."
+        }
+      },
+      "ready": {
+        "title": "Success!",
+        "description": "Your card is now active and ready to be used.",
+        "action": "Back to Account Details",
+        "next": "Activate next card",
+        "disclaimer": {
+          "retail": "Activating this debit card automatically deactivated your old one, so make sure to update the expiration date and CVV where your card information is stored."
+        }
+      }
+    },
+    "lock": {
+      "empty": {
+        "title": "Lock Card",
+        "description": "You have no cards that can be locked",
+        "action": "Back to Account Details"
+      },
+      "selection": {
+        "title": "Lock Card",
+        "description": "Select one of your cards  to lock.",
+        "cardTitle": "Debit Card Ending in...",
+        "transactionsHeading": "Most Recent Transaction",
+        "select": "Lock this card"
+      },
+      "lockScreen" : {
+        "backLink": "Back",
+        "title": "Lock Your Card",
+        "description": "No new debit transactions can be made with this card once it is locked. You can turn it back on at any time.",
+        "lastTransaction": {
+          "lastActivity": "The last debit card activity on this account was ",
+          "pintransaction": "a transaction,",
+          "signtransaction": "a transaction,",
+          "cashwithdrawal": "an ATM cash withdrawal of",
+          "cashdeposit": "an ATM cash deposit of",
+          "checkdeposit": "an ATM check deposit of",
+          "cardTime": "ago with your card ending in ...",
+          "vendor": "at",
+          "cardAmount": "for",
+          "none": "There are no transactions on this card."
+        },
+        "learnMore": {
+          "label": "Learn more about Card Lock",
+          "info": "Here there be some info"
+        },
+        "info": {
+          "backLink": "Back",
+          "title": "About Card Lock",
+          "summary": "When you lock your card, it will instantly prevent anyone from making new purchases with this card.",
+          "declined": "All of these charges will be declined: In-store, Online, In-app and Phone purchases.",
+          "activity": "Some activity may continue, including returns, credits, dispute adjustments, payments, some recurring debit transactions, protection product fees, other account fees, interest and certain other exempted transactions.",
+          "lost" : "If your card is lost or stolen or otherwise used without your authorization, give us a call right away at 1-888-464-0727.",
+          "action": "Got it."
+        },
+        "action": "Yes, lock my card.",
+        "cancel": "Unlock my card"
+      },
+      "ready": {
+        "title": "Success!",
+        "cardIntro": "Your debit card ending in ...",
+        "cardAction": "has been temporarily locked.",
+        "action": "Got it.",
+        "unlock": "Unlock my card"
+      }
+    },
+    "unlock": {
+      "empty": {
+        "title": "Unlock Card",
+        "description": "You have no locked cards",
+        "action": "Back to Account Details"
+      },
+      "selection": {
+        "title": "Unlock Card",
+        "description": "Select one of your cards  to unlock.",
+        "cardTitle": "Debit Card Ending in...",
+        "select": "Unlock this card"
+      },
+      "unlockScreen" : {
+        "backLink": "Back",
+        "title": "Unlock Card",
+        "description": "Start allowing activity using this card.",
+        "validate": "Please enter the expiration date to confirm unlock",
+        "ariaLabels": {
+          "expirationMonth": "2 digit Expiration Month",
+          "expirationYear": "2 digit Expiration Year"
+        },
+        "error": "The information you entered is invalid.",
+        "lockedSince": "Your card has been locked since",
+        "timestamp": "on",
+        "learnMore": {
+          "label": "Learn more about Card Lock",
+          "info": "Here there be some info"
+        },
+        "action": "Yes, unlock my card.",
+        "cancel": "Cancel"
+      },
+      "ready": {
+        "title": "Success!",
+        "cardIntro": "Your debit card ending in ...",
+        "cardAction": "has been unlocked.",
+        "action": "Got it.",
+        "lock": "Re-lock card"
+      }
+    },
+    "otp": {
+      "empty" : {
+        "title": "No Contacts",
+        "contactPoints": "You have no contact points. Give us a call at 1-888-464-0727 to proceed.",
+        "action": "OK"
+      },
+      "sendcode": {
+        "title": "Send Code",
+        "description": "Before proceeding, we need to verify your identity with a temporary code. Select where this code should be sent.",
+        "smallText": {
+            "situation": "By choosing SMS, you are giving us permission to send you a text message. If you do not have access to the email address or SMS  above, give us a call at ",
+            "number": "1-888-464-0727",
+            "fix": " to proceed."
+        },
+        "action": "Send Verification Code",
+        "skip": "I already have a code",
+        "contactPointTypes": {
+          "sms" : "Sms: ",
+          "email": "Email: "
+        }
+      },
+      "entercode": {
+        "title": "Enter Code",
+        "description": "A temporary verification code has been sent to",
+        "checkspam" : "If you didn’t receive it, check  your spam folder.",
+        "validity": "This code will be valid for 15 minutes.",
+        "placeholder": "Enter Verification Code",
+        "action": "Submit Code",
+        "resend": "Resend verification code",
+        "smallText": {
+            "situation": "If you do not have access to any of the contact information listed above, give us a call at ",
+            "number": "1-855-721-6991",
+            "fix": " to proceed."
+        },
+        "errors": {
+          "expired": "This code has expired.",
+          "invalid": "Invalid code. Double check to see if you have entered the code correctly."
+        }
+      },
+      "ineligible": {
+        "message": "You are not eligible for this feature. Please call 1-855-721-6991 for further assistance.",
+        "action": "OK"
+      }
+    },
+    "changepin": {
+      "empty": {
+        "title": "Set a New PIN",
+        "description": "You have no cards eligible to change PIN",
+        "contactPoints": "This card isn’t eligible to change PIN online. Give us a call at 1-888-464-0727 so we can help sort it out.",
+        "action": "Back to Account Details"
+      },
+      "selection": {
+        "title": "Set a New PIN",
+        "description": "Select one of your cards to set a new PIN on.",
+        "cardTitle": "Debit Card Ending in...",
+        "activate": "Set new PIN"
+      },
+      "pin": {
+        "title": "Set a New PIN",
+        "description": "Your verification code was approved. Enter your new PIN below.",
+        "learnMore": "Learn how to strengthen your PIN.",
+        "strengthenPin" : {
+          "reuse": "Don’t reuse a previous PIN.",
+          "sequence": "Avoid sequential numbers.",
+          "same": "Don’t use the same number."
+        },
+        "labels": {
+          "setPIN": "Set your 4 digit PIN",
+          "confirmPIN": "Re-enter your 4 digit PIN"
+        },
+        "action": "Set PIN",
+        "cancel":  "Cancel",
+        "errors": {
+          "invalid": "The information you entered is invalid.",
+          "match": "PIN numbers do not match."
+        }
+      },
+      "ready": {
+        "title": "Success!",
+        "description": "Your PIN number has been updated!",
+        "action": "Back to Account Details",
+        "smallText": "This change takes place immediately and will work at any ATM."
+      }
+    },
+    "order": {
+      "back": "Back",
+      "type": {
+        "title": "What Happened To Your Card?",
+        "description": "Do you still have the debit card ending in",
+        "question": "in your possession?",
+        "action": "Yes, I Have It",
+        "lost": "No, It's Missing"
+      },
+      "reissue": {
+        "steps": ["Request", "Ship", "Confirm"],
+        "request": {
+          "title": "Get a New Card",
+          "description": "What's the reason for requesting a new debit card?",
+          "prompt": "Select a reason",
+          "reasons": {
+            "bent_or_damaged": "My card is bent or damaged.",
+            "damaged_strip": "The magnetic strip is damaged.",
+            "chip_not_working": "The debit card's chip is not working.",
+            "cannot_read_number": "My debit card number is illegible.",
+            "other": "Other"
+          },
+          "action": "Continue"
+        },
+        "confirm" : {
+          "title": "Confirm Your Order",
+          "description": {
+            "closeCard": "Your current card will continue to work until you activate your new card",
+            "deliveryPrompt": "You have selected",
+            "arrival": "Your card should arrive in"
+          },
+          "cancel": "Cancel Order",
+          "action": "Complete Your Order"
+        }
+      },
+      "reorder": {
+        "steps": {
+          "review": {
+            "title": "Review Transactions",
+            "description": "Check for any fraudulent activity on your card."
+          },
+          "order": {
+            "title": "Order a New Card",
+            "description": "We'll send you a new card with a new number and your old card will no longer work."
+          },
+          "reviewed": {
+            "title": "Reviewed Transactions",
+            "description": "You checked for purchases you didn't authorize."
+          },
+          "ordered": {
+            "title": "New Card On The Way",
+            "description": "Your new debit card should arrive in"
+         },
+         "verify": {
+           "title": "New Address Requested",
+           "description": "Call us to verify your identiy and address."
+         }
+        },
+        "transactions": {
+          "title": "Have You Looked at Your Transactions?",
+          "description": "Before you report your card missing, make sure you recognize your previous transactions.",
+          "steps": {
+            "noIssues": "If there are no issues, click",
+            "unsure": {
+              "ifNotSure": "If you’re not sure, click on",
+              "followedBy": "then click the",
+              "reportProblem": "Report a Problem",
+              "nextToTransaction": "link next to a transaction you don’t recognize"
+            }
+          },
+          "action": "Everything Looks Fine",
+          "cancel": "Let Me See My Transactions"
+        },
+        "confirm": {
+          "title": "Confirm Your Order",
+          "description": {
+            "closeCard": "We'll close your current card but you'll still have complete access to your account",
+            "newNumber": "You'll receive a new card with a new card number",
+            "arrival": "should arrive in",
+            "expeditedCost": "$25 will be immediately deducted from your checking account"
+          },
+          "cancel": "Cancel Order",
+          "action": "Complete Your Order"
+        }
+      },
+      "ship": {
+        "title": "Get a New Card",
+        "addressPrompt": "Do you want a new card sent to the address on file?",
+        "expeditePrompt": "Expedite 2-3 Business Day Delivery ($25 Fee)",
+        "action": "Continue",
+        "options": {
+          "same": "Send it to the address on file",
+          "different": "Send it to a different address"
+        },
+        "deliverto": "We'll ship it to:",
+        "arriveby": "It should arrive in",
+        "delivery": {
+          "standard": {
+            "name": "It",
+            "type": "Standard Delivery",
+            "time": "3-5 business days",
+            "carrier": "USPS."
+          },
+          "expedited": {
+            "name": "Your expedited card",
+            "type": "Expedited Delivery",
+            "time": "2-3 business days",
+            "carrier": "FedEx."
+          }
+        },
+        "otherAddress": "We'll need to talk with you to verify your identity before we can mail your new card."
+      },
+      "success": {
+       "title": "Success",
+       "reissue": {
+         "description": "You’re done! Your new debit card should arrive in",
+         "deliveryVia": "via",
+         "emailConfirmation": "We're also sending an email with a recap to the email address on file."
+       },
+       "reorder": {
+         "description": "You’re done! You've reported your card missing and will receive a new one in",
+         "deliveryVia": "via"
+       }
+     },
+     "insufficient": {
+       "title": "Insufficient Funds",
+       "description": "There's not enough funds in your account for this delivery option. You may continue with",
+       "arrival": "Your card should arrive in",
+       "action": "Use Standard Delivery",
+       "cancel": "Cancel Order"
+     },
+     "otherLocation": {
+       "title": "Give Us A Call",
+       "description": "All that's left to do is give us a call now at",
+       "needReissue": "to verify your identity and address. We'll work together to have your replacement card sent to you.",
+       "needReorder": "to get you a new debit card.",
+       "callTitle": "New Address Requested",
+       "callDescription": "Call us to verify your identity and new address."
+     },
+     "cancelOrder": {
+       "title": "Are You Sure?",
+       "description": "If you continue, we'll report your card lost or damaged and send you a new one.",
+       "cancel": "Exit",
+       "action": "Continue With Order"
+     },
+     "inProgress": {
+       "title": "We're On It",
+       "description": "There is already a card on the way for you. Please call",
+       "needCard": "if you still need a new card.",
+       "action": "OK"
+     },
+     "confirmAction": {
+       "title": "Are You Sure?",
+       "description": "It appears you have received a card that hasn't been activated.  Reporting it missing will cancel that card and you'll receive a new card with a new number.  If you report it damaged, you will receive a new card with the same number.",
+       "prompt": "Are you sure you want to continue?",
+       "cancel": "Exit",
+       "action": "Continue With Order"
+     },
+     "contactNumber": "1-888-464-0727"
+    }
+  }
+}

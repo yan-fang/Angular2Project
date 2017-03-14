@@ -1,0 +1,15 @@
+<ease-ui-modal id="debit-order-modal"
+  close-modal="debitOrder.close()"
+  modal-title="'Order Debit Card'"
+  showIconMobile="true"
+  class="debit-modal debit-order"
+  data-ng-class="debitOrder.modalClass"
+  id="order-debit-modal">
+  <div class="debit-card-modal">
+    <div class="debit-modal-container">
+      <debit-otp data-feature="order" data-business-event-id="50107"></debit-otp>
+      <div data-ng-include="debitOrder.templatePaths[debitOrder.currentState]"></div>
+    </div>
+  </div>
+
+</ease-ui-modal>

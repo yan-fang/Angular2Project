@@ -1,0 +1,16 @@
+<h2 id="modal-title">{{::RetailDispute.pageProperties.modalTitle}}</h2>
+
+<form class="problem-type">
+  <div ng-repeat="item in RetailDispute.pageProperties.radioButtons">
+    <label class="input-block" for="{{::item.id}}">
+      <input type="radio" id="{{::item.id}}" ng-model="RetailDispute.dispute.disputeReason"
+             name="problem-type-radio" tabindex="0" value="{{::item.value}}"/>
+      {{::item.label}}
+    </label>
+  </div>
+</form>
+<button id='continue-button' role="button" type="button" data-ng-disabled="!RetailDispute.dispute.disputeReason"
+      class="progressive"
+      ng-click="RetailDispute.setDisputeReason(RetailDispute.dispute.disputeReason); RetailDispute.goToView('customerInfo')">
+{{::RetailDispute.pageProperties.buttonText}}
+</button>

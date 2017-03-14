@@ -1,0 +1,26 @@
+<h1 class="title" tabindex="0">
+  {{debitUnlock.i18n.ready.title}}
+</h1>
+<p class="debit-description" tabindex="0">
+  {{debitUnlock.i18n.ready.cardIntro}}
+  {{debitUnlock.selectedCard.cardNumber | limitTo:-4 }}
+  {{debitUnlock.i18n.ready.cardAction}}
+</p>
+<div class="success-actions">
+  <button type="button"
+          id="back-button"
+          class="btn progressive"
+          tabindex="0"
+          data-ui-sref="{{debitUnlock.returnState}}">
+    {{debitUnlock.i18n.ready.action}}
+  </button>
+
+  <button type="button"
+          id="cancel-button"
+          class="btn ghost progressive"
+          tabindex="0"
+          ui-sref="BankDetails.transactions.debitLock">
+    {{debitUnlock.i18n.ready.lock}}
+  </button>
+
+</div>

@@ -1,0 +1,9 @@
+<button class="back-button icon-arrow-back"
+        name="back-button"
+        id="order-card-back-button"
+        tabindex="0"
+        data-ng-click="debitOrder.back()"
+        title="{{debitOrder.i18n.order.back}}">
+</button>
+
+<div data-ng-include="debitOrder.reorderTemplates[debitOrder.currentStateStep]"></div>

@@ -1,0 +1,36 @@
+<ease-ui-modal
+  close-modal="editPayeeCtrl.close()"
+  modal-id="'modal-edit-payee'"
+  modal-title="editPayeeCtrl.modalTitle"
+  ng-class="editPayeeCtrl.modalClass">
+
+  <!-- Account Info -->
+  <payee-account-info
+    ng-if="editPayeeCtrl.currentStep === 'accountInfo'"
+    payee-service="editPayeeCtrl.payeeServiceInstance"
+    payee-info="editPayeeCtrl.payeeDetail"
+    flow-type="editPayeeCtrl.flowType"
+    submit="editPayeeCtrl.proceed()"
+    fixable-errors="editPayeeCtrl.fixableErrors"
+    loading="{{editPayeeCtrl.loading}}">
+  </payee-account-info>
+
+  <!-- Contact Info -->
+  <edit-payee-contact-info
+    ng-if="editPayeeCtrl.currentStep === 'contactInfo'"
+    payee-service="editPayeeCtrl.payeeServiceInstance"
+    payee-info="editPayeeCtrl.payeeDetail"
+    submit="editPayeeCtrl.proceed()"
+    loading="{{editPayeeCtrl.loading}}"
+    fixable-errors="editPayeeCtrl.fixableErrors"
+    state-list="editPayeeCtrl.stateList">
+  </edit-payee-contact-info>
+
+  <!-- Success -->
+  <payee-success
+    ng-if="editPayeeCtrl.currentStep === 'success'"
+    payee-info="editPayeeCtrl.payeeDetail"
+    flow-type="editPayeeCtrl.flowType"
+    pending-payments="editPayeeCtrl.pendingPayments">
+  </payee-success>
+</ease-ui-modal>

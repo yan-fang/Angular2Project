@@ -1,0 +1,13 @@
+<div class="info-list">
+  <p class="info-title" ng-if="$ctrl.title && $ctrl.info.length > 0">{{$ctrl.title}}</p>
+  <ul id="info-list-items-{{$ctrl.id}}" class="info-list-items">
+    <li id="list-item-{{::$index}}" class="info-list-item" ng-repeat="item in $ctrl.info | limitTo: $ctrl.numberOfRows">
+      <span id="list-label-{{::$index}}">{{::item.label}}</span>
+      <span id="list-value-{{::$index}}">{{::item.detail}}</span>
+    </li>
+
+    <li id="info-list-{{$ctrl.id}}-show-more" ng-if="($ctrl.info.length - $ctrl.numberOfRows) > 1" class="info-list-item">
+  		<a href="" ng-click="$ctrl.showAllItem()">Show all {{::$ctrl.info.length}} payments</a>  	
+    </li>
+  </ul>
+</div> 

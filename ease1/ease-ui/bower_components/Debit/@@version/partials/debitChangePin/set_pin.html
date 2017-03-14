@@ -1,0 +1,119 @@
+<h1 class="title"
+    tabindex="0">
+  {{debitChangePin.i18n.pin.title}}
+</h1>
+<div class="set-pin">
+  <p class="debit-description" tabindex="0">
+     {{debitChangePin.i18n.pin.description}}
+  </p>
+<div class="strengthen-pin">
+  <ease-tooltip
+    tip-message="'{{debitChangePin.i18n.pin.strengthenPin.reuse}}<br />
+            {{debitChangePin.i18n.pin.strengthenPin.sequence}}<br />
+            {{debitChangePin.i18n.pin.strengthenPin.same}}'"
+    options="debitChangePin.tooltipOptions"
+  ></ease-tooltip>
+ </div>
+
+  <form name="setPin"
+        id="set-pin-form"
+        class="set-pin-form"
+        novalidate>
+    <div class="entry form-input pin-input">
+
+      <div class="set-pin-container">
+        <label for="pin_TLPCI" class="label">
+          {{debitChangePin.i18n.pin.labels.setPIN}}
+        </label>
+        <div class="input-holder">
+          <input type="password"
+                 id="pin_TLPCI"
+                 class="input pin-input"
+                 name="pin_TLPCI"
+                 maxlength="4"
+                 minlength="4"
+                 tabindex="0"
+                 required
+                 data-debit-numbers-only="numbers-only"
+                 data-ng-model="debitChangePin.models.pin.entry"
+                 aria-describedby="pin-invalid-error-message" />
+        </div>
+        <div class="pin-error-message">
+          <span id="pin-invalid-error-message"
+                class="invalid-pin-error"
+                aria-live="assertive"
+                data-ng-show="setPin.pin_TLPCI.$invalid &&
+                              setPin.pin_TLPCI.$touched">
+                {{debitChangePin.i18n.pin.errors.invalid}}
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="entry form-input confirm-pin-input">
+
+      <div class="set-pin-container">
+        <label for="confirmpin_TLPCI" class="label" >
+          {{debitChangePin.i18n.pin.labels.confirmPIN}}
+        </label>
+        <div class="input-holder">
+          <input type="password"
+                 id="confirmpin_TLPCI"
+                 class="input pin-input"
+                 name="confirmpin_TLPCI"
+                 maxlength="4"
+                 minlength="4"
+                 tabindex="0"
+                 required
+                 data-debit-numbers-only="numbers-only"
+                 data-ng-model="debitChangePin.models.pin.confirm"
+                 data-ng-pattern="debitChangePin.models.pin.entry"
+                 aria-describedby="confirm-pin-invalid-error-message confirm-pin-match-error-message" />
+        </div>
+        <div class="pin-error-message">
+          <span id="confirm-pin-invalid-error-message"
+                class="invalid-confirmpin-error"
+                aria-live="assertive"
+                data-ng-show="setPin.confirmpin_TLPCI.$invalid &&
+                              !setPin.confirmpin_TLPCI.$error.pattern &&
+                              setPin.confirmpin_TLPCI.$touched">
+                {{debitChangePin.i18n.pin.errors.invalid}}
+          </span>
+          <span id="confirm-pin-match-error-message"
+                class="match-error"
+                aria-live="assertive"
+                data-ng-show="!setPin.confirmpin_TLPCI.$error.minlength &&
+                              setPin.confirmpin_TLPCI.$error.pattern">
+                {{debitChangePin.i18n.pin.errors.match}}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-action">
+
+      <div class="error-text" ng-if="debitChangePin.errors.SET_PIN">
+        {{debitChangePin.errors.SET_PIN}}
+      </div>
+
+      <div class="set-pin-container">
+        <button type="submit"
+                id="set-card-pin"
+                class="btn action"
+                tabindex="0"
+                data-ng-disabled="setPin.$invalid || debitChangePin.submitDisabled"
+                data-ng-click="debitChangePin.changePin()">
+          <span data-ng-class="{ loading : debitChangePin.submitDisabled }">
+            {{debitChangePin.i18n.pin.action}}
+          </span>
+        </button>
+      </div>
+    </div>
+    <div class="set-pin-container">
+      <div class="disclaimer">
+        <p class="small-text">
+          {{debitChangePin.i18n.pin.disclaimer}}
+        </p>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,119 @@
+<div id="lock-screen" data-ng-hide="learnMoreLock">
+
+  <button class="back-button icon-arrow-back"
+          name="back-button"
+          id="lock-card-back-button"
+          data-ng-click="debitLock.changeState(debitLock.STATES.CARD_LIST)"
+          data-ng-hide="debitLock.cards.length <= 1"
+          title="{{debitLock.i18n.lockScreen.backLink}}"
+          tabindex="0">
+  </button>
+
+  <h1 class="title" tabindex="0">
+    {{debitLock.i18n.lockScreen.title}}
+  </h1>
+
+  <div class="debit-description"
+     tabindex="0">
+     {{debitLock.i18n.lockScreen.description}}
+  </div>
+
+  <div class="debit-card">
+    <div class="card-status-icon unlocked"></div>
+    <div class="card-info">
+      <div class="card-number" aria-hidden="true">{{debitLock.selectedCard.cardNumber | limitTo:-4  }}</div>
+    </div>
+  </div>
+
+  <div class="card-activity" ng-if="debitLock.lastTransaction">
+
+    <div id="last-transaction" ng-if="!debitLock.lastTransaction.atmTransaction">
+      {{debitLock.i18n.lockScreen.lastTransaction.lastActivity}}
+      {{debitLock.i18n.lockScreen.lastTransaction.transaction}}
+      {{debitLock.lastTransaction.transactionDate | timeAgo}}
+      {{debitLock.i18n.lockScreen.lastTransaction.cardTime}}
+      {{debitLock.i18n.lockScreen.lastTransaction.cardAmount}}
+      {{debitLock.lastTransaction.transactionAmount | currency}}
+      {{debitLock.i18n.lockScreen.lastTransaction.vendor}}
+      "{{debitLock.lastTransaction.merchant.name}}."
+    </div>
+
+    <div id="last-transaction" ng-if="debitLock.lastTransaction.atmTransaction">
+       {{debitLock.i18n.lockScreen.lastTransaction.lastActivity}}
+       {{debitLock.lastTransaction.atmTransactionString}}
+       {{debitLock.lastTransaction.transactionAmount | currency}},
+       {{debitLock.lastTransaction.transactionDate | timeAgo}}
+       {{debitLock.i18n.lockScreen.lastTransaction.cardTime}}
+       {{debitLock.lastTransaction.cardLastFour}}
+    </div>
+  </div>
+
+  <div class="card-activity" ng-if="!debitLock.lastTransaction">
+    <div id="last-transaction">
+     {{debitLock.i18n.lockScreen.lastTransaction.none}}
+    </div>
+  </div>
+
+  <div class="error-text" ng-if="debitLock.errors.LOCK_CARD">
+    {{debitLock.errors.LOCK_CARD}}
+  </div>
+
+  <div class="actions">
+    <button type="button"
+            id="lock-card-button"
+            class="btn destructive"
+            tabindex="0"
+            data-ng-disabled="debitLock.submitDisabled"
+            data-ng-click="debitLock.lockCard()">
+      <span data-ng-class="{ loading : debitLock.submitDisabled }">
+        {{debitLock.i18n.lockScreen.action}}
+      </span>
+    </button>
+
+  </div>
+
+  <button
+    id="learn-more-about-lock"
+    class="learn-more-link"
+    role="button"
+    data-ng-click="learnMoreLock=true"
+    tabindex="0">
+    {{debitLock.i18n.lockScreen.learnMore.label}}
+  </button>
+
+</div>
+
+<div id="learn-more" data-ng-show="learnMoreLock">
+
+  <button class="back-button icon-arrow-back"
+          name="back-button"
+          data-ng-click="learnMoreLock=false"
+          tabindex="0"
+          title="{{debitLock.i18n.lockScreen.info.backLink}}">
+  </button>
+
+  <h1 class="title" tabindex="0">
+    {{debitLock.i18n.lockScreen.info.title}}
+  </h1>
+
+  <div class="instructions" tabindex="0">
+    {{debitLock.i18n.lockScreen.info.summary}}
+  </div>
+  <div class="learn-more-block">
+    <p class="info-text" tabindex="0"> {{debitLock.i18n.lockScreen.info.declined}} </p>
+    <p class="info-text" tabindex="0"> {{debitLock.i18n.lockScreen.info.activity}}</p>
+    <p class="info-text" tabindex="0"> {{debitLock.i18n.lockScreen.info.lost}}</p>
+  </div>
+
+  <button
+    id="return-to-lock"
+    type="button"
+    class="btn progressive"
+    role="button"
+    title= "{{debitLock.i18n.lockScreen.info.action}}"
+    data-ng-click="learnMoreLock=false"
+    tabindex="0">
+    {{debitLock.i18n.lockScreen.info.action}}
+  </button>
+
+</div>

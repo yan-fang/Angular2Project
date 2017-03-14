@@ -1,0 +1,51 @@
+<accordion-drawer id='transaction-drawer-{{::transaction.transactionId}}'
+                  class="bank-enhanced-transaction"
+                  role="region"
+                  aria-label="Transaction {{::transaction.transactionId}} extra information area."
+                  aria-live="polite" is-open="accordionVM.isOpen($index)"
+                  accordion-open="accordionVM.accordionParent.logDrawerOpenEvent('atm-withdrawal')"
+                  accordion-close="accordionVM.accordionParent.logDrawerCloseEvent('transactions:Drawer:Close')"
+                  aria-hidden="{{!accordionVM.isOpen($index)}}">
+    <span ng-if="transaction.atmDisputeType" class="alert-message in-dispute" aria-live="polite" role="alert">{{::accordionVM.accordionParent.i18nPastTransactions.atmMessages[transaction.atmDisputeType]}}</span>
+    <div class="cleansed-data max-width">
+        <table class="ets-table">
+            <tr class="ets-row" data-ng-if="transaction.purchasedBy">
+                <td class="key">{{::accordionVM.accordionParent.i18nPastTransactions["ease.bank.pastTransactions.withdrawnBy"]}}</td>
+                <td class="value purchased-by">{{transaction.purchasedBy}}</td>
+            </tr>
+            <tr class="ets-row">
+                <td class="key">{{::accordionVM.accordionParent.i18nPastTransactions["ease.bank.pastTransactions.atmLocation"]}}</td>
+                <td class="value atm-location">{{::transaction.transactionDescriptionDetail.activityDescription}}</td>
+            </tr>
+            <tr class="ets-row">
+                <td class="key">{{::accordionVM.accordionParent.i18nPastTransactions["ease.bank.pastTransactions.withdrawalTime"]}}</td>
+                <td class="value transaction-time">{{::transaction.transactionOverview.transactionDate | date : 'h:mm a'}} {{::accordionVM.accordionParent.i18nPastTransactions.estStamp}}</td>
+            </tr>
+            <tr class="ets-row" data-ng-if="transaction.surchargeFee">
+                <td class="key">{{::accordionVM.accordionParent.i18nPastTransactions["ease.bank.pastTransactions.amount"]}}:</td>
+                <td class="value withdrawal-amount">{{::transaction.withdrawalAmount | currency}}</td>
+            </tr>
+            <tr class="ets-row" data-ng-if="transaction.surchargeFee">
+                <td class="key">{{::accordionVM.accordionParent.i18nPastTransactions["ease.bank.pastTransactions.atmFee"]}}</td>
+                <td class="value fees">{{::transaction.surchargeFee | currency}}</td>
+            </tr>
+        </table>
+
+        <span class="grey-out statement-description"><b>{{::accordionVM.accordionParent.i18nPastTransactions["ease.bank.pastTransactions.appearsOnStatementAs"]}}
+        </b><i class="italic">{{::transaction.statementDescription}}</i></span>
+
+        <transaction-memo
+                data-memo-label="accordionVM.accordionParent.i18nPastTransactions['memoLabel']"
+                data-memo="transaction.transactionDescriptionDetail.memoText"></transaction-memo>
+
+        <div id='transaction-{{::transaction.transactionId}}-dispute'
+         class="single-line-link"
+         ng-click="$event.stopPropagation(); accordionVM.accordionParent.goToDisputeModal('atm', $index, 'disputeCheckList')"
+         ng-class="{'not-visible' : accordionVM.accordionParent.hideReportProblemFlag(transaction)}"
+         tabindex="{{accordionVM.accordionParent.getTabIndex(accordionVM.isOpen($index))}}">
+          <span class="icon-megaphone-outline"></span> {{::accordionVM.accordionParent.i18nPastTransactions["ease.bank.pastTransactions.reportproblem"]}}
+      </div>
+
+    </div>
+
+</accordion-drawer>

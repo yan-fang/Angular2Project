@@ -1,0 +1,7 @@
+ <div class="image-container">
+   <div class="tran-view-details" data-ng-if="!upComingTrans.loadCheckImage">
+     <a class="linkCursor" data-ng-click="upcomingCardDetailsCtrl.showTransactionDetails(upComingTrans)"> {{::upcomingCardDetailsCtrl.i18nUpcomingTransactions['ease.bank.upcomingTransactions.card.checkdeposit.view.transaction.details']}} </a>
+   </div>
+    <div data-ng-class="upcomingCardDetailsCtrl.loadingClass" data-ng-if="upComingTrans.loadCheckImage"></div>
+    <check-image ng-if ="upComingTrans.frontCheckImageData" class="check-image-toggle-text" toggle="{display: true, frontText: 'Front of Check', backText: 'Back of Check'}" check-front="upComingTrans.frontCheckImageData" check-back="upComingTrans.backCheckImageData"></check-image>
+</div>

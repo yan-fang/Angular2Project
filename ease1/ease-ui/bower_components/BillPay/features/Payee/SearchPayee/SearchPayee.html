@@ -1,0 +1,61 @@
+<ease-ui-modal
+  close-modal="searchPayeeCtrl.close()"
+  modal-id="'modal-search-payee'"
+  modal-title="'Add a Payee'"
+  ng-class="searchPayeeCtrl.modalClass">
+  <div class="search-payee-container" role="search">
+    <div class="page-header" id="myElement" ng-class="{'hide': hideHeader}">
+      <p class="sub-heading">
+        What's the name of the person or company you'd like to pay?
+      </p>
+    </div>
+
+    <label class="search-payee-label" for="search-payee-name">Payee Name</label>
+
+    <div class="search-section" role="combobox" aria-expanded="{{searchPayeeCtrl.payeeList.length > 0 ? 'true' : 'false'}}">
+      <input
+       id="search-payee-name"
+       type="text"
+       class="search-input"
+       autocomplete="list"
+       placeholder="Enter a company or person"
+       ng-model="searchPayeeCtrl.payeeInfo.payeeName"
+       ng-change="searchPayeeCtrl.search(searchPayeeCtrl.payeeInfo.payeeName)"
+       ng-keydown="searchPayeeCtrl.checkKeyDown($event)"
+       ng-focus="searchPayeeCtrl.hideHeader()"
+       data-ng-trim="false"
+      />
+
+      <div class="manual-add" ng-if="searchPayeeCtrl.payeeInfo.payeeName">
+        <a id="manualAddLink" ng-click="searchPayeeCtrl.beginManualAdd()" class="manual-add-link" tabindex="-1">
+          {{ searchPayeeCtrl.payeeInfo.payeeName | limitTo: 22 }}
+          {{ searchPayeeCtrl.payeeInfo.payeeName.length > 22 ? '...' : ''}}
+        </a>
+        <button aria-label="Add payee manually" type="button" class="btn-manual-add-payee" title="Add payee manually" ng-click="searchPayeeCtrl.beginManualAdd()">+</button>
+      </div>
+
+      <div class="search-result" ng-class="{'has-height': searchPayeeCtrl.payeeList.length>0 || searchPayeeCtrl.loadingClassName!==''}">
+        <div ng-class="searchPayeeCtrl.loadingClassName"></div>
+        <ul class="list-box" role="listbox">
+          <li ng-repeat="payeeInfo in searchPayeeCtrl.payeeList"
+            tabindex="-1"
+            ng-mouseover="searchPayeeCtrl.selectedIndex = $index"
+            ng-focus="searchPayeeCtrl.selectedIndex = $index"
+            ng-keydown="searchPayeeCtrl.checkKeyDown($event);"
+            ng-class="{active : searchPayeeCtrl.selectedIndex===$index}"
+            class="bp-search-payee-item"
+            ng-click="searchPayeeCtrl.goToAccountInfo(payeeInfo)"
+            role="listitem">
+            <div class="payee-logo">
+              <img role="presentation" ng-show="payeeInfo.payeeLogoUrl" ng-src="{{payeeInfo.payeeLogoUrl}}" alt="" aria-hidden="true" />
+            </div>
+            <div class="payee-detail">
+              <span class="payee-name">{{payeeInfo.payeeName}}</span><br>
+              <span class="payee-location">{{payeeInfo.payeeLocation}}</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</ease-ui-modal>

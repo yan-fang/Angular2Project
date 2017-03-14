@@ -1,0 +1,42 @@
+<ease-ui-modal
+  id="confirm-recurring-payment"
+  close-modal="ConfirmRecurringPaymentCtl.close()"
+  modal-title="'Success'"
+  ng-class="ConfirmRecurringPaymentCtl.modalClass">
+
+    <p class="sub-heading" tabindex="0">
+      Your <strong>{{ConfirmRecurringPaymentCtl.displayAmount(ConfirmRecurringPaymentCtl.paymentInformation.paymentAmount) | currency}}</strong> recurring bill to <strong>{{ConfirmRecurringPaymentCtl.paymentInformation.payee.payeeName}}</strong> will start on <strong>{{ConfirmRecurringPaymentCtl.paymentInformation.firstPaymentDate | date: "MMM dd, yyyy"}}</strong>.
+    </p>
+
+    <ul class="payment-success">
+      <li>
+        <span id="payment.payto.label">Payment To</span>
+        <span
+          id="payment.payto.value">{{ConfirmRecurringPaymentCtl.paymentInformation.payee | showPayeeName: 'displayName'}}</span>
+      </li>
+      <li>
+        <span id="payment.amount.label">Amount</span>
+        <span id="payment.amount.value">{{ConfirmRecurringPaymentCtl.displayAmount(ConfirmRecurringPaymentCtl.paymentInformation.paymentAmount) | currency}}</span>
+      </li>
+      <li>
+        <span id="payment.frequency.label">How Often</span>
+        <span id="payment.frequency.value">{{ConfirmRecurringPaymentCtl.paymentInformation.frequency.display}}</span>
+      </li>
+      <li>
+        <span id="payment.firstdate.label" >First Payment</span>
+        <span id="payment.firstdate.value">{{ConfirmRecurringPaymentCtl.paymentInformation.firstPaymentDate | date: "MMM dd, yyyy"}}</span>
+      </li>
+      <li ng-if="ConfirmRecurringPaymentCtl.paymentInformation.finalPaymentDate">
+        <span id="payment.lastdate.label">Last Payment</span>
+        <span id="payment.lastdate.value">{{ConfirmRecurringPaymentCtl.paymentInformation.finalPaymentDate | date: "MMM dd, yyyy"}}</span>
+      </li>
+      <li ng-if="ConfirmRecurringPaymentCtl.paymentInformation.finalPaymentAmount && ConfirmRecurringPaymentCtl.paymentInformation.finalPaymentAmount !== 0">
+        <span id="payment.lastamount.label">Last Payment Amount</span>
+        <span id="payment.lastamount.value">{{ConfirmRecurringPaymentCtl.displayAmount(ConfirmRecurringPaymentCtl.paymentInformation.finalPaymentAmount) | currency}}</span>
+      </li>
+      <li>
+        <span id="payment.payfrom.label">Pay From</span>
+        <span id="payment.payfrom.value">{{ConfirmRecurringPaymentCtl.paymentInformation.account.displayName}}</span>
+      </li>
+    </ul>
+</ease-ui-modal>

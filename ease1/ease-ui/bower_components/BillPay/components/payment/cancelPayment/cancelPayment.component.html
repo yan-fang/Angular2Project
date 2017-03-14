@@ -1,0 +1,40 @@
+<ease-ui-modal
+  class="cancel-payment"
+  close-modal="$ctrl.close()"
+  modal-title="$ctrl.isSubmitted ? 'Success' : 'Are you sure?'"
+  ng-class="$ctrl.isSubmitted ? 'modal-success' : 'action'">    
+
+  <div ng-if="$ctrl.isRecurring">
+    <cancel-recurring-action
+      id="cancel-recurring-action"
+      is-submitted="$ctrl.isSubmitted"
+      selected-option="$ctrl.selectedOption"
+      ng-if="!$ctrl.isSubmitted"
+    >
+    </cancel-recurring-action>
+
+    <cancel-recurring-confirmation
+      id="cancel-recurring-confirmation"
+      selected-option="$ctrl.selectedOption"
+      ng-if="$ctrl.isSubmitted"
+    >
+    </cancel-recurring-confirmation>
+  </div>
+  
+  <div ng-if="!$ctrl.isRecurring">
+    <cancel-one-time-action
+      id="cancel-onetime-action"
+      is-submitted="$ctrl.isSubmitted"
+      ng-if="!$ctrl.isSubmitted"
+    >
+    </cancel-one-time-action>
+
+    <cancel-one-time-confirmation
+      id="cancel-onetime-confirmation"
+      ng-if="$ctrl.isSubmitted"
+    >
+    </cancel-one-time-confirmation>
+  </div>
+    
+
+</ease-ui-modal>

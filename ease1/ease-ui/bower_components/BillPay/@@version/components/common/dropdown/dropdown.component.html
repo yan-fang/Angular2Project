@@ -1,0 +1,27 @@
+<ease-ui-dropdown
+  class="billpay-dropdown"
+  is-open = "$ctrl.dropdown.isOpen"
+  persist-items = "$ctrl.persistItems"
+  items = "$ctrl.items"
+  model-value = "$ctrl.selectedItem"
+  required = "$ctrl.dropdown.required"
+  disable-search = "true"
+  combobox = "$ctrl.dropdown.data"
+  >
+  <ease-ui-dropdown-menu
+    select = "$ctrl.select(item)"
+    items = "$ctrl.items"
+    template = "true"
+    is-open = "$ctrl.dropdown.isOpen"
+    component-id = ""
+    >
+    <li data-ng-repeat = "item in $ctrl.items"
+      data-index = "{{$index}}"
+      role = "option"
+      tabindex= "-1"
+      id = "{{$ctrl.id}}-item-`{`{$ctrl.$index}`}`"
+      >
+      <span>{{item[$ctrl.displayField]}}</span>
+    </li>
+  </ease-ui-dropdown-menu>
+</ease-ui-dropdown>

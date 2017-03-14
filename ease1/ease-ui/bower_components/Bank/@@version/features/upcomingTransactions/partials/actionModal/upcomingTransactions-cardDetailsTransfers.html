@@ -1,0 +1,29 @@
+<div class="group">
+  <ul>
+    <li>
+      <div class="field-key">
+        <p class="send-date-label-processing">{{::upcomingCardDetailsCtrl.i18nUpcomingTransactions['ease.bank.upcomingTransactions.card.send']}}</p>
+      </div>
+      <div class="field-value">
+        <p class="send-date-value-processing">{{::upComingTrans.availableFundsDate | date :  "MMM dd, y"}}</p>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="field"></div>
+<div class="scheduled-date-label">
+  <i class="icon-scheduled scheduled-icon-green" ng-class="upcomingCardCtrl.UpcomingHelpers.getTransactionSource(upcomingCardCtrl.transactions)"></i>{{upcomingCardDetailsCtrl.i18nUpcomingTransactions['ease.bank.upcomingTransactions.card.category.upcoming.card.scheduled.for']}}{{::upComingTrans.availableFundsDate | date :  "MMM dd"}}
+</div>
+<div id="{{'actionTransfers-' + upComingTrans.cardNumber}}" data-ng-if="upcomingCardDetailsCtrl.UpcomingHelpers.isActionButtonEnabled(upComingTrans.transactionSource, upComingTrans.transactionType) && !upComingTrans.recurringTransactionIndicator">
+  <div ng-class="upcomingCardDetailsCtrl.getOperationBasedOnSourceKey(upComingTrans,'buttonCls')" data-ng-if="upComingTrans.transferShowEditIndicator">
+   <button id="{{'btnEditTransfer-' + upComingTrans.cardNumber}}" data-ng-click="upcomingCardDetailsCtrl.UpcomingHelpers.editTransfer($event, upComingTrans.transactionReferenceId)">
+      <div data-ng-class="upcomingCardDetailsCtrl.UpcomingHelpers.loadingClass()">
+        <span>{{upcomingCardDetailsCtrl.getOperationBasedOnSourceKey(upComingTrans,'buttonName')}}</span>
+      </div>
+    </button>
+  </div>
+  <div class="transaction-operation-link"  data-ng-if="upComingTrans.transferShowDeleteIndicator">
+    <a id="{{'cancelTransferLink-' + upComingTrans.cardNumber}}" class="linkCursor" data-ng-click="upcomingCardDetailsCtrl.cancelTransfers($event, upComingTrans.transactionReferenceId)">{{upcomingCardDetailsCtrl.getOperationBasedOnSourceKey(upComingTrans,'link')}}</a>
+  </div>
+</div>

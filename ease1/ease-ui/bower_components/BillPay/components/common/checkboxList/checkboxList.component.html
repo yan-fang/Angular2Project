@@ -1,0 +1,14 @@
+<div class="checkbox-list">
+	<div class="input-group checkbox" ng-repeat="option in $ctrl.checkboxOptions">
+		<input id="{{$ctrl.id}}-checkbox-{{$index}}" 
+			class="on-foucs" 
+			type="checkbox"
+			tabindex="0"
+			role="checkbox"
+			aria-checked="{{$ctrl.inputObj[option.field]}}"
+			ng-model="$ctrl.inputObj[option.field]"/>
+		<label class="checkbox-label" for="{{$ctrl.id}}-checkbox-{{$index}}">
+			{{option.display}}
+		</label>
+	</div>
+</div> 

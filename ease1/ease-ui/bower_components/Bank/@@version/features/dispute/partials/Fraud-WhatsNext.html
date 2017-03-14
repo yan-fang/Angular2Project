@@ -1,0 +1,13 @@
+<h2>{{::BankDispute.pageProperties.modalTitle}}</h2>
+
+<div class="sub-title bold">{{::BankDispute.pageProperties.modalSubTitle}}</div>
+
+<div class="call-us">
+    {{::BankDispute.pageProperties.callUs.prefix}}
+    <a aria-label="In state customer care number" role="link" class="phone-number usa" ng-click="BankDispute.logCallCenterLinkEvent()" data-ng-href="{{::BankDispute.pageProperties.callUs.numberLink}}">
+        {{::BankDispute.pageProperties.callUs.number}}
+    </a>
+    {{::BankDispute.pageProperties.callUs.suffix}}
+</div>
+
+
