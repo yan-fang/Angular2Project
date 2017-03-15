@@ -1,25 +1,29 @@
 import { requirejs } from './ng1-connector';
-
-const requireDeps = [
-  'require', 'angular', 'ease', 'easeCoreUtils', 'easeUIComponents', 'TransferModule'
-];
-
-const angularDeps = [
-  'ui.router', 'oc.lazyLoad', 'EaseLocalizeModule', 'restangular',
-  'EaseProperties', 'ContentProperties', 'easeAppUtils', 'TransferModule',
-  'EaseExceptionsModule', 'pubsubServiceModule', 'easeUIComponents'
-];
+import { addEnvDeps } from './env.ng1';
+import { Injector } from '@angular/core';
 
 /**
  * Returns a module name that can be bootstrapped with NgUpgrade
  */
-export function prepareTransferDialog(): Promise<string> {
+export function prepareTransferDialog(injector: Injector): Promise<string> {
   let resolve: Function;
   const res = new Promise(r => resolve = r);
 
+  const {requireDeps, angularDeps, runFunctions} = addEnvDeps(
+    ['require', 'angular', 'ease', 'easeCoreUtils', 'easeUIComponents', 'TransferModule'],
+    [
+      'ui.router', 'oc.lazyLoad', 'EaseLocalizeModule', 'restangular',
+      'EaseProperties', 'ContentProperties', 'easeAppUtils', 'TransferModule',
+      'EaseExceptionsModule', 'pubsubServiceModule', 'easeUIComponents'
+    ],
+    injector
+  );
+
   configureRequireJS();
   requirejs(requireDeps, (_require: any, angular: any) => {
-    angular.module('TransferDialog', angularDeps).config(configFunction()).run(navigate(angular));
+    const m = angular.module('TransferDialog', angularDeps).config(configFunction()).run(navigate(angular));
+    runFunctions.map(r => m.run(r));
+
     resolve('TransferDialog');
   });
 
@@ -31,6 +35,8 @@ function configureRequireJS() {
   requirejs.config({
     waitSeconds: 0,
     paths: {
+      angularMocks: '/public/static/js/angular-mocks',
+
       lodash: '/bower_components/lodash/index',
       jquery: '/bower_components/jquery/dist/jquery.min',
       angular: '/bower_components/angular/angular.min',
@@ -76,9 +82,9 @@ function configFunction(): Function {
     $stateProvider.state(accountSummaryState);
 
     transferStateProvider.set(accountSummaryState, 'accountSummary.transfer',
-    'accountSummary.transferSuccess', 'accountSummary.transferCancel',
-    'accountSummary.transferCancelConfirm', 'accountSummary.transferError',
-    'accountSummary.transferEdit', ':transferId/Transfer');
+      'accountSummary.transferSuccess', 'accountSummary.transferCancel',
+      'accountSummary.transferCancelConfirm', 'accountSummary.transferError',
+      'accountSummary.transferEdit', ':transferId/Transfer');
 
     const transferMoneyStates = transferStateProvider.get();
     const transferStart = transferMoneyStates.transferStart;
@@ -101,7 +107,7 @@ function configFunction(): Function {
 
 function navigate(angular: any) {
   function runFn($state: any, $rootScope: any, $log: any) {
-    setTimeout(() => $state.go('accountSummary.transfer',  {}, {location: false}), 0);
+    setTimeout(() => $state.go('accountSummary.transfer', {}, { location: false }), 0);
 
     $rootScope.close = () => {
       const modal = document.querySelector('ease-ui-modal');
@@ -113,7 +119,6 @@ function navigate(angular: any) {
       }
     };
   }
-
   (<any>runFn).$inject = ['$state', '$rootScope', '$log'];
   return runFn;
 }

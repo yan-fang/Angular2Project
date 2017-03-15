@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy } from '@angular/core';
+import { Component, ElementRef, OnDestroy, Injector } from '@angular/core';
 import { setUpLocationSync } from '@angular/router/upgrade';
 import { UpgradeModule } from '@angular/upgrade/static';
 import { prepareTransferDialog } from './transfer-dialog.ng1';
@@ -14,8 +14,8 @@ import { prepareTransferDialog } from './transfer-dialog.ng1';
   `]
 })
 export class TransferDialogComponent implements OnDestroy {
-  constructor(el: ElementRef, private upgrade: UpgradeModule) {
-    prepareTransferDialog().then((moduleName: string) => {
+  constructor(el: ElementRef, private upgrade: UpgradeModule, injector: Injector) {
+    prepareTransferDialog(injector).then((moduleName: string) => {
       upgrade.bootstrap(el.nativeElement, [moduleName]);
       setUpLocationSync(upgrade);
     });
