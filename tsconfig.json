@@ -33,8 +33,8 @@
     "node_modules",
     "ease1",
     "_dist",
-    "./src/*.spec.ts",
-    "./src/test.ts"
+    "./src/*test.ts",
+    "./src/*.spec.ts"
   ],
   "include": [
     "src"

@@ -12,6 +12,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+        { pattern: './_dist/vendor.bundle.js', watched: false, served: true },
         { pattern: './src/test.ts', watched: false},
     ],
 

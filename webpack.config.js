@@ -216,10 +216,59 @@ module.exports = function (env = {}) {
         ]
       },
       plugins: [
+        new webpack.DllReferencePlugin({
+          context: '.',
+          manifest: require('./_dist/vendor-manifest.json'),
+        }),
         new webpack.ContextReplacementPlugin(
           /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
           __dirname
         ),
+        new webpack.SourceMapDevToolPlugin({
+          filename: null, // if no value is provided the sourcemap is inlined
+          test: /\.(ts|js)($|\?)/i // process .js and .ts files only
+        })
+      ],
+      resolve: {
+        modules: baseResolve.modules,
+        extensions: baseResolve.extensions,
+        plugins: [
+          new TsConfigPathsPlugin({configFileName: 'tsconfig-spec.json'})
+        ]
+      }
+    });
+
+
+  } else if (mode === "karmavendor") {
+    console.log('   Mode: Karma Vednor');
+
+    return ({
+      cache: true,
+      entry: {
+        vendor: ['./src/vendor_test.ts'],
+      },
+      output: {
+        filename: 'vendor.bundle.js',
+        path: '_dist/',
+        library: 'vendor_lib',
+      },
+      module: {
+        loaders: [
+          ...baseLoaders,
+          {
+            test: /\.ts$/,
+            loader: [
+              'awesome-typescript-loader?configFileName=tsconfig-spec.json',
+              'angular2-template-loader'
+            ]
+          }
+        ]
+      },
+      plugins: [
+        new webpack.DllPlugin({
+          name: 'vendor_lib',
+          path: '_dist/vendor-manifest.json',
+        }),
         new webpack.SourceMapDevToolPlugin({
           filename: null, // if no value is provided the sourcemap is inlined
           test: /\.(ts|js)($|\?)/i // process .js and .ts files only
