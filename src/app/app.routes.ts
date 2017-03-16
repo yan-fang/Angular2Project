@@ -12,6 +12,10 @@ export const appRoutes: Routes = [
     loadChildren: '@c1/creditcard/creditcard.module#CreditCardModule'
   },
   {
+    path: '360Checking/:accountReferenceId',
+    loadChildren: '@c1/bank/L2/bank.module#BankModule'
+  },
+  {
     path: 'account-summary',
     loadChildren: '@c1/customer/account-summary/account-summary.module#AccountSummaryModule'
   }

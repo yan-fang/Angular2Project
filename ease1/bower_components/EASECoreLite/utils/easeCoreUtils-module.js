@@ -1889,7 +1889,7 @@ define('easeUtils',['angular'], function(angular) {
         var decodedParams = decodedURL.split('/');
         var stateObject, element, cardURL, cardParams;
         summaryData.accounts.forEach(function(account) {
-          if (params[1].toLowerCase() === account.originalProductName.replace(/\s+/g, '').toLowerCase()) {
+          if (params[1] && params[1].toLowerCase() === account.originalProductName.replace(/\s+/g, '').toLowerCase()) {
             stateObject = {
               accountReferenceId: decodeURIComponent(params[2]),
               ProductName: account.originalProductName.replace(/\s+/g, ''),
