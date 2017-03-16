@@ -1,4 +1,4 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, Injector } from '@angular/core';
 import { setUpLocationSync } from '@angular/router/upgrade';
 import { UpgradeModule } from '@angular/upgrade/static';
 
@@ -26,8 +26,8 @@ import { prepareBank } from './bank.ng1';
     `
 })
 export class BankComponent {
-  constructor(el: ElementRef, upgrade: UpgradeModule) {
-    prepareBank().then((moduleName: string) => {
+  constructor(el: ElementRef, upgrade: UpgradeModule, injector: Injector) {
+    prepareBank(injector).then((moduleName: string) => {
       upgrade.bootstrap(el.nativeElement, [moduleName]);
       setUpLocationSync(upgrade);
     });

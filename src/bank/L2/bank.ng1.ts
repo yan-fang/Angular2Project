@@ -1,6 +1,8 @@
 import { requirejs } from './ng1-connector';
+import { addEnvDeps } from './env.ng1';
+import { Injector } from '@angular/core';
 
-const requireDeps = [
+const baseRequireDeps = [
   'require',
   'angular',
   'easeUIComponents',
@@ -21,7 +23,7 @@ const requireDeps = [
   'easeCoreUtils',
 ];
 
-const angularDeps = [
+const baseAngularDeps = [
   'ngAnimate',
   'ngAria',
   'ngStorage',
@@ -61,16 +63,24 @@ const angularDeps = [
 /**
  * Returns a module name that can be bootstrapped with NgUpgrade
  */
-export function prepareBank(): Promise<string> {
+export function prepareBank(injector: Injector): Promise<string> {
   let resolve: Function;
   const res = new Promise(r => resolve = r);
 
+  const { requireDeps, angularDeps, runFunctions } = addEnvDeps(
+    baseRequireDeps,
+    baseAngularDeps,
+    injector
+  );
+
   configureRequireJS();
   requirejs(requireDeps, (_require: any, angular: any) => {
-    angular
+    const module = angular
       .module('BankL2', angularDeps)
       .config(configFunction())
       .run(navigate());
+
+    runFunctions.map(runFunction => module.run(runFunction));
 
     resolve('BankL2');
   });
@@ -82,6 +92,7 @@ function configureRequireJS() {
   requirejs.config({
     waitSeconds: 0,
     paths: {
+      angularMocks: '/public/static/js/angular-mocks',
       lodash: '/bower_components/lodash/index',
       jquery: '/bower_components/jquery/dist/jquery.min',
       angular: '/bower_components/angular/angular.min',
