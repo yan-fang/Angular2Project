@@ -1,6 +1,6 @@
 module.exports = function(config) {
   const enableCoverage = config.reporters.indexOf('coverage-istanbul') > -1;
-  const webpackConfig = require("./webpack.config")({mode: 'karma', enableCoverage: enableCoverage});
+  const webpackConfig = require("./webpack.config")({mode: 'test', enableCoverage: enableCoverage});
 
   config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)
