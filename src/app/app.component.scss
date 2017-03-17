@@ -1,6 +1,38 @@
+@import '../components/core/_core.scss';
+
 $blue : #018BBB;
 
 .sample--color-blue {
   font-size: 2em;
   color: $blue;
+}
+
+.menu-example {
+  margin-top: map-get($spacing-sizes, "large");
+  margin-bottom: map-get($spacing-sizes, "large");
+  position: relative;
+  display: inline-block;
+}
+
+[c1MenuItem] {
+  box-sizing: border-box;
+  font-family: $proxima-nova;
+  position: relative;
+  display:block;
+  text-align: right;
+  display: block;
+  font-size: $font-size--small;
+  width: 100%;
+  line-height: map-get($spacing-sizes, "large");
+  outline: 0;
+  border: none;
+  margin: 3px 0;
+  cursor: pointer;
+  text-decoration: none;
+  &:visited {
+    color: $ease-charcoal;
+  }
+  &:active {
+    color: $ease-charcoal;
+  }
 }

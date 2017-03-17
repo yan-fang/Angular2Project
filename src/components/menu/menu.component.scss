@@ -1,5 +1,23 @@
-.c1-menu-list {
+@import '../core/_core.scss';
+
+:host {
+  @include elevation(9);
+  left: 0;
   position: absolute;
-  top:calc(100% + 13px);  // TO DO: Calculate this dynamically using helpers.
+  width: 100%;
+  top: 100%;
 }
 
+.c1-menu {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background: $ease-white;
+  @include padding("small", "top");
+  @include padding("small", "bottom");
+  @include padding("medium", "left");
+  @include padding("medium", "right");
+  border-left: 2px solid $ease-silver;
+  border-right: 2px solid $ease-silver;
+  border-bottom: 2px solid $ease-silver;
+}

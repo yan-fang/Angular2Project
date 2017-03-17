@@ -1,0 +1,5 @@
+@mixin elevation($level){
+  @if ($level > 0 and $level < 10) {
+    z-index: $level * 100;
+  }
+}

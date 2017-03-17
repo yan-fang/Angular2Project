@@ -1,5 +1,9 @@
 @import '../core/_core.scss'; // TODO: Allow absolute path from `src` here
 
+:host {
+  display: inline-block;
+}
+
 .c1-button {
   border-radius: $button-border-radius;
   border: 0;

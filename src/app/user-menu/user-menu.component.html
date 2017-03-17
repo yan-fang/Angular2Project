@@ -1,24 +1,16 @@
-<c1-menu class="c1-user-menu">
-  <div class="c1-user-menu__avatar">
+<div class="c1-user-menu__wrapper">
+  <div class="c1-user-menu" [c1MenuTriggerFor]="menu">
+    <div class="c1-user-menu__avatar">
+    </div>
+    <p class="c1-user-menu__user">
+      Test Name
+    </p>
   </div>
-  <p class="c1-user-menu__user">
-    Test Name
-  </p>
-  <ul c1-menu-list>
-    <li>
-      <a href="#">Personal Info</a>
-    </li>
-    <li>
-      <a href="#">Settings</a>
-    </li>
-    <li>
-      <a href="#">Security</a>
-    </li>
-    <li>
-      <a href="#">Alerts</a>
-    </li>
-    <li>
-      <a href="#">Sign Out</a>
-    </li>
-  </ul>
- </c1-menu>
+  <c1-menu #menu="c1Menu" class="c1-user-menu__panel">
+      <a c1MenuItem href="#">Personal Info</a>
+      <a c1MenuItem href="#">Settings</a>
+      <a c1MenuItem href="#">Security</a>
+      <a c1MenuItem href="#">Alerts</a>
+      <a c1MenuItem href="#">Sign Out</a>
+  </c1-menu>
+</div>

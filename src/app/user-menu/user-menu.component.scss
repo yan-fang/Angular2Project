@@ -1,5 +1,8 @@
 @import '../../components/core/_core.scss';
 
+.c1-user-menu__wrapper {
+  position: relative;
+}
 
 .c1-user-menu {
   display: flex;
@@ -27,28 +30,18 @@
   }
 }
 
-ul {
-  display: flex;
-  flex-direction: column;
-  margin: 0 0 0 0;
-  list-style: none;
-  background: $ease-white;
-  @include padding("small", "top");
-  @include padding("small", "bottom");
-  @include padding("medium", "left");
-  @include padding("medium", "right");
-  width: 150px;
-  border-top: none;
-  border-right: 2px solid $ease-silver;
-  border-left: 2px solid $ease-silver;
-  border-bottom: 2px solid $ease-silver;
-  border-radius: 0 0 3px 3px;
+.c1-user-menu__panel{
+  margin-top:13px;
 }
 
-a {
+[c1MenuItem] {
+  box-sizing: border-box;
+  font-family: $proxima-nova;
+  position: relative;
+  display:block;
   text-align: right;
   display: block;
-  font-size: 14px;
+  font-size: $font-size--small;
   width: 100%;
   line-height: map-get($spacing-sizes, "large");
   outline: 0;
