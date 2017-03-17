@@ -18,5 +18,9 @@ export const appRoutes: Routes = [
   {
     path: 'account-summary',
     loadChildren: '@c1/customer/account-summary/account-summary.module#AccountSummaryModule'
+  },
+  {
+    path: 'examples',
+    loadChildren: '@c1/examples/examples.module#ExamplesModule'
   }
 ];

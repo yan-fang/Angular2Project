@@ -1,5 +1,9 @@
 @import "../../components/core/_core.scss";
 
+.c1-account-summary_wrapper {
+  width: 100%;
+}
+
 :host {
   background-color: $ease-background;
   display: flex;

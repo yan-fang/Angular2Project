@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MenuComponent } from '../../components/menu/menu.component';
+import { MenuComponent } from '@c1/components';
 
 @Component({
   selector: 'c1-user-menu',

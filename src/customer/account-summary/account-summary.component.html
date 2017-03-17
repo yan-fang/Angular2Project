@@ -1,2 +1,8 @@
-<c1-account-tile *ngFor='let account of accounts | async' [account]='account'></c1-account-tile>
+<p>
+  <button routerLink="/account-summary/27272/Transfer">Show Transfer Dialog</button>
+</p>
+
+<div class="c1-account-summary_wrapper">
+  <c1-account-tile *ngFor='let account of accounts | async' [account]='account'></c1-account-tile>
+</div>
 <router-outlet></router-outlet>

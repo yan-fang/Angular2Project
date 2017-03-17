@@ -16,8 +16,6 @@ import { mocks } from '@c1/mocks';
 
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
-import { ExampleComponent } from './example/example.component';
-import { I18nExampleComponent } from './i18n-example/i18n-example.component';
 import { HeaderComponent } from './header/header.component';
 import { UserMenuComponent } from './user-menu/user-menu.component';
 
@@ -38,8 +36,6 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
   ],
   declarations: [
     AppComponent,
-    ExampleComponent,
-    I18nExampleComponent,
     HeaderComponent,
     UserMenuComponent
   ],

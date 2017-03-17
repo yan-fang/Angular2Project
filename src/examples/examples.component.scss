@@ -1,10 +1,29 @@
 @import '../components/core/_core.scss';
 
+$red : red;
+$green : green;
 $blue : #018BBB;
 
 .sample--color-blue {
   font-size: 2em;
   color: $blue;
+}
+
+.example--color-red {
+  font-size: 2em;
+  color: $red;
+  @include breakpoint("small") {
+    color: $green;
+    @include padding(small);
+  }
+  @include breakpoint("medium") {
+    color: purple;
+    @include padding(medium);
+  }
+  @include breakpoint("large") {
+    color: blue;
+    @include padding(large, top);
+  }
 }
 
 .menu-example {

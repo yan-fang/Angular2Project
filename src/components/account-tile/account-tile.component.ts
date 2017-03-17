@@ -1,6 +1,6 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
 
-import { Account } from '@c1/app';
+import { Account } from '@c1/customer';
 import { CurrencyService } from '@c1/shared';
 
 @Component({
