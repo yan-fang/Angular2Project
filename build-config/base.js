@@ -25,7 +25,7 @@ const paths = {
   env: path.join(process.cwd(), 'src/shared/environments/environment.ts'),
   envProd: path.join(process.cwd(), 'src/shared/environments/environment.prod.ts'),
   vendorManifest: path.join(process.cwd(), '_dist/vendor-manifest.json'),
-  globalStyles: path.join(process.cwd(), 'styles')
+  globalStyles: path.join(process.cwd(), 'src/components/core/global.scss')
 };
 
 const baseLoaders = [
