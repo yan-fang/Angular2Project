@@ -4,6 +4,7 @@ const browserSyncPlugin = require('browser-sync-webpack-plugin');
 const ngtools = require('@ngtools/webpack');
 const copyPlugin = require('copy-webpack-plugin');
 const htmlPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 // Used primarily to set runtime environment variable. Just looks for `--env.build=prod` flag.
 // TODO: [Youssef] We will switch to `-p` flag once the following issue is fixed: https://github.com/webpack/webpack/issues/4468.
@@ -24,7 +25,7 @@ const paths = {
   env: path.join(process.cwd(), 'src/shared/environments/environment.ts'),
   envProd: path.join(process.cwd(), 'src/shared/environments/environment.prod.ts'),
   vendorManifest: path.join(process.cwd(), '_dist/vendor-manifest.json'),
-
+  globalStyles: path.join(process.cwd(), 'styles')
 };
 
 const baseLoaders = [
@@ -47,9 +48,24 @@ const baseLoaders = [
       'css-loader'
     ]
   },
+  // Generate a global.css file
   {
     test: /\.scss$/,
-    exclude: /node_modules/,
+    loader: ExtractTextPlugin.extract({
+      fallback: 'style-loader',
+      use: 'raw-loader!sass-loader'
+    }),
+    include: [
+      paths.globalStyles
+    ]
+  },
+  // The rest of the stylesheets will be appended to a style tag for now
+  {
+    test: /\.scss$/,
+    exclude: [
+      /node_modules/,
+      paths.globalStyles
+    ],
     loaders: [
       'raw-loader',
       'sass-loader'
@@ -62,6 +78,7 @@ const basePlugins = (() => {
   const srcMapPath = isProd ? 'http://<PROD_INTERNAL_DOMAIN>/' : `http://localhost:${devPort}/`;
 
   const baseDefaultPlugins = [
+    new ExtractTextPlugin('[name].css'),
     new webpack.SourceMapDevToolPlugin({
       filename: '[file].map', // if no value is provided the sourcemap is inlined
       append: `\n//# sourceMappingURL=${srcMapPath}[url]`,

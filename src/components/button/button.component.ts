@@ -1,16 +1,16 @@
 import { Component, Input } from '@angular/core';
+import { ButtonTypes } from './button.component.type';
 
 @Component({
   selector: 'c1-button',
-  styleUrls: ['./button.component.scss'], // TODO: Fix dependency on `require`.
+  styleUrls: ['./button.component.scss'],
   templateUrl: 'button.component.html',
 })
 export class ButtonComponent {
-  // The type of button. Can be `action`, `progressive`, `regressive`, or `destructive`.
-  @Input() public type: string = 'progressive';
+  @Input() public type: ButtonTypes = 'progressive';
   // The style of button. Can be `true` for ghost.
-  @Input() public ghost?: boolean;
+  @Input() public ghost?: boolean = false;
   // Disabled
-  @Input() public disabled?: boolean;
+  @Input() public disabled?: boolean = false;
 
 }
