@@ -18,6 +18,11 @@ class NavigationStepDefinitions {
     return page.navigateTo(targetUrl);
   }
 
+  @given(/^I click back$/)
+  public clickBack() {
+    page.navigateBack();
+  }
+
   @then(/^The url should be (?:'|")(.*)(?:'|")$/)
   public urlShouldBe(url: string) {
     return page.currentUrlEquals(url, 'Url does not match');

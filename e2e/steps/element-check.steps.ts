@@ -1,4 +1,4 @@
-import { ElementFinder } from 'protractor';
+import { ElementFinder, browser } from 'protractor';
 import { binding, when, then } from 'cucumber-tsflow';
 import { expect } from 'chai';
 import { page } from '../app.page-object';
@@ -15,6 +15,17 @@ class ElementCheckStepDefinitions {
   public click(selector: string) {
     return page.get(selector)
             .then((el: ElementFinder) => el.click());
+  }
+
+  @when(/^Dialog appears$/)
+  public dialogAppears() {
+    page.easeDialogAppears();
+  }
+
+  @when(/^I click button (?:'|")(.*)(?:'|")$/)
+  public clickButton(text: string) {
+    return page.getButton(text)
+      .then((el: ElementFinder) => el.click());
   }
 
   @then(/^The text of (?:'|")(.*)(?:'|") should be (?:'|")(.*)(?:'|")$/)
