@@ -3,7 +3,7 @@ Feature: transfer-dialog
     Given I login
     When I click button 'Show Transfer Dialog'
     Then The url should be 'http://localhost:3001/account-summary/27272/Transfer'
-    When Dialog appears
+    When '.ease-modal-close-button' on 'EaseModal' appears
     When I click '.ease-modal-close-button'
     Then The url should be 'http://localhost:3001/account-summary'
 
@@ -11,6 +11,6 @@ Feature: transfer-dialog
     Given I login
     When I click button 'Show Transfer Dialog'
     Then The url should be 'http://localhost:3001/account-summary/27272/Transfer'
-    When Dialog appears
+    When '.ease-modal-close-button' on 'EaseModal' appears
     When I click back
     Then The url should be 'http://localhost:3001/account-summary'

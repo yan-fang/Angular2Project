@@ -1,27 +1,27 @@
-import { Component, ElementRef, OnDestroy, Injector } from '@angular/core';
-import { setUpLocationSync } from '@angular/router/upgrade';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UpgradeModule } from '@angular/upgrade/static';
 import { prepareTransferDialog } from './transfer-dialog.ng1';
+import { prepareAngular1Ease } from '../../app/angular1ease/angular1ease.ng1';
+import { Angular1Ease } from '../../app/angular1ease/angular1ease.service'; // fix this import
 
 @Component({
   selector: 'c1-transfer-dialog',
-  template: `
-    <div ui-view></div>
-  `,
+  template: ``,
   styles: [`
     @import '/bower_components/EASECoreLite/styles/main.css';
     @import '/bower_components/easeUIComponents/dist/ease-ui-components.css';
   `]
 })
-export class TransferDialogComponent implements OnDestroy {
-  constructor(el: ElementRef, private upgrade: UpgradeModule, injector: Injector) {
-    prepareTransferDialog(injector).then((moduleName: string) => {
-      upgrade.bootstrap(el.nativeElement, [moduleName]);
-      setUpLocationSync(upgrade);
+export class TransferDialogComponent implements OnInit, OnDestroy {
+  constructor(private upgrade: UpgradeModule, private angular1Ease: Angular1Ease) {}
+
+  ngOnInit() {
+    prepareAngular1Ease(this.upgrade).then(() => {
+      prepareTransferDialog(this.angular1Ease.angular1injector);
     });
   }
 
   ngOnDestroy() {
-    this.upgrade.$injector.get('$rootScope').close();
+    this.angular1Ease.angular1injector.get('$rootScope').close();
   }
 }

@@ -17,9 +17,14 @@ class ElementCheckStepDefinitions {
             .then((el: ElementFinder) => el.click());
   }
 
-  @when(/^Dialog appears$/)
-  public dialogAppears() {
-    page.easeDialogAppears();
+  @when(/^(?:'|")(.*)(?:'|") on (?:'|")(.*)(?:'|") appears$/)
+  public whenElementAppers(selector: string, description: string) {
+    return page.elementAppears(selector, description);
+  }
+
+  @then(/^(?:'|")(.*)(?:'|") on (?:'|")(.*)(?:'|") should appear$/)
+  public thenElementAppers(selector: string, description: string) {
+    return page.elementAppears(selector, description);
   }
 
   @when(/^I click button (?:'|")(.*)(?:'|")$/)

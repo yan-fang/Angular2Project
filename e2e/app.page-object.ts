@@ -28,9 +28,9 @@ class EasePage {
       .then(() => el);
   }
 
-  public easeDialogAppears(): void {
-    const button = element(by.css('.ease-modal-close-button'));
-    browser.driver.wait(() => button.isPresent(), 1000, 'EaseModal has not come up');
+  public elementAppears(selector: string, description: string): Promise<any> {
+    const button = element(by.css(selector));
+    return browser.driver.wait(() => button.isPresent(), 1000, `'${description}' has not appeared`);
   }
 
   public currentUrlEquals(targetUrl: string, failureMessage: string) {

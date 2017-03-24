@@ -17,9 +17,11 @@ import { MockabilityModule } from '@c1/mockability';
 import { mocks } from '@c1/mocks';
 
 import { AppComponent } from './app.component';
+import { ShellComponent } from './shell.component';
 import { appRoutes } from './app.routes';
 import { HeaderComponent } from './header/header.component';
 import { UserMenuComponent } from './user-menu/user-menu.component';
+import { Angular1Ease } from './angular1ease/angular1ease.service';
 
 @NgModule({
   imports: [
@@ -38,11 +40,13 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
   ],
   declarations: [
     AppComponent,
+    ShellComponent,
     HeaderComponent,
     UserMenuComponent
   ],
   providers: [
-    StateManagerService
+    StateManagerService,
+    Angular1Ease
   ],
   bootstrap: [ AppComponent ]
 })
