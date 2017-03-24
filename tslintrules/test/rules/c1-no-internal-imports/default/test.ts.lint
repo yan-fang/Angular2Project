@@ -1,6 +1,0 @@
-import { button } from '@c1/components/button';
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ [import from @c1 scope is only allowed at root-level]
-
-
-import { dialog } from '@c1/creditcard';
-import { AccountSummaryModule } from '@c1/customer';

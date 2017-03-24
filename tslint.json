@@ -1,7 +1,7 @@
 {
   "rulesDirectory": [
     "node_modules/codelyzer",
-    "tslintrules/_dist"
+    "node_modules/@c1/tslintrules"
   ],
   "rules": {
     "c1-no-internal-imports": true,

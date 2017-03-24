@@ -83,6 +83,10 @@
     express "^4.14.0"
     http-proxy-middleware "^0.17.2"
 
+"@c1/tslintrules":
+  version "0.0.3"
+  resolved "https://artifactory.cloud.capitalone.com/artifactory/api/npm/npm-internalfacing/@c1/tslintrules/-/@c1/tslintrules-0.0.3.tgz#2d99843cb74163cec9ce99cac76eac11613a76ec"
+
 "@ngrx/core@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@ngrx/core/-/core-1.2.0.tgz#882b46abafa2e0e6d887cb71a1b2c2fa3e6d0dc6"

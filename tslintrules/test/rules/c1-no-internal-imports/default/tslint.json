@@ -1,8 +1,0 @@
-{
-  "rulesDirectory": [
-    "../../../../_dist"
-  ],
-  "rules": {
-    "c1-no-internal-imports": true
-  }
-}
