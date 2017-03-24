@@ -21,9 +21,9 @@ describe('Testing AccountSummaryEffects', () => {
   }));
 
   beforeEach(inject([EffectsRunner, AccountSummaryEffects],
-    (_runner: EffectsRunner, _effects: AccountSummaryEffects) => {
-    runner = _runner;
-    effects = _effects;
+    (effectsRunner: EffectsRunner, accountSummaryEffects: AccountSummaryEffects) => {
+    runner = effectsRunner;
+    effects = accountSummaryEffects;
   }));
 
   it('should emit ShowAccountSummary after the data is fetched', () => {

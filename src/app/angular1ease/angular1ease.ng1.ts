@@ -31,6 +31,7 @@ export function prepareAngular1Ease(upgrade: UpgradeModule): Promise<any> {
 
     const {requireDeps, angularDeps, runFunctions} = addEnvDeps(REQUIRE_DEPS, ANGULAR_DEPS, upgrade.injector);
 
+    /* tslint:disable:variable-name */
     requirejs(requireDeps, (_require: any, angular: any) => {
       const m = angular.module('Ng1EaseApp', angularDeps).config(configFunction()).run(runFunction());
       runFunctions.forEach(f => m.run(f));
@@ -41,6 +42,7 @@ export function prepareAngular1Ease(upgrade: UpgradeModule): Promise<any> {
 
       res(true);
     });
+    /* tslint:enable:variable-name */
   } else {
     res(true);
   }

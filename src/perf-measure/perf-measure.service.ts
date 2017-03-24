@@ -21,11 +21,11 @@ export class NativePerformance {
 
 @Injectable()
 export class PerfMeasureService {
-  constructor(public _perf: NativePerformance, @Inject(perfMeasureServiceEnabled) private perfEnabled: boolean) {}
+  constructor(public perf: NativePerformance, @Inject(perfMeasureServiceEnabled) private perfEnabled: boolean) {}
 
   mark(name: string): void {
     if (this.perfEnabled) {
-      this._perf.mark(name);
+      this.perf.mark(name);
     }
   }
 }

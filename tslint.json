@@ -88,7 +88,6 @@
     ],
     "variable-name": [
       true,
-      "allow-leading-underscore",
       "ban-keywords",
       "check-format"
     ],
