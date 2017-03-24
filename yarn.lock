@@ -63,9 +63,9 @@
     request "^2.75.0"
     rxjs "^5.0.0-beta.12"
 
-"@c1/git-commit-conventions@git+https://github.kdc.capitalone.com/ease-ui/git-commit-conventions#v3.2.1":
+"@c1/git-commit-conventions":
   version "3.2.1"
-  resolved "git+https://github.kdc.capitalone.com/ease-ui/git-commit-conventions#f9fec9d82a2bb57500ee9fe729a02e5b11daff2c"
+  resolved "https://artifactory.cloud.capitalone.com/artifactory/api/npm/npm-internalfacing/@c1/git-commit-conventions/-/@c1/git-commit-conventions-3.2.1.tgz#c8c711ba9df24d0c6f6b4bb7c13f05f550540a57"
   dependencies:
     editor "1.0.0"
     find-config "0.3.0"

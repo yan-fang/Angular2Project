@@ -9,6 +9,8 @@ master | development
 ## Prerequisites
  - node version >= 6.9.5
  - yarn installed
+ - add @c1 as a scope to your npm configuration. Run the following once globally:
+    - `$ curl -sSu $USER https://artifactory.cloud.capitalone.com/artifactory/api/npm/npm-internalfacing/auth/c1 >> ~/.npmrc`
 
 ## Start the project
   - Run `yarn`

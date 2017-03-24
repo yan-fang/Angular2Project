@@ -57,7 +57,7 @@
     "@angular/compiler": "2.4.4",
     "@angular/compiler-cli": "2.4.4",
     "@angular/platform-server": "2.4.4",
-    "@c1/git-commit-conventions": "git+https://github.kdc.capitalone.com/ease-ui/git-commit-conventions#v3.2.1",
+    "@c1/git-commit-conventions": "^3.2.1",
     "@c1/proxy": "git+https://github.kdc.capitalone.com/cds/c1-proxy",
     "@ngtools/webpack": "^1.2.11",
     "@types/angular": "^1.6.7",
