@@ -1,0 +1,25 @@
+<form id="summaryAccountsForm">
+  <ul id="summaryParent">
+    <li id="account-{{element.referenceId}}"
+        class="account"
+        data-ng-repeat="element in summary.accountSummaryData"
+        data-ng-class="{ 'account-disable': summary.isButtonClicked }"
+        data-ng-click="summary.goToDetail($event, element, $index)"
+        data-ng-hide="summary.hideAccount[$index] != undefined && summary.hideAccount[$index] == true" role="presentation" tabindex="-1">
+        <account-message obj="element" idx="$index" selected="summary.selected" nbr-of-account="summary.accountSummaryData.length">
+          <div data-ng-include="summary.getSummaryTemplate(element,$index)" class="actTilePadding" ng-class="{pointer: summary.getPointer(element)}"></div>
+        </account-message>
+    </li>
+  </ul>
+  <div class="singleProductViewTransactions" data-ng-show="{{summary.isSingleProductViewData() === 'singleProduct'}}">
+    <div data-ng-include = "summary.recentTransactionsHTML"></div>
+  </div>
+  <div class="singleProductViewTransactions" data-ng-show="{{summary.isSingleProductViewData() === 'toggleRestrictedMessage'}}">
+    <div class="title">
+      <span name="transactionTitle" id="transactionTitle" aria-label="{{summary.contentData['ease.core.acctsummary.single.recent.label']}}">{{summary.contentData['ease.core.acctsummary.single.recent.label']}}</span>
+    </div>
+    <div class="noTransaction" name="messageTitle" id="messageTitle" aria-label="{{summary.i18n.coafSingleViewTrxToggle}}">
+      <span>{{summary.errorContentData.common_snag_en_US['core.common.snag.featureoff.short.label']}}</span>
+    </div>
+  </div>
+</form>

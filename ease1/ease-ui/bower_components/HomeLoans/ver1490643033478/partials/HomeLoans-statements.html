@@ -1,0 +1,52 @@
+<div ease-modal toggle-close="stCtrl.close()" init-close="stCtrl.initClose" modal-class="stCtrl.modalClass" modal-type="stCtrl.modalType" focus-id="focusId" tabindex="0" aria-label="You are in Statement Modal Window at full screen">
+  <div class="mainPane" id = "stmtModal" tab-through>
+    <div class="info TLPAN">
+      <h1>{{stCtrl.accountDetailsData.accountNickName}}</h1>
+      <p>...{{stCtrl.accountDetailsData.accountNumber.slice(-4)}}</p>
+    </div>
+    <!--<div class="navigation" data-ng-include="stCtrl.templateCalendar" close-hl-month-picker="stCtrl.toggle"></div>-->
+    <div class="navigation" id="statement-date-picker">
+      <div class= "picker">
+        <ul class="header" tabindex="0" ng-class="{'seperator':toggle}" ng-click="toggleView()" aria-label="{{stCtrl.currentStatement.statementTitle}}" id="stmtPickerHeader" role="button">
+          <li class="stTitle" id="stTitle">
+            <h2 class="head ng-binding">{{stCtrl.currentStatement.statementTitle}}</h2>
+          </li>
+          <li class="picker-icon" id="stPickerIcon">
+            <i class="icon-drop-arrow" id="stDropdownIcon"></i>
+          </li>
+        </ul>
+        <div>
+          <ease-statement-picker ng-if="!toggle" params="paramList"></ease-statement-picker>
+        </div>
+      </div>
+    </div>
+    <!--<div class="navigation"><ease-statement-picker params="paramList"></ease-statement-picker></div>-->
+    <div class="toolbar">
+      <div class="controls" data-ng-show="stCtrl.pdfUrl">
+        <ul>
+          <li class="noMobilePdf">
+            <a id="zoomInPDFButton" role="link" data-ng-class="{'nextTabableElement': stCtrl.pdfUrl}" data-ng-click="stCtrl.zoomIn()" ng-keypress="stCtrl.zoomIn($event)" tabindex = "0" aria-label="Click to Zoom In your statement"><i class="icon-circle-add"></i></a>
+            <a id="zoomOutPDFButton" role="link" data-ng-click="stCtrl.zoomOut()" ng-keypress="stCtrl.zoomOut($event)" tabindex = "0" aria-label="Click to Zoom out of your statement"><i class="icon-circle-minus"></i></a> {{stCtrl.i18n.zoom}}
+          </li>
+          <li class="noMobilePdf">
+            <a id="printStatementButton" role="link" data-ng-click="stCtrl.printStatement()" ng-keypress="stCtrl.printStatement($event)" tabindex="0"><i class="icon-print"></i>{{stCtrl.i18n.print}}</a>
+          </li>
+          <li class="download">
+            <a id="downloadStatementLink" data-ng-href="{{stCtrl.pdfUrl}}" data-ng-click="stCtrl.downloadStatement()" download="HomeLoan_Statement" target="_blank" tabindex="0"><i class="icon-circle-arrowdown zindexnegative" ></i><span class="noMobilePdf">{{stCtrl.i18n.download}}</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="pdfFile">
+      <div class="message" data-ng-if="stCtrl.showMessage">
+        <div class="title">{{stCtrl.message.title}}</div>
+        <div class="content">{{stCtrl.message.content}}</div>
+        <div class="pdfButton nextTabableElement" tabindex="0" role="button" aria-label="{{stCtrl.i18n.messageClose}}" data-ng-click="stCtrl.close()">
+          {{stCtrl.i18n.messageClose}}
+        </div>
+      </div>
+      <div tabindex="0" data-ng-if="stCtrl.isServiceWorking" data-ng-show="stCtrl.pdfUrl" ease-pdf-viewer id="ease-pdf-viewer" pdf-url="stCtrl.pdfUrl" scale="stCtrl.scalePdf" accessor="stCtrl.accessor" loading="stCtrl.isLoading" headers="stCtrl.headers">
+      </div>
+    </div>
+  </div>
+</div>

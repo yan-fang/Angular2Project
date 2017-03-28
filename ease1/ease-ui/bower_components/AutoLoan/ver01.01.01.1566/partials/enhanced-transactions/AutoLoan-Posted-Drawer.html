@@ -1,0 +1,87 @@
+<div aria-expanded="true" ng-if="accordionVM.isOpen($index)" class="auto-enhanced-transaction">
+  <div class="cleansed-data">
+    <div class="key-block">
+      <span class="single-line prox-bold" id="postedDrawerAmountLabel{{transaction.id}}"
+            data-ng-if="transaction.transactionDescription != 'Late Fees Assessed'
+            || transaction.transactionDescription != 'Other Fees Waived'
+            || transaction.transactionDescription != 'Late Fees Waived'
+            || transaction.transactionDescription != 'Other Fees Assessed'">{{accordionVM.i18n.coaf.accountSummary.transactions.amount.label.v1}}:</span>
+    </div>
+    <div class="value-block">
+      <span class="single-line" id="postedDrawerAmount{{transaction.id}}"
+            data-ng-if="transaction.transactionDescription != 'Late Fees Assessed'
+            || transaction.transactionDescription != 'Other Fees Waived'
+            || transaction.transactionDescription != 'Late Fees Waived'
+            || transaction.transactionDescription != 'Other Fees Assessed'">{{transaction.transactionAmount | nonNegativeAmount}}</span>
+    </div>
+  </div>
+  <div class="cleansed-data">
+    <div class="key-block">
+      <span class="single-line prox-bold" id="postedDrawerPostedDateLabel{{transaction.id}}">{{accordionVM.i18n.coaf.accountSummary.transactions.postedOnDate.label.v1}}:</span>
+    </div>
+    <div class="value-block">
+      <span class="single-line" id="postedDrawerPostedDate{{transaction.id}}">{{transaction.date | date:'MMMM dd, yyyy'}}</span>
+    </div>
+  </div>
+  <div class="cleansed-data">
+    <div class="key-block">
+      <span class="single-line prox-bold" id="postedDrawerEffDateLabel{{transaction.id}}">{{accordionVM.i18n.coaf.accountSummary.transactions.effectiveDate.label.v1}}:</span>
+    </div>
+    <div class="value-block">
+      <span class="single-line" id="postedDrawerEffDate{{transaction.id}}">{{transaction.effectiveDate | date:'MMMM dd, yyyy'}}</span>
+    </div>
+  </div>
+  <div class="cleansed-data">
+    <div class="key-block">
+      <span class="single-line prox-bold" id="postedDrawerPayFromLabel{{transaction.id}}"
+            data-ng-if="transaction.bankName && transaction.fromAccountNumber">{{accordionVM.i18n.coaf.accountSummary.transactions.payFrom.label.v1}}:</span>
+    </div>
+    <div class="value-block">
+      <span class="single-line" id="postedDrawerPayFrom{{transaction.id}}"
+            data-ng-if="transaction.bankName && transaction.fromAccountNumber">{{transaction.bankName}}...{{transaction.fromAccountNumber}} </span>
+    </div>
+  </div>
+  <div class="cleansed-data">
+    <div class="key-block">
+      <span class="single-line prox-bold" id="postedDrawerPayToLabel{{transaction.id}}">{{accordionVM.i18n.coaf.accountSummary.transactions.payTo.label.v1}}:</span>
+    </div>
+    <div class="value-block">
+      <span class="single-line" id="postedDrawerPayTo{{transaction.id}}">{{accordionVM.accountNickname}}....{{accordionVM.displayLast4AcctNumber}}</span>
+    </div>
+  </div>
+
+
+  <div class="cleansed-data">
+    <div ng-if="(transaction.postedInterestAmount || transaction.postedFeesAmount || transaction.postedPrincipalAmount)" class="line-padding">
+      <span class="line-breakup"></span>
+    </div>
+    <div class="key-block">
+      <span class="single-line prox-bold drawer-data" id="postedDrawerPrincipalLabel{{transaction.id}}"
+            data-ng-if="transaction.postedPrincipalAmount">{{accordionVM.i18n.coaf.accountSummary.transactions.principal.label.v1}}:</span>
+    </div>
+    <div class="value-block">
+       <span class="single-line prox-bold drawer-data" id="postedDrawerPrincipal{{transaction.id}}"
+             data-ng-if="transaction.postedPrincipalAmount">{{transaction.postedPrincipalAmount | nonNegativeAmount}}</span>
+    </div>
+  </div>
+  <div class="cleansed-data">
+    <div class="key-block">
+      <span class="single-line prox-bold drawer-data" id="postedDrawerInterestLabel{{transaction.id}}"
+            data-ng-if="transaction.postedInterestAmount">{{accordionVM.i18n.coaf.accountSummary.transactions.interest.label.v1}}:</span>
+    </div>
+    <div class="value-block">
+       <span class="single-line prox-bold drawer-data" id="postedDrawerInterest{{transaction.id}}"
+             data-ng-if="transaction.postedInterestAmount">{{transaction.postedInterestAmount | nonNegativeAmount}}</span>
+    </div>
+  </div>
+  <div class="cleansed-data">
+    <div class="key-block">
+      <span class="single-line prox-bold drawer-data" id="postedDrawerFeesLabel{{transaction.id}}"
+            data-ng-if="transaction.postedFeesAmount">{{accordionVM.i18n.coaf.accountSummary.transactions.fees.label.v1}}:</span>
+    </div>
+    <div class="value-block">
+       <span class="single-line prox-bold drawer-data" id="postedDrawerFees{{transaction.id}}"
+             data-ng-if="transaction.postedFeesAmount">{{transaction.postedFeesAmount | nonNegativeAmount}}</span>
+    </div>
+  </div>
+</div>

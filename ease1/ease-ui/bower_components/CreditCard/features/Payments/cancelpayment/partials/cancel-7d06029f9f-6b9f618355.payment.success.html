@@ -1,0 +1,43 @@
+<div ng-controller="ccCancelPaymentSuccessController as ccPayCancelSuccessModal">
+  <ease-ui-modal close-modal="ccPayCancelSuccessModal.modal.close()" modal-id="'cancelPaymentSuccessModal'" class="cc-modal ccPayModal successModal paymentModal ccPayCancelSuccessModal cc-modal-icon-success">
+    <img class="cc-pay-modal-logo" src="/ease-ui/bower_components/CreditCard/images/c1_logo2x-ce1592349d-ce1592349d.png" alt="{{'ease.card.payment.cancelpaymentsuccess.img.alt.text' | translate}}" title="{{'ease.card.payment.cancelpaymentsuccess.img.title' | translate}}">
+    <div class="step3 paymentContainer">
+      <h2 id="cc-pay-success-confirmation-title" ng-bind="::'ease.card.payment.cancelpaymentsuccess.title.text' | translate"></h2>
+      <h4 class="cc-cancel-payment-success-subheader">
+        <span ng-bind="::'ease.card.payment.cancelpaymentsuccess.subtitle.part1.text' | translate"></span>
+        <span class="cc-cancelsuccess-modal-amount" ng-bind="::ccPayCancelSuccessModal.cancelPaymentItem.paymentAmount | currency"></span>
+        <span ng-bind="::'ease.card.payment.cancelpaymentsuccess.subtitle.part2.text' | translate"></span>
+      </h4>
+      <div class="cancel-success-div">
+        <div class="cc-summary-container" tabindex="0">
+          <div id="cc-pay-success-confirmation-amount-label" class="cc-summary-container-label" ng-bind="'ease.card.payment.cancelpayment.amount.label' | translate"></div>
+          <div id="cc-pay-success-confirmation-amount-value" class="cc-summary-container-value" ng-bind="ccPayCancelSuccessModal.cancelPaymentItem.paymentAmount | currency"></div>
+        </div>
+        <div class="cc-summary-container" tabindex="0">
+          <div id="cc-pay-success-confirmation-payto-label" class="cc-summary-container-label" ng-bind="'ease.card.payment.cancelpayment.payto.label' | translate"></div>
+          <div id="cc-pay-success-confirmation-payto-value" class="cc-summary-container-value" ng-bind="ccPayCancelSuccessModal.getPayToAccountDisplay()"></div>
+        </div>
+        <div class="cc-summary-container" tabindex="0">
+          <div id="cc-pay-success-confirmation-payfrom-label" class="cc-summary-container-label" ng-bind="'ease.card.payment.cancelpayment.payfrom.label' | translate"></div>
+          <div id="cc-pay-success-confirmation-payfrom-value" class="cc-summary-container-value" ng-bind="ccPayCancelSuccessModal.cancelPaymentItem.payFromAccount.shortDisplayName"></div>
+        </div>
+        <div class="cc-summary-container" tabindex="0">
+          <div id="cc-pay-success-confirmation-payon-label" class="cc-summary-container-label" ng-bind="'ease.card.payment.cancelpayment.payon.label' | translate"></div>
+          <div id="cc-pay-success-confirmation-payon-value" class="cc-summary-container-value" ng-bind="ccPayCancelSuccessModal.formatDisplayDate(ccPayCancelSuccessModal.cancelPaymentItem.payOnDate, true, true)"></div>
+        </div>
+        <div class="cc-confirmation-code-container">
+          <div id="cc-pay-success-confirmation-code-value" class="cc-pay-confirmation-code" tabindex="0" aria-label="{{'ease.card.payment.makeapayment.step3.label.confirmationcode.aria.label.text' | translate}}">{{ccPayCancelSuccessModal.cancelledPaymentData.confirmationCode}}</div>
+          <div id="cc-pay-success-confirmation-code-description" class="cc-pay-confirmation-code-label" translate>ease.card.payment.makeapayment.step3.label.confirmationcode.text</div>
+                <span id="cc-pay-success-confirmation-print-container" class="print-icon-container" ng-click="ccPayCancelSuccessModal.printConfirmation();" tabindex="0" aria-label="{{'ease.card.payment.makeapayment.step3.link.printconfirmation.aria.label.text' | translate}}">
+                  <i id="cc-pay-success-confirmation-print-icon" class="icon-print"></i>
+                </span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a tabindex="0" ng-click="ccPayCancelSuccessModal.makeAnotherPayment();" ng-bind="::'ease.card.payment.cancelpaymentsuccess.makeanotherpayment.link.text' | translate"></a>
+      </div>
+    </div>
+  </ease-ui-modal>
+</div>
+
+<div cc-load-screen></div>

@@ -1,0 +1,87 @@
+<div id="report_fraud_title_label"class="cc-fraud-modal-header">
+    <h2>{{::'ease.card.reportfraud.get_newcard.header.text' | translate}}</h2>
+</div>
+<div id="purchase_info_label" class="cc-fraud-modal-body">
+    <div class="subheader">
+        <hr />
+        <div class="subheader-icons">
+            <div class="subheader-column left">
+                <span class="column-icon icon-check icon green"></span>
+                <div class="subheader-icon-label">{{::'ease.card.reportfraud.review_purchases.step1.text' | translate}}</div>
+            </div>
+
+            <div class="subheader-column center">
+                <span class="column-icon icon-check icon green"></span>
+                <div class="subheader-icon-label">{{::'ease.card.reportfraud.review_purchases.step2.text' | translate}}</div>
+            </div>
+
+            <div class="subheader-column right">
+                <span class="column-icon icon-mailbox icon blue"></span>
+                <div class="subheader-icon-label bold">{{::'ease.card.reportfraud.review_purchases.step3.text' | translate}}</div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="modal-body-text">
+        {{::reportFraudModal.getNewCardText}}
+    </div>
+</div>
+<div class="card-lost-options">
+    <div class="option" data-ng-click="reportFraudModal.handleAddressOnFileClick(true)" data-ng-class="{ 'selected': reportFraudModal.isAddressOnFile }">
+        <div class="text" tabindex="0">
+          {{::'ease.card.reportfraud.get_newcard.send_to_address_on_file.text' | translate}}
+        </div>
+        <span class="check-mark icon-scheduled" data-ng-show="reportFraudModal.isAddressOnFile"></span>
+    </div>
+    <div class="option" data-ng-click="reportFraudModal.handleAddressOnFileClick(false)" data-ng-class="{ 'selected': reportFraudModal.isAddressOnFileClicked && !reportFraudModal.isAddressOnFile }">
+        <div class="text" tabindex="0">
+          {{::'ease.card.reportfraud.get_newcard.send_to_different_address.text' | translate}}
+        </div>
+        <span class="check-mark icon-scheduled" data-ng-show="reportFraudModal.isAddressOnFileClicked && !reportFraudModal.isAddressOnFile"></span>
+    </div>
+</div>
+<div class="grey-callout-box" data-ng-show="reportFraudModal.isAddressOnFileClicked">
+    <div data-ng-show="reportFraudModal.isAddressOnFileClicked && reportFraudModal.isAddressOnFile">
+      {{::'ease.card.reportfraud.get_newcard.shipping_info1.text' | translate}}
+      <span class="bold">
+        <span ng-if="reportFraudModal.primaryUserAddress.addressLine1">
+          {{reportFraudModal.primaryUserAddress.addressLine1}},
+        </span>
+        <span ng-if="reportFraudModal.primaryUserAddress.addressLine2">
+          {{reportFraudModal.primaryUserAddress.addressLine2}},
+        </span>
+        <span ng-if="reportFraudModal.primaryUserAddress.cityName">
+          {{reportFraudModal.primaryUserAddress.cityName}},
+        </span>
+        <span ng-if="reportFraudModal.primaryUserAddress.stateCode">
+          {{reportFraudModal.primaryUserAddress.stateCode}}
+        </span>
+         <span ng-if="reportFraudModal.primaryUserAddress.postalCode">
+          {{reportFraudModal.primaryUserAddress.postalCode.slice(0,5)}}.
+        </span>
+      </span>
+        <br />
+      {{::'ease.card.reportfraud.get_newcard.shipping_info2.text' | translate}}
+      <span class="bold">{{::'ease.card.reportfraud.get_newcard.shipping_info3.text' | translate}}</span>
+    </div>
+    <div data-ng-show="reportFraudModal.isAddressOnFileClicked && !reportFraudModal.isAddressOnFile">
+        <span class="icon-caution icon"></span>
+        <br />
+      {{::'ease.card.reportfraud.get_newcard.address_not_in_file_caution.text' | translate}}
+    </div>
+</div>
+<div class="button-footer">
+    <form>
+        <div class="cc-fraud-problem-type">
+            <div class="cc-fraud-problem-buttons">
+                <button class="small" id="report_problem_finish_button"
+                        data-ng-click="reportFraudModal.handleFinishClick();">
+          <span ng-hide="reportFraudModal.loading">
+            {{::'ease.card.reportfraud.get_newcard.button.text' | translate}}
+          </span>
+                    <div class="cc-spinner" ng-class="{'loading':reportFraudModal.loading}"></div>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

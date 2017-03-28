@@ -1,0 +1,47 @@
+<div id="debit-reorder-transactions">
+  <button class="back-button icon-arrow-back"
+          name="back-button"
+          id="order-card-back-button"
+          data-ng-click="debitOrder.back()"
+          aria-label="{{debitOrder.i18n.back}}">
+          {{debitOrder.STATES.ORDER_TYPE}}
+  </button>
+
+  <h1 class="title smaller">
+    {{debitOrder.i18n.reorder.transactions.title}}
+  </h1>
+
+  <p class="confirm-transactions debit-description">
+    {{debitOrder.i18n.reorder.transactions.description}}
+  </p>
+
+  <ul class="review-list">
+    <li class="review-item">
+      {{debitOrder.i18n.reorder.transactions.steps.noIssues}}
+      <i>{{debitOrder.i18n.reorder.transactions.action}}</i>
+    </li>
+    <li class="review-item">
+      {{debitOrder.i18n.reorder.transactions.steps.unsure.ifNotSure}}
+      <i>{{debitOrder.i18n.reorder.transactions.cancel}}</i>
+      {{debitOrder.i18n.reorder.transactions.steps.unsure.followedBy}}
+      <i>{{debitOrder.i18n.reorder.transactions.steps.unsure.reportProblem}}</i>
+      {{debitOrder.i18n.reorder.transactions.steps.unsure.nextToTransaction}}
+    </li>
+  </ul>
+
+  <div class="actions">
+    <button type="submit"
+            id="reorder-transactions-reviewed"
+            class="btn progressive"
+            data-ng-click="debitOrder.transactionsAlreadyReviewed()">
+      {{debitOrder.i18n.reorder.transactions.action}}
+    </button>
+
+    <button type="button"
+            id="review-close-button"
+            class="learn-more-link"
+            data-ng-click="debitOrder.reviewTransactions()">
+      {{debitOrder.i18n.reorder.transactions.cancel}}
+    </button>
+  </div>
+</div>

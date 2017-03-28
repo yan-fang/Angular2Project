@@ -1,0 +1,73 @@
+<div class="customerSettingsContainer">
+  <section class="csHeader">
+    <div class="csLabel">
+      <h1 tabindex="0" aria-label="{{::securityCtrl.headerContent['ease.core.profiledropdown.securitysettings.label']}}">
+        {{::securityCtrl.headerContent['ease.core.profiledropdown.securitysettings.label']}}
+      </h1>
+    </div>
+  </section>
+</div>
+
+<ease-content-tile class="security-section">
+  <first-part>
+    <div>
+      {{::securityCtrl.content['ease.core.security.signinsection.label']}}
+    </div>
+  </first-part>
+  <second-part>
+
+    <div class="signin-section-parent" ng-if="securityCtrl.enableChangeUsernameToggle">
+      <div class="signin-section">
+      <span aria-label="{{::securityCtrl.content['ease.core.security.username.label']}}">
+        {{::securityCtrl.content['ease.core.security.username.label']}}
+      </span>
+        <div>
+          <div class="signin-section-value" aria-label="{{securityCtrl.username}}">{{securityCtrl.username}} </div>
+          <i id="changeUsername"
+             class="icon-pencil"
+             tabindex="0"
+             aria-label="{{::securityCtrl.content['ease.core.security.usernamemodal.title.label']}}"
+             data-ng-click="securityCtrl.openChangeUsernameModal()"
+             focus-on-security-modal-close>
+          </i>
+        </div>
+      </div>
+    </div>
+
+    <div class="signin-section-parent" ng-if="securityCtrl.enableChangePasswordToggle">
+    <div class="signin-section">
+      <span aria-label="{{::securityCtrl.content['ease.core.security.password.label']}}">
+        {{::securityCtrl.content['ease.core.security.password.label']}}
+      </span>
+      <div>
+        <div class="signin-section-value">* * * * * * * * * * * * </div>
+        <i id="changePassword"
+           class="icon-pencil"
+           tabindex="0"
+           aria-label="{{::securityCtrl.content['ease.core.security.password.editicon.aria.label']}}"
+           data-ng-click="securityCtrl.openChangePasswordModal()"
+           focus-on-security-modal-close>
+        </i>
+      </div>
+    </div>
+    </div>
+  </second-part>
+</ease-content-tile>
+
+<ease-content-tile id="cicDataTile" class="cicData" data-ng-if="securityCtrl.featureToggleCIC">
+  <first-part>
+    <div class="cicTitle">
+      <p id="cicTitle" tabindex="0" aria-label="{{::securityCtrl.content['ease.core.security.cic.header.label']}}">{{::securityCtrl.content['ease.core.security.cic.header.label']}}
+      </p>
+    </div>
+  </first-part>
+  <second-part>
+    <div class="cicContainer">
+      <p id="cicText" class="cicLabel">{{::securityCtrl.content['ease.core.security.cic.body.label']}}
+        <a id="cicLink" class="cicLinkText" data-ng-click="securityCtrl.openCIC(securityCtrl.content['ease.core.security.cic.link.label'])" role="link" keypress-handler aria-label="{{::securityCtrl.content['ease.core.security.cic.body.label']}}{{::securityCtrl.content['ease.core.security.cic.linktext.label']}}">{{::securityCtrl.content['ease.core.security.cic.linktext.label']}}
+        </a>
+      </p>
+    </div>
+  </second-part>
+</ease-content-tile>
+<div ui-view ></div>

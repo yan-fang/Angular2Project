@@ -1,0 +1,19 @@
+<ease-ui-modal class="confirmModalPopup profileContactModal" close-modal="noClickHandler()" modal-title="::modalTitle">
+  <div class="contactHolder">
+    <div id="confirmDelete" name="editPhoneForm" >
+      <p tabindex="0" class="confirmationMessage"> {{::labels.message}}</p>
+      <button type="submit" id="del_button_confirm" tabindex="0"
+              data-ng-click="confirmClickHandler()"
+              class="contactBtnSave button contactBtnSavePrimary confirmDelete"
+              aria-label="{{::labels.confirm}}">
+        <span id="conform_text">{{::labels.confirm}}</span>
+      </button>
+      <div class="contactDelete">
+        <a href="" id= "confirm_del_link" class="contactDeleteLink" data-ng-click="noClickHandler()">{{::labels.no}}</a>
+      </div>
+      </form>
+    </div>
+    </div>
+</ease-ui-modal>
+
+

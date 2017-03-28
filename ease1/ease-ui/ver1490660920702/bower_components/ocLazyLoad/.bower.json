@@ -1,0 +1,13 @@
+{
+  "name": "ocLazyLoad",
+  "version": "0.6.3",
+  "_release": "0.6.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.6.3",
+    "commit": "ab4178bbcd304da3800a28e29e7784661042c04e"
+  },
+  "_source": "https://github.kdc.capitalone.com/bower-dependencies/ocLazyLoad.git",
+  "_target": "0.6.3",
+  "_originalSource": "https://github.kdc.capitalone.com/bower-dependencies/ocLazyLoad.git"
+}

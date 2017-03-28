@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/AutoLoan/ver01.01.01.1566/styles/auto-loan-override.css">
+<div data-ng-controller="AutoLoanOneTimePaymentCancel as oneTimePaymentCancel">
+  <form class="confirmDeletePaymentPlanModal">
+    <div ease-modal toggle-close="oneTimePaymentCancel.close()" modal-role="oneTimePaymentCancel.modalRole" init-close="oneTimePaymentCancel.initClose" modal-class="oneTimePaymentCancel.modalClass"
+         modal-type="oneTimePaymentCancel.modalType" focus-id="focusId">
+   <div>
+        <h2  id="oneTimePaymentCancelHeader1" align="center" aria-label="{{oneTimePaymentCancel.i18n.coaf.payment.oneTimePaymentCancelConfirm.cancelHeader.label.v1}}"
+          data-ng-bind="oneTimePaymentCancel.i18n.coaf.payment.oneTimePaymentCancelConfirm.cancelHeader.label.v1">
+        </h2>
+   </div>
+      <div>
+        <p id="message"  class="message" aria-label="{{oneTimePaymentCancel.i18n.coaf.payment.oneTimePaymentCancelConfirm.cancelMessage.label.v1}}"
+          data-ng-bind="oneTimePaymentCancel.i18n.coaf.payment.oneTimePaymentCancelConfirm.cancelMessage.label.v1">
+        </p>
+      </div>
+      <ul id="oneTimPaymentCancelInfo" class="oneTimPaymentCancelInfo">
+        <li  id="oneTimPaymentCancelInfoTabIndex1">
+          <label  id="oneTimePaymentCancelDate"> {{oneTimePaymentCancel.i18n.coaf.payment.oneTimePaymentCancelConfirm.cancelConfirmPaymentDate.label.v1}}</label>
+          <span id="oneTimePaymentCancelDateValue"> {{oneTimePaymentCancel.oneTimePaymentToCancelDetails.oneTimePaymentToCancelDate}}</span>
+        </li>
+        <li >
+          <label  id="oneTimePaymentCancelPayFrom"> {{oneTimePaymentCancel.i18n.coaf.payment.oneTimePaymentCancelConfirm.cancelConfirmPayFrom.label.v1}}</label>
+          <span id="oneTimePaymentCancelPayFromValue"> {{oneTimePaymentCancel.oneTimePaymentToCancelDetails.oneTimePaymentToCancelBankName}}</span>
+        </li>
+        <li >
+          <label id="oneTimePaymentCancelPayAmount"> {{oneTimePaymentCancel.i18n.coaf.payment.oneTimePaymentCancelConfirm.cancelConfirmPayAmount.label.v1}}</label>
+          <span id="oneTimePaymentCancelPayAmountValue">{{oneTimePaymentCancel.oneTimePaymentToCancelDetails.transactionAmount | currency}}</span>
+        </li>
+      </ul>
+      <div class="buttons">
+        <button  tabindex="0" id="oneTimePaymentCancelButton" class="button" data-ng-click="oneTimePaymentCancel.cancelOneTimePayment()" data-ng-disabled="oneTimePaymentCancel.isButtonDisabled()">{{oneTimePaymentCancel.i18n.coaf.payment.paymentCancel.confirm.button.v1}}</button>
+      </div>
+    </div>
+  </form>
+</div>

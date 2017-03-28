@@ -1,0 +1,57 @@
+<div id="right" class="rightpanel" data-ng-if="alPayDownView.isOneTimePaymentCalculationAllowed || alPayDownView.isRecurringPaymentAllowed">
+    <div class="optionsTextHeader" id="savingsCalculator">
+        <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.savingsCalculator.label.v1"></span>
+    </div>
+    <div class="singleProductViewTransactions" data-ng-if="alPayDownView.isOneTimePaymentCalculationAllowed">
+        <div class="title" id="oneTimePaymentAmountHeader">
+            <span tabindex="0" data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.oneTimePaymentAmountHeader.label.v1"></span>
+            <a data-ng-if="alPayDownView.isOneTimePaymentEnabled"data-ng-click="alPayDownView.makeOneTimePayment()" id="makeAPayment" class="linkStyle">
+                <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.makeAPayment.label.v1"></span>
+            </a>
+        </div>
+        <div class="text" id="oneTimePaymentAmountBody">
+            <div id="oneTimePaymentAmountFormContainer" class="form-container">
+                <div>
+                <label for="oneTimePaymentAmount" data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.oneTimePaymentAmount.label.v1"></label><br>
+                  <input id="oneTimePaymentAmount" class="animated" ng-trim="false" ng-class="{shake: alPayDownView.isOneTimeDisplayError}" ng-keydown="alPayDownView.checkOneTimePaymentAmount()" ng-keyup="alPayDownView.checkOneTimePaymentAmount()" placeholder="$0.00"  type="text" data-ng-model="alPayDownView.oneTimeAmount">
+
+                  <button id="oneTimePaymentCalculateButton" class="button" ng-disabled="alPayDownView.isOneTimeDisplayError || !alPayDownView.isOneTimeMoreThanZero" data-ng-click="alPayDownView.calculateOneTime()">
+                    <div>
+                        <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.calculate.label.v1" class="ng-binding"></span>
+                    </div>
+                </button>
+                </div>
+              <span data-ng-if="!alPayDownView.isOneTimeDisplayError" tabindex="0" id="savedAmount1Label" data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.save.label.v1" ></span>
+              <span data-ng-if="alPayDownView.isOneTimeDisplayError" tabindex="0" id="oneTimeError" class="amtExceed" data-ng-bind="alPayDownView.amountValidationErrorMessage"></span>
+              <span data-ng-if="!alPayDownView.isOneTimeDisplayError"  tabindex="0" id="savedAmount1Value" class="savedAmount" data-ng-bind="alPayDownView.interestSavedAmountOneTime"></span>
+              <span data-ng-if="!alPayDownView.isOneTimeDisplayError && alPayDownView.newPayOffDateOneTime" tabindex="0" id="newPayOffDateLabel1" class="newPayOffDate" data-ng-if="alPayDownView.newPayOffDateOneTime" data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.payOff.label.v1 + (alPayDownView.newPayOffDateOneTime | date:'MMM') + ' ' +(alPayDownView.newPayOffDateOneTime | date:'yyyy')"></span>
+            </div>
+        </div>
+    </div>
+    <div class="singleProductViewTransactions" data-ng-if="alPayDownView.isRecurringPaymentAllowed">
+        <div class="title" id="recurringPaymentAmountHeader">
+            <span tabindex="0" data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.recurringPaymentAmountHeader.label.v1"></span>
+            <span data-ng-if="alPayDownView.isDpayEnabled" class="blueLink linkStyle" tabindex="0" role="link" id="schedulerecurringpayment" data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.scheduleRecurringPayment.label.v1" data-ng-click="alPayDownView.scheduleRecurringPayments()"></span>
+        </div>
+        <div class="text" id="recurringPaymentAmountBody">
+            <div id="recurringAmountFormContainer" class="form-container">
+                <div>
+                    <label tabindex="0" for="additionalMonthlyPaymentAmount" data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.additionalMonthlyPaymentAmount.label.v1"></label><br>
+                    <input tabindex="0" id="additionalMonthlyPaymentAmount" class="animated" ng-trim="false" ng-class="{shake: alPayDownView.isDpayDisplayError}" ng-keydown="alPayDownView.checkDpayAmount()" ng-keyup="alPayDownView.checkDpayAmount()" placeholder="$0.00"  type="text" data-ng-model="alPayDownView.additionalMonthlyPaymentAmount">
+                    <button id="additionalMonthlyPaymentAmountButton" class="button" ng-disabled="alPayDownView.isDpayDisplayError || !alPayDownView.isDpayMoreThanZero" data-ng-click="alPayDownView.calculateRecurring()">
+                    <div>
+                        <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.calculate.label.v1" class="ng-binding"></span>
+                    </div>
+                </button>
+                </div>
+              <span data-ng-if="!alPayDownView.isDpayDisplayError" tabindex="0" id="savedAmount2Label" data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.save.label.v1" ></span>
+              <span  data-ng-if="alPayDownView.isDpayDisplayError" tabindex="0" id="dPayError" class="amtExceed" data-ng-bind="alPayDownView.amountValidationErrorMessage"></span>
+              <span data-ng-if="!alPayDownView.isDpayDisplayError"  tabindex="0" id="savedAmount2Value" class="savedAmount" data-ng-bind="alPayDownView.interestSavedAmountDpay"></span>
+              <span data-ng-if="!alPayDownView.isDpayDisplayError && alPayDownView.newPayOffDateDPay"  tabindex="0" id="newPayOffDateLabel2" class="newPayOffDate" data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.payOff.label.v1 + (alPayDownView.newPayOffDateDPay | date:'MMM') + ' ' + (alPayDownView.newPayOffDateDPay | date:'yyyy')">></span>
+            </div>
+        </div>
+    </div>
+    <div class="singleProductViewTransactions disclaimer" id="noteLabel">
+        <span tabindex="0" data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.note.label.v1"> </span>
+    </div>
+</div>

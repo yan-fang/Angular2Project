@@ -1,0 +1,36 @@
+<div class="input-group number-input">
+	<div class="label-group">
+		<label id="{{$ctrl.id}}-label" for="{{$ctrl.id}}-input">
+			<span class="label">{{$ctrl.label}}</span>
+			<span class="label-info">{{$ctrl.subLabel}}</span>
+		</label>
+	</div>
+
+	<div class="number-input-input">
+		<input id="{{$ctrl.id}}-input"
+			name="numberInput"
+			class="on-foucs"
+			aria-valuenow="{{$ctrl.inputObj[$ctrl.field]}}"
+			aria-valuemin="2" 
+			aria-valuemax="999"
+			aria-labelledby="{{$ctrl.id}}-label"
+			aria-describedby="{{$ctrl.id}}-error-msg"
+			type="number"
+			min="2"
+			max="999"
+			tabindex="0"
+			required
+			role="spinbutton"
+			ng-model="$ctrl.inputObj[$ctrl.field]"
+			pattern="\d*"/>
+		<span class="inline-label">{{$ctrl.inputObj[$ctrl.field] > 1 ? 'payments' : 'payment'}}</span>
+		<div id="{{$ctrl.id}}-error-msg" class="error-summary">
+			<span ng-if="$ctrl.form.numberInput.$touched && $ctrl.form.numberInput.$error.min">
+				AutoPay requires at least 2 payments <span ng-if="$ctrl.mode==='make'">or you can make a <a ng-click="$ctrl.goToOnetimeFn()">single payment here</span></a>
+			</span>
+			<span ng-if="$ctrl.form.numberInput.$error.max">
+				Autopay only allows a number of payments from 2-999
+			</span>
+		</div>
+	</div>
+</div>

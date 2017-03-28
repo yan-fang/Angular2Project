@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="50px" height="46px" viewBox="0 0 50 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>chat_icon-filled</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="chat_icon-filled" fill="#0D74AF">
+            <path d="M24.9978408,0 C11.1907001,0 0,9.47758354 0,21.1703543 C0,26.9844392 1.76963882,30.5760432 6.24841863,34.4020862 L2.87995958,44.2443524 C2.87995958,44.2443524 2.47270309,45.0539481 2.92891369,45.5832591 C3.10494015,45.7874814 3.34346121,45.8499985 3.56844178,45.8499985 C3.92674417,45.8499985 4.25379925,45.6926639 4.25379925,45.6926639 L16.0184081,40.9111522 C18.8077505,41.8218171 21.8272814,42.3407085 24.9978408,42.3407085 C38.8028985,42.3407085 49.9956817,32.862083 49.9956817,21.1703543 C49.9956817,9.47758354 38.8028985,0 24.9978408,0" id="icons/filled/comment"></path>
+        </g>
+    </g>
+</svg>

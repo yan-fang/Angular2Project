@@ -1,0 +1,20 @@
+<ease-ui-modal class="profileConfirmModal" close-modal="::close()" modal-title="::content.title" show-icon-mobile="true">
+  <div class="confirmContainer">
+    <p tabindex="0" role="alert">{{::content.alertText}}<span class="boldNumber"> {{::content.boldText}} </span>{{::content.closingText}}</p>
+    <button type="button"
+            tabindex="0"
+            id="confirmation_button"
+            data-ng-click="::continue('buttonFn')"
+            class="confirmButton"
+            aria-label="{{::content.buttonLabel}}">
+      <span id="exit_tcpa_flow_button_label">{{::content.buttonLabel}}</span>
+    </button>
+    <p class="goBackLabel">
+      <a href=""
+         data-ng-click="::close()"
+         id="confirmation_link">
+        {{::content.linkText}}
+      </a>
+    </p>
+  </div>
+</ease-ui-modal>

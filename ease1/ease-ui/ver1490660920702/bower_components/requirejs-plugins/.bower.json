@@ -1,0 +1,13 @@
+{
+  "name": "requirejs-plugins",
+  "version": "1.0.3",
+  "_release": "1.0.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.0.3",
+    "commit": "8eb62f2922ecbe4665ddf6db61ffc609c47158d3"
+  },
+  "_source": "https://github.kdc.capitalone.com/bower-dependencies/requirejs-plugins.git",
+  "_target": "1.0.3",
+  "_originalSource": "https://github.kdc.capitalone.com/bower-dependencies/requirejs-plugins.git"
+}

@@ -1,0 +1,16 @@
+<ease-ui-modal id="debit-lock-modal"
+  close-modal="debitLock.close()"
+  modal-title="'Order Debit Card'"
+  showIconMobile="true"
+  class="debit-modal debit-lock"
+  data-ng-class="debitLock.modalClass">
+  <div class="debit-card-modal">
+    <div class="debit-modal-container">
+      <h1 class="title" tabindex="0">
+        {{debitLock.i18n.lockScreen.title}}
+      </h1>
+      <div data-ng-include="debitLock.templatePaths[debitLock.currentState]"></div>
+    </div>
+  </div>
+
+</ease-ui-modal>

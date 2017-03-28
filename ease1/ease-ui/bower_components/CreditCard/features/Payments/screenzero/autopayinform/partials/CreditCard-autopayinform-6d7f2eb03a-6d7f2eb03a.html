@@ -1,0 +1,27 @@
+<div ng-controller="AutopayInformController as ccAutopayInform" id="paymentsModalWrapper">
+  <ease-ui-modal close-modal="ccAutopayInform.closeCallback();"
+       class="cc-modal ccAutopayInformModal ccAutopayInform ccPayModal paymentModal cc-modal-icon-make-payment""
+       ng-class="{'cc-pay-modal-extended': ccAutopayInform.paymentHelper.isAutoPay}">
+    <div class="paymentContainer">
+
+      <h2 id="autopayInformHeader" translate>ease.card.payment.makeapayment.autopayinform.header.text</h2>
+
+      <p class="autopayInformP1" id="autopayInformP1" translate>
+        ease.card.payment.makeapayment.autopayinform.paragraph1.body.text</p>
+
+      <p class="autopayInformP2" id="autopayInformP2" translate>
+        ease.card.payment.makeapayment.autopayinform.paragraph2.body.text</p>
+
+      <div class="modal-footer">
+        <button id="continue" class="progressive screen-zero-buttons" data-ng-click="ccAutopayInform.continue()" tabindex="0">
+          {{ccAutopayInform.getContinueButtonText() | translate}}
+        </button>
+
+        <button id="cancel" class=" ghost progressive ap-inform-close" data-ng-click="ccAutopayInform.close()"
+                tabindex="0">
+          {{'ease.card.payment.makeapayment.autopayinform.cancel.button.text' | translate}}
+        </button>
+      </div>
+    </div>
+  </ease-ui-modal>
+</div>

@@ -1,0 +1,27 @@
+{
+  "name": "c1Date",
+  "main": "c1Date.js",
+  "version": "2.0.0",
+  "authors": [
+    "Kevin Warnock <kevin.warnock@capitalone.com>"
+  ],
+  "description": "Date utility that simplifies complex Date manipulation.",
+  "keywords": [
+    "Date",
+    "manipulation"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.kdc.capitalone.com/COS/cos-ui-date",
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "test",
+    "test-app",
+    ".gitignore",
+    "bower.json",
+    "gulpfile.js",
+    "karma.conf.js",
+    "package.json",
+    "README.md"
+  ]
+}

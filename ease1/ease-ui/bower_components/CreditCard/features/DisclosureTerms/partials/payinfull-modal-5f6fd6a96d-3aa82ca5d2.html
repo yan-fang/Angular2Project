@@ -1,0 +1,13 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/CreditCard/styles/card-override-d0ea6fe2a9-34f545de2b.css">
+
+<div ng-controller="DisclosureTermsController as ccPayInFull">
+    <ease-ui-modal class="disclosure-terms-consent" ng-class="{'cc-modal-icon-caution-pay-in-full': disclosureTermsState === 'payInFullGetCallNotEligible', 'cc-modal-icon-caution-pay-in-full': disclosureTermsState === 'capitaloneCustomerServices'}" focus-id="ccPayInFull.focusId"
+        close-modal="ccPayInFull.closeModal($event)" modal-id="'ccPayInFullModal'" ng-show="disclosureTermsTemplate">
+        <div cc-load-screen id="ccDisclosureTermsSpinner"></div>
+        <div ng-if="disclosureTermsState ==='payInFullGetCallEligible'" data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/DisclosureTerms/partials/payinfull-get-call-eligible-2cbbfe5612-2cbbfe5612.html'"></div>
+        <div ng-if="disclosureTermsState ==='payInFullGetCallNotEligible'" data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/DisclosureTerms/partials/payinfull-get-call-not-eligible-e9307901fa-e9307901fa.html'"></div>
+        <div ng-if="disclosureTermsState ==='payInFullPostCallSuccess'" data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/DisclosureTerms/partials/payinfull-post-call-success-b6df4272da-b6df4272da.html'"></div>
+        <div ng-if="disclosureTermsState ==='capitaloneCustomerServices'" data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/DisclosureTerms/partials/contactUsError-c907f41126-c907f41126.html'"></div>
+        <div ng-if="disclosureTermsState ==='featureUnavailable'" data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/FeatureNotAvailable/partials/CreditCard-featurenotavailable-f017e5bbc0-f017e5bbc0.html'"></div>
+    </ease-ui-modal>
+</div>

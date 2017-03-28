@@ -1,0 +1,14 @@
+<div class="radio-group">
+  <div class="input-group" ng-repeat="option in $ctrl.radioOptions">
+    <input id="{{$ctrl.id}}-radio-input-{{$index}}"
+      name="{{$ctrl.id}}-radio-input"
+      type="radio"
+      role="radio"
+      ng-model="$ctrl.selectedOption"
+      ng-value="option.value"
+      tabindex="{{$ctrl.setTabIndex($index)}}"/>
+    <label for="{{$ctrl.id}}-radio-input-{{$index}}">
+      {{option.label}}
+    </label>
+  </div>
+</div>

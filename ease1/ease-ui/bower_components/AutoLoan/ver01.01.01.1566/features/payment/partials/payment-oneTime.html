@@ -1,0 +1,151 @@
+<div data-ng-controller="AutoLoanOneTimePaymentController as alOneTime">
+  <div class="messageBlock">
+    <div class="alert" aria-live="assertive"
+         data-ng-if="accountDetailsData.accountDetails.nextEligibleRegularPaymentDate && !alOneTime.ummData.notificationMessage.text && !alOneTime.errorMessage">
+      <i class="icon-alert"></i>
+
+      <div class="message"><span>{{alOneTime.i18n.coaf.payment.paymentModal.occMsgStart.label.v1}} {{accountDetailsData.accountDetails.nextEligibleRegularPaymentDate | date:'MMMM'}}
+      {{accountDetailsData.accountDetails.nextEligibleRegularPaymentDate | date:'dd'}}, {{accountDetailsData.accountDetails.nextEligibleRegularPaymentDate | date:'yyyy'}}{{alPay.i18n.coaf.payment.paymentModal.occMsgEnd.label.v1}}</span>
+      </div>
+    </div>
+    <div class="error" data-ng-if="alOneTime.errorMessage" aria-live="assertive">
+      <i class="icon-warning"></i>
+      <div class="message" aria-label="{{alOneTime.errorMessage}}"><span id="onetimepayment.message" data-ng-bind="alOneTime.errorMessage"></span></div>
+    </div>
+  </div>
+
+  <ul class="paymentInfo">
+    <li >
+      <label data-ng-bind="alOneTime.i18n.coaf.payment.paymentModal.currentDue.label.v1"></label>
+      <span id="currentDue" data-ng-bind="accountDetailsData.accountDetails.minimumPaymentAmount  | currency "></span>
+    </li>
+    <li >
+      <label id="pastDueLink" class="clickable-only open-disclaimer"
+             role="link" aria-describedby="pastDue"
+             data-ng-click="alOneTime.showDisclaimer()"
+             data-ng-bind="alOneTime.i18n.coaf.payment.paymentModal.pastDue.label.v1">
+      </label>
+      <span id="pastDue" data-ng-bind="accountDetailsData.accountDetails.unpaidPastDueAmount  | currency"></span>
+    </li>
+    <li >
+      <label data-ng-bind="alOneTime.i18n.coaf.payment.paymentModal.fees.label.v1"></label>
+      <span id="fees" data-ng-bind="accountDetailsData.accountDetails.unpaidLateFee+accountDetailsData.accountDetails.unpaidMiscellaneousFeeAmount+accountDetailsData.accountDetails.unpaidOtherFee   | currency "></span>
+    </li>
+    <li  ng-if="accountDetailsData.accountDetails.totalAmountDue>0">
+      <label data-ng-bind="alOneTime.i18n.coaf.payment.paymentModal.totalDue.label.v1"></label>
+      <span id="totalDue" data-ng-bind="accountDetailsData.accountDetails.totalAmountDue | currency"></span>
+    </li>
+  </ul>
+
+  <form name="ummForm" id="ummform" key-Press-Event="{{id}}">
+
+    <div class="form-container">
+      <ease-dropdown  id="payFrom" label-id="'PaymentAccount'" no-place-holder="alOneTime.placeHolderFrom" is-valid="alOneTime.isValidDirective.from" label-txt="alOneTime.i18n.coaf.payment.paymentModal.payFrom.label.v1" bind-data="alOneTime.from" widget-id="'accountDd'" type="'accountDd'" localize="alOneTime.i18nCore" service="alOneTime.service" focus='true'></ease-dropdown>
+      <span aria-hidden="true" data-ng-if="!alOneTime.from" data-ng-click="alPay.clickOnElement('accountDd')" class="dropdown-placeholder" data-ng-bind="::alOneTime.i18n.coaf.payment.paymentModal.accountWatermark.label.v1"></span>
+
+    </div>
+
+    <div class="form-container" data-ng-if="alOneTime.isAccountSelected()">
+      <label id="paymentDateLabel" class="paymentLabel" data-ng-bind="::alOneTime.i18n.coaf.payment.paymentModal.paymentDt.label.v1"></label>
+      <div id="dueDate" class="dueDate"
+           data-ng-bind="alOneTime.i18n.coaf.payment.paymentModal.due.label.v1 + ' ' + (accountDetailsData.accountDetails.dueDate | date:'MMM d')"
+            aria-label="{{alOneTime.i18n.coaf.payment.paymentModal.due.label.v1 + ' ' + (accountDetailsData.accountDetails.dueDate | date:'longDate')}}">
+      </div>
+      <div id="autoLoanEaseDatePicker" class="easeDatePicker">
+        <input
+          id="paymentDate"
+          class = "date-input calendar"
+          placeholder="{{::alOneTime.i18n.coaf.payment.paymentModal.dateWatermark.label.v1}}"
+          type="text" ease-calendar-popup
+          ng-model="alOneTime.date"
+          is-open = "alOneTime.opened"
+          calendar-options = "alOneTime.calendarInlineOptions"
+          ng-click= "alOneTime.open($event)"
+          ng-keypress="alOneTime.openByKeyPress($event)"
+          readonly="true"
+        />
+        <span>
+          <i aria-label="{{alOneTime.i18n.coaf.payment.paymentModal.showCalender.label.v1}}" class="icon-calendar dateControlButton" id="autoLoanPaymentCalendar" data-ng-click="alOneTime.open($event)"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-container" data-ng-if="!alOneTime.isAccountSelected()">
+      <label id="paymentDateLabel" for="paymentDate" class="paymentLabel"
+             data-ng-bind="::alOneTime.i18n.coaf.payment.paymentModal.paymentDt.label.v1"></label>
+      <div id="dueDate" class="dueDate"
+           data-ng-bind="::alOneTime.i18n.coaf.payment.paymentModal.due.label.v1 + ' ' + (accountDetailsData.accountDetails.dueDate | date:'MMM d')"
+           aria-label="{{::alOneTime.i18n.coaf.payment.paymentModal.due.label.v1 + ' ' + (accountDetailsData.accountDetails.dueDate | date:'longDate')}}">
+      </div>
+      <input id="paymentDate" disabled class="date-input calendar" placeholder="{{::alOneTime.i18n.coaf.payment.paymentModal.dateWatermark.label.v1}}" type="text"/>
+    </div>
+
+    <div class="form-container" data-ng-if="alOneTime.dateSelected">
+      <ease-dropdown label-id="'PaymentAmount'" no-place-holder="alOneTime.placeHolderAmount" default-item-index="alOneTime.defaultAmountIndex" is-valid="alOneTime.isValidDirective.amount" label-txt="alOneTime.i18n.coaf.payment.paymentModal.payment.label.v1" bind-data="alOneTime.amount" widget-id="'amountDd'" type="'amountDd'" localize="alOneTime.i18nCore" service="alOneTime.service" focus='false'></ease-dropdown>
+      <span aria-hidden="true" data-ng-if="!alOneTime.amount" data-ng-click="alPay.clickOnElement('amountDd')" class="dropdown-placeholder" data-ng-bind="alOneTime.i18n.coaf.payment.paymentModal.amountWatermark.label.v1"></span>
+      <div class="{{amntClass}}" ng-if="alOneTime.showAmountInput" aria-live="polite" aria-atomic="true">
+        <label id="paymentLabel" ng-hide="true" class="paymentLabel amtExceed" data-ng-bind="::alOneTime.i18n.coaf.payment.paymentModal.payment.label.v1"></label>
+        <input aria-labelledby="paymentLabel" id="amountInput" class="animated" ng-trim="false" ng-class="{shake: alOneTime.isDisplayError()}" ng-keydown="alOneTime.validateAmount()" ng-keyup="alOneTime.validateAmount()" placeholder="$0.00"  type="text" data-ng-model="alOneTime.amount.value">
+        <div id="amountInputError" class="amtExceed"
+             role="alert"
+             data-ng-show="alOneTime.isDisplayError()"
+             data-ng-bind="alOneTime.amountErrorMessage"></div>
+      </div>
+    </div>
+
+    <div class="form-container" data-ng-if="!alOneTime.dateSelected">
+      <label id="PaymentAmount" for="amountDd" data-ng-bind="::alOneTime.i18n.coaf.payment.paymentModal.payment.label.v1"></label>
+      <input id="amountDd" disabled placeholder="{{::alOneTime.i18n.coaf.payment.paymentModal.amountWatermark.label.v1}}" type="text">
+    </div>
+
+    <span ng-if="alOneTime.hasAdditionalPrincipalVerbiage">
+      <div id="additionalPrincipalLink" class="additionalPrincipalVerbiage" role="link" ng-click="alOneTime.showAdditionalPrincipalPaymentInput()">
+        + {{::alOneTime.i18n.coaf.payment.paymentModal.addtnlPrincipalPmt.label.v1}}
+      </div>
+    </span>
+
+    <div class="form-container"
+         ng-if="alOneTime.hasAdditionalPrincipalVerbiage || alOneTime.hasAdditionalPrincipal">
+      <label class="paymentLabel" for="additionalPrincipalInput" ng-if="alOneTime.hasAdditionalPrincipal"
+             data-ng-bind="::alOneTime.i18n.coaf.payment.paymentModal.addtnlPrincipalPmt.label.v1">
+      </label>
+      <span id="additionalPrincipal" ng-if="alOneTime.hasAdditionalPrincipal"
+            focus-if="alOneTime.hasAdditionalPrincipal">
+          <div class="dollarAmount" aria-live="polite" aria-atomic="true">
+            <input id="additionalPrincipalInput" class="animated" aria-hidden="false"
+                   ng-trim="false"
+                   ng-class="{shake: alOneTime.isDisplayError()}"
+                   ng-keydown="alOneTime.checkAdditionalPrincipalAmount()"
+                   ng-keyup="alOneTime.checkAdditionalPrincipalAmount()"
+                   placeholder="0.00"
+                   data-ng-model="alOneTime.additionalPrincipal" type="text">
+            <span aria-hidden="true" class='symbol' id="currencySymbol" data-ng-bind="alOneTime.i18n.coaf.payment.paymentModal.amountSymbol.label.v1"></span>
+            <span id="baseAmount"
+                  data-ng-bind="('+ ') + (alOneTime.i18n.coaf.payment.paymentModal.amountSymbol.label.v1) + (alOneTime.amount.value | number:2)"></span>
+            <div class="amtExceed" id="additionalPrincipalInputError" role="alert"
+                 data-ng-show="alOneTime.isDisplayError()"
+                 data-ng-bind="alOneTime.amountErrorMessage"></div>
+          </div>
+      </span>
+    </div>
+
+    <div class="totalPayment" ng-if="alOneTime.totalPayment>0" aria-label="{{alOneTime.i18n.coaf.payment.paymentModal.totalPayment.label.v1}} {{alOneTime.totalPayment | currency}}">
+      <label data-ng-bind="alOneTime.i18n.coaf.payment.paymentModal.totalPayment.label.v1" ></label>
+      <span id="totalPayment" data-ng-bind="alOneTime.totalPayment | currency"></span>
+    </div>
+
+    <button tabindex="0" id="btnMakePayment" data-ng-click="alOneTime.makePayment()" class="button"  ng-disabled="alOneTime.isFormInvalid() || alOneTime.disabled" aria-pressed="{{alOneTime.ariaMakeAPaymentButtonPressed}}">
+        <div data-ng-class="{'loading':alOneTime.spinnerEnable}">
+          <span data-ng-bind="alOneTime.i18n.coaf.payment.paymentModal.mkPayment.button.v1"></span>
+        </div>
+    </button>
+
+  </form>
+
+  <p class="ccDisclaimer" data-ng-bind="alOneTime.i18n.coaf.payment.paymentModal.paymentDisclaimer1.label.v1"
+    aria-label="{{alOneTime.i18n.coaf.payment.paymentModal.paymentDisclaimer1.label.v1}}">
+  </p>
+  <p class="ccDisclaimer" data-ng-bind="alOneTime.i18n.coaf.payment.paymentModal.paymentDisclaimer2.label.v1"
+    aria-label="{{alOneTime.i18n.coaf.payment.paymentModal.paymentDisclaimer2.label.v1}}">
+  </p>
+</div>

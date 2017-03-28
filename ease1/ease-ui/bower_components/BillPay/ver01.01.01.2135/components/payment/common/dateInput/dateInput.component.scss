@@ -1,0 +1,30 @@
+.date-input {
+  .input-group {
+    margin-bottom: 10px;
+    
+    .easeDatePicker {
+      input {
+        width: 100%;
+        padding: 12px;
+        margin: 0 0;
+        border: 2px solid $border-color;
+        border-radius: 4px;
+        font-size: 16px;
+        font-family: ProxReg,Helvetica,Arial,sans-serif;
+        color: #000;
+        outline: none;
+
+        background-image: url(../images/date-picker.png);
+        background-repeat: no-repeat;
+        background-position: right 5px center;
+        background-size: 27px 27px;
+      }
+
+      .label-note {
+        display: inline-block;
+        color: #687680;
+        font-size: 14px;
+      }
+    }
+  }
+}

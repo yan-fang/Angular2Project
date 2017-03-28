@@ -1,0 +1,111 @@
+      <div class="alertRowContainer" data-ng-click="rowCtrl.openDrawer(rowCtrl.index, true)">
+        <div class="alertPosLeft">
+          <div class="alertPosLL" id="cardAlertType{{rowCtrl.index + rowCtrl.alert.alertType}}" name="cardAlertType">
+            {{::rowCtrl.alert.alertTypeDescription}}</div>
+          <div class="alertPosLR" role="application">
+            <ease-input data-ng-if="rowCtrl.isAlertTrigger"
+                        input-id="rowCtrl.genIdForInput()"
+                        input-val="rowCtrl.inputValue"
+                        length="12"
+                        label="::rowCtrl.genLabel()"
+                        error-status="rowCtrl.errorStatus"
+                        error-msg="rowCtrl.errorMsg"
+                        validate-alert-input
+                        reset-alert-error-status
+                        number-only>
+            </ease-input>
+            <ease-ui-dropdown data-ng-if="rowCtrl.isAlertFrequency"
+              is-open = "rowCtrl.isOpen"
+              items = "rowCtrl.ddItems"
+              persist-items = "rowCtrl.items"
+              model-value = "rowCtrl.selectedItem"
+              disable-search = "true"
+              select = "rowCtrl.selected(item)"
+              combobox = "rowCtrl.data"
+              id = "primaryDropDown_{{::rowCtrl.index}}"
+              reset-alert-error-status>
+                <ease-ui-dropdown-menu
+                  select="rowCtrl.selected(item)"
+                  items="rowCtrl.ddItems"
+                  template = "false"
+                  is-open = "rowCtrl.isOpen"
+                  component-id = "{{rowCtrl.data.id}}">
+              </ease-ui-dropdown-menu>
+            </ease-ui-dropdown>
+            <ease-ui-dropdown data-ng-if="rowCtrl.isNestedComponent"
+              is-open = "rowCtrl.nested.isOpen"
+              model-value = "rowCtrl.nested.selectedItem"
+              items = "rowCtrl.nested.ddItems"
+              persist-items = "rowCtrl.nested.items"
+              disable-search = "true"
+              select = "rowCtrl.nested.selected(item)"
+              combobox = "rowCtrl.nested.data"
+              id = "secondaryDropDown_{{::rowCtrl.index}}"
+              reset-alert-error-status>
+                <ease-ui-dropdown-menu
+                  select="rowCtrl.nested.selected(item)"
+                  items="rowCtrl.nested.ddItems"
+                  template = "false"
+                  is-open = "rowCtrl.nested.isOpen"
+                  component-id = "{{rowCtrl.nested.data.id}}">
+              </ease-ui-dropdown-menu>
+            </ease-ui-dropdown>
+          </div>
+        </div>
+
+        <div class="alertPosRight" data-ng-if="::rowCtrl.isAccountAlert">
+          <input aria-label="{{ ::rowCtrl.emailCheckboxAriaLabel }}"
+                 type="checkbox"
+                 id="cardAlertCheckbox{{::rowCtrl.index}}"
+                 data-ng-click="rowCtrl.checkBoxHandler($event, 'Email'); $event.stopPropagation();"
+                 data-ng-model="rowCtrl.subscribedIndicatorEmail"
+                 reset-alert-error-status/>
+          <span class="checkbox"></span>
+          <input data-ng-if="rowCtrl.smsEnabled"
+                 data-ng-class="{'hidden-checkbox': rowCtrl.isOsr}"
+                 data-ng-disabled="rowCtrl.isOsr"
+                 aria-label="{{ ::rowCtrl.smsCheckboxAriaLabel }}"
+                 type="checkbox"
+                 id="cardAlertCheckbox1{{::rowCtrl.index}}"
+                 data-ng-click="rowCtrl.checkBoxHandler($event, 'Phone')"
+                 data-ng-model="rowCtrl.subscribedIndicatorPhone"
+                 reset-alert-error-status/>
+          <span data-ng-class="{'hidden-checkbox': rowCtrl.isOsr}" class="checkbox"></span>
+        </div>
+
+        <div class="alertPosRight" data-ng-if="::rowCtrl.isSecurityAlert">
+          <img class="alertLockIcon"
+               src="ease-ui/dist/images/supporting-icons/lock-icon.svg"
+               aria-label="{{ ::rowCtrl.alert['alertTypeDescription'] }}"
+               tabindex="0">
+        </div>
+      </div>
+
+      <div id="viewtext{{rowCtrl.index}}" data-ng-if="rowCtrl.showMultiEmails()" class="moreEmails">
+        {{ ::rowCtrl.content['ease.core.alertsprefs.modal.email.multmsg1'] }} {{rowCtrl.getSendToEmailList().length}} {{ ::rowCtrl.content['ease.core.alertsprefs.modal.email.multmsg2'] }}
+        <a href="" tabindex="0" id="viewlink{{rowCtrl.index}}" data-ng-click="rowCtrl.openDrawer(rowCtrl.index)">
+          {{ ::rowCtrl.content['ease.core.alertsprefs.modal.email.opendrawer']}}</a>
+      </div>
+
+      <div data-ng-if="rowCtrl.isShowDrawer()" class="eligibleContactPointsListDrawer">
+        <ease-drawer drawer-id="'drawer'+rowCtrl.index" opened="true"
+                     is-click-enabled = false>
+          <div id="emailList{{rowCtrl.index}}"
+               focus-card-alert-email-list="rowCtrl.drawerOpened"
+               role="heading"
+               tabindex="0"
+               aria-label="{{ ::rowCtrl.content['ease.core.alertsprefs.modal.email.sendinfo']}}"
+               class="notifyLabel"
+               data-ng-bind="::rowCtrl.content['ease.core.alertsprefs.modal.email.sendinfo']">
+          </div>
+          <div class="eligibleContactPointsList" tabindex="0" data-ng-repeat="contactPoint in ::rowCtrl.emailList">
+            <input id="drawer{{rowCtrl.index}}CheckBox{{$index}}" aria-label="{{ ::contactPoint['alertDestination'] }}" 
+                   type="checkbox"  data-ng-model="contactPoint.checked"
+                   data-ng-keypress="$event.stopPropagation()"
+                   data-ng-click="rowCtrl.emailCheckBoxClickHandler($event, 'Email')"/>
+            <span class="checkbox"></span>
+            <span class="emailText" id="drawer{{rowCtrl.index}}CheckBox{{$index}}Destination" name="alertDestination"
+                  data-ng-bind="::contactPoint['alertDestination']"></span>
+          </div>
+        </ease-drawer>
+      </div>

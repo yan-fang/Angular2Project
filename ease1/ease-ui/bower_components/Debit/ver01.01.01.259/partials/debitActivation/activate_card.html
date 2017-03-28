@@ -1,0 +1,106 @@
+<button class="back-button icon-arrow-back"
+        name="back-button"
+        id="activate-card-back-button"
+        data-ng-click="debitActivation.changeState(debitActivation.STATES.CARD_LIST)"
+        aria-label="{{debitActivation.i18n.activate.backLink}}">
+</button>
+
+<h1 class="title" tabindex="0">
+  {{debitActivation.i18n.activate.title}}
+</h1>
+
+<form name="debitActivation.cardActivationForm"
+      id="debit-activation-form"
+      class="debit-form"
+      novalidate>
+  <div class="debit-card">
+    <div class="card-info">
+      <div class="card-number" aria-hidden="true">{{debitActivation.selectedCard.cardNumberTLNPI | limitTo:-4 }}</div>
+      <div class="expiration-date form-input">
+        <label for="month" class="label">
+          {{debitActivation.i18n.activate.ariaLabels.expirationMonth}}
+        </label>
+        <input  type="tel"
+                id="month"
+                class="input small"
+                name="month"
+                placeholder="MM"
+                tabindex="0"
+                data-ng-model="debitActivation.models.expiration.month"
+                data-debit-month-input="month-input"
+                required
+                aria-label="{{debitActivation.i18n.activate.ariaLabels.expirationMonth}}"/>
+        <span>/</span>
+        <label for="year" class="label">
+          {{debitActivation.i18n.activate.ariaLabels.expirationYear}}
+        </label>
+        <input  type="tel"
+                id="year"
+                class="input small"
+                name="year"
+                placeholder="YY"
+                tabindex="0"
+                data-ng-model="debitActivation.models.expiration.year"
+                data-debit-year-input="year-input"
+                required
+                aria-label="{{debitActivation.i18n.activate.ariaLabels.expirationYear}}"/>
+
+        <div class="expiration-error error-message">
+          <span aria-live="assertive"
+                class="invalid"
+                data-ng-show="(debitActivation.cardActivationForm.month.$invalid &&
+                         debitActivation.cardActivationForm.month.$touched) ||
+                         (debitActivation.cardActivationForm.year.$invalid &&
+                         debitActivation.cardActivationForm.year.$touched)">
+                {{debitActivation.i18n.activate.error}}
+            </span>
+        </div>
+      </div>
+      <div class="customer-name" aria-hidden="true">{{debitActivation.selectedCard.embossedCustomerName}}</div>
+      <div class="card-network mastercard"></div>
+      <!-- all capital one 360 checking debit cards are mastercard -->
+    </div>
+  </div>
+
+  <div class="error-text" ng-if="debitActivation.errors.ACTIVATE_CARD">
+    {{debitActivation.errors.ACTIVATE_CARD}}
+  </div>
+
+  <div class="form-action">
+    <button type="submit"
+            id="activate-card-button"
+            class="btn progressive"
+            tabindex="0"
+            data-ng-if="debitActivation.selectedCard.isNewCustomer || debitActivation.selectedCard.cardType === 'Retail'"
+            data-ng-disabled="debitActivation.cardActivationForm.$invalid || debitActivation.submitDisabled"
+            data-ng-click="debitActivation.validateOrActivateCard()">
+            <span data-ng-class="{ loading : debitActivation.submitDisabled }">
+              {{debitActivation.i18n.activate.actions.next}}
+            </span>
+    </button>
+
+    <button type="submit"
+            id="activate-replacement-card-button"
+            class="btn action"
+            tabindex="0"
+            data-ng-if="!debitActivation.selectedCard.isNewCustomer && debitActivation.selectedCard.cardType === '360'"
+            data-ng-disabled="debitActivation.cardActivationForm.$invalid || debitActivation.submitDisabled"
+            data-ng-click="debitActivation.validateOrActivateCard()">
+            <span data-ng-class="{ loading : debitActivation.submitDisabled }">
+              {{debitActivation.i18n.activate.actions.activate}}
+            </span>
+    </button>
+  </div>
+
+  <div class="disclaimer">
+    <p class="small-text"
+       data-ng-if="debitActivation.selectedCard.isNewCustomer && debitActivation.selectedCard.cardType === '360'">
+      {{debitActivation.i18n.activate.disclaimer.new}}
+    </p>
+    <p class="small-text"
+       data-ng-if="!debitActivation.selectedCard.isNewCustomer && debitActivation.selectedCard.cardType === '360'">
+      {{debitActivation.i18n.activate.disclaimer.replacement}}
+    </p>
+  </div>
+
+</form>

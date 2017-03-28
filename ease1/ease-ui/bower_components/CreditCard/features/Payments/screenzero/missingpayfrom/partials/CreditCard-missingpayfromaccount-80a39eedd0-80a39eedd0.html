@@ -1,0 +1,23 @@
+<div ng-controller="MissingPayFromController as ccMissingPayFrom" id="paymentsModalWrapper">
+  <ease-ui-modal close-modal="ccMissingPayFrom.close()"
+       class="cc-modal ccMissingPayFrom ccPayModal paymentModal cc-modal-icon-link-account">
+    <div class="paymentContainer">
+
+      <h2 class="missingPayFromHeader"
+          aria-label="{{'ease.card.payment.makeapayment.error.missingpayfrom.aria.header.text' | translate}}"
+          id="missingPayFromHeader">{{'ease.card.payment.makeapayment.error.missingpayfrom.header.text' |
+        translate}}</h2>
+      <p class="missingPayFromSubtext" ng-if="ccMissingPayFrom.isAutoPay()">
+        {{'ease.card.payment.makeapayment.error.missingpayfrom.ineligible.accounts.text' | translate}}</p>
+      <div class="modal-footer">
+        <button id="missingPayFromAddAccount" class="progressive screen-zero-buttons"
+                data-ng-click="ccMissingPayFrom.addEnterprisePaymentAccount()" tabindex="0">
+          {{'ease.card.payment.makeapayment.error.missingpayfrom.paymentaccounts.button.text' | translate}}
+        </button>
+
+      </div>
+    </div>
+  </ease-ui-modal>
+</div>
+
+<div cc-load-screen id="ccAddPaymentAccountSpinner"></div>

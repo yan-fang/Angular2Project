@@ -1,0 +1,65 @@
+<div cc-modal-back="viewOnlineTermsDetails.switchView('main')"></div>
+  <table style="width:100%">
+    <tr ng-if="viewOnlineTermsDetails.onlineTermsResponse.cashAdvanceApr!==undefined &&viewOnlineTermsDetails.onlineTermsResponse.cashAdvanceApr.currentRatePercent!==undefined">
+      <td id = "cashAdvance_cashAdvanceApr_label" data-ismoreinfo=true class="keyApr"> {{'ease.card.viewaccountdetails.cashadvance.apr' | translate}}</td>
+      <td id = "cashAdvance_cashAdvanceApr_value" class="amt">{{viewOnlineTermsDetails.cashCurrentRatePercent}}%</td>
+    </tr>
+    <tr ng-if="viewOnlineTermsDetails.onlineTermsResponse.cashAdvanceApr!==undefined &&viewOnlineTermsDetails.onlineTermsResponse.cashAdvanceApr.currentRatePercent!==undefined">
+      <td colspan="2" id="cashAdvance_cashAdvanceApr_verbiage" class="key"> {{'ease.card.viewaccountdetails.cashadvance.apr.verbiage' | translate}}</td>
+    </tr>
+    <tr ng-if="viewOnlineTermsDetails.isVerbiageApplicable(viewOnlineTermsDetails.onlineTermsResponse.cashAdvanceApr, 'scraThankYou')">
+      <td colspan="2" id="cashAdvance_cashAdvanceApr_verbiage_scra1" class="key">{{'ease.card.viewaccountdetails.apr.verbiage.scra1' | translate}}</td>
+    </tr>
+    <tr ng-if="viewOnlineTermsDetails.isVerbiageApplicable(viewOnlineTermsDetails.onlineTermsResponse.cashAdvanceApr, 'scraCurrentIndex')">
+      <td colspan="2" id="cashAdvance_cashAdvanceApr_verbiage_scraCurrentIndex" class="key">{{'ease.card.viewaccountdetails.apr.verbiage.scraCurrentIndex' | translate : {'indexName' : viewOnlineTermsDetails.currentIndexName('cashAdvanceApr') } }}</td>
+    </tr>
+    <tr ng-if="viewOnlineTermsDetails.isVerbiageApplicable(viewOnlineTermsDetails.onlineTermsResponse.cashAdvanceApr, 'currentIndex')">
+      <td colspan="2" id="cashAdvance_cashAdvanceApr_verbiage_currentIndex" class="key">{{'ease.card.viewaccountdetails.apr.verbiage.currentIndex' | translate :{indexName : viewOnlineTermsDetails.currentIndexName('cashAdvanceApr')} }}</td>
+    </tr>
+    <tr ng-if="viewOnlineTermsDetails.isVerbiageApplicable(viewOnlineTermsDetails.onlineTermsResponse.cashAdvanceApr, 'penalty')">
+      <td colspan="2" id="cashAdvance_cashAdvanceApr_verbiage_penalty" class="key">
+          {{'ease.card.viewaccountdetails.apr.verbiage.penalty' | translate}}</td>
+    </tr>
+    <tr ng-if="viewOnlineTermsDetails.isVerbiageApplicable(viewOnlineTermsDetails.onlineTermsResponse.cashAdvanceApr, 'gotoRate')">
+      <td colspan="2" id="cashAdvance_cashAdvanceApr_verbiage_gotoRate" class="key">{{'ease.card.viewaccountdetails.apr.verbiage.gotoRate' | translate : { 'expirationdate' : viewOnlineTermsDetails.cashCurrentRateEndDate , 'gotorate' : viewOnlineTermsDetails.cashGotoRatePercent } }}</td>
+    </tr>
+    <tr ng-if="viewOnlineTermsDetails.isVerbiageApplicable(viewOnlineTermsDetails.onlineTermsResponse.cashAdvanceApr, 'gotoRateAfterThatTime')">
+      <td colspan="2" id="cashAdvance_cashAdvanceApr_verbiage_gotoRateAfterThatTime" class="key">{{'ease.card.viewaccountdetails.apr.verbiage.gotoRateAfterThatTime' | translate :  {'baseaprgotorate' :viewOnlineTermsDetails.cashGotoRatePercent} }}</td>
+    </tr>
+    <tr ng-if="viewOnlineTermsDetails.isVerbiageApplicable(viewOnlineTermsDetails.onlineTermsResponse.cashAdvanceApr, 'gotoIndex')">
+      <td colspan="2" id="cashAdvance_cashAdvanceApr_verbiage_gotoIndex" class="key">{{'ease.card.viewaccountdetails.apr.verbiage.gotoIndex' | translate :{'indexNameGoTo' : viewOnlineTermsDetails.goToIndexName('cashAdvanceApr')} }}</td>
+    </tr>
+    <tr ng-if="viewOnlineTermsDetails.isVerbiageApplicable(viewOnlineTermsDetails.onlineTermsResponse.cashAdvanceApr, 'currentAndGotoIndex')">
+      <td colspan="2" id="cashAdvance_cashAdvanceApr_verbiage_currentAndGotoIndex" class="key">{{'ease.card.viewaccountdetails.apr.verbiage.currentAndGotoIndex' | translate : {'indexName' : viewOnlineTermsDetails.currentIndexName('cashAdvanceApr')} }}</td>
+    <tr>
+    <tr ng-if="viewOnlineTermsDetails.isVerbiageApplicable(viewOnlineTermsDetails.onlineTermsResponse.cashAdvanceApr, 'riskMitigation')">
+      <td colspan="2" id="cashAdvance_cashAdvanceApr_verbiage_riskMitigation" class="key">{{'ease.card.viewaccountdetails.apr.verbiage.riskMitigation' | translate}}</td>
+    </tr>
+    <tr ng-if="viewOnlineTermsDetails.isVerbiageApplicable(viewOnlineTermsDetails.onlineTermsResponse.cashAdvanceApr, 'baseIndex')">
+      <td colspan="2" id="cashAdvance_cashAdvanceApr_verbiage_baseIndex" class="key">{{'ease.card.viewaccountdetails.apr.verbiage.baseIndex' | translate :{'indexName' : viewOnlineTermsDetails.currentIndexName('cashAdvanceApr')} }}</td>
+    </tr>
+    <tr ng-if="viewOnlineTermsDetails.isVerbiageApplicable(viewOnlineTermsDetails.onlineTermsResponse.cashAdvanceApr, 'scraGotoIndex')">
+      <td colspan="2" id="cashAdvance_cashAdvanceApr_verbiage_scraGotoIndex" class="key">{{'ease.card.viewaccountdetails.apr.verbiage.scraGotoIndex' | translate : {'indexNameGoTo' : viewOnlineTermsDetails.goToIndexName('cashAdvanceApr')} }}</td>
+    </tr>
+    <tr ng-if="viewOnlineTermsDetails.isVerbiageApplicable(viewOnlineTermsDetails.onlineTermsResponse.cashAdvanceApr, 'scraCurrentAndGotoIndex')">
+      <td colspan="2" id="cashAdvance_cashAdvanceApr_verbiage_scraCurrentAndGotoIndex" class="key">{{'ease.card.viewaccountdetails.apr.verbiage.scraCurrentAndGotoIndex' | translate :{'indexName' : viewOnlineTermsDetails.currentIndexName('cashAdvanceApr')} }}</td>
+    </tr>
+    <tr ng-if="viewOnlineTermsDetails.isVerbiageApplicable(viewOnlineTermsDetails.onlineTermsResponse.cashAdvanceApr, 'scraMoreInfo')">
+      <td colspan="2" id="cashAdvance_cashAdvanceApr_verbiage_scra2" class="key" ng-bind-html= "'ease.card.viewaccountdetails.apr.verbiage.scra2' | translate"></td>
+    </tr>
+    <tr ng-if="viewOnlineTermsDetails.onlineTermsResponse.fees!==undefined">
+      <td id = "cashAdvance_cashAdvanceFee_label" data-ismoreinfo=true class="keyApr"> {{'ease.card.viewaccountdetails.cashadvance.fees' | translate}}</td>
+      <td id = "cashAdvance_cashAdvanceFee_value" class="amt"> {{viewOnlineTermsDetails.cashAdvanceFee | translate : {'percentage' : viewOnlineTermsDetails.cashAdvanceFeePercent, 'minimumvalue' : viewOnlineTermsDetails.cashAdvanceMinimumFeeAmount, 'fixedvalue' : viewOnlineTermsDetails.cashAdvanceFeeAmount} }}</td>
+    </tr>
+    <tr ng-if="viewOnlineTermsDetails.onlineTermsResponse.fees!==undefined && (viewOnlineTermsDetails.onlineTermsResponse.fees.cashAdvanceFeePercent!==undefined || viewOnlineTermsDetails.onlineTermsResponse.fees.cashAdvanceMinimumFeeAmount!==undefined)">
+      <td colspan="2" id = "cashAdvance_cashAdvanceFee_verbiage" class="key"> {{viewOnlineTermsDetails.cashAdvanceFeeVerbiage | translate : {'percentage' : viewOnlineTermsDetails.cashAdvanceFeePercent, 'minimumvalue' : viewOnlineTermsDetails.cashAdvanceMinimumFeeAmount, 'fixedvalue' : viewOnlineTermsDetails.cashAdvanceFeeAmount} }}</td>
+    </tr>
+    <tr>
+      <td id = "cashAdvance_cashAdvanceLimit_label" data-ismoreinfo=true class="keyApr"> {{'ease.card.viewaccountdetails.cashlimit' | translate}}</td>
+      <td id = "cashAdvance_cashAdvanceLimit_value" class="amt">{{viewOnlineTermsDetails.accountDetailsData.accountDetails.cardAccount.cashLimit | currency}}</td>
+    </tr>
+    <tr>
+      <td id = "cashAdvance_availableCash_label" data-ismoreinfo=true class="keyApr"> {{'ease.card.viewaccountdetails.availablecash' | translate}}</td>
+      <td id = "cashAdvance_availableCash_value" class="amt">{{viewOnlineTermsDetails.accountDetailsData.accountDetails.cardAccount.cashAvailable | currency}}</td>
+    </tr>
+  </table>

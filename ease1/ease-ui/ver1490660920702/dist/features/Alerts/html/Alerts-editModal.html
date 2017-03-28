@@ -1,0 +1,39 @@
+<ease-ui-modal close-modal="close()"
+               class="edit-alert-modal"
+               modal-title="::content['ease.core.profileprefs.alerts.editmodal.title.label']">
+  <span aria-label="{{ alertAccount['displayName']}} ... {{ trimmedAccountNumber() }}" class="nicknameAndAccountNum" id="nickNameAndAccountNum" name="nickNameAndAccountNum">{{ alertAccount['displayName']}} ... {{ trimmedAccountNumber() }}</span>
+  <div class="editAlertsContainer">
+    <div class="emailIcon">
+      <span class="emailText"> {{ ::content['ease.core.profileprefs.alerts.editmodal.email.label'] }}</span>
+      <i class="icon-envelope"
+         aria-label="{{ ::content['ease.core.profileprefs.alerts.editmodal.emailalt.label'] }}"
+         role="img"></i>
+    </div>
+    <form name="alertSubscriptionCheckboxes" data-ng-submit="submitAlerts(alertsArray)">
+      <div class="editAlertsRow" data-ng-repeat="alert in alertsArray">
+        <span id="{{ generateIdentifier(alert['alertTypeDescription']) }}"
+              name="{{ generateIdentifier(alert['alertTypeDescription']) }}"> {{ alert['alertTypeDescription'] }}
+        </span>
+        <input aria-label="{{ alert['alertTypeDescription'] }}"
+               type="checkbox"
+               data-ng-model="alert.subscribedIndicator"
+               id="checkbox_{{ generateIdentifier(alert['alertTypeDescription']) }}"
+               name="checkbox_{{ generateIdentifier(alert['alertTypeDescription']) }}"
+               class="coaf-input"/>
+        <span class="checkbox coaf-checkbox"></span>
+      </div>
+
+      <div class="alertsEmailText" id="alertsEmailText" aria-label="{{ ::content['ease.core.profileprefs.alerts.editmodal.sendto.label'] }}">{{ ::content['ease.core.profileprefs.alerts.editmodal.sendto.label'] }}</div>
+      <div class="button">
+        <button id="submitAlerts"
+                name="submitAlerts"
+                data-ng-disabled="alertSubscriptionCheckboxes.$pristine"
+                type="submit"
+                aria-label="{{::content['ease.core.profileprefs.alerts.editmodal.submit.label']}}">
+          <div data-ng-class="loadingCSS"></div>
+          {{::content['ease.core.profileprefs.alerts.editmodal.submit.label']}}
+        </button>
+      </div>
+    </form>
+  </div>
+</ease-ui-modal>

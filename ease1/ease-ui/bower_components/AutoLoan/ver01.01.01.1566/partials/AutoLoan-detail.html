@@ -1,0 +1,106 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/AutoLoan/ver01.01.01.1566/styles/auto-loan-override.css">
+<div class="details _coaf fadeIn" data-ng-if="on">
+  <div class="container fadeInSlideUp" data-ng-if="on">
+    <ul class="info">
+      <li class="title">
+        <h1 id="autoLoanAccountName">
+          <span data-ng-bind="accountDetailsData.accountDetails.accountNickname"></span>
+        </h1>
+        <p id="vehicleInfo" class="account-additional">{{accountDetailsData.accountDetails.vehicleYear + " " + accountDetailsData.accountDetails.vehicleMake + " " + accountDetailsData.accountDetails.vehicleModel}}</p>
+      </li>
+      <li id="principalBalanceInfo" class="current" data-ng-if="accountDetailsData.accountDetails.loanBalance && !accountDetailsData.accountDetails.hidePrincipalBalance">
+        <h2 id="principalBalanceText">{{aDetails.i18n.coaf.accountSummary.accountDetails.principalBalance.label.v1}}</h2>
+        <p class="amount">
+          <span id="dollarSym" class="symbol">$</span>
+          <span id="dollarAmt" class="dollar">{{accountDetailsData.accountDetails.loanBalance | splitCurrency: 'true'}}</span>
+          <span class="dot">.</span>
+          <span id="centAmt" class="cents">{{accountDetailsData.accountDetails.loanBalance | splitCurrency: 'false'}}</span>
+        </p>
+      </li>
+
+
+      <li id="tenDayPayoff" class="current" data-ng-if="accountDetailsData.accountDetails.hidePrincipalBalance">
+        <h2 id="tenDayPayOffQuoteLnk1">{{aDetails.i18n.coaf.accountSummary.accountDetails.todaysPayoff.label.v1}}</h2>
+        <p class="amount">
+          <span id="todayPayoffAmountDollarSym" class="symbol">$</span>
+          <span id="todayPayoffAmountDollar" class="dollar">{{accountDetailsData.accountDetails.todayPayoffAmount | splitCurrency: 'true' }}</span>
+          <span class="dot">.</span>
+          <span id="todayPayoffAmountCents" class="cents">{{accountDetailsData.accountDetails.todayPayoffAmount | splitCurrency: 'false' }}</span>
+        </p>
+      </li>
+
+      <li class="pay">
+      <p>
+          <span id="totalDueInfo" tabindex="0" data-ng-click="PayDetails($event)" role="link" data-ng-if="textAboveButton" class="whiteLink">{{textAboveButton}} <i class="icon-next"></i> </span>
+          <span make-a-payment callback="PayNow($event)" type="button" text="buttonText"></span>
+        </p>
+      </li>
+
+    </ul>
+    <ul class="more">
+      <li class="additional">
+        <p>
+          <span id="autoLoanAccNumber">{{aDetails.i18n.coaf.accountSummary.accountDetails.accountNum.label.v1}} {{accountDetailsData.accountDetails.displayAccountNumber}}</span><br>
+          <span id="loanDetailLink" tabindex="0" data-ng-click="LoanDetails($event)" role="link" class="whiteLink">{{aDetails.i18n.coaf.accountSummary.accountDetails.loanDetails.label.v1}} <i class="icon-next"></i></span>
+        </p>
+      </li>
+
+      <li class="limit" ng-if="accountDetailsData.accountDetails.tenDayPayoffQuoteAmount > 0 && !accountDetailsData.accountDetails.hidePrincipalBalance && tenDayPayOffQuoteEnabled" tabindex="0">
+        <p id="tenDayPayoffQuote">{{accountDetailsData.accountDetails.tenDayPayoffQuoteAmount | currency }}
+        <span id="tenDayPayOffQuoteLnk">{{aDetails.i18n.coaf.accountSummary.accountDetails.tenDayPayOff.label.v1}}</span>
+        </p>
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <div class="messages" data-ng-if="aDetails.ddcHistoryMessage">
+      <ul>
+          <li>
+            <div class="container">
+              <div class="icons-container">
+                <i class="icon-exclamation" aria-hidden="true"></i>
+              </div>
+              <div class="due-date-change-message">
+                <span id="ddcHistoryMessage" data-ng-bind-html="aDetails.ddcHistoryMessage"> </span>
+                <a id="continuetoESign" class="whiteLink l2MessageLink"
+                   tabindex="0"
+                   data-ng-if="aDetails.displayESignLink" data-ng-bind-html="aDetails.displayESignLink" data-ng-click="continueToEDocSign($event)"> </a> 
+              </div>
+            </div>
+          </li>
+      </ul>
+    </div>
+    <div class="messages" data-ng-if="isPastDueMessagingFeatureEnabled && aDetails.pastDueMessage">
+      <ul>
+        <li>
+          <div class="container">
+            <div class="icons-container">
+              <i class="icon-exclamation" aria-hidden="true"></i>
+            </div>
+            <div class="due-date-change-message">
+              <span id="pastDueAmountMessage" data-ng-bind-html="aDetails.pastDueMessage"></span>
+              <a id="pastDueMessage" class="whiteLink l2MessageLink"
+                 tabindex="0"
+                 ng-click="takeMeToPayCatchUp($event)" ng-bind-html="aDetails.i18n.coaf.carPayCatchUp.pastDuePaymentOptions.pastDueMessage.label.v1"></a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="messages" data-ng-if="isActiveCpCuMessagingEnabled && aDetails.paymentCatchupPlanMessage">
+      <ul>
+        <li>
+          <div class="container">
+            <div class="icons-container">
+              <i class="icon-exclamation" aria-hidden="true"></i>
+            </div>
+            <div class="due-date-change-message">
+              <span id="paymentCatchupPlanMessage" data-ng-bind-html="aDetails.paymentCatchupPlanMessage"></span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+</div>
+</div>

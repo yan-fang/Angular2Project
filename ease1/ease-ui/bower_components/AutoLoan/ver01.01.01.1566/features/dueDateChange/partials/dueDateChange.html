@@ -1,0 +1,46 @@
+<div ease-modal
+	modal-type="autoLoanDueDateChangeController.modalType"
+	toggle-close="autoLoanDueDateChangeController.close()"
+	modal-class="autoLoanDueDateChangeController.modalClass">
+	<div class="ddc-main-heading">
+		<h2 class="modal-heading" id="modalTitle" data-ng-bind="autoLoanDueDateChangeController.i18n.coaf.dueDateChange.headline.label.v1"></h2>
+		<p id="chooseDueDateText" data-ng-bind="autoLoanDueDateChangeController.i18n.coaf.dueDateChange.ddcDesc1.label.v1"></p>
+		<p class="tooltip" id="restrictionsTooltip" title="{{autoLoanDueDateChangeController.i18n.coaf.dueDateChange.ddcTooltipText1.label.v1}}">
+			<span id="restrictionsText" data-ng-bind="autoLoanDueDateChangeController.i18n.coaf.dueDateChange.ddcTooltipTriggerText1.label.v1"></span>
+			<i class='icon-info-circle' aria-hidden='true' role='presentation'></i>
+		</p>
+	</div>
+	<div class="due-date-change-datepicker">
+		<ease-calendar ng-model="autoLoanDueDateChangeController.newDueDate" calendar-options="autoLoanDueDateChangeController.inlineOptions"></ease-calendar>
+	</div>
+	<div class="choose-additional-payment-wrapper">
+		<p id="chooseHowText" data-ng-bind="autoLoanDueDateChangeController.i18n.coaf.dueDateChange.ddcDesc3.label.v1"></p>
+		<p class="tooltip" id="interestAccrueTooltip" title="{{autoLoanDueDateChangeController.i18n.coaf.dueDateChange.ddcTooltipText2.label.v1}}">
+			<span id="interestAccrueText" data-ng-bind="autoLoanDueDateChangeController.i18n.coaf.dueDateChange.ddcTooltipTriggerText2.label.v1"></span>
+			<i class='icon-info-circle' aria-hidden='true' role='presentation'></i>
+		</p>
+		<fieldset data-ng-if="autoLoanDueDateChangeController.showPayNowPayLater" class="choose-additional-payment">
+			<legend class="screen-reader-only" data-ng-bind="autoLoanDueDateChangeController.i18n.coaf.dueDateChange.ddcDesc3.label.v1"></legend>
+			<input id="upFront" class="screen-reader-only" type="radio" name="additionalInterest">
+			<label for="upFront">
+				<span id="upFrontLabel" data-ng-bind="autoLoanDueDateChangeController.i18n.coaf.dueDateChange.ddcButtonText1.label.v1"></span><br />
+				<span id="upFrontAmount" data-ng-bind="(autoLoanDueDateChangeController.payNowPayLater.payNowAmount | nonNegativeAmount)"></span>
+			</label>
+
+			<!-- TODO: Uncomment when monthly payment API is created
+			<input id="increaseMonthlyPayment" type="checkbox" name="increaseMonthlyPayment">-->
+			<!--<label for="increaseMonthlyPayment">-->
+				<!--<span data-ng-bind="autoLoanDueDateChangeController.i18n.coaf.dueDateChange.ddcButtonText2.label.v1"></span><br />-->
+				<!--<span>$0</span>-->
+			<!--</label>-->
+
+			<input id="payAtEnd" class="screen-reader-only" type="radio" name="additionalInterest">
+			<label for="payAtEnd">
+				<span id="payAtEndLabel" data-ng-bind="autoLoanDueDateChangeController.i18n.coaf.dueDateChange.ddcButtonText3.label.v1"></span><br />
+				<span id="payAtEndAmount" data-ng-bind="(autoLoanDueDateChangeController.payNowPayLater.payLaterAmount | nonNegativeAmount)"></span>
+			</label>
+		</fieldset>
+	</div>
+	<button id="ContinueToSign" class="full-width btn progressive" data-ng-bind="autoLoanDueDateChangeController.i18n.coaf.dueDateChange.ddcProgressButtonText.label.v1" ng-disabled="!autoLoanDueDateChangeController.newDueDate" ng-click="autoLoanDueDateChangeController.continueToSign($event)"></button>
+	<p id="disclaimerText" class="disclaimer-text" data-ng-bind="autoLoanDueDateChangeController.i18n.coaf.dueDateChange.ddcDisclaimer.label.v1"></p>
+</div>

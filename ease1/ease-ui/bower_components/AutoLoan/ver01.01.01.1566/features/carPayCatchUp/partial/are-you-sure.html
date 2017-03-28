@@ -1,0 +1,21 @@
+<div ease-modal
+	data-ng-controller="AreYouSureController as areYouSureController"
+	modal-type="areYouSureController.modalType"
+	toggle-close="areYouSureController.close()"
+	modal-class="areYouSureController.modalClass"
+	class="are-you-sure">
+
+	<h2 id="modalTitle" class="modal-heading"
+		data-ng-bind="::areYouSureController.i18n.coaf.carPayCatchUp.areYouSure.title.label.v1"></h2>
+	<p id="halfMonthlyPaymentDescOne"
+		ng-bind-html="::areYouSureController.i18n.coaf.carPayCatchUp.areYouSure.explanation.label.v1"></p>
+
+	<div class="button-container">
+		<button id="proceedButton" class="btn progressive full-width"
+			data-ng-bind="::areYouSureController.i18n.coaf.carPayCatchUp.areYouSure.goBack.label.v1"
+				data-ng-click="areYouSureController.goBack()"></button>
+		<button id="exitModalButton" class="btn ghost progressive full-width"
+			data-ng-bind="::areYouSureController.i18n.coaf.carPayCatchUp.labels.exit.label.v1"
+				data-ng-click="areYouSureController.close()"></button>
+	</div>
+</div>

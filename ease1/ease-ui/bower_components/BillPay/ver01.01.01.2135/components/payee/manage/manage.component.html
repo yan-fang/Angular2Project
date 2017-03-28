@@ -1,0 +1,50 @@
+<button
+  class="action-link"
+  id="btn-manage-payee-{{$index}}"
+  ng-click="$ctrl.showMenu = !$ctrl.showMenu"
+  aria-expanded="{{$ctrl.showMenu}}">
+  <span class="manage-btn-text">Manage</span>
+</button>
+
+<ul ng-show="$ctrl.showMenu" ng-blur="$ctrl.showMenu = false">
+  <li
+    ng-hide="!$ctrl.features.addRecurringPayment">
+    <a href=""
+       id="billpay-recurring-payment-Button-{{$ctrl.uid}}"
+       ng-if="$ctrl.recurringPayment"
+       class="setting setting-add-recurring"
+       ng-class="{'action-loading': $ctrl.recurringPaymentLoading}"
+       ng-click="$ctrl.recurringPayment()">
+      <span ng-class="{'loading': $ctrl.recurringPaymentLoading}">
+        {{ $ctrl.recurringPaymentLoading ? '' : 'Add Recurring Payment'}}
+      </span>
+    </a>
+  </li>
+  <li
+    ng-hide="!$ctrl.features.deletePayee">
+    <a href=""
+       id="BillPay-deletePayee-Button-{{$ctrl.uid}}"
+       ng-if="$ctrl.deletePayee"
+       class="setting setting-delete-payee"
+       ng-click="$ctrl.deletePayee()"
+       ng-class="{'action-loading': $ctrl.deletePayeeLoading}">
+      <span ng-class="{'loading': $ctrl.deletePayeeLoading}">
+        {{ $ctrl.deletePayeeLoading ? '' : 'Delete Payee' }}
+      </span>
+    </a>
+  </li>
+  <li ng-hide="!$ctrl.features.editPayee
+           || ($ctrl.payeeType === 'registered' && !$ctrl.features.editPayeeRegistered)
+           || ($ctrl.payeeType === 'manual' && !$ctrl.features.editPayeeManual)">
+    <a href=""
+       id="billpay-button-edit-payee-{{$ctrl.uid}}"
+       ng-if="$ctrl.editPayee"
+       class="setting setting-edit-payee"
+       ng-click="$ctrl.editPayee()"
+       ng-class="{'action-loading': $ctrl.editLoading}">
+      <span ng-class="{'loading': $ctrl.editLoading}">
+        {{$ctrl.editLoading ? '' : 'Edit Payee'}}
+      </span>
+    </a>
+  </li>
+</ul>

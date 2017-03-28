@@ -1,0 +1,48 @@
+<div id="report_fraud_title_label" class="cc-fraud-modal-header">
+    <h2>{{::'ease.card.reportfraud.selectcard.header.text' | translate}}</h2>
+</div>
+<div class="cc-fraud-modal-body select-card">
+    <div class="center subheader">
+        {{::'ease.card.reportfraud.selectcard.subheader.text' | translate}}
+    </div>
+
+    <form>
+        <fieldset>
+            <div class="card-list" role="table">
+                <ul>
+                    <li data-ng-repeat="card in reportFraudModal.cardholders" id="cardholders{{$index}}" role="rowgroup">
+                        <div class="reportfraud-card" role="row">
+            <span role="gridcell" class="card-radio-buttons" card="card">
+              <div class="card-radio-button" role="radiogroup">
+                  <input aria-label="cardOptions" id="cardRadio{{$index}}" name="cardRadio" type="radio" ng-value="card.plasticLastFour" tabindex="0" ng-click="reportFraudModal.cardSelected(card.plasticLastFour)" />
+              </div>
+            </span>
+              <span role="gridcell" class="card-info">
+              {{::reportFraudModal.cardAccountProductName}}
+              <br />
+              {{::card.name.full}}
+              <br />
+              <span class="bold">Card ending in ...{{::card.plasticLastFour}}</span>
+            </span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div class="button-footer">
+    <form>
+        <div class="cc-fraud-problem-type">
+            <div class="cc-fraud-problem-buttons select-card">
+                <button class="small progressive" id="report_problem_verify_card_button" ng-disabled="!reportFraudModal.isCardSelected"
+                        data-ng-click="reportFraudModal.handleSelectCardClick();">
+          <span ng-hide="reportFraudModal.loading">
+            {{::'ease.card.reportfraud.selectcard.button.text' | translate}}
+          </span>
+                    <div class="cc-spinner" ng-class="{'loading':reportFraudModal.loading}"></div>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,96 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/AutoLoan/ver01.01.01.1566/styles/auto-loan-override.css">
+<div data-ng-controller="AutoLoanPayOffSummaryController as alPayOff">
+  <div ease-modal toggle-close="alPayOff.close()" modal-role="alPayOff.modalRole" init-close="alPayOff.initClose" modal-class="alPayOff.modalClass"
+       modal-type="alPayOff.modalType" focus-id="focusId">
+    <div class="messageBlock">
+      <div class="error" data-ng-if="alPayOff.errorMessage">
+        <i class="icon-warning"></i>
+
+        <div class="message" aria-label="{{alPayOff.errorMessage}}" ><span id="alPayOff.message"> {{alPayOff.errorMessage}}</span>
+        </div>
+      </div>
+    </div>
+
+    <form class="confirmDeletePaymentPlanModal">
+      <div>
+        <div><h2 id="payoffSummaryHeader"  align="center"
+                 aria-label="{{i18n.coaf.payment.payoffSummary.summaryHeader.label.v1}}">
+          {{i18n.coaf.payment.payoffSummary.summaryHeader.label.v1}}</h2></div>
+
+        <h4 id="nickname"  align="center" data-ng-bind="accountDetailsData.accountDetails | formatDisplayAccountNumber"
+          aria-label="{{accountDetailsData.accountDetails | formatDisplayAccountNumber}}"></h4>
+
+        <div class="payoffPaymentDetails"  aria-label="{{i18n.coaf.payment.payoffSummary.payoffPaymentDetails.label.v1}}">
+          <label id="paymentDetails" data-ng-bind="i18n.coaf.payment.payoffSummary.payoffPaymentDetails.label.v1"></label>
+        </div>
+        <div>
+          <ul class="payoffSummary">
+
+            <li >
+              <label id="payFromLabel" data-ng-bind="i18n.coaf.payment.payoffSummary.payFromText.label.v1"></label>
+              <span id="payFrom" data-ng-bind="alPayOff.payoffDetail.payFromText"></span>
+            </li>
+            <li >
+              <label id="frequencyTypeLabel" data-ng-bind="i18n.coaf.payment.payoffSummary.payoffDate.label.v1"></label>
+              <span id="fpayDate" data-ng-bind="alPayOff.payoffDetail.paymentDate | date: 'longDate'"></span>
+            </li>
+            <li >
+              <label id="payAmountLabel" data-ng-bind="i18n.coaf.payment.payoffSummary.payoffAmount.label.v1"></label>
+              <span id="payAmount" data-ng-bind="alPayOff.payoffDetail.payoffAmount | currency"></span>
+            </li>
+            <li tabindex="0">
+              <span>
+                <a class="editPayoff" data-ng-click="alPayOff.editPayoff()" id="editPayoff"
+                data-ng-bind="i18n.coaf.payment.payoffSummary.edit.label.v1"></a>
+              </span>
+            </li>
+          </ul>
+        </div>
+
+
+        <div class="payoffContact" aria-label="{{i18n.coaf.payment.payoffSummary.note1Full.label.v1}}">
+          <span id="messageText1">
+            {{i18n.coaf.payment.payoffSummary.note1Part1.label.v1}}
+            <a href={{i18n.coaf.payment.payoffSummary.payoffContactLink.label.v1}}
+               aria-label="{{i18n.coaf.payment.payoffSummary.payoffContactNewWindowMessage.label.v1}}"
+               tabindex="0" target="_blank" id="linkContactPayoff">
+              {{i18n.coaf.payment.payoffSummary.note1Part2.label.v1}}
+            </a>
+            {{i18n.coaf.payment.payoffSummary.note1Part3.label.v1}}
+          </span>
+        </div>
+
+        <div class="payoffContact" aria-label="{{i18n.coaf.payment.payoffSummary.note2Full.label.v1}}">
+          <span id="messageText2">
+            {{i18n.coaf.payment.payoffSummary.note2Part1.label.v1}}
+            <a href={{i18n.coaf.payment.payoffSummary.payoffFaqLink.label.v1}}
+               aria-label="{{i18n.coaf.payment.payoffSummary.payoffFaqNewWindowMessage.label.v1}}"
+               tabindex="0" target="_blank" id="linkFaqPayoff">
+              {{i18n.coaf.payment.payoffSummary.note2Part2.label.v1}}
+            </a>
+            {{i18n.coaf.payment.payoffSummary.note2Part3.label.v1}}
+          </span>
+        </div>
+
+        <button id="confirmPayoff" tabindex="0" data-ng-click="alPayOff.makePayoffPayment()"
+                aria-pressed="{{alPayOff.ariaPayOffPressed}}"
+                ng-disabled="disabled"
+                class="button">
+            <div data-ng-class="{'loading':spinnerEnable}">
+              <span data-ng-bind="i18n.coaf.payment.payoffSummary.confirmButton.button.v1"></span>
+            </div>
+        </button>
+
+
+        <p class="ccDisclaimer" data-ng-bind="i18n.coaf.payment.paymentModal.paymentDisclaimer1.label.v1"
+           aria-label="{{i18n.coaf.payment.paymentModal.paymentDisclaimer1.label.v1}}"></p>
+
+        <p class="ccDisclaimer" data-ng-bind="i18n.coaf.payment.paymentModal.paymentDisclaimer2.label.v1"
+           aria-label="{{i18n.coaf.payment.paymentModal.paymentDisclaimer2.label.v1}}"></p>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+

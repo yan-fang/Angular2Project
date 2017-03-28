@@ -1,0 +1,26 @@
+<div data-ng-controller="AutoLoanAccountFeatureController as accountServicesCtrl">
+  <div class="container extensibility">
+    <ul class="extensibilityList">
+      <li data-ng-repeat="accountServicesFeature in accountServicesCtrl.accountServicesFeatures"
+          class="{{accountServicesFeature.elementClass}}">
+        <div id="{{accountServicesFeature.elementId}}">
+          <a role="{{accountServicesFeature.role}}"
+             data-ng-click="accountServicesCtrl[accountServicesFeature.actionMethod]
+                        (accountServicesFeature.methodParam1, accountServicesFeature.methodParam2)"
+             aria-label="{{accountServicesFeature.elementTextValue}}" href>
+            <i style="cursor:pointer" class="{{accountServicesFeature.iconClass}}"></i>
+            <label style="cursor:pointer" data-ng-bind="[accountServicesFeature.elementTextValue]"></label>
+          </a>
+        </div>
+      </li>
+      <li class="more-services">
+        <div id="moreServices">
+          <a  tabindex="0"  href data-ng-click="accountServicesCtrl.navigateToState('AutoLoanDetails.transactions.moreServices')">
+            <i style="cursor:pointer" class="icon-circle-add"></i>
+            <label style="cursor:pointer" data-ng-bind="accountServicesCtrl.i18n.coaf.accountSummary.extensibility.moreAccountServices.label.v1"></label>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

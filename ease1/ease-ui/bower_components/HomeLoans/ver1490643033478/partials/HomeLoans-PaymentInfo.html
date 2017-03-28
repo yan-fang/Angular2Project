@@ -1,0 +1,33 @@
+<div ng-controller="HomeLoansRecurringInfoCtrl as homeLoansInfo" class="container">
+  <ul class="successDetails">
+    <li>
+      <label>{{homeLoansInfo.i18n.payment.frequency}}</label>
+        <span id="frequencyDueDaySuccessRecurId" aria-label="{{homeLoansInfo.recurringPmtFrequency}}">
+        {{homeLoansInfo.recurringPmtFrequency}}</span>
+     </li>
+    <li>
+      <label class="recurringPayFrom">{{homeLoansInfo.i18n.payment.payFrom}}</label>
+          <span id="payFromInformationRecurId" aria-label="{{(homeLoansInfo.successMsg.payFrom !== undefined &&
+            homeLoansInfo.successMsg.payFrom.length > 12) ? homeLoansInfo.successMsg.payFrom.substring(0,12) : ''}}
+             ...
+            {{ homeLoansInfo.successMsg.payFromAccountNumber.substring(homeLoansInfo.successMsg.payFromAccountNumber.length-4,
+            homeLoansInfo.successMsg.payFromAccountNumber.length) }}" ></span>
+           <span class="TLNPI recurringSpanPay">
+           {{(homeLoansInfo.successMsg.payFrom !== undefined && homeLoansInfo.successMsg.payFrom !== null )
+            ? homeLoansInfo.successMsg.payFrom.substring(0,12) :''}}
+             ...
+            {{ homeLoansInfo.successMsg.payFromAccountNumber.substring(homeLoansInfo.successMsg.payFromAccountNumber.length-4,
+            homeLoansInfo.successMsg.payFromAccountNumber.length) }}</span>
+    </li>
+    <li>
+      <label class="recurringPay">{{homeLoansInfo.i18n.payment.pay}}</label>
+      <span id="payRecurId" class="recurringSpanPay" ng-show="homeLoansInfo.successMsg.principalOnly == 0"
+            aria-label="{{homeLoansInfo.i18n.payment.payMonthlyDueSuccess}}">
+        {{homeLoansInfo.i18n.payment.payMonthlyDueSuccess}} </span>
+      <span id="payRecurPrincId" class="recurringSpanPay" ng-show="homeLoansInfo.successMsg.principalOnly > 0"
+        aria-label="{{homeLoansInfo.i18n.payment.payMonthlyDueSuccess}} + {{homeLoansInfo.successMsg.principalOnly | currency}}">
+        {{homeLoansInfo.i18n.payment.payMonthlyDueSuccess}} + {{homeLoansInfo.successMsg.principalOnly | currency}}</span>
+    </li>
+
+  </ul>
+</div>

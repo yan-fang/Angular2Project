@@ -1,0 +1,132 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/AutoLoan/ver01.01.01.1566/styles/auto-loan-override.css">
+
+<div class="customer-autoLoan">
+	<div class="container">
+		<h2 id="productTitle" class="product-title">
+			<span id="cpcuNickName" class="customer-product"
+				data-ng-bind="::carPayCatchUpController.nickName"></span>
+			<span id="cpcuPaymentOptions" class="product-heading"
+				data-ng-bind="::carPayCatchUpController.i18n.coaf.carPayCatchUp.pastDuePaymentOptions.productHeading.label.v1"></span>
+		</h2>
+	</div>
+</div>
+<div class="container">
+	<div class="car-pay-catchup-up-container double-wide">
+
+		<div class="column-left">
+			<img id="cpcuWarningIcon" class="car-pay-catchup-up-warning-icon"
+				src="/ease-ui/dist/images/modal-icons/modal-icon-caution.svg"
+				alt="{{::carPayCatchUpController.i18n.coaf.carPayCatchUp.pastDuePaymentOptions.iconAltText.label.v1}}"
+				height="100" width="100" />
+			<h2 id="cpcuPageTitle">
+				<span id="pastDueBaseText"
+					data-ng-bind-html="carPayCatchUpController.pastDueDaysMessage">
+				</span>
+				<br />
+				<span id="pastDueText" class='clickable-only open-disclaimer'
+					role="link" tabindex="0"
+					data-ng-click="carPayCatchUpController.showDisclaimer()"
+					data-ng-bind-html="::carPayCatchUpController.i18n.coaf.carPayCatchUp.pastDuePaymentOptions.accountDueHeadingPastDue.label.v1"></span>
+			</h2>
+
+			<div id="visualScale" class="past-due-visual-scale">
+				<div class="late-ticker days-late-0" aria-hidden="true">
+					<div class="vertical-line"></div>
+					<div class="ticker-text"
+						ng-bind-html="::carPayCatchUpController.i18n.coaf.carPayCatchUp.pastDuePaymentOptions.zeroDaysLate.label.v1"></div>
+				</div>
+				<div class="late-ticker days-late-30" aria-hidden="true">
+					<div class="vertical-line"></div>
+					<div class="ticker-text"
+						ng-bind-html="::carPayCatchUpController.i18n.coaf.carPayCatchUp.pastDuePaymentOptions.thirtyDaysLate.label.v1"></div>
+				</div>
+				<div class="late-ticker days-late-60" aria-hidden="true">
+					<div class="vertical-line"></div>
+					<div class="ticker-text"
+						ng-bind-html="::carPayCatchUpController.i18n.coaf.carPayCatchUp.pastDuePaymentOptions.sixtyDaysLate.label.v1"></div>
+				</div>
+				<div class="late-ticker days-late-90" aria-hidden="true">
+					<div class="vertical-line"></div>
+					<div class="ticker-text"
+						ng-bind-html="::carPayCatchUpController.i18n.coaf.carPayCatchUp.pastDuePaymentOptions.ninetyDaysLate.label.v1"></div>
+				</div>
+
+
+				<p id="currentPositionOnBar" class="current-position-tooltip tooltip"
+					role="tooltip" tabindex="0" aria-describedby="cpcuCurrentPosition"
+					title="{{::carPayCatchUpController.i18n.coaf.carPayCatchUp.pastDuePaymentOptions.currentStatusTooltipText.label.v1}}">
+					<span id="cpcuCurrentPosition" class="your-current-position"
+						aria-label="{{::carPayCatchUpController.pastDueDaysLabel}}">
+					</span>
+				</p>
+			</div>
+			<p id="optionDescription"
+				ng-bind-html="::carPayCatchUpController.i18n.coaf.carPayCatchUp.pastDuePaymentOptions.optionsDesc1.label.v1"></p>
+		  <div class="what-happens-text">
+			  <p id="restrictionsTooltip" class="tooltip"
+				 role="tooltip" tabindex="0" aria-describedby="restrictionsTooltipText"
+				 title="{{::carPayCatchUpController.i18n.coaf.carPayCatchUp.pastDuePaymentOptions.restrictionsTooltipText.label.v1}}">
+						<span id="restrictionsTooltipText" class="tooltipTrigger"
+					  ng-bind-html="::carPayCatchUpController.i18n.coaf.carPayCatchUp.pastDuePaymentOptions.restrictionsTooltipTrigger.label.v1"></span>
+				<i class='icon-info-circle' aria-hidden='true' role='presentation'></i>
+			  </p>
+		  </div>
+		</div>
+
+
+		<div class="column-right">
+			<div class="the-payment-options">
+				<h2 id="optionsHeading" class="options-heading"
+					ng-bind-html="::carPayCatchUpController.i18n.coaf.carPayCatchUp.pastDuePaymentOptions.optionsHeading.label.v1"></h2>
+
+
+				<div id="optionOne" class="option-container">
+					<h3 id="optionOneTitle" class="option-title">
+						<span id="linkToPayTotalDue" class="clickable"
+							role="link" tabindex="0"
+							data-ng-click="carPayCatchUpController.makeAPaymentLink()"
+							ng-bind-html="::carPayCatchUpController.i18n.coaf.carPayCatchUp.pastDuePaymentOptions.optionsOneHeading.label.v1"></span>
+						<span id="currentAmountDue" class="dollar-amount"
+							ng-bind-html="::carPayCatchUpController.totalAmountDue"></span>
+					</h3>
+					<p id="optionOneDescription" class="option-description"
+						ng-bind-html="::carPayCatchUpController.optionsOneDesc1"></p>
+				</div>
+
+
+				<div id="optionTwo" class="option-container">
+					<h3 id="optionTwoTitle" class="option-title">
+						<span id="linkToPayPastDue" class="clickable"
+							role="link" tabindex="0"
+							data-ng-click="carPayCatchUpController.makeAPaymentLink()"
+							ng-bind-html="::carPayCatchUpController.i18n.coaf.carPayCatchUp.pastDuePaymentOptions.optionsTwoHeading.label.v1"></span>
+						<span id="pastDueAmount" class="dollar-amount" ng-bind-html="::carPayCatchUpController.unpaidPastDueAmount"></span>
+					</h3>
+					<p id="optionTwoDescription" class="option-description"
+						ng-bind-html="::carPayCatchUpController.optionsTwoDesc1"></p>
+				</div>
+
+
+				<div id="optionThree" class="option-container" data-ng-if="!carPayCatchUpController.catchupEligibilityInProgress">
+					<h3 id="optionThreeTitle" class="option-title">
+
+            <span id="linkToCreatePaymentPlan"  data-ng-class="carPayCatchUpController.isClickableClass"
+                  tabindex="0" data-ng-click="carPayCatchUpController.showMonthlyPayment()"
+                  ng-bind-html="::carPayCatchUpController.i18n.coaf.carPayCatchUp.pastDuePaymentOptions.optionsThreeHeading.label.v1"></span>
+
+          </h3>
+					<p class="option-description">
+						<span id="optionThreeDescription"
+							ng-bind-html="::carPayCatchUpController.i18n.coaf.carPayCatchUp.pastDuePaymentOptions.optionsThreeDesc1.label.v1"></span>
+						<span id="optionThreeLink" class="clickable"
+							tabindex="0" role="link" data-ng-click="carPayCatchUpController.showMonthlyPayment()"
+							ng-bind-html="::carPayCatchUpController.optionThreeDescLink"></span>
+					</p>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+<div ui-view></div>

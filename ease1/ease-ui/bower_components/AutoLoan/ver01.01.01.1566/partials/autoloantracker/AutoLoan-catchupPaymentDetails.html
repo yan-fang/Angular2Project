@@ -1,0 +1,113 @@
+<div class="details">
+<div class="container transactions extensibility-transactions">
+  <div class="leftpanel">
+    <div>
+      <div data-ng-if="alPayDownView.payoffStatus" class="paymentInfoAlign">
+        <h2  align="center" id="projectedPayOffBalanceLabel">
+            <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.projectedPayOffBalance.label.v1"></span>
+        </h2>
+      </div>
+      <div data-ng-if="!alPayDownView.payoffStatus" class="paymentInfoAlign">
+        <h2  align="center" id="projectedMaturedWithBalanceLabel">
+          <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.projectedMaturedWithBalance.label.v1"></span>
+        </h2>
+      </div>
+
+ <ul class="info">
+   <li id="balanceAtMaturityAmountlistitem" class="current" tabindex="0" style="width: 100%">
+     <p class="amount amountProgressBar">
+       <span id="dollarSym" class="symbolDollar">$</span>
+       <span id="dollarAmt" class="dollarAmountALT">{{alPayDownView.balanceAtMaturityAmount | splitCurrency: 'true'}}</span>
+       <span class="dot">.</span>
+       <span id="centAmt" class="cents">{{alPayDownView.balanceAtMaturityAmount | splitCurrency: 'false'}}</span>
+     </p>
+   </li>
+  </ul>
+      <div data-ng-if="alPayDownView.payoffStatus">
+        <h3 align="center" id="additionToLastPaymentLabel">
+            <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.additionToLastPayment.label.v1"></span>
+        </h3>
+      </div>
+    <div class="messages" aria-label="account messages">
+      <ul>
+          <li>
+              <span data-ng-if="showEventsLink" class="blueLink" role="link" id="financialEventsId" data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.financialEvents.label.v1" data-ng-click="alPayDownView.loadEventsModal()"></span>
+          </li>
+
+      </ul>
+    </div>
+    </div>
+  </div>
+  <div id="right" class="rightpanel">
+    <div ng-if="alPayDownView.isPastDue" id="pastDueHeader">
+      <div class="optionsTextHeader" data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.pastDueOptions.label.v1"></div>
+    </div>
+    <div ng-if="!alPayDownView.isPastDue" id="balanceAtMaturityHeader">
+    <div class="optionsTextHeader" id="optionsLabel">
+          <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.options.label.v1"></span>
+      </div>
+    </div>
+      <div class="singleProductViewTransactions">
+        <div class="title" id="additionalMonthlyPaymentLabel" data-ng-if="alPayDownView.payoffStatus">
+            <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.additionalMonthlyPayment.label.v1"></span>
+            <span name="payMoreMonthlyDollarAmount" id="payMoreMonthlyDollarAmount" class="dollarAmount" aria-label="dollar amount" data-ng-bind="alPayDownView.additionalMonthlyPaymentAmount | currency"></span>
+        </div>
+        <div class="title" id="maturedWithBalanceLabel" data-ng-if="!alPayDownView.payoffStatus">
+          <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.maturedWithBalance.label.v1"></span>
+          <span name="balanceAtMaturityAmount" id="balanceAtMaturityAmountMaturedHeader" class="dollarAmount" aria-label="balance at maturity" data-ng-bind="alPayDownView.balanceAtMaturityAmount | currency"></span>
+        </div>
+        <div class="text" id="additionalMonthlyPaymentDescLabel" data-ng-if="alPayDownView.payoffStatus">
+            <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.additionalMonthlyPaymentDesc1.label.v1"></span>
+            <span name="increasedMonthlyPayment" id="increasedMonthlyPayment" class="dollarAmount" aria-label="increased monthly payment amount" data-ng-bind="alPayDownView.increasedMonthlyPaymentAmount | currency"></span>
+            <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.additionalMonthlyPaymentDesc2.label.v1"></span>
+          <div ng-if="!alPayDownView.isPastDue" id="notPastDueHeader">
+            <div data-ng-if="alPayDownView.isRecurringPaymentAllowed" id="recurringPaymentLink">
+                <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.additionalMonthlyPaymentDesc3.label.v1"></span>
+                <span data-ng-if="alPayDownView.isDpayEnabled" class="blueLink underline" role="link" id="schedulerecurringpayment" data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.additionalMonthlyPaymentDesc4.label.v1" data-ng-click="alPayDownView.scheduleRecurringPayments()"></span>
+                <span data-ng-if="!alPayDownView.isDpayEnabled" data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.additionalMonthlyPaymentDesc4.label.v1"></span>
+                <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.additionalMonthlyPaymentDesc5.label.v1"></span></div>
+            </div>
+        </div>
+        <div class="text" id="maturedDescLabel" data-ng-if="!alPayDownView.payoffStatus">
+            <span  data-ng-if="alPayDownView.isPayOffEnabled" id="makeAPayoff" class="blueLink underline" role="link" data-ng-bind="(alPayDownView.i18N.coaf.payDownView.autoLoanTracker.maturedDesc1.label.v1) + (alPayDownView.balanceAtMaturityAmount | currency)" data-ng-click="alPayDownView.makePayoff()"></span>
+            <span  data-ng-if="!alPayDownView.isPayOffEnabled" data-ng-bind="(alPayDownView.i18N.coaf.payDownView.autoLoanTracker.maturedDesc1.label.v1) + (alPayDownView.balanceAtMaturityAmount | currency)"></span>
+            <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.maturedDesc2.label.v1"></span>
+        </div>
+          <div class="calculator-or-divider" aria-hidden="true"> 
+              <span id="orText" data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.orDivider.label.v1"></span>
+          </div>
+      </div>
+      <div class="singleProductViewTransactions">
+        <div class="title" id="payAtEndLabel" data-ng-if="alPayDownView.payoffStatus">
+            <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.payAtEnd.label.v1"></span>
+            <span name="amountAtTheEnd" id="amountAtTheEnd" class="dollarAmount" aria-label="amount at the end" data-ng-bind="alPayDownView.balanceAtMaturityAmount | currency"></span>
+        </div>
+        <div class="title" id="maturedOptionsLabel" data-ng-if="!alPayDownView.payoffStatus">
+          <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.maturedOptions.label.v1"></span>
+        </div>
+        <div class="text" id="payAtEndDescLabel" data-ng-if="alPayDownView.payoffStatus">
+            <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.payAtEndDesc1.label.v1"></span>
+            <span name="balanceAtMaturityAmount" id="balanceAtMaturityAmount" class="dollarAmount" aria-label="balance at maturity" data-ng-bind="alPayDownView.balanceAtMaturityAmount | currency"></span>
+            <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.payAtEndDesc2.label.v1"></span>
+            <span name="montlyPaymentAmount" id="montlyPaymentAmount" class="dollarAmount" aria-label="montly Payment Amount" data-ng-bind="alPayDownView.monthlyPaymentAmount | currency"></span>.
+            <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.payAtEndDesc3.label.v1"></span>
+        </div>
+        <div class="text" id="maturedOptionsDescLabel" data-ng-if="!alPayDownView.payoffStatus">
+          <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.maturedOptionsDesc1.label.v1"></span>
+        </div>
+        <div class="smallText" id="noteLabel" data-ng-if="alPayDownView.payoffStatus" data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.note.label.v1">
+        </div>
+      </div>
+  </div>
+
+  <div id="altFeedback" class="feedBack">
+    <div ub-in-page={{alPayDownView.WidgetId}} ub-in-page-Loan-Status={{alPayDownView.payoffStatus}}></div>
+    <!-- begin usabilla embed code -->
+    <script>/*{literal}<![CDATA[*/window.usabilla||function(){var a=window,d=a.document,c={},f=d.createElement("div"),h=!1,a=a.usabilla=function(){(c.a=c.a||[]).push(arguments)};a._=c;c.ids={};f.style.display="none";(function(){if(!d.body)return setTimeout(arguments.callee,100);d.body.insertBefore(f,d.body.firstChild).id="usabilla";h=!0})();a.load=function(a,g,k){if(!c.ids[g]){var e=c.ids={};e.url="//"+a+"/"+g+".js?s1";e.config=k;setTimeout(function(){if(!h)return setTimeout(arguments.callee,100);var b=d.createElement("iframe"),a;b.id="usabilla-"+g;/MSIE[ ]+6/.test(navigator.userAgent)&&(b.src="javascript:false");f.appendChild(b);try{b.contentWindow.document.open()}catch(c){e.domain=d.domain,a="javascript:var d=document.open();d.domain='"+e.domain+"';",b.src=a+"void(0);"}try{var l=b.contentWindow.document;l.write(["<!DOCTYPE html><html><head></head><body onload=\"var d = document;d.getElementsByTagName('head')[0].appendChild(d.createElement('script')).src='",e.url,"'\"></body></html>"].join(""));l.close()}catch(m){b.src=a+'d.write("'+loaderHtml().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}b.contentWindow.config=k;b.contentWindow.SCRIPT_ID=g},0)}}}();
+    window.usabilla.load("w.usabilla.com", "a1aaca3f21a7");
+    /*]]>{/literal}*/</script>
+  </div>
+</div>
+</div>
+
+

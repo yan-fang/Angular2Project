@@ -1,0 +1,69 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/CreditCard/styles/card-override-d0ea6fe2a9-34f545de2b.css">
+<div id="pu-header">
+  <ease-account-detail content="puCtrl.content"></ease-account-detail>
+</div>
+<div id="puoffers-container">
+  <div class="content-tile2">
+    <div class="heading-column2">
+      <img alt="{{'ease.card.offers.productupgrade.Quicksilver.title1.message1.text' | translate}}" aria-label="{{'ease.card.offers.productupgrade.Quicksilver.title1.message1.text' | translate}}" id="upgradecard" src="{{puCtrl.getUpgradedCardImageURLData()}}">
+    </div>
+    <div class="content-column2">
+      <p class="sz32 center-text" id="upgraded-card-name" translate>ease.card.offers.productupgrade.Quicksilver.title1.message1.text</p>
+      <p class="sz24 center-text">{{'ease.card.offers.productupgrade.title2.mesage1.text' | translate}} <span style="color:#128020">{{'ease.card.offers.productupgrade.rewards.mesage1.text' | translate}}</span>        {{'ease.card.offers.productupgrade.title2.mesage2.text' | translate}}</p>
+      <ul class="sz18">
+        <li class="cardinfo pu-mem-fee">{{'ease.card.offers.productupgrade.bullet1.message1.text' | translate}} {{'ease.card.offers.productupgrade.Whatsnotchanging.AnnualFee.text'
+          | translate}}</li>
+        <li class="cardinfo" translate>ease.card.offers.productupgrade.bullet2.text</li>
+        <li class="cardinfo" translate>ease.card.offers.productupgrade.bullet3.text</li>
+        <li class="cardinfo" translate>ease.card.offers.productupgrade.bullet4.text</li>
+        <li class="cardinfo" translate>ease.card.offers.productupgrade.bullet5.text</li>
+      </ul>
+      <div id="button-div">
+        <button type="button" class="progressive custombtn" data-ng-click="puCtrl.openPUModal($event)" translate>ease.card.offers.productupgrade.upgrade.button.text</button>
+      </div>
+    </div>
+  </div>
+  <div class="content-tile3">
+    <div class="heading-column3">
+      <div class="pu-currentcard center">
+        <div class="sz24">
+          {{'ease.card.offers.productupgrade.CurrentCard.title3.text' | translate}}</div>
+        <p> <img alt="{{:: puCtrl.offers.cardDisplayName}}" aria-label="{{:: puCtrl.offers.cardDisplayName}}" id="currentcard" src="{{puCtrl.getCurrentCardImageURLData()}}"> </p>
+
+        <div data-ng-switch="{{puCtrl.isNoRewardsTermsTranslationRequired()}}">
+          <div data-ng-switch-when="true">
+            <div class="sz18">{{'ease.card.offers.productupgrade.rewards.mesage5.text' | translate}}</div>
+          </div>
+          <div data-ng-switch-default>
+            <div class="sz18" id="pu-rewards-term">{{:: puCtrl.rewardsTerms.rewardsTerm}}</div>
+          </div>
+        </div>
+
+        <div class="sz18 membership-fee-amt" ng-if="puCtrl.currentTerms.membershipFeeAmount !== ''">{{:: (puCtrl.currentTerms.membershipFeeAmount | creditCardCurrency : "$" : 0 )}} {{:: puCtrl.currentTerms.membershipFeeFreq | translate}}</div>
+        <div class="sz24 product-type">{{:: puCtrl.offers.offeredNetworkProduct}}</div>
+      </div>
+    </div>
+    <div class="content-column3">
+      <table>
+        <caption style="text-align: center">{{'ease.card.offers.productupgrade.Whatsnotchanging.title4.text' | translate}}</caption>
+        <tr>
+          <th scope="row" class="t1" translate>ease.card.offers.productupgrade.Whatsnotchanging.body1.text</th>
+          <td class="t2">{{:: puCtrl.offers.cardDisplayName}}</td>
+        </tr>
+        <tr ng-show="puCtrl.rewardsTerms.isFeeFreqChanging">
+          <th scope="row" class="t1">{{:: puCtrl.currentTerms.membershipFeeFreq | translate}}</th>
+          <td class="t2">{{:: (puCtrl.currentTerms.membershipFeeAmount !== '') ? (puCtrl.currentTerms.membershipFeeAmount | creditCardCurrency : "$" : 0 ) : ''}}</td>
+        </tr>
+        <tr>
+          <th scope="row" class="t1" translate>ease.card.offers.productupgrade.Whatsnotchanging.body3.text</th>
+          <td class="t2">{{:: (puCtrl.offers.creditLimit !== '') ? (puCtrl.offers.creditLimit | creditCardCurrency : "$" : 0 ) : ''}}</td>
+        </tr>
+        <tr ng-if="puCtrl.currentTerms.currentRateNewApr !== ''">
+          <th scope="row" class="t1" translate>ease.card.offers.productupgrade.Whatsnotchanging.body4.text</th>
+          <td class="t2">{{:: puCtrl.currentTerms.currentRateNewApr}}% {{:: puCtrl.currentTerms.currentRateAprType}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<div ui-view></div>

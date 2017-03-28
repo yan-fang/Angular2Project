@@ -1,0 +1,11 @@
+<div class="recurring-payment-confirmation">
+	 <p class="sub-heading" tabindex="0">
+    Your <strong>{{$ctrl.recurringForm.paymentAmount | currency}}</strong> recurring bill to <strong>{{$ctrl.payee.payeeName}}</strong> will start on <strong>{{$ctrl.recurringForm.firstPaymentDate | date: "MMM dd, yyyy"}}</strong>.
+  </p>
+
+  <info-list
+    id="edit-recurring"
+    info="$ctrl.infoList"
+    number-of-rows="{{$ctrl.infoList.length}}">
+  </info-list>
+</div> 

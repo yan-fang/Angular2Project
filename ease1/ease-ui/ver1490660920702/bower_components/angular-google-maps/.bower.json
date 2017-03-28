@@ -1,0 +1,13 @@
+{
+  "name": "angular-google-maps",
+  "version": "2.1.5",
+  "_release": "2.1.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.1.5",
+    "commit": "b0d078f680ff2ce25b3518e504ab96215aa5447d"
+  },
+  "_source": "https://github.kdc.capitalone.com/bower-dependencies/angular-google-maps.git",
+  "_target": "2.1.5",
+  "_originalSource": "https://github.kdc.capitalone.com/bower-dependencies/angular-google-maps.git"
+}

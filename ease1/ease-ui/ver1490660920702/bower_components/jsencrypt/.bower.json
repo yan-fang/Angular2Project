@@ -1,0 +1,19 @@
+{
+  "name": "jsencrypt",
+  "version": "2.1.0",
+  "main": "bin/jsencrypt.js",
+  "description": "A Javascript library to perform OpenSSL RSA Encryption, Decryption, and Key Generation.",
+  "license": "MIT",
+  "ignore": [],
+  "dependencies": {},
+  "devDependencies": {},
+  "_release": "2.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.1.0",
+    "commit": "9d2d2a042663b122cc51dad5aa43765f840883d6"
+  },
+  "_source": "https://github.kdc.capitalone.com/bower-dependencies/jsencrypt.git",
+  "_target": "2.1.0",
+  "_originalSource": "https://github.kdc.capitalone.com/bower-dependencies/jsencrypt.git"
+}

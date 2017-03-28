@@ -1,0 +1,201 @@
+<div data-ng-controller="ccSetupAutoPayController as ccAutoPay" class="cc-modal-container-wrapper"
+     data-ng-class="{'isSpoke': ccAutoPay.isSpoke}">
+
+  <ease-ui-modal close-modal="ccAutoPay.modal.close()" modal-id="'setupAutoPayModal'"
+                 loop-target="{{ccAutoPay.isSpoke ? '#cc-pay-back' : '.ease-modal-close-button'}}"
+                 class="cc-modal ccPayModal paymentModal cc-autopay-modal cc-modal-icon-manage-autopay">
+
+    <img class="cc-pay-modal-logo" ng-src="{{ccAutoPay.imageSRC}}" alt="{{'ease.card.autopay.setup.step2.img.alt.text' | translate}}" title="{{'ease.card.autopay.setup.step2.img.title' | translate}}">
+
+    <div id="cc-pay-back" data-ng-click="ccAutoPay.showStep('step1')" tabindex="0"
+         aria-label="{{'ease.card.autopay.setup.back.button.aria.text' | translate}}">
+      <span class="cc-pay-offscreen" translate>ease.card.autopay.setup.back.button.text</span>
+      <i id="cc-autopay-manage-goback-arrow" class="icon-arrow-back"></i>
+    </div>
+
+    <div data-ng-switch="ccAutoPay.currentStep" class="cc-autopay-modal paymentContainer">
+      <div data-ng-switch-when="step1">
+        <h2 class="spoke-header" translate>ease.card.autopay.setup.header.text</h2>
+
+        <p class="cc-modal-header-subtext">
+          {{::ccAutoPay.accountDetailsData.accountDetails.cardAccount.cardDisplayName}}
+        </p>
+
+        <div class="cc-autopay-message">
+          <p>
+            <span ng-bind-html="::'ease.card.autopay.setup.message.text' | translate: ccAutoPay.autoPayDetails.translationValues"></span>
+          </p>
+        </div>
+
+        <div>
+          <div class="cc-edit-container-label" id="autopay_payfrom" translate>
+            ease.card.autopay.setup.payfrom.label.text
+          </div>
+          <div class="cc-edit-container">
+            <div class="cc-edit-container-content" id="cc-autopay-edit-pay-from-account-link"
+                 ng-class="{'cc-edit-container-content-center':!ccAutoPay.showAvailableBalance(ccAutoPay.autoPayDetails.payFromAccount)}"
+                 aria-label="{{'ease.card.payment.makeapayment.step2.payfrom.edit.aria.label.text' | translate}} {{ccAutoPay.autoPayDetails.payFromAccount.shortDisplayName}}">
+              {{ccAutoPay.autoPayDetails.payFromAccount.shortDisplayName}}
+            </div>
+            <div class="cc-edit-container-description"
+                 ng-show="ccAutoPay.showAvailableBalance(ccAutoPay.autoPayDetails.payFromAccount)">
+              {{ccAutoPay.autoPayDetails.payFromAccount.balance | currency}}
+              {{'ease.card.autopay.setup.payfrom.sublabel.text' | translate}}
+            </div>
+            <div id="cc-autopay-edit-payfrom-link" class="step2EditLink"
+                 ng-class="{'disabled':ccAutoPay.loading}"
+                 ng-click="ccAutoPay.showStep('step1a'); ccAutoPay.cacheAutoPaymentEnterprisePayFromAccountsData();" tabindex="0"
+                 aria-label="{{'ease.card.autopay.setup.payfrom.edit.aria.text' | translate}} {{ccAutoPay.autoPayDetails.payFromAccount.shortDisplayName}}"
+                 translate>
+              ease.card.autopay.setup.payfrom.edit.link.text
+            </div>
+          </div>
+          <div>
+            <p ng-if="ccAutoPay.isPayFromAccountsPartialSuccess()" class="betweenDueDateWarn" id="betweenDueDateWarnElement">
+              <span class="betweenDueDateWarnText">
+                <i class="betweenDueDateWarnText-icon icon-caution"></i>
+                <span class="betweenDueDateWarnText-description" id="betweenDueDateWarnText" aria-label="{{'ease.card.payment.makeapayment.accounts.partialsuccess.text' | translate}}" translate>ease.card.payment.makeapayment.accounts.partialsuccess.text</span>
+              </span>
+            </p>
+            </div>
+          <div class="cc-edit-container-label" id="autopay-amount" translate>
+            ease.card.autopay.setup.amount.label.text
+          </div>
+          <div class="cc-edit-container" ng-class="{'disabled':ccAutoPay.loading}">
+            <div ng-if="ccAutoPay.isPaymentTypeSet()" class="cc-edit-container-content-center">
+              <div class="cc-edit-container-content cc-edit-container-content-center"
+                   ng-bind="ccAutoPay.displayAutoPayAmountType();"></div>
+              <div id="cc-autopay-edit-payment-type-link" class="step2EditLink"
+                   ng-class="{'disabled':ccAutoPay.loading}" ng-click="ccAutoPay.showStep('step1b')" tabindex="0"
+                   aria-label="{{'ease.card.autopay.setup.amount.edit.aria.text' | translate}} {{ccAutoPay.displayAutoPayAmountType()}}"
+                   translate>
+                ease.card.autopay.setup.amount.edit.link.text
+              </div>
+            </div>
+            <div ng-if="!ccAutoPay.isPaymentTypeSet()" id="cc-autopay-selectamount-container" class="cc-next-container">
+              <span class="cc-next-container-text" id="autopay-selectamount" translate>ease.card.autopay.setup.amount.sublabel.text</span>
+              <i class="icon icon-next cc-next-container-icon" id="cc-autopay-selectamount-icon"
+                 ng-class="{'disabled':ccAutoPay.loading}" ng-click="ccAutoPay.showStep('step1b')"
+                 aria-label="{{'ease.card.autopay.setup.amount.selectamount.aria.text' | translate}}"></i>
+            </div>
+          </div>
+        </div>
+
+        <button id="autopay_set_up_button" class="success cc-pay-modal-button" tabindex="0" ng-click="ccAutoPay.submitAutoPayment();"
+                ng-disabled="ccAutoPay.disableSubmitButton();" ng-class="{'pay-submit':ccAutoPay.loading}" ng-attr-aria-busy="{{ccAutoPay.loading}}"
+                ng-attr-aria-label="{{ccAutoPay.loading ? 'ease.card.autopay.loading.aria.label' : '' | translate}}">
+          <div ng-class="{'loading':ccAutoPay.loading}">
+            <span class="submit-text" translate>ease.card.autopay.setup.button.text</span>
+          </div>
+        </button>
+
+        <p class="cc-copyright" id="autopayCopyrightText" translate>
+          ease.card.autopay.setup.copyright.text
+        </p>
+      </div>
+
+
+      <div data-ng-switch-when="step1a">
+        <h2 id="autoPaymentHeader1a" translate>ease.card.autopay.setup.step1a.edit.payfrom.title.text</h2>
+          <p ng-if="ccAutoPay.isPayFromAccountsPartialSuccess()" class="betweenDueDateWarn" id="betweenDueDateWarnElement">
+          <span class="betweenDueDateWarnText">
+            <i class="betweenDueDateWarnText-icon icon-caution"></i>
+            <span class="betweenDueDateWarnText-description" id="betweenDueDateWarnText" aria-label="{{'ease.card.payment.makeapayment.accounts.partialsuccess.text' | translate}}" translate>ease.card.payment.makeapayment.accounts.partialsuccess.text</span>
+          </span>
+        </p>
+        <div cc-overflow-styling="cc-overflow-style-1-active, cc-overflow-style-2-active"
+             class="group"
+             ng-class="{'cc-overflow-style-2-active':ccAutoPay.isPayFromAccountsOverflowed()}"
+             id="cc-overflow-styling">
+          <div class="cc-pay-gradient-top" ng-if="ccAutoPay.isPayFromAccountsOverflowed()"
+               id="top-gradient"></div>
+          <div class="cc-pay-payfrom-scroll-wrapper">
+            <div role="button" id="cc-autopay-from-account-{{$index}}" class="pay-from-rectangle"
+                 ng-repeat="payFromAccount in ccAutoPay.getPayFromAccounts()"
+                 aria-pressed="{{ccAutoPay.isSelectedPayFromAccount(payFromAccount.accountId.hashedId)}}"
+                 ng-class="{'pay-selected':ccAutoPay.isSelectedPayFromAccount(payFromAccount.accountId.hashedId)}"
+                 ng-click="ccAutoPay.updatePayFromAccount(payFromAccount)" tabindex="0">
+              <i ng-if="ccAutoPay.isSelectedPayFromAccount(payFromAccount.accountId.hashedId)" class="icon-scheduled"></i>
+              <span ng-class="ccAutoPay.hasBalance(payFromAccount) ? 'cc-pay-accounts-block-name-with-balance' : 'cc-pay-accounts-block-name-no-balance'" id="payFromAccountSN_{{$index}}">{{payFromAccount.shortDisplayName}}</span>
+              <span class="cc-pay-accounts-block-amount" data-ng-if="ccAutoPay.showAvailableBalance(payFromAccount)" id="step1aAmountAvailable_{{$index}}">{{payFromAccount.balance |
+                                    currency}} {{'ease.card.autopay.setup.step1a.amount.available.text' |
+                                    translate}}</span>
+            </div>
+            <div role="button" id="cc-pay-from-account-add-id" class="pay-from-rectangle pay-from-no-balance" ng-click="ccAutoPay.addEnterprisePaymentAccount()">
+              <i id="icon-bank-add-id" class="icon-bank-building iconCircleAddId"></i>
+              <span class="pay-rectangle-text cc-pay-accounts-blocks ccAddPayFromAccount" id="cc-pay-from-account-add-text-id">{{'ease.card.autopay.setup.step2.addanaccount.button.text' | translate}}</span>
+            </div>
+          </div>
+          <div class="cc-pay-gradient-bottom" ng-if="ccAutoPay.isPayFromAccountsOverflowed()"
+               id="bottom-gradient"></div>
+        </div>
+        <p class="cc-pay-payfrom-subtext">{{'ease.card.autopay.setup.step1a.payfrom.ineligible.accounts.text' | translate}}</p>
+
+        <div class="modal-footer">
+          <button id="cc-autopay-manage-chooseaccount-button" class="progressive cc-pay-modal-button" tabindex="0"
+                  ng-click="ccAutoPay.setSelectedPayFromAccount(); ccAutoPay.showStep('step1');">
+            <span translate>ease.card.autopay.setup.step1a.payfrom.edit.chooseaccount.button.text</span>
+          </button>
+        </div>
+      </div>
+
+
+      <div data-ng-switch-when="step1b">
+        <h2 id="autoPaymentHeader1b" translate>ease.card.autopay.setup.step1b.payment.type.title.text</h2>
+
+        <div>
+          <div class="pay-block-container">
+            <button id="minimumPaymentDueBlock" class="minimumPaymentDueBlock"
+                    ng-click="ccAutoPay.setSelectedPaymentType('MINIMUM')"
+                    aria-pressed="{{ccAutoPay.isSelectedPaymentType('MINIMUM')}}"
+                    ng-class="{'apay-selected':ccAutoPay.isSelectedPaymentType('MINIMUM')}" tabindex="0">
+              <span class="pay-block-title" id="minimumPaymentDue" translate>ease.card.autopay.setup.step1b.payment.type.minpay.text</span>
+              <i ng-if="ccAutoPay.isSelectedPaymentType('MINIMUM')" class="icon-scheduled"></i>
+              <span class="pay-block-subtitle" translate>ease.card.autopay.setup.step1b.payment.type.minpay.subtext</span>
+            </button>
+            <button id="lastStatementBalanceBlock" class="lastStatementBalanceBlock"
+                    ng-click="ccAutoPay.setSelectedPaymentType('FULL')"
+                    aria-pressed="{{ccAutoPay.isSelectedPaymentType('FULL')}}"
+                    ng-class="{'apay-selected':ccAutoPay.isSelectedPaymentType('FULL')}" tabindex="0">
+              <span class="pay-block-title" id="lastStatementBalance" translate>ease.card.autopay.setup.step1b.payment.type.statementbalance.text</span>
+              <i ng-if="ccAutoPay.isSelectedPaymentType('FULL')" class="icon-scheduled"></i>
+              <span class="pay-block-subtitle" translate>ease.card.autopay.setup.step1b.payment.type.statementbalance.subtext</span>
+            </button>
+          </div>
+
+          <p  id="subtext-autopay" class="cc-modal-subtext cc-autopay-modal-subtext" translate>ease.card.autopay.setup.step1b.or.text</p>
+
+          <div id="otherAmountInput">
+            <div id="autoPayAmountInput" class="amount-input" ng-class="ccAutoPay.getAmountStyle()">
+                          <span class="amount-input-dollar">
+                            {{'ease.card.autopay.setup.step1b.chooseamount.currency.symbol' | translate}}
+                          </span>
+              <input other-amount ng-blur="ccAutoPay.formatOtherAmount(); focused=false"
+                     id="otherAmountInputBox" type="text" name="opt_amount_input"
+                     ng-change="ccAutoPay.setSelectedPaymentType('FIXED')"
+                     ng-click="ccAutoPay.setSelectedPaymentType('FIXED')"
+                     placeholder="{{'ease.card.autopay.setup.step1b.enteramount.text' | translate}}"
+                     ng-model="ccAutoPay.selectedAmount" tabindex="0"/>
+            </div>
+            <p class="other-amount-error" role="alert" id="otherAmountWarning" ng-if="ccAutoPay.isAutoPayAmountTooHigh()" translate>ease.card.autopay.setup.max.amount.message.text</p>
+          </div>
+        </div>
+
+        <div id="step1b-disclaimer">
+                    <span class="cc-modal-header-subtext" ng-if="ccAutoPay.isSelectedPaymentType('FIXED')" translate>
+                      ease.card.autopay.setup.step1b.pickanyamount.text
+                    </span>
+        </div>
+
+        <div class="modal-footer">
+          <button id="cc-autopay-setup-choose-button" class="progressive cc-pay-modal-button" ng-disabled="!ccAutoPay.allowAmountSubmission()"
+                  ng-click="ccAutoPay.submitSelectedPaymentType(); ccAutoPay.showStep('step1');" tabindex="0">
+            <span translate>ease.card.autopay.setup.step1b.chooseamount.button.text</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </ease-ui-modal>
+</div>
+
+<div cc-load-screen id="ccAutoPaySetupLargeLoader"></div>

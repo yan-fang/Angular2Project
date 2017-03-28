@@ -1,0 +1,23 @@
+<div  role="alert" aria-live="assertive" ease-modal toggle-close="feedback.closeForm()" modal-class="feedback.feedbackModalClass" modal-type="feedback.feedbackModalType" focus-id = "feedback.focusId">
+  <div class="pane">
+    <h2 tabindex="0">Share your Feedback</h2>
+    <p tabindex="0" style="font-size: 18px;">We're here and we're listening. Any kind of feedback is highly appreciated.</p>
+    <div class="feedback_container">
+      <form class="container" name="feedbackForm" data-ng-submit="feedback.submit()" novalidate>
+        <div class="field-container">
+          <formly-form model="feedback.model" fields="feedback.feedbackFields" form="feedback.feedbackForm" options="feedback.options">
+            <button id="feedback-submit-button" type="submit" tabindex="0" class="action feedback-button">
+              <div data-ng-class="feedback.loadingClass">
+                <span>Submit</span>
+              </div>
+            </button>
+          </formly-form>
+          <hr aria-hidden="true" id="rate-line">
+          <div aria-hidden="true" id="veryNegativeLabel">Very Negative</div>
+          <div aria-hidden="true" id="veryPositiveLabel">Very Positive</div>
+        </div>
+        <error-message error="{{feedback.displayError}}"></error-message>
+      </form>
+    </div>
+  </div>
+</div>

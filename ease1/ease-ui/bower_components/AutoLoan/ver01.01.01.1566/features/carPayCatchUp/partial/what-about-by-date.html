@@ -1,0 +1,45 @@
+<div ease-modal
+	data-ng-controller="WhatAboutByDateController as whatAboutByDateController"
+	modal-type="whatAboutByDateController.modalType"
+	toggle-close="whatAboutByDateController.close()"
+	modal-class="whatAboutByDateController.modalClass"
+	class="before-by-modal">
+
+	<h2 id="modalTitle" class="modal-heading"
+		data-ng-bind="::whatAboutByDateController.header"></h2>
+	<p id="beforeByDescOne"
+		ng-bind-html="::whatAboutByDateController.amountAndDateText"></p>
+	<p id="beforeByDescTwo"
+		ng-bind-html="::whatAboutByDateController.whatDateQuestion"></p>
+
+
+	<label id="monthlyPaymentDatePickerLabel" for="autoLoanEaseDatePicker"
+		   data-ng-bind="::whatAboutByDateController.i18n.coaf.carPayCatchUp.beforeBy.datePickerLabel.label.v1"></label>
+
+	<p class="make-a-payment-by-date">
+		<input
+			id="autoLoanEaseDatePicker" class="date-input"
+			type="text" ease-calendar-popup
+			placeholder="{{::whatAboutByDateController.i18n.coaf.payment.paymentModal.dateWatermark.label.v1}}"
+			ng-model="whatAboutByDateController.dt"
+			is-open = "whatAboutByDateController.isOpen"
+			calendar-options = "whatAboutByDateController.inlineOptions"
+			ng-click= "whatAboutByDateController.open($event)"
+			readonly = "true" tabindex="0"/>
+
+		<i class="icon-calendar dateControlButton" id="autoLoanPaymentCalendar" data-ng-click="whatAboutByDateController.open($event)" aria-hidden="true"></i>
+	</p>
+
+	<div class="button-container">
+		<button id="proceedButton" class="btn progressive full-width" data-ng-disabled="whatAboutByDateController.doNotProceed()"
+      data-ng-click="whatAboutByDateController.showPlanSummary()">
+			<div data-ng-class="{'loading':whatAboutByDateController.spinnerEnable}">
+				<span data-ng-bind="::whatAboutByDateController.i18n.coaf.carPayCatchUp.beforeBy.progressiveButtonText.label.v1"></span>
+			</div>
+		</button>
+		<button id="cancelButton" class="btn progressive ghost full-width"
+            data-ng-click="whatAboutByDateController.chooseNo()"
+			data-ng-bind="::whatAboutByDateController.i18n.coaf.carPayCatchUp.beforeBy.cancelButtonText.label.v1">
+		</button>
+	</div>
+</div>

@@ -1,0 +1,84 @@
+<div ng-controller="ccPaperlessController as ccManagePaperless" class="cc-modal-container-wrapper" data-ng-class="{'isSpoke': ccManagePaperless.isSpoke}">
+  <ease-ui-modal close-modal="ccManagePaperless.closeModal(true)" modal-id="'paperlessModal'" double-wide="ccManagePaperless.isSpoke"
+                 loop-target="{{ccManagePaperless.isSpoke ? '#cc-paperless-back' : '.ease-modal-close-button'}}"
+                 class="cc-modal cc-paperless-modal" data-ng-class="{'cc-modal-icon-document': ccManagePaperless.isSpoke, 'cc-modal-icon-paperless' : !ccManagePaperless.isSpoke}">
+
+    <div data-ng-switch="ccManagePaperless.currentStep" class="cc-paperless-modal cc-paperless-container">
+
+      <div data-ng-switch-when="viewManage">
+        <h1 class="spoke-header" id="paperlessHeader">{{ ::ccManagePaperless.getContent('ease.card.paperless.manage.go.header.text') }}</h1>
+        <h2 id="paperlessSubHeader" data-ng-bind="ccManagePaperless.getContent('ease.card.paperless.manage.subheader.text')"></h2>
+
+        <div class="cc-paperless-account-entry">
+          <fieldset class="toggle-button" id="toggles">
+            <form>
+              <ul role="list">
+                <li class="cc-paperless-list-item" data-ng-repeat="paperless in ccManagePaperless.getPaperlessData()">
+
+                  <div class="cc-paperless-card-name-container">
+                    <span class="cc-paperless-card-name">{{ ::ccManagePaperless.getCardDisplayName(paperless) }}
+                      <span class="cc-paperless-last-four">{{ ::ccManagePaperless.getCardLastFour(paperless) }}</span>
+                    </span>
+                    <div class="cc-paperless-tooltip"
+                         data-ng-bind="ccManagePaperless.determinePaperlessTooltip(paperless)">
+                    </div>
+                  </div>
+
+
+                  <div class="cc-paperless-toggle-container">
+                    <label class="cc-paperless-label" id="accountPaperlessPreferenceLabel_{{$index}}"
+                           for="accountPaperlessPreference_{{$index}}" data-ng-if="paperless.eligibleForUpdate">
+                      <input type="checkbox" data-ng-model="paperless.isPaperlessToggledOn"
+                             data-ng-if="paperless.eligibleForUpdate"
+                             data-ng-change="ccManagePaperless.onChange(paperless)" class="toggle cc-paperless-checkbox"
+                             tabindex="0"
+                             id="accountPaperlessPreference_{{$index}}"
+                             name="accountPaperlessPreferenceName_{{$index}}"
+                             aria-label="{{ccManagePaperless.determineToggleDisplayContent(paperless)}}">
+                    </label>
+                  </div>
+
+                </li>
+              </ul>
+            </form>
+          </fieldset>
+        </div>
+
+        <div class="modal-footer cc-paperless-manage-footer">
+          <button class="success cc-pay-modal-button-spoke" data-ng-disabled="ccManagePaperless.disableSubmitButton()"
+                  data-ng-click="ccManagePaperless.submitPaperlessUpdate()"
+                  tabindex="0" ng-attr-aria-busy="{{ccManagePaperless.loading}}"
+                  ng-attr-aria-label="{{ccManagePaperless.loading ? ('ease.card.paperless.manage.loading.aria.label' | translate) : ''}}" >
+
+            <div ng-class="{'loading':ccManagePaperless.loading}">
+              <span class="submit-text" ng-bind="ccManagePaperless.getContent('ease.card.paperless.manage.button.text')"></span>
+            </div>
+          </button>
+
+          <div class="cc-paperless-skip" data-ng-click="ccManagePaperless.closeModal(false);" tabindex="0" role="button"
+               ng-disabled="ccManagePaperless.loading">
+            {{ 'ease.card.paperless.manage.keep.settings.link' | translate }}
+          </div>
+
+          <div class="cc-paperless-copyright" id="paperlessTermsText">
+            {{ 'ease.card.paperless.manage.terms.conditions.start.text' | translate }}
+
+            <a id="paperlessTermsAndConditionsLink" class="cc-paperless-terms-and-conditions" tabindex="0"
+               data-ng-click="ccManagePaperless.showStep('viewTerms')" href>
+              {{ 'ease.card.paperless.manage.terms.conditions.text' | translate }}
+            </a>
+
+            {{ 'ease.card.paperless.manage.terms.conditions.end.text' | translate }}
+          </div>
+        </div>
+      </div>
+
+      <div data-ng-switch-when="viewTerms">
+        <div data-ng-include
+             data-src="'/ease-ui/bower_components/CreditCard/features/Paperless/manage/partials/terms-7abe44916e-7abe44916e.and.conditions.paperless.html'"></div>
+      </div>
+
+    </div>
+
+  </ease-ui-modal>
+</div>

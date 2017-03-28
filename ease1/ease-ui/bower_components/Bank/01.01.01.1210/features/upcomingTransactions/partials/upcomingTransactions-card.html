@@ -1,0 +1,43 @@
+<div class="upcoming-card-container upcomingTransactions" id="{{'upcoming-card-container-' + upcomingCardCtrl.cardIndex}}" tabindex="0" ng-keydown="keyPressedEvent($event)">
+
+  <div id="{{'upcomingCards-' + upcomingCardCtrl.cardIndex}}" aria-describedby="{{'upcomingTrxDetail-' + upcomingCardCtrl.cardIndex}}" class="card-body">
+    <span class="element-invisible" id="{{'upcomingTrxDetail-' + upcomingCardCtrl.cardIndex}}" aria-hidden="false">{{::upcomingCardCtrl.i18nUpcomingTransactions['ease.bank.upcomingTransactions.card.theDetailsOfYour']}} {{upcomingCardCtrl.transactions.transactionSource}}
+      {{::upcomingCardCtrl.i18nUpcomingTransactions['ease.bank.upcomingTransactions.card.upcomingTransactionOf']}}
+        {{upcomingCardCtrl.transactions.transactionAmount | currency}} {{::upcomingCardCtrl.i18nUpcomingTransactions['ease.bank.upcomingTransactions.card.are']}}
+    </span>
+    <span class="available-funds-date">{{::upcomingCardCtrl.transactions.availableFundsDate | date :  "MMM dd"}}</span>
+
+    <span class="logo-upcoming-transactions" role="presentation">
+        <img role="presentation" alt="{{::upcomingCardCtrl.transactions.payeeName}}"  ng-src="{{::upcomingCardCtrl.UpcomingHelpers.getTransactionLogo(upcomingCardCtrl.transactions)}}">
+    </span>
+
+    <span class="payee-name-wordwrap">
+      <p class="payee-name" title="{{upcomingCardCtrl.transactions.payeeName}}">
+      {{upcomingCardCtrl.transactions.payeeName | truncate}}</p>
+      <p class="payee-name card-last-four">{{upcomingCardCtrl.transactions.cardLastFour}}</p>
+    </span>
+
+    <div class="upcoming-transaction-Amount" data-ng-class="upcomingCardCtrl.UpcomingHelpers.getTransactionAmountClass(upcomingCardCtrl.transactions)" aria-label="{{upcomingCardCtrl.i18nUpcomingTransactions['ease.bank.upcomingTransactions.card.aria.label.transaction.amount']}}" data-ng-if="!upcomingCardCtrl.UpcomingHelpers.isAmountDue(upcomingCardCtrl.transactions)">
+      <span>{{upcomingCardCtrl.UpcomingHelpers.getTransactionSign(upcomingCardCtrl.transactions)}}{{upcomingCardCtrl.transactions.transactionAmount | currency}}</span>
+    </div>
+
+    <div class="upcoming-transaction-Amount" data-ng-class="upcomingCardCtrl.UpcomingHelpers.getTransactionAmountClass(upcomingCardCtrl.transactions)" aria-label="{{upcomingCardCtrl.i18nUpcomingTransactions['ease.bank.upcomingTransactions.card.aria.label.transaction.amount']}}" data-ng-if="upcomingCardCtrl.UpcomingHelpers.isAmountDue(upcomingCardCtrl.transactions)">
+      <span>{{upcomingCardCtrl.i18nUpcomingTransactions['ease.bank.upcomingTransactions.card.amountDue']}}</span>
+    </div>
+
+    <div class="unscheduled-bill-pay-btn" data-ng-if="upcomingCardCtrl.UpcomingHelpers.isUnscheduledBill(upcomingCardCtrl.transactions)">
+      <button id="{{'btnScheduleBillPay-' + upcomingCardCtrl.cardIndex}}" data-ng-click="upcomingCardCtrl.UpcomingHelpers.scheduleBillPayment('l2',$event, upcomingCardCtrl.transactions)">
+        <div data-ng-class="upcomingCardCtrl.transactions.l2LoadingClass">
+          <span>{{::upcomingCardCtrl.i18nUpcomingTransactions['ease.bank.upcomingTransactions.card.billPay.button.name']}}</span>
+        </div>
+      </button>
+    </div>
+
+    <div class="bill-status" data-ng-if="!upcomingCardCtrl.UpcomingHelpers.isUnscheduledBill(upcomingCardCtrl.transactions)">
+      <span>
+        <i ng-class="upcomingCardCtrl.UpcomingHelpers.getTransactionSource(upcomingCardCtrl.transactions)"></i>
+        {{upcomingCardCtrl.transactions.transactionSource}}
+      </span>
+    </div>
+  </div>
+</div>

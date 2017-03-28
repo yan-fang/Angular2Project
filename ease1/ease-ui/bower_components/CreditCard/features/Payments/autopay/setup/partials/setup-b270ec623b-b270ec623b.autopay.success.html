@@ -1,0 +1,59 @@
+<div data-ng-controller="ccSetupAutoPaySuccessController as ccSetupAutoPaySuccess">
+  <ease-ui-modal close-modal="ccSetupAutoPaySuccess.modal.close()" modal-id="'setupAutoPaySuccessModal'"
+                 class="cc-modal ccPayModal successModal paymentModal cc-setup-autopay-success-modal cc-modal-icon-success">
+    <div class="paymentContainer">
+      <img class="cc-pay-modal-logo" ng-src="{{ccSetupAutoPaySuccess.imageSRC}}"
+           alt="{{'ease.card.autopay.setup.step2.img.alt.text' | translate}}"
+           title="{{'ease.card.autopay.setup.step2.img.title' | translate}}">
+
+      <h2 class="spoke-header" translate>ease.card.autopay.setup.step2.title.text</h2>
+      <h4>
+        <span
+          ng-bind="::'ease.card.autopay.setup.step2.subtitle.text' | translate: ccSetupAutoPaySuccess.autoPayDetails.translationValues"></span>
+      </h4>
+      <div class="cc-summary-container">
+        <div id="cc-autopay-success-confirmation-amount-label" class="cc-summary-container-label"
+             ng-bind="'ease.card.autopay.setup.step2.amount.label' | translate"></div>
+        <div id="cc-autopay-success-confirmation-amount-value" class="cc-summary-container-value"
+             ng-bind="::ccSetupAutoPaySuccess.displayAutoPayAmountType();"></div>
+      </div>
+      <div class="cc-summary-container">
+        <div id="cc-autopay-success-confirmation-payto-label" class="cc-summary-container-label"
+             ng-bind="'ease.card.autopay.setup.step2.payto.label' | translate"></div>
+        <div id="cc-autopay-success-confirmation-payto-value" class="cc-summary-container-value"
+             ng-bind="::ccSetupAutoPaySuccess.displayPayToAccount();"></div>
+      </div>
+      <div class="cc-summary-container">
+        <div id="cc-autopay-success-confirmation-payfrom-label" class="cc-summary-container-label"
+             ng-bind="'ease.card.autopay.setup.step2.payfrom.label' | translate"></div>
+        <div id="cc-autopay-success-confirmation-payfrom-value" class="cc-summary-container-value"
+             ng-bind="ccSetupAutoPaySuccess.autoPayDetails.payFromAccount.shortDisplayName"></div>
+      </div>
+      <div class="cc-summary-container">
+        <div id="cc-autopay-success-confirmation-payon-label" class="cc-summary-container-label"
+             ng-bind="'ease.card.autopay.setup.step2.payon.label' | translate"></div>
+        <div id="cc-autopay-success-confirmation-payon-value" class="cc-summary-container-value"
+             ng-bind="'ease.card.autopay.setup.step2.payon.value.text' | translate: ccSetupAutoPaySuccess.autoPayDetails.translationValues"></div>
+      </div>
+      <div class="cc-confirmation-code-container">
+        <div id="cc-autopay-success-confirmation-code-value" class="cc-pay-confirmation-code"
+             aria-label="{{'ease.card.autopay.setup.step2.confirmationCode.aria.label.text' | translate}}">
+          {{ccSetupAutoPaySuccess.autoPayDetails.confirmationCode}}
+        </div>
+        <div id="cc-autopay-success-confirmation-code-description" class="cc-pay-confirmation-code-label" translate>
+          ease.card.autopay.setup.step2.confirmationCode.text
+        </div>
+          <span id="cc-autopay-success-confirmation-print-container" class="print-icon-container"
+                ng-click="ccSetupAutoPaySuccess.printConfirmation();" tabindex="0"
+                aria-label="{{'ease.card.autopay.setup.step2.link.printconfirmation.aria.label.text' | translate}}">
+            <i id="cc-autopay-success-confirmation-print-icon" class="icon-print"></i>
+          </span>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a tabindex="0" class="cancel-ap-success" id="cc-autopay-success-oops-button" role="button"
+         ng-click="ccSetupAutoPaySuccess.manageAutoPay();"
+         ng-bind="::'ease.card.autopay.setup.step2.manageAutoPay.link.text' | translate" href></a>
+    </div>
+  </ease-ui-modal>
+</div>

@@ -1,0 +1,42 @@
+<div class="container bill-pay-hub">
+  <div class="payee-list-header" ng-if="HubCtrl.accountSubCategory==='360'" ng-show="!HubCtrl.loading.inProgress">
+    <h3 ng-show="HubCtrl.payeeList.length > 0">Payees</h3>
+    <a class="btn-add" ui-sref="BillPay.searchPayee" id="btn-add-payee" ng-if="HubCtrl.features.addPayee">+ Add a Payee</a>
+  </div><!-- /.payee-list-header -->
+
+  <div class="payee-list-container"
+    ng-class="{'payee-list-empty': HubCtrl.payeeList.length === 0, 'pad-top': HubCtrl.accountSubCategory!=='360'}">
+    <div class="payee-list-loading" ng-show="HubCtrl.loading.inProgress || HubCtrl.rxpLoading">
+      <p class="loading-payee-text">Loading Payees...</p>
+      <div class="loading"></div>
+    </div><!-- /.payee-list-loading -->
+
+    <payee-list
+      ng-show="!HubCtrl.loading.inProgress && HubCtrl.payeeList.length > 0"
+      ng-if="!HubCtrl.rxpExperience">
+    </payee-list>
+
+    <div class="rxp-container" ng-if="HubCtrl.rxpExperience && !HubCtrl.rxpLoading && !HubCtrl.rxpError">
+      <iframe class="rxp-frame" ng-src="{{HubCtrl.rxpUrl}}"></iframe>
+    </div><!-- /.rxp-container -->
+
+    <div ng-if="HubCtrl.rxpExperience && HubCtrl.rxpError" class="payee-list-no-payees">
+      <p class="message">{{HubCtrl.rxpErrorMessage}}</p>
+    </div>
+
+    <div ng-if="HubCtrl.payeeList.length === 0 && !HubCtrl.loading.inProgress && !HubCtrl.rxpExperience" class="payee-list-no-payees">
+      <p class="header">All great stories start with a blank page.</p>
+
+      <div ng-if="HubCtrl.accountSubCategory==='360'">
+        <p class="message">With Bill Pay, you can pay any person or company. If they can receive a check they can be paid with Bill Pay. <br/> Add a new Payee by pressing "+ Add Payee" to the top right and begin your faster, easier, all-in-one-place bill paying experience.</p>
+      </div>
+
+      <div ng-if="HubCtrl.accountSubCategory==='retail'">
+        <p class="message">Soon you'll be able to add new Payees right from your phone or tablet but for now you'll need to visit our full site to get started.</p>
+        <p class="message"><a id="BillPay-legacy-url" ng-href="{{::HubCtrl.retailBillPayUrl}}" target="_blank">www.banking.capitalone.com</a></p>
+      </div>
+    </div><!-- /.no-payees -->
+  </div><!-- /.payee-list-container -->
+</div><!-- /.container -->
+
+<div class="billPay-view" ui-view></div>

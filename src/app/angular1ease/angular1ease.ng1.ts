@@ -6,19 +6,19 @@ import { Angular1Ease } from './angular1ease.service';
 import { setUpLocationSync } from '@angular/router/upgrade';
 
 const REQUIRE_DEPS = [
-  'require', 'angular', 'ease', 'easeCoreUtils', 'easeUIComponents',
-  'EASEApp', 'LogOutLinks', 'CreditCardCosLink', 'ui.router.extras.future',
-  'AccountSummaryModule'
+  'require',
+  'angular',
+  'ease',
+  'ui.router.extras.future',
+  'easeTemplates',
+  'app'
 ];
 
 const ANGULAR_DEPS = [
-  'ui.router', 'oc.lazyLoad', 'restangular', 'easeUIComponents',
-  'EaseProperties', 'ContentProperties', 'easeAppUtils', 'EaseExceptionsModule',
-  'pubsubServiceModule', 'easeUIComponents', 'EaseLocalizeModule', 'ngIdle',
-  'pascalprecht.translate', 'UniversalTranslateModule', 'angular-lo-dash', 'EaseModalModule',
-  'LogOutLinks', 'EaseDatePicker', 'easeMultiDateSelector', 'easeDateRangePicker',
-  'ngAnimate', 'ngAria', 'ngStorage', 'easeDropdownModule', 'Easetooltip', 'EASEApp'
+  'EASEApp'
 ];
+
+const buildVersion = 'ver1490660920702';
 
 export function prepareAngular1Ease(upgrade: UpgradeModule): Promise<any> {
   let res: any = null;
@@ -26,10 +26,10 @@ export function prepareAngular1Ease(upgrade: UpgradeModule): Promise<any> {
 
   const angular1Ease: Angular1Ease = upgrade.injector.get(Angular1Ease);
 
-  if (! angular1Ease.loaded) {
+  if (!angular1Ease.loaded) {
     configureRequireJS();
 
-    const {requireDeps, angularDeps, runFunctions} = addEnvDeps(REQUIRE_DEPS, ANGULAR_DEPS, upgrade.injector);
+    const { requireDeps, angularDeps, runFunctions } = addEnvDeps(REQUIRE_DEPS, ANGULAR_DEPS, upgrade.injector);
 
     /* tslint:disable:variable-name */
     requirejs(requireDeps, (_require: any, angular: any) => {
@@ -80,59 +80,91 @@ function runFunction(): Function {
 
 
 function configureRequireJS() {
+
   requirejs.config({
     waitSeconds: 0,
     paths: {
       angularMocks: '/public/static/js/angular-mocks',
-      lodash: '/bower_components/lodash/index',
-      jquery: '/bower_components/jquery/dist/jquery.min',
-      angular: '/bower_components/angular/angular.min',
-      ease: '/bower_components/EASECoreLite/ease',
-      'ui.router.extras.core': '/bower_components/ui-router-extras/release/modular/ct-ui-router-extras.core.min',
-      'ui.router.extras.future': '/bower_components/ui-router-extras/release/modular/ct-ui-router-extras.future.min',
-      'angular-formly': '/bower_components/angular-formly/dist/formly.min',
-      formlyBootstrap: '/bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap',
-      'api-check': '/bower_components/api-check/dist/api-check.min',
-      text: '/bower_components/requirejs-text/text',
-      noext: '/bower_components/requirejs-plugins/src/noext',
-      async: '/bower_components/requirejs-plugins/src/async',
-      domReady: '/bower_components/requirejs-domready/domReady',
-      pdfjs: '/bower_components/pdfjs-dist/build/pdf.combined',
-      compatibilityPdf: '/bower_components/pdfjs-dist/web/compatibility',
-      c1Date: '/bower_components/c1Date/min/c1Date.min',
-      easeUIComponents: '/bower_components/easeUIComponents/dist/ease-ui-components.min',
-      moment: '/bower_components/moment/min/moment.min',
-      slick: '/bower_components/angular-slick/dist/slick.min',
-      slickCarousel: '/bower_components/slick-carousel/slick/slick.min',
-      easeCoreUtils: '/bower_components/EASECoreLite/utils/easeCoreUtils-module',
-      AccountSummaryModule: '/bower_components/EASECoreLite/features/AccountSummary/AccountSummary-module',
-      AccountDetailModule: '/bower_components/EASECoreLite/features/AccountDetail/AccountDetail-module',
-      RetailAccountLinks: '/bower_components/EASECoreLite/features/AccountSummary/links',
-      EscapeHatchLinks: '/bower_components/EASECoreLite/features/EscapeHatch/links',
-      UMMModule: '/bower_components/EASECoreLite/features/UMMPayment/UMMPayment-module',
-      GlobalFooterModule: '/bower_components/EASECoreLite/features/GlobalFooter/GlobalFooter-module',
-      SummaryHeaderModule: '/bower_components/EASECoreLite/features/SummaryHeader/SummaryHeader-module',
-      TransferModule: '/bower_components/EASECoreLite/features/Transfer/Transfer-module',
-      StatementModule: '/bower_components/EASECoreLite/features/Statement/Statement-module',
-      EscapeHatchModule: '/bower_components/EASECoreLite/features/EscapeHatch/EscapeHatch-module',
-      LanguageToggleModule: '/bower_components/EASECoreLite/features/LanguageToggle/LanguageToggle-module',
-      LanguageToggleDirective: '/bower_components/EASECoreLite/features/LanguageToggle/LanguageToggle-directive',
-      LanguageToggleService: '/bower_components/EASECoreLite/features/LanguageToggle/LanguageToggle-service',
-      usabilla: '/bower_components/EASECoreLite/features/Usabilla/Usabilla',
-      pubSubBootstrap: 'https://nexus.ensighten.com/capitalone/Bootstrap',
-      Bank: '/ease-ui/bower_components/Bank/Bank-module',
-      HomeLoans: '/src/HomeLoans-module',
-      easeAccordion: '/bower_components/EASECoreLite/utils/components/easeaccordion/easeAccordion',
-      easeGoogleMap: '/bower_components/EASECoreLite/utils/components/easegooglemap/easeGoogleMap',
-      easeUtils: '/bower_components/EASECoreLite/utils/easeUtils-module',
-      EASEApp: '/bower_components/EASECoreLite/public/app',
-      LogOutLinks: '/bower_components/EASECoreLite/properties/logOut/links',
-      CreditCardCosLink: '/bower_components/EASECoreLite/properties/CreditCard/link'
+      lodash: `/ease-ui/${buildVersion}/bower_components/lodash/lodash.min`,
+      jsencrypt: `/ease-ui/${buildVersion}/bower_components/jsencrypt/bin/jsencrypt.min`,
+      jquery: `/ease-ui/${buildVersion}/bower_components/jquery/dist/jquery.min`,
+      angular: `/ease-ui/${buildVersion}/bower_components/angular/angular.min`,
+      ease: `/ease-ui/${buildVersion}/dist/ease`,
+      'ui.router.extras.core': `/ease-ui/${buildVersion}/bower_components/ui-router-extras/` +
+      `release/modular/ct-ui-router-extras.core.min`,
+      'ui.router.extras.future': `/ease-ui/${buildVersion}/bower_components/ui-router-extras/` +
+      `release/modular/ct-ui-router-extras.future.min`,
+      'angular-formly': `/ease-ui/${buildVersion}/bower_components/angular-formly/dist/formly.min`,
+      formlyBootstrap: `/ease-ui/${buildVersion}/bower_components/angular-formly-templates-bootstrap` +
+      `/dist/angular-formly-templates-bootstrap`,
+      'api-check': `/ease-ui/${buildVersion}/bower_components/api-check/dist/api-check.min`,
+      text: `/ease-ui/${buildVersion}/bower_components/requirejs-text/text`,
+      noext: `/ease-ui/${buildVersion}/bower_components/requirejs-plugins/src/noext`,
+      async: `/ease-ui/${buildVersion}/bower_components/requirejs-plugins/src/async`,
+      domReady: `/ease-ui/${buildVersion}/bower_components/requirejs-domready/domReady`,
+      pdfjs: `/ease-ui/${buildVersion}/bower_components/pdfjs-dist/build/pdf.combined`,
+      compatibilityPdf: `/ease-ui/${buildVersion}/bower_components/pdfjs-dist/web/compatibility`,
+      c1Date: `/ease-ui/${buildVersion}/bower_components/c1Date/min/c1Date.min`,
+      easeUIComponents: `/ease-ui/${buildVersion}/bower_components/easeUIComponents/dist/ease-ui-components.min`,
+      adobeTarget: `/ease-ui/${buildVersion}/bower_components/adobe-target/at`,
+      Chat247: `/ease-ui/${buildVersion}/bower_components/Chat247/247tag`,
+      slick: `/ease-ui/${buildVersion}/bower_components/angular-slick/dist/slick.min`,
+      slickCarousel: `/ease-ui/${buildVersion}/bower_components/slick-carousel/slick/slick.min`,
+      easeCoreUtils: `/ease-ui/${buildVersion}/dist/utils/easeCoreUtils-module`,
+      AccountDetailModule: `/ease-ui/${buildVersion}/dist/features/AccountDetail/AccountDetail-module`,
+      WelcomeModule: `/ease-ui/${buildVersion}/dist/features/Welcome/Welcome-module`,
+      RetailAccountLinks: `/ease-ui/${buildVersion}/dist/features/AccountSummary/links`,
+      ContentAccountLinks: `/ease-ui/${buildVersion}/dist/features/cdn/links`,
+      CreditCardCosLink: `/ease-ui/${buildVersion}/dist/features/CreditCard/link`,
+      EscapeHatchLinks: `/ease-ui/${buildVersion}/dist/features/EscapeHatch/links`,
+      PhysicalAddressLink: `/ease-ui/${buildVersion}/dist/features/CustomerSettings/PersonalInformation/links`,
+      LogOutLinks: `/ease-ui/${buildVersion}/dist/features/logOut/links`,
+      LogoutModule: `/ease-ui/${buildVersion}/dist/features/logOut/Logout-module`,
+      customerSettings: `/ease-ui/${buildVersion}/dist/features/CustomerSettings/CustomerSettings-module`,
+      UMMModule: `/ease-ui/${buildVersion}/dist/features/UMMPayment/UMMPayment-module`,
+      GlobalFooterModule: `/ease-ui/${buildVersion}/dist/features/GlobalFooter/GlobalFooter-module`,
+      SummaryHeaderModule: `/ease-ui/${buildVersion}/dist/features/SummaryHeader/SummaryHeader-module`,
+      TransferModule: `/ease-ui/${buildVersion}/dist/features/Transfer/Transfer-module`,
+      SessionTimeoutModule: `/ease-ui/${buildVersion}/dist/features/SessionTimeout/SessionTimeout-module`,
+      StatementModule: `/ease-ui/${buildVersion}/dist/features/Statement/Statement-module`,
+      EscapeHatchModule: `/ease-ui/${buildVersion}/dist/features/EscapeHatch/EscapeHatch-module`,
+      LanguageToggleModule: `/ease-ui/${buildVersion}/dist/features/LanguageToggle/LanguageToggle-module`,
+      LanguageToggleDirective: `/ease-ui/${buildVersion}/dist/features/LanguageToggle/LanguageToggle-directive`,
+      LanguageToggleService: `/ease-ui/${buildVersion}/dist/features/LanguageToggle/LanguageToggle-service`,
+      usabilla: `/ease-ui/${buildVersion}/dist/features/Usabilla/Usabilla`,
+      SecurityModule: `/ease-ui/${buildVersion}/dist/features/Security/Security-module`,
+      easeTemplates: `/ease-ui/${buildVersion}/dist/templates/easeTemplateCache`,
+      AlertsModule: `/ease-ui/${buildVersion}/dist/features/Alerts/Alerts-module`,
+      pubSubBootstrap: `https://nexus.ensighten.com/capitalone/Bootstrap`,
+      AutoLoan: `/ease-ui/bower_components/AutoLoan/AutoLoan-module.js?t=` +
+      Date.now(),
+      Bank: `/ease-ui/bower_components/Bank/Bank-module.js?t=` + Date.now(),
+      BillPay: `/ease-ui/bower_components/BillPay/BillPay-module.js?t=` +
+      Date.now(),
+      Checkbook: `/ease-ui/bower_components/Checkbook/Checkbook-module.js?t=` +
+      Date.now(),
+      CreditCard: `/ease-ui/bower_components/CreditCard/CreditCard-module.min.js?t=` +
+      Date.now(),
+      Debit: `/ease-ui/bower_components/Debit/Debit-module.js?t=` + Date.now(),
+      FundsForecast: `/ease-ui/bower_components/FundsForecast/FundsForecast-module.js?t=` +
+      Date.now(),
+      HomeLoans: `/ease-ui/bower_components/HomeLoans/HomeLoans-module.js?t=` +
+      Date.now(),
+      app: `/ease-ui/${buildVersion}/dist/app`,
+      coreProperty: `/ease-ui/bower_components/easeCustomerFeatures/${buildVersion}/utils/easeCustomerProperty`,
+      coreUtils: `/ease-ui/bower_components/easeCustomerFeatures/${buildVersion}/utils/easeCustomerUtils`,
+      coreFeatures: `/ease-ui/bower_components/easeCustomerFeatures/${buildVersion}/customerFeaturesApp`,
+      settingsModule: `/ease-ui/bower_components/easeCustomerFeatures/${buildVersion}/CustomerSettings/Settings/Settings-module`,
+      personalInformationModule: `/ease-ui/bower_components/easeCustomerFeatures/${buildVersion}/CustomerSettings/PersonalInformation` +
+      `/PersonalInformation-module`,
+      MigrateModule: `/ease-ui/bower_components/easeCustomerFeatures/${buildVersion}/Migrate/Migrate-module`,
+      AccountSummaryModule: `/ease-ui/bower_components/easeCustomerFeatures/${buildVersion}/AccountSummary/AccountSummary-module`,
+      AtmFinderModule: `/ease-ui/bower_components/easeCustomerFeatures/${buildVersion}/AtmFinder/AtmFinder-module`,
+      microajax: `/ease-ui/${buildVersion}/dist/lib/microajax`,
+      coreloader: `/ease-ui/${buildVersion}/dist/core/coreloader`
     },
     shim: {
-      angular: {
-        exports: 'angular'
-      },
+      angular: { exports: 'angular' },
       ease: ['angular', 'lodash', 'jquery'],
       'ui.router.extras.core': ['ease'],
       'ui.router.extras.future': ['ui.router.extras.core'],
@@ -142,13 +174,26 @@ function configureRequireJS() {
       compatibilityPdf: ['pdfjs'],
       EscapeHatchLinks: ['ease'],
       PhysicalAddressLink: ['ease'],
+      LogOutLinks: ['ease'],
       RetailAccountLinks: ['ease'],
-      easeUIComponents: ['ease', 'moment', 'easeCoreUtils'],
-      easeUtils: ['easeCoreUtils'],
-      TransferModule: ['easeCoreUtils', 'easeUtils'],
-      UMMModule: ['easeCoreUtils', 'easeUtils'],
-      AccountSummaryModule: ['easeCoreUtils', 'easeUtils', 'UMMModule', 'TransferModule', 'RetailAccountLinks'],
-      AccountDetailModule: ['easeCoreUtils', 'easeUtils'],
+      ContentAccountLinks: ['ease'],
+      CreditCardCosLink: ['ease'],
+      easeUIComponents: ['ease', 'moment'],
+      easeTemplates: ['angular'],
+      AtmFinderModule: ['easeCoreUtils'],
+      TransferModule: ['easeCoreUtils'],
+      UMMModule: ['easeCoreUtils'],
+      AccountSummaryModule: [
+        'easeCoreUtils',
+        'AtmFinderModule',
+        'UMMModule',
+        'TransferModule',
+        'RetailAccountLinks',
+        'ContentAccountLinks',
+        'PhysicalAddressLink'
+      ],
+      AccountDetailModule: ['easeCoreUtils'],
+      AlertsModule: ['easeCoreUtils'],
       slick: ['ease'],
       LanguageToggleService: ['ease', 'LanguageToggleModule'],
       LanguageToggleModule: ['ease'],
@@ -156,7 +201,14 @@ function configureRequireJS() {
       ContentProperties: ['ease'],
       easeDropdownModule: ['EaseProperties', 'easeUtils', 'pubsubServiceModule'],
       dropdown: ['easeDropdownModule'],
-      commonModule: ['EaseProperties']
-    }
+      commonModule: ['EaseProperties'],
+      app: ['easeCoreUtils'],
+      coreFeatures: ['easeCoreUtils'],
+      Chat247: ['coreFeatures']
+    },
+    packages: [
+      { name: 'moment', location: `/ease-ui/${buildVersion}/bower_components/moment`, main: 'moment' }
+    ],
+    priority: ['coreloader', 'angular']
   });
 }

@@ -26,10 +26,9 @@ export const appRoutes: Routes = [
       }
     ]
   },
-
   // L2s
   {
-    path: '360Checking/:accountReferenceId',
+    path: '',
     loadChildren: './angular1ease/angular1ease.module#Angular1EaseModule'
   }
 ];

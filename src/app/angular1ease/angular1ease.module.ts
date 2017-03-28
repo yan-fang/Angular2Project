@@ -9,12 +9,12 @@ import { prepareAngular1Ease } from './angular1ease.ng1';
   selector: 'c1-angular1ease',
   template: '',
   styles: [`
-    @import '/bower_components/EASECoreLite/styles/main.css';
-    @import '/bower_components/easeUIComponents/dist/ease-ui-components.css';
+    @import '/ease-ui/ver1490660920702/dist/styles/main.min.css';
+    @import '/ease-ui/ver1490660920702/bower_components/easeUIComponents/dist/ease-ui-components.css';
   `]
 })
 export class Angular1EaseComponent implements OnInit {
-  constructor(private upgrade: UpgradeModule) {}
+  constructor(private upgrade: UpgradeModule) { }
 
   ngOnInit() {
     prepareAngular1Ease(this.upgrade);
@@ -25,7 +25,7 @@ export class Angular1EaseComponent implements OnInit {
 @NgModule({
   imports: [
     RouterModule.forChild([
-      {path: '', component: Angular1EaseComponent}
+      { path: '**', component: Angular1EaseComponent }
     ]),
     UpgradeModule
   ],

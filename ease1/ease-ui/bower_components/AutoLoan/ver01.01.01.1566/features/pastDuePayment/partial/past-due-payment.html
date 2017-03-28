@@ -1,0 +1,33 @@
+<div ease-modal
+	data-ng-controller="PastDuePaymentController as pastDuePaymentController"
+	modal-type="pastDuePaymentController.modalType"
+	toggle-close="pastDuePaymentController.close()"
+	modal-class="pastDuePaymentController.modalClass">
+	<h2 id="modalTitle" class="modal-heading" data-ng-bind="pastDuePaymentController.i18n.coaf.pastDuePayment.headline.label.v1"></h2>
+	<p id="modalHelpText1" data-ng-bind="pastDuePaymentController.i18n.coaf.pastDuePayment.pastDuePaymentDesc1.label.v1"></p>
+	<p id="modalHelpText2" data-ng-bind="pastDuePaymentController.i18n.coaf.pastDuePayment.pastDuePaymentDesc2.label.v1"></p>
+	<p>
+		<strong id="pastDueAmount" class="clickable-only open-disclaimer"
+			role="link" aria-describedby="pastDueAmountCurrency pastDueAmountAndAriaText"
+			data-ng-click="pastDuePaymentController.showDisclaimer()">
+			<span id="pastDueAmountCurrency" class="past-due-amount" data-ng-bind="accountDetailsData.accountDetails.unpaidPastDueAmount | currency"></span>
+			<span id="pastDueAmountAndAriaText" class="screen-reader-only" data-ng-bind-html="pastDuePaymentController.i18n.coaf.pastDuePayment.disclaimerAriaText.label.v1"></span>
+			<span id="pastDueText" aria-hidden="true" data-ng-bind="pastDuePaymentController.i18n.coaf.pastDuePayment.pastDuePaymentDesc3.label.v1"></span>
+		</strong>
+	</p>
+	<p id="pastDuePaymentTooltip" class="tooltip" title="{{pastDuePaymentController.i18n.coaf.pastDuePayment.pastDuePaymentTooltipText.label.v1}}">
+		<span id="toolTipTriggerText" data-ng-bind="pastDuePaymentController.i18n.coaf.pastDuePayment.pastDuePaymentTooltipTriggerText.label.v1"></span>
+		<i class='icon-info-circle' aria-hidden='true' role='presentation'></i>
+	<div data-ng-if="pastDuePaymentController.isPaymentButtonVisible" class="button-container">
+		<button id="makeAPaymentButton" class="btn progressive full-width"
+			data-ng-bind="pastDuePaymentController.i18n.coaf.pastDuePayment.pastDuePaymentMakePayment.label.v1"
+			ng-click="pastDuePaymentController.makeAPayment()">
+		</button>
+	</div>
+	<p>
+		<a id="continueToLoanTracker" class="clickable"
+			data-ng-bind="pastDuePaymentController.i18n.coaf.pastDuePayment.pastDuePaymentContinue.label.v1"
+			ng-click="pastDuePaymentController.continueToLoanTracker($event)">
+		</a>
+	</p>
+</div>

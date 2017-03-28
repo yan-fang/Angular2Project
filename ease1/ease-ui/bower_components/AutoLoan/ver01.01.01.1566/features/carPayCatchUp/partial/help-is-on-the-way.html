@@ -1,0 +1,18 @@
+<div ease-modal
+	data-ng-controller="HelpIsOnTheWayController as helpIsOnTheWayController"
+	modal-type="helpIsOnTheWayController.modalType"
+	toggle-close="helpIsOnTheWayController.close()"
+	modal-class="helpIsOnTheWayController.modalClass"
+	class="help-is-on-the-way">
+
+	<h2 id="modalTitle" class="modal-heading"
+		data-ng-bind="::helpIsOnTheWayController.i18n.coaf.carPayCatchUp.helpIsOnTheWay.header.label.v1"></h2>
+	<div id="halfMonthlyPaymentDescOne"
+		ng-bind-html="::helpIsOnTheWayController.i18n.coaf.carPayCatchUp.helpIsOnTheWay.description.label.v1"></div>
+
+	<div class="button-container">
+		<button id="proceedButton" class="btn progressive full-width"
+			data-ng-click="helpIsOnTheWayController.close()"
+			data-ng-bind="::helpIsOnTheWayController.i18n.coaf.carPayCatchUp.labels.exit.label.v1"></button>
+	</div>
+</div>

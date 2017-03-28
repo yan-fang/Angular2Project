@@ -1,0 +1,38 @@
+<div class="cos-bridge-mode no-print-modal cc-bridge">
+  <div class="payment-activity-container">
+    <div tabindex="0" id="accountPickerMessage" class="header-bridge" data-ng-bind="::cosAccountPicker.displayMessage | translate"></div>
+    <span tabindex="0" data-ng-click="cosAccountPicker.gotoPaymentActivity()" class="payment-activity-link" translate>card.cosbridge.account.picker.payment.activity</span>
+  </div>
+  <div ng-repeat="payToAccount in cosAccountPicker.payToAccounts" class="cc-bridge-account-block">
+      <span id="bridgeAccountDetails-{{$index}}" class="cc-bridge-account-details">
+          <span id="bridgeAccountName-{{$index}}" class="cc-bridge-account-name"
+                data-ng-bind="::cosAccountPicker.getFormattedDisplayName(payToAccount)"></span>
+          <span id="bridgeAccountDigits-{{$index}}" class="cc-bridge-account-digits">
+              <span id="bridgeEllipses-{{$index}}" translate>card.cosbridge.account.picker.periods</span>
+              <span id="bridgeEndOfPlastic-{{$index}}" data-ng-bind="::payToAccount.endOfPlasticAccountNumber"></span>
+          </span>
+      </span>
+      <span id="bridgeAmountDetails-{{$index}}" class="cc-bridge-amount-details">
+          <span id="bridgeCurrentAmountBalance-{{$index}}" class="cc-bridge-amount-current-balance">
+              <span class="amount-details-text" id="bridgeCurrentPayText-{{$index}}" translate>card.cosbridge.account.picker.current.balance.text</span>
+              <span class="amount-details-amount" id="bridgeCurrentPayDue-{{$index}}" data-ng-bind="::cosAccountPicker.getFormattedValue(payToAccount.currentBalance)"></span>
+          </span>
+          <span id="bridgeMinAmountBalance-{{$index}}" class="cc-bridge-amount-min-balance">
+              <span class="amount-details-text" id="bridgeMinPayText-{{$index}}" translate>card.cosbridge.account.picker.min.pay.text</span>
+              <span class="amount-details-amount" id="bridgeMinPayDue-{{$index}}" data-ng-bind="::cosAccountPicker.getFormattedValue(payToAccount.minimumPaymentDue)"></span>
+          </span>
+          <span id="bridgeAmountDueDate-{{$index}}" class="cc-bridge-amount-due-date">
+              <span class="amount-details-text" id="bridgeAmountDueDateText-{{$index}}" translate>card.cosbridge.account.picker.due.text</span>
+              <span class="amount-details-amount" id="bridgePTAdue-{{$index}}" data-ng-bind="::cosAccountPicker.getFormattedDate(payToAccount.dueDate)"></span>
+          </span>
+      </span>
+      <span class="cc-bridge-account-button">
+          <button id="bridgeButton-{{$index}}"  ng-if="!cosAccountPicker.isRestricted(payToAccount) && !cosAccountPicker.isClosed(payToAccount)" class="progressive" data-ng-click="::cosAccountPicker.buttonAction(payToAccount);" data-ng-bind="::cosAccountPicker.getButtonText(payToAccount) | translate"></button>
+          <button id="bridgeButtonRestricted-{{$index}}"  ng-if="cosAccountPicker.isRestricted(payToAccount)" disabled class="progressive restricted-button" data-ng-click="::cosAccountPicker.buttonAction(payToAccount);" data-ng-bind="::cosAccountPicker.getButtonText(payToAccount) | translate"></button>
+          <button id="bridgeButtonClosed-{{$index}}"  ng-if="cosAccountPicker.isClosed(payToAccount)" disabled class="progressive closed-button" data-ng-click="::cosAccountPicker.buttonAction(payToAccount);" data-ng-bind="::cosAccountPicker.getButtonText(payToAccount) | translate"></button>
+      </span>
+  </div>
+</div>
+
+<div ui-view></div>
+<div cc-load-screen id="ccAccountSelectorLarger"></div>

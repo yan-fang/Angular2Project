@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/HomeLoans/ver1490643033478/styles/home-loan-override.css">
+<div data-ng-controller="CancelConfirmHLPaymentCtrl as cancelConfirm">
+  <div ease-modal toggle-close="cancelConfirm.close()" init-close="cancelConfirm.initClose" modal-class="cancelConfirm.modalClass" modal-type="cancelConfirm.modalType" focus-class="summary.focusClass">
+    <h2>{{cancelConfirm.i18n.payment.canceled}}</h2>
+    <div>
+      <p ng-show="cancelConfirm.successMsg.editPaymentInfo.paymentTypeOption == 'onetime'" class="successMessage">
+        {{cancelConfirm.i18n.payment.your}} <span>{{cancelConfirm.successMsg.payFrom}}</span> {{cancelConfirm.i18n.payment.paymentOf}} <span>{{cancelConfirm.successMsg.payAmount | currency}}</span> {{cancelConfirm.i18n.payment.hasBeenCanceled}}.
+      </p>
+
+      <p id="infoTextSuccessCancelRecurId" ng-show="cancelConfirm.successMsg.editPaymentInfo.paymentTypeOption == 'recurring'" aria-label="{{cancelConfirm.i18n.payment.yourRecurringSeries}}{{cancelConfirm.i18n.payment.beenCanceled}}{{cancelConfirm.i18n.payment.nextPaymentDueCancel}}
+
+       {{cancelConfirm.successMsg.payDate | date:'MMM dd, yyyy'}}." class="successMessage">
+        {{cancelConfirm.i18n.payment.yourRecurringSeries}} {{cancelConfirm.i18n.payment.beenCanceled}}{{cancelConfirm.i18n.payment.nextPaymentDueCancel}}<span id="infoSuccesMsgPayDateId"> {{cancelConfirm.successMsg.payDate | date:'MMM dd, yyyy'}}.</span>
+
+      </p>
+    </div>
+  </div>
+</div>

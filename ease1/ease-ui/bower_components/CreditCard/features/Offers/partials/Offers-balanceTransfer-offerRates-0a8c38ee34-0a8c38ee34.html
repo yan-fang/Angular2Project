@@ -1,0 +1,66 @@
+<div class="bt-terms-table" >
+  <table aria-describedby="termsTableHeader_{{$id}}" title="{{'ease.card.offers.balanceTransfer.termsAndConditions.table.column1.row1.label.text' | translate }}">
+
+
+    <tr colspan="3">
+      <th class="terms-table-header" id="termsTableHeader_{{$id}}" scope="col">
+        <span ng-show="bCtrl.bt.option !== 'noHassleCheck'">{{'ease.card.offers.balanceTransfer.step1.termsTable.header.text' | translate}} {{::
+        bCtrl.selectedOffer.cardDisplayName}}</span>
+        <span ng-show="bCtrl.bt.option === 'noHassleCheck'">
+        {{'ease.card.offers.balanceTransfer.reviewTransfer.noHassleCheck.text' | translate}}</span>
+      </th>
+    </tr>
+
+    <tr class="terms-table-message" ng-show="bCtrl.selectedOffer.offerCategory === 'default'" colspan="3">
+      <td>
+        <span>{{bCtrl.defaultMessage}}</span>
+      </td>
+    </tr>
+
+    <tr class="terms-table-values" ng-show="bCtrl.selectedOffer.offerCategory === 'acquisitional' && bCtrl.selectedOffer.acquisitionEndDate">
+      <td>
+        <span>{{'ease.card.offers.balanceTransfer.step1.termsTable.apr.text' | translate}}</span>
+        {{:: 'ease.card.offers.balanceTransfer.step1.termsTable.zeroPercent.text' | translate}}
+      </td>
+      <td>
+        <span>{{'ease.card.offers.balanceTransfer.step1.termsTable.until.text' | translate}}</span>
+        {{:: bCtrl.selectedOffer.acquisitionEndDate | date : 'M/d/yyyy'}}
+      </td>
+      <td>
+        <span>{{'ease.card.offers.balanceTransfer.step1.termsTable.fee.text' | translate}}</span>
+        {{:: bCtrl.selectedOffer.transactionFeePercent | feeOrNo}}
+      </td>
+    </tr>
+
+    <tr class="terms-table-message" ng-show="bCtrl.selectedOffer.offerCategory === 'acquisitional' && !bCtrl.selectedOffer.acquisitionEndDate" colspan="3">
+      <td>
+        {{:: bCtrl.selectedOffer | longTermRate : 'ease.card.offers.balanceTransfer.step1.termsTable.acquisitions.noExpDate.text'}}
+      </td>
+    </tr>
+
+    <tr class="terms-table-values" ng-show="bCtrl.selectedOffer.offerCategory !== 'default' && bCtrl.selectedOffer.offerCategory !== 'acquisitional'">
+      <td>
+        {{:: bCtrl.selectedOffer.offerPromotionalRate}}{{'ease.card.offers.selectOffers.percentage.symbol' |
+        translate}}
+        <span>{{'ease.card.offers.balanceTransfer.step1.termsTable.apr.text' | translate}}</span>
+      </td>
+      <td>
+        {{:: bCtrl.selectedOffer.offerPromotionalRateDuration}}
+        <span>{{'ease.card.offers.balanceTransfer.step1.termsTable.months.text' | translate}}</span>
+      </td>
+      <td>
+        {{:: bCtrl.selectedOffer.transactionFeePercent | feeOrNo}}
+        <span>{{'ease.card.offers.balanceTransfer.step1.termsTable.fee.text' | translate}}</span>
+      </td>
+    </tr>
+    <tr class="terms-table-message" ng-show="bCtrl.modalState.reviewTransfer && bCtrl.selectedOffer.offerCategory !== 'default' && bCtrl.selectedOffer.offerCategory !== 'acquisitional'" colspan="3">
+      <td>{{'ease.card.offers.balanceTransfer.reviewTransfer.variableAPR.text' | translate}} {{:: bCtrl.selectedOffer.longTermRate}}{{'ease.card.offers.selectOffers.percentage.symbol' |
+        translate}}{{bCtrl.getSelectedOfferLongTermMethod()}}</td>
+    </tr>
+    <tr class="terms-table-message" ng-show="bCtrl.modalState.reviewTransfer && bCtrl.selectedOffer.offerCategory === 'acquisitional' && bCtrl.selectedOffer.acquisitionEndDate" colspan="3">
+      <td style="font-style:italic">
+        {{:: bCtrl.selectedOffer | longTermRate : 'ease.card.offers.balanceTransfer.reviewTransfer.acquisitionsMessage.text'}}
+      </td>
+    </tr>
+  </table>
+</div>

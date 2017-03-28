@@ -1,0 +1,1 @@
+define(["angular"],function(e){"use strict";var t=e.module("customerSettingsModule");return t});

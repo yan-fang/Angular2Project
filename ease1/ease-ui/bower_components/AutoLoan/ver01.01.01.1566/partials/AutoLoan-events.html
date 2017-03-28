@@ -1,0 +1,48 @@
+<div data-ng-controller="AutoLoanEventsController as autoLoanEventsController">
+    <div    ease-modal toggle-close="autoLoanEventsController.close()"
+            modal-role="autoLoanEventsController.modalRole"
+            init-close="autoLoanEventsController.initClose"
+            modal-class="autoLoanEventsController.modalClass"
+            modal-type="autoLoanEventsController.modalType"
+            focus-id="focusId">
+        <!-- Begin Modal Content -->
+        <h2 class="modal-heading" id="modalTitle"
+            data-ng-bind="autoLoanEventsController.i18N.coaf.payDownView.eventsModal.heading.label.v1"></h2>
+        <p class="modal-descriptor" data-ng-bind="autoLoanEventsController.i18N.coaf.payDownView.eventsModal.headerText.label.v1"></p>
+
+        <div class="events-container" id="eventsList">
+            <ul class="events-list">
+                <li class="events-list-item"
+                    data-ng-repeat="event in autoLoanEventsList | limitTo:numPerPage"
+                    ng-class="{
+                    'warningIcon': event.eventImpact=='NegativeEvent',
+                    'positiveIcon': event.eventImpact=='PositiveEvent',
+                    'neutralIconPlaceHolder' : event.eventImpact=='NeutralEvent'
+                }">
+                    <span class="events-date">
+                        <span id="eventMonth{{$index}}" class="month" data-ng-bind="event.eventDate | date:'MMM'"></span>
+                        <span id="eventDay{{$index}}" class="day" data-ng-bind="event.eventDate | date:'dd'"></span>
+                    </span>
+                    <span id="schEventDescription{{$index}}" class="events-description" data-ng-bind="event.eventType"></span>
+                    <span class="events-amount" id="eventAmount{{$index}}"
+                        data-ng-if="event.eventAmount"
+                        data-ng-bind="'&nbsp;-&nbsp;'+(event.eventAmount | nonNegativeAmount)">
+                    </span>
+                </li>
+            </ul>
+            <div class="load-more-links" data-ng-if="!isLastPage">
+                <span class="clickable" role="link" tabindex="0"
+                    data-ng-click="autoLoanEventsController.loadMoreEvents()"
+                    data-ng-bind="autoLoanEventsController.i18N.coaf.payDownView.eventsModal.loadMore.label.v1">
+                </span>
+            </div>
+        </div>
+        <button id="btnOkay" class="closeEventsButton btn progressive full-width"
+                data-ng-click="autoLoanEventsController.closeEventsModal()">
+            <div data-ng-class="{'spinbutton':spinnerEnable}">
+                <span data-ng-bind="autoLoanEventsController.i18N.coaf.payDownView.eventsModal.progressiveButton.label.v1"></span>
+            </div>
+        </button>
+    </div>
+    <!-- /end of modal -->
+</div>

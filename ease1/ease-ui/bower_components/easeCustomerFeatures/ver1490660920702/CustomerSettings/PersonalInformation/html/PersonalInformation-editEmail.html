@@ -1,0 +1,59 @@
+ <ease-ui-modal class="profileContactModal" close-modal="closeEdit()" modal-title="::content['ease.core.profileprefs.email.editmodal.title.label']">
+    <div class="contactHolder">
+      <ease-error-message data-ng-if="isInvalidEmail()" error-options="errorOptions"></ease-error-message>
+      <form id="addEmailForm"
+            name="addEmailForm"
+            data-ng-cut="$event.preventDefault()"
+            data-ng-copy="$event.preventDefault()"
+            data-ng-paste="$event.preventDefault()"
+            validate-email-inputs>
+        <ease-input input-id="::emailId"
+                    input-val="newEmailObj.email"
+                    label="::content['ease.core.profileprefs.email.label']"
+                    char-limit="::limit"
+                    max-char-msg="::content['ease.core.profileprefs.email.max.error']"
+                    error-msg="emailValidateMessage.firstInputErrorMessage"
+                    error-status="status.firstInputErrorStatus"
+                    placeholder="::content['ease.core.profileprefs.email.ghosttext.label']"
+                    input-status="{{status.isPrimaryStatus()}}"
+                    disable-special-characters
+                    reset-error-status="firstInputErrorStatus"
+                    data-ng-class="{'primary-email': newEmailObj.isPrimary}">
+        </ease-input>
+        <ease-input input-id="::emailAgainId"
+                    input-val="newEmailObj.emailAgain"
+                    label="::content['ease.core.profileprefs.email.emailinput2.label']"
+                    char-limit="::limit"
+                    max-char-msg="::content['ease.core.profileprefs.email.max.error']"
+                    error-msg="emailValidateMessage.secondInputErrorMessage"
+                    error-status="status.secondInputErrorStatus"
+                    placeholder="::content['ease.core.profileprefs.email.ghosttext.label']"
+                    disable-special-characters
+                    reset-error-status="secondInputErrorStatus">
+        </ease-input>
+        <div class="setPrimaryHolder" data-ng-if="!email.primaryIndicator">
+          <input id="edit_email_checkbox"
+                 type="checkbox"
+                 data-ng-model="newEmailObj.isPrimary"
+                 tabindex="0">
+          <span class="checkbox"></span>
+          <label id="set_primary_email_edit_label" for="edit_email_checkbox" tabindex="-1"
+                 aria-label="{{::content['ease.core.profileprefs.email.setprimary.label']}}">
+            {{::content['ease.core.profileprefs.email.setprimary.label']}}</label>
+        </div>
+        <button type="button" id="edit_email_button" tabindex="0"
+                data-ng-click="editEmail()"
+                data-ng-disabled="!enableSaveBtn()"
+                class="contactBtnSave button contactBtnSavePrimary"
+                aria-label="{{::content['ease.core.profileprefs.savegreeting.button']}}">
+          <span data-ng-class="loading"></span>
+          <span>{{::content['ease.core.profileprefs.savegreeting.button']}}</span>
+        </button>
+        <div class="contactDelete">
+          <a href="" id="del_email_button" class="contactDeleteLink" data-ng-click="deleteEmail()" data-ng-if="!email.primaryIndicator">{{::content['ease.core.profileprefs.deleteemail.button']}}</a>
+        </div>
+        <div class="addEmailLegalCopy" tabindex="0" aria-label="{{::content['ease.core.profileprefs.email.disclaimer.label']}}">{{::content['ease.core.profileprefs.email.disclaimer.label']}}</div>
+      </form>
+    </div>
+  </ease-ui-modal>
+

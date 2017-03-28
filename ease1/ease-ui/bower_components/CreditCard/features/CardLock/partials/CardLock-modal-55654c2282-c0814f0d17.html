@@ -1,0 +1,13 @@
+<div ng-controller="CardLockModalController as ccCardLock">
+    <ease-ui-modal class="card-lock-modal" ng-class="{'card-lock-icon-caution': lockState === 'tryAgain', 'cc-modal-icon-mobile': lockState === 'capitaloneCustomerServices'}" focus-id="ccCardLock.focusId" close-modal="ccCardLock.closeModal($event)" modal-id="'ccCardLockModal'" ng-show="cardLockTemplate">
+        <div cc-load-screen id="ccCardLockSpinner"></div>
+        <div ng-if="lockState ==='lockThisCard'" data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/CardLock/partials/lockCard-4dc1186848-4dc1186848.html'"></div>
+        <div ng-if="lockState ==='lockThisCardSuccess'" data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/CardLock/partials/lockCard-success-3f9c003e51-3f9c003e51.html'"></div>
+        <div ng-if="lockState === 'turnItOn'" data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/CardLock/partials/turnItOn-a1920ec446-a1920ec446.html'"></div>
+        <div ng-if="lockState === 'turnItOnSuccess'" data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/CardLock/partials/turnItOn-success-7f8dd4636b-7f8dd4636b.html'"></div>
+        <div ng-if="lockState ==='lcLearnMore'" data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/CardLock/partials/CardLock-LC-learnMore-86275d2e5d-86275d2e5d.html'"></div>
+        <div ng-if="lockState === 'tioLearnMore'" data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/CardLock/partials/CardLock-TIO-learnMore-73ff39a9be-73ff39a9be.html'"></div>
+        <div ng-if="lockState ==='tryAgain'" data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/CardLock/partials/CardLock-tryAgainError-719a6ad05c-719a6ad05c.html'"></div>
+        <div ng-if="lockState ==='capitaloneCustomerServices'" data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/CardLock/partials/CardLock-contactUsError-fd0bb62c0b-fd0bb62c0b.html'"></div>
+    </ease-ui-modal>
+</div>

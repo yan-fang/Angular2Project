@@ -1,0 +1,16 @@
+<div id="modalContainer" ng-controller="timeOutController" ng-show="modalShown" class="ng-hide">
+    <div class="blackout_logout">
+    </div>
+    <div class="modal timeout">
+        <h2 class="focusable" translate>{{'cos.common.timeout_warning.page_title.label'}}</h2>
+        <div class="content">
+            <img alt="Count-down clock" id="timeImg" src="/ease-ui/bower_components/CreditCard/features/CosBridge/images/osp_countdown-37633b6c74-37633b6c74.gif">
+            <p>{{'cos.common.timeout_warning.inactive.notification' | translate}} <span class="timer" id="idleWarningTime1">{{idleWarningTimeSec}}</span> {{'cos.common.timeout_warning.seconds.label' | translate}}</p>
+            <p class="head_large"><span class="timer" id="idleWarningTime2">{{idleWarningTimeSec}}</span> {{'cos.common.timeout_warning.seconds.label' | translate}}.</p>
+        </div>
+        <div class="modal-footer">
+            <a href="" class="btn_primary close" ng-click="continueSession()" id="timeOutContinue" role="button">{{'cos.common.timeout_warning.button.label' | translate}}</a>
+            <a href="{{timeoutResource.logoutUrl}}" class="btn_secondary" id="timeOutLogout" role="button">{{'cos.common.timeout_warning.logout.button.label' | translate}}</a>
+        </div>
+    </div>
+</div>

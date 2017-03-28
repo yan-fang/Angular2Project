@@ -1,0 +1,294 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/HomeLoans/ver1490643033478/styles/home-loan-override.css">
+<div data-ng-controller="HomeLoansPaymentController as homeLoansPay">
+<div id="makePaymentModal" ease-modal toggle-close="homeLoansPay.close()" modal-class="homeLoansPay.modalClass"
+     modal-type="homeLoansPay.modalType" focus-id="focusId">
+
+  <h2 align="center" id="makeAPaymentLabel" aria-label="{{homeLoansPay.i18n.payment.makeAPaymentLabel}}">
+    {{homeLoansPay.modelTitle}}
+  </h2>
+
+  <h3 align="center" class="makePaymentAccountNumber">
+    <div id="viewAccntNumber_TLNPI">{{homeLoansPay.i18n.payment.accountNo}}: {{accountDetailsData.accountDetails.accountNumber}}</div></h3>
+  <table ng-show="homeLoansPay.paymentTypeTab" class="paymentTypeTable">
+    <tr>
+      <td>
+        <button role="button" aria-pressed="{{(homeLoansPay.paymentTypeOption == homeLoansPay.onetime ) ? true : false}}"
+                aria-label="{{homeLoansPay.i18n.payment.onetime}}" tabindex="0" id="onetimeTab"
+                ng-class ="(homeLoansPay.paymentTypeOption == homeLoansPay.onetime ) ? 'toggleButtonSelected' : 'toggleButton'"
+                class="borderOnetime" data-ng-click="homeLoansPay.togglePaymentOptions(homeLoansPay.onetime)" value="{{homeLoansPay.onetime}}">
+          {{homeLoansPay.i18n.payment.onetime}}
+        </button>
+      </td><td>
+      <button tabindex="0"  aria-pressed="{{(homeLoansPay.paymentTypeOption == homeLoansPay.recurring ) ? true : false}}"
+              aria-label="{{homeLoansPay.i18n.payment.recurring}}" id ="recurringTab"
+              ng-class ="(homeLoansPay.paymentTypeOption == homeLoansPay.recurring ) ? 'toggleButtonSelected' : 'toggleButton'"
+              class="borderRecurring" data-ng-click="homeLoansPay.togglePaymentOptions(homeLoansPay.recurring)" value="{{homeLoansPay.recurring}}" >
+        {{homeLoansPay.i18n.payment.recurring}}
+      </button>
+    </td></tr>
+  </table>
+
+
+  <div ng-show="homeLoansPay.isShowSubmitOrEditPayment()">
+
+    <div class="paymentError" ng-show="homeLoansPay.paymentFailureReason" aria-label="{{homeLoansPay.paymentFailureReason}}">
+      <i class = "icon-warning"></i>
+       <div class="message"><span> {{homeLoansPay.paymentFailureReason}}</span></div>
+    </div>
+    <div ng-show="homeLoansPay.paymentTypeOption == homeLoansPay.onetime">
+    <ul class="hlPaymentInfo">
+
+        <li class="paymentSummationField" aria-label="{{homeLoansPay.i18n.payment.baseAmountDue}} : {{homeLoansPay.loanAccountPaymentInfo.principalAndInterestDueAmount
+        + homeLoansPay.loanAccountPaymentInfo.escrowDueAmount
+        + homeLoansPay.loanAccountPaymentInfo.mortgageInsuranceDueAmount | currency}}">
+          <label>{{homeLoansPay.i18n.payment.baseAmountDue}}</label>
+      <span id="baseAmtnDueMakeAPayment">{{homeLoansPay.loanAccountPaymentInfo.principalAndInterestDueAmount
+        + homeLoansPay.loanAccountPaymentInfo.escrowDueAmount
+        + homeLoansPay.loanAccountPaymentInfo.mortgageInsuranceDueAmount | currency}}</span>
+        </li>
+        <li class="paymentSummationField" data-ng-show="homeLoansPay.loanAccountBalanceInfo.pastDueAmount > 0"
+            aria-label="{{homeLoansPay.i18n.payment.pastDue}} : {{homeLoansPay.loanAccountBalanceInfo.pastDueAmount | currency}}">
+          <label>{{homeLoansPay.i18n.payment.pastDue}}</label>
+          <span id="pastDueAmnt">{{homeLoansPay.loanAccountBalanceInfo.pastDueAmount | currency}}</span>
+        </li>
+
+        <li class="paymentSummationField" data-ng-show="homeLoansPay.loanAccountBalanceInfo.lateChargeBalance > 0"
+            aria-label="{{homeLoansPay.i18n.payment.lateFees}} : {{homeLoansPay.loanAccountBalanceInfo.lateChargeBalance | currency}}">
+          <label>{{homeLoansPay.i18n.payment.lateFees}}</label>
+          <span id="lateChargeBalance">{{homeLoansPay.loanAccountBalanceInfo.lateChargeBalance | currency}}</span>
+        </li>
+
+        <li class="paymentSummationField" data-ng-show="homeLoansPay.loanAccountBalanceInfo.suspenseBalance > 0"
+            aria-label="{{homeLoansPay.i18n.payment.unappliedFunds}} : {{-homeLoansPay.loanAccountBalanceInfo.suspenseBalance | currency}}">
+          <label>{{homeLoansPay.i18n.payment.unappliedFunds}}</label>
+
+          <span id="suspenseBalance">{{-homeLoansPay.loanAccountBalanceInfo.suspenseBalance | currency}}</span>
+        </li>
+
+        <li class="paymentSummationField" aria-label="{{homeLoansPay.i18n.payment.totalDue}} : {{homeLoansPay.loanAccountPaymentInfo.totalPaymentDueAmount | currency}}">
+          <label>{{homeLoansPay.i18n.payment.totalDue}}</label>
+          <span id="totalPaymentDueAmnt">{{homeLoansPay.loanAccountPaymentInfo.totalPaymentDueAmount | currency}}</span>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <ul ng-show="homeLoansPay.recurringPaymentEnabled == true && homeLoansPay.paymentTypeOption == homeLoansPay.recurring" class="hlPaymentInfo">
+        <li class="paymentSummationField"
+            aria-label="{{homeLoansPay.i18n.payment.baseAmountDue}} : {{homeLoansPay.loanAccountPaymentInfo.basePaymentDueAmount | currency}}">
+          <label>{{homeLoansPay.i18n.payment.baseAmountDue}}</label>
+          <span id="baseAmtnDue">{{homeLoansPay.loanAccountPaymentInfo.basePaymentDueAmount | currency}}</span>
+        </li>
+      </ul>
+    </div>
+
+    <div ng-show="homeLoansPay.paymentTypeOption == homeLoansPay.onetime && homeLoansPay.recurringScheduled=='yes'" >
+      <br>
+      <div class="recurringMsgDiv">
+        <table>
+          <tr>
+          <td>
+            <i id="recurringPaymentInfoIcon" class="icon-info-circle"></i>
+          </td>
+          <td>
+       <span id="recurringMsgId" class="recurringMsgFontRecurr">
+          <br>
+          {{homeLoansPay.i18n.payment.yourRecurring}}
+          {{homeLoansPay.i18n.payment.willbeProcessed}}
+          {{homeLoansPay.scheduledDate| date:'MMM dd, yyyy'}}
+         </span>
+         <span ng-show="!homeLoansPay.isPushDate()" class="recurringMsgFontRecurr">
+         {{homeLoansPay.i18n.payment.additionPayments}}
+        </span>
+        <span ng-show="homeLoansPay.isPushDate()" class="recurringMsgFontRecurr">
+          {{homeLoansPay.i18n.payment.onetimeSatisfy}}
+          {{homeLoansPay.i18n.payment.yourCurrentDue}}
+          </span>
+         <br><br>
+  </td></tr></table>
+      </div>
+    </div>
+
+    <div data-ng-show="accountDetailsData.accountDetails.datePushed && homeLoansPay.paymentTypeOption == homeLoansPay.recurring
+         && !homeLoansPay.paymentTypeTab"> 
+      <br> 
+      <div class="recurringMsgDiv"> 
+        <table>
+          <tr>
+            <td>
+              <i id="recurringPaymentInfoIcon" class="icon-info-circle"></i>
+            </td>
+            <td>
+              <span id="recurringPushDateMsgId" class="recurringMsgFontRecurr"> {{homeLoansPay.i18n.payment.pushDateMessage}} </span> 
+            </td>
+          </tr>
+      </table>
+      </div> 
+    </div>
+
+    <form role="form" id="ummform" key-Press-Event="{{id}}" name="paymentForm" novalidate>
+      <div class="form-container" data-ng-if="homeLoansPay.recurringPaymentEnabled == true &&
+                                                    homeLoansPay.paymentTypeOption == homeLoansPay.recurring">
+        <table>
+          <tr>
+            <td class="payType">
+              <label id="payMonthlyNonMLAId" ng-show="homeLoansPay.productType !=='MLA'" data-ng-bind="homeLoansPay.i18n.payment.payMonthly">
+              </label>
+              <label id="payBiweeklyMLAId" ng-show="homeLoansPay.productType =='MLA' && homeLoansPay.loanAccountPaymentInfo.paymentFrequency =='BiWeekly'" data-ng-bind="homeLoansPay.i18n.payment.payBiweekly">
+              </label>
+              <label id="payMonthlyMLAId" ng-show="homeLoansPay.productType =='MLA' && homeLoansPay.loanAccountPaymentInfo.paymentFrequency =='Monthly'" data-ng-bind="homeLoansPay.i18n.payment.payMonthly">
+              </label>
+            </td>
+            <td>
+              <label id="startingId" class="scheduledtext">{{homeLoansPay.i18n.payment.starting}} {{homeLoansPay.loanAccountPaymentInfo.nextPaymentDate | date:'MMM'}} {{homeLoansPay.startingDay}}</label>
+            </td>
+          <tr>
+
+
+        </table>
+
+      <div class="dropDownDisable" ng-disabled="true"  ng-if="homeLoansPay.recurringPaymentEnabled == true && homeLoansPay.paymentTypeOption ==homeLoansPay.recurring">
+        <dropdown  data-ng-if="homeLoansPay.loanAccountPaymentInfo.paymentFrequency =='BiWeekly'" id="paymentDayBiweekly"
+                   datasource-function="homeLoansPay.populatedueDateValues()"
+                   display-field="display"
+                   placeholder="Select a day"
+                   data-ng-model="homeLoansPay.day"
+                   on-select-function="homeLoansPay.populatedueDateValuesSelected(item)"
+                   data-ng-class="dropDownDisable" type="paymentOption"></dropdown>
+      </div>
+
+
+
+        <dropdown  data-ng-if="homeLoansPay.loanAccountPaymentInfo.paymentFrequency !== 'BiWeekly'" id="paymentDayMonthly"
+                   datasource-function="homeLoansPay.populatedueDateValues()"
+                   display-field="display"
+                   placeholder="Select a day"
+                   data-ng-model="homeLoansPay.day"
+                   on-select-function="homeLoansPay.populatedueDateValuesSelected(item)" aria-label="{{homeLoansPay.day}}"></dropdown>
+
+      </div>
+
+      <div class="form-container">
+        <ease-dropdown default-item-index="homeLoansPay.defaultPayFrom" is-valid="homeLoansPay.isValidDirective.from"
+                       label-txt="homeLoansPay.i18n.payment.payFrom" bind-data="homeLoansPay.from" widget-id="'accountDd'"
+                       type="'accountDd'" localize="homeLoansPay.i18nCore" service='homeLoansPay.service'
+                       localize="homeLoansPay.i18nCore" focus='true' aria-label="{{homeLoansPay.i18n.payment.payFrom}}"></ease-dropdown>
+      </div>
+      <div  ng-show="homeLoansPay.paymentTypeOption == homeLoansPay.onetime">
+        <div class="form-container" ng-show="paymentOption != 'princOnly'">
+          <ease-dropdown default-item-index="homeLoansPay.defaultAmount" is-valid="homeLoansPay.isValidDirective.amount"
+                         label-txt="homeLoansPay.i18n.payment.amount" bind-data="homeLoansPay.amount" widget-id="'amountDd'"
+                         type="'amountDd'" localize="homeLoansPay.i18nCore" service='homeLoansPay.service'
+                         focus='false' aria-label="{{homeLoansPay.i18n.payment.amount}}"></ease-dropdown>
+        </div>
+      </div>
+
+      <div class="form-container" ng-if="homeLoansPay.isRecurringSelected()">
+
+          <ease-dropdown ng-if="!homeLoansPay.isProductHlcOrArm()" default-item-index="homeLoansPay.defaultAmount"
+                         is-valid="homeLoansPay.isValidDirective.amount"
+                         label-txt="homeLoansPay.i18n.payment.amount" bind-data="homeLoansPay.amount"
+                         widget-id="'amountDd'"
+                         type="'amountDd'" localize="homeLoansPay.i18nCore" service='homeLoansPay.service'
+                         focus='false' aria-label="{{homeLoansPay.i18n.payment.amount}}"></ease-dropdown>
+
+        <div ng-show="homeLoansPay.isProductHlcOrArm()">
+
+          <label id="amountIdMakeAPayment" >{{homeLoansPay.i18n.payment.amount}} </label>
+
+
+          <dropdown  id="hlcAmountDueDropDownId"
+                     datasource-function="homeLoansPay.populateAmountshlc()"
+                     display-field="display"
+                     placeholder="Select a day"
+                     data-ng-model="homeLoansPay.amountHlc"
+                     on-select-function="homeLoansPay.populateAmountshlcSelected(item)"></dropdown>
+          </div>
+      </div>
+
+      <div data-ng-show="homeLoansPay.dynamicPaymentLabel !== ''">
+        <label class="secondary" for="additionalPrincipal">{{homeLoansPay.dynamicPaymentLabel}}</label>
+        <div><input aria-invalid="false" validate-amount id="additionalPrincipal" tabindex="0"
+                    ng-model="homeLoansPay.additionalAmountInput" type="text" name="additionalPrincipal"
+                    placeholder="$0.00" ng-keyup="homeLoansPay.validatePaymentForm()" ng-change="homeLoansPay.validatePaymentForm()"
+                    ng-class="{invalid: homeLoansPay.isInputInvalid()}"
+                    aria-describedby="{{homeLoansPay.ariaDescribedByAdditionalPrincipal}}"></div>
+      </div>
+
+      <div id="formValidationErrorMessage" aria-label="{{homeLoansPay.validationErrorMessage}}">
+        {{homeLoansPay.validationErrorMessage}}</div>
+
+      <button role="button" aria-label="{{homeLoansPay.getAriaLableForPaymentButton()}}"
+              id="makeAPaymentModelButton" class="paymentModalButton"
+              tabindex="0" class="button" data-ng-click="homeLoansPay.makePayment();homeLoansPay.inProgress=true"
+              data-ng-class="homeLoansPay.disablePayment" data-ng-disabled="homeLoansPay.buttonDisabled">
+        <div id="makeApaymentDiv" data-ng-class="{'loading':homeLoansPay.inProgress}">
+          <span id="oneTimePaymentId" ng-show="homeLoansPay.paymentTypeOption == homeLoansPay.onetime" >
+            {{homeLoansPay.modelSubmitButton}}
+          </span>
+          <span id="recurringPaymentId" ng-show="homeLoansPay.paymentTypeOption == homeLoansPay.recurring">
+            {{homeLoansPay.modelRecSubmitButton}}
+          </span>
+        </div>
+      </button>
+    </form>
+    <div ng-show="homeLoansPay.paymentTypeOption == homeLoansPay.onetime">
+
+      <p id="hlPaymentDisclaimerParId" class="ccDisclaimer">{{homeLoansPay.i18n.payment.ccDisclaimer}}
+    <span id="hlPaymentDisclaimer" class="effectiveDateDisclaimer" ng-show="homeLoansPay.date">.
+      {{homeLoansPay.i18n.payment.paymentEffectiveMessage}} {{homeLoansPay.date | date:'MMMM d, y'}}.</span></p>
+    </div>
+
+    <div ng-show="homeLoansPay.recurringPaymentEnabled == true && homeLoansPay.paymentTypeOption ==homeLoansPay.recurring">
+      <p class="ccDisclaimer" aria-label="{{homeLoansPay.i18n.payment.ccDisclaimerRecurring}}">
+        {{homeLoansPay.i18n.payment.ccDisclaimerRecurring}}</p>
+    </div>
+  </div>
+
+  <div class="container" ng-show="homeLoansPay.isShowRecurringScheduled()">
+    <p class="successMessage">
+    <div class="homeLoanStyleSuccessMessage">
+
+     <span ng-show="homeLoansPay.isNotBiWeeklyNotPushDate()" id="successMessageRecurringMonthlyId"
+           aria-label="{{homeLoansPay.i18n.payment.successMessageMonthlyRecurring}}" >
+        {{homeLoansPay.i18n.payment.successMessageMonthlyRecurring}} </span>
+     <span ng-show="homeLoansPay.isBiWeeklyTrueNotPushDate()" id="successMessageRecurringBiweeklyId"
+           aria-label="{{homeLoansPay.i18n.payment.successMessageBiweeklyRecurring}}" >
+        {{homeLoansPay.i18n.payment.successMessageBiWeeklyRecurring}}</span>
+
+     <span ng-show="homeLoansPay.isNotBiWeeklyPushDateTrue()" id="successMessageRecurringPushedDateMonthlyId"
+           aria-label="{{homeLoansPay.i18n.payment.successMonthlyRecurringPushedDate}}" >
+        {{homeLoansPay.i18n.payment.successMonthlyRecurringPushedDate}} </span>
+     <span ng-show="homeLoansPay.isBiWeeklyPushDate()" id="successMessageRecurringPushedDateBiweeklyId"
+           aria-label="{{homeLoansPay.i18n.payment.successBiweeklyRecurringPushedDate}}" >
+        {{homeLoansPay.i18n.payment.successBiweeklyRecurringPushedDate}}</span>
+    <div ng-show="!homeLoansPay.isPushDate()">
+
+      <span id="spanSuccessMsgRecurAmountId" aria-label=" {{homeLoansPay.i18n.payment.willbeProcessed}}">
+        {{homeLoansPay.i18n.payment.willbeProcessed}} </span> <br>
+      <span id="spanSuccessMsgRecurDateId"
+            aria-label="{{homeLoansPay.scheduledDate | date:'MMM dd, yyyy'}}">{{homeLoansPay.scheduledDate | date:'MMM dd, yyyy'}}</span>
+      </div>
+    </div>
+    </p>
+    <ng-include src="'ease-ui/bower_components/HomeLoans/ver1490643033478/partials/HomeLoans-PaymentInfo.html'"></ng-include>
+
+
+    <div class="buttons linkDiv">
+      <br><br>
+      <a id="cancelPaymentLinkId" tabindex="0" role="link"  aria-label="{{homeLoansPay.i18n.payment.cancelPayment}}"
+        title="{{homeLoansPay.i18n.payment.ariaCancelsPaymentLinkMessage}}" data-ng-click="homeLoansPay.cancelScheduled()"
+          href>{{homeLoansPay.i18n.payment.cancelPayment}}</a>
+      |
+      <a id="editPaymentLinkId"  tabindex="0" role="link"
+         aria-label="{{homeLoansPay.i18n.payment.editPayment}}"
+         title="{{homeLoansPay.i18n.payment.ariaEditPaymentLinkMessage}}" data-ng-click="homeLoansPay.editScheduled()" href>
+        {{homeLoansPay.i18n.payment.editPayment}}</a>
+    </div>
+
+
+</div>
+
+  <div class="successMessage" ng-show="homeLoansPay.isShowRecurringPastDue()">
+    <p class="homeLoanStyleSuccessMessage">{{homeLoansPay.i18n.payment.pastDueMessage}}</p>
+  </div>
+</div>

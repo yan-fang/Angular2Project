@@ -1,0 +1,183 @@
+<div id="report_fraud_title_label" class="cc-fraud-modal-header">
+    <h2>{{::reportFraudModal.reviewPurchasesHeader}}</h2>
+</div>
+<div id="purchase_info_label" class="cc-fraud-modal-body">
+    <div class="subheader">
+        <hr/>
+        <div class="subheader-icons">
+            <div class="subheader-column left">
+                <span class="column-icon icon-check icon green"></span>
+                <div class="subheader-icon-label">{{::'ease.card.reportfraud.review_purchases.step1.text' | translate}}</div>
+            </div>
+
+            <div class="subheader-column center">
+                <span class="column-icon icon-review icon blue"></span>
+                <div class="subheader-icon-label bold">{{::'ease.card.reportfraud.review_purchases.step2.text' | translate}}
+                </div>
+            </div>
+
+            <div class="subheader-column right">
+                <span class="column-icon icon-mailbox icon"></span>
+                <div class="subheader-icon-label">{{::'ease.card.reportfraud.review_purchases.step3.text' | translate}}</div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="modal-body-text" id="review_purchases_info_label">
+        <span>{{::reportFraudModal.reviewPurchasesSubheader}}</span>
+    </div>
+</div>
+
+<form class="fraud-review-transactions">
+    <div class="fraud-flagged-transactions">
+        <div class="section-header">
+            <a ng-click="reportFraudModal.handleUserExpandFlaggedPurchases()" ng-keyup="$event.keyCode == 13 ? reportFraudModal.handleUserExpandFlaggedPurchases() : null" >
+                <span class="flagged-purchases-count">{{reportFraudModal.flaggedCount}}</span>
+                <span ng-if = "reportFraudModal.flaggedCount == 1 ">{{::'ease.card.reportfraud.review_purchases.label.text' | translate}}
+                </span>
+                <span ng-if="reportFraudModal.flaggedCount == 0 || reportFraudModal.flaggedCount > 1">{{::'ease.card.reportfraud.review_purchases.label_plural.text' | translate}}</span>
+            </a>
+            <div data-ng-class="{'up-arrow': reportFraudModal.expandFlaggedPurchases, 'down-arrow': !reportFraudModal.expandFlaggedPurchases }">
+                <span class="icon-drop-arrow"></span>
+            </div>
+
+        </div>
+
+        <div class="all-flagged-purchases" data-ng-show="reportFraudModal.expandFlaggedPurchases" role="table">
+            <ul class="locked-transaction" data-ng-if="!reportFraudModal.fraudAlertEntry">
+                <li role="rowgroup">
+                    <div class="transaction" role="row">
+                        <span role="gridcell" class="transactions-flag" transaction="reportFraudModal.transaction">
+                            <div id="locked-purchase" class="flag-icon disabled" aria-disabled="true"><span class="icon icon-flag"></span></div>
+                        </span>
+                        <span role="gridcell" class="transactions-date"
+                              data-payment-date="{{reportFraudModal.transaction.displayDate}}">
+                            {{reportFraudModal.transaction.displayDate | date:'MMM':'UTC'}}
+                            <span role="gridcell" class="day">
+                                {{reportFraudModal.transaction.displayDate | date:'dd':'UTC'}}
+                            </span>
+                        </span>
+                        <span role="gridcell" cc-icon class="transactions-icon" transaction="reportFraudModal.transaction"></span>
+                        <span role="gridcell" class="transactions-description">{{reportFraudModal.transaction.merchant.name}}
+                            <span role="gridcell" class="transactions-location">{{reportFraudModal.transaction.merchant.transactionAddress.locality}}, {{reportFraudModal.transaction.merchant.transactionAddress.regionCode}}</span>
+                        </span>
+                        <span role="gridcell" class="transactions-amount transactions-amount-details">
+                          {{::reportFraudModal.transaction.amount.amount | creditCardCurrency}}
+                          <span role="gridcell" class="transactions-status">{{reportFraudModal.transaction.status}}</span>
+                        </span>
+                    </div>
+                </li>
+            </ul>
+            <ul>
+                <li data-ng-repeat="transaction in reportFraudModal.flaggedTransactions = (reportFraudModal.transactionsList | orderBy: ['status' , '-displayDate'] | filter: { isFraud: 'true'})"
+                    id="flaggedFraudTransaction{{$index}}" role="rowgroup">
+                    <div class="transaction" role="row">
+                        <span role="gridcell" class="transactions-flag" transaction="transaction">
+                            <div id="unflag-purchase" class="flag-icon flagged" ng-click="transaction.isFraud=false; reportFraudModal.subtractFromSelectedTransactions();">
+                                <span class="icon icon-flag" title="Deselect purchase" tabindex="0"></span>
+                            </div>
+                        </span>
+                        <span role="gridcell" class="transactions-date" data-payment-date="{{::transaction.displayDate}}">
+                            {{::transaction.displayDate | date:'MMM':'UTC'}}
+                            <span role="gridcell" class="day">
+                                {{::transaction.displayDate | date:'dd':'UTC'}}
+                            </span>
+                        </span>
+                        <span role="gridcell" cc-icon class="transactions-icon" transaction="transaction"></span>
+                        <span role="gridcell" class="transactions-description">{{::transaction.merchant.name}}
+                        <span role="gridcell" class="transactions-location">
+                            {{::transaction.merchant.transactionAddress.locality}} 
+                            <span ng-if = transaction.merchant.transactionAddress.locality !== "" && transaction.merchant.transactionAddress.regionCode !== "">
+                                ,
+                            </span>
+                            {{::transaction.merchant.transactionAddress.regionCode}}</span>
+                      </span>
+                        <span role="gridcell" class="transactions-amount transactions-amount-details">
+                          {{::transaction.amount.amount | creditCardCurrency}}
+                          <span role="gridcell" class="transactions-status">{{transaction.status}}</span>
+                        </span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="fraud-alert-message" data-ng-hide="!reportFraudModal.fraudAlertEntry">
+        {{::'ease.card.reportfraud.review_purchases.fraudalert.message.text' | translate}}
+      </div>
+    </div>
+
+    <div class="fraud-transaction-list" role="table">
+        <div class="section-header">
+            <a aria-label="{{::'ease.card.reportfraud.review_purchases.get_previous.text' | translate}}"
+               ng-click="reportFraudModal.showPreviousTransactions()" ng-if = "reportFraudModal.enablePreviousLink" ng-keyup="$event.keyCode == 13 ? reportFraudModal.showPreviousTransactions() : null" tabindex="0">
+                {{::'ease.card.reportfraud.review_purchases.get_previous.text' | translate}}
+            </a>
+      <span aria-label="{{::'ease.card.reportfraud.review_purchases.get_previous.text' | translate}}"
+            ng-if = "!reportFraudModal.enablePreviousLink">{{::'ease.card.reportfraud.review_purchases.get_previous.text' | translate}}</span>
+        </div>
+
+        <ul>
+            <li
+                    data-ng-repeat="transaction in reportFraudModal.currentWindowTransactions = (reportFraudModal.filterTransactions= (reportFraudModal.transactionsList | filter: { isFraud: '!true'}  | orderBy: ['status' , '-displayDate'])).slice(reportFraudModal.firstItemInPage, reportFraudModal.firstItemInPage + reportFraudModal.itemsPerPage)"
+                    ng-init="reportFraudModal.updateLinks();" id="suspectFraudTransaction{{$index}}" role="rowgroup">
+                <div class="transaction" role="row">
+          <span role="gridcell" class="transactions-flag" transaction="reportFraudModal.transaction">
+              <div id="flag-purchase" class="flag-icon" ng-click="transaction.isFraud=true;reportFraudModal.isFlagOrNextBtnClicked=true;reportFraudModal.updateLinks(); reportFraudModal.addToSelectedTransactions();">
+                  <span class="icon icon-flag" title="Select if purchase is fraudulent" tabindex="0"></span>
+              </div>
+          </span>
+          <span role="gridcell" class="transactions-date" data-payment-date="{{::transaction.displayDate}}">
+            {{::transaction.displayDate | date:'MMM':'UTC'}}
+            <span role="gridcell" class="day">
+              {{::transaction.displayDate | date:'dd':'UTC'}}
+            </span>
+          </span>
+                    <span role="gridcell" cc-icon class="transactions-icon" transaction="transaction"></span>
+          <span role="gridcell" class="transactions-description">{{::transaction.merchant.name}}
+            <span role="gridcell" class="transactions-location">
+                {{::transaction.merchant.transactionAddress.locality}} 
+                <span ng-if = transaction.merchant.transactionAddress.locality !== "" && transaction.merchant.transactionAddress.regionCode !== "">
+                    ,
+                </span>
+                {{::transaction.merchant.transactionAddress.regionCode}}</span>
+          </span>
+            <span role="gridcell" class="transactions-amount transactions-amount-details">
+              {{::transaction.amount.amount | creditCardCurrency}}
+              <span role="gridcell" class="transactions-status">{{transaction.status}}</span>
+            </span>
+                </div>
+            </li>
+        </ul>
+        <div class="section-footer">
+            <a aria-label="{{::'ease.card.reportfraud.review_purchases.get_next.text' | translate}}"
+               ng-click="reportFraudModal.showNextTransactions()" ng-if = "reportFraudModal.enableNextLink" ng-keyup="$event.keyCode == 13 ? reportFraudModal.showNextTransactions() : null" tabindex="0">
+                {{::'ease.card.reportfraud.review_purchases.get_next.text' | translate}}
+            </a>
+      <span aria-label="{{::'ease.card.reportfraud.review_purchases.get_next.text' | translate}}"
+            ng-if = "!reportFraudModal.enableNextLink">
+        {{::'ease.card.reportfraud.review_purchases.get_next.text' | translate}}
+      </span>
+        </div>
+    </div>
+</form>
+
+<div class="button-footer mobile-fixed">
+    <form>
+        <div class="cc-fraud-problem-type">
+            <div class="cc-fraud-problem-buttons">
+                <button class="progressive small" id="report_problem_report_purchases_button"
+                        data-ng-click="reportFraudModal.handleReportPurchasesClick();">
+          <span ng-hide="reportFraudModal.loading">
+            <span ng-if = "reportFraudModal.fraudAlertEntry && reportFraudModal.flaggedCount == 0">
+                {{::'ease.card.reportfraud.review_purchases.zero_flagged.button.text' | translate}}
+            </span>
+            <span ng-if = "reportFraudModal.flaggedCount == 1">
+                {{::'ease.card.reportfraud.review_purchases.button.text' | translate}}
+            </span>
+            <span ng-if = "reportFraudModal.flaggedCount > 1">{{::'ease.card.reportfraud.purchases.alerts_integration.split_report.text' | translate}}{{reportFraudModal.flaggedCount}} {{::'ease.card.reportfraud.purchases.alerts_integration.split_purchases.text' | translate}}</span>
+          </span>
+                    <div class="cc-spinner" ng-class="{'loading':reportFraudModal.loading}"></div>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

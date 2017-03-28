@@ -1,0 +1,50 @@
+<div class="recurring-stop-by-date">
+
+	<div ng-switch="$ctrl.pageName">
+    <billpay-datepicker
+      ng-switch-when="PICK_FINAL_DATE" 
+      id="1450"
+      date="$ctrl.recurringForm.finalPaymentDate"
+      min-date='{{$ctrl.datepickerConfig.minDate}}'
+      max-date='{{$ctrl.datepickerConfig.maxDate}}'
+      selected-date-label='{{$ctrl.datepickerConfig.selectedDatelabel}}'
+      arrived-date-label="{{$ctrl.datepickerConfig.arrivedDatelabel}}"
+      next-page="{{$ctrl.datepickerConfig.nextPage}}"
+      switch-fn="$ctrl.switchPage(name)">
+    </billpay-datepicker>
+
+    <div ng-switch-when="ENHANCE_FINAL_INFO">
+      <p class="sub-heading">
+        To {{$ctrl.payee | showPayeeName: 'displayName'}}
+      </p>
+
+      <form id="endPaymentByDateForm" name="endPaymentByDateForm" autocomplete="off">
+        <date-input
+          id="end-payment-date-input"
+          form="endPaymentByDateForm"
+          date="$ctrl.recurringForm.finalPaymentDate"
+          label="Stop on"
+          icon-click="$ctrl.pickPaymentDate('finalPaymentDate')">
+        </date-input>
+
+        <last-payment-amount
+          id="end-payment-date-last-payment-amount"
+          form="endPaymentByDateForm"
+          input-obj="$ctrl.recurringForm"
+          field="finalPaymentAmount">
+        </last-payment-amount>
+      </form>
+
+      <submit-button
+        id="datepicker-done-btn"
+        label="Done"
+        is-disabled="{{endPaymentByDateForm.$invalid}}"
+        is-loading="false"
+        submit-fn="$ctrl.done()"
+        bg-color="progressive"
+      >
+      </submit-button>
+    </div>
+  </div>
+
+</div> 

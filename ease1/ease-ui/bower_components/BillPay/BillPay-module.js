@@ -1,7 +1,7 @@
 define(['angular'], function(angular) {
   'use strict';
 
-  var basePath = './ease-ui/bower_components/BillPay/@@version';
+  var basePath = './ease-ui/bower_components/BillPay/ver01.01.01.2135';
   var billPayModule = angular.module(
     'BillPayModule', [
       'ui.router',
@@ -43,75 +43,6 @@ define(['angular'], function(angular) {
       templateUrl: basePath + '/features/hub/hub-partial.html'
     };
 
-    var billPayRecurringPayment = {
-      name: 'BillPay.RecurringPayment',
-      url: '/Recurring-Pay',
-      parent: 'BillPay.PayeeList',
-      controller: 'RecurringPaymentController',
-      controllerAs: 'RecurringCtl',
-      templateUrl: basePath + '/features/Payment/recurringPayment/action/recurringPayment-partial.html',
-      params: {
-        returnFocusId: ''
-      },
-      resolve: {
-        'getBillPayDependency': getBillPayDependency,
-        'cleanServiceDate': function(getBillPayDependency, AccountsService, PaymentDetailService) {
-          AccountsService.deleteEligibleAccounts();
-          PaymentDetailService.deletePaymentDetail();
-        },
-        'getEligibleAccounts': function(getBillPayDependency, AccountsService, $stateParams) {
-          return AccountsService.getEligibleAccountsRestCall($stateParams.subCategory);
-        }
-      }
-    };
-
-    var billPayConfirmRecurringPayment = {
-      name: 'BillPay.ConfirmRecurringPayment',
-      parent: 'BillPay.PayeeList',
-      controller: 'ConfirmRecurringPaymentController',
-      controllerAs: 'ConfirmRecurringPaymentCtl',
-      templateUrl: basePath + '/features/Payment/recurringPayment/confirmation/confirmPayment-partial.html'
-    };
-
-    var billPayMakePayment = {
-      name: 'BillPay.MakePayment',
-      url: '/Pay',
-      parent: 'BillPay.PayeeList',
-      controller: 'OneTimePaymentController',
-      controllerAs: 'MakePaymentCtl',
-      templateUrl: basePath + '/features/Payment/oneTimePayment/action/OneTimePayment-partial.html',
-      params: {
-        returnFocusId: '',
-        reloadData: true
-      },
-      resolve: {
-        'getBillPayDependency': getBillPayDependency,
-        'cleanServiceData': function($stateParams, getBillPayDependency, AccountsService, PaymentDetailService) {
-          if ($stateParams.reloadData) {
-            AccountsService.deleteEligibleAccounts();
-            PaymentDetailService.deletePaymentDetail();
-          }
-        },
-        'getEligibleAccounts': function($stateParams, getBillPayDependency, AccountsService) {
-          if ($stateParams.reloadData) {
-            return AccountsService.getEligibleAccountsRestCall($stateParams.subCategory);
-          }
-        }
-      }
-    };
-
-    var billPayConfirmPayment = {
-      name: 'BillPay.ConfirmPayment',
-      parent: 'BillPay.PayeeList',
-      controller: 'ConfirmPaymentController',
-      controllerAs: 'ConfirmPaymentCtl',
-      templateUrl: basePath + '/features/Payment/oneTimePayment/confirmation/ConfirmPayment-partial.html',
-      params: {
-        actionType: '',
-        returnFocusId: ''
-      }
-    };
-
     var billPayError = {
       name: 'BillPay.error',
       parent: 'BillPay.PayeeList',
@@ -128,13 +59,66 @@ define(['angular'], function(angular) {
       templateUrl: basePath + '/features/Error/ErrorHandler-partial.html'
     };
 
-    var bankMakePayment = {
+    var billPayEBillMarkAsPaid = {
+      name: 'BillPay.markAsPaid',
+      url: '/Mark-as-paid',
+      parent: 'BillPay.PayeeList',
+      template: '<ebill-mark-as-paid></ebill-mark-as-paid>',
+      params: {
+        returnFocusId: ''
+      },
+      resolve: {
+        'getBillPayDependency': getBillPayDependency
+      }
+    };
+
+    var billPayConfirmRecurringPayment = {
+      name: 'BillPay.ConfirmRecurringPayment',
+      parent: 'BillPay.PayeeList',
+      controller: 'ConfirmRecurringPaymentController',
+      controllerAs: 'ConfirmRecurringPaymentCtl',
+      templateUrl: basePath + '/features/Payment/recurringPayment/confirmation/confirmPayment-partial.html',
+      params: {
+        returnFocusId: ''
+      }
+    };
+
+    // payment state
+    var billPayOneTimePayment = {
+      name: 'BillPay.MakePayment',
+      url: '/makePayment',
+      parent: 'BillPay.PayeeList',
+      template: '<make-payment-hub mode="ONE_TIME"></make-payment-hub>',
+      params: {
+        upcomingFocusId: '',
+        reloadData: true
+      },
+      resolve: {
+        'getBillPayDependency': getBillPayDependency,
+        'getEligibleAccounts': getEligibleAccounts
+      }
+    }; 
+
+    var billPayRecurringPayment = {
+      name: 'BillPay.RecurringPayment',
+      url: '/recurringPayment',
+      parent: 'BillPay.PayeeList',
+      template: '<make-payment-hub mode="RECURRING"></make-payment-hub>',
+      params: {
+        upcomingFocusId: '',
+        reloadData: true
+      },
+      resolve: {
+        'getBillPayDependency': getBillPayDependency,
+        'getEligibleAccounts': getEligibleAccounts
+      }
+    }; 
+
+    var bankOneTimePayment = {
       name: 'BankDetails.MakePayment',
-      url: '/makePay?subCategory&payeeReferenceId',
+      url: '/makePayment',
       parent: 'BankDetails.transactions',
-      controller: 'OneTimePaymentController',
-      controllerAs: 'MakePaymentCtl',
-      templateUrl: basePath + '/features/Payment/oneTimePayment/action/OneTimePayment-partial.html',
+      template: '<make-payment-hub mode="ONE_TIME"></make-payment-hub>',
       params: {
         payeeReferenceId: '',
         subCategory: '',
@@ -143,76 +127,55 @@ define(['angular'], function(angular) {
       },
       resolve: {
         'getBillPayDependency': getBillPayDependency,
-        'cleanServiceDate': function(getBillPayDependency, AccountsService, PayeeDetailService, PaymentDetailService) {
-          AccountsService.deleteEligibleAccounts();
-          PayeeDetailService.deletePayeeDetail();
-          PaymentDetailService.deletePaymentDetail();
-        },
-        'getPayeeDetail': function(getBillPayDependency, PayeeDetailService, $stateParams) {
-          return PayeeDetailService.initializePayeeDetail(
-            $stateParams.payeeReferenceId,
-            $stateParams.accountReferenceId
-          );
-        },
-        'getEligibleAccounts': function(getBillPayDependency, AccountsService, $stateParams) {
-          return AccountsService.getEligibleAccountsRestCall($stateParams.subCategory);
-        }
+        'getEligibleAccounts': getEligibleAccounts,
+        'getPayeeDetail': getPayeeDetail
       }
-    };
+    }; 
 
-    var bankConfirmPayment = {
-      name: 'BankDetails.ConfirmPayment',
-      parent: 'BankDetails.transactions',
-      controller: 'ConfirmPaymentController',
-      controllerAs: 'ConfirmPaymentCtl',
-      templateUrl: basePath + '/features/Payment/oneTimePayment/confirmation/ConfirmPayment-partial.html',
-      params: {
-        subCategory: '',
-        actionType: ''
-      },
-      resolve: {
-        'getBillPayDependency': getBillPayDependency,
-        'test': function() {
-          return true;
-        }
-      }
-    };
-
-    var bankEditPaymentModalState = {
+    var bankEditPayment = {
+      // name: 'BillPay.EditPayment',
       name: 'BankDetails.EditPayment',
-      url: '/editPay?subCategory&transactionReferenceId',
+      url: '/editPayment?transactionReferenceId&paymentPlanReferenceId',
+      // parent: 'BillPay.PayeeList',
       parent: 'BankDetails.transactions',
-      controller: 'OneTimePaymentController',
-      controllerAs: 'MakePaymentCtl',
-      templateUrl: basePath + '/features/Payment/oneTimePayment/action/OneTimePayment-partial.html',
+      template: '<edit-payment-hub></edit-payment-hub>',
       params: {
         transactionReferenceId: '',
-        subCategory: '',
+        paymentPlanReferenceId: '',
+        payeeReferenceId: '',
         upcomingFocusId: ''
       },
       resolve: {
         'getBillPayDependency': getBillPayDependency,
-        'cleanServiceDate': function(getBillPayDependency, AccountsService, PayeeDetailService, PaymentDetailService) {
-          AccountsService.deleteEligibleAccounts();
-          PayeeDetailService.deletePayeeDetail();
-          PaymentDetailService.deletePaymentDetail();
-        },
-        'getPaymentDetail': function(getBillPayDependency, PaymentDetailService, $stateParams) {
-          return PaymentDetailService.getPaymentDetailRestCall(
-            $stateParams.transactionReferenceId,
-            $stateParams.accountReferenceId
-          );
-        },
-        'getPayeeDetail': function(getPaymentDetail, PaymentDetailService, PayeeDetailService) {
-          var paymentDetail = PaymentDetailService.getPaymentInfo();
-          return PayeeDetailService.initializePayeeDetailFromPaymentDetail(paymentDetail);
-        },
-        'getEligibleAccounts': function(getBillPayDependency, AccountsService, $stateParams) {
-          return AccountsService.getEligibleAccountsRestCall($stateParams.subCategory);
-        }
+        'getPaymentDetail': getPaymentDetail,
+        'getRecurringPaymentDetail': getRecurringPaymentDetail,
+        'getEligibleAccounts': getEligibleAccounts,
+        'getPayeeDetail': getPayeeDetailFromPaymentDetail
+      }
+    }; 
+
+    var bankCancelPayment = {
+      name: 'BankDetails.cancelPayment',
+      // name: 'BillPay.cancelPayment',
+      url: '/cancelRecurringPay?transactionReferenceId',
+      parent: 'BankDetails.transactions',
+      // parent: 'BillPay.PayeeList',
+      template: '<cancel-payment-hub></cancel-payment-hub>',
+      params: {
+        transactionReferenceId: '',
+        paymentPlanReferenceId: '',
+        upcomingFocusId: ''
+      },
+      resolve: {
+        'getBillPayDependency': getBillPayDependency,
+        'getPaymentDetail': getPaymentDetail,
+        'getRecurringPaymentDetail': getRecurringPaymentDetail,
+        'getEligibleAccounts': getEligibleAccounts
       }
     };
 
+
+    // payee
     var searchPayee = {
       name: 'BillPay.searchPayee',
       url: '/search',
@@ -312,60 +275,23 @@ define(['angular'], function(angular) {
       }
     };
 
-    var bankCancelPayment = {
-      name: 'BankDetails.cancelPayment',
-      url: '/cancelRecurringPay?subCategory&transactionReferenceId',
-      parent: 'BankDetails.transactions',
-      template: '<cancel-payment></cancel-payment>',
-      params: {
-        transactionReferenceId: '',
-        subCategory: '',
-        upcomingFocusId: '',
-        paymentPlanReferenceId: ''
-      },
-      resolve: {
-        'getBillPayDependency': getBillPayDependency,
-        'cleanServiceDate': function(
-          getBillPayDependency,
-          AccountsService,
-          PaymentDetailService,
-          RecurringPaymentDetailService) {
-          AccountsService.deleteEligibleAccounts();
-          PaymentDetailService.deletePaymentDetail();
-          RecurringPaymentDetailService.deleteRecurringPaymentDetail();
-        },
-        'getPaymentDetail': function(getBillPayDependency, PaymentDetailService, $stateParams) {
-          if (!$stateParams.transactionReferenceId) return;
-          if ($stateParams.paymentPlanReferenceId) return;
-          return PaymentDetailService.getPaymentDetailRestCall(
-            $stateParams.transactionReferenceId,
-            $stateParams.accountReferenceId
-          );
-        },
-        'getRecurringPaymentDetail': function(getBillPayDependency, RecurringPaymentDetailService, $stateParams) {
-          if (!$stateParams.paymentPlanReferenceId) return;
-          return RecurringPaymentDetailService.getRecurringPaymentDetailRestCall(
-            $stateParams.paymentPlanReferenceId,
-            $stateParams.accountReferenceId
-          );
-        },
-        'getEligibleAccounts': function(getBillPayDependency, AccountsService, $stateParams) {
-          return AccountsService.getEligibleAccountsRestCall($stateParams.subCategory);
-        }
-      }
-    };
-
+    
     // states for bill pay hub
     $stateProvider.state(billPay);
 
     $stateProvider.state(payeeList);
-    $stateProvider.state(billPayMakePayment);
-    $stateProvider.state(billPayConfirmPayment);
     $stateProvider.state(billPayError);
+    $stateProvider.state(bankBillPayError);
 
-    // recurring payment
+    // payment
+    $stateProvider.state(billPayOneTimePayment);
     $stateProvider.state(billPayRecurringPayment);
-    $stateProvider.state(billPayConfirmRecurringPayment);
+    $stateProvider.state(bankOneTimePayment);
+    $stateProvider.state(bankEditPayment);
+    $stateProvider.state(bankCancelPayment);
+
+    // E-Bill
+    $stateProvider.state(billPayEBillMarkAsPaid);
 
     // Add Payee Flows
     $stateProvider.state(searchPayee);
@@ -374,20 +300,14 @@ define(['angular'], function(angular) {
     $stateProvider.state(addPayeeAccountInfo);
     $stateProvider.state(addPayeeContactInfo);
     $stateProvider.state(addPayeeAcctNumberAsk);
-
     // Edit Payee Flow
     $stateProvider.state(editPayee);
-
-    // states for modal reuse
-    $stateProvider.state(bankMakePayment);
-    $stateProvider.state(bankConfirmPayment);
-    $stateProvider.state(bankEditPaymentModalState);
-    $stateProvider.state(bankCancelPayment);
-    $stateProvider.state(bankBillPayError);
-
     // Delete Payee Flows
     $stateProvider.state(deletePayee);
     $stateProvider.state(deletePayeeConfirm);
+
+
+    
 
     /*eslint-disable */
     function getBillPayDependency($ocLazyLoad) {
@@ -405,8 +325,8 @@ define(['angular'], function(angular) {
           basePath + '/features/hub/hub-controller.js',
           basePath + '/features/Error/ErrorHandler-services.js',
           basePath + '/features/Error/ErrorHandler-controller.js',
-          basePath + '/services/state-list-service.js',
-          basePath + '/services/feature-toggle-service.js',
+
+          basePath + '/services/ebill-service.js',
 
           basePath + '/components/common/utils-payeeNameFilter.js',
           basePath + '/components/common/utils-string.js',
@@ -414,6 +334,7 @@ define(['angular'], function(angular) {
           basePath + '/features/utils/disable-paste-directive.js',
           basePath + '/features/utils/input-masks-directive.js',
           basePath + '/BillPay-controller.js',
+          basePath + '/features/hub/hub-service.js',
 
           // Add Payee Flows
           basePath + '/features/Payee/SearchPayee/SearchPayee-controller.js',
@@ -430,15 +351,6 @@ define(['angular'], function(angular) {
           // Edit Payee
           basePath + '/features/Payee/EditPayee/EditPayee-controller.js',
 
-          basePath + '/features/Payment/oneTimePayment/action/OneTimePayment-controller.js',
-          basePath + '/features/Payment/oneTimePayment/confirmation/ConfirmPayment-controller.js',
-          basePath + '/features/Payment/oneTimePayment/oneTimePayment-Service.js',
-          basePath + '/features/Payment/datePicker/datepicker-service.js',
-          basePath + '/features/Payment/datePicker/paymentDate-Service.js',
-
-          basePath + '/features/Payment/paymentDetail/paymentDetail-service.js',
-          basePath + '/features/Payment/account/account-service.js',
-
           // Delete Payee Flows
           basePath + '/features/Payee/DeletePayee/action/DeletePayee-controller.js',
           basePath + '/features/Payee/DeletePayee/confirmation/ConfirmDeletePayee-controller.js',
@@ -448,48 +360,108 @@ define(['angular'], function(angular) {
           basePath + '/components/common/formatAmount-directive.js',
           basePath + '/components/common/memo-directive.js',
 
-          // recurring payment dependency
-          basePath + '/features/Payment/recurringPayment/recurringPayment-service.js',
-          basePath + '/features/Payment/recurringPayment/action/recurringPayment-controller.js',
-          basePath + '/features/Payment/recurringPayment/confirmation/confirmPayment-controller.js',
-          basePath + '/features/Payment/recurringPaymentDetail/recurringPaymentDetail-service.js',
-
-          // cancel payment dependency
-          basePath + '/features/Payment/cancelPayment/cancelOneTime-service.js',
-          basePath + '/features/Payment/cancelPayment/cancelRecurring-service.js',
-
           // components location
-          basePath + '/components/payment/common/billpayAmount/billpayAmount.component.js',
-          basePath + '/components/payment/cancelPayment/cancelPayment.component.js',
-          basePath + '/components/payment/cancelOneTime/cancelOneTimeConfirmation/cancelOneTimeConfirmation.component.js',
-          basePath + '/components/payment/cancelOneTime/cancelOneTimeAction/cancelOneTimeAction.component.js',
-          basePath + '/components/payment/cancelRecurring/cancelRecurringConfirmation/cancelRecurringConfirmation.component.js',
-          basePath + '/components/payment/cancelRecurring/cancelRecurringAction/cancelRecurringAction.component.js',
+          basePath + '/components/payment/paymentForm/recurringPayment/recurringPaymentConfirmation/recurringPaymentConfirmation.component.js',
+          // common
           basePath + '/components/common/submitButton/submitButton.component.js',
           basePath + '/components/common/radioGroup/radioGroup.component.js',
           basePath + '/components/common/infoList/infoList.component.js',
-          basePath + '/components/payment/common/emailNotifications/emailNotifications.component.js',
           basePath + '/components/common/checkboxList/checkboxList.component.js',
-          basePath + '/components/payment/common/lastPaymentAmount/lastPaymentAmount.component.js',
-          basePath + '/components/payment/common/payFrom/payFrom.component.js',
-          basePath + '/components/payment/common/amountInput/amountInput.component.js',
-          basePath + '/components/payment/common/frequencySelection/frequencySelection.component.js',
           basePath + '/components/common/dropdown/dropdown.component.js',
+          // payment
+          basePath + '/components/payment/common/selectFrequency/selectFrequency.component.js',
+          basePath + '/components/payment/common/confirmationCode/confirmationCode.component.js',
+          basePath + '/components/payment/common/emailNotifications/emailNotifications.component.js',
+          basePath + '/components/payment/common/lastPaymentAmount/lastPaymentAmount.component.js',
           basePath + '/components/payment/common/numberInput/numberInput.component.js',
           basePath + '/components/payment/common/stopPayment/stopPayment.component.js',
           basePath + '/components/payment/common/dateInput/dateInput.component.js',
+          basePath + '/components/payment/common/memoInput/memoInput.component.js',
+          basePath + '/components/payment/common/billpayDatepicker/billpayDatepicker.component.js',
+          basePath + '/components/payment/common/selectAccount/selectAccount.component.js',
+          basePath + '/components/payment/common/billpayAmount/billpayAmount.component.js',
+          basePath + '/components/payment/makePayment/makePaymentHub/makePaymentHub.component.js',
+          basePath + '/components/payment/paymentForm/oneTimePayment/oneTimePayment/components/oneTimeMain/oneTimeMain.component.js',
+          basePath + '/components/payment/paymentForm/oneTimePayment/oneTimePayment/oneTimePayment/oneTimePayment.component.js',
+          basePath + '/components/payment/paymentForm/oneTimePayment/oneTimeConfirmation/oneTimeConfirmation.component.js',
+          basePath + '/components/payment/paymentForm/recurringPayment/recurringPayment/components/recurringStopByPayments/recurringStopByPayments.component.js',
+          basePath + '/components/payment/paymentForm/recurringPayment/recurringPayment/components/recurringStopByDate/recurringStopByDate.component.js',
+          basePath + '/components/payment/paymentForm/recurringPayment/recurringPayment/components/recurringMain/recurringMain.component.js',
+          basePath + '/components/payment/paymentForm/recurringPayment/recurringPayment/recurringPayment/recurringPayment.component.js',
+          basePath + '/components/payment/editPayment/editRecurringHub/editRecurringHub.component.js',
+          basePath + '/components/payment/editPayment/editPaymentHub/editPaymentHub.component.js',
+          basePath + '/components/payment/cancelPayment/cancelPaymentHub/cancelPaymentHub.component.js',
+          basePath + '/components/payment/cancelPayment/cancelOneTime/cancelOneTimeConfirmation/cancelOneTimeConfirmation.component.js',
+          basePath + '/components/payment/cancelPayment/cancelOneTime/cancelOneTimeAction/cancelOneTimeAction.component.js',
+          basePath + '/components/payment/cancelPayment/cancelRecurring/cancelRecurringConfirmation/cancelRecurringConfirmation.component.js',
+          basePath + '/components/payment/cancelPayment/cancelRecurring/cancelRecurringAction/cancelRecurringAction.component.js',
+
+          // services location
+          basePath + '/services/common/state-list-service.js',
+          basePath + '/services/common/feature-toggle-service.js',
+          basePath + '/services/account/account.datasource.service.js',
+          basePath + '/services/account/account.util.service.js',
+          basePath + '/services/payment/paymentDate/paymentDate.util.service.js',
+          basePath + '/services/payment/oneTimePayment/oneTimePayment.datasource.service.js',
+          basePath + '/services/payment/oneTimePayment/oneTimePayment.util.service.js',
+          basePath + '/services/payment/recurringPayment/recurringPayment.datasource.service.js',
+          basePath + '/services/payment/recurringPayment/recurringPayment.util.service.js',
+
+          // eBill Components
+          basePath + '/components/ebill/markAsPaid/ebill-mark-as-paid.component.js',
 
           // Payee Components
           basePath + '/components/payee/payeeList/payee-list.component.js',
           basePath + '/components/payee/payeeAccountInfo/payee-account-info.component.js',
           basePath + '/components/payee/payeeSuccess/payee-success.component.js',
           basePath + '/components/payee/editPayeeContactInfo/edit-payee-contact-info.component.js',
+          basePath + '/components/payee/manage/manage.component.js',
 
           // bill pay filter
           basePath + '/components/common/formatStringDate.filter.js'
         ]
       });
       /*eslint-enable */
+    }
+
+    function getPaymentDetail(getBillPayDependency, OneTimePaymentDSService, $stateParams) {
+      OneTimePaymentDSService.deletePaymentInfo();
+      if (!$stateParams.transactionReferenceId) return;
+      return OneTimePaymentDSService.getOneTimePaymentDetail(
+        $stateParams.transactionReferenceId,
+        $stateParams.accountReferenceId
+      );
+    }
+
+    function getRecurringPaymentDetail(getBillPayDependency, RecurringPaymentDSService, $stateParams) {
+      RecurringPaymentDSService.deletePaymentInfo();
+      if (!$stateParams.paymentPlanReferenceId) return;
+      return RecurringPaymentDSService.getRecurringPaymentDetail(
+        $stateParams.paymentPlanReferenceId,
+        $stateParams.accountReferenceId
+      );
+    }
+    
+    function getEligibleAccounts(getBillPayDependency, AccountDSService, $stateParams) {
+      AccountDSService.clearData();
+      return AccountDSService.getAccountList($stateParams.subCategory);
+    }
+
+    function getPayeeDetail(getBillPayDependency, PayeeDetailService, $stateParams) {
+      PayeeDetailService.deletePayeeDetail();
+      return PayeeDetailService.initializePayeeDetail(
+        $stateParams.payeeReferenceId,
+        $stateParams.accountReferenceId
+      );
+    }
+
+    function getPayeeDetailFromPaymentDetail(getBillPayDependency, getPaymentDetail, PayeeDetailService, OneTimePaymentDSService, $stateParams) {
+      PayeeDetailService.deletePayeeDetail();
+      var paymentDetail = OneTimePaymentDSService.getPaymentDetail();
+      return PayeeDetailService.initializePayeeDetail(
+        paymentDetail.payeeInfo.payeeReferenceId,
+        $stateParams.accountReferenceId
+      );
     }
   });
 

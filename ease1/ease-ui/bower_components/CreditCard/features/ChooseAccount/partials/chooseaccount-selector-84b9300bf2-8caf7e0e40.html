@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/CreditCard/styles/card-override-d0ea6fe2a9-34f545de2b.css">
+<div ng-controller="ChooseAccountSelectorController as eSelector" id="chooseAccountSelector">
+  <ease-ui-modal close-modal="eSelector.closeLink()"
+       class="eSelector {{eSelector.modalInfo.modalType}}">
+    <div class="chooseAccountContainer">
+      <h2 aria-label="" tabindex="0" class="ca-header" translate>ease.card.chooseaccount.header</h2>
+
+      <button id="em-account-{{$index}}" class="ca-account-block" ng-repeat="cardAccount in eSelector.cardAccountContextDetails" tabindex="0"
+               ng-click="eSelector.selectedTile(cardAccount.campaignURL)" ng-class="{'active': eSelector.isSelectedTile(cardAccount.campaignURL)}">
+        <span id="ca-account-details-{{$index}}" class="ca-account-details">
+          <span id="ca-account-name-{{$index}}" class="ca-account-name">{{cardAccount.cardDetails.cardName}}</span>
+          <span id="ca-last-four-{{$index}}"  class="ca-last-four">...{{cardAccount.cardDetails.cardLastFour}}</span>
+        </span>
+      </button>
+
+      <div class="modal-footer">
+        <button id="ca-go-to-button" class="progressive" tabindex="0" ng-click="eSelector.goToUrl()" ng-disabled="!eSelector.selectedUrl" tabindex="0" translate>
+          ease.card.chooseaccount.choose.button
+        </button>
+      </div>
+
+      <div class="ca-escape-link-block" id="ca-escape">
+        <p id="ca-escape-text" class="ca-escape-text">
+          {{'ease.card.chooseaccount.notsure' | translate }}
+          <a id="ca-escape-link" class="ca-escape-link" ng-click="eSelector.escapeLink()" translate>
+            ease.card.chooseaccount.notsure.link</a>
+        </p>
+      </div>
+    </div>
+  </ease-ui-modal>
+</div>
+

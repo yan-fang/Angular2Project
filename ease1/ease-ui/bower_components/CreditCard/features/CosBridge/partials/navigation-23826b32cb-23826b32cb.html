@@ -1,0 +1,34 @@
+
+<section class="wrap cf">
+    <ul role="menubar" id="menubar">
+        <li id="mobile_nav_search" class="search">
+            <label for="mobile_search_input" class="offscreen">Ask your question here</label>
+            <input id="mobile_search_input" type="text" title="Ask your question here" alt="Ask your question here">
+            <a href="#" id="mobile_submit_search" class="submit_icon">Search</a>
+        </li>
+        <li id="mobile_nav_customer_name" class="account"><span>
+					{{navigation.name}}
+				</span></li>
+        <li class="divider"></li>
+        <li ng-repeat="section in navigation.menu.sections | filter:'!logout'" id="{{section.name}}" class="{{section.name}}">
+
+            <a translate href="{{section.url}}" aria-haspopup="{{section.hasEntries}}" id="{{section.name+'_link'}}" ng-click="publish.navClickEvent('nav:'+section.name)">{{'cos.headerfooter.nav.' + section.name + '.title.text'}}
+                <span translate id="{{section.name+'_link_tag'}}" ng-if="section.callout && ('cos.headerfooter.nav.'+section.name+'.callout.text')" class="tag red">{{'cos.headerfooter.nav.'+section.name+'.callout.text'}}</span>
+            </a>
+            <div ng-if="section.entries.length > 0" class="sub" role="menu" >
+                <ul class="cf">
+                    <li ng-repeat="entry in section.entries">
+                        <a href="{{entry.url}}" target="{{entry.target}}"  id="{{section.name+'_'+entry.name+'_link'}}" ng-click="publish.navClickEvent('nav:'+section.name+':'+entry.name+' dropdown')">
+                            <span translate>{{'cos.headerfooter.nav.'+section.name+'.'+entry.name+'.text'}}</span>
+                        <span translate id="{{section.name+'_'+entry.name+'_link_tag'}}" ng-if="entry.callout" class = "tag red right" >{{'cos.headerfooter.nav.'+section.name+'.'+entry.name+'.callout.text'}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="divider"></li>
+        <li ng-repeat="section in navigation.menu.sections|filter:'logout'" id="{{section.name}}" class="{{section.name}}">
+            <a translate href="{{section.url}}" aria-haspopup="{{section.hasEntries}}" id="{{section.name+'_link'}}">{{'cos.headerfooter.nav.'+section.name+'.title.text'}}</a>
+        </li>
+    </ul>
+</section>

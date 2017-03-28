@@ -1,0 +1,10 @@
+
+    <span class="globe"></span>
+    <a id="active-language" href="javascript:void(null);" class="active" aria-haspopup="true" aria-expanded="false" translate>{{selectedLanguage.label}}</a>
+
+    <span class="arrow"></span>
+    <ul class="dropdown">
+        <li  ng-repeat="language in languages"  ng-if="language.value!==selectedLanguage.value" >
+            <a ng-click="$event.preventDefault(); languageToggle(language.label, language.value);" id="{{language.value}}" href="javascript:void(null);" translate>{{language.label}}</a>
+        </li>
+    </ul>

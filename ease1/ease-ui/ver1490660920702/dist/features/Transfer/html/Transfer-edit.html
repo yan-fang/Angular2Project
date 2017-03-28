@@ -1,0 +1,138 @@
+<ease-ui-modal
+        close-modal="closeModal()"
+        modal-id="'transferEdit'"
+        modal-role="'document'"
+        modal-title="contentData['ease.core.transfer.edittransfer.label']"
+        class="transferModal"
+        back-button-options="backButtonOptions">
+  <div data-ng-class="{'blur-modal' : isLoading}">
+    <div class="loadingHolder">
+      <span id="modalLoading" data-ng-class="{'loading-grey' : isLoading && pending > 0}"></span>
+    </div>
+    <div ng-switch on='selectedView'>
+      <!-- Transer One time transfer view -->
+      <div ng-switch-when="one-time">
+        <form id="editTransferForm" name="editTransferForm" autocomplete="off" novalidate>
+          <div class="editTransferDetails">
+            <div class="transfer-summary-container">
+              <div class="transfer-summary-item" tabindex="0">
+                <span class="transfer-summary-label" id="frequencyLabel">{{contentData['ease.core.transfer.success.frequency.label']}}</span>
+                <span class="transfer-summary-details" id="frequencyResponse">{{contentData['ease.core.transfer.success.frequency.onetime.label']}}</span>
+              </div>
+              <div class="transfer-summary-item" tabindex="0">
+                <span class="transfer-summary-label" id="transferFromLabel">{{contentData['ease.core.transfer.form.transferacct.from.label']}}</span>
+                <span class="transfer-summary-details" id="transferFromResponse">{{editTransferData.fromAccount.displayName | limitTo:18}} <span class="transfer-summary-nowrap" data-ng-if="editTransferData.fromAccount.accountNumber">{{editTransferData.fromAccount.accountNumber}}</span></span>
+              </div>
+              <div class="transfer-summary-item" tabindex="0">
+                <span class="transfer-summary-label" id="transferToLabel">{{contentData['ease.core.transfer.form.transferacct.to.label']}}</span>
+                <span class="transfer-summary-details" id="transferToResponse">{{editTransferData.toAccount.displayName | limitTo:18}} <span class="transfer-summary-nowrap" data-ng-if="editTransferData.toAccount.accountNumber">{{editTransferData.toAccount.accountNumber}}</span></span>
+              </div>
+            </div>
+          </div>
+          <br/>
+          <div id="datePicker" class="form-container">
+            <label class="transfer-label" tabindex="0">{{contentData["ease.core.transfer.form.transdate.label"]}}</label>
+            <label class="transfer-sublabel" data-ng-if="showArriveOnDate" tabindex="0">Arrive By: {{arriveOnDate}}</label>
+            <div class="easeDatePicker">
+              <input
+                class="datePickerInput transfer-input"
+                tabindex="0"
+                type="text"
+                id="datePickerInputId"
+                data-ng-model="date"
+                data-ng-required="true"
+                aria-label="{{::contentData['ease.core.transfer.form.transdate.label']}}"
+                readonly="true">
+                <span tabindex="0"
+                      role="button"
+                      data-ng-click="open($event)"
+                      id="btnDatePicker"
+                      class="dateControlButton"
+                      aria-label="{{contentData['ease.core.transfer.form.calendar.label']}}"
+                      alt="{{contentData['ease.core.transfer.form.calendar.label']}}"
+                      title="{{contentData['ease.core.transfer.form.calendar.label']}}"
+                      focus-input="callback">
+                  <i class="icon-calendar"></i>
+                </span>
+              </input>
+            </div>
+          </div>
+          <div class="form-container">
+            <div data-ng-show="showRemainingLimit" class="transfer-sublabel transfer-sublabel-remaininglimit">
+    <span id="dailyLimitRemainingId" role="alert"
+          aria-label="{{::contentData['ease.core.transfer.amount.error.label']}} {{dailyLimitRemainingAmount | currency}}"
+          tabindex="0">
+      {{::contentData['ease.core.transfer.amount.error.label']}} {{dailyLimitRemainingAmount | currency}}
+    </span>
+              <span class="tooltip position" tabindex="0" aria-label="{{::contentData['ease.core.transfer.tooltip.notice.label']}} {{::contentData['ease.core.transfer.tooltip.limit.label']}} {{monthlyLimitRemainingAmount | currency}}"
+                    alt="{{::contentData['ease.core.transfer.tooltip.notice.label']}} {{::contentData['ease.core.transfer.tooltip.limit.label']}} {{monthlyLimitRemainingAmount | currency}}"
+                    data-content="{{::contentData['ease.core.transfer.tooltip.notice.label']}} {{::contentData['ease.core.transfer.tooltip.limit.label']}} {{monthlyLimitRemainingAmount | currency}}."
+                    tabindex="0">
+      <i class="icon-info-circle transferIconAmount"></i>
+    </span>
+            </div>
+          </div>
+            <ease-input input-type="amount"
+                        input-id="'editAmountInput'"
+                        input-val="amount.payAmount"
+                        label="::contentData['ease.core.transfer.form.amount.label']"
+                        static-content="amountStaticContent"
+                        memo-attrs="memoAttributes"
+                        has-error="amount.isInputInValid"
+                        error-msg="apiErrorMessage"
+                        error-status="errorStatus"
+                        char-limit="10">
+            </ease-input>
+
+          <button type="button"
+                  id="updateTransferBtn"
+                  data-ng-disabled="isTransferEnabled()"
+                  tabindex="0"
+                  data-ng-click="updateTransfer()"
+                  aria-labelledby="transfer-terms"
+                  class="transfer-button transfer-button-edit">
+              <span data-ng-class="{ loading: loadingClass }"></span>
+              <span> {{contentData['ease.core.transfer.updatetransfer.button.label']}} </span>
+          </button>
+          <div class="transfer-link-wrapper">
+            <span class="transfer-link"
+                  data-ng-if="showCancelLink"
+                  data-ng-click="cancelEditTransfer()"
+                  data-ng-class="{'disable-mouse-click' : loadingClass}"
+                  tabindex="0"
+                  role="button">
+                {{contentData['ease.core.transfer.canceltransfer.label']}}
+            </span>
+          </div>
+          <div id="transfer-terms" class="transfer-terms-message" ng-if="isTransferType">
+            {{ ::toggleTransferMessage }}
+          </div>
+        </form>
+
+      <!-- Transfer One time transfer view End -->
+      </div>
+      <!-- Transfer Date Picker View -->
+      <div ng-switch-when="date-picker">
+        <div>
+          <ease-calendar
+            class="transferDatePicker"
+            tabindex="-1"
+            data-ng-model="currentDate"
+            static-content = "i18nData"
+            data-ng-change="selectDate(currentDate)"
+            calendar-options="options">
+          </ease-calendar>
+          <button
+            type="button"
+            tabindex="0"
+            id="datePickerDoneButton"
+            data-ng-click="datePickerDone()"
+            class="button progressive datePickerDoneButton">Done
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Transfer Date Picker View End -->
+  </div>
+
+</ease-ui-modal>

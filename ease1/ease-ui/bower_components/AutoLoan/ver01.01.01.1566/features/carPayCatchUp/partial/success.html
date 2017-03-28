@@ -1,0 +1,50 @@
+<div ease-modal
+     modal-type="carPayCatchupConfirmationController.modalType"
+     toggle-close="carPayCatchupConfirmationController.close()"
+     class="car-pay-catch-up-modal cpcu-success">
+
+  <img class="cpcu-success-icon" src="/ease-ui/dist/images/modal-icons/modal-icon-success.svg" alt="" aria-hidden="true" />
+
+
+  <h2 id="modalTitle" class="modal-heading" data-ng-bind="carPayCatchupConfirmationController.i18n.coaf.carPayCatchUp.cpcuConfirmation.highFive.label.v1"></h2>
+  <p id="headerMessage" data-ng-bind="carPayCatchupConfirmationController.formattedConfirmationHeaderMessage"></p>
+
+  <section class="additional-information additional-information--underlined">
+    <h3 class="additional-information__group-heading screen-reader-only" data-ng-bind="carPayCatchupConfirmationController.i18n.coaf.carPayCatchUp.cpcuConfirmation.confirmationPaymentHeading.label.v1"></h3>
+  <div id="firstPayment" class="review-monthly-payments-group">
+
+    <h3 class="group-heading">
+      <span id="monthlyDayLabel" class="month-day-label" data-ng-bind="::carPayCatchupConfirmationController.firstPaymentDateLabel"></span>
+      <span id="paymentStatusSubmitted" class="month-day-label" data-ng-bind="carPayCatchupConfirmationController.i18n.coaf.carPayCatchUp.cpcuConfirmation.scheduledText.label.v1"></span>
+    </h3>
+
+  </div>
+
+
+
+  <div id="catchupPayment{{$index}}" class="review-monthly-payments-group" data-ng-repeat="payment in carPayCatchupConfirmationController.paymentsExcludingFirstPaymentList">
+    <h3 class="group-heading">
+      <span class="month-day-label" id="paymentDateInHeader{{$index}}">
+        <span id="paymentDateInHeaderMonth{{$index}}" class="month-label" ng-bind="payment.paymentDateFormatted"></span>
+        <span id="paymentdateLabel{{$index}}" data-ng-bind="::carPayCatchupConfirmationController.i18n.coaf.carPayCatchUp.labels.Payment.label.v1"></span>
+        <span id="paymentStatusScheduled" class="month-day-label" data-ng-bind="carPayCatchupConfirmationController.i18n.coaf.carPayCatchUp.cpcuConfirmation.scheduledText.label.v1"></span>
+      </span>
+    </h3>
+  </div>
+
+
+  <div class="cpcu-confirmation">
+    <div class="cpcu-confirmation__code-container">
+      <h3 id ="confirmationCode"class="cpcu-confirmation__code" data-ng-bind="carPayCatchupConfirmationController.firstPaymentConfirmationCode">
+      </h3>
+      <p id="confirmationCodeText" class="cpcu-confirmation__label" data-ng-bind="carPayCatchupConfirmationController.i18n.coaf.carPayCatchUp.cpcuConfirmation.confirmationCodeText.label.v1"></p>
+    </div>
+    <div class="cpcu-confirmation__button-container">
+      <button id ="printConfirmation" class="cpcu-confirmation__print-button" onclick="window.print()">
+        <span class="screen-reader-only" data-ng-bind="carPayCatchupConfirmationController.i18n.coaf.carPayCatchUp.cpcuConfirmation.screenReaderOnlyText.label.v1"></span>
+        <i id ="iconPrint" class="icon-print" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+  </section>
+</div>

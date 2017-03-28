@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/AutoLoan/ver01.01.01.1566/styles/auto-loan-override.css">
+<div data-ng-controller="AutoLoanPaymentSuccessController as success">
+  <div ease-modal toggle-close="success.close()" modal-role="success.modalRole" init-close="success.initClose" modal-class="success.modalClass"
+       modal-type="success.modalType" focus-id="focusId">
+
+    <h2 id="autoLoan.payoff.success.header"
+        aria-label="{{success.i18n.coaf.payment.payoffSuccess.successHeader.label.v1}}"
+        data-ng-bind="success.i18n.coaf.payment.payoffSuccess.successHeader.label.v1"></h2>
+
+    <h4 id="nickname" align="center" data-ng-bind="accountDetailsData.accountDetails | formatDisplayAccountNumber"
+        aria-label="{{accountDetailsData.accountDetails | formatDisplayAccountNumber}}"></h4>
+
+  <p class="successMessage" id="autoLoan.payoff.success.message"
+        aria-label="{{success.i18n.coaf.payment.payoffSuccess.successMessage.label.v1}}"
+        data-ng-bind="success.i18n.coaf.payment.payoffSuccess.successMessage.label.v1"></span>
+
+    <div class="payoffDetails">
+      <ul>
+        <li >
+          <label id="payFromLabel" data-ng-bind="success.i18n.coaf.payment.payoffSummary.payFromText.label.v1"></label>
+          <span id="payFrom" data-ng-bind="success.successMsg.payFromText"></span>
+        </li>
+        <li >
+          <label id="frequencyTypeLabel" data-ng-bind="success.i18n.coaf.payment.payoffSummary.payoffDate.label.v1"></label>
+          <span id="frequencyType" data-ng-bind="success.successMsg.paymentDate | date: 'longDate'"></span>
+        </li>
+        <li >
+          <label id="payAmountLabel" data-ng-bind="success.i18n.coaf.payment.payoffSummary.payoffAmount.label.v1"></label>
+          <span id="payAmount" data-ng-bind="success.successMsg.payoffAmount | currency"></span>
+        </li>
+      </ul>
+    </div>
+
+    <ul class="payoffSuccess">
+      <li >
+        <span id="autoLoan.payoff.success.note1"
+              data-ng-bind="success.i18n.coaf.payment.payoffSuccess.note1.label.v1"></span>
+      </li>
+    </ul>
+
+    <div class="confirmCode">
+      <span aria-label="{{success.i18n.coaf.payment.payoffSuccess.confirmationCode.label.v1}} {{success.successMsg.confirmCode}}">
+        <span id="autoLoan.payoff.success.code.value"
+              data-ng-bind="success.successMsg.confirmCode"></span>
+        <span id="autoLoan.payoff.success.code.label" class="confirmMsg"
+              data-ng-bind="success.i18n.coaf.payment.payoffSuccess.confirmationCode.label.v1">
+        </span>
+      </span>
+      <button id="print" tabindex="0" aria-label="print" class="print" onclick="window.print()">
+        <i class="icon-print"></i>
+      </button>
+    </div>
+
+
+    <div data-ng-show="success.isCancelPayoffLinkEnabled" class="cancelPayment">
+      <a href="" id="linkCancelPayoff" data-ng-click="success.cancelPayoffPayment()" tabindex="0"
+         aria-label="{{success.i18n.coaf.payment.payoffSuccess.payOffCancelLink.label.v1}}"
+         data-ng-bind="success.i18n.coaf.payment.payoffSuccess.cancelPayment.label.v1"></a>
+    </div>
+
+  </div>
+</div>

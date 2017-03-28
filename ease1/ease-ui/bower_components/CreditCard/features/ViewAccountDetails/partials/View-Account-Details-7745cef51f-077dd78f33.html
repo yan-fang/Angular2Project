@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/CreditCard/styles/card-override-d0ea6fe2a9-34f545de2b.css">
+<ease-ui-modal close-modal="closeModal()" role="list" tabindex="0" class="viewAccountDetails">
+  <div>
+    <h1 ng-if="accountDetailsData.accountDetails.cardAccount.nameInfo.nickname"
+      class="title"
+      role="listitem"
+      aria-label="{{accountDetailsData.accountDetails.cardAccount.nameInfo.nickname}}"
+      tabindex="0">
+      {{accountDetailsData.accountDetails.cardAccount.nameInfo.nickname}}
+    </h1>
+    <h1 ng-if="!accountDetailsData.accountDetails.cardAccount.nameInfo.nickname"
+      class="title"
+      role="listitem"
+      aria-label="{{accountDetailsData.accountDetails.cardAccount.nameInfo.productName}}"
+      tabindex="0">
+      {{accountDetailsData.accountDetails.cardAccount.nameInfo.productName}}
+    </h1>
+    <p class="account-additional subtitle"
+      role="listitem"
+      aria-label="{{'ease.card.l2page.detail.ellipses' | translate}}{{accountDetailsData.accountDetails.cardAccount.plasticIdLastFour}}"
+      tabindex="0">
+      {{'ease.card.l2page.detail.ellipses' | translate}}{{accountDetailsData.accountDetails.cardAccount.plasticIdLastFour}}
+    </p>
+  </div>
+
+  <div ng-repeat="data in  modalData.rows">
+    <div ng-repeat="items in data">
+      <div class="rowdata">
+        <span class="key"
+          data-isTitle={{items.value=='title'}}
+          role="listitem"
+          aria-label="{{items.label}}"
+          tabindex="0">
+          {{items.label}}
+        </span>
+        <span class="amt"
+          ng-show={{items.value!=='title'}}
+          role="listitem"
+          aria-label="{{items.value}}"
+          tabindex="0">
+          {{items.value}}
+        </span>
+      </div>
+    </div>
+  </div>
+</ease-ui-modal>

@@ -1,0 +1,27 @@
+<div ease-modal
+	modal-type="monthlyPaymentController.modalType"
+	toggle-close="monthlyPaymentController.close()"
+	modal-class="monthlyPaymentController.modalClass">
+
+	<h2 id="modalTitle" class="modal-heading" data-ng-bind="::monthlyPaymentController.i18n.coaf.carPayCatchUp.monthlyPayment.modalTitle.label.v1"></h2>
+
+	<p id="headerText" data-ng-bind="::monthlyPaymentController.headerText"></p>
+
+	<p class="tooltip" id="tooltipOne"
+		role="tooltip" tabindex="0" aria-describedby="tooltipOneTrigger"
+		title="{{::monthlyPaymentController.i18n.coaf.carPayCatchUp.monthlyPayment.tooltipOneText.label.v1}}">
+		<span id="tooltipOneTrigger"
+			data-ng-bind="::monthlyPaymentController.i18n.coaf.carPayCatchUp.monthlyPayment.tooltipOneTriggerText.label.v1"></span>
+		<i class='icon-info-circle' aria-hidden='true' role='presentation'></i>
+	</p>
+
+
+	<div class="button-container">
+		<button id="proceedToPay" class="btn progressive full-width" ng-disabled="monthlyPaymentController.disabled" data-ng-click="monthlyPaymentController.showPlanSummary()">
+			<div data-ng-class="{'loading':monthlyPaymentController.spinnerEnable}">
+				<span data-ng-bind="::monthlyPaymentController.i18n.coaf.carPayCatchUp.monthlyPayment.progressiveButtonText.label.v1"></span>
+			</div>
+		</button>
+		<button id="cancelToHalfPayment" class="btn progressive ghost full-width" data-ng-bind="::monthlyPaymentController.i18n.coaf.carPayCatchUp.monthlyPayment.cancelButtonText.label.v1" data-ng-click="monthlyPaymentController.chooseNo()"></button>
+	</div>
+</div>

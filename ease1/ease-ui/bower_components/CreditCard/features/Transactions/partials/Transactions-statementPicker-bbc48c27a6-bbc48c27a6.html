@@ -1,0 +1,16 @@
+<ease-ui-modal id="statementpicker-modal" close-modal="vm.closeModal()"  modal-id="statementpicker-modal" modal-title="::vm.statementPickerObj.title" class=cc-modal-icon-statement-picker">
+
+  <span class="statementPickerSpan" ng-if="!paramList.selectedStatement.month&&!paramList.empty" aria-label="{{::vm.statementPickerObj.noneSelectedText}}">
+   {{::vm.statementPickerObj.noneSelectedText}}
+  </span>
+  <span class="statementPickerSpan" ng-if="paramList.empty" aria-label="{{::vm.statementPickerObj.noStatementAvailableText}}">
+   {{::vm.statementPickerObj.noStatementAvailableText}}}
+  </span>
+  <span class="statementPickerSpan" ng-if="paramList.selectedStatement!=null">{{paramList.selectedStatement.title}}</span>
+  <hr>
+  <div class="statementPicker">
+  <ease-statement-picker  params="paramList"></ease-statement-picker>
+
+  <button class="statementPickerDone" data-ng-click="vm.done()" style="">  {{::vm.statementPickerObj.doneButtonLabel}} </button>
+  </div>
+</ease-ui-modal>

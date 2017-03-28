@@ -1,0 +1,79 @@
+<!--<link rel="stylesheet" href="/ease-ui/bower_components/HomeLoans/ver1490643033478/styles/home-loan-override.css">-->
+<div class="details _hl backgroundSizeFadeGrow">
+  <div class="container fadeInSlideUp" data-ng-if="on">
+    <ul class="info">
+      <li class="title">
+        <h1 id="homeLoanAccountName">
+          {{accountDetailsData.accountDetails.accountNickName}}
+        </h1>
+        <p id="loanType" class="account-additional">{{dynamicValues.value1}}</p>
+      </li>
+      <li id="totalPaymentDue" class="current" align="center" role="link"
+          aria-label="You have an total payment due of {{dynamicValues.value3}}">
+        <div ng-switch="accountDetailsData.features.paymentDueDetailsEnabled">
+          <a class="amount-l2" title="{{i18nHL.payment.ariaOpenPaymentDetailsPopupMessage}}" id="paymentDetailsModal" ng-switch-when="true" tabindex="0" data-ng-click="goToPaymentDetailsModal($event)" href>
+            <h2 id="totalPaymentDueText">{{dynamicLabels.label3}} <i class="icon-next"></i></h2>
+            <p class="amount">
+              <span id="dollarSym" class="symbol">$</span>
+          <span class="dollar">
+              {{dynamicValues.value3 | splitCurrency: 'true'}}
+          </span>
+              <span class="dot">.</span>
+              <span id="centAmt" class="cents">{{dynamicValues.value3 | splitCurrency: 'false'}}</span>
+            </p>
+          </a>
+          <span ng-switch-when="false">
+            <h2 id="totalPaymentDueText">{{dynamicLabels.label3}} <i class="icon-next"></i></h2>
+            <p class="amount">
+              <span id="dollarSym" class="symbol">$</span>
+            <span class="dollar" id="dollarAmt">
+                {{dynamicValues.value3 | splitCurrency: 'true'}}
+            </span>
+              <span class="dot">.</span>
+              <span id="centAmt" class="cents">{{dynamicValues.value3 | splitCurrency: 'false'}}</span>
+            </p>
+          </span>
+        </div>
+      </li>
+      <li class="pay"
+          aria-label="Your {{dynamicLabels.label4}} {{dynamicValues.value4 | date:'MMM'}} {{dynamicValues.value4 | date:'dd'}}">
+        <p id="paymentCorner" ng-show="accountDetailsData.features.paymentSetupEnabled">
+          <span id="paymentDue" >{{dynamicLabels.label4}} {{dynamicValues.value4 | date:'MMM' | uppercase}} {{dynamicValues.value4 | date:'d'}} </span>
+          <button role="button" aria-labelledby="makeAPaymentButtonLabel"
+                  title="{{i18nHL.payment.ariaMakeAPaymentPopupMessage}}" id="makeAPaymentButton" tabindex="0"
+                  class="ghost progressive" data-ng-click="PayNow($event,true);paymentInProgress();inProgress=true">
+            <div id="makePayment" data-ng-class="loadingPayment()">
+              <span id="makeAPaymentButtonLabel">Make a Payment</span>
+            </div>
+          </button>
+        </p>
+      </li>
+    </ul>
+    <ul id="extraAccntDetails" class="more">
+      <li class="account-info" >
+        <ul>
+          <li>Account #</li>
+          <li id="accountNumberValue"><div id="displayAccountNumberValue_TLNPI">{{accountDetailsData.accountDetails.accountNumber}}</div></li>
+        </ul>
+        <ul>
+          <li>{{dynamicLabels.label5}}</li>
+          <li id="interestRate"> {{dynamicValues.value5 | number:3}}%</li>
+        </ul>
+      </li>
+      <li class="limit">
+        <p id="principalBalanceInfo">{{dynamicValues.value2 | currency}} <span id="availCreditLabel">{{dynamicLabels.label2}}</span>
+        </p>
+      </li>
+      <li class="more-info">
+        <ul>
+          <li id="interestPaidYTDLabel">{{dynamicLabels.label6}}</li>
+          <li id="interestPaidYTDAmt">{{dynamicValues.value6 | currency}}</li>
+        </ul>
+        <ul>
+          <li id="principalPaidYTDLabel">{{dynamicLabels.label7}}</li>
+          <li id="principalPaidYTDAmt">{{dynamicValues.value7 |currency}}</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

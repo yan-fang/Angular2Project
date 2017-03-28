@@ -1,0 +1,29 @@
+<h1 id="cc-cashadvance-changepinsuccess-header" class="cash-advance-header">{{::'ease.card.cashadvance.changepinsuccess.header.text' | translate}}</h1>
+
+<div class="cash-advance-success-wrapper">
+<div id="cc-cashadvance-changepin-success-info" class="cash-advance-info" ng-if="cashAdvance.currentModal === 'changePinSuccess'">{{::'ease.card.cashadvance.changepinsuccess.info.text' | translate}}</div>
+<div id="cc-cashadvance-mailpin-success-info" class="cash-advance-info" ng-if="cashAdvance.currentModal === 'mailPinSuccess'">{{::'ease.card.cashadvance.mailpinsuccess.info.text' | translate}}</div>
+
+<div class="cash-advance-details-wrapper">
+  <div id="cc-cashadvance-detail-info" class="cash-advance-details-info">{{::'ease.card.cashadvance.changepinsuccess.details.info.text' | translate}}</div>
+  <ul>
+    <li id="cc-cashadvance-detail-info-bullet1" class="cash-advance-details-bullet">{{::'ease.card.cashadvance.changepinsuccess.details.bullet1.text' | translate}}</li>
+    <li id="cc-cashadvance-detail-info-bullet2" class="cash-advance-details-bullet">{{::'ease.card.cashadvance.fees.apr' | translate: {'aprpercentage' : cashAdvance.cashAdvanceAprPercent } }}</li>
+    <li id="cc-cashadvance-detail-info-bullet3" class="cash-advance-details-bullet" ng-if="cashAdvance.hasCAFee">{{::'ease.card.cashadvance.fees.details' | translate: {'minfee': cashAdvance.cashAdvanceMinFeeAmt, 'feepercentage': cashAdvance.cashAdvanceFeePercent} }}</li>
+    <li id="cc-cashadvance-detail-info-bullet4" class="cash-advance-details-bullet">{{::'ease.card.cashadvance.changepinsuccess.details.bullet2.text' | translate}}</li>
+    <li id="cc-cashadvance-detail-info-bullet5" class="cash-advance-details-bullet">{{::'ease.card.cashadvance.changepinsuccess.details.bullet3.text' | translate}}</li>
+  </ul>
+</div>
+<a class="cash-advance-nounderline-link" data-ng-click="cashAdvance.showFaq()" href="" tabindex="0">
+  <div class="cash-advance-faq-wrapper">
+    <i id="cc-cashadvance-faq-icon" class="cash-advance-info-icon icon-help"> </i>
+    <span id="cc-cashadvance-faq-text" class="cash-advance-faq-text">{{::'ease.card.cashadvance.faq.text' | translate}}</span>
+  </div>
+</a>
+<a id="cc-cashadvance-findatm-link"  class="cash-advance-nounderline-link" href="" data-ng-click="cashAdvance.openATMPage()" tabindex="0">
+  <div class="cash-advance-faq-wrapper">
+    <i id="cc-cashadvance-findatm-icon" class="cash-advance-info-icon icon-map-pin"></i>
+    <span id="cc-cashadvance-findatm-text" class="cash-advance-faq-text">{{::'ease.card.cashadvance.findatm.text' | translate}}</span>
+  </div>
+</a>
+</div>

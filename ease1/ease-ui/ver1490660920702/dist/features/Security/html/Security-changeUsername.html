@@ -1,0 +1,148 @@
+<ease-ui-modal close-modal="close()"
+               modal-title="::content['ease.core.security.usernamemodal.title.label']"
+               class="change-username-modal"
+               modal-id="changePUsernameModal">
+
+  <p>{{::content['ease.core.security.usernamemodal.subtitle.label']}}</p>
+
+  <form name="changeUsernameForm"
+        data-ng-submit="submitChangeUsername(user)">
+
+      <div class="username-input">
+
+      <label for="username">
+        {{::content['ease.core.security.usernamemodal.input.username.label']}}
+      </label>
+
+      <span class="icon-profile-outline"></span>
+
+      <input type="text"
+             id="username"
+             name="username"
+             data-ng-model="user.username"
+             data-ng-class="{'has-error' : (changeUsernameForm.username.$invalid && changeUsernameForm.username.$touched && !changeUsernameForm.username.$pristine)}"
+             data-ng-trim="false"
+             required
+             data-ng-minlength="6"
+             data-ng-maxlength="32"
+             no-spaces
+             one-letter
+             valid-password-char
+             data-ng-paste="$event.preventDefault()"
+             aria-describedby="usernameRequirements">
+
+      <span role="status"
+            data-ng-if="changeUsernameForm.username.$invalid && changeUsernameForm.username.$touched && !changeUsernameForm.username.$pristine"
+            class="icon-input-cancel"
+            aria-label="{{::content['ease.core.security.usernamemodal.rulenotmet.alttext.label']}}">
+      </span>
+
+      <span role="status"
+            data-ng-if="changeUsernameForm.newUsername.$valid"
+            class="icon-input-check"
+            aria-label="{{::content['ease.core.security.usernamemodal.rulemet.alttext.label']}}">
+      </span>
+    </div>
+
+    <div id="usernameRequirements" class="username-error-messages fadeIn" aria-live="polite" aria-atomic="true">
+      <h2>{{::content['ease.core.security.usernamemodal.rules.title.label']}}</h2>
+      <ul>
+        <li>
+          <i
+            data-ng-if="changeUsernameForm.username.$error.required || changeUsernameForm.username.$error.minlength || changeUsernameForm.username.$error.maxlength"
+            class="icon-input-cancel"
+            aria-label="{{::content['ease.core.security.usernamemodal.rulenotmet.alttext.label']}}"/>
+          <i
+            data-ng-if="!(changeUsernameForm.username.$error.required || changeUsernameForm.username.$error.minlength || changeUsernameForm.username.$error.maxlength)"
+            class="icon-input-check"
+            aria-label="{{::content['ease.core.security.usernamemodal.rulemet.alttext.label']}}"/>
+          <span>
+            {{::content['ease.core.security.usernamemodal.rules.rule1.label']}}
+          </span>
+        </li>
+        <li>
+          <i data-ng-if="changeUsernameForm.username.$error.oneLetter"
+             class="icon-input-cancel"
+             aria-label="{{::content['ease.core.security.usernamemodal.rulenotmet.alttext.label']}}"/>
+          <i data-ng-if="!changeUsernameForm.username.$error.oneLetter"
+             class="icon-input-check"
+             aria-label="{{::content['ease.core.security.usernamemodal.rulemet.alttext.label']}}"/>
+          <span>
+            {{::content['ease.core.security.usernamemodal.rules.rule2.label']}}
+          </span>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <i data-ng-if="changeUsernameForm.username.$error.noSpaces"
+             class="icon-input-cancel"
+             aria-label="{{::content['ease.core.security.usernamemodal.rulenotmet.alttext.label']}}"/>
+          <i data-ng-if="!changeUsernameForm.username.$error.noSpaces"
+             class="icon-input-check"
+             aria-label="{{::content['ease.core.security.usernamemodal.rulemet.alttext.label']}}"/>
+          <span>
+            {{::content['ease.core.security.usernamemodal.rules.rule3.label']}}
+          </span>
+        </li>
+        <li>
+          <i data-ng-if="changeUsernameForm.username.$error.validPasswordChar"
+             class="icon-input-cancel"
+             aria-label="{{::content['ease.core.security.usernamemodal.rulenotmet.alttext.label']}}"/>
+          <i data-ng-if="!changeUsernameForm.username.$error.validPasswordChar"
+             class="icon-input-check"
+             aria-label="{{::content['ease.core.security.usernamemodal.rulemet.alttext.label']}}"/>
+            <span>
+              {{::content['ease.core.security.usernamemodal.rules.rule4.label']}}
+            </span>
+        </li>
+      </ul>
+    </div>
+
+
+    <div class="password-input">
+
+      <label for="currentPasswordTLNPI">
+        {{::content['ease.core.security.usernamemodal.input.password.label']}}
+      </label>
+
+      <span class="icon-unlock"></span>
+
+      <input type="password"
+             id="currentPasswordTLNPI"
+             name="currentPasswordTLNPI"
+             data-ng-model="user.currentPasswordTLNPI"
+             data-ng-class="{'has-error' : (changeUsernameForm.currentPasswordTLNPI.$invalid && changeUsernameForm.currentPasswordTLNPI.$touched && !changeUsernameForm.currentPasswordTLNPI.$pristine)}"
+             required
+             data-ng-paste="$event.preventDefault()">
+
+      <span role="status"
+            data-ng-if="changeUsernameForm.currentPasswordTLNPI.$invalid && changePasswordForm.currentPasswordTLNPI.$touched && !changePasswordForm.currentPasswordTLNPI.$pristine"
+            class="icon-input-cancel"
+            aria-label="{{::content['ease.core.security.usernamemodal.rulenotmet.alttext.label']}}">
+      </span>
+      <span role="status"
+            data-ng-if="changeUsernameForm.currentPasswordTLNPI.$valid"
+            class="icon-input-check"
+            aria-label="{{::content['ease.core.security.usernamemodal.rulemet.alttext.label']}}">
+      </span>
+
+    </div>
+
+
+    <button id="submitChangeUsername"
+            name="submitChangeUsername"
+            type="submit"
+            aria-label="{{::content['ease.core.security.usernamemodal.input.submit.label']}}"
+            data-ng-disabled="changeUsernameForm.$invalid">
+
+      <span data-ng-class="loadingCSSClassName"></span>
+
+      <span>
+        {{::content['ease.core.security.usernamemodal.input.submit.label']}}
+      </span>
+
+    </button>
+
+  </form>
+
+</ease-ui-modal>

@@ -1,0 +1,20 @@
+<div class="ease-core-header" data-ng-class="{'back-button-present': headerCtrl.isBackButton, 'profile-option': !headerCtrl.isProfile}">
+  <div class="container">
+    <div data-ng-include="headerCtrl.headerOptions.backButtonPartial" class="backButton" data-ng-show="headerCtrl.isBackButton"></div>
+    <div class="logo-container" aria-label={{headerCtrl.contentData['ease.core.global.header.capone.logo.aria.label']}}>
+      <a data-ng-href={{headerCtrl.contentData['ease.core.global.header.capone.logo.link']}} data-ng-click="headerCtrl.sendButtonEvent()"
+        data-ng-keypress="headerCtrl.sendButtonEvent()" id="caplogo"
+          class="logo" atdd-id="logo" tabindex="0" target="_blank">
+        <img data-ng-src="{{headerCtrl.headerOptions.capOneIcon}}"
+             alt={{headerCtrl.contentData['ease.core.global.header.capone.logo.label']}}
+             title={{headerCtrl.contentData['ease.core.global.header.capone.logo.label']}}
+             role="heading">
+      </a>
+    </div>
+    <div class="main-nav" class="authenticated">
+      <div class="nav-profile-container" data-ng-include="headerCtrl.headerOptions.profileOptionsPartial" data-ng-show = "headerCtrl.isProfile"></div>
+    </div>
+    <div data-ng-include="headerCtrl.headerOptions.navAuthenticated" ></div>
+  </div>
+</div>
+

@@ -1,0 +1,52 @@
+<div>
+  <div class="customerSettingsContainer">
+    <section class="csHeader">
+      <div class="csLabel">
+        <h1 tabindex="0" aria-label="{{::$ctrl.alertsProfileLabels['ease.core.profiledropdown.messagesalerts.label']}}">
+          {{::$ctrl.alertsProfileLabels['ease.core.profiledropdown.messagesalerts.label']}}
+        </h1>
+      </div>
+    </section>
+  </div>
+  <ease-content-tile class="alerts-section">
+    <first-part>
+      <div aria-label="{{::$ctrl.alertsContentData['ease.core.alertsprefs.acctalerts.label'] }}"
+           id="{{::$ctrl.alertsContentData['ease.core.alertsprefs.acctalerts.label'] }}">
+        {{::$ctrl.alertsContentData["ease.core.alertsprefs.acctalerts.label"]}}
+      </div>
+    </first-part>
+    <second-part>
+      <div class="alertContainer" data-ng-if="$ctrl.isShowAlert(account)" data-ng-repeat="account in $ctrl.coafArray">
+        <div class="alertDetail">
+          <span
+            id="account_{{ $ctrl.trimAccountNumber(account['accountNumberTLNPI']) }}">{{ account['displayName'] }} ...{{ $ctrl.trimAccountNumber(account['accountNumberTLNPI']) }}</span>
+        </div>
+        <div class="editAlerts">
+          <i class="icon-pencil" data-ng-click="$ctrl.openAlertsModal(account)"
+             title="{{ ::$ctrl.alertsContentData['ease.core.alertsprefs.edittooltip.label'] }}"
+             data-ng-class="{ disableEditAccount : $ctrl.disablePencil }"
+             tabindex="0" id="editCoafPencil_{{$index}}" name="editPencil"
+             aria-label="{{ ::$ctrl.alertsContentData['ease.core.alertsprefs.edittooltip.label'] }}">
+          </i>
+        </div>
+      </div>
+      <div class="alertContainer" data-ng-if="$ctrl.isShowAlert(cardAccount)" data-ng-repeat="cardAccount in $ctrl.cardArray">
+          <div class="alertDetail">
+            <span
+              id="cardAccount{{ $ctrl.trimAccountNumber(cardAccount['accountNumberTLNPI']) }}">
+              {{ cardAccount['displayName']==='-- --'? cardAccount['originalProductName']:cardAccount['displayName'] }}
+              ...{{ $ctrl.trimAccountNumber(cardAccount['accountNumberTLNPI']) }}</span>
+          </div>
+          <div class="editAlerts">
+            <i class="icon-pencil" data-ng-click="$ctrl.openCardAlertsModal(cardAccount)"
+               data-ng-class="{ disableEditAccount : $ctrl.disablePencil }"
+               title="{{ ::$ctrl.alertsContentData['ease.core.alertsprefs.edittooltip.label'] }}"
+               tabindex="0" id="editCardPencil_{{$index}}" name="editPencil"
+               aria-label="{{ ::$ctrl.alertsContentData['ease.core.alertsprefs.edittooltip.label'] }}">
+            </i>
+          </div>
+      </div>
+    </second-part>
+  </ease-content-tile>
+</div>
+<div ui-view></div>

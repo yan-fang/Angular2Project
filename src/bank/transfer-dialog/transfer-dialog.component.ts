@@ -8,12 +8,12 @@ import { Angular1Ease } from '../../app/angular1ease/angular1ease.service'; // f
   selector: 'c1-transfer-dialog',
   template: ``,
   styles: [`
-    @import '/bower_components/EASECoreLite/styles/main.css';
-    @import '/bower_components/easeUIComponents/dist/ease-ui-components.css';
+    @import '/ease-ui/ver1490660920702/dist/styles/main.min.css';
+    @import '/ease-ui/ver1490660920702/bower_components/easeUIComponents/dist/ease-ui-components.css';
   `]
 })
 export class TransferDialogComponent implements OnInit, OnDestroy {
-  constructor(private upgrade: UpgradeModule, private angular1Ease: Angular1Ease) {}
+  constructor(private upgrade: UpgradeModule, private angular1Ease: Angular1Ease) { }
 
   ngOnInit() {
     prepareAngular1Ease(this.upgrade).then(() => {

@@ -1,0 +1,16 @@
+.select-account {
+	.input-group {
+    margin-bottom: 10px;
+
+    input[type="text"] {
+      border-color: $border-color;
+
+      padding: 10px;
+      font-size: 16px;
+      font-family: ProxReg;
+      color: $input-label;
+      line-height: 1.5em;
+    }
+  }
+}
+

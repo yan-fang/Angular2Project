@@ -1,0 +1,102 @@
+
+<accordion-drawer ng-if="accordionVM.isOpen($index)" close-on-scroll=true  is-open="accordionVM.isOpen($index)" aria-hidden="{{accordionVM.isOpen($index)?'false':'true'}}"
+                  class="drawer-max-height enhanced-transaction" accordion-open="accordionVM.accordionParent.accordionDrawerOpen()"
+                  accordion-close="accordionVM.accordionParent.accordionDrawerClose()">
+  <div class="cleansed-data">
+    <span ng-if="transaction.merchant.transactionAddress.addressLine1" class="single-line addressLine1">
+        {{::transaction.merchant.transactionAddress.addressLine1}}</span>
+    <span ng-if="transaction.merchant.transactionAddress.addressLine2" class="single-line addressLine2">
+        {{::transaction.merchant.transactionAddress.addressLine2}}</span>
+    <span class="single-line">
+      <span ng-if="::transaction.merchant.transactionAddress.locality"
+            class="locality">{{::transaction.merchant.transactionAddress.locality}}, </span>
+      <span ng-if="::transaction.merchant.transactionAddress.regionCode" class="regionCode">{{::transaction.merchant.transactionAddress.regionCode}} </span>
+      <span ng-if="::transaction.merchant.transactionAddress.postalCode" class="postalCode">{{::transaction.merchant.transactionAddress.postalCode}}</span>
+    </span>
+    <span ng-if="::transaction.merchant.phoneNumber"
+          class="single-line phoneNumber">{{::transaction.merchant.phoneNumber}}</span>
+
+    <a ng-if="::transaction.merchant.url" class="single-line-link link-blue merchantUrl"
+       href='{{::transaction.merchant.url}}'
+       ng-click="::accordionVM.accordionParent.handleLinkEvents($event, 'merchantLink', true)"
+       tabindex="{{accordionVM.isOpen($index)?0:-1}}"
+       aria-label="{{::accordionVM.accordionParent.i18nTranslate.opensNewWindowText}}">
+      {{::accordionVM.accordionParent.i18nTranslate.merchantWebsiteText}}
+    </a>
+
+    <table class="details-table">
+      <caption class="nodisplay">{{::accordionVM.accordionParent.i18nTranslate.datesListText}}
+      </caption>
+      <tr data-ng-hide="::accordionVM.accordionParent.shouldHidePurchasedDate(transaction)">
+        <td>
+          <span ng-if="::transaction.date" class="single-line prox-bold displayDateLabel">{{::accordionVM.accordionParent.i18nTranslate.purchasedText}}</span>
+        </td>
+        <td>
+          <span ng-if="::transaction.date" class="single-line displayDateValue">{{::accordionVM.accordionParent.translateDate(transaction.date)}}</span>
+        </td>
+      </tr>
+      <tr ng-if="::transaction.payFromAccount">
+        <td>
+          <span class="single-line prox-bold {{::paymentType}}PaymentSourceLabel"
+                ng-bind="::accordionVM.accordionParent.i18nTranslate.sourceText"></span>
+        </td>
+        <td>
+          <span class="single-line notWrap {{::paymentType}}PaymentSourceValue"
+                ng-bind="::transaction.payFromAccount.shortDisplayName"></span>
+        </td>
+      </tr>
+      <tr ng-if="::transaction.paymentChannel">
+        <td>
+          <span class="single-line prox-bold {{::paymentType}}PaymentChannelLabel"
+                ng-bind="::accordionVM.accordionParent.i18nTranslate.channelText"></span>
+        </td>
+        <td>
+          <span class="single-line notWrap {{::paymentType}}PaymentChannelValue"
+                ng-bind="::transaction.translatePaymentChannel"></span>
+        </td>
+      </tr>
+      <tr ng-if="::transaction.displayDate">
+        <td>
+          <span class="single-line prox-bold postedDateLabel">{{::accordionVM.accordionParent.i18nTranslate.postedText}}</span>
+        </td>
+        <td>
+          <span class="single-line postedDateValue">{{::accordionVM.accordionParent.translateDate(transaction.displayDate)}}</span>
+        </td>
+      </tr>
+      <tr ng-if="transaction.hasCardHolderName">
+        <td class="posted-purchased-by-label">
+          <span class="single-line prox-bold">Purchased By:</span>
+        </td>
+        <td>
+          <span class="single-line">{{:: transaction.cardholderName.first}} {{:: transaction.cardholderName.last}}</span>
+        </td>
+      </tr>
+    </table>
+
+    <span ng-if="::transaction.statementDescription" class="grey-out statementDescription"><b>{{::accordionVM.accordionParent.i18nTranslate.statementDescriptionText}} </b>{{::transaction.statementDescription}}</span>
+    <div ng-controller="ReportFraudProblemController as reportProblemController">
+      <span ng-if="reportProblemController.isReportProblemLinkEnabled(transaction)" class="single-line-link link-blue">
+          <a ng-click="reportProblemController.goToReportProblemModal(transaction)"
+            tabindex="{{accordionVM.isOpen($index)?0:-1}}"
+            aria-label="{{::accordionVM.accordionParent.i18nTranslate.disputeLinkText}}"
+            stop-event-prop href>
+              <i class="icon-megaphone"></i>
+              <span id="report_problem_link">{{::accordionVM.accordionParent.i18nTranslate.disputeLinkText}}</span>
+          </a>
+      </span>
+    </div>
+    <div ng-if="accordionVM.accordionParent.isChatEnabled" class="chat-container">
+      <span>
+        <a id="transactions_chat_link_{{::$index}}" href="" class="chat" data-ng-if="accordionVM.accordionParent.chatState.isChatAvailable" data-ng-click="accordionVM.accordionParent.openChatLink(transaction, $event)">
+        <img class="chat-icon" ng-src="{{accordionVM.accordionParent.chatIconSrc}}" alt="chat-icon" /> Chat</a>
+      </span>
+    </div>
+  </div>
+  <div ng-if="::transaction.hasGeoLocation" class="map-container"  ng-click="accordionVM.accordionParent.openGoogleMapModal(transaction, $event)" tabindex="{{accordionVM.isOpen($index)?0:-1}}">
+  <ease-ui-google-map lat="accordionVM.accordionParent.parseFloatValue(transaction.merchant.geoLocation.latitude)"
+                      long="accordionVM.accordionParent.parseFloatValue(transaction.merchant.geoLocation.longitude)"
+                      is-street-view="false"
+                      zoom="15" static-map="true" size="400x250"
+  ></ease-ui-google-map>
+  </div>
+</accordion-drawer>

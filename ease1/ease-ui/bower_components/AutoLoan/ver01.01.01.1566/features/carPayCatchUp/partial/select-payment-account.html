@@ -1,0 +1,25 @@
+<div ease-modal
+     modal-type="selectPaymentAccountController.modalType"
+     toggle-close="selectPaymentAccountController.close()"
+     modal-class="selectPaymentAccountController.modalClass"
+     class="cpcu-plan-summary select-account">
+  <h2 id="modalTitle" class="modal-heading"
+      data-ng-bind="::selectPaymentAccountController.i18n.coaf.carPayCatchUp.selectPaymentAccount.modalTitle.label.v1"></h2>
+  <p id="selectPaymentModelDescription" data-ng-bind="::selectPaymentAccountController.i18n.coaf.carPayCatchUp.selectPaymentAccount.description.label.v1"></p>
+
+  <form name="ummForm" id="ummform" key-Press-Event="{{id}}">
+
+    <div class="form-container">
+      <ease-dropdown  id="payFrom" label-id="'PaymentAccount'" no-place-holder="selectPaymentAccountController.placeHolderFrom" is-valid="selectPaymentAccountController.isValidDirective.from" label-txt="selectPaymentAccountController.i18n.coaf.payment.paymentModal.payFrom.label.v1" bind-data="selectPaymentAccountController.from" widget-id="'accountDd'" type="'accountDd'" localize="selectPaymentAccountController.i18nCore" service="selectPaymentAccountController.service" focus='true'></ease-dropdown>
+      <span aria-hidden="true" data-ng-if="!selectPaymentAccountController.from" data-ng-click="selectPaymentAccountController.clickOnElement('accountDd')" class="dropdown-placeholder" data-ng-bind="::selectPaymentAccountController.i18n.coaf.payment.paymentModal.accountWatermark.label.v1"></span>
+    </div>
+
+    <div class="button-container">
+      <button id="reviewPlanButton" class="btn progressive full-width" data-ng-disabled="selectPaymentAccountController.disabled || selectPaymentAccountController.verifyAccountSelection()" data-ng-click="selectPaymentAccountController.proceed()">
+        <div data-ng-class="{'loading':selectPaymentAccountController.spinnerEnable}">
+          <span data-ng-bind="::selectPaymentAccountController.i18n.coaf.carPayCatchUp.selectPaymentAccount.reviewPlanButton.label.v1"></span>
+        </div>
+      </button>
+    </div>
+  </form>
+</div>

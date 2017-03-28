@@ -1,0 +1,105 @@
+<ul>
+    <li class="transaction-entry autopay-entry" tabindex="0" ng-if="accordionVM.accordionParent.showAutoPaySeries()">
+        <p id="autopayDataRow" class="transactions-data-row autopay-row" role="row">
+            <span id="autopayScheduled" role="gridcell" class="transactions-date autopay-scheduled" translate>ease.card.l2page.scheduledPayment.scheduled.text</span>
+            <span class="transactions-icon autopay-icon">
+            <img id="autopayIcon" role="gridcell" cc-icon ng-src="{{accordionVM.accordionParent.autopayImageSRC}}">
+            </span>
+            <span id="autopayName" class="transactions-name autopay-name">
+                <span id="autopayFromAccount" class="transactions-description autopay-from-account"
+                      ng-bind="::'ease.card.l2page.autopay.description.text' | translate: {'shortDisplayName':accordionVM.accordionParent.getAutoPaySeries().payFromAccount.shortDisplayName}">
+                </span>
+
+                <span id="manageAutopayLink" ng-if="accordionVM.accordionParent.isAutoPayEligible" class="transactions-action-items autopay-items">
+                    <span tabindex="0" role="gridcell" class="transactions-cancel-action">
+                        <a ng-click="accordionVM.accordionParent.goToAutoPay($event, 'manageAutoPay');" tabindex="0"
+                           id="manageAutoPayInstanceLink" class="autopay-link"
+                           aria-label="{{::accordionVM.accordionParent.i18nTranslate.manageAutoPayLink}}" href>
+                            <i class="icon-cycle"></i>{{::accordionVM.accordionParent.i18nTranslate.manageAutoPayLink}}
+                        </a>
+                    </span>
+                </span>
+            </span>
+
+            <span id="autopayAmountDetails" class="transactions-amount-details autopay-type">
+              <span id="autopayAmountType" role="gridcell" class="transactions-amount autopay-type"
+                    ng-bind="accordionVM.accordionParent.getAutoPaySeriesAmountTypeContent() | translate"></span>
+            </span>
+        </p>
+    </li>
+
+    <li class="transaction-entry"
+        tabindex="0"
+        data-ng-repeat="transaction in accordionVM.accordionElements | filterTransactions:accordionVM.accordionParent.filterParams.searchText:accordionVM.accordionParent.searchPaymentProps | orderBy:'paymentDate'"
+        id="scheduledTransaction{{$index}}"
+        ng-class="accordionVM.getDrawerClass($index)"
+        ng-click="accordionVM.setOpenIndex($index)" aria-expanded="{{accordionVM.isOpen($index)?'true':'false'}}">
+        {{ transaction.moreInfoDisplayLogic }}
+        <p class="transactions-data-row" role="row">
+            <span role="gridcell" class="transactions-date">
+              {{::transaction.displayDateText}}
+                <span role="gridcell" class="day">{{transaction.formattedDisplayDateText}}</span>
+            </span>
+
+            <span id="transaction_icon_{{$index}}" role="gridcell" cc-icon class="transactions-icon" ng-class="accordionVM.getDrawerClass($index)"
+              transaction="transaction"></span>
+
+            <span class="transactions-name">
+                <span id="transaction_name_{{$index}}" class="transactions-description">
+                    <span class="transaction-description-prefix" translate>
+                        {{::transaction.descriptionPrefixText}}
+                    </span>
+                    {{::transaction.descriptionText}}
+                </span>
+
+                <span class="transactions-action-items">
+                    <span role="gridcell" class="transactions-in-process-action"
+                          ng-if="::(transaction.paymentHelper.isInProcess)">
+                      <ease-tooltip id="cc-in-process-link"
+                                    tip-message="transaction.paymentHelperToolTipMsgTranslated"
+                                    options="accordionVM.accordionParent.inProcessTooltipOptions" />
+                    </span>
+
+                    <span role="gridcell" class="transactions-more-info-action"
+                          ng-class="{'transactions-more-info-action-edit': transaction.paymentHelper.isModifiable && !transaction.paymentHelper.isEditable}"
+                          ng-if="::transaction.showToolTip">
+
+                      <ease-tooltip id="cc-more-info-link"
+                                    tip-message="transaction.paymentHelperToolTipMsgTranslated"
+                                    options="accordionVM.accordionParent.moreInfoTooltipOptions" />
+                    </span>
+
+                    <span role="gridcell" class="transactions-edit-action"
+                          ng-if="::transaction.paymentHelper.isEditable">
+                      <a id="cc-edit-modal-link" tabindex="0"
+                        ng-click="accordionVM.accordionParent.editPayment($event, transaction);"
+                        aria-label="{{accordionVM.accordionParent.i18nTranslate.scheduledPaymentEditLinkAriaLabelText}}"
+                        stop-event-prop>
+                          <i class="icon-pencil"></i>
+                          <span id="edit_{{$index}}" translate>ease.card.l2page.scheduledPayment.edit.link.text</span>
+                      </a>
+                    </span>
+
+                    <span tabindex="0" role="gridcell" class="transactions-cancel-action"
+                          ng-if="::transaction.paymentHelper.isCancellable">
+                      <a id="cc-cancel-modal-link" tabindex="0"
+                        ng-click="accordionVM.accordionParent.cancelPayment($event, transaction);"
+                        aria-label="{{::accordionVM.accordionParent.i18nTranslate.scheduledPaymentCancelLinkAriaLabelText}}"
+                        stop-event-prop>
+                          <i class="icon-canceled"></i>
+                          <span id="cancel_{{$index}}" translate>ease.card.l2page.scheduledPayment.cancel.link.text</span>
+                      </a>
+                    </span>
+                </span>
+            </span>
+
+            <span class="transactions-amount-details">
+              <span id="amount_{{$index}}" role="gridcell" class="transactions-amount pendingCreditTransaction">{{::transaction.paymentAmountCurrency}}</span>
+            </span>
+        </p>
+
+        <div
+                data-ng-include="'/ease-ui/bower_components/CreditCard/features/Transactions/partials/transaction-templates/CreditCard-PaymentsAccordion-d74208cffc-d74208cffc.html'"
+                stop-event-prop></div>
+    </li>
+</ul>

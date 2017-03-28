@@ -1,0 +1,26 @@
+<div class="helloContainer">
+  <section id="humanity" data-ng-include="summary.bannerUrl" class="my-slide-animation backgroundSizeFade" data-ng-class="{'defaultBgImg': summary.greeting.showDefaultBgImg}" ng-animate-children></section>
+</div>
+<div data-ng-include="summary.accountsUrl" class="container accounts modules fadeIn"></div>
+<div class="container">
+  <div class="easeFrameWidgetHolder">
+      <div class="easeFrameWidget"
+           data-ng-class="{ 'account-disable': summary.isButtonClicked }"
+           data-ng-click="summary.showATMFinder($index)"
+           data-ng-if="summary.isShowATMFinderButton()"
+           tabindex="0"
+           id="atmFinderId"
+           aria-label="{{::summary.contentData['ease.core.widget.atmfinder.thnheader.label']}}">
+        <div class="titlebar">
+          <img class="iconStyle"
+               alt="{{::summary.contentData['ease.core.widget.atmfinder.iconalt.label']}}"
+               data-ng-src="{{::summary.contentData['ease.core.widget.atmfinder.icon.image']}}"/>
+          <span class="iconLabel">{{::summary.contentData['ease.core.widget.atmfinder.thnheader.label']}}</span>
+      </div>
+      <div class="contentholder">
+      </div>
+    </div>
+  </div>
+</div>
+<div ui-view ng-animate-children></div>
+<div id="tfsButton" class="chat-button-account-summary"></div>

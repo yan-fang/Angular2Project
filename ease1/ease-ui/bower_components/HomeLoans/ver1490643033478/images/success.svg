@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>Success</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Success">
+            <path d="M100,50 C100,77.614 77.614,100 50,100 C22.386,100 0,77.614 0,50 C0,22.386 22.386,0 50,0 C77.614,0 100,22.386 100,50" id="Fill-1" fill="#10BD1B"></path>
+            <path d="M40.1125,71.4381335 C39.7825,71.4381335 39.4665,71.3071335 39.2335,71.0741335 L24.3645,56.2051335 C23.8785,55.7191335 23.8785,54.9321335 24.3645,54.4461335 C24.8495,53.9601335 25.6375,53.9601335 26.1225,54.4461335 L40.0495,68.3721335 L73.8655,29.4281335 C74.3205,28.9101335 75.1025,28.8541335 75.6225,29.3041335 C76.1395,29.7561335 76.1955,30.5401335 75.7465,31.0601335 L41.0525,71.0101335 C40.8245,71.2701335 40.5015,71.4261335 40.1565,71.4381335 L40.1125,71.4381335 Z" id="Fill-3" fill="#FFFFFF"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,102 @@
+<div id="modal-compile-container" compile-error-modal></div>
+<div class="details _credit-card backgroundSizeFadeGrow" ng-show="platformId !== 'cos-bridge'"  data-ng-style="bgImageStyle">
+    <div class="container fadeInSlideUp extensibility-details" data-ng-if="on">
+        <ul class="info">
+            <li class="title" role="listitem" aria-label="{{accountDetailsData.accountDetails.cardAccount.cardName}}
+            {{'ease.card.l2page.detail.cardName.label' | translate}} {{accountDetailsData.accountDetails.cardAccount.plasticIdLastFour}}">
+
+            <img class="logo-image" alt="card logo image" ng-if="logoImageURL" ng-src= "{{logoImageURL}}"/>
+            <h1 ng-if="!logoImageURL" class="heroProductLabelStyle">{{heroProductLabel}}</h1>
+
+            <p class="account-additional">{{heroProductDescriptionLabel}}{{'ease.card.l2page.detail.ellipses' | translate}}{{accountDetailsData.accountDetails.cardAccount.plasticIdLastFour}}</p>
+            <span data-ng-if="viewOnlineTerms">
+                <a tabindex="0" class="viewAccDetailsLinkStyle" data-ng-click="viewOnlineTermsDetailsModal()"  aria-label="{{'ease.card.l2page.detail.viewaccountdetails.text' | translate}}" href>
+                    <i class="icon-info-circle"></i>
+                    <span id="viewAccountDetailsText">{{'ease.card.l2page.detail.viewaccountdetails.text' | translate}}</span>
+                </a>
+            </span>
+            <span data-ng-if="viewAccountDetails && !viewOnlineTerms">
+                <a tabindex="0" class="viewAccDetailsLinkStyle" data-ng-click="viewAccountDetailsModal()"  aria-label="{{'ease.card.l2page.detail.viewaccountdetails.text' | translate}}" href>
+                    <i class="icon-info-circle"></i>
+                    <span id="viewAccountDetailsText">{{'ease.card.l2page.detail.viewaccountdetails.text' | translate}}</span>
+                </a>
+            </span>
+            </li>
+            <li class="current" role="listitem" aria-label="{{'ease.card.l2page.detail.currentBalance.text' | translate}} {{accountDetailsData.accountDetails.cardAccount.currentBalance}}">
+                <h2 id="currentBalanceLabel">{{'ease.card.l2page.detail.currentBalance.text' | translate}}</h2>
+                <p class="amount notWrap" cc-currency amount="accountDetailsData.accountDetails.cardAccount.currentBalance" id="currentBalance">
+                </p>
+            </li>
+            <li class="pay" role="listitem">
+                <p>
+                    <span class="txtOutsideBtnStyle" data-ng-if="hasTextAboveButton" tabindex="0" id="textAboveButton">
+                      {{textAboveButton}}
+                    </span>
+                    <span class="txtOutsideBtnStyle" data-ng-if="!hasTextAboveButton&&accountDetailsData.accountDetails.cardAccount.lastStatement.date">
+                        <span id="minLabel">{{'ease.card.l2page.detail.minLabel.text'| translate}} </span>
+                        <span id="minAmt">{{accountDetailsData.accountDetails.cardAccount.minimumPayment.amount | creditCardCurrency}}</span>
+                        <span id="minDueLabel">{{'ease.card.l2page.detail.minDueLabel.text'| translate}}</span>
+                        <span id="minDate">{{internationalizeMinDate(accountDetailsData.accountDetails.cardAccount.minimumPayment.date)}}</span>
+                    </span>
+                    <button tabindex="0" ng-if="makePaymentToggle"  id="payBillBtn" data-ng-style="payBillBtnStyle" class="ghost progressive" data-ng-click="actionButton($event)" >
+                        <div class="cc-spinner">
+                            <span>
+                                {{buttonText}}
+                            </span>
+                        </div>
+                    </button>
+                    <a href="https://www.capitalone.com/lp/delinquent-cardholder-information/" target="_blank" id="disclosureLink"  class="txtOutsideBtnStyle" data-ng-if="isEntitlementMessage()"
+                    data-ng-click="::handleLinkEvents($event, 'disclosuresLink', true)" href>
+                        {{'ease.card.l2page.detail.disclosuresLink.text' | translate}}
+                    </a>
+                </p>
+            </li>
+        </ul>
+        <ul class="more">
+            <li class="additional" role="listitem" cc-rewards
+                rewards="accountDetailsData.accountDetails.cardAccount.reward"></li>
+            <li id="availableCreditListItem" class="limit" role="listitem" aria-label="{{'ease.card.l2page.detail.availCreditLabel.label' | translate}}{{accountDetailsData.accountDetails.cardAccount.availableCredit | currency}}"
+            data-ng-hide="accountDetailsData.accountDetails.cardAccount.grantedAccessMessages && !entitlementMessageLocationToggle">
+                <p id="availableCreditAmt" data-ng-if="hasAvailCredit" aria-label="{{'ease.card.l2page.detail.availCreditLabel.text' | translate}}{{accountDetailsData.accountDetails.cardAccount.availableCredit | currency}}">{{accountDetailsData.accountDetails.cardAccount.availableCredit | currency}}
+                <span id="availCreditLabel">{{'ease.card.l2page.detail.availCreditLabel.text' | translate}}</span></p>
+
+                <p id="availableCreditNA" data-ng-if="!hasAvailCredit" aria-label="{{'ease.card.l2page.detail.availCreditLabel.text' | translate}}{{accountDetailsData.accountDetails.cardAccount.availableCredit | currency}}">N/A
+                <span id="availCreditLabelNA">{{'ease.card.l2page.detail.availCreditLabel.text' | translate}}</span></p>
+
+            </li>
+            <li class="limit" role="listitem" data-ng-if="accountDetailsData.accountDetails.cardAccount.grantedAccessMessages && !entitlementMessageLocationToggle">
+                <p id="entitled-availcredit-msg" class="entitled-message" aria-label="{{accountDetailsData.accountDetails.cardAccount.grantedAccessMessages}}">  <span>{{accountDetailsData.accountDetails.cardAccount.grantedAccessMessages}}</span></p>
+            </li>
+
+            <li class="more-info" role="listitem" aria-label="{{'ease.card.l2page.detail.lastStatement.balance.label.1' | translate}}{{accountDetailsData.accountDetails.cardAccount.lastStatement.balance | creditCardCurrency}}{{'ease.card.l2page.detail.lastStatement.balance.label.2' | translate}}{{accountDetailsData.accountDetails.cardAccount.creditLimit | currency:undefined:0}}">
+                <ul data-ng-if="accountDetailsData.accountDetails.cardAccount.lastStatement.date">
+                    <li id="lastStatementLabel">{{'ease.card.l2page.detail.lastStatementLabel.text' | translate}}</li>
+                    <li id="lastStatementAmt">{{accountDetailsData.accountDetails.cardAccount.lastStatement.balance | creditCardCurrency}}</li>
+                </ul>
+                <ul>
+                    <li id="creditLineLabel">{{'ease.card.l2page.detail.creditLineLabel.text' | translate}}</li>
+                    <li id="creditLineAmt">{{accountDetailsData.accountDetails.cardAccount.creditLimit | currency:undefined:0}}</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="messages" data-ng-class="noMudFlapMsgs">
+        <div  class="container extensibility-details">
+            <ul>
+                <li data-ng-if="accountDetailsData.accountDetails.cardAccount.grantedAccessMessages && entitlementMessageLocationToggle" id="entitled-availcredit-mudflap-msg" class="alert" aria-label="{{accountDetailsData.accountDetails.cardAccount.grantedAccessMessages}}" role="alert" tabindex="0">
+                    <i id="past-due-availcredit-mudflap-icon" class="icon-exclamation-filled"></i>
+                    <span id="pdMessage">{{pdContentOneText}}<link-event></link-event></span>
+                </li>
+                <li data-ng-if="haMode" class="alert" id="ha-mode-msg-id" role="alert" tabindex="0">
+                    <i id="ha-mode-mudflap-icon" class="icon-exclamation-filled"></i>
+                    {{'ease.card.l2page.details.hamode.part.one.text' | translate}} {{haAsOfDate | date:'MMM dd':'UTC'}}
+                  {{'ease.card.l2page.details.hamode.part.two.text' | translate}} {{haAsOfDate | date:'hh:mm a':'UTC'}}.
+                </li>
+                <li class="alert" data-ng-repeat="message in flapMessages" id="Message{{$index+1}}"
+                    aria-label="{{message.message}}" ng-if="useMessagingMudflapToggle && isMessageShown(message.message)"> {{message.message}}
+                    <a data-ng-click="mudflapMessageClick(message, $event)" ng-if="message.msgLink" href="" id="Message{{$index+1}}_internal"> {{message.msgLink.value}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

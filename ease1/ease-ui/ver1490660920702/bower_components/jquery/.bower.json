@@ -1,0 +1,13 @@
+{
+  "name": "jquery",
+  "version": "2.1.3",
+  "_release": "2.1.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.1.3",
+    "commit": "1fd791e1d3f8ee61fa3268cba768b6fc65739ed6"
+  },
+  "_source": "https://github.kdc.capitalone.com/bower-dependencies/jquery.git",
+  "_target": "2.1.3",
+  "_originalSource": "https://github.kdc.capitalone.com/bower-dependencies/jquery.git"
+}

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="102px" height="102px" viewBox="0 0 102 102" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Fraudster icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="49" cy="49" r="48.0180664"></circle>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-3" y="-3" width="102.036133" height="102.036133">
+            <rect x="-2.01806641" y="-2.01806641" width="102.036133" height="102.036133" fill="white"></rect>
+            <use xlink:href="#path-1" fill="black"></use>
+        </mask>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-3" y="-3" width="102.036133" height="102.036133">
+            <rect x="-2.01806641" y="-2.01806641" width="102.036133" height="102.036133" fill="white"></rect>
+            <use xlink:href="#path-1" fill="black"></use>
+        </mask>
+        <path d="M41.9365234,0 C18.7758203,0 0,18.7758203 0,41.9365234 L0,41.9365234 C0,65.0972266 18.7758203,83.8730469 41.9365234,83.8730469 L41.9365234,83.8730469 C65.0972266,83.8730469 83.8730469,65.0972266 83.8730469,41.9365234 L83.8730469,41.9365234 C83.8730469,18.7758203 65.0972266,0 41.9365234,0 Z" id="path-5"></path>
+        <polygon id="path-7" points="0 83.8730469 83.8730469 83.8730469 83.8730469 0 0 0"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Fraudster-icon" transform="translate(2.000000, 2.000000)">
+            <g id="Page-1">
+                <mask id="mask-3" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="Mask" stroke="#FFFFFF" mask="url(#mask-2)" stroke-width="6">
+                    <use mask="url(#mask-4)" xlink:href="#path-1"></use>
+                </g>
+                <g mask="url(#mask-3)">
+                    <path d="M100,50 C100,77.614 77.614,100 50,100 C22.386,100 0,77.614 0,50 C0,22.386 22.386,0 50,0 C77.614,0 100,22.386 100,50" id="Fill-1" fill="#273B49"></path>
+                    <g id="Group-7" transform="translate(7.425781, 8.425781)">
+                        <path d="M61.2273242,53.67875 L15.9358789,53.67875 C13.1571649,53.67875 10.9034961,51.4250812 10.9034961,48.6463672 L10.9034961,21.8069922 C10.9034961,19.0282781 13.1571649,16.7746094 15.9358789,16.7746094 L61.2273242,16.7746094 C64.0060383,16.7746094 66.259707,19.0282781 66.259707,21.8069922 L66.259707,48.6463672 C66.259707,51.4250812 64.0060383,53.67875 61.2273242,53.67875 Z" id="Fill-3" fill="#019ED5"></path>
+                        <mask id="mask-6" fill="white">
+                            <use xlink:href="#path-5"></use>
+                        </mask>
+                        <g id="Clip-6"></g>
+                        <polygon id="Fill-5" fill="#004977" mask="url(#mask-6)" points="10.9034961 26.839375 66.259707 26.839375 66.259707 21.8069922 10.9034961 21.8069922"></polygon>
+                    </g>
+                    <g id="Group-15" transform="translate(9.425781, 8.425781)">
+                        <path d="M65.937168,68.7758984 L20.6457227,68.7758984 C17.8670086,68.7758984 15.6133398,66.5222297 15.6133398,63.7435156 L15.6133398,36.9041406 C15.6133398,34.1254266 17.8670086,31.8717578 20.6457227,31.8717578 L65.937168,31.8717578 C68.715882,31.8717578 70.9695508,34.1254266 70.9695508,36.9041406 L70.9695508,63.7435156 C70.9695508,66.5222297 68.715882,68.7758984 65.937168,68.7758984 Z" id="Fill-8" fill="#AEB5BB"></path>
+                        <mask id="mask-8" fill="white">
+                            <use xlink:href="#path-7"></use>
+                        </mask>
+                        <g id="Clip-11"></g>
+                        <polygon id="Fill-10" fill="#687680" mask="url(#mask-8)" points="15.6133398 41.9365234 70.9695508 41.9365234 70.9695508 36.9041406 15.6133398 36.9041406"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

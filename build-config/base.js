@@ -91,7 +91,6 @@ const basePlugins = (() => {
     // Copy over the public assets to the build directory: ./_dist
     new copyPlugin([
       { from: 'public', to: 'public' },
-      { from: 'ease1/bower_components', to: 'bower_components' },
       { from: 'ease1/ease-ui', to: 'ease-ui' }
     ]),
     // BrowserSync options
@@ -153,12 +152,6 @@ const devServer = {
     aggregateTimeout: 300,
     poll: 1000,
     ignored: /node_modules|\.git|\.vscode|\.idea/
-  },
-  proxy: {
-    "/ease-app-web": {
-      target: "http://localhost:8000/",
-      secure: false
-    }
   }
 };
 

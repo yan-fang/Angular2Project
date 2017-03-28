@@ -1,0 +1,30 @@
+<div id="debit-order-confirm-action">
+  <h1 class="title">
+    {{debitOrder.i18n.confirmAction.title}}
+  </h1>
+
+  <p class="instructions smaller">
+    {{debitOrder.i18n.confirmAction.description}}
+  </p>
+
+  <p class="instructions smaller">
+    {{debitOrder.i18n.confirmAction.prompt}}
+  </p>
+
+  <div class="actions">
+    <button type="button"
+            id="cancel-order-button"
+            class="btn ghost progressive"
+            data-ng-click="debitOrder.close()">
+      {{debitOrder.i18n.confirmAction.cancel}}
+    </button>
+
+    <button type="button"
+            id="continue-order"
+            class="btn progressive"
+            data-ng-click="debitOrder.confirmToProceed()">
+      {{debitOrder.i18n.confirmAction.action}}
+    </button>
+  </div>
+
+</div>

@@ -1,0 +1,63 @@
+<div cc-modal-back="changeAddress.switchView('changeAddress', changeAddress.selectedAddress, true)"></div>
+<div class="change-address-specific-use-container">
+  <h1 id="specificUseAddressHeader" tabindex="0" class="specific-use-address-header">
+    {{'ease.card.changeaddress.add.specificuse.header' |
+    translate}}</h1>
+  <div class="specific-use-address-subheader">
+    <div>{{changeAddress.getCorrectAddress(changeAddress.selectedAddress.addressLine1, changeAddress.selectedAddress.addressLine2)}}</div>
+    <div>{{changeAddress.selectedAddress.cityName}}, {{changeAddress.selectedAddress.stateCode}} {{changeAddress.selectedAddress.postalCode}}</div>
+  </div>
+  <form name="specificUseAddressForm" novalidate>
+    <div class="first-row-specific-use-address-label">
+      <div id="specificUseAddress-statementCheckBox">
+        <label for="specificUseAddress-statementCheckBox-text" id="specificUseAddress-statementCheckBox-label">
+          <input type="checkbox" id="specificUseAddress-statementCheckBox-text"
+                 data-ng-model="changeAddress.useAddressForStatements"
+                  tabindex="0">
+          {{::'ease.card.changeaddress.add.specificuse.statements.label' | translate}}
+          <div class="specific-use-address-text">
+            {{::'ease.card.changeaddress.add.specificuse.statements.text' | translate}}
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div class="second-row-specific-use-address-label">
+      <div id="specificUseAddress-newCardsCheckBox">
+        <label for="specificUseAddress-newCardsCheckBox-text" id="specificUseAddress-newCardsCheckBox-label">
+          <input type="checkbox" id="specificUseAddress-newCardsCheckBox-text"
+                 data-ng-model="changeAddress.useAddressForNewCards"
+                 tabindex="0">
+          {{::'ease.card.changeaddress.add.specificuse.newcards.label' | translate}}
+          <div class="specific-use-address-text">
+            {{::'ease.card.changeaddress.add.specificuse.newcards.text' | translate}}
+          </div>
+        </label>
+
+      </div>
+    </div>
+
+    <div class="third-row-specific-use-address-label" data-ng-if="changeAddress.showResidentialToggleCheckBox()">
+      <div id="specificUseAddress-residentialCheckBox">
+        <label for="specificUseAddress-residentialCheckBox-text" id="specificUseAddress-residentialCheckBox-label">
+          <input type="checkbox" id="specificUseAddress-residentialCheckBox-text"
+                 data-ng-model="changeAddress.useAddressForResidential" tabindex="0">
+          {{::'ease.card.changeaddress.add.specificuse.residentialaddress.label' | translate}}
+          <div class="specific-use-address-text">
+            {{::'ease.card.changeaddress.add.specificuse.residentialaddress.text' | translate}}
+          </div>
+        </label>
+
+      </div>
+    </div>
+
+  </form>
+
+  <button id="accept" class="specific-use-save-button" data-ng-click="changeAddress.specificUseClick()"
+          data-ng-disabled="changeAddress.disableAddAddress() || changeAddress.loading" tabindex="0">
+      <div data-ng-class="{'loading': changeAddress.loading}">
+            <span class="save-text"translate>ease.card.changeaddress.add.specificuse.addaddress.button</span>
+      </div>
+  </button>
+</div>
+

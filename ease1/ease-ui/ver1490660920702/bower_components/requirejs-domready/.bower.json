@@ -1,0 +1,13 @@
+{
+  "name": "requirejs-domready",
+  "version": "2.0.1",
+  "_release": "2.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.0.1",
+    "commit": "45ab0734695e6eebbe830f9e78f5c05fd586faed"
+  },
+  "_source": "https://github.kdc.capitalone.com/bower-dependencies/requirejs-domready.git",
+  "_target": "2.0.1",
+  "_originalSource": "https://github.kdc.capitalone.com/bower-dependencies/requirejs-domready.git"
+}

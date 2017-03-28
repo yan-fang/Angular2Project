@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/CreditCard/styles/card-override-d0ea6fe2a9-34f545de2b.css">
+<div class="cash-advance-faq-container">
+  <div ng-if="cashAdvanceFaq.showHeader" class="cash-advance-faq-header-wrapper" ng-style="cashAdvanceFaq.bgImageStyle">
+    <ease-account-detail content="cashAdvanceFaq.content"></ease-account-detail>
+  </div>
+  <ul class="cash-advance-faq-body-container">
+    <div class="container message-flap" data-ng-show="cashAdvanceFaq.showErrorFlap">
+      <span class="message-flap-description" role="alert">{{::'ease.card.cashadvance.faq.error.text' | translate}}</span>
+    </div>
+    <li class="cash-advance-faq">
+      <ul class="cash-advance-faq-list">
+        <h2 class="cash-advance-faq-header" tabindex="-1">{{::'ease.card.cashadvance.faq.header.text' | translate}}</h2>
+      </ul>
+    </li>
+    <li id="cashAdvanceFaq_{{$index}}" class="cash-advance-faq" ng-repeat="faq in cashAdvanceFaq.faqData">
+      <ul class="cash-advance-faq-list">
+        <li id="cashAdvanceFaq_Q{{$index}}" class="cash-advance-faq-question" ng-bind-html="faq.question"></li>
+        <li id="cashAdvanceFaq_A{{$index}}" class="cash-advance-faq-answer" ng-bind-html="faq.answer"></li>
+      </ul>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,10 @@
+<div class="select-frequency">
+	<div class="input-group">
+    <div class="label-group">
+      <span id="{{$ctrl.id}}-label" class="label">How Often</span>
+    </div>
+    <billpay-dropdown id="{{$ctrl.id}}-dropdown" datasource="$ctrl.datasource" ng-model="$ctrl.selectedFrequency" display-field="{{$ctrl.displayField}}" input-aria-label="How Often" tabindex="-1">
+    </billpay-dropdown>
+  </div>
+</div> 
+

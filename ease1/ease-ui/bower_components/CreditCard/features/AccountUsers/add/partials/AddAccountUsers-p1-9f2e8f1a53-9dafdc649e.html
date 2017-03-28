@@ -1,0 +1,465 @@
+<div ng-controller="AddAuthUsersModalController as addAuModal" class="cc-modal-container-wrapper"
+     data-ng-class="{'isSpoke': addAuModal.disableClose}">
+  <ease-ui-modal ng-if="addAuModal.currentModalType === addAuModal.defaultModalType" close-modal="addAuModal.closeModal()" 
+  ng-class="addAuModal.currentstep != 'tcContentStep' ? addAuModal.defaultModal.modalType : addAuModal.defaultModal.tcModalType"
+       class="accountUsersadd" modal-title="addAuModal.title">
+    <div data-ng-switch="addAuModal.currentstep">
+      <div data-ng-switch-when="step1">
+        <h2 id="cc-accountUsers-selectuser-title">
+          {{::'ease.card.accountusers.add.step1.selectuser.text' | translate}} </h2>
+        <div class="accountUserAddStep1Content">
+          <div autofocus auto-focus id="cc-addAccountUsers-authorizedUsers-div" class="userTypeButton"
+               ng-click="addAuModal.addAuthorizedUsers('step2')">
+            <h3>
+              <img role="presentation" id="cc-addAccountUsers-cardImage"
+                   src="/ease-ui/bower_components/CreditCard/images/modal-icon-auth-user-db0ec791e3-db0ec791e3.png"/>
+              {{::'ease.card.accountusers.add.authorizeduser.text' | translate}}</h3>
+            <p id="authorizedUserDescriptionText">{{::'ease.card.accountusers.add.step1.authorizeduser.description.text'
+              | translate}}</p>
+          </div>
+          <div id="cc-addAccountUsers-accountManagerUsers-div" class="userTypeButton"
+               ng-click="addAuModal.addAccountManagers('step2')">
+            <h3>
+              <img role="presentation" id="cc-addAccountUsers-abacusImage"
+                   src="/ease-ui/bower_components/CreditCard/images/modal-icon-acct-mngr-3f56369bd5-3f56369bd5.png"/>
+              {{::'ease.card.accountusers.add.accountmanager.text' | translate}}</h3>
+            <p id="accountManagerDescriptionText">{{::'ease.card.accountusers.add.step1.accountmanager.description.text'
+              | translate}}</p>
+          </div>
+        </div>
+      </div>
+
+      <div data-ng-switch-when="step2">
+        <div id="cc-addAccountUsers-enter-user-info">
+          <div id="cc-addAccountUsers-back-user-info" class="backArrow"
+               ng-click="addAuModal.backToPreviousStep('step1')" tabindex="0"
+               aria-label="{{'ease.card.accountusers.add.back.aria.label.text' | translate}}">
+              <span class="cc-offscreen">{{::'ease.card.accountusers.add.back.aria.label.text' | translate}}
+              </span><i class="icon-arrow-back"></i>
+          </div>
+          <div class="modal-header">
+            <h2 id="cc-addAccountUsers-user-title-info">{{::'ease.card.accountusers.add.step2.title.text'|
+              translate}}{{addAuModal.currentUserType}}{{::'ease.card.accountusers.add.step2.title.question' |
+              translate}}</h2>
+          </div>
+
+          <div class="accountUserAddStep2Content">
+            <form name="addAccountUsersForm" autocomplete="off" novalidate>
+              <div class="form-group">
+                <label for="cc_addAccountUsers_first_name_text" id="cc-addAccountUsers-firstname-label">{{::'ease.card.accountusers.add.step2.firstname.text'
+                  | translate}}</label>
+                <input autofocus auto-focus class="i ng-pristine ng-valid ng-touched" type="text"
+                       id="cc_addAccountUsers_first_name_text" ng-model="addAuModal.userFirstName"
+                       name="firstName" max-length="25"
+                       ng-class="{'invalid-field' : addAccountUsersForm.firstName.$error.minLength  }"
+                       valid-name-format tabindex="0">
+
+                <label for="cc_addAccountUsers_last_name_text" id="cc-addAccountUsers-lastname-label">{{::'ease.card.accountusers.add.step2.lastname.text'
+                  | translate}}</label>
+                <input class="i ng-pristine ng-valid ng-touched" type="text"
+                       id="cc_addAccountUsers_last_name_text" ng-model="addAuModal.userLastName"
+                       name="lastName" max-length="36" valid-name-format tabindex="0">
+                <label for="cc-addAccountUsers-phonenumber-text" class="control-label"
+                       id="cc-addAccountUsers-phonenumber-label">{{::'ease.card.accountusers.add.step2.phonenumber.text'
+                  | translate}}</label>
+                <div id="cc-addAccountUsers-phoneType-field">
+                  <input ng-attr-aria-describedby="{{addAccountUsersForm.phonenumber.$error.charE ? 'cc-addAccountUsers-phonenumber-error' : undefined}}"
+                         class="i ng-pristine ng-valid ng-touched" type="text" name="phonenumber" maxlength="14"
+                         id="cc-addAccountUsers-phonenumber-text"
+                         ng-model="addAuModal.userPhoneNumber"
+                         placeholder="{{'ease.card.accountusers.add.step2.phonenumber.placeholder' | translate}}"
+                         ng-model-options="{ updateOn: 'keydown keyup blur ' }"
+                         ng-class="{'invalid-field' : addAccountUsersForm.phonenumber.$error.charE }" valid-phone-format
+                         tabindex="0">
+                </div>
+                <div id="cc-addAccountUsers-phoneType-dropdown" role="application">
+                    <ease-ui-dropdown
+                      is-open = "addAuModal.phoneTypeList.isOpen"
+                      persist-items = "addAuModal.phoneTypeList.items"
+                      items = "addAuModal.phoneTypeList.itemsMenu"
+                      model-value = "addAuModal.phoneTypeList.selectedItem"
+                      disable-search = "true"
+                      select = "addAuModal.displayPhoneTypeSelected(item)"
+                      combobox = "addAuModal.data"
+                      >
+                        <ease-ui-dropdown-menu
+                          select="addAuModal.displayPhoneTypeSelected(item)"
+                          items="addAuModal.phoneTypeList.itemsMenu"
+                          template = false
+                          is-open = "addAuModal.phoneTypeList.isOpen"
+                          component-id = "{{addAuModal.data.id}}"
+                        >
+                      </ease-ui-dropdown-menu>
+                    </ease-ui-dropdown>
+                </div>
+                <div>
+                  <span id="cc-addAccountUsers-phonenumber-error" class="invalid-field-error-message" aria-live="assertive" role="alert"
+                        ng-show="addAccountUsersForm.phonenumber.$error.charE">{{::'ease.card.accountusers.add.step2.phonenumber.error.text' | translate}}</span>
+                </div>
+                <div id="cc-addAccountUsers-ssn-field">
+                  <label for="cc_addAccountUsers_ssn_text_TLNPI" class="control-label"
+                         id="cc-addAccountUsers-ssn-label">{{::'ease.card.accountusers.add.step2.ssn.text' |
+                    translate}}</label>
+                  <input ng-attr-aria-describedby="{{addAccountUsersForm.ssnNumber_TLNPI.$error.charE ? 'cc-addAccountUsers-ssnNumber-error' : undefined}}" class="i ng-pristine ng-valid ng-touched"
+                         type="text" maxlength="11" name="ssnNumber_TLNPI" id="cc_addAccountUsers_ssn_text_TLNPI"
+                         placeholder="{{'ease.card.accountusers.add.step2.ssn.placeholder' | translate}}"
+                         ng-model="addAuModal.identificationNumberTLNPI"
+                         ng-model-options="{ updateOn: 'keydown keyup blur' }"
+                         ng-class="{'invalid-field' : addAccountUsersForm.ssnNumber_TLNPI.$error.charE  }"
+                         valid-ssn-format tabindex="0">
+                  <span class="invalid-field-error-message" id="cc-addAccountUsers-ssnNumber-error" aria-live="assertive" role="alert"
+                        ng-show="addAccountUsersForm.ssnNumber_TLNPI.$error.charE">{{::'ease.card.accountusers.add.step2.ssn.error.text' | translate}}</span>
+                </div>
+                <div id="cc-addAccountUsers-dob-field">
+                  <label for="cc_addAccountUsers_dateofbirth_text_TLNPI" class="control-label"
+                         id="cc-addAccountUsers-dateofbirth-label">{{::'ease.card.accountusers.add.step2.dateofbirth.text'
+                    | translate}}</label>
+                  <input ng-attr-aria-describedby="{{(addAccountUsersForm.dateOfBirth_TLNPI.$error.charE || addAccountUsersForm.dateOfBirth_TLNPI.$error.validDate) ? 'cc-addAccountUsers-dateOfBirth-error' : undefined}}"
+                         class="i ng-pristine ng-valid ng-touched" type="text" maxlength="10" name="dateOfBirth_TLNPI"
+                         id="cc_addAccountUsers_dateofbirth_text_TLNPI" ng-model="addAuModal.userDateOfBirthTLNPI"
+                         placeholder="{{'ease.card.accountusers.add.step2.dateofbirth.placeholder' | translate}}"
+                         ng-model-options="{ updateOn: ' keydown keyup blur' }"
+                         ng-class="{'invalid-field' : addAccountUsersForm.dateOfBirth_TLNPI.$error.validDate }"
+                         valid-date-format tabindex="0">
+                  <span class="invalid-field-error-message" id="cc-addAccountUsers-dateOfBirth-error" aria-live="assertive" role="alert"
+                        ng-show="addAccountUsersForm.dateOfBirth_TLNPI.$error.charE || addAccountUsersForm.dateOfBirth_TLNPI.$error.validDate">{{::'ease.card.accountusers.add.step2.dateofbirth.invaliddate.text' | translate}}</span>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="disabled" ng-disabled="! addAuModal.enableIfFieldsAreValid(addAccountUsersForm)"
+                        ng-click="addAuModal.showStep('step3')" id="btn-cc-addAccountUsers-submit-user-info"
+                        tabindex="0">{{::'ease.card.accountusers.add.step2.submit.button'|translate}}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <form name="addAccountUsersCardInfoForm" autocomplete="off">
+        <div data-ng-switch-when="step3" id="cc-addAccountUsers-enter-card-info">
+          <div id="cc-addAccountUSers-back-card-info" class="backArrow"
+               ng-click="addAuModal.backToPreviousStep('step2')" tabindex="0"
+               aria-label="{{'ease.card.accountusers.add.back.aria.label.text' | translate}}">
+              <span class="cc-offscreen">{{::'ease.card.accountusers.add.back.aria.label.text' | translate}}
+              </span><i class="icon-arrow-back"></i>
+          </div>
+          <div class="modal-header">
+            <h2 id="cc-addAccountUsers-cardTitle-info">{{::'ease.card.accountusers.add.step3.cardtitle.text' |
+              translate}}</h2>
+          </div>
+          <div class="accountUserAddStep3Content">
+      <div class="cc-add-toggle-container">
+          <label id="cc-addAccountUsers-issueCardCheckBox-label">
+            <input type="checkbox"
+                   class="toggle"
+                   tabindex="0"
+                   id="cc-addAccountUsers-issueCardCheckBox-text"
+                   aria-label="{{::'ease.card.accountusers.add.step3.checkbox.text' | translate}} {{addAuModal.getIssueCardToggleAccessibilityValue(addAccountUsersCardInfoForm)}}"
+                  ng-checked="addAuModal.issueCardCheckBoxChecked" ng-click="addAuModal.issueCardToggleCheckBox(addAccountUsersCardInfoForm)"
+            >{{::'ease.card.accountusers.add.step3.checkbox.text' | translate}}</label></br>
+      </div>
+      <div ng-if="addAuModal.issueCardCheckBoxChecked">
+            <div  class="form-group cc-addAccountUsers-borderLine">
+              <label for="cc-addAccountUsers-card-name-text" id="cc-addAccountUsers-nameoncard-label">{{::'ease.card.accountusers.add.step3.nameoncard.text'
+                | translate}}</label>
+              <input autofocus auto-focus class="i ng-pristine ng-valid ng-touched" maxlength="26" type="text"
+                     ng-model="addAuModal.nameOnCard" name="nameOnCard"
+                     id="cc-addAccountUsers-card-name-text" ng-disabled="!addAuModal.issueCardCheckBoxChecked"
+                     placeholder="" valid-name-format tabindex="0">
+            </div>
+      <!--Limits Toggle Starts-->
+    <div ng-if="!addAuModal.showNewLimitsSection">
+      <div ng-if="addAuModal.showAccountUserLimits" class="cc-add-toggle-container">
+          <label id="cc-addAccountUsers-limitsCheckBox-label">
+            <input type="checkbox"
+                   class="toggle"
+                   tabindex="0"
+                   id="cc-addAccountUsers-limitsCheckBox-text"
+                   aria-label="{{::'ease.card.accountusers.add.step3.limitsCheckbox.text' | translate}} {{addAuModal.getLimitsToggleAccessibilityValue(addAccountUsersCardInfoForm)}}"
+                  ng-checked="addAuModal.setLimitsCheckBoxChecked" ng-click="addAuModal.toggleSetLimitsToggle(addAccountUsersCardInfoForm)"
+            >{{::'ease.card.accountusers.add.step3.limitsCheckbox.text' | translate}}</label></br>
+      </div>
+            <div ng-if="addAuModal.showAccountUserLimits && addAuModal.setLimitsCheckBoxChecked" class="form-group">
+              <label for="cc-addAccountUsers-spendlimit-text" class="control-label"
+                     id="cc-addAccountUsers-spendlimit-label">{{::'ease.card.accountusers.add.step3.spendlimit.text' |
+                translate}}<span id="cc-addAccountUsers-sublabel">{{::'ease.card.accountusers.add.step3.spendlimitsublabel.text' |
+                  translate}}</span></label>
+              <input ng-attr-aria-describedby="{{(addAccountUsersCardInfoForm.spendLimit.$error.validSpendLimit || 
+                                                  addAccountUsersCardInfoForm.spendLimit.$error.invalidSpendLimit) ? 'cc-addAccountUsers-spendLimit-error' : undefined}}"
+                     class="i ng-pristine ng-valid ng-touched"
+                     type="text" id="cc-addAccountUsers-spendlimit-text" ng-keydown="addAuModal.enableCashLimit()"
+                     name="spendLimit" ng-disabled="!addAuModal.issueCardCheckBoxChecked"
+                     ng-model="addAuModal.spendLimit" ng-model-options="{ updateOn: 'paste keypress blur keydown keyup input' }"
+                     ng-class="{'invalid-field' : (addAccountUsersCardInfoForm.spendLimit.$error.validSpendLimit || 
+                                                  addAccountUsersCardInfoForm.spendLimit.$error.invalidSpendLimit) }"
+                     placeholder="$" valid-spend-limit credit-limit='addAuModal.creditLimit' tabindex="0">
+              <div class="userTypeLabel">
+                <div class="form-group">
+                  <span class="invalid-field-error-message" id="cc-addAccountUsers-spendLimit-error" aria-live="assertive" role="alert"
+                        ng-show="addAccountUsersCardInfoForm.spendLimit.$error.validSpendLimit">{{::'ease.card.accountusers.add.step3.spendlimit.invalidspendlimit.text' | translate}}</span>
+                  <span class="invalid-field-error-message" id="cc-addAccountUsers-spendLimit-error" aria-live="assertive" role="alert"
+                        ng-show="addAccountUsersCardInfoForm.spendLimit.$error.invalidSpendLimit"></span>                  
+                  <label for="cc-addAccountUsers-cashlimit-text" id="cc-addAccountUsers-cashlimit-label">{{::'ease.card.accountusers.add.step3.cashlimit.text'
+                    | translate}}</label>
+                  <input ng-attr-aria-describedby="{{addAccountUsersCardInfoForm.cashLimit.$error.validCashLimit ? 'cc-addAccountUsers-cashLimit-error' :
+                                                        addAccountUsersCardInfoForm.cashLimit.$error.isCashLimitExceedSpendLimit ? 'cc-addAccountUsers-exceedsspendlimit-error' : undefined}}"
+                         class="i ng-pristine ng-valid ng-touched"
+                         type="text" ng-disabled="!addAuModal.spendChanged" name="cashLimit"
+                         id="cc-addAccountUsers-cashlimit-text" ng-model="addAuModal.cashLimit"
+                         ng-model-options="{ updateOn: 'paste keydown keyup blur' }"
+                         ng-class="{'invalid-field' : addAccountUsersCardInfoForm.cashLimit.$error.validCashLimit || addAccountUsersCardInfoForm.cashLimit.$error.isCashLimitExceedSpendLimit }"
+                         placeholder="$" valid-cash-limit spend-limit='addAuModal.spendLimit'
+                         current-cash-limit='addAuModal.currentCashLimit' tabindex="0">
+                  <span class="invalid-field-error-message" id="cc-addAccountUsers-cashLimit-error" aria-live="assertive" role="alert"
+                        ng-show="addAccountUsersCardInfoForm.cashLimit.$error.validCashLimit">{{::'ease.card.accountusers.add.step3.cashLimit.invalidcashlimit.text' | translate}}</span>
+                  <span class="invalid-field-error-message" id="cc-addAccountUsers-exceedsspendlimit-error" aria-live="assertive" role="alert"
+                        ng-show="addAccountUsersCardInfoForm.cashLimit.$error.isCashLimitExceedSpendLimit">{{::'ease.card.accountusers.add.step3.cashLimit.exceedspendlimit.text' | translate}}</span>
+                </div>
+              </div>
+            </div>
+    </div>
+     <!--Limits Toggle Ends-->
+     <!--New Limits Toggle Starts-->
+          <div ng-if="addAuModal.showNewLimitsSection">
+            <div ng-if="addAuModal.showAccountUserLimits" class="cc-add-toggle-container">
+                <label id="cc-addAccountUsers-limitsCheckBox-label">
+                  <input type="checkbox"
+                        class="toggle"
+                        tabindex="0"
+                        id="cc-addAccountUsers-spendLimitCheckBox-text"
+                        aria-label="{{::'ease.card.accountusers.add.step3.limitsCheckbox.text' | translate}} {{addAuModal.getSpendLimitsToggleAccessibilityValue(addAccountUsersCardInfoForm)}}"
+                        ng-checked="addAuModal.setSpendLimitsCheckBoxChecked" ng-click="addAuModal.toggleSetSpendLimitsToggle(addAccountUsersCardInfoForm)"
+                  >{{::'ease.card.accountusers.add.step3.limitsCheckbox.text' | translate}}</label></br>
+            </div>
+            <div ng-if="addAuModal.showAccountUserLimits && addAuModal.setSpendLimitsCheckBoxChecked" class="form-group">
+              <label for="cc-addAccountUsers-spendlimit-text" class="control-label"
+                    id="cc-addAccountUsers-spendlimit-label">{{::'ease.card.accountusers.add.step3.spendLimit.label.text1' | translate}} {{addAuModal.getFirstName()}} {{::'ease.card.accountusers.add.step3.spendLimit.label.text2' | translate}}</label>
+              <input ng-attr-aria-describedby="{{(addAccountUsersCardInfoForm.spendLimit.$error.validSpendLimit || 
+                                                  addAccountUsersCardInfoForm.spendLimit.$error.invalidSpendLimit) ? 'cc-addAccountUsers-spendLimit-error' : undefined}}"
+                    class="i ng-pristine ng-valid ng-touched"
+                    type="text" id="cc-addAccountUsers-spendlimit-text" ng-keydown="addAuModal.enableCashLimit()"
+                    name="spendLimit"
+                    ng-model="addAuModal.spendLimit" ng-model-options="{ updateOn: 'paste keypress blur keydown keyup input' }"
+                    ng-class="{'invalid-field' : (addAccountUsersCardInfoForm.spendLimit.$error.validSpendLimit || 
+                                                  addAccountUsersCardInfoForm.spendLimit.$error.invalidSpendLimit) }"
+                    placeholder="{{::'ease.card.accountusers.add.step3.limits.placeholder.text' | translate}}" valid-spend-limit credit-limit='addAuModal.creditLimit' tabindex="0">
+              <label for="cc-addAccountUsers-spendlimit-text" class="control-label cc-addAccountUsers-creditLimit-label" id="cc-addAccountUsers-creditLimit-label">{{::'ease.card.accountusers.add.step3.creditLimit.text' | translate}} {{addAuModal.creditLimit | validAmountFilter}}</label>
+                <div class="form-group">
+                  <span class="invalid-field-error-message" id="cc-addAccountUsers-spendLimit-error" aria-live="assertive" role="alert"
+                        ng-show="addAccountUsersCardInfoForm.spendLimit.$error.validSpendLimit">{{::'ease.card.accountusers.add.step3.spendlimit.invalidspendlimit.text' | translate}}</span>
+                  <span class="invalid-field-error-message" id="cc-addAccountUsers-spendLimit-error" aria-live="assertive" role="alert"
+                        ng-show="addAccountUsersCardInfoForm.spendLimit.$error.invalidSpendLimit"></span>                  
+                </div>
+            </div>
+            <!--cash limits toggle start-->
+            <div class="cc-addAccountUsers-borderLineTop">
+              <div ng-if="addAuModal.showAccountUserLimits" class="cc-add-toggle-container">
+                <label id="cc-addAccountUsers-cashLimitsCheckBox-label">
+                  <input type="checkbox"
+                        class="toggle"
+                        tabindex="0"
+                        id="cc-addAccountUsers-cashLimitCheckBox-text"
+                        aria-label="{{::'ease.card.accountusers.add.step3.cashLimitCheckbox.text' | translate}} {{addAuModal.getCashLimitsToggleAccessibilityValue(addAccountUsersCardInfoForm)}}"
+                        ng-checked="addAuModal.setCashLimitsCheckBoxChecked" ng-click="addAuModal.toggleSetCashLimitsToggle(addAccountUsersCardInfoForm)"
+                  >{{::'ease.card.accountusers.add.step3.cashLimitCheckbox.text' | translate}}</label></br>
+              </div>
+              <div ng-if="addAuModal.setCashLimitsCheckBoxChecked" class="form-group">
+                  <label for="cc-addAccountUsers-cashlimit-text" id="cc-addAccountUsers-cashlimit-label">{{::'ease.card.accountusers.add.step3.cashLimit.label.text1' | translate}} {{addAuModal.getFirstName()}} {{::'ease.card.accountusers.add.step3.cashLimit.label.text2' | translate}}</label>
+                  <input ng-attr-aria-describedby="{{( addAccountUsersCardInfoForm.cashLimit.$error.validCash || 
+                    addAccountUsersCardInfoForm.cashLimit.$error.invalidCash)? 'cc-addAccountUsers-cashLimit-error' : undefined}}"
+                    class="i ng-pristine ng-valid ng-touched cc-addAccountUsers-removeMarginBottom"
+                    type="text" name="cashLimit"
+                    id="cc-addAccountUsers-cashlimit-text"
+                    ng-model="addAuModal.cashLimit"
+                    ng-model-options="{ updateOn: 'paste keypress keydown keyup blur input' }"
+                    ng-class="{'invalid-field' : addAccountUsersCardInfoForm.cashLimit.$error.validCash || addAccountUsersCardInfoForm.cashLimit.$error.invalidCash }"
+                    placeholder="{{::'ease.card.accountusers.add.step3.limits.placeholder.text' | translate}}" valid-cash 
+                    current-cash-limit='addAuModal.currentCashLimit' tabindex="0">
+                    <label for="cc-addAccountUsers-cashlimit-text" class="control-label cc-addAccountUsers-max-cashlimit-label" id="cc-addAccountUsers-max-cashlimit-label">{{::'ease.card.accountusers.add.step3.max.cashLimit.text' | translate}} {{addAuModal.currentCashLimit | validAmountFilter}}</label>
+                    <span class="invalid-field-error-message" id="cc-addAccountUsers-cashLimit-error" aria-live="assertive" role="alert"
+                          ng-show="addAccountUsersCardInfoForm.cashLimit.$error.validCash">{{::'ease.card.accountusers.add.step3.cashLimit.invalidcashlimit.text' | translate}}</span>
+                    <span class="invalid-field-error-message" id="cc-addAccountUsers-exceedsspendlimit-error" aria-live="assertive" role="alert" ng-show="addAccountUsersCardInfoForm.cashLimit.$error.invalidCash"></span>
+                </div>
+              
+              
+              
+              </div>
+              <!--cash limit toggle ends-->
+          </div>
+     <!--New Limits Toggle Ends-->
+
+          </div>
+          </div>
+          <div class="modal-footer">
+            <button ng-if="!addAuModal.showNewLimitsSection" class="disabled"
+                    ng-disabled="! addAuModal.enableIfCardInformationsAreValid(addAccountUsersCardInfoForm)"
+                    ng-click="addAuModal.showStep('step4')" id="btn-cc-addAccountUsers-submit-card-info" tabindex="0">
+              {{::'ease.card.accountusers.add.step3.submit.button'| translate}}
+            </button>
+            <!--New limits toggle button -->
+            <button ng-if="addAuModal.showNewLimitsSection" class="disabled"
+                    ng-disabled="! addAuModal.enableIfCardInformationsAreValidForNewLimitsComponent(addAccountUsersCardInfoForm)"
+                    ng-click="addAuModal.showStep('step4')" id="btn-cc-addAccountUsers-submit-card-info" tabindex="0">
+              {{::'ease.card.accountusers.add.step3.submit.button'| translate}}
+            </button>
+          </div>
+        </div>
+      </form>
+      <form>
+        <div data-ng-switch-when="step4" id="cc-addAccountUsers-view-user-info">
+          <div id="cc-addAccountUsers-confirmationpage-back-user-info" class="backArrow"
+               ng-click="addAuModal.backToPreviousStep('step3')" tabindex="0"
+               aria-label="{{'ease.card.accountusers.add.back.aria.label.text' | translate}}"
+               ng-show="!addAuModal.loading">
+              <span class="cc-offscreen">{{::'ease.card.accountusers.add.back.aria.label.text' | translate}}
+              </span><i class="icon-arrow-back"></i>
+          </div>
+          <div class="modal-header">
+            <h2 autofocus auto-focus tabindex="-1" id="cc-addAccountUsers-confirmationpage-cardTitle-info">
+              {{::'ease.card.accountusers.add.step4.title.text' | translate}}</h2>
+          </div>
+          <div class="accountUserAddStep4Content">
+            <ul class="confirm-list" id="cc-addAccountUsers-confirmationpage-user-info">
+              <li ng-if="addAuModal.showAcccountUserP1" id="cc-addAccountUsers-summary-user-type-text">
+                {{::'ease.card.accountusers.add.step4.usertype.text' | translate}}
+                <span id="cc-addAccountUsers-summary-user-type-value">{{addAuModal.currentUserType}}</span></li>
+              <li id="cc-addAccountUsers-summary-name-text">{{::'ease.card.accountusers.add.step4.name.text' |
+                translate}}
+                <span id="cc-addAccountUsers-summary-name-value">{{addAuModal.userInfo.fullName}}</span>
+              </li>
+              <li id="cc-addAccountUsers-summary-phoneNumber-text">
+                {{::'ease.card.accountusers.add.step4.phonenumber.text' | translate}}
+                <span id="cc-addAccountUsers-summary-phoneNumber-value">{{addAuModal.userInfo.phoneNumber | phoneFormatFilter}}</span>
+              </li>
+              <li id="cc-addAccountUsers-summary-nameOnCard-text" ng-show="addAuModal.issueCardCheckBoxChecked">
+                {{::'ease.card.accountusers.add.step4.nameoncard.text' | translate}}
+                <span id="cc-addAccountUsers-summary-nameOnCard-value">{{addAuModal.userInfo.nameOnCard}}</span>
+              </li>
+              <li ng-if="addAuModal.showAccountUserLimits" id="cc-addAccountUsers-summary-spendLimit-text"
+                  ng-show="addAuModal.issueCardCheckBoxChecked">{{::'ease.card.accountusers.add.step4.spendlimit.text' |
+                translate}}
+                <span id="cc-addAccountUsers-summary-spendLimit-value">{{addAuModal.spendLimitDisplayValue}}</span>
+              </li>
+              <li ng-if="addAuModal.showAccountUserLimits" id="cc-addAccountUsers-summary-cashLimit-text"
+                  ng-show="addAuModal.issueCardCheckBoxChecked">{{::'ease.card.accountusers.add.step4.cashlimit.text' |
+                translate}}
+                <span id="cc-addAccountUsers-summary-cashLimit-value">{{addAuModal.cashLimitDisplayValue}}</span>
+              </li>
+              <li id="cc-addAccountUsers-summary-mailingAddress-text" ng-show="addAuModal.issueCardCheckBoxChecked">
+                <div id="cc-addAccountUsers-summary-mailingAddress-text-div">
+                  {{::'ease.card.accountusers.add.step4.mailingaddress.text' | translate}}
+                </div>
+                <span class="camelCase" id="cc-addAccountUsers-summary-address-addressLine1"> {{addAuModal.primaryAddress.addressLine1}} </span>
+                <span data-ng-if="addAuModal.primaryAddress.addressLine2" class="camelCase"
+                      id="cc-addAccountUsers-summary-address-addressLine2"> {{addAuModal.primaryAddress.addressLine2}} </span>
+                <span data-ng-if="addAuModal.primaryAddress.addressLine3" class="camelCase"
+                      id="cc-addAccountUsers-summary-address-addressLine3"> {{addAuModal.primaryAddress.addressLine3}} </span>
+                <span class="camelCase" id="cc-addAccountUsers-summary-address-cityName"> {{addAuModal.primaryAddress.cityName}},&nbsp; {{addAuModal.primaryAddress.stateCode}}</span>
+                <span class="camelCase" id="cc-addAccountUsers-summary-address-countryCode">{{addAuModal.primaryAddress.postalCode}}</span>
+              </li>
+              <li id="cc-addAccountUsers-summary-issueCard-text" ng-show="!addAuModal.issueCardCheckBoxChecked">
+                {{::'ease.card.accountusers.add.step4.issueCard.text' | translate}}
+                <span id="cc-addAccountUsers-summary-issueCard-value"><br></span></li>
+            </ul>
+            <div id="cc-addAccountUsers-issueCard-termsAndConditions">
+              <span id="cc-addAccountUsers-acceptTermsAndConditions-checkBox-text">
+              <label for="cc-addAccountUsers-acceptTermsAndConditions-button"
+                     id="cc-addAccountUsers-acceptTermsAndConditions-label">
+                <input type="checkbox" id="cc-addAccountUsers-acceptTermsAndConditions-button"
+                       ng-disabled="addAuModal.loading" ng-checked="addAuModal.termsAndConditionscheckBoxChecked"
+                       ng-click="addAuModal.termsAndConditionsToggleCheckBox()">
+                {{::'ease.card.accountusers.add.step4.acceptTermsAndConditions.text' | translate}}
+                  <a ng-if="!addAuModal.accountManagerIndicator" id="cc-addAccountUsers-acceptTermsAndConditions-link"
+                     ng-click="!addAuModal.loading && addAuModal.getSmallBusinessAuthTermsAndConditions()">{{::'ease.card.accountusers.add.step4.termsandcondition.description.read.text' | translate}}
+                </a>
+                <a ng-if="addAuModal.accountManagerIndicator"
+                   id="cc-addAccountUsers-account-manager-acceptTermsAndConditions-link"
+                   ng-click="!addAuModal.loading && addAuModal.getSmallBusinessAcctManagerTermsAndConditions()">{{::'ease.card.accountusers.add.step4.accountmanager.termsandcondition.description.read.text' | translate}}
+                </a>
+              </label>
+              </span>
+            </div>
+            <div class="modal-footer">
+              <button class="accountUsersVerifyAdd" id="btn-cc-addAccountUsers-itsCorrect"
+                      ng-disabled="!addAuModal.termsAndConditionscheckBoxChecked || addAuModal.loading"
+                      ng-click="addAuModal.postNewAccountUsers()">
+                <div class="cc-spinner-add" ng-class="{'loading':addAuModal.loading}"></div>
+                <span
+                  ng-if="!addAuModal.loading">{{::'ease.card.accountusers.add.step4.submit.button' | translate}}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div data-ng-switch-when="tcContentStep" class="accountUserAddTCContent " id="cc-addAccountUsers-tc-content-info">
+        <div id="cc-addAccountUsers-tc-content-back-user-info" class="backArrow"
+             ng-click="addAuModal.backToPreviousStep('step4')" tabindex="0"
+             aria-label="{{'ease.card.accountusers.add.back.aria.label.text' | translate}}">
+              <span class="cc-offscreen">{{::'ease.card.accountusers.add.back.aria.label.text' | translate}}
+              </span><i class="icon-arrow-back"></i>
+        </div>
+        <div class="modal-header">
+          <h2 autofocus auto-focus id="cc-addAccountUsers-TermsAndConditions-text" tabindex="-1">
+            {{::'ease.card.accountusers.add.step4.termsandcondition.title.text' | translate}}</h2>
+          <h3 id="cc-addAccountUsers-TermsAndConditions-subTitle-text">
+            {{::'ease.card.accountusers.add.step4.termsandcondition.description.text' | translate}}</h3>
+          <br>
+        </div>
+        <div class="tcLabel">
+          <div ng-if="addAuModal.accountManagerIndicator" class="termsAndConditionsheader"
+               ng-bind-html="addAuModal.smallBusinessAccountManagerTermsAndConditionContent.headline"></div>
+          <div ng-if="addAuModal.accountManagerIndicator" class="termsAndConditionsBody"
+               ng-bind-html="addAuModal.smallBusinessAccountManagerTermsAndConditionContent.body"></div>
+          <div class="termsAndConditionsheader"
+               ng-bind-html="addAuModal.smallBusinessAuthUserTermsAndConditionContent.headline"></div>
+          <div class="termsAndConditionsBody"
+               ng-bind-html="addAuModal.smallBusinessAuthUserTermsAndConditionContent.body"></div>
+        </div>
+        <div class="modal-footer">
+          <button class="termsAndConditionsAgree" id="cc-addAccountUsers-issueCard-termsAndConditions-agree-btn"
+                  ng-click="addAuModal.enableCustomerToAddAuthUsers('Accepted')">
+            {{::'ease.card.accountusers.add.step4.termsandcondition.button.agree.text' | translate}}
+          </button>
+          <br>
+          <div class="userTypeLink" ng-click="addAuModal.enableCustomerToAddAuthUsers('Declined')"
+               id="cc-addAccountUsers-tc-content-decline-tc">
+            {{::'ease.card.accountusers.add.step4.termsandcondition.button.decline.text' | translate}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </ease-ui-modal>
+  <ease-ui-modal ng-if="addAuModal.currentModalType === addAuModal.successModalType"
+       close-modal="addAuModal.closeModal()" modal-class="addAuModal.successModal.modalClass"
+       ng-class="addAuModal.successModal.modalType" class="accountUsersadd">
+    <div data-ng-switch="addAuModal.currentstep">
+      <div data-ng-switch-when="step5" class="cc-addAccountUsers-success-addAnotherUser-link-centeralignForFocus">
+        <h2 autofocus auto-focus id="cc-addAccountUsers-successPage-successTitle-info" tabindex="-1">
+          {{::'ease.card.accountusers.add.step5.title.text' | translate}}</h2>
+        <br>
+        <h3 class="successSubTitle"
+            ng-show="(addAuModal.issueCardCheckBoxChecked)&&(!addAuModal.displayIssueCardErrorMessage)">
+          {{::'ease.card.accountusers.add.step5.subtitle.text' | translate}}</h3>
+        <div class="accountUserAddStep5Content">
+          <ol ng-show="(addAuModal.issueCardCheckBoxChecked)&&(!addAuModal.displayIssueCardErrorMessage)">
+            <li id="cc-addAccountUsers-success-card-delivery-text"><span>{{::'ease.card.accountusers.add.step5.issuecard.firststep.text' | translate}}</span>
+            </li>
+            <li id="cc-addAccountUsers-success-activate-ssn-text"><span>{{::'ease.card.accountusers.add.step5.issuecard.secondstep.text' | translate}}</span>
+            </li>
+          </ol>
+          <p id="cc-addAccountUsers-success-dontIssueCard-text"
+                                ng-show="(!addAuModal.issueCardCheckBoxChecked) || (addAuModal.displayIssueCardErrorMessage)"><span>
+            {{addAuModal.userFirstName}}
+            {{::'ease.card.accountusers.add.step5.dontissuecard.firststep.firstpart.text' | translate}}{{addAuModal.currentUserType}}</span><span>{{::'ease.card.accountusers.add.step5.dontissuecard.firststep.secondpart.text' | translate}}</span>
+            <span ng-show="addAuModal.issueCardCheckBoxChecked && addAuModal.displayIssueCardErrorMessage">{{::'ease.card.accountusers.add.step5.issuecard.error.text' | translate}} </span>
+          </p>
+          <div class="cc-addAccountUsers-success-addAnotherUser-link-centeralignForFocus">
+            <div class="userTypeLink" id="cc-addAccountUsers-success-addAnotherUser-link"
+                  ng-click="addAuModal.toggleModal('step1')">{{::'ease.card.accountusers.add.step5.addnewuser.text' |
+              translate}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ease-ui-modal>

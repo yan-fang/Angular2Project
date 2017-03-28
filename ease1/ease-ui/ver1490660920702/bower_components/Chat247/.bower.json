@@ -1,0 +1,12 @@
+{
+  "name": "Chat247",
+  "_release": "514657fdbc",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "514657fdbc862a7520bd12fe9f61a07c81932625"
+  },
+  "_source": "https://github.kdc.capitalone.com/bower-dependencies/Chat247.git",
+  "_target": "master",
+  "_originalSource": "https://github.kdc.capitalone.com/bower-dependencies/Chat247.git"
+}

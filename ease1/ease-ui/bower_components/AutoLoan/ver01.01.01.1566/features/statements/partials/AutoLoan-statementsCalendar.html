@@ -1,0 +1,56 @@
+<div data-ng-show="!statementsController.toggle"
+     data-ng-class="{'statementCalendarWithScrollBar': statementsController.doesStatementListSizeExceed(12)}">
+    <ul class="months-grid" data-ng-if="!statementsController.showErrorOnCalendarModal">
+      <li data-ng-repeat="statement in statementsController.listOfStatements" id="coafStatementCalendarDate{{$index}}"
+          data-ng-click="statementsController.getSelectedStatement(statement); statementsController.setStatementIndex($index); ;
+          statementsController.toggleCalendar()" aria-pressed="{{ $index == statementsController.statementIndex
+        && statementsController.selectedStatementYear == statementsController.currentDocumentYear}}">
+        <span role= "button" tabindex="0" ng-class="{'active': $index == statementsController.statementIndex
+        && statementsController.selectedStatementYear == statementsController.currentDocumentYear}"  aria-label="{{statement.documentDate| date:'MMMM, d yyyy'}}">
+              <span class="month"><b>{{statement.documentDate| date:'MMM'}}</b><br />
+              <span class="day">{{statement.documentDate| date:'d'}}</span></span>
+        </span>
+      </li>
+    </ul>
+    <div class="load-spinner-section" data-ng-show="statementsController.showCalendarSpinner">
+        <div class="calendarSpinnerClass">
+        </div>
+    </div>
+
+    <div data-ng-if="statementsController.showErrorOnCalendarModal" class="calendarError">
+        <span id="boldStatementCalendarErrorText" class="statementCalendarText bold" data-ng-bind="statementsController.errorMessage.title"></span>
+        <span id="statementCalendarErrorText" class="statementCalendarText" data-ng-bind="statementsController.errorMessage.content"></span>
+
+        <button id="statementCalendarErrorButton" tabindex="0" class="button" data-ng-click="statementsController.init()">
+            <div data-ng-class="{'spinbutton':spinnerEnable}">
+                <div data-ng-class="{'loading':spinnerEnable}">
+                    <span data-ng-bind="statementsController.i18n.coaf.accountSummary.extensibility.statements.tryAgain.v1"
+                          aria-label="{{statementsController.i18n.coaf.accountSummary.extensibility.statements.tryAgain.v1}}">
+                    </span>
+                </div>
+            </div>
+        </button>
+    </div>
+</div>
+<div data-ng-show="!statementsController.toggle && !statementsController.showCalendarSpinner && !statementsController.showErrorOnCalendarModal">
+    <ul class="year-picker">
+        <li id="previousYearElementId">
+            <div data-ng-show="statementsController.hasPreviousYear()" class="prev-year" role="button" id="coafStatementCalendarPreviousYear"
+                 data-ng-click="statementsController.getPreviousYearStatements()">
+                <i aria-label="{{statementsController.i18n.coaf.accountSummary.extensibility.statements.previousYear.ariaLabel}}"
+                   class="icon-prev">
+                </i>
+            </div>
+        </li>
+        <li data-ng-show="!statementsController.showCalendarSpinner">
+            <div class = "year-label" aria-label="Statements Displayed for {{statementsController.currentDocumentYear}}" id="coafStatementCalendarYear" data-ng-bind="statementsController.currentDocumentYear"></div>
+        </li>
+        <li id="nextYearElementId">
+            <div data-ng-show="statementsController.hasNextYear()" class="next-year" role="button" id="coafStatementCalendarNextYear"
+                 data-ng-click="statementsController.getNextYearStatements()">
+                <i class="icon-next"
+                   aria-label="{{statementsController.i18n.coaf.accountSummary.extensibility.statements.nextYear.ariaLabel}}"></i>
+            </div>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,12 @@
+{
+  "name": "AppDynamics",
+  "_release": "d5ddbd3a2e",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "d5ddbd3a2e05965fa870c11169acaec523d02441"
+  },
+  "_source": "https://github.kdc.capitalone.com/bower-dependencies/AppDynamics.git",
+  "_target": "master",
+  "_originalSource": "https://github.kdc.capitalone.com/bower-dependencies/AppDynamics.git"
+}

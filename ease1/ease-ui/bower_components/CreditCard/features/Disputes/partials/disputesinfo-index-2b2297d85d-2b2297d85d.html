@@ -1,0 +1,16 @@
+<div ng-controller="DisputesInfoController as disputesInfo" id="DisputesWrapper">
+  <ease-ui-modal id="disputes-modal" close-modal="disputesInfo.closeModal()" modal-class="disputesInfo.modalInfo.modalClass"
+                 modal-type="disputesInfo.modalInfo.modalType" focus-id="closeModal" class="disputesinfo">
+  <h1 class="disputesinfo-header" id="disputesinfo-header">{{::'ease.card.disputesinfo.header.text' | translate}}</h1>
+  <div class="disputesinfo-steps-wrapper" id="disputesinfo-steps-wrapper">
+    <ul>
+      <li>{{::'ease.card.disputesinfo.step1.text' | translate}}</li>
+      <li>
+        <span id="disputesinfo-step2-part1">{{::'ease.card.disputesinfo.step2.part1.text' | translate}}</span>
+        <i class="icon-megaphone disputesinfo-megaphone"></i>
+        <span id="disputesinfo-step2-part2">{{::'ease.card.disputesinfo.step2.part2.text' | translate}}</span>
+      </li>
+    </ul>
+  </div>
+  </ease-ui-modal>
+</div>

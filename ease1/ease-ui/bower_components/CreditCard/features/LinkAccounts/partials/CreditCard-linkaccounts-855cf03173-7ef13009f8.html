@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/CreditCard/styles/card-override-d0ea6fe2a9-34f545de2b.css">
+<div ng-controller="LinkAccountsController as linkAccounts" id="linkAccounts">
+  <div ease-modal focus-id="AccountDetailsParentController.focusId" toggle-close="linkAccounts.close()"
+       modal-class="linkAccounts.modalInfo.modalClass" modal-type="linkAccounts.modalInfo.modalType"
+       class="link-accounts">
+
+    <h2 class="link-accounts-header" id="linkAccountsHeader"
+        aria-label="{{'ease.card.linkaccounts.aria.header' | translate}}" translate>ease.card.linkaccounts.header</h2>
+    <div class="link-accounts-message">
+      <p id="linkAccountsManage" translate>ease.card.linkaccounts.message</p>
+      <p id="enroll-one" class="enroll-one" translate>ease.card.linkaccounts.message.one</p>
+    </div>
+    <div class="modal-footer">
+      <button class="progressive link-accounts-footer-button" data-ng-click="linkAccounts.handleButtonClick()"
+              translate>ease.card.linkaccounts.link.button
+      </button>
+    </div>
+    <div class="link-accounts-note">
+      <p id="linkAccountsCombo" class="link-accounts-combo">{{'ease.card.linkaccounts.combine.text' | translate }}
+        <a id="combineLink" class="combine-link" aria-label="{{::'ease.card.linkaccounts.combine.button | translate'}}" href="" data-ng-click="linkAccounts.consolidateButton()" translate>ease.card.linkaccounts.combine.button</a>
+      </p>
+      <p id="linkAccountsNote" class="link-accounts-note" translate>ease.card.linkaccounts.note</p>
+    </div>
+  </div>
+</div>

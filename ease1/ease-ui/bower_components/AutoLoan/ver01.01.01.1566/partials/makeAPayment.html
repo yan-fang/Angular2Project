@@ -1,0 +1,7 @@
+<button data-ng-if="isButtonVisible()" id="accountPayment" tabindex="0" class="ghost progressive" data-ng-click="callback($event)" data-ng-disabled="isDisabled()">
+    <div data-ng-class="{'loading':isSpinnerEnabled()}">
+        <span data-ng-bind="text"></span>
+    </div>
+</button>
+
+<div data-ng-if="isLinkVisible()" class="paymentLink" data-ng-click="callback($event)" id="makePayment" tabindex="0">{{text}}</div>

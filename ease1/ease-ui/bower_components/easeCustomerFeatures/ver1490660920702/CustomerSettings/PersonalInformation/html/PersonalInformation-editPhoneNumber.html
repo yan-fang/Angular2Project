@@ -1,0 +1,39 @@
+<ease-ui-modal class="profileContactModal" close-modal="returnToProfilePrefsPage()" modal-title="::modalTitle">
+  <div class="contactHolder">
+    <form id="editPhoneForm" name="editPhoneForm" data-ng-cut="$event.preventDefault()" data-ng-copy="$event.preventDefault()" data-ng-paste="$event.preventDefault()">
+      <ease-input input-id="::phoneNumberId"
+                  input-val="newPhoneNumberObj.phoneNumber"
+                  input-type = "phone"
+                  label="::numberLabel"
+                  input-status="{{isPrimaryStatus()}}"
+                  error-msg="phoneValidateMessage.firstInputErrorMessage"
+                  error-status="status.firstInputErrorStatus"
+                  data-ng-class="{'primary-email': newPhoneNumberObj.isPrimary}">
+      </ease-input>
+      <div class="setPrimaryHolder" data-ng-if="!isPrimaryActual" id="set_primary_phoneNumber_div">
+        <input id="ad_phoneNumber_edit_checkbox"
+               type="checkbox"
+               data-ng-model="newPhoneNumberObj.isPrimary"
+               tabindex="0">
+        <span class="checkbox"></span>
+        <label id="set_primary_phone_edit_label" for="ad_phoneNumber_edit_checkbox" tabindex="-1"
+               aria-label="{{::content['ease.core.profileprefs.phone.setprimary.label']}}">{{::content['ease.core.profileprefs.phone.setprimary.label']}}</label>
+      </div>
+
+      <button type="submit" id="edit_phoneNumber_button" tabindex="0"
+              data-ng-click="savePhoneNumber()"
+              data-ng-disabled="!enableSaveBtn()"
+              class="contactBtnSave button contactBtnSavePrimary"
+              aria-label="{{::content['ease.core.profileprefs.savegreeting.button']}}">
+        <span data-ng-class="loading"></span>
+        <span>{{::content['ease.core.profileprefs.savegreeting.button']}}</span>
+      </button>
+      <div class="contactDelete">
+        <a href="" id="del_phone_link" class="contactDeleteLink" data-ng-click="deletePhoneModal()" data-ng-if="phoneNumberActual && !isPrimaryActual">{{::content['ease.core.profileprefs.phone.editmodal.delete.label']}}</a>
+      </div>
+
+    </form>
+  </div>
+</ease-ui-modal>
+
+

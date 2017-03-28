@@ -1,0 +1,51 @@
+<div aria-expanded="true" ng-if="accordionVM.isOpen($index)" class="auto-enhanced-transaction">
+  <div class="cleansed-data">
+    <div class="key-block">
+      <span class="single-line prox-bold" id="schDpayDrawerAmountLabel0">{{accordionVM.i18n.coaf.accountSummary.transactions.amount.label.v1}}:</span>
+    </div>
+    <div class="value-block">
+      <span class="single-line" id="schDpayDrawerAmount0">{{transaction.transactionAmount | nonNegativeAmount}}&nbsp;{{transaction.paymentType}}</span>
+    </div>
+  </div>
+  <div class="cleansed-data">
+    <div class="key-block">
+      <span class="single-line prox-bold" id="schDpayDrawerFromLabel0"
+            data-ng-if="transaction.bankName && transaction.fromAccountNumber && transaction.accountType">{{accordionVM.i18n.coaf.accountSummary.transactions.payFrom.label.v1}}:</span>
+    </div>
+    <div class="value-block">
+      <span class="single-line" id="schDpayDrawerFrom0"
+            data-ng-if="transaction.bankName && transaction.fromAccountNumber && transaction.accountType">{{transaction.bankName}}...{{transaction.fromAccountNumber}}&nbsp;({{transaction.accountType}})</span>
+    </div>
+  </div>
+  <div class="cleansed-data">
+    <div class="key-block">
+      <span class="single-line prox-bold" id="schDpayDrawerToLabel0">{{accordionVM.i18n.coaf.accountSummary.transactions.payTo.label.v1}}:</span>
+    </div>
+    <div class="value-block">
+      <span class="single-line" id="schDpayDrawerTo0">{{accordionVM.accountNickname}}....{{accordionVM.displayLast4AcctNumber}}</span>
+    </div>
+  </div>
+  <div class="cleansed-data">
+    <div class="key-block">
+      <span class="single-line prox-bold" id="schDpayDrawerFreqLabel0"
+            data-ng-if="transaction.paymentFrequency">{{accordionVM.i18n.coaf.accountSummary.transactions.frequency.label.v1}}:</span>
+    </div>
+    <div class="value-block">
+      <span class="single-line" id="schDpayDrawerFreq0"
+            data-ng-if="transaction.paymentFrequency">{{transaction.paymentFrequency}}</span>
+    </div>
+  </div>
+  <div class="cleansed-data">
+    <div class="key-block">
+      <span class="single-line prox-bold" id="schDpayDrawerNxtDateLabel0">{{accordionVM.i18n.coaf.accountSummary.transactions.nextScheduledDate.label.v1}}:</span>
+    </div>
+    <div class="value-block">
+      <span class="single-line" id="schDpayDrawerNxtDate0">{{transaction.date | date:'MMMM dd, yyyy'}}</span>
+    </div>
+  </div>
+  <div class="cleansed-data">
+    <div class="paymentMessage" data-ng-show="transaction.isPaymentPlanFailed()">
+      <div class="message"><i class="icon-warning"></i> <span id="transactions.error.message">{{accordionVM.i18n.coaf.accountSummary.transactions.paymentplanfailure.message.v1}}</span></div>
+    </div>
+  </div>
+</div>

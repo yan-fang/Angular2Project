@@ -1,0 +1,67 @@
+<script src="/ease-ui/bower_components/jquery/dist/jquery.js"></script>
+
+<div ng-include="'/ease-ui/bower_components/CreditCard/features/CosBridge/partials/timeoutModal-88ed094abe-bfa6b68680.html'"></div>
+<section class="wrap cf" ng-controller="headerController as headerControl">
+    <a class="mobile-nav" ng-click="headerControl.toggleNav()" translate>cos.headerfooter.header.left.mobilenav.alttext</a>
+    <a class="jump" href="#main_content" scroll-to="main_content" id="skip_to_main_link" translate>cos.headerfooter.header.jump.mobilenav.alttext</a>
+
+    <div class="logo_wrap">
+        <a href="{{header.capitalOneLogoHref}}" class="logo" id="logo_link" translate>cos.headerfooter.header.left.logo.alttext</a>
+        <!--<img id="print_logo" class="logo_print" src="../images/logo_capitalone.png" alt="{{'cos.headerfooter.header.left.logo.alttext' | translate}}">-->
+    </div>
+
+    <div class="logged_in cf">
+        <div class="top_row cf">
+            <ul>
+                <li>
+                    <div id="tfsHeaderButton"></div>
+                </li>
+
+                <!--<li class="lang_toggle_wrap">-->
+                    <!--<div class="lang_toggle" cos-language-toggle  template="/ease-ui/dist/features/LanguageToggle/cos_language_toggle_template.html"></div>-->
+
+
+                <!--</li>-->
+                <li>
+                    <a href="{{header.servicesUrl}}" id="header_contact_link" ng-click="publish.navClickEvent('contact us')" translate>cos.headerfooter.header.links.contactus.text</a>
+                </li>
+                <li> |</li>
+                <li>
+                    <a href="{{header.logoutAjaxUrl}}" id="header_logout_link" class="log_out" ng-click="publish.navClickEvent('sign out')" translate>cos.headerfooter.header.links.signout.text</a>
+                </li>
+            </ul>
+        </div>
+        <div id="account_prefs" class="account_prefs">
+            <ul>
+                <li class="acct_main cf">
+                    <a id="customer_name_link" class="user_name btn_header med-btn" href="" aria-haspopup="true">
+                        {{header.name}}
+                        <span id="menu-help-span"></span>
+                    </a>
+
+                    <div id="customer_name_dropdown" class="account_prefs_menu cf account-slide-up-down">
+                        <ul>
+                            <li><a id="header_email_link" href="/contact"
+                                   ng-click="publish.navClickEvent('personal account:email')" translate>cos.headerfooter.header.menu.email.text</a></li>
+                            <li><a id="header_address_link" href="/contact"
+                                   ng-click="publish.navClickEvent('personal account:address')" translate>cos.headerfooter.header.menu.address.text</a></li>
+                            <li><a id="header_username_link" href="/securityinfo"
+                                   ng-click="publish.navClickEvent('personal account:user name')" translate>cos.headerfooter.header.menu.username.text</a></li>
+                            <li ng-if="header.lastLoginDateTime != null" class="last"><p class="last_log" id="last_login_date">{{'cos.headerfooter.header.menu.lastsignin.text' | translate}} {{header.lastLoginDateTime}}</p></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="search">
+            <label for="search_input" class="offscreen" translate>cos.headerfooter.header.search.input.text</label>
+            <input id="search_input" type="text" ng-model="searchInput.text" ng-focus="accountDropdown = false"
+                   ng-enter="submitSearch()" title="{{'cos.headerfooter.header.search.input.text' | translate}}" alt="{{'cos.headerfooter.header.search.input.text' | translate}}"/>
+            <a id="submit_search" class="submit_icon" ng-click="submitSearch()" translate>cos.headerfooter.header.search.submit.alttext</a>
+        </div>
+
+    </div>
+    <div language-disclaimer-modal></div>
+</section>
+<div style="clear:both;">&nbsp;</div>

@@ -1,0 +1,13 @@
+{
+  "name": "lodash",
+  "version": "3.10.1",
+  "_release": "3.10.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "3.10.1",
+    "commit": "24f5271a1b48679d3dd2922fa6d7ecf08722dd6f"
+  },
+  "_source": "https://github.kdc.capitalone.com/bower-dependencies/lodash.git",
+  "_target": "3.10.1",
+  "_originalSource": "https://github.kdc.capitalone.com/bower-dependencies/lodash.git"
+}

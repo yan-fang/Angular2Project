@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/AutoLoan/ver01.01.01.1566/styles/auto-loan-override.css">
+<div class="autoLoanTrackerParent" id="mainAccountDetail">
+    <div class="details _coaf" data-ng-if="true">
+        <div class="container fadeInSlideUp" data-ng-if="true">
+            <div class="backFromAutoLoanTracker">
+                <h4 id="autoLoanAccountName">
+                    <span data-ng-bind="autoLoanAccountNickname | uppercase"></span>
+                </h4>
+                <h2 class="loanTrackerLabel" id="loanTrackerStatusLabel">
+                    <span class="title" ng-bind-html="alPayDownView.i18N.coaf.payDownView.payDownViewLoanTrackerStatus.label.v1"></span>
+                </h2>
+            </div>
+        </div>
+    </div>
+    <div class="marginTop">
+        <div class="loan-progress-bar" data-ng-include data-src="'ease-ui/bower_components/AutoLoan/ver01.01.01.1566/partials/autoloantracker/AutoLoan-payDownViewDetailsProgresBar.html'"></div>
+        <div class="marginTop-twenty"/>
+        <div data-ng-if="alPayDownView.isBalanceAtMaturity" data-ng-include data-src="'ease-ui/bower_components/AutoLoan/ver01.01.01.1566/partials/autoloantracker/AutoLoan-catchupPaymentDetails.html'"></div>
+        <div data-ng-if="alPayDownView.isEarlyPayoff || alPayDownView.isOnTime" data-ng-include data-src="'ease-ui/bower_components/AutoLoan/ver01.01.01.1566/partials/autoloantracker/AutoLoan-earlyOrOnTimePayoffDetails.html'"></div>
+        <div data-ng-if="alPayDownView.isPayoff" data-ng-include data-src="'ease-ui/bower_components/AutoLoan/ver01.01.01.1566/partials/autoloantracker/AutoLoan-paidOff.html'"></div>
+    </div>
+
+
+
+
+    <autoloan-carousel-directive carousel-model="alPayDownView.getCarouselModel()"></autoloan-carousel-directive>
+
+
+
+</div>
+
+<div ui-view></div>

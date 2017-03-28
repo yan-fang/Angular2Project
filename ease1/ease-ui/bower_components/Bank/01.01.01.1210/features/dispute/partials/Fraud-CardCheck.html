@@ -1,0 +1,33 @@
+
+<div class="fraud-message">
+    {{::BankDispute.pageProperties.modalSubTitle[BankDispute.cardHolder.type].prefix1}}
+    {{::BankDispute.cardHolder.thirdPerson}}
+    {{::BankDispute.pageProperties.modalSubTitle[BankDispute.cardHolder.type].prefix2}}
+     <span class="cardlastfour">{{::BankDispute.transactionObj.cardLastFour}}</span>
+    {{::BankDispute.pageProperties.modalSubTitle[BankDispute.cardHolder.type].suffix}}
+   
+</div>
+
+<form class="card-check">
+    <label class="input-block" for="card-radio">
+        <input type="radio" id="card-radio" ng-model="BankDispute.pageProperties.radioValue"
+               name="card-check-radio" tabindex="0" value="FRAUDCARDPOSSESSION"/>
+        {{::BankDispute.pageProperties.radioText.cardPresent.prefix}}
+        {{::BankDispute.cardHolder.firstName}}
+        {{::BankDispute.pageProperties.radioText.cardPresent.suffix}}
+    </label>
+    <label class="input-block" for="no-card-radio">
+        <input type="radio" id="no-card-radio" ng-model="BankDispute.pageProperties.radioValue"
+               name="card-check-radio" tabindex="0"
+               value="FRAUDCARDNONPOSSESSION"/>
+        {{::BankDispute.pageProperties.radioText.cardNotPresent.prefix}}
+        {{::BankDispute.cardHolder.firstName}}
+        {{::BankDispute.pageProperties.radioText.cardNotPresent.suffix}}
+    </label>
+</form>
+
+<button id='continue-button' role="button" type="button" data-ng-disabled="!BankDispute.pageProperties.radioValue"
+        class="progressive"
+        ng-click="BankDispute.goToView('addressCheckPage')">
+    {{::BankDispute.pageProperties.buttonText}}
+</button>

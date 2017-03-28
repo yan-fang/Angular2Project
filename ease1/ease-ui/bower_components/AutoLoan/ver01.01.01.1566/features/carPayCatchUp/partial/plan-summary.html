@@ -1,0 +1,74 @@
+<div ease-modal
+     modal-type="planSummaryController.modalType"
+     toggle-close="planSummaryController.close()"
+     modal-class="planSummaryController.modalClass"
+     class="cpcu-plan-summary double-wide">
+
+  <h2 id="modalTitle" class="modal-heading"
+      data-ng-bind="::carPayCatchUpController.i18n.coaf.carPayCatchUp.planSummary.modalTitle.label.v1"></h2>
+
+  <div class="plan-monthly-payments-group" id="firstPayment" tabindex="0">
+    <h3 class="group-heading">
+      <span id="monthlyDayLabel" class="month-day-label" data-ng-bind="::planSummaryController.firstPaymentDateLabel"></span>
+      <span id="initialPaymentAmount" class="payment-amount" data-ng-bind="planSummaryController.initialPaymentAmount | currency"></span>
+			<span id="dropDownIcon" class="dropdown-icon" aria-hidden="true">
+				<i class="icon-drop-arrow"></i>
+			</span>
+    </h3>
+    <ease-drawer id="drawerID" drawer-id="'idForTheDrawer'">
+      <p id="paymentDescription" data-ng-bind-html="::carPayCatchUpController.i18n.coaf.carPayCatchUp.planSummary.highFive.label.v1"></p>
+    </ease-drawer>
+  </div>
+
+  <p id="numberOfRemainingPayments" data-ng-bind-html="::planSummaryController.numberOfRemainingPaymentsMessage"></p>
+
+  <div class="plan-monthly-payments-group" data-ng-repeat="payment in planSummaryController.paymentsExcludingFirstPaymentList" id="catchupPayment{{$index}}" tabindex="0">
+    <h3 class="group-heading">
+			<span class="month-day-label" id="PaymentDateInHeader{{$index}}">
+			  <span id="PaymentDateInDescriptionMonth{{$index}}" class="month-label" ng-bind="payment.paymentDate | date:'MMM '"></span>
+			  <span id="PaymentDateInDescriptionDay{{$index}}" class="day-label" ng-bind="payment.paymentDate | date:'dd'"></span>
+			  <span id="paymentdateLabel{{$index}}" data-ng-bind="::planSummaryController.i18n.coaf.carPayCatchUp.labels.Payment.label.v1"></span>
+			</span>
+      <span id="PaymentAmountInHeader{{$index}}" class="payment-amount" ng-bind="payment.paymentAmount | currency"></span>
+			<span id="dropDownIcon{{$index}}" class="dropdown-icon" aria-hidden="true">
+				<i class="icon-drop-arrow"></i>
+			</span>
+    </h3>
+
+    <ease-drawer id="DrawerID{{$index}}" drawer-id="idForTheDrawer">
+      <h4 class="cpcu-payment-date">
+        <span id="HiddenPaymentDateLabel{{$index}}" data-ng-bind="::planSummaryController.i18n.coaf.carPayCatchUp.labels.paymentDate.label.v1"></span>
+        <span id="PaymentDate{{$index}}" ng-bind="payment.paymentDate | date:'MMMM dd, yyyy '"></span>
+      </h4>
+      <ul class="calculated-payment-list">
+        <li class="payment-line-item past-due-payment">
+          <span id="PastDueAmount{{$index}}" class="amount-of-payment" ng-bind="payment.pastDuePaymentAmount | currency "></span>
+          <em class="type-of-payment" ><span id="PastDueAmountLabel{{$index}}" data-ng-bind="::planSummaryController.i18n.coaf.carPayCatchUp.labels.pastDuePayment.label.v1"></span></em>
+        </li>
+        <li class="payment-line-item plus">
+          <span class="icon-plus" aria-hidden="true"></span>
+          <span class="screen-reader-only" id="plusIcon{{$index}}" data-ng-bind="::planSummaryController.i18n.coaf.carPayCatchUp.planSummary.plusLabel.label.v1"></span>
+        </li>
+        <li class="payment-line-item monthly-payment">
+          <span id="MonthlyPaymentAmount{{$index}}" class="amount-of-payment" ng-bind="payment.monthlyPaymentAmount | currency "></span>
+          <em class="type-of-payment" ><span id="MonthlyPaymentAmountLabel{{$index}}" data-ng-bind="::planSummaryController.i18n.coaf.carPayCatchUp.labels.monthlyPayment.label.v1"></span></em>
+        </li>
+        <li class="payment-line-item total-payment">
+          <span id="TotalPaymentAmount{{$index}}" class="amount-of-payment" ng-bind="payment.paymentAmount | currency "></span>
+          <em class="type-of-payment" ><span id="TotalPaymentAmountLabel{{$index}}" data-ng-bind="::planSummaryController.i18n.coaf.carPayCatchUp.labels.totalPayment.label.v1"></span></em>
+        </li>
+      </ul>
+    </ease-drawer>
+  </div>
+
+
+  <p id="reassuranceTextLabel" data-ng-bind-html="::carPayCatchUpController.i18n.coaf.carPayCatchUp.planSummary.reassuranceText.label.v1"></p>
+
+  <div class="button-container">
+    <button id="chooseAccountButton" class="btn progressive full-width" data-ng-disabled="planSummaryController.disabled" data-ng-click="planSummaryController.selectPaymentAccount()">
+      <div data-ng-class="{'loading':planSummaryController.spinnerEnable}">
+        <span data-ng-bind="::planSummaryController.i18n.coaf.carPayCatchUp.planSummary.progressButtonText.label.v1"></span>
+      </div>
+    </button>
+  </div>
+</div>

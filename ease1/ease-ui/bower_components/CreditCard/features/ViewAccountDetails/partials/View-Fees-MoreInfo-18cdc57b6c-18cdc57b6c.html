@@ -1,0 +1,32 @@
+<div cc-modal-back="viewOnlineTermsDetails.switchView('main')"></div>
+<table style="width: 100%">
+  <tr ng-if="viewOnlineTermsDetails.onlineTermsResponse.fees.membershipFeeFrequency!==undefined">
+    <td id ="fees_membershipFeeAmount_label" data-ismoreinfo=true class="keyApr">{{viewOnlineTermsDetails.membershipFee | translate}}</td>
+    <td id ="fees_membershipFeeAmount_value" class="amt">{{viewOnlineTermsDetails.membershipFeeAmount}}</td>
+  </tr>
+  <tr ng-if="viewOnlineTermsDetails.overLimitFeeCheck">
+    <td id ="fees_overLimitFee_label" data-ismoreinfo=true class="keyApr">{{'ease.card.viewaccountdetails.fees.overlimitfees' | translate}}</td>
+    <td id ="fees_overLimitFee_value" class="amt">{{viewOnlineTermsDetails.overLimitFeeAmount}}</td>
+  </tr>
+  <tr ng-if="viewOnlineTermsDetails.overLimitFeeCheck">
+    <td id ="fees_overLimitFee_verbiage" class="key">{{'ease.card.viewaccountdetails.fees.overlimitfees.verbiage' | translate}}</td>
+  </tr>
+  <tr ng-if="viewOnlineTermsDetails.lateFeeCheck">
+    <td id ="fees_lateFee_label" data-ismoreinfo=true class="keyApr">{{'ease.card.viewaccountdetails.fees.latefees' | translate}}</td>
+    <td id ="fees_lateFee_value" class="amt">{{viewOnlineTermsDetails.lateFeeAmount | translate : {'percentage' : viewOnlineTermsDetails.lateFeePercent, 'minimumvalue' : viewOnlineTermsDetails.lateFeeMinimumAmount, 'fixedvalue' : viewOnlineTermsDetails.currentLateFeeAmount} }}</td>
+  </tr>
+   <tr ng-if="viewOnlineTermsDetails.lateFeeCheck && (viewOnlineTermsDetails.onlineTermsResponse.fees.lateFeeMinimumAmount!==undefined &&  viewOnlineTermsDetails.onlineTermsResponse.fees.lateFeePercent!==undefiend)">
+    <td colspan="2" id ="fees_lateFee_percentverbiage" class="key">{{'ease.card.viewaccountdetails.fees.latefees.percentverbiage' | translate : {'minimumvalue' : viewOnlineTermsDetails.lateFeeMinimumAmount, 'percentage' : viewOnlineTermsDetails.lateFeePercent,
+    'baseLateFeeDescription' : viewOnlineTermsDetails.baseLateFeeDescription} }}</td>
+ </tr>
+  <tr ng-if="viewOnlineTermsDetails.lateFeeCheck && (viewOnlineTermsDetails.onlineTermsResponse.fees.lateFeeAmount!==undefined || viewOnlineTermsDetails.onlineTermsResponse.fees.lateFeePercent!==undefiend)">
+    <td colspan="2" id ="fees_lateFee_verbiage" class="key">{{'ease.card.viewaccountdetails.fees.latefees.verbiage' | translate}}</td>
+  </tr>
+  <tr ng-if="viewOnlineTermsDetails.lateFeeCheck && (viewOnlineTermsDetails.onlineTermsResponse.fees.lateFeeAmount!==undefined || viewOnlineTermsDetails.onlineTermsResponse.fees.lateFeePercent!==undefiend)">
+    <td colspan="2" id ="fees_lateFee_suggestionVerbiage" class="key">{{'ease.card.viewaccountdetails.fees.latefees.suggestionverbiage' | translate }} <a tabindex="0" id="alertsLink" href="{{setAlertURL}}" data-ng-click="viewOnlineTermsDetails.handleLinkEvents($event,'alertLink')" aria-label="{{'ease.card.viewaccountdetails.fees.latefees.verbiage.alerts' | translate}}" href>
+    {{'ease.card.viewaccountdetails.fees.latefees.verbiage.alerts' | translate}}
+    </a> {{'ease.card.viewaccountdetails.fees.latefees.verbiage.or' | translate}} <!--<a tabindex="0" id="autoPayLink" data-ng-click="viewOnlineTermsDetails.goToAutoPay()" aria-label="{{'ease.card.viewaccountdetails.fees.latefees.verbiage.autopay' | translate}}" href>-->
+    {{'ease.card.viewaccountdetails.fees.latefees.verbiage.autopay' | translate}}
+    <!--</a>--> </td>
+  </tr>
+</table>

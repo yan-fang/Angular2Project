@@ -1,0 +1,312 @@
+<!--HTML partial for the payments flow. this will be starting for OTP and RP.-->
+<link rel="stylesheet" href="/ease-ui/bower_components/HomeLoans/ver1490643033478/styles/home-loan-override.css">
+<div>
+
+    <ease-ui-modal close-modal="close()" modal-id="'standard'" role="application" show-icon-mobile="true" modal-title="modalTitle" class="makeAPaymentModal">
+        <div class="textcentered">
+            <h3 class="makePaymentAccountNumber">
+                <div id="viewAccntNumber_TLNPI">{{i18n.payment.accountNo}}:
+                    {{paymentInfo.accountDetails.accountNumberTLNPI}}
+                </div>
+            </h3>
+        </div>
+
+        <div>
+        <table class="paymentTable" data-ng-show="showTab" role="presentation">
+            <tr>
+                <td>
+                    <button aria-expanded="{{(paymentTypeOption == 'onetime')}}" tabindex="0" id="onetimeTab"
+                            ng-class="(paymentTypeOption == 'onetime' ) ? 'paymentTypeButtonSelected' : 'paymentTypeButton'"
+                            class="borderOnetime" data-ng-click="toggleTab(i18n.payment.oneTimeTab)"
+                            value="onetime">
+                        <span class="hiddenSpan">{{(paymentTypeOption == 'onetime' ) ? 'Tab Selected' : 'Tab UnSelected'}}</span>{{i18n.payment.oneTimeTab}}
+                    </button>
+                </td>
+                <td>
+                    <button aria-expanded="{{(paymentTypeOption == 'recurring')}}" tabindex="0" id="recurringTab"
+                            ng-class="(paymentTypeOption == 'recurring' ) ? 'paymentTypeButtonSelected' : 'paymentTypeButton'"
+                            class="borderRecurring" data-ng-click="toggleTab('recurring')" value="recurring">
+                      <span class="hiddenSpan">{{(paymentTypeOption == 'recurring' ) ? 'Tab Selected' : 'Tab UnSelected'}}</span>{{i18n.payment.autoPayTab}}
+                    </button>
+                </td>
+            </tr>
+        </table>
+        </div>
+
+
+        <div class="paymentError" ng-show="showErrorMessage && onetimepayment">
+            <i class="icon-warning"></i>
+            <div class="message"><span> {{errorMessage}}</span></div>
+        </div>
+
+        <div class="paymentError" ng-show="showPartialAccounts && (!displayTabularData || onetimepayment)">
+            <i class="icon-warning"></i>
+            <div class="message"><span> {{i18n.payment.partialSuccess}}</span></div>
+        </div>
+
+        <div data-ng-show="displayTabularData">
+            <div class="container" data-ng-show="autopayment">
+                <p class="autoPayExistingMsg">
+                    {{i18n.payment.yournext}} {{paymentInfo.accountDetails.paymentFrequency}}
+                    {{i18n.payment.paymentprocessed}}
+                    {{existingTransaction.paymentEffectiveDate| date:'MMM dd, yyyy'}}
+                </p>
+
+              <div class="successDetails">
+                <table>
+                  <caption scope="row" colspan="2"></caption>
+                  <tr>
+                    <th scope="row">{{i18n.payment.payFrom}}</th>
+                    <!--&#x2729;-->
+                    <td class="TLNPI" id="payFromInformation">
+                      {{existingTransaction.bankName}} ....{{existingTransaction.fromAccountNumber4}}</td>
+                  </tr>
+                  <tr data-ng-show="existingTransaction.sendOn" id="sendOn">
+                    <th scope="row">{{i18n.payment.sendOn}}</th>
+                    <td id="sendOnDate">{{existingTransaction.sendOn}}</td>
+                  </tr>
+                  <tr data-ng-show="existingTransaction.amountType" id="amountOption">
+                    <th scope="row">{{i18n.payment.amount}}</th>
+                    <td id="amountOption">{{existingTransaction.amountType}}</td>
+                  </tr>
+                  <tr data-ng-show="existingTransaction.additionalPrincipalAmount" id="addPrincipal">
+                    <th scope="row">{{i18n.payment.addPrincipal}}</th>
+                    <td id="addPrincipal">{{existingTransaction.additionalPrincipalAmount | currency}}</td>
+                  </tr>
+                </table>
+
+              </div>
+            </div>
+
+            <div class="buttons" data-ng-show="autopayment">
+                <a id="cancelPaymentId" tabindex="0" role="link" id="autoPayCancelButton"
+                   title="{{i18n.payment.ariaCancelsPaymentLinkMessage}}"
+                   data-ng-click="cancelAutoPay()"
+                   data-ng-if="!existingTransaction.pending" href>{{i18n.payment.cancelPayment}}</a>
+                <a id="editPaymentId" tabindex="0" role="link" id="autoPayEditButton"
+                   title="{{i18n.payment.ariaEditPaymentLinkMessage}}"
+                   data-ng-click="editAutoPay()"
+                   data-ng-if="paymentInfo.accountDetails.isRecurringPaymentEligible && !existingTransaction.pending"
+                   href>
+                    | {{i18n.payment.editPayment}}</a>
+            </div>
+
+        </div>
+
+        <div data-ng-show="autopayment && displayOTPPayMessage">
+
+            <div class="recurringMsgDiv warningmessage">
+                <table>
+                    <tr>
+                        <td>
+                            <i class="icon-info-circle"></i>
+                        </td>
+                        <td>
+                           <p id="warningmsg" class="recurringMsgFontRecurr">
+                              {{i18n.payment.pastDueMessagept1}}{{paymentInfo.accountDetails.totalPaymentDueAmount | currency}}
+                              {{i18n.payment.by}}{{paymentInfo.accountDetails.nextPaymentDate| date:'MMM dd, yyyy'}}{{i18n.payment.withotp}}
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+        <!--<div data-ng-show="!displayRecurringMsg">-->
+        <div ng-show="onetimepayment">
+            <div class="hlPaymentInfo">
+              <table>
+                <caption scope="row" colspan="2"></caption>
+                <tr class="paymentSummationField"
+                    data-ng-show="paymentInfo.accountDetails.basePaymentDueAmount != null">
+                    <th scope="row">{{i18n.payment.baseAmountDue}}</th>
+                    <td id="baseAmtnDueMakeAPayment">{{paymentInfo.accountDetails.basePaymentDueAmount | currency}}</td>
+                </tr>
+                <tr class="paymentSummationField" data-ng-show="paymentInfo.accountDetails.pastDueAmount > 0">
+                    <th scope="row">{{i18n.payment.pastDue}}</th>
+                    <td id="pastDueAmnt">{{paymentInfo.accountDetails.pastDueAmount | currency}}</td>
+                </tr>
+
+                <tr class="paymentSummationField">
+                    <th scope="row">{{i18n.payment.totalDue}}</th>
+                    <td id="totalPaymentDueAmnt">{{paymentInfo.accountDetails.totalPaymentDueAmount | currency}}</td>
+                </tr>
+              </table>
+            </div>
+        </div>
+
+        <div ng-show="paymentInfo.features.recurringPaymentEnabled && autopayment && !displayRecurringMsg">
+            <div class="hlPaymentInfo">
+              <table>
+                <caption scope="row" colspan="2"></caption>
+                <tr class="paymentSummationField">
+                    <th scope="row">{{i18n.payment.baseAmountDue}}</th>
+                    <td id="baseAmtnDue">{{paymentInfo.accountDetails.basePaymentDueAmount | currency}}</td>
+                </tr>
+              </table>
+            </div>
+        </div>
+
+        <div ng-show="onetimepayment && autoPayExists">
+            <br>
+            <div class="recurringMsgDiv">
+                <table>
+                    <tr>
+                        <td>
+                            <i id="recurringPaymentInfoIcon" class="icon-info-circle"></i>
+                        </td>
+                        <td>
+                           <span id="processingMsg" class="recurringMsgFontRecurr">
+                              <br>
+                               {{i18n.payment.additionPaymentspt1}}
+                               {{existingTransaction.paymentEffectiveDate | date:'MMM dd, yyyy'}}.
+                               {{i18n.payment.additionPaymentspt2}} {{i18n.payment.additionPaymentspt3}}
+                             </span> <br>
+                             <span id="additionPaymentMsg" class="recurringMsgFontRecurr">
+                                <!--{{i18n.payment.additionPaymentspt2}} {{i18n.payment.additionPaymentspt3}}-->
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <form role="form" id="ummform" key-Press-Event="{{id}}" name="paymentForm" novalidate
+              data-ng-show="onetimepayment || (autopayment && !displayRecurringMsg && autoPayInfoMessage == null)">
+            <ease-ui-dropdown
+                    is-open="payFrom.isOpen"
+                    persist-items="payFrom.items"
+                    items="payFrom.itemsMenu"
+                    model-value="payFrom.selectedItem"
+                    filter-by="label"
+                    required="payFrom.required"
+                    disable-search="false"
+                    select="payFrom.selected(item)"
+                    combobox="payFrom.data"
+            >
+                <ease-ui-dropdown-menu
+                        select="payFrom.selected(item)"
+                        items="payFrom.itemsMenu"
+                        template=true
+                        is-open="payFrom.isOpen"
+                        component-id="transfer-amount"
+                >
+                    <li data-ng-repeat="item in payFrom.itemsMenu"
+                        data-index={{$index}}
+                        role="option"
+                        tabindex="-1"
+                        id="payFrom-{{$index}}"
+                    >
+                            <span class="ease-itemlabel"
+                                  id="payFrom-{{$index}}-label">{{item.label}}</span>
+                        <span class="ease-itemSubLabel">{{item.subLabel}}</span>
+                        <span class="ease-item-amount">{{item.amount}}</span>
+                    </li>
+                </ease-ui-dropdown-menu>
+            </ease-ui-dropdown>
+
+            <ease-ui-dropdown ng-show="sendOn.show"
+                              is-open="sendOn.isOpen"
+                              persist-items="sendOn.items"
+                              items="sendOn.itemsMenu"
+                              model-value="sendOn.selectedItem"
+                              filter-by="label"
+                              required="sendOn.required"
+                              disable-search="false"
+                              select="sendOn.selected(item)"
+                              combobox="sendOn.data"
+            >
+                <ease-ui-dropdown-menu
+                        select="sendOn.selected(item)"
+                        items="sendOn.itemsMenu"
+                        template=true
+                        is-open="sendOn.isOpen"
+                        component-id="sendOn"
+                >
+                    <li data-ng-repeat="item in sendOn.itemsMenu"
+                        data-index={{$index}}
+                        role="option"
+                        tabindex="-1"
+                        id="sendOn-option-{{$index}}"
+                    >
+                        <span class="ease-itemlabel" id="sendOn-option-{{$index}}-label">{{item.label}}</span>
+                        <span class="ease-itemSubLabel">{{item.subLabel}}</span>
+                        <span class="ease-item-amount">{{item.amount}}</span>
+                    </li>
+                </ease-ui-dropdown-menu>
+            </ease-ui-dropdown>
+
+            <ease-ui-dropdown
+                    is-open="amountOptions.isOpen"
+                    persist-items="amountOptions.items"
+                    items="amountOptions.itemsMenu"
+                    model-value="amountOptions.selectedItem"
+                    filter-by="label"
+                    required="amountOptions.required"
+                    disable-search="false"
+                    select="amountOptions.selected(item)"
+                    combobox="amountOptions.data"
+            >
+                <ease-ui-dropdown-menu
+                        select="amountOptions.selected(item)"
+                        items="amountOptions.itemsMenu"
+                        template=true
+                        is-open="amountOptions.isOpen"
+                        component-id="amount-options"
+                >
+                    <li data-ng-repeat="item in amountOptions.itemsMenu"
+                        data-index={{$index}}
+                        role="option"
+                        tabindex="-1"
+                        id="amount-option-{{$index}}"
+                    >
+                            <span class="ease-itemlabel"
+                                  id="amount-option-{{$index}}-label">{{item.label}}</span>
+                        <span class="ease-itemSubLabel">{{item.subLabel}}</span>
+                        <span class="ease-item-amount">{{item.amount}}</span>
+                    </li>
+                </ease-ui-dropdown-menu>
+            </ease-ui-dropdown>
+
+            <div ng-if="showInputBox" class="additionalInput">
+                <ease-input
+                        input-id="additionalInput.id"
+                        input-val="additionalInput.amountText"
+                        label="additionalInput.label"
+                        input-type="{{inputType}}"
+                        currency="{{currency}}" 
+                        static-content="additionalInput.contentObj" 
+                        error-msg="additionalInput.contentObj.errorMessage"
+                        error-status="additionalInput.contentObj.errorStatus" 
+                        char-limit="additionalInput.charLimit" 
+              </ease-input>
+            </div>
+            <div class="makePaymentButton">
+                <button role="button"
+                        id="makeAPaymentModelButton"
+                        tabindex="0" class="btn action"
+                        data-ng-click="makePayment();inProgress=true"
+                        data-ng-class="disablePayment" data-ng-disabled="!validateAmount()">
+                    <div id="makeApaymentDiv" data-ng-class="{'loading':homeLoansPay.inProgress}">
+                        {{submitButtonText}}
+                    </div>
+                </button>
+            </div>
+
+            <div data-ng-show="paymentTypeOption == 'onetime'">
+                <p id="hlPaymentDisclaimerParId" class="ccDisclaimer">{{i18n.payment.ccDisclaimer}}
+                <span id="hlPaymentDisclaimer" class="effectiveDateDisclaimer" ng-show="effectiveDate">.
+                {{i18n.payment.paymentEffectiveMessage}} {{effectiveDate | date:'MMMM d, y'}}.</span>
+                </p>
+            </div>
+            <div data-ng-show="paymentInfo.features.recurringPaymentEnabled && paymentTypeOption == 'recurring'">
+                <p class="ccDisclaimer">
+                    {{i18n.payment.ccDisclaimerRecurring}}</p>
+            </div>
+
+        </form>
+        <!--</div>-->
+
+    </ease-ui-modal>
+</div>

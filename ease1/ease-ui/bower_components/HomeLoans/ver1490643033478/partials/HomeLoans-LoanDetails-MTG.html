@@ -1,0 +1,123 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/HomeLoans/ver1490643033478/styles/home-loan-override.css">
+<div ease-modal toggle-close="mtgDetails.close()" init-close="mtgDetails.initClose" modal-class="mtgDetails.modalClass"
+     modal-type="mtgDetails.modalType" focus-class="mtgDetails.focusClass" focus-id="focusId">
+
+  <h2 id="nickName" aria-label="Account NickName is {{mtgDetails.accountDetails.accountNickName}}">{{mtgDetails.accountDetails.accountNickName}}</h2>
+  <h3><div id="accountNumberMTG_TLNPI">{{i18nHL.loanDetails.accountNo}}: {{mtgDetails.accountDetails.accountNumber}}</div></h3>
+
+
+  <div>
+    <table class="mortgage-loan-dtl-table">
+      <tr>
+        <caption scope="col" colspan="2">{{i18nHL.loanDetails.propertyInfo}}</caption>
+      </tr>
+      <tr ng-show="mtgDetails.accountDetails.mortgageAccount.primaryBorrowerName">
+        <th>{{i18nHL.loanDetails.borrower}}</th>
+        <!--&#x2729;-->
+        <td><span id="primaryBorrwer">{{mtgDetails.accountDetails.mortgageAccount.primaryBorrowerName}}</span></td>
+      </tr>
+      <tr ng-show="mtgDetails.accountDetails.mortgageAccount.coBorrowerName">
+        <th>{{i18nHL.loanDetails.coBorrower}}</th>
+        <td><span id="coBorrower">{{mtgDetails.accountDetails.mortgageAccount.coBorrowerName}}</span></td>
+      </tr>
+      <tr ng-show="mtgDetails.accountDetails.mortgageAccount.propertyAddress.addressLine1">
+        <th>{{i18nHL.loanDetails.address}}</th>
+        <td><span id="addressLine1">{{mtgDetails.accountDetails.mortgageAccount.propertyAddress.addressLine1}}</span></td>
+      </tr>
+      <tr>
+        <th>{{i18nHL.loanDetails.cityState}}</th>
+        <td><span id="cityStateZip">{{mtgDetails.accountDetails.mortgageAccount.propertyAddress.city}}
+        {{mtgDetails.accountDetails.mortgageAccount.propertyAddress.stateCode}}
+          {{mtgDetails.accountDetails.mortgageAccount.propertyAddress.postalCode}}</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div>
+    <table>
+      <tr>
+        <caption scope="col" colspan="2">{{i18nHL.loanDetails.loanTerms}}</caption>
+        </tr>
+      <tr ng-show="mtgDetails.accountDetails.level1Values.value1">
+        <th>{{i18nHL.loanDetails.loanType}}</th>
+        <td><span id="loanTypeMTG" class="largeSpan">{{mtgDetails.accountDetails.level1Values.value1}}</span></td>
+      </tr>
+      <tr ng-show="mtgDetails.accountDetails.mortgageAccount.loanAccountBalanceInfo.originalLoanAmount">
+        <th>{{i18nHL.loanDetails.originalLoanAmount}}</th>
+        <td><span id="originalLoanAmount">{{mtgDetails.accountDetails.mortgageAccount.loanAccountBalanceInfo.originalLoanAmount | currency}}</span></td>
+      </tr>
+      <tr ng-show="mtgDetails.accountDetails.mortgageAccount.loanTermDuration">
+        <th>{{i18nHL.loanDetails.originalLoanTerm}}</th>
+        <td><span id="originalTerm">{{loanTermDurationFriendlyFormat}}</span></td>
+      </tr>
+      <tr ng-show="mtgDetails.accountDetails.mortgageAccount.openDate">
+        <th>{{i18nHL.loanDetails.openDate}}</th>
+        <td><span id="openDate">{{mtgDetails.accountDetails.mortgageAccount.openDate | date:'MMM dd, yyyy'}}</span></td>
+      </tr>
+      <tr ng-show="mtgDetails.accountDetails.mortgageAccount.nextRateAdjustmentDate">
+        <th>{{i18nHL.loanDetails.rateChangeEffectiveDate}}</td>
+        <td><span id="rateChangeEffectiveDate" class="smallSpan">{{mtgDetails.accountDetails.mortgageAccount.nextRateAdjustmentDate | date:'MMM dd, yyyy'}}</span></td>
+      </tr>
+      <tr ng-show="mtgDetails.accountDetails.mortgageAccount.remainingTermDuration">
+        <th>{{i18nHL.loanDetails.remainingLoanTerm}}</label></th>
+        <td><span id="remainingTerm">{{remainingTermDurationFriendlyFormat}}</span></td>
+      </tr>
+      <tr ng-show="mtgDetails.accountDetails.mortgageAccount.loanMaturityDate">
+        <th>{{i18nHL.loanDetails.loanMaturityDate}}</td>
+        <td><span
+          id="loanMaturityDate">{{mtgDetails.accountDetails.mortgageAccount.loanMaturityDate | date:'MMM dd, yyyy'}}</span></td>
+      </tr>
+
+    </table>
+  </div>
+
+  <div>
+    <table>
+      <tr>
+        <caption scope="col" colspan="2">{{i18nHL.loanDetails.balances}}</caption>
+        </tr>
+      <tr ng-show="mtgDetails.accountDetails.mortgageAccount.loanAccountBalanceInfo.principalBalance">
+        <th>{{i18nHL.loanDetails.principalBalance}}</th>
+        <td aria-label="{{mtgDetails.accountDetails.mortgageAccount.loanAccountBalanceInfo.principalBalance | currency}}"><span id="principalBalance">{{mtgDetails.accountDetails.mortgageAccount.loanAccountBalanceInfo.principalBalance | currency}}</span></td>
+      </tr>
+      <tr ng-show="mtgDetails.accountDetails.mortgageAccount.loanAccountBalanceInfo.currentEscrowBalance">
+        <th>{{i18nHL.loanDetails.escrowBalance}}</td>
+        <td><span id="escrowBalance">{{mtgDetails.accountDetails.mortgageAccount.loanAccountBalanceInfo.currentEscrowBalance | currency}}</span></td>
+      </tr>
+      <tr
+        ng-show="mtgDetails.accountDetails.mortgageAccount.loanAccountBalanceInfo.deferredInterestBalance">
+        <th>{{i18nHL.loanDetails.defInterestBalance}}</th>
+        <td><span id="deferredInterestBalance">{{mtgDetails.accountDetails.mortgageAccount.loanAccountBalanceInfo.deferredInterestBalance | currency}}</span></td>
+      </tr>
+      <tr
+        ng-show="mtgDetails.accountDetails.mortgageAccount.loanAccountBalanceInfo.deferredPrincipalBalance">
+        <th>{{i18nHL.loanDetails.defPrincipalBalance}}</th>
+        <td><span id="deferredPrincipalBalance">{{mtgDetails.accountDetails.mortgageAccount.loanAccountBalanceInfo.deferredPrincipalBalance | currency}}</span></td>
+      </tr>
+      <div>
+        <table>
+          <tr>
+            <caption scope="col" colspan="2">{{i18nHL.loanDetails.paymentInformation}}</caption>
+          </tr>
+          <tr ng-show="mtgDetails.accountDetails.mortgageAccount.loanAccountPaymentInfo.nextPaymentDate">
+            <th>{{i18nHL.loanDetails.nextPaymentDate}}</td>
+            <td>
+              <span id="nextPaymentDate">{{mtgDetails.accountDetails.mortgageAccount.loanAccountPaymentInfo.nextPaymentDate | date:'MMM dd, yyyy'}}</span></td>
+          </tr>
+          <tr ng-show="mtgDetails.accountDetails.mortgageAccount.loanAccountPaymentInfo.interestPaidYtd">
+            <th>{{i18nHL.loanDetails.intPaidYTD}}</th>
+            <td><span id="interestPaidYTD">{{mtgDetails.accountDetails.mortgageAccount.loanAccountPaymentInfo.interestPaidYtd | currency}}</span></td>
+          </tr>
+          <tr ng-show="mtgDetails.accountDetails.mortgageAccount.loanAccountPaymentInfo.prinicpalPaidYtd">
+            <th>{{i18nHL.loanDetails.principalPaidYTD}}</th>
+            <td><span id="principalPaidYTD">{{mtgDetails.accountDetails.mortgageAccount.loanAccountPaymentInfo.prinicpalPaidYtd | currency}}</span></td>
+          </tr>
+          <tr ng-show="mtgDetails.accountDetails.mortgageAccount.loanAccountPaymentInfo.totalPrincipalPaid">
+            <th>{{i18nHL.loanDetails.totalPrincipalPaid}}</th>
+            <td><span id="totalPrincipalPaid">{{mtgDetails.accountDetails.mortgageAccount.loanAccountPaymentInfo.totalPrincipalPaid | currency}}</span></td>
+          </tr>
+        </table>
+      </div>
+    </table>
+  </div>
+</div>

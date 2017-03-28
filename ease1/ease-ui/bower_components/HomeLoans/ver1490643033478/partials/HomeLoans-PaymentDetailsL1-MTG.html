@@ -1,0 +1,77 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/HomeLoans/ver1490643033478/styles/home-loan-override.css">
+<div style="z-index:100;" ease-modal toggle-close="mtgPaymentDetailsL1.close()" init-close="mtgPaymentDetailsL1.initClose" modal-class="mtgPaymentDetailsL1.modalClass" modal-type="mtgPaymentDetailsL1.modalType" focus-class="mtgPaymentDetailsL1.focusClass" focus-id="focusId">
+
+  <h2 align="center" aria-label="{{i18nHL.paymentDetails.paymentDetails}}">{{i18nHL.paymentDetails.paymentDetails}}</h2>
+  <h3 align="center"><div id="displayAccountNumberL1_TLNPI">{{i18nHL.paymentDetails.accountNo}}: {{accountDetailsData.accountDetails.accountNumber}}</div></h3>
+
+    <table class="paymentDetailsModalTable">
+      <tr class="paymentDetailsModal_section_heading">
+        <th scope="col" colspan="2" class="paymentDetailsModalLeft" role="text" aria-label="{{i18nHL.paymentDetails.monthlyPayment}}"><label> {{i18nHL.paymentDetails.monthlyPayment}} </label></th>
+      </tr>
+      <tr data-ng-show="accountDetailsData.accountDetails.mortgageAccount.loanAccountPaymentInfo.principalAndInterestDueAmount > 0">
+        <td class="paymentDetailsModalLeft" role="text" aria-label="{{i18nHL.paymentDetails.principalInterest}}">{{i18nHL.paymentDetails.principalInterest}}</td>
+        <td class="paymentDetailsModalRight" role="text" aria-label="{{accountDetailsData.accountDetails.mortgageAccount.loanAccountPaymentInfo.principalAndInterestDueAmount | currency}}"><span id="mtgPrincipalInterest">{{accountDetailsData.accountDetails.mortgageAccount.loanAccountPaymentInfo.principalAndInterestDueAmount | currency}}</span></td>
+      </tr>
+      <tr data-ng-show="accountDetailsData.accountDetails.mortgageAccount.loanAccountPaymentInfo.escrowDueAmount > 0">
+        <td class="paymentDetailsModalLeft" role="text" aria-label="{{i18nHL.paymentDetails.escrow}}">{{i18nHL.paymentDetails.escrow}}</td>
+        <td class="paymentDetailsModalRight" role="text" aria-label="{{accountDetailsData.accountDetails.mortgageAccount.loanAccountPaymentInfo.escrowDueAmount | currency}}"><span id="mtgEscrowDueAmount">{{accountDetailsData.accountDetails.mortgageAccount.loanAccountPaymentInfo.escrowDueAmount | currency}}</span></td>
+      </tr>
+      <tr data-ng-show="accountDetailsData.accountDetails.mortgageAccount.loanAccountPaymentInfo.mortgageInsuranceDueAmount > 0">
+        <td class="paymentDetailsModalLeft" role="text" aria-label="{{i18nHL.paymentDetails.mortgageInsurance}}">{{i18nHL.paymentDetails.mortgageInsurance}}</td>
+        <td class="paymentDetailsModalRight" role="text" aria-label="{{accountDetailsData.accountDetails.mortgageAccount.loanAccountPaymentInfo.mortgageInsuranceDueAmount | currency}}"><span id="mtgMortgageInsuranceAmount">{{accountDetailsData.accountDetails.mortgageAccount.loanAccountPaymentInfo.mortgageInsuranceDueAmount | currency}}</span></td>
+      </tr>
+      <tr>
+        <td class="paymentDetailsModalLeftBold" role="text" aria-label="{{i18nHL.paymentDetails.subTotal}}">{{i18nHL.paymentDetails.subTotal}}</td>
+        <td class="paymentDetailsModalRightBold" role="text" aria-label="{{accountDetailsData.accountDetails.mortgageAccount.loanAccountPaymentInfo.principalAndInterestDueAmount
+        + accountDetailsData.accountDetails.mortgageAccount.loanAccountPaymentInfo.escrowDueAmount
+        + accountDetailsData.accountDetails.mortgageAccount.loanAccountPaymentInfo.mortgageInsuranceDueAmount
+        | currency}}"><span id="mtgSubTotalMonthlyAmount">{{accountDetailsData.accountDetails.mortgageAccount.loanAccountPaymentInfo.principalAndInterestDueAmount
+        + accountDetailsData.accountDetails.mortgageAccount.loanAccountPaymentInfo.escrowDueAmount
+        + accountDetailsData.accountDetails.mortgageAccount.loanAccountPaymentInfo.mortgageInsuranceDueAmount
+        | currency}}</span></td>
+      </tr>
+    </table>
+
+      <table class="paymentDetailsModalTable">
+        <tr class="paymentDetailsModal_section_heading">
+          <th scope="col" colspan="2" class="paymentDetailsModalLeft" role="text" aria-label="{{i18nHL.paymentDetails.otherCharges}}"><label>{{i18nHL.paymentDetails.otherCharges}} </label></th>
+        </tr>
+        <tr data-ng-show="accountDetailsData.accountDetails.mortgageAccount.loanAccountBalanceInfo.pastDueAmount > 0">
+          <td class="paymentDetailsModalLeft" role="text" aria-label="{{i18nHL.paymentDetails.pastDue}}">{{i18nHL.paymentDetails.pastDue}}</td>
+          <td class="paymentDetailsModalRight" role="text" aria-label="{{accountDetailsData.accountDetails.mortgageAccount.loanAccountBalanceInfo.pastDueAmount | currency}}"><span id="mtgPastDueAmount">{{accountDetailsData.accountDetails.mortgageAccount.loanAccountBalanceInfo.pastDueAmount | currency}}</span></td>
+        </tr>
+        <tr data-ng-show="accountDetailsData.accountDetails.mortgageAccount.loanAccountBalanceInfo.lateChargeBalance > 0">
+          <td class="paymentDetailsModalLeft" role="text" aria-label="{{i18nHL.paymentDetails.lateFees}}">{{i18nHL.paymentDetails.lateFees}}</td>
+          <td class="paymentDetailsModalRight" role="text" aria-label="{{accountDetailsData.accountDetails.mortgageAccount.loanAccountBalanceInfo.lateChargeBalance | currency}}"><span id="mtgLateChargeBalance">{{accountDetailsData.accountDetails.mortgageAccount.loanAccountBalanceInfo.lateChargeBalance | currency}}</span></td>
+        </tr>
+        <tr data-ng-show="accountDetailsData.accountDetails.mortgageAccount.loanAccountBalanceInfo.suspenseBalance > 0">
+          <td class="paymentDetailsModalLeft" role="text" aria-label="{{i18nHL.paymentDetails.unappliedFunds}}">{{i18nHL.paymentDetails.unappliedFunds}}</td>
+          <td class="paymentDetailsModalRight" role="text" aria-label="{{-accountDetailsData.accountDetails.mortgageAccount.loanAccountBalanceInfo.suspenseBalance | currency}}"><span id="mtgSuspenseBalance">{{-accountDetailsData.accountDetails.mortgageAccount.loanAccountBalanceInfo.suspenseBalance | currency}}</span></td>
+        </tr>
+        <tr>
+          <td class="paymentDetailsModalLeftBold" role="text" aria-label="{{i18nHL.paymentDetails.subTotal}}">{{i18nHL.paymentDetails.subTotal}}</td>
+          <td class="paymentDetailsModalRightBold" role="text" aria-label="{{accountDetailsData.accountDetails.mortgageAccount.loanAccountBalanceInfo.lateChargeBalance
+            +accountDetailsData.accountDetails.mortgageAccount.loanAccountBalanceInfo.pastDueAmount
+            -accountDetailsData.accountDetails.mortgageAccount.loanAccountBalanceInfo.suspenseBalance| currency}}"><span id="mtgSubTotalOtherCharges">{{accountDetailsData.accountDetails.mortgageAccount.loanAccountBalanceInfo.lateChargeBalance
+            +accountDetailsData.accountDetails.mortgageAccount.loanAccountBalanceInfo.pastDueAmount
+            -accountDetailsData.accountDetails.mortgageAccount.loanAccountBalanceInfo.suspenseBalance| currency}}</span></td>
+        </tr>
+        </table>
+
+
+    <table class="paymentDetailsModalTableLast">
+      <tr class="paymentDetailsModal_section_heading">
+          <th scope="col" class="paymentDetailsModalLeft" role="text" aria-label="{{i18nHL.paymentDetails.paymentDue}}"><label>{{i18nHL.paymentDetails.paymentDue}} </label></th>
+          <th class="paymentDetailsModalRight" role="text" aria-label="{{accountDetailsData.accountDetails.mortgageAccount.loanAccountPaymentInfo.totalPaymentDueAmount | currency}}"><span id="mtgPaymentDue" class="paymentDetailsModalAmountDue">{{accountDetailsData.accountDetails.mortgageAccount.loanAccountPaymentInfo.totalPaymentDueAmount | currency}}</span></th>
+        </tr>
+        <tr class="section_heading" data-ng-show="accountDetailsData.accountDetails.mortgageAccount.loanAccountPaymentInfo.totalPaymentDueAmount > 0">
+          <td colspan="2" class="paymentDetailsModalAmountDue" role="text" aria-label="{{i18nHL.paymentDetails.due}}: {{accountDetailsData.accountDetails.mortgageAccount.loanAccountPaymentInfo.nextPaymentDate | date}}"><p id="mtgDueDate">{{i18nHL.paymentDetails.due}}: {{accountDetailsData.accountDetails.mortgageAccount.loanAccountPaymentInfo.nextPaymentDate | date}}</p></td>
+        </tr>
+        <tr data-ng-show="accountDetailsData.features.paymentSetupEnabled && accountDetailsData.accountDetails.mortgageAccount.loanAccountPaymentInfo.totalPaymentDueAmount > 0">
+          <td colspan="2" class="paymentDetailsModalRightLink" role="link" aria-label="{{i18nHL.paymentDetails.continuePaymentLink}}"><a title="{{i18nHL.payment.ariaMakeAPaymentPopupMessage}}" tabindex="0" data-ng-click="goToMakeAPaymentModal($event)" id="mtgContinueToPaymentLink" href>{{i18nHL.paymentDetails.continuePaymentLink}}</a></td>
+        </tr>
+    </table>
+
+</div>
+
+

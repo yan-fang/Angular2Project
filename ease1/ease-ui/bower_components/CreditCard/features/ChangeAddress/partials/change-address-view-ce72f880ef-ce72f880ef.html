@@ -1,0 +1,51 @@
+<div class="address-container">
+  <h1 id="viewAddressHeader" data-ng-class="{'success-header': changeAddress.subTitle}" class="view-address-header">{{changeAddress.title}}</h1>
+  <div data-ng-if="changeAddress.subTitle" class="success-subtext">
+    <span id="success-text">{{changeAddress.subTitle}}</span>
+  </div>
+
+  <div id="addressBlock-{{parentIndex}}" class="address-block" data-ng-init="parentIndex = $index" tabindex="0" aria-label="{{address.cardDisplayName}}" data-ng-repeat="address in changeAddress.addresses">
+    <span id="accountName-{{parentIndex}}" class="account-name">{{address.cardDisplayName}}</span>
+    <div class="address-error-message">
+      <ease-error-message error-options="changeAddress.getSmallBusinessOptions(parentIndex)" ng-if="changeAddress.isSmallBusiness(address)"></ease-error-message>
+      <ease-error-message error-options="changeAddress.getIneligibleToEditDisclaimerOptions(parentIndex)" ng-if="changeAddress.showIneligibleToEditDisclaimer(address)"></ease-error-message>
+    </div>
+
+    <div id="addressContentBlock-{{$index}}_{{parentIndex}}" class="address-content-block" data-ng-repeat="specificAddress in address.addresses">
+      <span ng-if="changeAddress.multiAddresses(address.addresses)" id="typeOfAddress-{{$index}}_{{parentIndex}}" class="type-of-address"
+        translate>{{specificAddress.title}}</span>
+      <span id="check-mark-{{$index}}_{{parentIndex}}" class="success-check-mark" data-ng-class="{'success-check-mark-no-title': !changeAddress.multiAddresses(address.addresses)}" data-ng-if="changeAddress.showCheckMark(specificAddress)">
+          <i class="icon-check"></i>
+          {{'ease.card.changeaddress.confirmation.updated' | translate}}
+      </span>
+      <div data-ng-if="!specificAddress.missingObject">
+        <span id="statementPencil-{{$index}}_{{parentIndex}}" class="edit-pencil" aria-label="{{'ease.card.changeaddress.edit.header.text' |translate}}" data-ng-class="{'edit-pencil-no-title': !changeAddress.multiAddresses(address.addresses)}"
+          data-ng-if="!changeAddress.isCorrespondenceOnly(specificAddress) && changeAddress.showEditStatementPencil(specificAddress)" data-ng-click="changeAddress.determinePencilClick(specificAddress, false)">
+            <i class="icon-pencil"></i>
+        </span>
+        <span id="addressLine1-{{$index}}_{{parentIndex}}" class="address-lines1" data-ng-class="{'no-title': !changeAddress.multiAddresses(address.addresses)}">{{changeAddress.getCorrectAddress(specificAddress.addressLine1, specificAddress.addressLine2)}}</span>
+        <span id="addressLine2-{{$index}}_{{parentIndex}}" class="address-lines2">{{specificAddress.cityName}},</span>
+        <span id="addressLine3-{{$index}}_{{parentIndex}}" class="address-lines3">{{specificAddress.stateCode}} {{specificAddress.postalCode}}</span>
+        <span class="info-tooltip" data-ng-if="changeAddress.isCorrespondenceOnly(specificAddress) && changeAddress.showEditStatementPencil(specificAddress)" >
+            <ease-tooltip id="correspondenceOnly-tooltip-{{$index}}_{{parentIndex}}" tip-message="changeAddress.correspondenceDisclaimer(address)" options='changeAddress.correspondenceDisclaimerOptions' />
+        </span>
+      </div>
+      <div data-ng-if="specificAddress.missingObject">
+        <span id="statementPencil-{{$index}}_{{parentIndex}}" class="missing-edit-pencil" data-ng-if="changeAddress.showEditStatementPencil(specificAddress)"
+          data-ng-click="changeAddress.determinePencilClick(specificAddress, false)">
+            <i class="icon-pencil"></i>
+        </span>
+        <span id="missingAddress-{{$index}}" class="address-lines1 no-title">{{'ease.card.changeaddress.view.address.none.address' | translate}}</span>
+      </div>
+    </div>
+
+    <div data-ng-if="changeAddress.showEditStatementPencil(address)" id="addAddress-{{parentIndex}}" class="add-add-block">
+      <span tabindex="0" class="add-an-address" data-ng-click="changeAddress.determinePencilClick(address,true)" translate>ease.card.changeaddress.view.address.add.address</span>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button id="accept" class="done-button" data-ng-click="changeAddress.doneClose()" aria-label="{{'ease.card.changeaddress.view.address.done' | translate}}" tabindex="0" translate>
+      ease.card.changeaddress.view.address.done
+    </button>
+  </div>
+</div>

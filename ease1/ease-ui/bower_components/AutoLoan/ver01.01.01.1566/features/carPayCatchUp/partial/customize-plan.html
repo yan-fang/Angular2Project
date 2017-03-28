@@ -1,0 +1,88 @@
+<div ease-modal
+	data-ng-controller="CustomizePlanController as customizePlanController"
+	modal-type="customizePlanController.modalType"
+	toggle-close="customizePlanController.close()">
+
+
+	<h2 id="modalTitle" class="modal-heading">Okay, let's customize your plan.</h2>
+
+	<div>
+		<h3><span data-ng-bind="::customizePlanController.i18n.coaf.carPayCatchUp.labels.todaysPayment.label.v1"></span> <span>$319.72</span></h3>
+		<div>
+			<p data-ng-bind-html="::customizePlanController.i18n.coaf.carPayCatchUp.planSummary.highFive.label.v1"></p>
+		</div>
+	</div>
+
+	<p><span data-ng-bind="::customizePlanController.i18n.coaf.carPayCatchUp.customizePlan.distribute.label.v1"></span><br />$453.17</p>
+
+	<!-- REMOVED BROKEN DROPDOWN
+	<div>
+		<ease-ui-dropdown-input
+			place-holder = "Select Items"
+			is-open = "vm.isOpen"
+			items = "vm.items"
+			model-value = "vm.selectedItem"
+			disable-search = true
+			id= "search-amount-two"
+			primary-data = ""
+		>
+			<ease-ui-dropdown-menu
+				select="vm.selected(item)"
+				items="vm.items"
+				template = false
+				is-open = "vm.isOpen"
+				component-id = "fourth"
+			>
+			</ease-ui-dropdown-menu>
+		</ease-ui-dropdown-input>
+	</div>
+	-->
+
+
+	<!-- BROKEN: NEED TO UPDATE DRAWER: REMOVED BROKEN CODE -->
+	<div>
+		<h3><span>July Payment</span> <span>$470.78</span></h3>
+		<div>
+			<h4><em data-ng-bind="::carPayCatchUpController.i18n.coaf.carPayCatchUp.labels.paymentDate.label.v1"></em> July 20, 2016</h4>
+			<ul>
+				<li>$151.05 <em data-ng-bind="::customizePlanController.i18n.coaf.carPayCatchUp.labels.pastDuePayment.label.v1"></em></li>
+				<li>319.72 <em data-ng-bind="::customizePlanController.i18n.coaf.carPayCatchUp.labels.monthlyPayment.label.v1"></em></li>
+				<li>$470.78 <em data-ng-bind="::customizePlanController.i18n.coaf.carPayCatchUp.labels.totalPayment.label.v1"></em></li>
+			</ul>
+		</div>
+	</div>
+
+
+	<!-- BROKEN: NEED TO UPDATE DRAWER: REMOVED BROKEN CODE -->
+	<div>
+		<h3><span>August Payment</span> <span>$470.78</span></h3>
+		<div>
+			<h4><em data-ng-bind="::carPayCatchUpController.i18n.coaf.carPayCatchUp.labels.paymentDate.label.v1"></em> August 20, 2016</h4>
+			<ul>
+				<li>$151.05 <em data-ng-bind="::customizePlanController.i18n.coaf.carPayCatchUp.labels.pastDuePayment.label.v1"></em></li>
+				<li>319.72 <em data-ng-bind="::customizePlanController.i18n.coaf.carPayCatchUp.labels.monthlyPayment.label.v1"></em></li>
+				<li>$470.78 <em data-ng-bind="::customizePlanController.i18n.coaf.carPayCatchUp.labels.totalPayment.label.v1"></em></li>
+			</ul>
+		</div>
+	</div>
+
+
+	<!-- BROKEN: NEED TO UPDATE DRAWER: REMOVED BROKEN CODE -->
+	<div>
+		<h3><span>September Payment</span> <span>$470.78</span></h3>
+		<div>
+			<h4><em data-ng-bind="::carPayCatchUpController.i18n.coaf.carPayCatchUp.labels.paymentDate.label.v1"></em> September 20, 2016</h4>
+			<ul>
+				<li>$151.05 <em data-ng-bind="::customizePlanController.i18n.coaf.carPayCatchUp.labels.pastDuePayment.label.v1"></em></li>
+				<li>319.72 <em data-ng-bind="::customizePlanController.i18n.coaf.carPayCatchUp.labels.monthlyPayment.label.v1"></em></li>
+				<li>$470.78 <em data-ng-bind="::customizePlanController.i18n.coaf.carPayCatchUp.labels.totalPayment.label.v1"></em></li>
+			</ul>
+		</div>
+	</div>
+
+	<p data-ng-bind="::carPayCatchUpController.i18n.coaf.carPayCatchUp.customizePlan.doubleCheck.label.v1"></p>
+
+	<div class="button-container">
+		<button class="btn progressive full-width" data-ng-bind="::carPayCatchUpController.i18n.coaf.carPayCatchUp.customizePlan.chooseAccountButton.label.v1"></button>
+	</div>
+</div>

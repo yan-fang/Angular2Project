@@ -1,0 +1,43 @@
+<ease-ui-modal close-modal="closeNickNameModal()"
+               modal-title="formData.contentDataSettings['ease.core.settings.account.editaccount.label']" class="custom-ease-modal" modal-id="'nickname'">
+  <div nick-name-modal="nicknamemodal" class="nicknameModal"
+       close-nick-name-modal = "closeNickNameModal()"
+  >
+    <p class="acctName">
+      <span tabindex="0" aria-label="{{formData.primaryAcctNum}}" class="primaryAcctNum" data-ng-bind="formData.primaryAcctNum"></span>
+    </p>
+
+    <form id="editNickNameForm" name="editNickNameForm">
+      <div class="form-group">
+        <span>
+        <label aria-label="{{::formData.contentDataSettings['ease.core.settings.account.nickname.label']}}">{{::formData.contentDataSettings['ease.core.settings.account.nickname.label']}}</label>
+          <label class="charCounter" tabindex="0" aria-label="{{formData.nicknameValue.length}} Characters Entered">
+            {{formData.nicknameValue.length}} / 30</label>
+          </span>
+        <input maxlength="30" class="animated" type="text" name="txtSecondary" id="txtSecondary"
+               data-ng-model="formData.nicknameValue"
+               aria-label="{{formData.nicknameValue}}" placeholder="{{::formData.contentDataSettings['ease.core.settings.account.nickname.error.charlimit.label']}}">
+        <span id="nnErrorMsg" tabindex="0" class="errorTexthide" aria-label="{{::formData.contentDataSettings['ease.core.settings.account.nickname.error.specialchar.label']}}">{{::formData.contentDataSettings['ease.core.settings.account.nickname.error.specialchar.label']}}</span>
+      </div>
+
+      <div class="form-container" data-ng-if= "formData.isEligibleForPayment">
+        <input id="setInternalPrimaryAct" type="checkbox" data-ng-model="formData.isPrimaryMoneyMovementAccount" class="defaultPrimaryAct">
+        <label for="setInternalPrimaryAct" id="lblSetInternalPrimaryAct" tabindex="0">{{::formData.contentDataSettings['ease.core.settings.account.editaccount.setprimary.label'] }}</label>
+        <span class="addAccount-tooltip-container" aria-label ="{{::formData.contentDataSettings['ease.core.settings.account.editaccount.setprimary.label'] }}">
+             <ease-tooltip tip-message="::formData.contentDataSettings['ease.core.settings.account.internalaccount.tooltipinfo.label']"
+                           options="::tooltipOptions">
+            </ease-tooltip>
+        </span>
+      </div>
+
+      <br data-ng-if= "formData.isEligibleForPayment">
+
+      <button type="button" id="editNickNameBtn" name="editNickNameBtn" tabindex="0"
+              aria-label="{{::formData.contentDataSettings['ease.core.settings.account.nickname.submit.label']}}"
+              data-ng-click="editAccount()" class="button btnSave" click-button-once>
+        <span data-ng-class="loading"></span>
+        <span>{{::formData.contentDataSettings['ease.core.settings.account.nickname.submit.label']}}</span>
+      </button>
+    </form>
+  </div>
+</ease-ui-modal>

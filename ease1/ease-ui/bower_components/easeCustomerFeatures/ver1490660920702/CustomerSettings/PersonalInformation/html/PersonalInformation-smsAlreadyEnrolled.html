@@ -1,0 +1,21 @@
+<ease-ui-modal class="profileConfirmModal" close-modal="exitSmsErrorFlow()" modal-title="::content['ease.core.profileprefs.phone.sms.enrolled.title.label']" show-icon-mobile="true">
+  <div class="confirmContainer">
+    <i class="icon-arrow-back" data-ng-click="backToEditPhone()"
+       aria-label="{{::content['ease.core.profileprefs.phone.sms.back.aria.label']}}"></i>
+    <p tabindex="0" role="alert">{{::content['ease.core.profileprefs.phone.sms.enrolled.part1.label']}}
+      <span class="boldNumber">{{::number}}</span>
+      {{::content['ease.core.profileprefs.phone.sms.enrolled.part2.label']}}</p>
+    <br>
+    <p tabindex="0" role="alert">{{::content['ease.core.profileprefs.phone.sms.enrolled.part3.label']}}</p>
+    <br>
+    <p tabindex="0" role="alert">{{::content['ease.core.profileprefs.phone.sms.enrolled.part4.label']}}</p>
+    <button type="button"
+            tabindex="0"
+            id="exit_sms_error_button"
+            data-ng-click="exitSmsErrorFlow()"
+            class="doneButton"
+            aria-label="OK">
+      <span id="exit_sms_error_flow_button_label">{{::content['ease.core.profileprefs.phone.sms.button.label']}}</span>
+    </button>
+  </div>
+</ease-ui-modal>

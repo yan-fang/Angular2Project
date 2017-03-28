@@ -1,0 +1,56 @@
+<div role="region">
+  <div ng-controller="ReportFraudModalController as reportFraudModal" id="report-problem">
+    <ease-ui-modal close-modal="close();reportFraudModal.closeModal()" ng-keyup="$event.keyCode == 13 ? reportFraudModal.closeModal() : null" double-wide="reportFraudModal.useLargeModal"
+                   modal-class="reportFraudModal.modalClass" modal-type="reportFraudModal.modalType" focus-id="closeModal" class="{{reportFraudModal.modalIconClass}}" ng-class="{ 'reportFraud-lg': reportFraudModal.useLargeModal, 'reportFraud': !reportFraudModal.useLargeModal }">
+      <div  ng-if="reportFraudModal.currentModal == 'reportAProblem'" data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/ReportFraud/partials/ReportFraud-reportProblem-b29be3f505-b29be3f505.html'">
+      </div>
+
+      <div  ng-if="reportFraudModal.currentModal == 'fraudCallUs'"  data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/ReportFraud/partials/ReportFraud-suspectedFraud-d6113b53df-d6113b53df.html'">
+      </div>
+
+      <div  ng-if="reportFraudModal.currentModal == 'fraudCardLock'"  data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/ReportFraud/partials/ReportFraud-suspectFraudCardLock-f4b2047a68-f4b2047a68.html'">
+      </div>
+
+      <div  ng-if="reportFraudModal.currentModal == 'fileDispute'"  data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/ReportFraud/partials/ReportFraud-disputesInfo-96cf49f126-96cf49f126.html'">
+      </div>
+
+      <div  ng-if="reportFraudModal.currentModal == 'lockCardSuccess'"  data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/ReportFraud/partials/ReportFraud-cardLocked-e3f60d6018-e3f60d6018.html'">
+      </div>
+
+      <div  ng-if="reportFraudModal.currentModal == 'hitSnag'"  data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/ReportFraud/partials/ReportFraud-hitASnag-5882d3bb03-5882d3bb03.html'">
+      </div>
+
+      <div ng-if="reportFraudModal.currentModal == 'mightBeFraud_wide'"  data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/ReportFraud/partials/ReportFraud-thisMightBeFraud-wideModal-84c6963407-84c6963407.html'">
+      </div>
+
+      <div ng-if="reportFraudModal.currentModal == 'fraudCardLock_wide'"  data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/ReportFraud/partials/ReportFraud-lockCard-wideModal-4f966e687a-4f966e687a.html'">
+      </div>
+
+      <div ng-if="reportFraudModal.currentModal == 'fraudReviewPurchases'"  data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/ReportFraud/partials/ReportFraud-reviewPurchases-c6a45fb0af-c6a45fb0af.html'">
+      </div>
+
+      <div ng-if="reportFraudModal.currentModal == 'getNewCard'"  data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/ReportFraud/partials/ReportFraud-getNewCard-d2f26bcb30-d2f26bcb30.html'">
+      </div>
+
+      <div ng-if="reportFraudModal.currentModal == 'youreDone'"  data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/ReportFraud/partials/ReportFraud-youreDone-2b0aca60d2-2b0aca60d2.html'">
+      </div>
+
+      <div ng-if="reportFraudModal.currentModal == 'youreAlmostDone'"  data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/ReportFraud/partials/ReportFraud-youreAlmostDone-024cbc2ea8-024cbc2ea8.html'">
+      </div>
+
+      <div ng-if="reportFraudModal.currentModal == 'areYouSure'"  data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/ReportFraud/partials/ReportFraud-areYouSure-ada967ecea-ada967ecea.html'">
+      </div>
+
+      <div ng-if="reportFraudModal.currentModal == 'fraudUnlock'"  data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/ReportFraud/partials/ReportFraud-fraudUnlock-a27ef49212-1eeca8ca25.html'">
+      </div>
+
+      <div ng-if="reportFraudModal.currentModal == 'instantReissue'"  data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/ReportFraud/partials/ReportFraud-instantReissue-0f77a56c82-c7503cb192.html'">
+      </div>
+
+      <div ng-if="reportFraudModal.currentModal == 'selectCard'"  data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/ReportFraud/partials/ReportFraud-selectCard-59a02a1a79-59a02a1a79.html'">
+      </div>
+
+    </ease-ui-modal>
+  </div>
+</div>
+

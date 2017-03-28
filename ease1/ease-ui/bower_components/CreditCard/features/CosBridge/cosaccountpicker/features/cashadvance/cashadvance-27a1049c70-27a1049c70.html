@@ -1,0 +1,45 @@
+<div class="cos-bridge-mode cc-bridge">
+  <div id="coscontent" class="cos-content">
+    <h2 id="accountPickerMessage" data-ng-bind="::cosCashAdvancePicker.displayMessage | translate"></h2>
+
+    <div ng-repeat="account in cosCashAdvancePicker.entitledAccounts" class="cc-bridge-account-block">
+      <div ng-if="::cosCashAdvancePicker.termsMap[account.cardAccount.id].hasZeroCashLimit"
+           id="cash-advance-error-wrapper" class="cash-advance-error-wrapper">
+        <span id="cash-advance-error-msg" class="cash-advance-error-msg" role="alert">
+          {{::'ease.card.cashadvance.bridge.error.text' | translate}}
+        </span>
+      </div>
+
+      <span id="bridgeAccountDetails-{{$index}}" class="cc-bridge-account-details">
+        <span id="bridgeAccountName-{{$index}}" class="cc-bridge-account-name" data-ng-bind="::cosCashAdvancePicker.getFormattedDisplayName(account)"></span>
+        <span id="bridgeAccountDigits-{{$index}}" class="cc-bridge-account-digits">
+          <span id="bridgeEllipses-{{$index}}" translate>card.cosbridge.account.picker.periods</span>
+          <span id="bridgeEndOfPlastic-{{$index}}" data-ng-bind="::account.cardAccount.plasticIdLastFour"></span>
+        </span>
+      </span>
+
+      <div ng-if="::!cosCashAdvancePicker.termsMap[account.cardAccount.id].hasZeroCashLimit"
+           id="cash-advance-withdrawal-wrapper-{{$index}}" class="cc-bridge-cash-advance-withdrawal-details">
+        <div id="cash-advance-amount-wrapper-{{$index}}">
+          <span id="cash-advance-limit-{{$index}}">{{::'ease.card.cashadvance.withdrawallimit.text' | translate}}</span>
+          <span id="cash-advance-currency-{{$index}}">{{::'ease.card.cashadvance.currencysymbol' | translate}}</span>
+          <span id="cash-advance-dollar-{{$index}}">{{cosCashAdvancePicker.termsMap[account.cardAccount.id].availableAmount}}</span>
+        </div>
+        <div id="cash-advance-fee-apr-{{$index}}">
+          <span id="cash-advance-apr-{{$index}}">{{cosCashAdvancePicker.termsMap[account.cardAccount.id].cashAdvanceAprPercent}}</span>
+          <span id="cash-advance-apr-text-{{$index}}">{{::'ease.card.cashadvance.fees.apr' | translate}}</span>
+        </div>
+        <div id="cash-advance-fee-percent-{{$index}}" ng-if="cosCashAdvancePicker.termsMap[account.cardAccount.id].hasCAFee">
+          {{::'ease.card.cashadvance.fees.details' | translate: {'minfee': cosCashAdvancePicker.termsMap[account.cardAccount.id].cashAdvanceMinFeeAmt, 'feepercentage': cosCashAdvancePicker.termsMap[account.cardAccount.id].cashAdvanceFeePercent} }}
+        </div>
+      </div>
+
+      <span id="selectBtn{{$index}}" class="cc-bridge-account-button">
+        <button id="selectButton{{$index}}" class="progressive" data-ng-disabled="::cosCashAdvancePicker.termsMap[account.cardAccount.id].hasZeroCashLimit"
+                data-ng-click="::cosCashAdvancePicker.buttonAction(account);" data-ng-bind="cosCashAdvancePicker.getButtonDisplayText() | translate"></button>
+      </span>
+    </div>
+  </div>
+</div>
+<div ui-view></div>
+<div cc-load-screen id="ccAccountSelectorLarger"></div>

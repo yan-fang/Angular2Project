@@ -1,0 +1,24 @@
+<div class="bk-btn-cl" id="bt-back" ng-click="ccCardLock.back();" tabindex="0" role="link">
+    <i class="icon-arrow-back"></i>
+    <span class="back-btn-off-screen" aria-label="{{'ease.card.cardlock.lockthiscard.back.button.v1' | translate}}">
+        {{'ease.card.cardlock.lockthiscard.back.button.v1' | translate}}
+    </span>
+</div>
+<h2 class="card-lock-h2text" id="cc-lock-this-card-title-text" aria-label="{{'ease.card.cardlock.lockthiscard.title.text.v1' | translate}}">
+    {{'ease.card.cardlock.lockthiscard.title.text.v1' | translate}}
+</h2>
+<p class="card-lock-msg" id="cc-lock-this-card-info-text" aria-label="{{'ease.card.cardlock.lockthiscard.info.text.v1' | translate}}">
+    {{'ease.card.cardlock.lockthiscard.info.text.v1' | translate}}
+</p>
+<button class="btn destructive cc-modal-button cc-card-lock-yes" id="cc-lock-this-card-yes-button" ng-click="ccCardLock.postService(false)" tabindex="0" aria-label="{{'ease.card.cardlock.lockthiscard.confirm.button.v1' | translate}}">
+    <span ng-hide="ccCardLock.loading">
+       {{'ease.card.cardlock.lockthiscard.confirm.button.v1' | translate}}
+    </span>
+    <div class="cc-spinner" ng-class="{'loading':ccCardLock.loading}"></div>
+</button>
+<button class="btn ghost progressive cc-modal-button cc-card-lock-cancel" id="cc-lock-this-card-cancel-button" ng-click="ccCardLock.closeModal($event)" tabindex="0" aria-label="{{'ease.card.cardlock.lockthiscard.cancel.button.v1' | translate}}">
+    {{'ease.card.cardlock.lockthiscard.cancel.button.v1' | translate}}
+</button>
+<div class="card-lock-learn-more" id="cc-lock-this-card-learn-more-link" ng-click="ccCardLock.lcLearnMoreAction()" aria-label="{{'ease.card.cardlock.lockthiscard.learnmore.link.v1' | translate}}">
+    <i class="icon-info-circle"></i> {{'ease.card.cardlock.lockthiscard.learnmore.link.v1' | translate}}
+</div>

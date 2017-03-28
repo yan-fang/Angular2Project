@@ -1,0 +1,43 @@
+<div id ="progressBar" class="progress" tabindex="0"
+    data-ng-click="alPayDownView.showAutoLoanTrackerDetails($event)"
+    aria-label="{{alPayDownView.i18N.coaf.payDownView.iconText.progressBarPart1.label.v1}}{{alPayDownView.totalPaidAmount | formatAmount}}
+    {{alPayDownView.i18N.coaf.payDownView.iconText.progressBarPart2.label.v1}}{{alPayDownView.totalEstimatedBalanceAmount | formatAmount}}
+    {{alPayDownView.i18N.coaf.payDownView.iconText.progressBarPart3.label.v1}}"
+    data-ng-class="{'progress-bar-truncated':alPayDownView.isProgressBarTruncated}">
+    <div id="progressBarFilled" class="{{alPayDownView.progressBarClass}}" role="progressbar" aria-valuenow="{{alPayDownView.progressBarPercentage}}" aria-valuemin="0" aria-valuemax="100">
+        <span class="paid-off-progress-bar_check_mark" data-ng-if="alPayDownView.isPayoff">&#10003;</span>
+    </div>
+    <span id="partitionProgressBar" class="partition-progress-bar" data-ng-if="!alPayDownView.isPastDue && !alPayDownView.isPayoff"></span>
+</div>
+
+<!-- Total Paid Amount -->
+<div class="payDownView-amount-paid" data-ng-if="alPayDownView.totalPaidAmount">
+    <span id="amountPaid" data-ng-bind="(alPayDownView.totalPaidAmount | formatAmount) + ' ' +alPayDownView.i18N.coaf.payDownView.amount.paid.label.v1"></span>
+</div>
+
+<!-- Payoff Status is 'on time' -->
+<div class="payDownView-amount-left" data-ng-if="alPayDownView.payoffStatus == 'on time'">
+    <span id="amountLeft" data-ng-bind="(alPayDownView.totalEstimatedBalanceAmount | formatAmount) + ' '+ alPayDownView.i18N.coaf.payDownView.amount.unpaid.label.v1"></span>
+</div>
+
+<!-- Early Pay Off -->
+<div class="payDownView-early-payoff"  data-ng-if="alPayDownView.isEarlyPayoff">
+    <i id="earlyPayOffCheck" class="icon-check" aria-hidden="true"></i>
+    <span id="isEarlyPayOff" data-ng-bind="alPayDownView.i18N.coaf.payDownView.iconText.earlyPayoff.label.v1"></span>
+</div>
+
+<!-- Mature & Payoff Status is 'matured' -->
+<div class="payDownView-matured" data-ng-if="alPayDownView.isBalanceAtMaturity || alPayDownView.payoffStatus == 'matured'">
+    <i id="balanceAtMaturityWarning" class="icon-warning" aria-hidden="true"></i>
+    <span id="isBalanceAtMaturity"
+        data-ng-bind="alPayDownView.i18N.coaf.payDownView.iconText.isAtMature.label.v1 + ' '
+        + (alPayDownView.balanceAtMaturityAmount | formatAmount) + ' '
+        + alPayDownView.i18N.coaf.payDownView.iconText.isAtMature2.label.v1">
+    </span>
+</div>
+
+<!-- Mature & Paid Off -->
+<div class="payDownView-early-payoff"  data-ng-if="alPayDownView.isBalanceAtMaturity && alPayDownView.isPayoff">
+    <i id="earlyPayOffMaturedCheck" class="icon-check" aria-hidden="true"></i>
+    <span id="isEarlyPayOffMatured" data-ng-bind="alPayDownView.i18N.coaf.payDownView.iconText.earlyPayoff.label.v1"></span>
+</div>

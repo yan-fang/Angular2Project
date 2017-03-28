@@ -1,0 +1,89 @@
+<div id="unlock-card">
+  <p class="debit-description"
+     tabindex="0">
+     {{debitUnlock.i18n.unlockScreen.description}}
+  </p>
+
+  <div class="debit-card">
+    <div class="card-status-icon locked"></div>
+    <div class="card-info">
+      <div class="card-number" aria-hidden="true">{{debitUnlock.selectedCard.cardNumberTLNPI | limitTo:-4  }}</div>
+      <form name="debitUnlock.cardUnlockForm"
+            id="debit-unlock-form"
+            class="debit-form"
+            data-ng-show="debitUnlock.showValidationForm"
+            novalidate>
+        <div class="expiration-date form-input">
+          <label for="month" class="label">
+            {{debitUnlock.i18n.unlockScreen.ariaLabels.expirationMonth}}
+          </label>
+          <input  type="tel"
+                  id="month"
+                  class="input small"
+                  name="month"
+                  placeholder="MM"
+                  tabindex="0"
+                  data-ng-model="debitUnlock.models.expiration.month"
+                  data-debit-month-input="month-input"
+                  required
+                  aria-label="{{debitUnlock.i18n.unlockScreen.ariaLabels.expirationMonth}}"/>
+          <span>/</span>
+          <label for="year" class="label">
+            {{debitUnlock.i18n.unlockScreen.ariaLabels.expirationYear}}
+          </label>
+          <input  type="tel"
+                  id="year"
+                  class="input small"
+                  name="year"
+                  placeholder="YY"
+                  tabindex="0"
+                  data-ng-model="debitUnlock.models.expiration.year"
+                  data-debit-year-input="year-input"
+                  required
+                  aria-label="{{debitUnlock.i18n.unlockScreen.ariaLabels.expirationYear}}"/>
+
+          <div class="expiration-error error-message">
+            <span aria-live="assertive"
+                  class="invalid"
+                  data-ng-hide="debitUnlock.cardUnlockForm.month.$touched || debitUnlock.cardUnlockForm.year.$touched">
+                  {{debitUnlock.i18n.unlockScreen.validate}}
+            </span>
+            <span aria-live="assertive"
+                  class="invalid"
+                  data-ng-show="(debitUnlock.cardUnlockForm.month.$invalid &&
+                           debitUnlock.cardUnlockForm.month.$touched) ||
+                           (debitUnlock.cardUnlockForm.year.$invalid &&
+                           debitUnlock.cardUnlockForm.year.$touched)">
+                  {{debitUnlock.i18n.unlockScreen.error}}
+              </span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="error-text" ng-if="debitUnlock.errors.UNLOCK_CARD">
+    {{debitUnlock.errors.UNLOCK_CARD}}
+  </div>
+
+  <div class="actions">
+    <button type="button"
+            id="unlock-card-button"
+            class="btn action"
+            tabindex="0"
+            data-ng-disabled="debitUnlock.submitDisabled"
+            data-ng-click="debitUnlock.unlockCard()">
+      <span data-ng-class="{ loading : debitUnlock.submitDisabled }">
+        {{debitUnlock.i18n.unlockScreen.action}}
+      </span>
+    </button>
+
+    <button type="button"
+            id="cancel-button"
+            class="btn ghost progressive"
+            tabindex="0"
+            data-ng-click="debitUnlock.close()">
+      {{debitUnlock.i18n.unlockScreen.cancel}}
+    </button>
+  </div>
+</div>

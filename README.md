@@ -116,8 +116,8 @@ To open a dialog written in Angular 1 from Angular 2 add a new module that regis
     <div ui-view></div>
   `,
   styles: [`
-    @import '/bower_components/EASECoreLite/styles/main.css';
-    @import '/bower_components/easeUIComponents/dist/ease-ui-components.css';
+    @import '/ease-ui/ver1490660920702/dist/styles/main.min.css';
+    @import '/ease-ui/ver1490660920702/bower_components/easeUIComponents/dist/ease-ui-components.css';
   `]
 })
 export class TransferDialogComponent {

@@ -1,0 +1,73 @@
+<ease-ui-modal close-modal="closeModal()" class="statementPane ccStatements" modal-id="viewStatementModal" full-screen="true" tabindex="0" role="dialog" aria-label="{{ariaText.modal}}">
+  <div class="mainPane ccStatements" id = "stmtModal" tab-through>
+    <div data-ng-if="!isDocumentView" class="info">
+      <h2 role="listitem" aria-label="{{accountDetailsData.accountDetails.cardAccount.cardName}}">{{accountDetailsData.accountDetails.cardAccount.cardName}}</h2>
+      <p role="listitem" aria-label="{{'ease.card.l2page.detail.ellipses' | translate}}{{accountDetailsData.accountDetails.cardAccount.plasticIdLastFour}}">{{'ease.card.l2page.detail.ellipses' | translate}}{{accountDetailsData.accountDetails.cardAccount.plasticIdLastFour}}</p>
+    </div>
+    <div>
+      <h2 data-ng-if="isDocumentView" class="documentheader" role="listitem" aria-label="{{document.documentDescription}}">{{document.documentDescription}}</h2>
+      <p data-ng-if="isDocumentView" class="documentaddeddate" role="listitem" aria-label="Added {{document.documentDate}}">Added {{document.documentDate|date:'MMM d, y'}}</p>
+    </div>
+    <div class="navigation" id="statement-date-picker" data-ng-if="!showMessage && !isDocumentView">
+        <div class= "picker">
+          <ul class="header" tabindex="0" ng-class="{'seperator':toggle}" ng-click="toggleView()" aria-label="{{paramList.selectedStatement.statementTitle}}" id="stmtPickerHeader" role="button">
+              <li class="stTitle" id="stTitle">
+                <h2 class="head ng-binding">{{paramList.selectedStatement.statementTitle}}</h2>
+              </li>
+              <li class="picker-icon" id="stPickerIcon">
+                <i class="icon-drop-arrow" id="stDropdownIcon"></i>
+              </li>
+          </ul>
+         <div>
+          <ease-statement-picker ng-if="!toggle" params="paramList"></ease-statement-picker>
+         </div>
+      </div>
+    </div>
+     <div class="toolbar">
+      <div class="controls" data-ng-show="pdfUrl && !showMessage">
+        <ul>
+          <li class="noMobilePdf">
+            <a data-ng-click="zoomIn()" tabindex="0" role="link" aria-label="{{'ease.card.statements.zoomin.label' | translate}}" href>
+              <i class="icon-circle-add"></i><span id="statement-zoomin-label" aria-hidden="true" class="nodisplay">{{'ease.card.statements.zoomin.label' | translate}}</span></a>
+            <a data-ng-click="zoomOut()" tabindex="0" role="link" aria-label="{{'ease.card.statements.zoomout.label' | translate}}" href>
+              <i class="icon-circle-minus"></i><span aria-hidden="true" id="statement-zoomout-label" class="nodisplay">{{'ease.card.statements.zoomout.label' | translate}}</span></a>
+              <span id='zoom-label' aria-hidden="true">{{'ease.card.statements.zoom.text' | translate}}</span>
+          </li>
+          <li class="noMobilePdf">
+           <a data-ng-click="printStatement()" tabindex="0" role="link" aria-label="{{'ease.card.statements.print.text' | translate}}" href>
+            <i class="icon-print" ></i><span id="print-label">{{'ease.card.statements.print.text' | translate}}</span></a>
+          </li>
+          <li class="download">
+            <a data-ng-href="{{pdfUrl}}&actionType=download" data-ng-click="downloadPDF()" tabindex="0" role="link" aria-label="{{ariaText.download}}" target = "_blank"><i class="icon-circle-arrowdown zindexnegative" ></i><span class="noMobilePdf" id="download-label">{{'ease.card.statements.download.text' | translate}}</span></a>
+          </li>
+        </ul>
+      </div>
+      <div class="accessibleStatement" data-ng-show="pdfUrl && !showMessage">
+        <label for="ada" id="ada-label" ng-if="!isDocumentView">
+          <input name="ada" type="checkbox" aria-checked="true" data-ng-model="isAdaStatement" title="{{'ease.card.statements.accessible.text' | translate}}" data-ng-change="onAdaCheckboxChange(isAdaStatement)" data-ng-checked="isAdaStatement" tabindex="0" aria-label="{{'ease.card.statements.accessible.text' | translate}}" id="ada-checkbox"/>
+           {{'ease.card.statements.accessible.text' | translate}}
+        </label>
+        <label for="ada" id="ada-label" ng-if="isDocumentView">
+          <input name="ada" type="checkbox" aria-checked="true" data-ng-model="isAdaStatement" title="{{'ease.card.viewonlinedocuments.accessible.text' | translate}}" data-ng-change="onAdaCheckboxChange(isAdaStatement)" data-ng-checked="isAdaStatement" tabindex="0" aria-label="{{'ease.card.viewonlinedocuments.accessible.text' | translate}}" id="ada-checkbox"/>
+           {{'ease.card.viewonlinedocuments.accessible.text' | translate}}
+        </label>
+      </div>
+    </div>
+
+    <div class="pdfFile">
+      <div class="message" tabindex="0" data-ng-if="showMessage">
+        <div class="title" role="text" translate>{{errorMessage.title}}</div>
+        <div class="content" data-ng-show="errorMessage.content" role="text" translate>{{errorMessage.content}}</div>
+        <div class="pdfButton" tabindex="0" role="button" aria-label="{{'ease.card.statements.okay.text' | translate}}" data-ng-click="closeModal()" id="stmt-okay-button">
+          {{'ease.card.statements.okay.text' | translate}}
+        </div>
+      </div>
+      <div class="load-spinner-section" data-ng-show="showSpinner">
+        <div class="cc-spinner black_loading">
+        </div>
+      </div>
+      <div tabindex="0" data-ng-if="isServiceWorking"  ease-pdf-viewer id="ease-pdf-viewer" scale="scalePdf" accessor="accessor" loading="isLoading" headers="httpHeaders" ng-class="{hideCanvas: showSpinner}" role="article" aria-label="{{ariaText.pdf}}">
+      </div>
+    </div>
+  </div>
+</ease-ui-modal>

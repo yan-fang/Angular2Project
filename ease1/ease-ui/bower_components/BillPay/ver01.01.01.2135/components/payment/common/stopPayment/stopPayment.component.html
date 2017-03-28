@@ -1,0 +1,55 @@
+<div class="stop-payment input-group">
+	<p ng-if="!$ctrl.showStopOptions">Don't stop paying <a href="#" ng-click="$ctrl.showOptions()" tabindex="0">Change</a></p>
+
+	<fieldset ng-if="$ctrl.showStopOptions" role="radiogroup">
+		<legend ng-hide="true">
+			stop payment options
+		</legend>
+		
+		<div class="input-radio-block">
+			<input id="{{$ctrl.id}}-input-1"
+				   name="{{$ctrl.id}}-input"
+				   type="radio"
+				   role="radio"
+				   ng-model="$ctrl.inputObj[$ctrl.field]"
+				   ng-value="'Indefinitely'"
+				   ng-click="$ctrl.noStopFn()"
+				   tabindex="{{$ctrl.inputObj[$ctrl.field]==='Indefinitely' ? 0 : -1}}">
+			<label class="radio-input-block" for="{{$ctrl.id}}-input-1">
+				<span>Don't stop payments</span>
+			</label>
+		</div>
+		
+		<div class="input-radio-block">
+			<input id="{{$ctrl.id}}-input-2"
+				   name="{{$ctrl.id}}-input"
+				   type="radio"
+				   role="radio"
+				   ng-model="$ctrl.inputObj[$ctrl.field]"
+				   ng-value="'FinalPaymentDate'"
+				   ng-click="$ctrl.stopByDateFn({eventFrom: 'radio'})"
+				   tabindex="{{$ctrl.inputObj[$ctrl.field]==='FinalPaymentDate' ? 0 : -1}}">
+			<label class="radio-input-block" for="{{$ctrl.id}}-input-2">
+				<span ng-if="!$ctrl.finalPaymentDate">Stop on a date...</span>
+				<span ng-if="$ctrl.finalPaymentDate">Stop on {{$ctrl.finalPaymentDate | stringDate : "MM/dd/yyyy"}} <a href="#" ng-click="$ctrl.stopByDateFn({eventFrom: 'change'})">Change</a></span>
+				<span ng-if="$ctrl.inputObj[$ctrl.field]==='FinalPaymentDate'&&$ctrl.lastPaymentAmount!=='0'"><br>Last payment {{$ctrl.lastPaymentAmount}}</span>
+			</label>
+		</div>
+		
+		<div class="input-radio-block">
+			<input id="{{$ctrl.id}}-input-3"
+				   name="{{$ctrl.id}}-input"
+				   type="radio"
+				   role="radio"
+				   ng-model="$ctrl.inputObj[$ctrl.field]"
+				   ng-value="'NumberOfPayments'"
+				   ng-click="$ctrl.stopByPaymentsFn({eventFrom: 'radio'})"
+				   tabindex="{{$ctrl.inputObj[$ctrl.field]==='NumberOfPayments' ? 0 : -1}}">
+			<label class="radio-input-block" for="{{$ctrl.id}}-input-3">
+				<span ng-hide="$ctrl.numberOfPayments > 0">Stop after a number of times...</span>
+				<span ng-show="$ctrl.numberOfPayments > 0">Stop after {{$ctrl.numberOfPayments}} {{$ctrl.numberOfPayments > 1 ? 'times' : 'time'}} <a href="#" ng-click="$ctrl.stopByPaymentsFn({eventFrom: 'change'})">Change</a></span>
+				<span ng-if="$ctrl.inputObj[$ctrl.field]==='NumberOfPayments'&&$ctrl.lastPaymentAmount!=='0'"><br>Last payment {{$ctrl.lastPaymentAmount}}</span>
+			</label>
+		</div>
+	</fieldset>
+</div>

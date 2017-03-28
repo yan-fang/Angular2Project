@@ -1,0 +1,15 @@
+<div id="{{::id}}"
+       name="{{::id}}"
+       class="formly-custom-input calendar"
+       type="text"
+       ng-click="datePicker.openPopup()"
+       aria-label="{{options.templateOptions.label}}"
+       >{{model[options.key]}}
+    <i style="float: right;" class="icon-calendar"></i>
+</div>
+<div ng-hide="!datePicker.isOpen">
+    <ease-calendar
+            ng-model="datePicker.selected"
+            calendar-options="calendarOptions">
+    </ease-calendar>
+</div>

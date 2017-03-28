@@ -1,0 +1,91 @@
+<div class="primaryPaymentLabel" 
+data-ng-if="settingsCtrl.showDefaultPrimary()">
+  <i class="icon-star-filled"
+     aria-label="Primary Account"
+     tabindex="0"
+     role="img"
+     id="primaryPaymentLabel">
+  </i>
+  <span>{{settingsCtrl.contentDataSettings['ease.core.settings.primary.payment.label']}}</span>
+</div>
+
+<ease-content-tile class="accountprefcontent internalaccts">
+  <header-part data-ng-show="settingsCtrl.messageOptions.alertContent">
+    <ease-error-message error-options="settingsCtrl.messageOptions"></ease-error-message>
+  </header-part>
+  <first-part>
+    <h1 class="heading-title" tabindex="0" aria-label="{{settingsCtrl.contentDataSettings['ease.core.settings.account.capone.subheader.text']}}">
+      {{settingsCtrl.contentDataSettings['ease.core.settings.account.capone.subheader.text']}}
+    </h1>
+  </first-part>
+
+  <second-part class="rightContainer" id="capOneAcctsRightContainer" data-ng-cloak>
+    <div data-ng-repeat="account in settingsCtrl.accounts" class="account-content">
+      <div nick-name="account"
+           isnicknamedisplay="settingsCtrl.isnicknamedisplay"
+           enable-nickname="settingsCtrl.enableNickname"
+           content-data-settings="settingsCtrl.contentDataSettings"
+           content-data-error="settingsCtrl.errorContentData"></div>
+    </div>
+  </second-part>
+</ease-content-tile>
+
+<ease-content-tile data-ng-show="settingsCtrl.isExternalAccDisplay" class="accountprefcontent">
+  <first-part id="extAcctsLeftContainer">
+    <h1 class="heading-title" tabindex="0" aria-label="{{settingsCtrl.contentDataSettings['ease.core.settings.account.external.subheader.text']}}">
+      {{settingsCtrl.contentDataSettings['ease.core.settings.account.external.subheader.text']}}
+    </h1>
+  </first-part>
+  <second-part class="rightContainer" id="extAcctsRightContainer" data-ng-cloak>
+      <div data-ng-hide="settingsCtrl.displayExtAccountCount(settingsCtrl.retrievePaymentAccounts) > 0">
+        <span id="noActslabel" tabindex="0" aria-label="{{settingsCtrl.contentDataSettings['ease.core.settings.account.noaccounts']}}"
+          class="noActslabel">{{settingsCtrl.contentDataSettings['ease.core.settings.account.noaccounts']}}</span>
+      </div>
+      <div data-ng-repeat="account in settingsCtrl.retrievePaymentAccounts" class="account-content">
+        <account-preferences modal="account" type="externalAccount"
+                             content-data="settingsCtrl.contentDataSettings"
+                             extdelete-display="settingsCtrl.extdeleteDisplay" focusflag = "settingsCtrl.focusflag"
+                             is-retrieve-money-movement-toggled-on = "settingsCtrl.isRetrieveMoneyMovementToggledOn" money-mov-feat-toggle-data =
+                             "settingsCtrl.moneyMovFeatToggleData" >
+                           </account-preferences>
+      </div>
+
+    <div class="allaccount">
+      <span id="addAccountId" class="addAccount" data-ng-click="settingsCtrl.displayAddAccount()" ng-keypress tabindex="0"
+        aria-label="Click {{settingsCtrl.contentDataSettings['ease.core.settings.account.external.add.link']}}">
+        <i class= "icon-plus"></i>
+
+        <a id="addExternalAccounts" name="addaccounts">
+          {{settingsCtrl.contentDataSettings['ease.core.settings.account.external.add.link']}}</a>
+      </span>
+    </div>
+
+  </second-part>
+</ease-content-tile>
+
+<ease-content-tile class="accountprefcontent langPref" data-ng-if="settingsCtrl.enableShowLanguage">
+  <first-part id="langPrefLeftContainer">
+    <h1 class="heading-title" tabindex="0">
+      {{settingsCtrl.contentDataSettings['ease.core.settings.language.label']}}
+    </h1>
+  </first-part>
+  <second-part id="langPrefRightContainer" data-ng-cloak>
+    <div class="langPrefContainer">
+      <div class="langPrefDetail">
+        <p id="selectedLanguage" data-ng-bind="::settingsCtrl.getLanguage"></p>
+      </div>
+      <div class="langPrefEdit">
+        <i class="icon-pencil"
+           tabindex="0"
+           id="editLanguage"
+           aria-label="{{::settingsCtrl.contentDataSettings['ease.core.settings.language.edit.aria']}}"
+           data-ng-click="settingsCtrl.editLanguage()"
+           focus-on-settings-modal-close>
+        </i>
+      </div>
+    </div>
+  </second-part>
+</ease-content-tile>
+
+<div ui-view></div>
+

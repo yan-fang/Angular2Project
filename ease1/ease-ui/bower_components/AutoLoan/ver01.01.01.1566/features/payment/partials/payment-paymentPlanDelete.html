@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/AutoLoan/ver01.01.01.1566/styles/auto-loan-override.css">
+<div data-ng-controller="AutoLoanPaymentPlanDeleteController as deletePlan">
+    <div ease-modal toggle-close="deletePlan.close()" modal-role="deletePlan.modalRole" init-close="deletePlan.initClose" modal-class="deletePlan.modalClass"
+         modal-type="deletePlan.modalType" focus-id="focusId">
+      <div class="messageBlock">
+        <div class="error" data-ng-if="deletePlan.errorMessage">
+          <i class="icon-warning"></i>
+          <div class="message"><span id="paymentplan.message"> {{deletePlan.errorMessage}}</span></div>
+        </div>
+      </div>
+      <form class="confirmDeletePaymentPlanModal">
+      <div>
+          <div>
+            <h2 id="verificationHeading"  align="center" aria-label="{{deletePlan.i18n.coaf.payment.recurringPaymentCancelConfirm.cancelHeader.label.v1}}"
+                data-ng-bind="deletePlan.i18n.coaf.payment.recurringPaymentCancelConfirm.cancelHeader.label.v1">
+            </h2>
+          </div>
+          <div aria-label="{{deletePlan.cancelMessage}} {{deletePlan.scheduledDate}} {{deletePlan.cancelMessageAfterScheduledDate}}"  >
+              <p id="verificationText" align="center" class="displayMessage">
+                  <span data-ng-bind="deletePlan.cancelMessage"> </span>
+                  <span id="nextScheduledDate" class="boldLabel" data-ng-bind="deletePlan.scheduledDate"></span>
+                  <span data-ng-bind="deletePlan.cancelMessageAfterScheduledDate"></span>
+              </p>
+          </div>
+        <br>
+        <ul class="paymentPlanDeleteConfirm">
+          <li >
+            <label id= "frequencyTypeLabel" data-ng-bind="deletePlan.i18n.coaf.payment.paymentPlanSuccess.frequency.label.v1"></label>
+            <span id="frequencyType">{{deletePlan.paymentPlanDetails.frequencyTypeText}}</span>
+          </li>
+          <li >
+            <label id="payFromLabel" data-ng-bind="deletePlan.i18n.coaf.payment.paymentPlanSuccess.payFrom.label.v1"></label>
+            <span id="payFrom" data-ng-bind="deletePlan.paymentPlanDetails.payFromText"></span>
+          </li>
+          <li >
+            <label id="payAmountLabel" data-ng-bind="deletePlan.i18n.coaf.payment.paymentPlanSuccess.payAmount.label.v1"></label>
+            <span id="payAmount" data-ng-bind="deletePlan.paymentPlanDetails.paymentAmount | currency"></span>
+          </li>
+          <li  data-ng-show="deletePlan.paymentPlanDetails.additionalPrincipalAmount > 0">
+            <label id="additionalPrincipalLabel" data-ng-bind="deletePlan.i18n.coaf.payment.paymentPlanSuccess.additionalPrincipal.label.v1"></label>
+            <span id="additionalPrincipal" data-ng-bind="deletePlan.paymentPlanDetails.additionalPrincipalAmount | currency"></span>
+          </li>
+          <li  data-ng-show="deletePlan.paymentPlanDetails.additionalPrincipalAmount > 0">
+            <label id="totalAmountLabel" data-ng-bind="deletePlan.i18n.coaf.payment.paymentPlanSuccess.totalAmount.label.v1"></label>
+            <span id="totalAmount" data-ng-bind="deletePlan.paymentPlanDetails.totalAmount | currency"></span>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <button id="confirmCancelRecurring" class="cancelButton" tabindex="0" data-ng-click="deletePlan.cancelPaymentPlan()" aria-pressed="{{deletePlan.ariaCancelPaymentPlanPressed}}"
+                data-ng-bind="deletePlan.i18n.coaf.payment.recurringPaymentCancelConfirm.confirmButton.button.v1" data-ng-disabled="deletePlan.isDisableButton()"></button>
+      </div>
+      </form>
+    </div>
+</div>
+
+
+

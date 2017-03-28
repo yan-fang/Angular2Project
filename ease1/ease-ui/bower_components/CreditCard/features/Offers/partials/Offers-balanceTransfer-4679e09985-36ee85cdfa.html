@@ -1,0 +1,304 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/CreditCard/styles/card-override-d0ea6fe2a9-34f545de2b.css">
+<div>
+  <ease-ui-modal id="btModal" modal-id="btModal" close-modal="bCtrl.modalClose(true)" tabindex="0">
+    <div id="bt-back" ng-show="bCtrl.showBackArrow" ng-click="bCtrl.back();" tabindex="0">
+      <i class="icon-arrow-back" aria-label="{{'ease.card.offers.balanceTransfer.modal.backButton.text' | translate}}"></i></div>
+    <div class="bt-modal-container">
+
+      <!-- Choose an Option -->
+      <div class="bt-step1" ng-show="bCtrl.modalState.step1">
+        <div class="bt-title" translate>ease.card.offers.balanceTransfer.step1.title.text</div>
+        <div><span bt-offer-rates></span></div>
+        <div class="bt-options">
+          <fieldset>
+            <form>
+              <ul role="radiogroup" class="bt-options-list">
+                <li>
+                  <label id="bt-option-transfer-balance-label" for="bt-option-transfer-balance">
+                    <input aria-describedby="bt-option-transfer-balance-label" tabindex="0" id="bt-option-transfer-balance" type="radio" name="bt-option-transfer-balance" ng-model="bCtrl.bt.option" value="transferBalance" aria-labelledby="bt-option-transfer-balance-label" autofocus>                    {{'ease.card.offers.balanceTransfer.step1.options.card.label' | translate}}
+                  </label>
+                  <cc-tooltip aria-label="{{'ease.card.offers.balanceTransfer.step1.transferBalance.tooltip' | translate}}" tip-content="{{'ease.card.offers.balanceTransfer.step1.transferBalance.tooltip' | translate}}" open="open-left"></cc-tooltip>
+                </li>
+                <li>
+                  <label id="bt-option-no-hassle-check-label" for="bt-option-no-hassle-check" class="no-hassle-label">
+                    <input aria-describedby="bt-option-no-hassle-check-label" tabindex="0" id="bt-option-no-hassle-check" type="radio" name="bt-option-no-hassle-check" ng-model="bCtrl.bt.option"
+                           value="noHassleCheck" aria-labelledby="bt-option-transfer-balance-label">
+                    {{'ease.card.offers.balanceTransfer.step1.options.noHassleCheck.label' | translate}}
+                  </label>
+                  <cc-tooltip aria-label="{{'ease.card.offers.balanceTransfer.step1.noHassleCheck.tooltip' | translate}}" tip-content="{{'ease.card.offers.balanceTransfer.step1.noHassleCheck.tooltip' | translate}}" open="open-left"></cc-tooltip>
+                </li>
+              </ul>
+            </form>
+          </fieldset>
+        </div>
+        <div class="bt-continue">
+          <button id="btContinue" class="progressive" ng-click="bCtrl.selectBTOptions()" tabindex="0">
+            {{'ease.card.offers.balanceTransfer.step1.continue.button' | translate}}
+          </button>
+        </div>
+      </div>
+
+      <!-- Transfer a Balance -->
+      <div class="bt-step2" ng-show="bCtrl.modalState.transferBalance">
+        <div class="bt-title" translate>ease.card.offers.balanceTransfer.step2.title.text</div>
+        <fieldset>
+          <form name="accountInfo">
+            <ul class="bt-input-list">
+              <li>
+                <label>
+                  {{'ease.card.offers.balanceTransfer.step2.accountNumber.label' | translate}}
+                  <input id="ccNumber_TLNPI" type="text" account-check on-valid="bCtrl.validAccount" on-invalid="bCtrl.invalidAccount" has-special-characters-acct-num ng-model="bCtrl.bt.ccNumberTLNPI"
+                         error-type="bCtrl.errorType"  is-bin-match-required="bCtrl.isBinMatchRequired" aria-required="true" required title="{{'ease.card.offers.balanceTransfer.required.message.text' | translate}}" aria-describedby="AccountNumberErrorMessage">
+                </label>
+                <div role="alert" aria-live="assertive"><span class="validation-error" ng-show="bCtrl.errorType !== 'noError'" id="AccountNumberErrorMessage">{{bCtrl.accountNumberErrorMessage}}</span></div>
+                <!-- Alert For No Special Characters -->
+                <span class="incorrect-bank" ng-show="bCtrl.showIncorrectBank">
+                  <span class="bank-name">{{bCtrl.bt.payeeInfo.name}} </span>
+                  <span class="not-correct-name">{{'ease.card.offers.balanceTransfer.transferBalance.incorrect.label' | translate}} <a id="showForm-1" href="" ng-click="bCtrl.showCompanyInfo()">{{'ease.card.offers.balanceTransfer.transferBalance.clickHere.label' | translate}}</a></span>
+                </span>
+              </li>
+              <li>
+                <label>
+                  {{'ease.card.offers.balanceTransfer.step2.transferAmount.label' | translate}} <span
+                  class="available-credit">{{bCtrl.availableCredit | creditCardCurrency}} {{'ease.card.offers.balanceTransfer.step2.creditAvailable.text' | translate}}</span>
+                  <input id="transferAmount" type="text" ng-model="bCtrl.bt.transferAmount" ng-blur="bCtrl.validateTransferAmount($event)" ng-focus="bCtrl.removeTransferAmountError($event)"
+                         placeholder="{{'ease.card.offers.balanceTransfer.step2.transferAmount.placeholder' | translate | creditCardCurrency}}" cc-currency-validation-and-formatting
+                         aria-describedby="TransferAmountErrorMessage" title="{{'ease.card.offers.balanceTransfer.required.message.text' | translate}}" aria-required="true" required>
+                </label>
+                <div role="alert" aria-live="assertive"><span class="validation-error" ng-show="bCtrl.transferAmountErrorMessage" id="TransferAmountErrorMessage">{{bCtrl.transferAmountErrorMessage}}</span></div>
+              </li>
+            </ul>
+            <ul class="bt-address-list" ng-show="bCtrl.bt.showCompanyForm">
+              <li>
+                <label>
+                  {{'ease.card.offers.balanceTransfer.transferBalance.payeeInfo.name.label' | translate}}
+                  <input id="payeeName" type="text" intra-company-association-check not-match="bCtrl.showIntraCompanyError" has-error="bCtrl.businessNameIntraCompanyError" has-length-error="bCtrl.businessNameLengthError" has-special-characters="bCtrl.hasSpecialCharacters" ng-model="bCtrl.bt.payeeInfo.name" ng-required="bCtrl.bt.showCompanyForm" title="{{'ease.card.offers.balanceTransfer.required.message.text' | translate}}">                </label>
+                <!-- Alert For No Special Characters -->
+                <div role="alert" aria-live="assertive"><span class="validation-error" ng-show="bCtrl.hasSpecialCharacters" id="AccountNameSpecialCharsErrorMessage">{{'ease.card.offers.balanceTransfer.step2.intraCompanyAssociation.error.text2' | translate}}</span></div>
+                <span class="validation-error" ng-show="bCtrl.businessNameIntraCompanyError">{{'ease.card.offers.balanceTransfer.step2.intraCompanyAssociation.error.text' | translate}}</span>
+              </li>
+              <li>
+                <label>
+                  {{'ease.card.offers.balanceTransfer.transferBalance.payeeInfo.line1.label' | translate}}
+                  <input id="line1" type="text" ng-model="bCtrl.bt.payeeInfo.addressLine1" ng-required="bCtrl.bt.showCompanyForm" maxlength="40" title="{{'ease.card.offers.balanceTransfer.required.message.text' | translate}}">
+                </label>
+              </li>
+              <li>
+                <address-2></address-2>
+              </li>
+              <li>
+                <label>
+                  {{'ease.card.offers.balanceTransfer.transferBalance.payeeInfo.locality.label' | translate}}
+                  <input id="locality" type="text" ng-model="bCtrl.bt.payeeInfo.cityName" ng-required="bCtrl.bt.showCompanyForm" maxlength="19" title="{{'ease.card.offers.balanceTransfer.required.message.text' | translate}}">
+                </label>
+              </li>
+              <li>
+                <div class="left">
+                  <ease-ui-dropdown
+                    is-open = "bCtrl.stateSelectOpen"
+                    persist-items = "bCtrl.bt.states"
+                    items = "bCtrl.bt.statesMenu"
+                    model-value = "bCtrl.bt.payeeInfo.stateCode"
+                    required = "false"
+                    disable-search = "false"
+                    select = "bCtrl.selectedState(item)"
+                    combobox = "bCtrl.comboBox"
+                  >
+                    <ease-ui-dropdown-menu
+                      select="bCtrl.selectedState(item)"
+                      items="bCtrl.bt.statesMenu"
+                      template = false
+                      is-open = "bCtrl.stateSelectOpen"
+                      component-id = ""
+                    >
+                    </ease-ui-dropdown-menu>
+                  </ease-ui-dropdown>
+                </div>
+                <div class="right">
+                  <label>
+                    {{'ease.card.offers.balanceTransfer.transferBalance.payeeInfo.postalCode.label' | translate}}
+                    <input id="postalCode" type="text" ng-model="bCtrl.bt.payeeInfo.postalCode" has-error="bCtrl.postalCodeValidation" error-type="bCtrl.postalErrorType" locale="bCtrl.locale" ng-required="bCtrl.bt.showCompanyForm" cc-postal-code-validation title="{{'ease.card.offers.balanceTransfer.required.message.text' | translate}}" ng-focus="bCtrl._allowPasteInPostalCode()" >
+                  </label>
+                  <div role="alert" aria-live="assertive">
+                  <span class="validation-error" ng-show="bCtrl.postalCodeValidation && bCtrl.postalErrorType === 'length'">{{'ease.card.offers.balanceTransfer.step2.postalCode.error.text' | translate}}</span>
+                  <span class="validation-error" ng-show="bCtrl.postalCodeValidation && bCtrl.postalErrorType === 'chars'">{{'ease.card.offers.balanceTransfer.step2.intraCompanyAssociation.error.text2' | translate}}</span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </form>
+        </fieldset>
+        <div class="bt-fee-total" ng-show="bCtrl.selectedOffer.transactionFeePercent > 0">
+          <div>
+            <span class="fee-total-text">{{'ease.card.offers.balanceTransfer.step2.feeOpen.text' | translate}}{{:: bCtrl.selectedOffer.transactionFeePercent}}{{'ease.card.offers.balanceTransfer.step2.feeClose.text' | translate}}</span>
+            <span class="fee-total-value">{{bCtrl.bt.transferFeeTotal | creditCardCurrency}}</span>
+          </div>
+          <div>
+            <span class="fee-total-text" translate>ease.card.offers.balanceTransfer.step2.total.text</span>
+            <span class="fee-total-value">{{bCtrl.bt.transferAmountTotal | creditCardCurrency}}</span>
+          </div>
+        </div>
+        <div class="bt-continue">
+          <button id="btReview" class="progressive" ng-click="bCtrl.submitBankAccountDetails()"
+                  ng-disabled="accountInfo.$invalid || bCtrl.validationErrorPresent()" translate>
+            ease.card.offers.selectOffers.balanceTransferMoreDetails.termsConditions.link
+          </button>
+        </div>
+      </div>
+
+
+      <div class="bt-noHassleCheck" ng-show="bCtrl.modalState.noHassleCheck">
+        <div class="bt-title" translate>ease.card.offers.balanceTransfer.noHassleCheck.enterCheckAmount.text</div>
+        <fieldset>
+          <form name="noHassleForm">
+            <ul class="bt-input-list">
+              <li>
+                <label>
+                  {{'ease.card.offers.balanceTransfer.noHassleCheck.checkAmount.label' | translate}} <span
+                  class="available-credit">{{bCtrl.availableCredit | creditCardCurrency}} {{'ease.card.offers.balanceTransfer.step2.creditAvailable.text' | translate}}</span>
+                  <input id="noHassleCheckAmount" type="text" ng-model="bCtrl.bt.transferAmount"  cc-currency-validation-and-formatting
+                         ng-blur="bCtrl.validateTransferAmount($event)" ng-focus="bCtrl.removeTransferAmountError($event)"
+                         placeholder="{{'ease.card.offers.balanceTransfer.step2.transferAmount.placeholder' | translate | creditCardCurrency}}"
+                         required title="{{'ease.card.offers.balanceTransfer.required.message.text' | translate}}">
+                </label>
+                <span class="validation-error" ng-show="bCtrl.transferAmountErrorMessage">{{bCtrl.transferAmountErrorMessage}}</span>
+              </li>
+            </ul>
+          </form>
+        </fieldset>
+        <div class="bt-fee-total" ng-show="bCtrl.selectedOffer.transactionFeePercent > 0">
+          <div>
+            <span class="fee-total-text">{{'ease.card.offers.balanceTransfer.step2.feeOpen.text' | translate}}{{:: bCtrl.selectedOffer.transactionFeePercent}}{{'ease.card.offers.balanceTransfer.step2.feeClose.text' | translate}}</span>
+            <span class="fee-total-value">{{bCtrl.bt.transferFeeTotal | creditCardCurrency}}</span>
+          </div>
+          <div>
+            <span class="fee-total-text" translate>ease.card.offers.balanceTransfer.step2.total.text</span>
+            <span class="fee-total-value">{{bCtrl.bt.transferAmountTotal | creditCardCurrency}}</span>
+          </div>
+        </div>
+        <div class="bt-fee-total">
+          <hr/>
+        </div>
+        <div class="bt-continue">
+          <button id="btReviewNoHassleCheck" class="progressive" ng-click="bCtrl.openTermsAndConditions()"
+                  ng-disabled="noHassleForm.$invalid || bCtrl.transferAmountErrorMessage !==''" tabindex="0" translate>
+            ease.card.offers.selectOffers.balanceTransferMoreDetails.termsConditions.link
+          </button>
+        </div>
+        <div class="bt-important-message">
+          <div class="title">{{'ease.card.offers.balanceTransfer.step2.nhc.important.label.text' | translate}}</div>
+          <div class="content">
+            {{'ease.card.offers.balanceTransfer.step2.nhc.important.content.text' | translate}}<span class="bold">{{'ease.card.offers.balanceTransfer.step2.nhc.important.immediately.text' | translate}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="bt-reviewTransfer" ng-show="bCtrl.modalState.reviewTransfer">
+
+        <div class="bt-title" translate>ease.card.offers.balanceTransfer.reviewTransfer.title2.text</div>
+        <bt-offer-rates ng-show="bCtrl.country === 'US'"></bt-offer-rates>
+        <ul class="bt-review-list">
+          <li class="bt-margin-top">
+            <span class="bt-reviewTransfer-text" ng-show="bCtrl.bt.option !== 'noHassleCheck'">
+              {{'ease.card.offers.balanceTransfer.step1.termsTable.header.text' | translate}}
+            </span>
+            <span class="bt-reviewTransfer-text" ng-show="bCtrl.bt.option === 'noHassleCheck'">
+              {{'ease.card.offers.selectOffers.account.label' | translate}}
+            </span>
+            <span class="bt-reviewTransfer-value">
+              {{ bCtrl.selectedOffer.cardDisplayName}}
+            </span>
+          </li>
+          <li>
+            <hr/>
+          </li>
+          <li ng-show="bCtrl.bt.option === 'noHassleCheck'">
+            <span class="customer-address-text" translate>ease.card.offers.balanceTransfer.noHassleCheck.checkMailedTo2.text</span>
+
+            <div class="customer-address-value">
+              <div><span>{{bCtrl.bt.payeeInfo.addressLine1}}</span></div>
+              <div><span ng-show="bCtrl.bt.payeeInfo.addressLine2 !==''">{{bCtrl.bt.payeeInfo.addressLine2}}</span></div>
+              <div><span>{{bCtrl.bt.payeeInfo.cityName}}, {{bCtrl.bt.payeeInfo.stateCode}} {{bCtrl.bt.payeeInfo.postalCode}}</span>
+              </div>
+            </div>
+
+          </li>
+          <li ng-show="bCtrl.bt.option !== 'noHassleCheck'">
+            <span class="bt-reviewTransfer-text">
+              {{'ease.card.offers.balanceTransfer.reviewTransfer.transferFrom.label' | translate}}
+            </span>
+            <span class="bt-reviewTransfer-value wrapword">{{ bCtrl.bt.payeeInfo.name | limitTo:bCtrl.charLimit}}<span ng-if="bCtrl.showLast4Digits()">... {{bCtrl.ccLastFour}}</span> <span ng-show="bCtrl.isPayeeNameGreaterThan15Chars()" class="right-offset"><cc-tooltip aria-label="{{bCtrl.bt.payeeInfo.name}}" tip-content="{{bCtrl.getTipContent()}}" open="open-left"></cc-tooltip></span>
+              <div ng-show="bCtrl.bt.showCompanyForm == true">
+                <div><span>{{bCtrl.bt.payeeInfo.addressLine1}}</span></div>
+                <div><span ng-show="bCtrl.bt.payeeInfo.addressLine2 !==''">{{bCtrl.bt.payeeInfo.addressLine2}}</span></div>
+                <div><span>{{bCtrl.bt.payeeInfo.cityName}}, {{bCtrl.bt.payeeInfo.stateCode}} {{bCtrl.bt.payeeInfo.postalCode}}</span>
+                </div>
+              </div>
+            </span>
+          </li>
+          <li>
+            <span class="bt-reviewTransfer-text" ng-show="bCtrl.bt.option !== 'noHassleCheck'">
+              {{'ease.card.offers.balanceTransfer.step2.transferAmount.label' |translate}}
+            </span>
+            <span class="bt-reviewTransfer-text" ng-show="bCtrl.bt.option === 'noHassleCheck'">
+              {{'ease.card.offers.balanceTransfer.noHassleCheck.checkAmount.label' |translate}}
+            </span>
+            <span class="bt-reviewTransfer-value">
+              {{ bCtrl.bt.transferAmount| creditCardCurrency}}
+            </span>
+          </li>
+          <li>
+            <span class="bt-reviewTransfer-links">
+              <a id="removeTransfer" class="link-display" ng-keydown="$event.which === 13 && bCtrl.removeBT()" translate ng-click="bCtrl.removeBT()" tabindex="0">
+                ease.card.offers.balanceTransfer.reviewTransfer.removeTransfer.link
+              </a>
+              |
+              <a id="editTransfer" class="link-display" ng-keydown="$event.which === 13 && bCtrl.editBT()" translate ng-click="bCtrl.editBT()" tabindex="0">
+                ease.card.offers.balanceTransfer.reviewTransfer.editTransfer.link
+              </a>
+            </span>
+          </li>
+          <li ng-class="{'bt-margin-bottom': !bCtrl.bt.transferFeeTotal}">
+            <hr/>
+          </li>
+          <li ng-if="bCtrl.bt.transferFeeTotal" ng-class="{'bt-margin-bottom': bCtrl.bt.transferFeeTotal}">
+            <span class="bt-reviewTransfer-text">
+              {{'ease.card.offers.balanceTransfer.step1.termsTable.fee.text' | translate}}
+            </span>
+            <span class="bt-reviewTransfer-value">
+              {{ bCtrl.bt.transferFeeTotal | creditCardCurrency}}
+            </span>
+          </li>
+        </ul>
+        <div>
+          <form name="termsAndConditionsForm" ng-show="bCtrl.bt.viewedTermsAndConditions">
+            <label for="acceptedTermsAndConditions" class="bt-termsConditions-text">
+              <input type="checkbox" id="acceptedTermsAndConditions" name="acceptedTermsAndConditions" ng-model="bCtrl.bt.acceptedTermsAndConditions"
+                     ng-click="bCtrl.toggleAcceptedTerms()" />
+              {{'ease.card.offers.balanceTransfer.reviewTransfer.termsAndConditions.agree.text'| translate}}
+              <a id="viewTermsAndConditionsLink" class="link-display" ng-keydown="$event.which === 13 && bCtrl.openTermsAndConditions()" ng-click="bCtrl.openTermsAndConditions()" tabindex="0">
+                {{'ease.card.offers.balanceTransfer.termsAndConditions.title.text'|translate}}</a>.
+            </label>
+
+            <div class="bt-termsConditions-print-text">
+              <span>{{'ease.card.offers.balanceTransfer.termsAndConditions.printMessage.text' | translate}}</span>
+            </div>
+          </form>
+          <div class="bt-submit-transfer">
+            <button id="btSubmit" class="button" ng-click="bCtrl.bt.acceptedTermsAndConditions ? bCtrl.submitBT() : bCtrl.openTermsAndConditions()" tabindex="0">
+              <div class="bt-spinner" ng-class="{'loading': bCtrl.loading}">
+                <span ng-show="bCtrl.bt.acceptedTermsAndConditions">
+                  {{'ease.card.offers.balanceTransfer.reviewTransfer.submit.text' | translate}}
+                </span>
+                <span ng-show="!bCtrl.bt.acceptedTermsAndConditions">
+                   {{'ease.card.offers.balanceTransfer.reviewTransfer.view.text' | translate}}
+                 </span>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div data-ng-if="bCtrl.enableChat" id="tfsProactiveModal"></div>
+      <div data-ng-if="bCtrl.enableChat" id="tfsButtonModal"></div>
+    </div>
+  </ease-ui-modal>
+</div>

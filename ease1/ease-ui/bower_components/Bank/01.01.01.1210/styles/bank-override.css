@@ -1,0 +1,2549 @@
+.off-screen {
+  height: 0;
+  width: 0;
+  position: absolute;
+  overflow: hidden;
+  left: -999em; }
+
+.not-visible {
+  visibility: hidden; }
+
+.no-text-decoration {
+  text-decoration: none !important; }
+
+.memo-container {
+  margin-bottom: 1.5rem;
+  text-align: left;
+  width: 100%; }
+  .memo-container .memo-content {
+    font-family: 'ProxReg', Helvetica, Arial, sans-serif !important;
+    color: #021829;
+    font-size: 14px; }
+  .memo-container .memo-label {
+    font-family: 'ProximaNova-Semibold', Helvetica, Arial, sans-serif;
+    color: #687680;
+    font-size: 16px; }
+
+.accountDetailParent {
+  /* NOTE: Temporary styling on ID since accountDetail
+   * component currently has CTA as required object.
+   */ }
+  .accountDetailParent .single-row .account-detail-section {
+    padding: 20px 0; }
+    @media only screen and (min-width: 1000px) {
+      .accountDetailParent .single-row .account-detail-section {
+        padding: 75px 65px 35px; } }
+  @media only screen and (min-width: 1000px) {
+    .accountDetailParent .account-navigator {
+      top: 100px; } }
+  .accountDetailParent .account-navigator .account-navigator-container {
+    max-width: 1300px; }
+  .accountDetailParent .balance .balance-amount {
+    font-size: 65px;
+    line-height: 60px; }
+  @media only screen and (max-width: 600px) {
+    .accountDetailParent .account-detail-section .info-block .tertiary {
+      margin: 0;
+      width: 100%; } }
+  .accountDetailParent .account-logo {
+    height: 25px;
+    width: auto; }
+  @media only screen and (min-width: 1000px) {
+    .accountDetailParent .account-alerts {
+      min-height: 1px; } }
+  .accountDetailParent #retail-cd-account-detail-cta {
+    display: none; }
+  .accountDetailParent ._360 .account-detail-header {
+    background-image: url("/ease-ui/dist/features/AccountDetail/images/360_bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #0f4d74;
+    background-size: cover; }
+  .accountDetailParent ._retail .account-detail-header {
+    background-image: url("/ease-ui/dist/features/AccountDetail/images/bank_bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #0f4d74;
+    background-size: cover; }
+  @media only screen and (max-width: 600px) {
+    .accountDetailParent ._360, .accountDetailParent ._retail {
+      background-size: 237rem, 47rem;
+      background-position: -126rem 0rem; } }
+  .accountDetailParent .call-to-action.loader {
+    color: transparent;
+    position: relative; }
+    .accountDetailParent .call-to-action.loader:after {
+      -webkit-animation: loading 1.2s infinite cubic-bezier(0.785, 0.135, 0.15, 0.86);
+      animation: loading 1.2s infinite cubic-bezier(0.785, 0.135, 0.15, 0.86);
+      border-top: 0.25em solid #fff;
+      border-right: 0.25em solid rgba(255, 255, 255, 0.4);
+      border-bottom: 0.25em solid rgba(255, 255, 255, 0.4);
+      border-left: 0.25em solid rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      -webkit-transform-origin: center center;
+      transform-origin: center center;
+      background-color: transparent;
+      content: "";
+      display: block;
+      left: 50%;
+      margin: 0 0 0 -12px;
+      position: absolute;
+      top: 10%; }
+    .accountDetailParent .call-to-action.loader .button-text {
+      color: transparent; }
+
+.bank-view-details-modal {
+  width: 775px; }
+  @media only screen and (max-width: 600px) {
+    .bank-view-details-modal {
+      width: 100%;
+      height: 100%;
+      margin-top: 0rem;
+      text-align: center; }
+      .bank-view-details-modal h4 {
+        background-color: #F4F1F3;
+        margin: 1rem; }
+      .bank-view-details-modal .container {
+        margin: 0em;
+        height: 100%; } }
+  @media only screen and (min-width: 600px) and (max-width: 1000px) {
+    .bank-view-details-modal {
+      width: 100%;
+      margin-top: 0rem; }
+      .bank-view-details-modal .container {
+        height: 100%; } }
+  .bank-view-details-modal .ease-modal-title {
+    display: none; }
+  .bank-view-details-modal.product-360 .ease-modal-circle {
+    background: url("../images/360_icon_red.png") no-repeat center center;
+    background-size: 100%; }
+    @media only screen and (min-width: 600px) and (max-width: 1000px) {
+      .bank-view-details-modal.product-360 .ease-modal-circle {
+        position: absolute;
+        top: 1rem; } }
+  .bank-view-details-modal.product-retail .ease-modal-circle {
+    background: url("../images/retail-logo.png") no-repeat center center;
+    background-size: 100%; }
+    @media only screen and (min-width: 600px) and (max-width: 1000px) {
+      .bank-view-details-modal.product-retail .ease-modal-circle {
+        position: absolute;
+        top: 1rem; } }
+  .bank-view-details-modal .ease-modal-content {
+    padding: 0.1rem;
+    padding-top: 6rem;
+    margin: 0; }
+  .bank-view-details-modal h2 {
+    text-align: center;
+    margin: 1.7rem;
+    font-weight: 600; }
+    @media only screen and (min-width: 600px) and (max-width: 1000px) {
+      .bank-view-details-modal h2 {
+        line-height: 10.6rem;
+        margin: -2rem;
+        margin-top: 4.2rem; } }
+    @media only screen and (max-width: 600px) {
+      .bank-view-details-modal h2 {
+        font-size: 3rem;
+        line-height: 7.6rem;
+        margin: -0.4rem;
+        margin-top: -5.8rem; } }
+  .bank-view-details-modal h3 {
+    font-size: 100%;
+    margin: 1rem;
+    text-align: center;
+    font-weight: 600; }
+  .bank-view-details-modal h4 {
+    font-size: 2rem;
+    line-height: 3.5rem;
+    font-weight: 600; }
+    .bank-view-details-modal h4:after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 89%; }
+      @media only screen and (max-width: 600px) {
+        .bank-view-details-modal h4:after {
+          border: none; } }
+    .bank-view-details-modal h4 i {
+      display: none; }
+      @media only screen and (max-width: 600px) {
+        .bank-view-details-modal h4 i {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          font-size: 110%;
+          font-weight: bold;
+          text-align: center;
+          margin-bottom: 0.5rem; } }
+  .bank-view-details-modal h5 {
+    font-size: 90%;
+    line-height: 18px;
+    text-transform: uppercase;
+    color: #687680;
+    margin-bottom: 5px; }
+  .bank-view-details-modal .container {
+    margin: 1em; }
+  .bank-view-details-modal .modal-container {
+    padding: 0.1rem;
+    padding-top: 6rem; }
+  .bank-view-details-modal .group h4 {
+    line-height: 4.5rem; }
+  .bank-view-details-modal .col-6 {
+    padding: 0 10px;
+    float: left;
+    width: 49.15254%; }
+    @media only screen and (max-width: 600px) {
+      .bank-view-details-modal .col-6 {
+        width: 100%; } }
+  .bank-view-details-modal .field {
+    font-size: 90%;
+    padding-bottom: 13px;
+    margin-bottom: 1em;
+    border-bottom: 1px solid #c2c0c5;
+    font-weight: 600; }
+  .bank-view-details-modal .routingNumberfield {
+    font-size: 90%;
+    padding-bottom: 13px;
+    margin-bottom: 1em;
+    border-bottom: 1px solid #c2c0c5;
+    font-weight: 600;
+    margin-top: 4.25em; }
+    @media only screen and (max-width: 600px) {
+      .bank-view-details-modal .routingNumberfield {
+        margin-top: auto; } }
+  .bank-view-details-modal .terms-conditions {
+    font-size: 90%;
+    padding-bottom: 13px;
+    margin-bottom: 1em;
+    font-weight: 600; }
+  .bank-view-details-modal .available-balance-label {
+    float: center;
+    font-family: "ProxLight";
+    font-size: 1.5rem;
+    text-align: center;
+    color: #687680; }
+  .bank-view-details-modal .linkCursor {
+    cursor: pointer;
+    font-family: "ProxThin";
+    vertical-align: middle; }
+  .bank-view-details-modal .off-screen {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden; }
+  .bank-view-details-modal ul {
+    text-align: center;
+    list-style: none;
+    line-height: 10px; }
+    .bank-view-details-modal ul li {
+      display: inline-block;
+      margin: 0 -1px 0 -2px;
+      color: black;
+      font-size: 13px;
+      width: 100%; }
+      .bank-view-details-modal ul li:last-child {
+        border: none; }
+      .bank-view-details-modal ul li label {
+        float: left;
+        font-family: "ProxLight";
+        font-size: 1.5rem; }
+      .bank-view-details-modal ul li span {
+        clear: none;
+        display: block;
+        float: left;
+        font-weight: 600;
+        font-size: 1.6rem; }
+      .bank-view-details-modal ul li p {
+        font-size: 2.2rem;
+        font-weight: 600;
+        line-height: 2.5rem; }
+
+.modal .modal-container #disclosurescontent {
+  padding: 0 4.5rem 6.5rem;
+  overflow: auto;
+  height: 182.1rem; }
+
+.bank-disclosures-modal {
+  width: 77.8rem; }
+  @media only screen and (max-width: 600px) {
+    .bank-disclosures-modal {
+      width: 100%;
+      height: 100%;
+      margin-top: 0rem;
+      text-align: justify; }
+      .bank-disclosures-modal table, .bank-disclosures-modal tr, .bank-disclosures-modal td {
+        padding: 1rem; }
+        .bank-disclosures-modal table a, .bank-disclosures-modal tr a, .bank-disclosures-modal td a {
+          word-break: break-all; }
+      .bank-disclosures-modal .circle {
+        display: absolute; }
+      .bank-disclosures-modal #disclosureheader {
+        font-size: 2.4rem; }
+      .bank-disclosures-modal #disclosurescontent {
+        overflow: hidden; } }
+  @media only screen and (min-width: 600px) and (max-width: 1000px) {
+    .bank-disclosures-modal {
+      width: 100%;
+      margin-top: 0rem; }
+      .bank-disclosures-modal .circle {
+        position: absolute;
+        top: 1rem; }
+      .bank-disclosures-modal .modal-container {
+        padding-top: 13rem; }
+        .bank-disclosures-modal .modal-container #disclosurescontent {
+          overflow: hidden; } }
+  .bank-disclosures-modal col {
+    background-color: #b3b3b3; }
+  .bank-disclosures-modal p {
+    font-family: 'ProxLight', Helvetica, Arial, sans-serif !important;
+    text-align: justify;
+    line-height: 2.62rem;
+    font-size: 1.6rem;
+    color: #262626; }
+    .bank-disclosures-modal p + strong {
+      line-height: 5rem; }
+  .bank-disclosures-modal span {
+    font-family: 'ProxReg', Helvetica, Arial, sans-serif !important; }
+  .bank-disclosures-modal strong {
+    font-weight: bold; }
+  .bank-disclosures-modal ul, .bank-disclosures-modal ol {
+    font-family: 'ProxLight', Helvetica, Arial, sans-serif !important;
+    font-size: 1.6rem;
+    text-align: justify; }
+    .bank-disclosures-modal ul + li, .bank-disclosures-modal ol + li {
+      list-style: disc outside none; }
+  .bank-disclosures-modal table {
+    width: 100%; }
+  .bank-disclosures-modal table, .bank-disclosures-modal tr, .bank-disclosures-modal th, .bank-disclosures-modal td {
+    font-family: 'ProxLight', Helvetica, Arial, sans-serif !important;
+    text-align: justify;
+    font-size: 1.6rem;
+    border: .1rem solid black;
+    border-collapse: collapse;
+    padding: 1.5rem; }
+    .bank-disclosures-modal table #facts, .bank-disclosures-modal tr #facts, .bank-disclosures-modal th #facts, .bank-disclosures-modal td #facts {
+      background-color: black;
+      color: #ffffff; }
+    .bank-disclosures-modal table th, .bank-disclosures-modal tr th, .bank-disclosures-modal th th, .bank-disclosures-modal td th {
+      font-family: 'ProxReg', Helvetica, Arial, sans-serif !important;
+      color: #ffffff;
+      font-weight: bold;
+      background: #b3b3b3; }
+  .bank-disclosures-modal .account-disclosures, .bank-disclosures-modal #disclosureheader {
+    font-family: 'ProxReg', Helvetica, Arial, sans-serif !important;
+    height: 3.9rem;
+    font-size: 3.2rem;
+    color: #01172a;
+    text-align: center; }
+  .bank-disclosures-modal .circle {
+    background: url("../images/360_icon_red.png") no-repeat center center;
+    background-size: 100%; }
+    .bank-disclosures-modal .circle .icon {
+      display: none; }
+    @media only screen and (min-width: 600px) and (max-width: 1000px) {
+      .bank-disclosures-modal .circle {
+        position: absolute;
+        top: 1rem; } }
+    @media only screen and (max-width: 600px) {
+      .bank-disclosures-modal .circle {
+        display: absolute; } }
+  .bank-disclosures-modal .disclosureCheckingHeaderContent {
+    color: #008bc2;
+    cursor: pointer;
+    padding: 0 4.5rem 6.5rem;
+    height: 12rem;
+    margin-top: 3rem;
+    height: 24rem; }
+    .bank-disclosures-modal .disclosureCheckingHeaderContent + p {
+      margin-left: 2rem; }
+  .bank-disclosures-modal .disclosureHeaderContent {
+    color: #008bc2;
+    cursor: pointer;
+    padding: 0 4.5rem 6.5rem;
+    height: 12rem;
+    margin-top: 3rem; }
+    .bank-disclosures-modal .disclosureHeaderContent + p {
+      margin-left: 2rem; }
+  .bank-disclosures-modal #disclosureHeaderContentHide {
+    display: none; }
+  .bank-disclosures-modal .downloadtermsandconditions {
+    text-align: center;
+    margin: 0 2rem; }
+    .bank-disclosures-modal .downloadtermsandconditions button {
+      color: #ffffff;
+      background-color: #008bc1;
+      line-height: inherit;
+      width: 24.4rem;
+      font-size: 1.8rem; }
+      .bank-disclosures-modal .downloadtermsandconditions button:hover, .bank-disclosures-modal .downloadtermsandconditions button:focus {
+        text-decoration: underline;
+        -webkit-transform: none;
+        transform: none;
+        -webkit-transition: none;
+        transition: none; }
+      @media only screen and (max-width: 600px) {
+        .bank-disclosures-modal .downloadtermsandconditions button {
+          width: 25.4rem; } }
+  .bank-disclosures-modal h2 {
+    font-family: 'ProxReg', Helvetica, Arial, sans-serif !important;
+    font-size: 1.6rem;
+    color: #01172a; }
+  .bank-disclosures-modal #showcheckingcontent p:nth-child(2), .bank-disclosures-modal #showcheckingcontent p:nth-child(3) {
+    margin: 0.5rem 0rem 0.5rem 2rem; }
+
+.dispute-modal {
+  width: 420px; }
+  .dispute-modal .ease-modal-title {
+    color: #01172a;
+    font-family: 'ProxReg', Helvetica, Arial, sans-serif;
+    font-size: 28px;
+    text-align: center; }
+  .dispute-modal h2 {
+    color: #01172a;
+    font-family: 'ProxReg', Helvetica, Arial, sans-serif;
+    margin: 10px auto;
+    font-size: 28px;
+    text-align: center; }
+  @media only screen and (min-width: 600px) and (max-width: 1000px) {
+    .dispute-modal {
+      height: 100%;
+      max-height: 100%;
+      width: 100%; } }
+  @media only screen and (max-width: 600px) {
+    .dispute-modal {
+      height: 100%;
+      max-height: 100%;
+      width: 100%; } }
+  .dispute-modal.cardLock-whats-next .ease-modal-circle {
+    background: url("../images/dispute-megaphone.png") no-repeat center center;
+    background-size: cover; }
+  .dispute-modal.cardLock-call .ease-modal-circle {
+    background: url("../images/PhoneIcon.svg") no-repeat center center;
+    background-size: cover; }
+  .dispute-modal.cardSwap .ease-modal-circle {
+    background: url("../images/send-card.svg") no-repeat center center;
+    background-size: cover; }
+  .dispute-modal.fraud .ease-modal-circle {
+    background: url("../images/fraud.png") no-repeat center center;
+    background-size: cover; }
+  .dispute-modal.megaphone .ease-modal-circle {
+    background: url("../images/dispute-megaphone.png") no-repeat center center;
+    background-size: cover; }
+  .dispute-modal.confirmation .ease-modal-circle {
+    background: url("../images/check.svg") no-repeat center center; }
+  .dispute-modal .call-us {
+    font-family: 'ProxReg', Helvetica, Arial, sans-serif !important;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    text-align: center; }
+    .dispute-modal .call-us.follow-up {
+      margin-top: 4rem; }
+    .dispute-modal .call-us .overseas {
+      display: -webkit-flex;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      font-size: 18px;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-justify-content: center; }
+      @media only screen and (max-width: 600px) {
+        .dispute-modal .call-us .overseas {
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+          flex-direction: column;
+          font-size: 16px;
+          text-align: center;
+          -webkit-flex-direction: column; } }
+    .dispute-modal .call-us .phone-number {
+      color: inherit;
+      cursor: default;
+      pointer-events: none;
+      text-decoration: none;
+      white-space: nowrap; }
+      @media only screen and (max-width: 600px) {
+        .dispute-modal .call-us .phone-number {
+          color: #237DA4;
+          cursor: pointer;
+          pointer-events: inherit; } }
+      .dispute-modal .call-us .phone-number.usa {
+        font-family: 'ProximaNova-Bold', Helvetica, Arial, sans-serif; }
+  .dispute-modal .card-check {
+    margin: 2.2rem auto 3.2rem auto;
+    max-width: 100%; }
+    .dispute-modal .card-check .input-block {
+      display: -webkit-flex;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      font-size: 19px;
+      font-family: 'ProxReg', Helvetica, Arial, sans-serif;
+      line-height: 2.4rem;
+      margin-bottom: 1rem; }
+  .dispute-modal .cardlastfour {
+    font-family: 'ProximaNova-SemiBold', Helvetica, Arial, sans-serif; }
+  .dispute-modal .checklist {
+    max-width: 100%;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+    -webkit-align-self: center; }
+    .dispute-modal .checklist .checklist-item {
+      display: -webkit-flex;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      font-family: 'ProxLight', Helvetica, Arial, sans-serif;
+      margin: 19px 0 22px 0; }
+      .dispute-modal .checklist .checklist-item .icon-check {
+        color: #125580;
+        margin-right: 10px; }
+      .dispute-modal .checklist .checklist-item .checklist-message {
+        color: #67747f;
+        font-size: 16px;
+        line-height: initial; }
+  .dispute-modal .checklist-fraud {
+    max-width: 100%;
+    margin: auto;
+    color: #67747f; }
+    .dispute-modal .checklist-fraud .checklist-item {
+      display: -webkit-flex;
+      display: list-item;
+      font-family: 'ProxLight', Helvetica, Arial, sans-serif;
+      margin-bottom: 10px; }
+      .dispute-modal .checklist-fraud .checklist-item .checklist-message {
+        color: #01172a;
+        font-size: 16px;
+        line-height: initial; }
+  .dispute-modal .confirmation-messages {
+    font-family: 'ProxReg', Helvetica, Arial, sans-serif !important;
+    font-size: 16px;
+    text-align: left; }
+    .dispute-modal .confirmation-messages .confirmation-message {
+      margin: 2rem 0; }
+  .dispute-modal .final-button {
+    margin-top: 5rem; }
+  .dispute-modal .fraud-message {
+    color: #02121F;
+    font-family: 'ProxReg', Helvetica, Arial, sans-serif;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    text-align: center;
+    margin: 2rem 0; }
+  .dispute-modal .mailing-address {
+    font-family: 'ProximaNova-Bold', Helvetica, Arial, sans-serif;
+    font-size: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 7rem;
+    text-align: center; }
+  .dispute-modal .merchant-info .address {
+    font-size: 16px;
+    line-height: 22px; }
+  .dispute-modal .merchant-info .dispute-amount {
+    color: #02121F;
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: 15px; }
+  .dispute-modal .merchant-info .merchant {
+    font-size: 20px; }
+  .dispute-modal .merchant-info .purchasedOn {
+    color: #02121F;
+    font-weight: bold;
+    margin-right: 5px; }
+  .dispute-modal .ease-modal-content {
+    display: -webkit-flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding: 0 2rem;
+    -webkit-flex-direction: column; }
+    .dispute-modal .ease-modal-content .dispute-container {
+      display: inherit;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: inherit;
+      flex-direction: inherit;
+      -webkit-flex-direction: inherit; }
+  .dispute-modal .loading {
+    height: 3rem;
+    margin: auto;
+    max-width: 100%;
+    position: inherit;
+    width: 3rem; }
+    .dispute-modal .loading .button-text {
+      display: none; }
+  .dispute-modal .nevermind-link {
+    font-size: 16px;
+    margin-top: 10px;
+    text-align: center; }
+  .dispute-modal .problem-type {
+    max-width: 100%; }
+    .dispute-modal .problem-type .input-block {
+      display: -webkit-flex;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      font-size: 16px;
+      margin: 1rem auto;
+      max-width: 100%;
+      line-height: 2.2rem; }
+  .dispute-modal .progressive {
+    background-color: #0d74af;
+    width: 100%; }
+  .dispute-modal .top-left-icon {
+    color: #0D74AF;
+    left: -2.5rem;
+    position: relative;
+    top: -8.5rem;
+    width: 3rem; }
+    @media only screen and (min-width: 600px) and (max-width: 1000px) {
+      .dispute-modal .top-left-icon {
+        top: -16.5rem; } }
+    .dispute-modal .top-left-icon:hover, .dispute-modal .top-left-icon:focus {
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
+      -webkit-transition: all .1s ease-out;
+      transition: all .1s ease-out; }
+  .dispute-modal .separator {
+    border-bottom: 1px solid #ceccd1;
+    margin: 10px 0;
+    width: 100%; }
+    .dispute-modal .separator.bottom-bar {
+      margin-bottom: 15px;
+      margin-top: 20px; }
+  .dispute-modal .sub-title {
+    color: #011728;
+    font-family: 'ProxReg', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 22px;
+    padding: 13px 1px;
+    text-align: center; }
+    .dispute-modal .sub-title.bold {
+      color: #01172a;
+      font-family: 'ProximaNova-Bold', Helvetica, Arial, sans-serif; }
+
+.bank-enhanced-transaction {
+  font-family: 'ProxReg', Helvetica, Arial, sans-serif !important;
+  box-sizing: border-box;
+  width: 100%;
+  float: left;
+  padding-left: 16.66667%;
+  font-style: normal;
+  text-decoration: none;
+  color: #021829;
+  cursor: default;
+  height: 0;
+  line-height: normal;
+  -webkit-transform-origin: center top;
+  transform-origin: center top; }
+  @media only screen and (min-width: 600px) and (max-width: 1000px) {
+    .bank-enhanced-transaction {
+      margin-top: 10px; } }
+  @media only screen and (max-width: 600px) {
+    .bank-enhanced-transaction {
+      margin-left: 0%;
+      margin-top: 10px;
+      padding: 0 1rem 0 0;
+      width: 100%; } }
+  .bank-enhanced-transaction.ng-inline-animate {
+    -webkit-transition: height 0.75s ease-in-out;
+    transition: height 0.75s ease-in-out; }
+  .bank-enhanced-transaction .map-container {
+    box-sizing: border-box;
+    width: 50%;
+    float: right;
+    max-height: 250px;
+    margin-bottom: 1rem;
+    text-align: right; }
+    @media only screen and (max-width: 800px) {
+      .bank-enhanced-transaction .map-container {
+        box-sizing: border-box;
+        width: 100%;
+        float: left;
+        margin-top: 1rem;
+        max-height: initial;
+        padding-left: 1rem;
+        text-align: center; } }
+    .bank-enhanced-transaction .map-container .image-toggles {
+      color: #237DA4;
+      cursor: pointer;
+      width: 100%;
+      text-align: center;
+      font-size: 14px; }
+      .bank-enhanced-transaction .map-container .image-toggles .left-link, .bank-enhanced-transaction .map-container .image-toggles .right-link {
+        display: inline;
+        margin: 0 4%;
+        width: 40%; }
+        @media only screen and (min-width: 600px) and (max-width: 1000px) {
+          .bank-enhanced-transaction .map-container .image-toggles .left-link, .bank-enhanced-transaction .map-container .image-toggles .right-link {
+            margin: 0 2%; } }
+      .bank-enhanced-transaction .map-container .image-toggles .disabled {
+        color: #021829;
+        cursor: default;
+        text-decoration: initial; }
+  .bank-enhanced-transaction .cleansed-data {
+    box-sizing: border-box;
+    width: 50%;
+    float: left;
+    padding-bottom: 10px; }
+    @media only screen and (max-width: 800px) {
+      .bank-enhanced-transaction .cleansed-data {
+        padding: 0 1rem;
+        width: 100%; } }
+    .bank-enhanced-transaction .cleansed-data.max-width {
+      box-sizing: border-box;
+      width: 100%;
+      float: left;
+      line-height: normal; }
+    .bank-enhanced-transaction .cleansed-data .interest-message {
+      margin: 3rem 0; }
+    .bank-enhanced-transaction .cleansed-data .grey-out {
+      color: #696969;
+      display: inline-block;
+      padding: 1.5rem 0;
+      line-height: normal; }
+      .bank-enhanced-transaction .cleansed-data .grey-out .italic {
+        font-style: italic; }
+    .bank-enhanced-transaction .cleansed-data .merchant-block {
+      margin-bottom: 1rem; }
+    .bank-enhanced-transaction .cleansed-data .ets-table {
+      font-family: 'ProxReg', Helvetica, Arial, sans-serif !important;
+      box-sizing: border-box;
+      width: 100%;
+      float: left;
+      border-spacing: 1rem;
+      text-align: left;
+      line-height: normal; }
+      .bank-enhanced-transaction .cleansed-data .ets-table .ets-row {
+        padding-bottom: 1rem; }
+      .bank-enhanced-transaction .cleansed-data .ets-table .row-label {
+        vertical-align: top;
+        padding-right: 10px; }
+      .bank-enhanced-transaction .cleansed-data .ets-table .key {
+        font-family: 'ProximaNova-Semibold', Helvetica, Arial, sans-serif;
+        font-weight: 700;
+        vertical-align: top;
+        width: 17rem; }
+      .bank-enhanced-transaction .cleansed-data .ets-table .value {
+        vertical-align: top; }
+    .bank-enhanced-transaction .cleansed-data .money-tooltip-container {
+      float: left;
+      margin-top: 1rem;
+      width: 100%; }
+    .bank-enhanced-transaction .cleansed-data .pending-message {
+      line-height: normal;
+      width: 100%;
+      float: left;
+      padding-top: 1.5rem; }
+    .bank-enhanced-transaction .cleansed-data .single-line {
+      display: block;
+      width: 100%; }
+    .bank-enhanced-transaction .cleansed-data .phone-number {
+      color: #000000;
+      font-style: normal;
+      text-decoration: none;
+      pointer-events: none; }
+      @media only screen and (max-width: 600px) {
+        .bank-enhanced-transaction .cleansed-data .phone-number {
+          color: #237DA4;
+          cursor: pointer;
+          text-decoration: underline;
+          pointer-events: inherit; } }
+    .bank-enhanced-transaction .cleansed-data .single-line-link {
+      color: #237DA4;
+      cursor: pointer; }
+
+.alert-message {
+  -webkit-transition: opacity 0.5s ease-in;
+  transition: opacity 0.5s ease-in;
+  float: left;
+  font-size: 14px;
+  margin: 5px 2px 15px 2px;
+  opacity: 1;
+  outline: #ffe21f solid 2px;
+  overflow: hidden;
+  padding: 10px;
+  text-align: center;
+  width: 99.5%; }
+  @media only screen and (min-width: 600px) and (max-width: 1000px) {
+    .alert-message {
+      margin-left: 2.75%;
+      width: 95%; } }
+  @media only screen and (max-width: 600px) {
+    .alert-message {
+      margin-left: 2.75%;
+      width: 95.75%; } }
+  .alert-message.ng-enter {
+    opacity: 0.25; }
+  .alert-message.ng-enter-active {
+    opacity: 1; }
+
+.past-header {
+  margin-top: 3rem;
+  margin-bottom: 1.5rem; }
+  @media only screen and (min-width: 600px) and (max-width: 1000px) {
+    .past-header {
+      margin-left: 20px; } }
+  @media only screen and (max-width: 600px) {
+    .past-header {
+      margin-left: 20px; } }
+
+.bankUpcomingTransactionsCards {
+  margin: 0 auto;
+  padding: 0;
+  vertical-align: 0rem; }
+  .bankUpcomingTransactionsCards .upcoming-card-carousal {
+    overflow: hidden; }
+  .bankUpcomingTransactionsCards .bank-upcoming-title-bar {
+    height: 3em;
+    margin-top: 1em; }
+    .bankUpcomingTransactionsCards .bank-upcoming-title-bar ul {
+      list-style: none;
+      margin-top: 1rem; }
+      .bankUpcomingTransactionsCards .bank-upcoming-title-bar ul li {
+        margin: 0;
+        padding-top: 1.5em; }
+        .bankUpcomingTransactionsCards .bank-upcoming-title-bar ul li h3 {
+          outline: none; }
+          @media only screen and (min-width: 600px) and (max-width: 1000px) {
+            .bankUpcomingTransactionsCards .bank-upcoming-title-bar ul li h3 {
+              margin-left: 2rem; } }
+          @media only screen and (max-width: 600px) {
+            .bankUpcomingTransactionsCards .bank-upcoming-title-bar ul li h3 {
+              margin-left: 2rem; } }
+          .bankUpcomingTransactionsCards .bank-upcoming-title-bar ul li h3:before {
+            content: attr(data-content); }
+          @media only screen and (max-width: 600px) {
+            .bankUpcomingTransactionsCards .bank-upcoming-title-bar ul li h3:before {
+              content: attr(phone-content); } }
+          .bankUpcomingTransactionsCards .bank-upcoming-title-bar ul li h3 i {
+            color: #0D74AF; }
+        .bankUpcomingTransactionsCards .bank-upcoming-title-bar ul li button {
+          position: absolute;
+          right: 1em;
+          top: 2em;
+          border: .1rem solid;
+          color: #019ED5;
+          margin: 0;
+          font-size: medium;
+          background-color: transparent; }
+          .bankUpcomingTransactionsCards .bank-upcoming-title-bar ul li button:after {
+            content: attr(data-content); }
+          @media only screen and (min-width: 600px) and (max-width: 1000px) {
+            .bankUpcomingTransactionsCards .bank-upcoming-title-bar ul li button:after {
+              content: attr(phone-content); } }
+          @media only screen and (max-width: 600px) {
+            .bankUpcomingTransactionsCards .bank-upcoming-title-bar ul li button:after {
+              content: attr(phone-content); } }
+    .bankUpcomingTransactionsCards .bank-upcoming-title-bar .element-invisible {
+      position: absolute;
+      width: 0rem;
+      clip: rect(0px, 0px, 0px, 0px); }
+      @media only screen and (max-width: 600px) {
+        .bankUpcomingTransactionsCards .bank-upcoming-title-bar .element-invisible {
+          position: static; } }
+  .bankUpcomingTransactionsCards .upcoming-card-container {
+    min-width: 19rem;
+    height: 25rem;
+    display: block;
+    overflow: hidden; }
+    @media only screen and (min-width: 600px) and (max-width: 1000px) {
+      .bankUpcomingTransactionsCards .upcoming-card-container {
+        min-width: 18rem;
+        height: 22rem;
+        overflow: visible; } }
+    @media only screen and (max-width: 600px) {
+      .bankUpcomingTransactionsCards .upcoming-card-container {
+        min-width: 13.4rem;
+        height: 17rem;
+        overflow: visible; } }
+    .bankUpcomingTransactionsCards .upcoming-card-container:hover {
+      border: .1rem solid #0d74af; }
+    .bankUpcomingTransactionsCards .upcoming-card-container .element-invisible {
+      position: absolute;
+      width: 0rem;
+      clip: rect(0px, 0px, 0px, 0px); }
+  .bankUpcomingTransactionsCards .upcomingTransactions {
+    background-color: #ffffff;
+    padding: 1rem;
+    margin: 1rem 0.5rem;
+    border-bottom: 0.1rem outset rgba(220, 216, 219, 0.5);
+    border-radius: .5rem; }
+    @media only screen and (min-width: 600px) and (max-width: 1000px) {
+      .bankUpcomingTransactionsCards .upcomingTransactions {
+        margin: 3rem 0.5rem 1rem 0.5rem; } }
+    @media only screen and (max-width: 600px) {
+      .bankUpcomingTransactionsCards .upcomingTransactions {
+        margin: 1rem 0.5rem 0rem; } }
+  .bankUpcomingTransactionsCards .card-body {
+    color: #656565;
+    margin-left: 0rem;
+    text-align: center;
+    display: inline-block;
+    list-style: none;
+    width: 100%; }
+    .bankUpcomingTransactionsCards .card-body span {
+      display: block;
+      font-family: ProxLight;
+      font-size: 1.6rem;
+      line-height: 2rem;
+      height: 2.7rem; }
+    .bankUpcomingTransactionsCards .card-body .element-invisible {
+      position: absolute;
+      width: 0rem;
+      clip: rect(0px, 0px, 0px, 0px); }
+    .bankUpcomingTransactionsCards .card-body .available-funds-date {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+      line-height: 2rem;
+      text-transform: uppercase; }
+      @media only screen and (max-width: 600px) {
+        .bankUpcomingTransactionsCards .card-body .available-funds-date {
+          font-size: 0.75em;
+          line-height: 2.2rem; } }
+    .bankUpcomingTransactionsCards .card-body .logo-upcoming-transactions {
+      display: block;
+      height: 4rem;
+      margin-bottom: 1rem; }
+      @media only screen and (min-width: 600px) and (max-width: 1000px) {
+        .bankUpcomingTransactionsCards .card-body .logo-upcoming-transactions {
+          margin-bottom: .3rem; } }
+      @media only screen and (max-width: 600px) {
+        .bankUpcomingTransactionsCards .card-body .logo-upcoming-transactions {
+          margin-bottom: .3rem;
+          font-size: 1.3rem;
+          height: 3rem; } }
+      .bankUpcomingTransactionsCards .card-body .logo-upcoming-transactions img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        height: 4rem; }
+        @media only screen and (max-width: 600px) {
+          .bankUpcomingTransactionsCards .card-body .logo-upcoming-transactions img {
+            height: 3rem; } }
+    @media only screen and (max-width: 600px) {
+      .bankUpcomingTransactionsCards .card-body .payee-name-wordwrap {
+        overflow: hidden;
+        text-overflow: ellipsis; } }
+    .bankUpcomingTransactionsCards .card-body .payee-name {
+      font-family: 'ProxReg', Helvetica, Arial, sans-serif !important;
+      display: inline;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 1.4rem;
+      color: #02121f; }
+      @media only screen and (max-width: 600px) {
+        .bankUpcomingTransactionsCards .card-body .payee-name {
+          white-space: nowrap;
+          font-size: 0.58em; } }
+    .bankUpcomingTransactionsCards .card-body .card-last-four:before {
+      content: "\00a0"; }
+    .bankUpcomingTransactionsCards .card-body .unscheduled-bill-pay-btn {
+      text-align: center; }
+      .bankUpcomingTransactionsCards .card-body .unscheduled-bill-pay-btn button {
+        width: 14.4rem;
+        height: 3.5rem;
+        font-size: 1.6rem;
+        font-weight: 600;
+        background-color: #0d74af;
+        padding: 0.7rem 6rem;
+        margin: -1rem 0 1rem 0; }
+        .bankUpcomingTransactionsCards .card-body .unscheduled-bill-pay-btn button .loading {
+          margin: -1.6rem auto;
+          border-top: 0.25em solid #FFF;
+          border-right: 0.25em solid rgba(255, 255, 255, 0.14);
+          border-bottom: 0.25em solid rgba(255, 255, 255, 0.14);
+          border-left: 0.25em solid rgba(255, 255, 255, 0.14); }
+          .bankUpcomingTransactionsCards .card-body .unscheduled-bill-pay-btn button .loading span {
+            display: none; }
+          @media only screen and (max-width: 600px) {
+            .bankUpcomingTransactionsCards .card-body .unscheduled-bill-pay-btn button .loading {
+              margin: -1.4rem 4rem; } }
+        @media only screen and (max-width: 600px) {
+          .bankUpcomingTransactionsCards .card-body .unscheduled-bill-pay-btn button {
+            font-size: 1.3rem;
+            height: 2.8rem;
+            margin: 0;
+            padding: 0.3rem;
+            width: 75%; } }
+    .bankUpcomingTransactionsCards .card-body .upcoming-transaction-Amount {
+      display: -webkit-inline-box;
+      display: -webkit-inline-flex;
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      font-size: 2.8rem;
+      margin: 1rem 0 4.6rem 0;
+      font-weight: 300;
+      line-height: 3.4rem; }
+      .bankUpcomingTransactionsCards .card-body .upcoming-transaction-Amount span {
+        font-family: 'ProxReg', Helvetica, Arial, sans-serif !important;
+        font-size: 2.8rem;
+        display: inline; }
+        @media only screen and (max-width: 600px) {
+          .bankUpcomingTransactionsCards .card-body .upcoming-transaction-Amount span {
+            font-size: 2.1rem; } }
+      @media only screen and (min-width: 600px) and (max-width: 1000px) {
+        .bankUpcomingTransactionsCards .card-body .upcoming-transaction-Amount {
+          margin: 1rem 0 3rem 0; } }
+      @media only screen and (max-width: 600px) {
+        .bankUpcomingTransactionsCards .card-body .upcoming-transaction-Amount {
+          margin: 0;
+          font-size: 1em; } }
+    .bankUpcomingTransactionsCards .card-body .bill-status {
+      border-top: solid .2rem #e6e6e6;
+      color: #656565; }
+      .bankUpcomingTransactionsCards .card-body .bill-status span {
+        line-height: 4rem;
+        font-size: 1.2rem;
+        text-transform: uppercase; }
+      @media only screen and (max-width: 600px) {
+        .bankUpcomingTransactionsCards .card-body .bill-status {
+          margin: 0.5rem 0rem 0rem 0rem;
+          font-size: 0.75em; }
+          .bankUpcomingTransactionsCards .card-body .bill-status span {
+            line-height: 3rem; } }
+      @media only screen and (min-width: 600px) and (max-width: 1000px) {
+        .bankUpcomingTransactionsCards .card-body .bill-status span {
+          line-height: 3.5rem; } }
+    .bankUpcomingTransactionsCards .card-body .scheduled-icon-green {
+      color: #00a400; }
+    .bankUpcomingTransactionsCards .card-body .Credit {
+      color: #00a400; }
+    .bankUpcomingTransactionsCards .card-body .Debit {
+      color: #02121f; }
+  .bankUpcomingTransactionsCards .card-layout {
+    overflow: visible;
+    margin: 0rem 1rem;
+    z-index: 2;
+    -webkit-transition: margin 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: margin 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    @media only screen and (max-width: 600px) {
+      .bankUpcomingTransactionsCards .card-layout {
+        margin: 0em 0em 0em 0.6em; } }
+    @media only screen and (min-width: 600px) and (max-width: 1000px) {
+      .bankUpcomingTransactionsCards .card-layout {
+        margin: 0em 1.5em 0em 1.5em; } }
+    @media only screen and (max-width: 600px) {
+      .bankUpcomingTransactionsCards .card-layout {
+        margin: 0em 1em 0em 1em; } }
+  .bankUpcomingTransactionsCards .upcomingNoCards {
+    font-family: 'ProxReg', Helvetica, Arial, sans-serif !important;
+    margin: 1.3rem;
+    border: 0.2rem dashed #AEB5BB;
+    border-radius: 0.4rem;
+    padding: 2rem 0 3rem 4rem; }
+    @media only screen and (max-width: 600px) {
+      .bankUpcomingTransactionsCards .upcomingNoCards {
+        padding: 1rem 0 2rem 1.6rem; } }
+    .bankUpcomingTransactionsCards .upcomingNoCards .col-6 {
+      width: 5rem; }
+      @media only screen and (max-width: 600px) {
+        .bankUpcomingTransactionsCards .upcomingNoCards .col-6 {
+          width: 3.5rem; } }
+  .bankUpcomingTransactionsCards .add-more-card-border {
+    border: 0.2rem dashed #AEB5BB;
+    background: #F4F1F3; }
+  .bankUpcomingTransactionsCards .addMore-upcoming-cards {
+    font-family: 'ProxReg', Helvetica, Arial, sans-serif !important;
+    margin-left: 25%;
+    line-height: 14rem;
+    font-size: 1.7rem; }
+    @media only screen and (max-width: 600px) {
+      .bankUpcomingTransactionsCards .addMore-upcoming-cards {
+        margin-left: 23%;
+        line-height: 7rem;
+        font-size: 1.5rem; } }
+    @media only screen and (min-width: 600px) and (max-width: 1000px) {
+      .bankUpcomingTransactionsCards .addMore-upcoming-cards {
+        font-size: 1.8rem; } }
+    .bankUpcomingTransactionsCards .addMore-upcoming-cards:before {
+      color: #0D74AF;
+      font-weight: bold;
+      content: "ADD MORE"; }
+  .bankUpcomingTransactionsCards .upcoming-default-card {
+    margin: 1.3rem;
+    border-radius: 0.4rem;
+    padding: 2rem 0 5rem 50rem; }
+    @media only screen and (min-width: 600px) and (max-width: 1000px) {
+      .bankUpcomingTransactionsCards .upcoming-default-card {
+        padding: 2rem 0 5rem 30rem; } }
+    @media only screen and (max-width: 600px) {
+      .bankUpcomingTransactionsCards .upcoming-default-card {
+        padding: 2rem 0 5rem 15rem; } }
+  .bankUpcomingTransactionsCards .loading {
+    border: 0.25em solid;
+    border-color: #011728 #dbdee1 #dbdee1 #dbdee1; }
+  .bankUpcomingTransactionsCards .slick-slide .add-plus-icon {
+    width: 40%;
+    margin-left: 27%;
+    margin-top: 30%;
+    display: block; }
+    @media only screen and (max-width: 600px) {
+      .bankUpcomingTransactionsCards .slick-slide .add-plus-icon {
+        width: auto;
+        margin-left: 9%;
+        margin-top: 35%; } }
+    @media only screen and (min-width: 600px) and (max-width: 1000px) {
+      .bankUpcomingTransactionsCards .slick-slide .add-plus-icon {
+        margin-top: 18%; } }
+  .bankUpcomingTransactionsCards .add-upcomingtxn-text {
+    font-family: 'ProxReg', Helvetica, Arial, sans-serif !important;
+    padding: 1rem 0 0 0;
+    font-size: 2rem;
+    color: #0d74af; }
+    .bankUpcomingTransactionsCards .add-upcomingtxn-text:before {
+      content: attr(data-content); }
+    @media only screen and (max-width: 600px) {
+      .bankUpcomingTransactionsCards .add-upcomingtxn-text {
+        font-size: 1.5rem; }
+        .bankUpcomingTransactionsCards .add-upcomingtxn-text:before {
+          content: attr(phone-content); } }
+  .bankUpcomingTransactionsCards .upcoming-card-error {
+    font-family: 'ProxReg', Helvetica, Arial, sans-serif !important;
+    margin: 1.3rem;
+    border: 0.2rem dashed #AEB5BB;
+    border-radius: 0.4rem;
+    padding: 2rem 0 2rem 0rem; }
+  .bankUpcomingTransactionsCards .upcoming-card-error-text {
+    font-family: 'ProxReg', Helvetica, Arial, sans-serif !important;
+    color: #67747F;
+    text-align: center; }
+    .bankUpcomingTransactionsCards .upcoming-card-error-text:before {
+      content: attr(data-content); }
+    @media only screen and (max-width: 600px) {
+      .bankUpcomingTransactionsCards .upcoming-card-error-text {
+        font-size: 1.6rem; }
+        .bankUpcomingTransactionsCards .upcoming-card-error-text:before {
+          content: attr(phone-content); } }
+  .bankUpcomingTransactionsCards .cardLayoutDiv {
+    border-style: solid !important;
+    width: 19rem; }
+  .bankUpcomingTransactionsCards .card-slider-navigation {
+    overflow: visible;
+    width: 100%;
+    z-index: 100; }
+    .bankUpcomingTransactionsCards .card-slider-navigation .card-slider-button {
+      position: absolute;
+      display: none;
+      top: 10em;
+      background-color: #0d74af;
+      border-radius: 100em;
+      -webkit-transition: none;
+      transition: none;
+      height: 2.3em;
+      width: 2.3em; }
+      .bankUpcomingTransactionsCards .card-slider-navigation .card-slider-button i {
+        position: absolute;
+        left: 0.9em;
+        top: 0.6em; }
+      .bankUpcomingTransactionsCards .card-slider-navigation .card-slider-button:hover {
+        -webkit-transform: none;
+        transform: none; }
+      @media only screen and (min-width: 600px) and (max-width: 1000px) {
+        .bankUpcomingTransactionsCards .card-slider-navigation .card-slider-button {
+          display: block !important;
+          top: 9.5em; } }
+      @media only screen and (max-width: 600px) {
+        .bankUpcomingTransactionsCards .card-slider-navigation .card-slider-button {
+          display: block !important;
+          top: 8em; } }
+
+.bank-extensibility-bar .extensibility .ext-menu-list-box li:nth-child(4) {
+  display: block; }
+
+.bank-extensibility-bar .extensibility .ext-menu-list-box li:last-child {
+  display: none; }
+
+@media only screen and (min-width: 1000px) {
+  ease-extensibility-bar[data-retail="true"] .extensibility .ext-menu-list-box li {
+    width: 33.3%; } }
+
+ease-extensibility-bar[data-retail="true"] .extensibility .ext-menu-list-box li:nth-child(3) {
+  display: block; }
+
+.bank-redirect-details-modal {
+  top: 15%;
+  width: 885px; }
+  @media only screen and (min-width: 600px) and (max-width: 1000px) {
+    .bank-redirect-details-modal {
+      width: 100% !important;
+      overflow: visible; } }
+  @media only screen and (max-width: 600px) {
+    .bank-redirect-details-modal {
+      width: 100% !important; } }
+  .bank-redirect-details-modal .modal-container {
+    padding: 0;
+    height: auto;
+    overflow: hidden; }
+  .bank-redirect-details-modal.product-360 .circle {
+    background: url("../images/360_icon_red.png") no-repeat center center;
+    background-size: 100%; }
+    @media only screen and (min-width: 600px) and (max-width: 1000px) {
+      .bank-redirect-details-modal.product-360 .circle {
+        position: absolute;
+        top: -5.3rem; } }
+  .bank-redirect-details-modal.product-retail .circle {
+    background: url("../images/retail-logo.png") no-repeat center center;
+    background-size: 100%; }
+    @media only screen and (min-width: 600px) and (max-width: 1000px) {
+      .bank-redirect-details-modal.product-retail .circle {
+        position: absolute;
+        top: -5.3rem; } }
+  .bank-redirect-details-modal p {
+    padding-top: 4.5rem;
+    text-align: center; }
+
+.modal.successModal {
+  position: absolute;
+  top: 35%; }
+
+.modal.cancelModal {
+  position: absolute; }
+
+.modal.errorModal {
+  position: absolute; }
+
+.bank-card-details-modal {
+  width: 37rem;
+  background-color: transparent;
+  border-style: none; }
+  @media only screen and (min-width: 600px) and (max-width: 1000px) {
+    .bank-card-details-modal {
+      overflow: inherit; } }
+  .bank-card-details-modal .ease-modal {
+    top: 14rem;
+    width: 33rem;
+    position: absolute;
+    background-color: rgba(50, 50, 50, 0); }
+    @media only screen and (max-width: 600px) {
+      .bank-card-details-modal .ease-modal {
+        overflow: visible; } }
+    @media only screen and (min-width: 600px) and (max-width: 1000px) {
+      .bank-card-details-modal .ease-modal {
+        overflow: visible;
+        height: 54rem;
+        left: 50%; } }
+    .bank-card-details-modal .ease-modal .ease-modal-content {
+      padding: 0; }
+      @media only screen and (max-width: 600px) {
+        .bank-card-details-modal .ease-modal .ease-modal-content {
+          min-height: 48rem;
+          overflow: visible; } }
+    .bank-card-details-modal .ease-modal .ease-modal-end {
+      display: inline-block; }
+    .bank-card-details-modal .ease-modal .ease-modal-close-button {
+      z-index: 999;
+      top: 0;
+      right: 1.5rem; }
+      @media only screen and (max-width: 600px) {
+        .bank-card-details-modal .ease-modal .ease-modal-close-button {
+          top: 1.3rem;
+          right: 3.5rem; } }
+    .bank-card-details-modal .ease-modal .slick-slide {
+      width: 34rem;
+      margin: 0 1.1rem; }
+    @media only screen and (max-width: 600px) {
+      .bank-card-details-modal .ease-modal {
+        top: 7rem;
+        max-height: 42rem;
+        background-color: transparent;
+        width: 30rem; } }
+  .bank-card-details-modal .ease-modal-circle {
+    display: none; }
+  .bank-card-details-modal .close-dialog {
+    visibility: hidden; }
+  @media only screen and (min-width: 600px) and (max-width: 1000px) {
+    .bank-card-details-modal {
+      height: initial;
+      top: 15%;
+      position: absolute; } }
+  @media only screen and (max-width: 600px) {
+    .bank-card-details-modal {
+      width: 31rem; } }
+  .bank-card-details-modal .container {
+    overflow: inherit;
+    margin: 0em;
+    padding: 0em;
+    /* Arrows */ }
+    @media only screen and (min-width: 600px) and (max-width: 1000px) {
+      .bank-card-details-modal .container {
+        overflow: visible; } }
+    @media only screen and (max-width: 600px) {
+      .bank-card-details-modal .container {
+        overflow: visible; } }
+    .bank-card-details-modal .container .slick-slide {
+      width: 33rem;
+      margin: 0 1.1rem; }
+    @media only screen and (min-width: 600px) and (max-width: 1000px) {
+      .bank-card-details-modal .container .slick-list {
+        overflow: hidden; } }
+    @media only screen and (max-width: 600px) {
+      .bank-card-details-modal .container .slick-list {
+        overflow: inherit; } }
+    .bank-card-details-modal .container .slick-prev,
+    .bank-card-details-modal .container .slick-next {
+      background-color: transparent;
+      color: transparent;
+      border-radius: 0; }
+      .bank-card-details-modal .container .slick-prev.slick-disabled,
+      .bank-card-details-modal .container .slick-next.slick-disabled {
+        opacity: 0.50; }
+      .bank-card-details-modal .container .slick-prev:before,
+      .bank-card-details-modal .container .slick-next:before {
+        font-family: 'easeIcon';
+        font-size: 4rem;
+        margin-right: 0; }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .slick-prev:before,
+          .bank-card-details-modal .container .slick-next:before {
+            font-size: 2rem; } }
+    .bank-card-details-modal .container .slick-prev:before, .bank-card-details-modal .container .slick-next:before {
+      opacity: 1;
+      font-weight: normal;
+      color: #ffffff; }
+    .bank-card-details-modal .container .slick-prev {
+      left: -17.5rem; }
+      @media only screen and (max-width: 600px) {
+        .bank-card-details-modal .container .slick-prev {
+          left: -2.8rem; } }
+    .bank-card-details-modal .container .slick-next {
+      right: -17rem; }
+      .bank-card-details-modal .container .slick-next:before {
+        margin: 0; }
+        [dir="rtl"] .bank-card-details-modal .container .slick-next:before {
+          content: '\e60a'; }
+      @media only screen and (max-width: 600px) {
+        .bank-card-details-modal .container .slick-next {
+          right: -2.8rem; } }
+    .bank-card-details-modal .container .card-number {
+      display: none;
+      color: white;
+      margin-top: 5rem;
+      text-align: center;
+      font-family: "ProxReg"; }
+      @media only screen and (min-width: 600px) and (max-width: 1000px) {
+        .bank-card-details-modal .container .card-number {
+          display: block; } }
+      @media only screen and (max-width: 600px) {
+        .bank-card-details-modal .container .card-number {
+          display: block;
+          margin-top: 3rem; } }
+    .bank-card-details-modal .container .inner-container {
+      background: white;
+      padding-top: 2rem;
+      min-height: 47rem;
+      margin: -1.4rem 0; }
+      @media only screen and (max-width: 600px) {
+        .bank-card-details-modal .container .inner-container {
+          padding-top: 1rem; } }
+      .bank-card-details-modal .container .inner-container .transaction-logo {
+        position: relative;
+        text-align: center; }
+        .bank-card-details-modal .container .inner-container .transaction-logo .img-logo {
+          display: inline-block;
+          max-height: 7.08rem;
+          max-width: 100%;
+          margin: 0 0 1.1rem 0; }
+          @media only screen and (max-width: 600px) {
+            .bank-card-details-modal .container .inner-container .transaction-logo .img-logo {
+              position: inherit;
+              margin-top: 1.75rem;
+              margin-bottom: 3rem; } }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .transaction-logo {
+            border: none; } }
+      @media only screen and (max-width: 600px) {
+        .bank-card-details-modal .container .inner-container {
+          margin: 0 2.5rem;
+          min-height: 42rem;
+          width: 25rem; } }
+      @media only screen and (max-width: 600px) {
+        .bank-card-details-modal .container .inner-container .group {
+          margin: -3rem 0.8rem 0 0.8rem;
+          width: 26rem; } }
+      @media only screen and (max-width: 600px) {
+        .bank-card-details-modal .container .inner-container .group ul {
+          margin-bottom: 0; } }
+      .bank-card-details-modal .container .inner-container .field-key, .bank-card-details-modal .container .inner-container .field-value {
+        float: left;
+        padding: 0 1.5rem;
+        outline: 0; }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .field-key, .bank-card-details-modal .container .inner-container .field-value {
+            padding: 0 0.5rem; } }
+      .bank-card-details-modal .container .inner-container .field-value {
+        width: 57.62711%; }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .field-value {
+            padding: 0 1rem 0 0; } }
+      .bank-card-details-modal .container .inner-container .field-key {
+        width: 40.67796%; }
+      .bank-card-details-modal .container .inner-container .send-date-label-retail {
+        padding-top: 2rem; }
+      .bank-card-details-modal .container .inner-container .transaction-category, .bank-card-details-modal .container .inner-container .memoText-category, .bank-card-details-modal .container .inner-container .send-date-label-creditCard, .bank-card-details-modal .container .inner-container .send-date-label-eBills, .bank-card-details-modal .container .inner-container .limbo-check, .bank-card-details-modal .container .inner-container .send-date-label-processing, .bank-card-details-modal .container .inner-container .send-date-label-billPay, .bank-card-details-modal .container .inner-container .deliverBy-type-label, .bank-card-details-modal .container .inner-container .transaction-days-remaining, .bank-card-details-modal .container .inner-container .payee-name, .bank-card-details-modal .container .inner-container .transaction-amount, .bank-card-details-modal .container .inner-container .deliverBy-type-value, .bank-card-details-modal .container .inner-container .limbo-check-value, .bank-card-details-modal .container .inner-container .send-date-value-creditCard, .bank-card-details-modal .container .inner-container .send-date-value-eBills, .bank-card-details-modal .container .inner-container .send-date-value-processing, .bank-card-details-modal .container .inner-container .send-date-value-billPay, .bank-card-details-modal .container .inner-container .transaction-status, .bank-card-details-modal .container .inner-container .transaction-status-scheduled, .bank-card-details-modal .container .inner-container .available-funds-date, .bank-card-details-modal .container .inner-container .transaction-frequency {
+        font-family: "ProxLight";
+        font-size: 1.6rem;
+        color: #021829; }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .transaction-category, .bank-card-details-modal .container .inner-container .memoText-category, .bank-card-details-modal .container .inner-container .send-date-label-creditCard, .bank-card-details-modal .container .inner-container .send-date-label-eBills, .bank-card-details-modal .container .inner-container .limbo-check, .bank-card-details-modal .container .inner-container .send-date-label-processing, .bank-card-details-modal .container .inner-container .send-date-label-billPay, .bank-card-details-modal .container .inner-container .deliverBy-type-label, .bank-card-details-modal .container .inner-container .transaction-days-remaining, .bank-card-details-modal .container .inner-container .payee-name, .bank-card-details-modal .container .inner-container .transaction-amount, .bank-card-details-modal .container .inner-container .deliverBy-type-value, .bank-card-details-modal .container .inner-container .limbo-check-value, .bank-card-details-modal .container .inner-container .send-date-value-creditCard, .bank-card-details-modal .container .inner-container .send-date-value-eBills, .bank-card-details-modal .container .inner-container .send-date-value-processing, .bank-card-details-modal .container .inner-container .send-date-value-billPay, .bank-card-details-modal .container .inner-container .transaction-status, .bank-card-details-modal .container .inner-container .transaction-status-scheduled, .bank-card-details-modal .container .inner-container .available-funds-date, .bank-card-details-modal .container .inner-container .transaction-frequency {
+            margin: 0 1rem 0 -2rem; } }
+      .bank-card-details-modal .container .inner-container .deliverBy-type-label, .bank-card-details-modal .container .inner-container .send-date-label-creditCard, .bank-card-details-modal .container .inner-container .send-date-label-eBills, .bank-card-details-modal .container .inner-container .send-date-label-processing, .bank-card-details-modal .container .inner-container .send-date-label-billPay, .bank-card-details-modal .container .inner-container .transaction-frequency, .bank-card-details-modal .container .inner-container .available-funds-date, .bank-card-details-modal .container .inner-container .transaction-days-remaining, .bank-card-details-modal .container .inner-container .transaction-status-scheduled {
+        box-sizing: border-box;
+        width: 100%;
+        float: left;
+        float: left;
+        font-size: 1.6rem;
+        font-family: "ProxReg", Helvetica, Arial, sans-serif;
+        color: #5a6572;
+        white-space: nowrap; }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .deliverBy-type-label, .bank-card-details-modal .container .inner-container .send-date-label-creditCard, .bank-card-details-modal .container .inner-container .send-date-label-eBills, .bank-card-details-modal .container .inner-container .send-date-label-processing, .bank-card-details-modal .container .inner-container .send-date-label-billPay, .bank-card-details-modal .container .inner-container .transaction-frequency, .bank-card-details-modal .container .inner-container .available-funds-date, .bank-card-details-modal .container .inner-container .transaction-days-remaining, .bank-card-details-modal .container .inner-container .transaction-status-scheduled {
+            font-size: 1.4rem;
+            margin: 0 1.2rem 0 0; } }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .deliverBy-type-label, .bank-card-details-modal .container .inner-container .send-date-label-creditCard, .bank-card-details-modal .container .inner-container .send-date-label-eBills, .bank-card-details-modal .container .inner-container .send-date-label-processing, .bank-card-details-modal .container .inner-container .send-date-label-billPay, .bank-card-details-modal .container .inner-container .transaction-frequency, .bank-card-details-modal .container .inner-container .available-funds-date, .bank-card-details-modal .container .inner-container .transaction-days-remaining, .bank-card-details-modal .container .inner-container .transaction-status-scheduled {
+            font-size: 1.4rem; } }
+      .bank-card-details-modal .container .inner-container .edit-transfer-btn, .bank-card-details-modal .container .inner-container .cancel-transfer-btn, .bank-card-details-modal .container .inner-container .schedule-payment-btn, .bank-card-details-modal .container .inner-container .manage-payment-btn {
+        text-align: center; }
+        .bank-card-details-modal .container .inner-container .edit-transfer-btn button, .bank-card-details-modal .container .inner-container .cancel-transfer-btn button, .bank-card-details-modal .container .inner-container .schedule-payment-btn button, .bank-card-details-modal .container .inner-container .manage-payment-btn button {
+          width: auto;
+          background-color: #0d74af;
+          padding: 12px 60px;
+          margin: 1.2rem 0 0 0; }
+          @media only screen and (max-width: 600px) {
+            .bank-card-details-modal .container .inner-container .edit-transfer-btn button, .bank-card-details-modal .container .inner-container .cancel-transfer-btn button, .bank-card-details-modal .container .inner-container .schedule-payment-btn button, .bank-card-details-modal .container .inner-container .manage-payment-btn button {
+              width: 90%;
+              padding: 12px 50px;
+              font-size: 1.5rem; } }
+      .bank-card-details-modal .container .inner-container .edit-transfer-btn button {
+        height: 4.8rem;
+        white-space: nowrap;
+        min-width: 85%;
+        overflow: hidden; }
+        .bank-card-details-modal .container .inner-container .edit-transfer-btn button .loading {
+          margin: -2rem 6rem;
+          border-top: 0.25em solid #FFF;
+          border-right: 0.25em solid rgba(255, 255, 255, 0.14);
+          border-bottom: 0.25em solid rgba(255, 255, 255, 0.14);
+          border-left: 0.25em solid rgba(255, 255, 255, 0.14); }
+          .bank-card-details-modal .container .inner-container .edit-transfer-btn button .loading span {
+            display: none; }
+          @media only screen and (max-width: 600px) {
+            .bank-card-details-modal .container .inner-container .edit-transfer-btn button .loading {
+              margin: -1.5rem 5rem; } }
+      .bank-card-details-modal .container .inner-container .transaction-category {
+        color: #5a6572; }
+      @media only screen and (max-width: 600px) {
+        .bank-card-details-modal .container .inner-container .payee-name-wordwrap {
+          width: 23rem;
+          margin: 0 0 0 -2.5rem;
+          height: 2.9rem;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis; } }
+      .bank-card-details-modal .container .inner-container .memoText-category {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        color: #5a6572;
+        margin: 0.6rem 0 0 1.2rem;
+        padding: 0 2.4rem 0 1.4rem;
+        line-height: 2rem;
+        min-height: 2rem;
+        white-space: nowrap; }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .memoText-category {
+            width: 25rem;
+            margin: 0.6rem 0 0 0; } }
+      .bank-card-details-modal .container .inner-container .payee-name {
+        display: inline;
+        font-family: "ProxReg", Helvetica, Arial, sans-serif;
+        font-weight: normal;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        font-size: 2.5rem;
+        line-height: 2.9rem;
+        max-height: 5.8rem;
+        text-align: center;
+        overflow-wrap: break-word; }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .payee-name {
+            margin: 0 -0.3rem 0 0; } }
+      .bank-card-details-modal .container .inner-container .card-last-four:before {
+        content: "\00a0"; }
+      .bank-card-details-modal .container .inner-container .transaction-amount {
+        font-size: 3.2rem;
+        margin-top: 1.7rem;
+        font-weight: normal; }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .transaction-amount {
+            margin-top: 1.8rem; } }
+      .bank-card-details-modal .container .inner-container .Credit {
+        color: #00a400; }
+      .bank-card-details-modal .container .inner-container .Debit {
+        color: #021829; }
+      .bank-card-details-modal .container .inner-container .send-date-value-creditCard, .bank-card-details-modal .container .inner-container .send-date-value-eBills, .bank-card-details-modal .container .inner-container .send-date-value-processing, .bank-card-details-modal .container .inner-container .send-date-value-billPay, .bank-card-details-modal .container .inner-container .limbo-check-value, .bank-card-details-modal .container .inner-container .deliverBy-type-value {
+        float: left;
+        font-size: 1.6rem;
+        font-family: "ProxReg", Helvetica, Arial, sans-serif;
+        color: #5a6572;
+        color: #021829;
+        float: right;
+        font-weight: normal;
+        margin-right: 0.3rem; }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .send-date-value-creditCard, .bank-card-details-modal .container .inner-container .send-date-value-eBills, .bank-card-details-modal .container .inner-container .send-date-value-processing, .bank-card-details-modal .container .inner-container .send-date-value-billPay, .bank-card-details-modal .container .inner-container .limbo-check-value, .bank-card-details-modal .container .inner-container .deliverBy-type-value {
+            font-size: 1.4rem;
+            margin: 0 1.2rem 0 0; } }
+      .bank-card-details-modal .container .inner-container .image-toggles {
+        color: #237DA4;
+        width: 100%;
+        text-align: center;
+        font-size: 1.6rem; }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .image-toggles {
+            font-size: 1.4rem; } }
+        .bank-card-details-modal .container .inner-container .image-toggles .left-link, .bank-card-details-modal .container .inner-container .image-toggles .right-link {
+          cursor: pointer;
+          margin: 0 4%; }
+          @media only screen and (min-width: 600px) and (max-width: 1000px) {
+            .bank-card-details-modal .container .inner-container .image-toggles .left-link, .bank-card-details-modal .container .inner-container .image-toggles .right-link {
+              margin: 0 2%; } }
+        .bank-card-details-modal .container .inner-container .image-toggles .disabled {
+          color: #021829; }
+          .bank-card-details-modal .container .inner-container .image-toggles .disabled:hover {
+            cursor: default;
+            text-decoration: none; }
+      .bank-card-details-modal .container .inner-container .limbo-check {
+        font-weight: normal; }
+      .bank-card-details-modal .container .inner-container .limbo-check-value {
+        text-align: right; }
+      .bank-card-details-modal .container .inner-container .transaction-status-scheduled, .bank-card-details-modal .container .inner-container .available-funds-date {
+        margin-top: 7.8rem; }
+      .bank-card-details-modal .container .inner-container .transaction-days-remaining, .bank-card-details-modal .container .inner-container .available-funds-date, .bank-card-details-modal .container .inner-container .limbo-check {
+        text-align: left;
+        color: #030f17; }
+      .bank-card-details-modal .container .inner-container .transaction-status {
+        text-align: center;
+        margin: 3.8rem 0 0 0; }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .transaction-status {
+            margin-top: 11rem;
+            font-size: 1.6rem; } }
+      .bank-card-details-modal .container .inner-container .transaction-status-scheduled {
+        text-align: left;
+        margin-left: -1rem; }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .transaction-status-scheduled {
+            margin-left: -0.5rem; } }
+      .bank-card-details-modal .container .inner-container .transaction-frequency {
+        text-align: left;
+        margin-left: 1.4rem; }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .transaction-frequency {
+            margin-left: 1.9rem; } }
+      .bank-card-details-modal .container .inner-container .scheduled-icon-green {
+        color: #10BD1B;
+        margin-right: 0.5rem;
+        font-size: 1.6rem; }
+      .bank-card-details-modal .container .inner-container .scheduled-date-label {
+        color: #67747f;
+        text-align: center;
+        font-size: 1.4rem; }
+      .bank-card-details-modal .container .inner-container .processing-status-label {
+        text-transform: uppercase;
+        padding-bottom: .75rem; }
+      .bank-card-details-modal .container .inner-container .deliverBy-type-label, .bank-card-details-modal .container .inner-container .limbo-check, .bank-card-details-modal .container .inner-container .send-date-label-creditCard, .bank-card-details-modal .container .inner-container .send-date-label-eBills, .bank-card-details-modal .container .inner-container .send-date-label-processing, .bank-card-details-modal .container .inner-container .send-date-label-billPay {
+        text-align: left;
+        color: #5a6572;
+        margin-left: 1.4rem;
+        font-weight: normal; }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .deliverBy-type-label, .bank-card-details-modal .container .inner-container .limbo-check, .bank-card-details-modal .container .inner-container .send-date-label-creditCard, .bank-card-details-modal .container .inner-container .send-date-label-eBills, .bank-card-details-modal .container .inner-container .send-date-label-processing, .bank-card-details-modal .container .inner-container .send-date-label-billPay {
+            margin-left: 0.1rem; } }
+      .bank-card-details-modal .container .inner-container .send-date-label-creditCard, .bank-card-details-modal .container .inner-container .send-date-value-creditCard, .bank-card-details-modal .container .inner-container .send-date-label-eBills, .bank-card-details-modal .container .inner-container .send-date-value-eBills {
+        margin-top: 8rem; }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .send-date-label-creditCard, .bank-card-details-modal .container .inner-container .send-date-value-creditCard, .bank-card-details-modal .container .inner-container .send-date-label-eBills, .bank-card-details-modal .container .inner-container .send-date-value-eBills {
+            margin-top: 9.5rem; } }
+      .bank-card-details-modal .container .inner-container .send-date-label-billPay, .bank-card-details-modal .container .inner-container .send-date-value-billPay {
+        margin-top: 2.5rem; }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .send-date-label-billPay, .bank-card-details-modal .container .inner-container .send-date-value-billPay {
+            margin-top: 5rem; } }
+      .bank-card-details-modal .container .inner-container .send-date-label-processing, .bank-card-details-modal .container .inner-container .send-date-value-processing {
+        margin-top: 4rem; }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .send-date-label-processing, .bank-card-details-modal .container .inner-container .send-date-value-processing {
+            margin-top: 7.5rem; } }
+      .bank-card-details-modal .container .inner-container .field {
+        margin: -2rem 2.5rem .7rem 2.5rem; }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .field {
+            margin: 0 1rem 1.2rem 1rem;
+            padding-bottom: 0; } }
+      .bank-card-details-modal .container .inner-container .image-container {
+        z-index: 1;
+        position: relative;
+        height: 15rem;
+        margin: 1rem 0.5rem 0 0.5rem; }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .image-container {
+            width: 24rem;
+            height: 12rem;
+            margin-top: 2rem; } }
+      @media only screen and (max-width: 600px) {
+        .bank-card-details-modal .container .inner-container .map-container {
+          width: 97%; } }
+      .bank-card-details-modal .container .inner-container .tran-view-details, .bank-card-details-modal .container .inner-container .view-check-link {
+        margin: -1rem 0 0 11rem;
+        font-size: 1.6rem;
+        cursor: pointer;
+        width: 109px;
+        height: 24px;
+        object-fit: contain;
+        font-family: "ProxLight";
+        color: #008bc1; }
+      .bank-card-details-modal .container .inner-container .tran-view-details {
+        margin: 1rem 0 0 11.6rem; }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .tran-view-details {
+            margin: 4rem 0 1.5rem 6.5rem; } }
+      .bank-card-details-modal .container .inner-container .view-check-link {
+        margin-left: 12.2rem; }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .view-check-link {
+            margin: 3.8rem 0 0 6rem; } }
+      .bank-card-details-modal .container .inner-container .message-container {
+        z-index: 1;
+        position: relative;
+        width: 90%;
+        margin: 3rem auto;
+        border: .1rem solid #00acee;
+        border-radius: 4px;
+        color: #00acee;
+        font-size: 1.5rem;
+        font-weight: normal;
+        padding: 1.5rem 1.5rem; }
+        @media only screen and (min-width: 600px) and (max-width: 1000px) {
+          .bank-card-details-modal .container .inner-container .message-container {
+            width: 90%;
+            margin: 3rem auto 2.3rem auto; } }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .message-container {
+            width: 92%;
+            margin: 1.5rem auto 5rem auto; } }
+      .bank-card-details-modal .container .inner-container .where-is-money {
+        text-align: center; }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .where-is-money {
+            margin-right: 2.6rem; } }
+      .bank-card-details-modal .container .inner-container .where-money {
+        width: 28rem;
+        font-size: 1.6rem;
+        font-weight: normal;
+        margin: -1rem 3rem;
+        color: #6e6e6e; }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .where-money {
+            font-size: 1.4rem;
+            margin: 3rem 0 -2rem 0;
+            padding-right: 2rem; } }
+      .bank-card-details-modal .container .inner-container .upcoming-transaction-table {
+        font-family: 'ProxLight', Helvetica, Arial, sans-serif;
+        width: 87%;
+        font-size: 1.4rem;
+        color: #67747f;
+        margin-top: 2rem;
+        margin-left: 2rem;
+        font-weight: normal;
+        margin-bottom: 1rem;
+        border-spacing: 1rem;
+        text-align: left;
+        line-height: 2rem; }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .upcoming-transaction-table {
+            font-size: 1.2rem;
+            margin: 0.8rem 0;
+            width: 90%; } }
+        .bank-card-details-modal .container .inner-container .upcoming-transaction-table .upcoming-transaction-row {
+          padding-bottom: 1rem; }
+        .bank-card-details-modal .container .inner-container .upcoming-transaction-table .row-label {
+          vertical-align: top;
+          padding-right: 10px; }
+        .bank-card-details-modal .container .inner-container .upcoming-transaction-table .key {
+          vertical-align: top;
+          width: 13rem; }
+          @media only screen and (max-width: 600px) {
+            .bank-card-details-modal .container .inner-container .upcoming-transaction-table .key {
+              width: 11rem; } }
+        .bank-card-details-modal .container .inner-container .upcoming-transaction-table .value {
+          color: #030f17;
+          vertical-align: top;
+          text-align: right;
+          position: relative; }
+      .bank-card-details-modal .container .inner-container .loadingWrapperHide {
+        display: none; }
+      .bank-card-details-modal .container .inner-container .loadingWrapper {
+        background-color: rgba(255, 255, 255, 0.4);
+        position: absolute;
+        height: 47rem;
+        width: 33rem;
+        margin: 0 15rem 15rem 0;
+        top: 0;
+        z-index: 1; }
+        .bank-card-details-modal .container .inner-container .loadingWrapper .loading {
+          margin: 20rem 15rem;
+          border: 0.25em solid;
+          border-color: #011728 #dbdee1 #dbdee1 #dbdee1; }
+          @media only screen and (max-width: 600px) {
+            .bank-card-details-modal .container .inner-container .loadingWrapper .loading {
+              margin: 20rem 11rem; } }
+      .bank-card-details-modal .container .inner-container .loading {
+        border: inset;
+        margin: 7rem 14rem; }
+        @media only screen and (max-width: 600px) {
+          .bank-card-details-modal .container .inner-container .loading {
+            margin: 5rem 10rem; } }
+      .bank-card-details-modal .container .inner-container .cancel-transfer-btn button {
+        background-color: #D00000; }
+      .bank-card-details-modal .container .inner-container .transaction-operation-link {
+        font-size: 90%;
+        text-align: center;
+        margin-top: 1.2rem;
+        text-decoration: underline;
+        font-weight: normal; }
+
+.bank-view-details-modal.bank-card-details-modal *:focus {
+  outline: 1px dotted #3b99fc;
+  outline: 1px auto -webkit-focus-ring-color; }
+
+.image-toggles .left-link,
+.image-toggles .right-link {
+  display: inline-block; }
+
+button.linkCursor {
+  vertical-align: middle !important;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1em;
+  -webkit-transform: initial !important;
+  transform: initial !important;
+  color: #0D74AF;
+  text-decoration: underline;
+  background-color: transparent !important; }
+  button.linkCursor :focus {
+    outline: 1px dotted #3b99fc !important; }
+
+button.linkCursor::-moz-focus-inner {
+  border: 0 !important; }
+
+/* Styles for the More Services modal */
+.bank-more-services-modal .ease-modal .ease-modal-circle {
+  background: #20c0fc url(../images/more-services-icon.png) center center no-repeat; }
+
+@media only screen and (max-width: 600px) {
+  .ease_more_account_service .deposit-check-web {
+    display: none; } }
+
+.ease_more_account_service .ease_ext_category {
+  display: inline-block;
+  float: none;
+  margin-right: 0;
+  vertical-align: top; }
+  .ease_more_account_service .ease_ext_category ul li {
+    height: auto;
+    margin: 10px 0;
+    padding: 0; }
+    @media only screen and (max-width: 600px) {
+      .ease_more_account_service .ease_ext_category ul li {
+        margin: 5px 0;
+        padding: 0; } }
+  @media only screen and (max-width: 600px) {
+    .ease_more_account_service .ease_ext_category ul .debit-travel-notifications,
+    .ease_more_account_service .ease_ext_category ul .manage-external-accounts,
+    .ease_more_account_service .ease_ext_category ul .access-code,
+    .ease_more_account_service .ease_ext_category ul .order-checks,
+    .ease_more_account_service .ease_ext_category ul .signin-info,
+    .ease_more_account_service .ease_ext_category ul .privacy,
+    .ease_more_account_service .ease_ext_category ul .overdraft,
+    .ease_more_account_service .ease_ext_category ul .payment-activity,
+    .ease_more_account_service .ease_ext_category ul .documents,
+    .ease_more_account_service .ease_ext_category ul .direct-deposit,
+    .ease_more_account_service .ease_ext_category ul .paperless,
+    .ease_more_account_service .ease_ext_category ul .manage-alerts,
+    .ease_more_account_service .ease_ext_category ul .automatic-savings {
+      display: none; } }
+
+/* Slider */
+.slick-slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent; }
+
+.slick-list {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin: 0;
+  padding: 0; }
+  @media only screen and (min-width: 600px) and (max-width: 1000px) {
+    .slick-list {
+      overflow: visible; } }
+  @media only screen and (max-width: 600px) {
+    .slick-list {
+      overflow: visible; } }
+  .slick-list:focus {
+    outline: none; }
+  .slick-list.dragging {
+    cursor: pointer;
+    cursor: hand; }
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
+
+.slick-track {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-box;
+  display: inline-flex; }
+  .slick-track:before, .slick-track:after {
+    content: "";
+    display: table; }
+  .slick-track:after {
+    clear: both; }
+  .slick-loading .slick-track {
+    visibility: hidden; }
+
+.slick-slide {
+  float: left;
+  outline: none;
+  height: 100%;
+  min-height: .1rem;
+  display: none; }
+  [dir="rtl"] .slick-slide {
+    float: right; }
+  .slick-slide img {
+    display: block; }
+  .slick-slide.slick-loading img {
+    display: none; }
+  .slick-slide.dragging img {
+    pointer-events: none; }
+
+.slick-initialized .slick-slide {
+  display: block; }
+
+.slick-loading .slick-slide {
+  visibility: hidden; }
+
+.slick-vertical .slick-slide {
+  display: block;
+  height: auto;
+  border: .1rem solid transparent; }
+
+/* Icons */
+@font-face {
+  font-family: 'slick';
+  font-weight: normal;
+  font-style: normal; }
+
+/* Arrows */
+.slick-prev,
+.slick-next {
+  font-size: 0;
+  line-height: 0;
+  position: absolute;
+  top: 50%;
+  width: 5rem;
+  height: 5rem;
+  z-index: 1;
+  border-radius: 100%;
+  background-color: #00acee;
+  margin-top: -1rem;
+  padding: 0;
+  cursor: pointer;
+  color: transparent;
+  border: none;
+  outline: none; }
+  .slick-prev:hover, .slick-prev:focus,
+  .slick-next:hover,
+  .slick-next:focus {
+    outline: none;
+    color: transparent; }
+    .slick-prev:hover:before, .slick-prev:focus:before,
+    .slick-next:hover:before,
+    .slick-next:focus:before {
+      opacity: 1; }
+  .slick-prev.slick-disabled,
+  .slick-next.slick-disabled {
+    opacity: 0.5;
+    cursor: initial;
+    background-color: #bebebe; }
+    .slick-prev.slick-disabled:focus,
+    .slick-next.slick-disabled:focus {
+      -webkit-transform: none;
+      transform: none;
+      -webkit-transition: none;
+      transition: none; }
+  @media only screen and (min-width: 600px) and (max-width: 1000px) {
+    .slick-prev,
+    .slick-next {
+      width: 4.5rem;
+      height: 4.5rem; } }
+  @media only screen and (max-width: 600px) {
+    .slick-prev,
+    .slick-next {
+      width: 3.5rem;
+      height: 3.5rem; } }
+
+.slick-prev:before, .slick-next:before {
+  font-family: 'slick';
+  font-size: 3.0rem;
+  font-weight: bold;
+  line-height: 1;
+  opacity: .75;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.slick-prev {
+  left: -4.5rem; }
+  [dir="rtl"] .slick-prev {
+    left: auto;
+    right: -4.5rem; }
+  @media only screen and (max-width: 600px) {
+    .slick-prev {
+      left: -2.7rem; } }
+  .slick-prev:before {
+    font-family: 'easeIcon';
+    font-weight: normal;
+    font-size: large;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: '\e609';
+    margin-right: -2rem; }
+    [dir="rtl"] .slick-prev:before {
+      content: '\e609'; }
+    @media only screen and (min-width: 600px) and (max-width: 1000px) {
+      .slick-prev:before {
+        font-size: small; } }
+    @media only screen and (max-width: 600px) {
+      .slick-prev:before {
+        font-size: small;
+        margin-right: -1.5rem; } }
+
+.slick-next {
+  right: -4.5rem; }
+  @media only screen and (max-width: 600px) {
+    .slick-next {
+      right: -2.7rem; } }
+  [dir="rtl"] .slick-next {
+    left: -4.5rem;
+    right: auto; }
+  .slick-next:before {
+    font-family: 'easeIcon';
+    font-weight: normal;
+    font-size: large;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: '\e60a';
+    margin-left: -2rem; }
+    [dir="rtl"] .slick-next:before {
+      content: '\e60a'; }
+    @media only screen and (min-width: 600px) and (max-width: 1000px) {
+      .slick-next:before {
+        font-size: small; } }
+    @media only screen and (max-width: 600px) {
+      .slick-next:before {
+        font-size: small;
+        margin-left: -1.5rem; } }
+
+.statementPane {
+  z-index: 100; }
+  .statementPane .ease-modal-background {
+    background-color: rgba(50, 50, 50, 0.6); }
+  .statementPane .ease-modal-content {
+    padding: 4.1rem;
+    padding-top: 6rem;
+    width: auto;
+    height: auto; }
+    @media only screen and (max-width: 600px) {
+      .statementPane .ease-modal-content {
+        padding: inherit; } }
+  @media only screen and (max-width: 600px) {
+    .statementPane .mainPane {
+      top: initial;
+      left: initial; } }
+  @media only screen and (max-width: 600px) {
+    .statementPane .mainPane .info {
+      text-align: center; } }
+  @media only screen and (min-width: 600px) and (max-width: 1000px) {
+    .statementPane .mainPane .info {
+      padding: 10px; } }
+  .statementPane .mainPane .info h1 {
+    font-family: 'ProxReg';
+    font-size: 3.1rem;
+    letter-spacing: 0.2rem; }
+  .statementPane .mainPane .toolbar .controls ul li {
+    margin: 5px !important;
+    width: initial;
+    font-size: 1.9rem;
+    font-weight: bold; }
+    .statementPane .mainPane .toolbar .controls ul li a#printStatementButton {
+      cursor: pointer; }
+    .statementPane .mainPane .toolbar .controls ul li a span.noMobilePdf {
+      font-size: 1.9rem;
+      font-weight: bold; }
+    @media only screen and (min-width: 600px) and (max-width: 1000px) {
+      .statementPane .mainPane .toolbar .controls ul li a i {
+        display: inline;
+        vertical-align: top; } }
+    @media only screen and (max-width: 600px) {
+      .statementPane .mainPane .toolbar .controls ul li.download {
+        display: none; } }
+  .statementPane .mainPane .hideCanvas canvas {
+    display: none; }
+  .statementPane .mainPane .load-spinner-section {
+    height: 0px;
+    position: relative; }
+  .statementPane .mainPane .bank-spinner.black_loading {
+    top: 10px;
+    width: 4em;
+    height: 4em;
+    left: 48%; }
+    @media only screen and (min-width: 600px) and (max-width: 1000px) {
+      .statementPane .mainPane .bank-spinner.black_loading {
+        left: 43%; } }
+    @media only screen and (max-width: 600px) {
+      .statementPane .mainPane .bank-spinner.black_loading {
+        left: 38%; } }
+  .statementPane .mainPane .bank-spinner.black_loading span {
+    display: none; }
+  .statementPane .mainPane .black_loading {
+    position: absolute;
+    margin: auto;
+    -webkit-animation: loading 1.2s infinite cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    animation: loading 1.2s infinite cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    border-top: 0.25em solid #0b406a;
+    border-right: 0.25em solid rgba(0, 0, 0, 0.4);
+    border-bottom: 0.25em solid rgba(0, 0, 0, 0.4);
+    border-left: 0.25em solid rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    width: 2em;
+    height: 2em; }
+  @media only screen and (max-width: 600px) {
+    .statementPane .mainPane #ease-pdf-viewer {
+      width: 100%; } }
+  @media only screen and (max-width: 600px) {
+    .statementPane .mainPane .navigation .statementPicker {
+      width: 100%; } }
+  .statementPane .mainPane .navigation .statementPicker ul li:hover > span.disabled {
+    color: #e1e0e2 !important;
+    background-color: white !important;
+    border-color: #e1e0e2 !important; }
+  .statementPane .mainPane .navigation .statementPicker ul li.disabled:hover {
+    cursor: default !important; }
+  .statementPane .mainPane .navigation .statementPicker ul li span.month b {
+    font-size: 1.9rem; }
+  .statementPane .mainPane .navigation .statementPicker ul li span.disabled {
+    cursor: default !important; }
+  .statementPane .mainPane .navigation .statementPicker ul.header p {
+    font-size: 1.7rem;
+    margin-top: 15px;
+    margin-left: 5%;
+    float: inherit;
+    font-weight: bolder; }
+
+.dispute-dropdown {
+  background: #ffffff;
+  width: 100%; }
+  .dispute-dropdown .ease-ui-dropdown .ease-placeHolder-container, .dispute-dropdown .ease-ui-dropdown input {
+    height: initial;
+    text-overflow: ellipsis; }
+  .dispute-dropdown .ease-ui-dropdown .primary-data-point {
+    font-family: 'ProxReg', Helvetica, Arial, sans-serif !important;
+    font-size: 16px;
+    overflow: inherit;
+    white-space: normal;
+    width: 100%; }
+  .dispute-dropdown .ease-dropdown-menu {
+    font-family: 'ProxReg', Helvetica, Arial, sans-serif !important;
+    -moz-appearance: none !important;
+    -webkit-appearance: none !important; }
+    .dispute-dropdown .ease-dropdown-menu .ease-dropdown-title {
+      font-size: 16px; }
+    .dispute-dropdown .ease-dropdown-menu .icon-arrow-up {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg); }
+    .dispute-dropdown .ease-dropdown-menu .icon-arrow-down {
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg); }
+    .dispute-dropdown .ease-dropdown-menu i {
+      padding: 0 10px; }
+    .dispute-dropdown .ease-dropdown-menu .ease-dropdown-container .ease-dropdown-list .ease-itemlabel {
+      font-family: 'ProxReg', Helvetica, Arial, sans-serif !important;
+      font-size: 16px;
+      overflow: inherit;
+      white-space: inherit;
+      width: 100%; }
+
+.dispute-form {
+  margin-top: 1rem;
+  width: 100%; }
+  .dispute-form textarea {
+    font-family: 'ProxReg', Helvetica, Arial, sans-serif !important;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    max-width: 100%;
+    overflow: auto;
+    resize: vertical; }
+  .dispute-form *:focus {
+    border-color: #0d74af !important; }
+  .dispute-form .formly-custom-input {
+    margin-left: 0; }
+    .dispute-form .formly-custom-input.currency {
+      background: url("../images/dollar-sign.svg") no-repeat center left 2px;
+      display: block;
+      padding: 2px 0 0 14px !important; }
+    .dispute-form .formly-custom-input.ng-untouched.ng-invalid {
+      box-shadow: none; }
+  .dispute-form input[type='number'] {
+    -moz-appearance: textfield; }
+  .dispute-form input::-webkit-outer-spin-button,
+  .dispute-form input::-webkit-inner-spin-button {
+    -webkit-appearance: none; }
+  .dispute-form .ease-calendar {
+    width: 100%; }
+    .dispute-form .ease-calendar th, .dispute-form .ease-calendar td {
+      text-align: center; }
+    .dispute-form .ease-calendar .calendar-carousel {
+      background-color: #f2f2f3; }
+      .dispute-form .ease-calendar .calendar-carousel .calendar-title {
+        text-align: center; }
+      .dispute-form .ease-calendar .calendar-carousel tr:last-child th {
+        text-align: center; }
+  .dispute-form .form-character-count, .dispute-form .negative {
+    color: #67747f;
+    float: right; }
+  .dispute-form .negative {
+    color: red; }
+  .dispute-form .form-group {
+    margin-top: 1rem;
+    margin-bottom: 2rem; }
+    .dispute-form .form-group .invalid-field-message {
+      color: #D03027;
+      font-size: 1.2rem;
+      padding-top: 0.6rem; }
+    .dispute-form .form-group .control-label {
+      color: #011728;
+      font-size: 16px;
+      line-height: initial; }
+    .dispute-form .form-group .ease-input {
+      width: 100% !important; }
+      .dispute-form .form-group .ease-input .ease-input-field {
+        width: 100%; }
+        .dispute-form .form-group .ease-input .ease-input-field.ng-untouched.ng-invalid {
+          box-shadow: none; }
+        .dispute-form .form-group .ease-input .ease-input-field.error {
+          width: 100%; }
+    .dispute-form .form-group .form-control, .dispute-form .form-group .formly-custom-input {
+      border: 2px solid #cfcdd0;
+      border-radius: 4px;
+      font-size: 1.8rem;
+      min-height: 45px;
+      margin-top: 1rem;
+      padding: 10px;
+      width: 100%; }
+      .dispute-form .form-group .form-control.ng-touched.ng-invalid, .dispute-form .form-group .ng-touched.ng-invalid.formly-custom-input {
+        border: 2px solid #D03027; }
+  .dispute-form .radio-group {
+    font-size: 1.6rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 1rem;
+    margin-bottom: 2rem; }
+    .dispute-form .radio-group label {
+      line-height: initial; }
+    .dispute-form .radio-group .radio {
+      padding-right: 2rem; }
+      .dispute-form .radio-group .radio .ng-untouched.ng-invalid {
+        box-shadow: none; }
+  .dispute-form .submit-form-button {
+    margin-top: 2rem;
+    width: 100%; }
+
+.bank-ledger {
+  padding: 0 1rem; }
+  .bank-ledger .transactions-list {
+    color: #011728;
+    background-color: #ffffff;
+    padding: 0 2.4rem;
+    width: 100%; }
+    @media only screen and (min-width: 600px) and (max-width: 1000px) {
+      .bank-ledger .transactions-list {
+        padding: 0 2.4rem; } }
+    @media only screen and (max-width: 600px) {
+      .bank-ledger .transactions-list {
+        padding: 0; } }
+    .bank-ledger .transactions-list .bank-transaction {
+      font-family: 'ProxReg', Helvetica, Arial, sans-serif !important;
+      border-bottom: 1px solid #CECCD1;
+      overflow: hidden;
+      width: 100%; }
+      @media only screen and (max-width: 600px) {
+        .bank-ledger .transactions-list .bank-transaction {
+          border: none; } }
+      .bank-ledger .transactions-list .bank-transaction:last-child:not(:only-child) {
+        border: none; }
+      .bank-ledger .transactions-list .bank-transaction:focus {
+        outline: none; }
+      .bank-ledger .transactions-list .bank-transaction:hover {
+        cursor: pointer; }
+        .bank-ledger .transactions-list .bank-transaction:hover .transaction-description-container .transaction-title {
+          text-decoration: underline; }
+      .bank-ledger .transactions-list .bank-transaction.open .transaction-logo .img-logo {
+        max-height: 4.8rem;
+        max-width: 9rem; }
+        @media only screen and (max-width: 600px) {
+          .bank-ledger .transactions-list .bank-transaction.open .transaction-logo .img-logo {
+            max-height: 3rem;
+            max-width: 100%; } }
+      @media only screen and (max-width: 600px) {
+        .bank-ledger .transactions-list .bank-transaction.open .transaction-description-container {
+          margin-left: 0; } }
+      .bank-ledger .transactions-list .bank-transaction .transaction-date {
+        box-sizing: border-box;
+        width: 8.33333%;
+        float: left;
+        text-align: center; }
+        @media only screen and (min-width: 600px) and (max-width: 1000px) {
+          .bank-ledger .transactions-list .bank-transaction .transaction-date {
+            margin-top: 0.6rem; } }
+        @media only screen and (max-width: 600px) {
+          .bank-ledger .transactions-list .bank-transaction .transaction-date {
+            box-sizing: border-box;
+            width: 100%;
+            float: left;
+            font-family: 'ProxReg', Helvetica, Arial, sans-serif !important;
+            background-color: #CFCCCF;
+            color: #011728;
+            line-height: 1.4rem;
+            margin: 0;
+            padding: 0.6rem;
+            text-align: left;
+            white-space: nowrap; } }
+        .bank-ledger .transactions-list .bank-transaction .transaction-date .day {
+          font-family: 'ProxLight', Helvetica, Arial, sans-serif !important;
+          box-sizing: border-box;
+          width: 100%;
+          float: left;
+          font-size: 2.2rem;
+          line-height: 2.2rem;
+          margin-bottom: 1.2rem;
+          text-transform: uppercase; }
+          @media only screen and (max-width: 600px) {
+            .bank-ledger .transactions-list .bank-transaction .transaction-date .day {
+              font-family: 'ProxReg', Helvetica, Arial, sans-serif !important;
+              font-size: 1.4rem;
+              line-height: 1.4rem;
+              margin: 0;
+              width: initial; } }
+        .bank-ledger .transactions-list .bank-transaction .transaction-date .month {
+          font-family: 'ProximaNova-Semibold', Helvetica, Arial, sans-serif;
+          box-sizing: border-box;
+          width: 100%;
+          float: left;
+          color: #011728;
+          font-size: 1.2rem;
+          line-height: 1.8rem;
+          margin-top: 1.2rem;
+          margin-bottom: 0.2rem;
+          width: 100%; }
+          @media only screen and (max-width: 600px) {
+            .bank-ledger .transactions-list .bank-transaction .transaction-date .month {
+              font-family: 'ProxReg', Helvetica, Arial, sans-serif !important;
+              font-size: 1.4rem;
+              line-height: 1.4rem;
+              margin: 0 0.4rem 0 0;
+              width: initial; } }
+      .bank-ledger .transactions-list .bank-transaction .transaction-logo {
+        box-sizing: border-box;
+        width: 8.33333%;
+        float: left;
+        -webkit-transition: max-width, max-height 0.5s ease;
+        transition: max-width, max-height 0.5s ease;
+        padding: 1.8rem 1.8rem 1.8rem 0.5rem;
+        text-align: center; }
+        @media only screen and (min-width: 600px) and (max-width: 1000px) {
+          .bank-ledger .transactions-list .bank-transaction .transaction-logo {
+            padding-top: 2.3rem; } }
+        @media only screen and (max-width: 600px) {
+          .bank-ledger .transactions-list .bank-transaction .transaction-logo {
+            box-sizing: border-box;
+            width: 12.5%;
+            float: left;
+            padding: 1.8rem 0; } }
+        .bank-ledger .transactions-list .bank-transaction .transaction-logo .img-logo {
+          max-height: 3rem;
+          max-width: 7.8rem; }
+      .bank-ledger .transactions-list .bank-transaction .transaction-description-container {
+        box-sizing: border-box;
+        width: 50%;
+        float: left;
+        -webkit-transition: margin-left 0.5s ease;
+        transition: margin-left 0.5s ease;
+        background-color: #ffffff; }
+        @media only screen and (min-width: 600px) and (max-width: 1000px) {
+          .bank-ledger .transactions-list .bank-transaction .transaction-description-container {
+            box-sizing: border-box;
+            width: 58.33333%;
+            float: left; } }
+        @media only screen and (max-width: 600px) {
+          .bank-ledger .transactions-list .bank-transaction .transaction-description-container {
+            box-sizing: border-box;
+            width: 50%;
+            float: left;
+            padding-left: 1rem;
+            margin-left: -12.5%; } }
+        .bank-ledger .transactions-list .bank-transaction .transaction-description-container .transaction-title {
+          box-sizing: border-box;
+          width: 83.33333%;
+          float: left;
+          font-size: 2rem;
+          line-height: 2rem;
+          margin-bottom: 2rem;
+          margin-top: 2.4rem; }
+          @media only screen and (min-width: 600px) and (max-width: 1000px) {
+            .bank-ledger .transactions-list .bank-transaction .transaction-description-container .transaction-title {
+              box-sizing: border-box;
+              width: 100%;
+              float: left;
+              line-height: 1.6rem;
+              margin-bottom: 0.6rem; } }
+          @media only screen and (max-width: 600px) {
+            .bank-ledger .transactions-list .bank-transaction .transaction-description-container .transaction-title {
+              box-sizing: border-box;
+              width: 100%;
+              float: left;
+              line-height: 1.6rem;
+              margin-bottom: 1rem;
+              margin-top: 1.6rem; } }
+        .bank-ledger .transactions-list .bank-transaction .transaction-description-container .memo-ledger-icon {
+          background: url("../images/memo-icon.svg") no-repeat center center;
+          background-size: cover;
+          bottom: 0.5rem;
+          color: #0D74AF;
+          display: inline-block;
+          height: 1.5rem;
+          width: 1.5rem; }
+        .bank-ledger .transactions-list .bank-transaction .transaction-description-container .transaction-category {
+          box-sizing: border-box;
+          width: 16.66667%;
+          float: left;
+          font-size: 1.6rem;
+          line-height: 1.6rem;
+          margin-bottom: 2rem;
+          margin-top: 2.6rem; }
+          @media only screen and (min-width: 600px) and (max-width: 1000px) {
+            .bank-ledger .transactions-list .bank-transaction .transaction-description-container .transaction-category {
+              box-sizing: border-box;
+              width: 100%;
+              float: left;
+              line-height: 1.2rem;
+              margin-top: 0;
+              margin-bottom: 0.6rem; } }
+          @media only screen and (max-width: 600px) {
+            .bank-ledger .transactions-list .bank-transaction .transaction-description-container .transaction-category {
+              box-sizing: border-box;
+              width: 100%;
+              float: left;
+              line-height: 1.2rem;
+              margin-top: 0;
+              margin-bottom: 0.6rem; } }
+      .bank-ledger .transactions-list .bank-transaction .transaction-amount-details {
+        box-sizing: border-box;
+        width: 33.33333%;
+        float: right;
+        margin-bottom: 2rem;
+        margin-top: 2.4rem;
+        font-size: 1.8rem;
+        line-height: 1.8rem;
+        text-align: right; }
+        @media only screen and (min-width: 600px) and (max-width: 1000px) {
+          .bank-ledger .transactions-list .bank-transaction .transaction-amount-details {
+            box-sizing: border-box;
+            width: 25%;
+            float: right;
+            margin-bottom: 0;
+            margin-top: 2rem; } }
+        @media only screen and (max-width: 600px) {
+          .bank-ledger .transactions-list .bank-transaction .transaction-amount-details {
+            box-sizing: border-box;
+            width: 37.5%;
+            float: right;
+            margin-top: 1.6rem;
+            padding-right: 1rem; } }
+        .bank-ledger .transactions-list .bank-transaction .transaction-amount-details .transaction-amount {
+          box-sizing: border-box;
+          width: 50%;
+          float: left; }
+          @media only screen and (min-width: 600px) and (max-width: 1000px) {
+            .bank-ledger .transactions-list .bank-transaction .transaction-amount-details .transaction-amount {
+              box-sizing: border-box;
+              width: 100%;
+              float: left;
+              margin-bottom: 0.6rem; } }
+          @media only screen and (max-width: 600px) {
+            .bank-ledger .transactions-list .bank-transaction .transaction-amount-details .transaction-amount {
+              box-sizing: border-box;
+              width: 100%;
+              float: left;
+              margin-bottom: 0.6rem; } }
+        .bank-ledger .transactions-list .bank-transaction .transaction-amount-details .transaction-balance {
+          box-sizing: border-box;
+          width: 50%;
+          float: left; }
+          @media only screen and (min-width: 600px) and (max-width: 1000px) {
+            .bank-ledger .transactions-list .bank-transaction .transaction-amount-details .transaction-balance {
+              box-sizing: border-box;
+              width: 100%;
+              float: left; } }
+          @media only screen and (max-width: 600px) {
+            .bank-ledger .transactions-list .bank-transaction .transaction-amount-details .transaction-balance {
+              box-sizing: border-box;
+              width: 100%;
+              float: left; } }
+    .bank-ledger .transactions-list.pending {
+      color: #90959F; }
+      .bank-ledger .transactions-list.pending .bank-transaction {
+        font-style: italic;
+        padding-right: 0.2rem; }
+        @media only screen and (max-width: 600px) {
+          .bank-ledger .transactions-list.pending .bank-transaction {
+            padding-right: 0; } }
+        .bank-ledger .transactions-list.pending .bank-transaction .transaction-date {
+          font-family: 'ProximaNova-Semibold', Helvetica, Arial, sans-serif;
+          color: #011728;
+          font-size: 1.2rem;
+          font-style: normal;
+          margin: 2.6rem 0; }
+          @media only screen and (min-width: 600px) and (max-width: 1000px) {
+            .bank-ledger .transactions-list.pending .bank-transaction .transaction-date {
+              margin-top: 3.3rem; } }
+          @media only screen and (max-width: 600px) {
+            .bank-ledger .transactions-list.pending .bank-transaction .transaction-date {
+              margin: 0; } }
+        .bank-ledger .transactions-list.pending .bank-transaction .transaction-description-container .transaction-category {
+          font-style: normal; }
+    .bank-ledger .transactions-list .Credit {
+      color: #128020; }
+      .bank-ledger .transactions-list .Credit:before {
+        content: '+'; }
+    .bank-ledger .transactions-list .Debit {
+      white-space: nowrap; }
+      .bank-ledger .transactions-list .Debit:before {
+        content: '-'; }
+  .bank-ledger .transaction-header {
+    color: #2F2F2F;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    padding: 0 2.4rem 1rem 2.4rem;
+    text-transform: uppercase; }
+    @media only screen and (min-width: 600px) and (max-width: 1000px) {
+      .bank-ledger .transaction-header {
+        padding: 1rem 2.5rem; } }
+    @media only screen and (max-width: 600px) {
+      .bank-ledger .transaction-header {
+        display: none; } }
+    .bank-ledger .transaction-header .header-date {
+      box-sizing: border-box;
+      width: 8.33333%;
+      float: left;
+      text-align: center; }
+    .bank-ledger .transaction-header .header-logo {
+      box-sizing: border-box;
+      width: 8.33333%;
+      float: left; }
+    .bank-ledger .transaction-header .header-description {
+      box-sizing: border-box;
+      width: 50%;
+      float: left; }
+      .bank-ledger .transaction-header .header-description .header-title {
+        box-sizing: border-box;
+        width: 83.33333%;
+        float: left; }
+      .bank-ledger .transaction-header .header-description .header-category {
+        box-sizing: border-box;
+        width: 16.66667%;
+        float: left; }
+        @media only screen and (min-width: 600px) and (max-width: 1000px) {
+          .bank-ledger .transaction-header .header-description .header-category {
+            display: none; } }
+    .bank-ledger .transaction-header .header-amount-details {
+      box-sizing: border-box;
+      width: 33.33333%;
+      float: left;
+      text-align: right; }
+      .bank-ledger .transaction-header .header-amount-details .header-amount {
+        box-sizing: border-box;
+        width: 50%;
+        float: left; }
+        @media only screen and (min-width: 600px) and (max-width: 1000px) {
+          .bank-ledger .transaction-header .header-amount-details .header-amount {
+            box-sizing: border-box;
+            width: 100%;
+            float: left; } }
+      .bank-ledger .transaction-header .header-amount-details .header-balance {
+        box-sizing: border-box;
+        width: 50%;
+        float: left; }
+        @media only screen and (min-width: 600px) and (max-width: 1000px) {
+          .bank-ledger .transaction-header .header-amount-details .header-balance {
+            display: none; } }
+  .bank-ledger .load-more-btn {
+    text-align: center; }
+    .bank-ledger .load-more-btn button {
+      color: #0D74AF;
+      line-height: inherit;
+      width: 100%;
+      font-size: 1.8rem; }
+      .bank-ledger .load-more-btn button:hover, .bank-ledger .load-more-btn button:focus {
+        text-decoration: underline;
+        -webkit-transform: none;
+        transform: none;
+        -webkit-transition: none;
+        transition: none; }
+
+.tooltip-container .tooltip::before {
+  border: 0; }
+
+.tooltip-container .tooltip::after {
+  padding: 0; }

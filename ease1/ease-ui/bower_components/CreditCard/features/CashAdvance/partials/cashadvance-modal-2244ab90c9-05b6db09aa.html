@@ -1,0 +1,20 @@
+<div ng-controller="CashAdvanceController as cashAdvance" id="CashAdvanceWrapper">
+  <ease-ui-modal id="cash-advance-modal" close-modal="cashAdvance.closeModal()" modal-class="cashAdvance.modalInfo.modalClass"
+                 modal-type="cashAdvance.modalInfo.modalType" focus-id="closeModal" class="cash-advance" ng-class="cashAdvance.modalIconClass">
+    <!-- Cash Advance Info -->
+    <div ng-if="cashAdvance.currentModal === 'cashAdvanceInfo'" id="cash-advance-index" data-ng-include
+         data-src="'/ease-ui/bower_components/CreditCard/features/CashAdvance/partials/cashadvance-index-46774990d7-46774990d7.html'">
+    </div>
+
+    <!-- Change PIN -->
+    <div ng-if="cashAdvance.currentModal === 'changePin'" id="cash-advance-changepin" data-ng-include
+         data-src="'/ease-ui/bower_components/CreditCard/features/CashAdvance/partials/cashadvance-changepin-2d53e7605c-2d53e7605c.html'">
+    </div>
+
+    <!-- Success -->
+    <div ng-if="cashAdvance.currentModal === 'changePinSuccess' || cashAdvance.currentModal === 'mailPinSuccess'" id="cash-advance-success"
+         data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/CashAdvance/partials/cashadvance-success-59992451f7-59992451f7.html'">
+    </div>
+
+  </ease-ui-modal>
+</div>

@@ -1,0 +1,32 @@
+.make-payment-hub {
+  .ease-modal-circle {
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  .sub-heading {
+    margin-bottom: 30px;
+    color: #687680;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.2;
+
+    strong {
+      font-family: $text-reg;
+      font-weight: bold;
+      color: #273B49;
+    }
+  }
+
+  @include breakpoint(phone) {
+    .sub-heading {
+      font-size: 14px;
+    }
+  }
+}
+
+.make-payment-hub.action {
+  .ease-modal-circle {
+    background-image: url('#{$images-folder}/make-payment-icon.svg');
+  }
+}

@@ -1,0 +1,40 @@
+<ease-ui-modal
+        close-modal="closeModal()"
+        modal-id="'transferCancel'"
+        modal-role="'document'"
+        modal-title="::contentData['ease.core.transfer.cancel.sure.label']"
+        show-icon-mobile="'true'"
+        class="transferModal transferModalCancel">
+  <div>
+    <p class="transfer-subheading" tabindex="0">
+      {{::contentData['ease.core.transfer.cancel.aboutto.label']}} <span class="transfer-text-bold">{{::i18n.transferCurrency}}{{::transactionInfo.transactionAmount}}</span> {{::contentData['ease.core.transfer.cancelconfirm.transfer.label']}}
+    </p>
+  </div>
+  <div class="transfer-summary-container">
+    <div class="transfer-summary-item" tabindex="0">
+      <span class="transfer-summary-label" id="frequencyLabel">{{::contentData['ease.core.transfer.success.frequency.label']}}</span>
+      <span  class="transfer-summary-details" id="frequencyResponse">{{::contentData['ease.core.transfer.success.frequency.onetime.label']}}</span>
+    </div>
+    <div class="transfer-summary-item" tabindex="0">
+      <span class="transfer-summary-label" id="transferFromLabel">{{::contentData['ease.core.transfer.form.transferacct.from.label']}}</span>
+      <span  class="transfer-summary-details" id="transferFromResponse">{{::transactionInfo.fromAccount.displayName | limitTo:20}} <span class="transfer-summary-nowrap">{{::transactionInfo.fromAccount.accountNumber}}</span></span>
+    </div>
+    <div class="transfer-summary-item" tabindex="0">
+      <span class="transfer-summary-label" id="transferToLabel">{{::contentData['ease.core.transfer.form.transferacct.to.label']}}</span>
+      <span  class="transfer-summary-details" id="transferToResponse">{{::transactionInfo.toAccount.displayName | limitTo:20}} <span class="transfer-summary-nowrap">{{::transactionInfo.toAccount.accountNumber}}</span></span>
+    </div>
+    <div class="transfer-summary-item" tabindex="0">
+      <span class="transfer-summary-label" id="transferDateLabel">{{::contentData['ease.core.transfer.form.transdate.label']}}</span>
+      <span  class="transfer-summary-details" id="transferDateResponse">{{::transactionInfo.oneTimeTransferDate | date:'MMM dd, yyyy'}}</span>
+    </div>
+  </div>
+  <div class="transferCancelButton">
+    <button class="transfer-button transfer-button-cancel"
+            data-ng-click="confirm()"
+            data-ng-disabled="loadingClass"
+            tabindex="0">
+      <span data-ng-class="{ loading: loadingClass }"></span>
+      <span>{{::contentData['ease.core.transfer.cancel.confirm.button']}}</span>
+    </button>
+  </div>
+</ease-ui-modal>

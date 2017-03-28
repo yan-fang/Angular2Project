@@ -1,0 +1,2711 @@
+{
+  "ease": {
+    "coaf": {
+      "accountSummary": {
+        "accountDetails": {
+          "earlyPayoffMessage": {
+            "message": {
+              "v1": "You're projected to payoff on {date} based on events in your Loan Tracker history."
+            }
+          },
+          "balanceAtMaturityMessage": {
+            "message": {
+              "v1": "You're projected to still owe ${amount} on your payoff date based on events in your loan tracker history. What are my options?"
+            }
+          },
+          "principalBalance": {
+            "label": {
+              "v1": "Principal Balance"
+            }
+          },
+          "todaysPayoff": {
+            "label": {
+              "v1": "Today's payoff"
+            }
+          },
+          "accountNum": {
+            "label": {
+              "v1": "ACCOUNT #"
+            }
+          },
+          "due": {
+            "label": {
+              "v1": "DUE"
+            }
+          },
+          "makeAPayment": {
+            "button": {
+              "v1": "Make a Payment"
+            }
+          },
+          "loanDetails": {
+            "label": {
+              "v1": "LOAN DETAILS"
+            }
+          },
+          "tenDayPayOff": {
+            "label": {
+              "v1": "10-DAY PAYOFF QUOTE"
+            }
+          }
+        },
+        "transactions": {
+          "date": {
+            "label": {
+              "v1": "Date"
+            }
+          },
+          "description": {
+            "label": {
+              "v1": "Description"
+            }
+          },
+          "amount": {
+            "label": {
+              "v1": "Amount"
+            }
+          },
+          "payFrom": {
+            "label": {
+              "v1": "Pay From"
+            }
+          },
+          "payTo": {
+            "label": {
+              "v1": "Pay To"
+            }
+          },
+          "frequency": {
+            "label": {
+              "v1": "Frequency"
+            }
+          },
+          "nextScheduledDate": {
+            "label": {
+              "v1": "Next Scheduled Date"
+            }
+          },
+          "payson": {
+            "label": {
+              "v1": "Pays On"
+            }
+          },
+          "effectiveDate": {
+            "label": {
+              "v1": "Effective Date"
+            }
+          },
+          "submittedOn": {
+            "label": {
+              "v1": "Submitted On"
+            }
+          },
+          "postedOnDate": {
+            "label": {
+              "v1": "Posted On Date"
+            }
+          },
+          "postingDate": {
+            "label": {
+              "v1": "Posting Date"
+            }
+          },
+          "description": {
+            "label": {
+              "v1": "Description"
+            }
+          },
+          "confirmationNum": {
+            "label": {
+              "v1": "Confirmation #"
+            }
+          },
+          "fees": {
+            "label": {
+              "v1": "Fees"
+            }
+          },
+          "interest": {
+            "label": {
+              "v1": "Interest"
+            }
+          },
+          "principal": {
+            "label": {
+              "v1": "Principal"
+            }
+          },
+          "blankField": {
+            "label": {
+              "v1": "---"
+            }
+          },
+          "scheduledpayments": {
+            "label": {
+              "v1": "Scheduled Payments"
+            }
+          },
+          "transactionsYearHeading": {
+            "label": {
+              "v1": "Transactions"
+            }
+          },
+          "cancel": {
+            "label": {
+              "v1": "Cancel"
+            }
+          },
+          "notransactions": {
+            "error": {
+              "v1": "Looks like you don't have any transactions to display right now."
+            }
+          },
+          "transactionerror1": {
+            "errormessage1": {
+              "v1": "Looks like we ran into a snag and can't display your account transactions right now. Please "
+            }
+          },
+          "transactionerror2": {
+            "errormessage2": {
+              "v1": "try again"
+            }
+          },
+          "transactionerror3": {
+            "errormessage3": {
+              "v1": " later."
+            }
+          },
+          "transactionerror": {
+            "headermessage": {
+              "v1": "Account Transactions Unavailable"
+            }
+          },
+          "paymentplanfailure": {
+            "message": {
+              "v1": "Looks like we ran into a snag and can't display additional details right now.  Please try again later, or give us a call at 1-800-464-0322."
+            }
+          }
+        },
+        "extensibility": {
+          "statements": {
+            "label": {
+              "v1": "Statements"
+            },
+            "nickName": {
+              "v1": "Auto Loan"
+            },
+            "adaCheckBox": {
+              "v1": "Use ADA Accessible Statement",
+              "ariaLabel" : "Check this checkbox to be able to view the ADA Statement"
+            },
+            "latestStatement": {
+              "v1": "Statement"
+            },
+            "previousYear": {
+              "ariaLabel": "Get Previous Year Statements"
+            },
+            "nextYear": {
+              "ariaLabel": "Get Next Year Statements"
+            },
+            "selectedStatementYear": {
+              "ariaLabel": "Current Selected Year Label"
+            },
+            "zoom": {
+              "v1": "Zoom"
+            },
+            "zoomin": {
+              "v1": "Zoom In"
+            },
+            "zoomout": {
+              "v1": "Zoom Out"
+            },
+            "print": {
+              "v1": "Print"
+            },
+            "download": {
+              "v1": "Download"
+            },
+            "errorMessage": {
+              "title": {
+                "v1": "It looks like we need to fix something."
+              },
+              "content": {
+                "v1": "We hit a snag retrieving your Statements, but we're working on it. Try again in a bit."
+              }
+            },
+            "noStatement": {
+              "title": {
+                "v1": "Looks like you don't have any Statements available."
+              },
+              "content": {
+                "v1": " Note that you may not have Statements for the first 45 days of your loan."
+              }
+            },
+            "backToAccount": {
+              "v1": "Back To Account"
+            },
+            "tryAgain": {
+              "v1": "Try Again"
+            }
+          },
+          "paymentAccounts": {
+            "label": {
+              "v1": "Payment Accounts"
+            }
+          },
+          "changeDueDate": {
+            "label": {
+              "v1": "Change Due Date"
+            }
+          },
+          "moreAccountServices": {
+            "label": {
+              "v1": "More Account Services"
+            }
+          },
+          "makeonetimepayment": {
+            "label": {
+              "v1": "Make One-Time Payment"
+            }
+          },
+          "titlehelp": {
+            "label": {
+              "v1": "Where is my Title?"
+            }
+          },
+          "schedulerecurringpayment": {
+            "label": {
+              "v1": "Schedule Recurring Payment"
+            }
+          },
+          "payoffloan": {
+            "label": {
+              "v1": "Payoff Loan"
+            }
+          },
+          "addpaymentaccount": {
+            "label": {
+              "v1": "Add Payment Account"
+            }
+          }
+        },
+        "loanDetails": {
+          "vehicleInfo": {
+            "label": {
+              "v1": "Vehicle Information"
+            }
+          },
+          "vehicle": {
+            "label": {
+              "v1": "Vehicle"
+            }
+          },
+          "vin": {
+            "label": {
+              "v1": "VIN"
+            }
+          },
+          "borrower": {
+            "label": {
+              "v1": "Borrower"
+            }
+          },
+          "coBorrower": {
+            "label": {
+              "v1": "Co-Borrower"
+            }
+          },
+          "loanTerms": {
+            "label": {
+              "v1": "Loan Terms"
+            }
+          },
+          "originalLoanAmount": {
+            "label": {
+              "v1": "Original Loan Amount"
+            }
+          },
+          "openDate": {
+            "label": {
+              "v1": "Open Date"
+            }
+          },
+          "loanTerm": {
+            "label": {
+              "v1": "Loan Term"
+            }
+          },
+          "maturityDate": {
+            "label": {
+              "v1": "Maturity Date"
+            }
+          },
+          "interestRate": {
+            "label": {
+              "v1": "Interest Rate"
+            }
+          },
+          "paymentInfo": {
+            "label": {
+              "v1": "Payment Information"
+            }
+          },
+          "monthlyPayment": {
+            "label": {
+              "v1": "Monthly Payment"
+            }
+          },
+          "dueDate": {
+            "label": {
+              "v1": "Due Date"
+            }
+          },
+          "todaysPayoffAmount": {
+            "label": {
+              "v1": "Today's Payoff Amount"
+            }
+          },
+          "principalAmount": {
+            "label": {
+              "v1": "Principal Amount"
+            }
+          },
+          "interestPaidYTD": {
+            "label": {
+              "v1": "Interest Paid YTD"
+            }
+          },
+          "interestPaidIn": {
+            "label": {
+              "v1": "Interest Paid in"
+            }
+          },
+          "totalInterestPaid": {
+            "label": {
+              "v1": "Total Interest Paid"
+            }
+          },
+          "totalPrincipalPaid": {
+            "label": {
+              "v1": "Total Principal Paid"
+            }
+          }
+        },
+        "paymentDueDetails": {
+          "paymentDetails": {
+            "label": {
+              "v1": "Payment Details"
+            }
+          },
+          "currentDue": {
+            "label": {
+              "v1": "Current Amount Due"
+            }
+          },
+          "pastDue": {
+            "label": {
+              "v1": "Past Due"
+            }
+          },
+          "lateFees": {
+            "label": {
+              "v1": "Unpaid Late Fees"
+            }
+          },
+          "otherFees": {
+            "label": {
+              "v1": "Unpaid Other Fees"
+            }
+          },
+          "totalPaymentDue": {
+            "label": {
+              "v1": "Total Due"
+            }
+          },
+          "due": {
+            "label": {
+              "v1": "Due "
+            }
+          },
+          "upcomingPayments": {
+            "label": {
+              "v1": "UPCOMING PAYMENTS"
+            }
+          },
+          "noUpcomingPayments": {
+            "label": {
+              "v1": "NO UPCOMING PAYMENTS"
+            }
+          }
+        }
+      },
+      "payment": {
+        "paymentModal": {
+          "paymentHeader": {
+            "label": {
+              "v1": "Make a Payment"
+            }
+          },
+          "recurringHeader": {
+            "label": {
+              "v1": "Schedule Recurring"
+            }
+          },
+          "recurringDetailsHeader": {
+            "label": {
+              "v1": "Recurring Payment"
+            }
+          },
+          "payoffHeader": {
+            "label": {
+              "v1": "Payoff Loan"
+            }
+          },
+          "makeAPayment": {
+            "button": {
+              "v1": "Make a Payment"
+            }
+          },
+          "oneTime": {
+            "label": {
+              "v1": "One-Time"
+            }
+          },
+          "recurring": {
+            "label": {
+              "v1": "Recurring"
+            }
+          },
+          "payoff": {
+            "label": {
+              "v1": "Payoff"
+            }
+          },
+          "occMsgStart": {
+            "label": {
+              "v1": "Looks like you’ve paid your Total Amount Due for the next month. Until"
+            }
+          },
+          "occMsgEnd": {
+            "label": {
+              "v1": ", you can only make principal-only payments."
+            }
+          },
+          "currentDue": {
+            "label": {
+              "v1": "Current Due"
+            }
+          },
+          "pastDue": {
+            "label": {
+              "v1": "Past Due"
+            }
+          },
+          "fees": {
+            "label": {
+              "v1": "Fees"
+            }
+          },
+          "totalDue": {
+            "label": {
+              "v1": "Total Due"
+            }
+          },
+          "paymentDt": {
+            "label": {
+              "v1": "Payment Date"
+            }
+          },
+          "due": {
+            "label": {
+              "v1": "Due"
+            }
+          },
+          "payFrom": {
+            "label": {
+              "v1": "Pay From"
+            }
+          },
+          "payTo": {
+            "label": {
+              "v1": "Pay To"
+            }
+          },
+          "payment": {
+            "label": {
+              "v1": "Payment"
+            }
+          },
+          "addtnlPrincipalPmt": {
+            "label": {
+              "v1": "Additional Principal Payment"
+            }
+          },
+          "amountSymbol": {
+            "label": {
+              "v1": "$"
+            }
+          },
+          "amountWatermark": {
+            "label": {
+              "v1": "Select Amount"
+            }
+          },
+          "accountWatermark": {
+            "label": {
+              "v1": "Select Account"
+            }
+          },
+          "dateWatermark": {
+            "label": {
+              "v1": "Select Date"
+            }
+          },
+          "mkPayment": {
+            "button": {
+              "v1": "Make a Payment"
+            }
+          },
+          "payAmount": {
+            "label": {
+              "v1": "Payment Frequency & Amount"
+            }
+          },
+          "paymentDay": {
+            "label": {
+              "v1": "Payment Dates"
+            }
+          },
+          "firstPayment": {
+            "label": {
+              "v1": "First Payment Day"
+            }
+          },
+          "secondPayment": {
+            "label": {
+              "v1": "Second Payment Day"
+            }
+          },
+          "paymentDayPlaceHolder": {
+            "label": {
+              "v1": "Select a day"
+            }
+          },
+          "paymentFrequencyPlaceHolder": {
+            "label": {
+              "v1": "Select a frequency"
+            }
+          },
+          "startDate": {
+            "label": {
+              "v1": "Start Date"
+            }
+          },
+          "totalPayment": {
+            "label": {
+              "v1": "Total Payment"
+            }
+          },
+          "scheduleRecurring": {
+            "button": {
+              "v1": "Schedule Recurring"
+            }
+          },
+          "payOffLoan": {
+            "button": {
+              "v1": "Review Payoff"
+            }
+          },
+          "payOffLoanAmount": {
+            "label": {
+              "v1": "Payoff Date & Amount"
+            }
+          },
+          "paymentDisclaimer1": {
+            "label": {
+              "v1": "Your Payment will be credited to your loan on your Payment Date, but may take 2-3 business days to be debited from your Pay From account."
+            }
+          },
+          "paymentDisclaimer2": {
+            "label": {
+              "v1": "You have until 5 PM ET on your Payment Date to cancel this payment."
+            }
+          },
+          "paymentPlanDisclaimer1": {
+            "label": {
+              "v1": "Your first payment will be processed as of the date selected above."
+            }
+          },
+          "paymentPlanDisclaimer2": {
+            "label": {
+              "v1": "You can cancel your recurring payment up to 3 business days prior to your scheduled payment date by calling 1-800-946-0332, 8 AM - 9 PM ET Monday - Friday. Keep in mind, if your payment is late or returned, you'll be charged a fee according to your contract and your DirectPay may be cancelled (but you'll still be responsible for making the payment)."
+            }
+          },
+          "payOffDisclaimer1": {
+            "label": {
+              "v1": "Because interest accrues everyday, your payoff date impacts your payoff amount."
+            }
+          },
+          "payOffDisclaimer2": {
+            "label": {
+              "v1": "Your payment will be credited to your loan on your Payment Date, but may take 2-3 business days to be debited from your Pay From account."
+            }
+          },
+          "paymentError": {
+            "label": {
+              "v1": "We’re sorry, but we’re unable to complete your request at this time. Please try again later or give us a call at 1-800-946-0332"
+            }
+          },
+          "makeAPaymentToggleMessage": {
+            "label": {
+              "v1": "Online payments are currently unavailable, to make a payment please call us at 1-800-946-0332."
+            }
+          },
+          "addPaymentAccount": {
+            "label": {
+              "v1": "+ Add Account"
+            }
+          },
+          "showCalender": {
+            "label": {
+              "v1": "Show Calendar"
+            }
+          }
+        },
+        "paymentSuccess": {
+          "successHeader": {
+            "label": {
+              "v1": "Success!"
+            }
+          },
+          "successMessage": {
+            "label": {
+              "v1": "Your one-time payment has been scheduled"
+            }
+          },
+          "scheduledFor": {
+            "label": {
+              "v1": "Scheduled For"
+            }
+          },
+          "payFrom": {
+            "label": {
+              "v1": "Pay From"
+            }
+          },
+          "payAmount": {
+            "label": {
+              "v1": "Pay Amount"
+            }
+          },
+          "ConfirmationCode": {
+            "label": {
+              "v1": "CONFIRMATION CODE"
+            }
+          }
+        },
+        "payoffSuccess": {
+          "successHeader": {
+            "label": {
+              "v1": "High Five!"
+            }
+          },
+          "payOffCancelLink": {
+            "label": {
+              "v1": "Select to cancel payoff"
+            }
+          },
+          "successMessage": {
+            "label": {
+              "v1": "You are one step closer to owning your car.  We have a few notes for you before you go."
+            }
+          },
+          "note1": {
+            "label": {
+              "v1": "Make sure to cancel any upcoming payments you may have to prevent overpayment on your loan."
+            }
+          },
+          "confirmationCode": {
+            "label": {
+              "v1": "CONFIRMATION CODE"
+            }
+          },
+          "cancelPayment": {
+            "label": {
+              "v1": "Cancel Payoff"
+            }
+          }
+        },
+        "paymentCancel": {
+          "cancelHeader": {
+            "label": {
+              "v1": "Cancel Payment?"
+            }
+          },
+          "cancelMessage1": {
+            "label": {
+              "v1": "Your"
+            }
+          },
+          "cancelMessage2": {
+            "label": {
+              "v1": "payment of"
+            }
+          },
+          "cancelMessage3": {
+            "label": {
+              "v1": "is about to be cancelled."
+            }
+          },
+          "cancelLink": {
+            "label": {
+              "v1": "Cancel"
+            }
+          },
+          "goBack": {
+            "button": {
+              "v1": "Go Back"
+            }
+          },
+          "confirm": {
+            "button": {
+              "v1": "Confirm"
+            }
+          }
+        },
+        "recurringPaymentCancelConfirm": {
+          "cancelHeader": {
+            "label": {
+              "v1": "Are You Sure?"
+            }
+          },
+          "cancelMessage": {
+            "label": {
+              "v1": "You are about to permanently stop recurring payments starting on "
+            }
+          },
+          "cancelMessageAfterScheduledDate": {
+            "label": {
+              "v1": " and beyond. Any pending payments will not be cancelled."
+            }
+          },
+          "confirmButton": {
+            "button": {
+              "v1": "Confirm"
+            }
+          },
+          "cancelLink": {
+            "link": {
+              "v1": "Cancel Payments"
+            }
+          },
+          "cancelScheduledDate":{
+            "cancelInfo": {
+              "v1": "Starting "
+            }
+          }
+        },
+        "recurringPaymentCancelSuccess": {
+          "cancelHeader": {
+            "label": {
+              "v1": "Canceled!"
+            }
+          },
+          "cancelMessage1": {
+            "label": {
+              "v1": "Your recurring payment of "
+            }
+          },
+          "cancelMessage2": {
+            "label": {
+              "v1": "has been canceled."
+            }
+          }
+        },
+        "oneTimePaymentCancelConfirm": {
+          "cancelHeader": {
+            "label": {
+              "v1": "Are You Sure?"
+            }
+          },
+          "cancelMessage": {
+            "label": {
+              "v1": "You're about to cancel this payment."
+            }
+          },
+          "cancelConfirmMessage3": {
+            "label": {
+              "v1": "has been canceled. You have payment now due on"
+            }
+          },
+          "cancelConfirmPaymentDate": {
+            "label": {
+              "v1": "Payment Date"
+            }
+          },
+          "cancelConfirmPayFrom": {
+            "label": {
+              "v1": "Pay From"
+            }
+          },
+          "cancelConfirmPayAmount": {
+            "label": {
+              "v1": "Pay Amount"
+            }
+          },
+          "amountSymbol": {
+            "label": {
+              "v1": "$"
+            }
+          }
+        },
+        "cancelPaymentSuccess": {
+          "successHeader": {
+            "label": {
+              "v1": "Canceled!"
+            }
+          },
+          "successMessage1": {
+            "label": {
+              "v1": "Your payment of"
+            }
+          },
+          "successMessage2": {
+            "label": {
+              "v1": "for"
+            }
+          },
+          "amountSymbol": {
+            "label": {
+              "v1": "$"
+            }
+          },
+          "successMessage3": {
+            "label": {
+              "v1": "has been canceled."
+            }
+          }
+        },
+        "oneTimePaymentCancelError": {
+          "errorHeader": {
+            "label": {
+              "v1": "Oops, We Hit a Snag!"
+            }
+          },
+          "errorMessage": {
+            "label": {
+              "v1": "Looks like we've hit a snag while canceling your one-time payment. Please try again in a bit."
+            }
+          }
+        },
+        "paymentPlanSuccess": {
+          "successHeader": {
+            "label": {
+              "v1": "Success!"
+            }
+          },
+          "successMessagePart1": {
+            "label": {
+              "v1": "Your"
+            }
+          },
+          "successMessagePart2": {
+            "label": {
+              "v1": "recurring payment will start on"
+            }
+          },
+          "frequency": {
+            "label": {
+              "v1": "Frequency"
+            }
+          },
+          "nextScheduleDate": {
+            "label": {
+              "v1": "Next Schedule Date"
+            }
+          },
+          "postingDate": {
+            "label": {
+              "v1": "Posting Date"
+            }
+          },
+          "effectiveDate": {
+            "label": {
+              "v1": "Effective Date"
+            }
+          },
+          "payFrom": {
+            "label": {
+              "v1": "Pay From"
+            }
+          },
+          "payAmount": {
+            "label": {
+              "v1": "Pay Amount"
+            }
+          },
+          "additionalPrincipal": {
+            "label": {
+              "v1": "Additional Principal"
+            }
+          },
+          "totalAmount": {
+            "label": {
+              "v1": "Total Amount"
+            }
+          },
+          "printConfirm": {
+            "label": {
+              "v1": "Print Confirmation"
+            }
+          }
+        },
+        "paymentPlanDetails": {
+          "paymentHeader": {
+            "label": {
+              "v1": "Payment Plan Details"
+            }
+          },
+          "nextScheduledDate": {
+            "label": {
+              "v1": "Next Scheduled Date"
+            }
+          }
+        },
+        "payoffSummary": {
+          "summaryHeader": {
+            "label": {
+              "v1": "Review Payoff"
+            }
+          },
+          "confirmButton": {
+            "button": {
+              "v1": "Submit Payment"
+            }
+          },
+          "payoffSummaryReviewMessage": {
+            "label": {
+              "v1": "Review the following information before submitting your payment."
+            }
+          },
+          "edit": {
+            "label": {
+              "v1": "Edit"
+            }
+          },
+          "payoffContactLink": {
+            "label": {
+              "v1": "http://www.capitalone.com/contact/auto-financing"
+            }
+          },
+          "note1Full": {
+            "label": {
+              "v1": "We will mail your title to the primary borrower's address on file. Contact us if you need to change this address."
+            }
+          },
+          "note1Part1": {
+            "label": {
+              "v1": "We will mail your title to the primary borrower's address on file."
+            }
+          },
+          "note1Part2": {
+            "label": {
+              "v1": "Contact us"
+            }
+          },
+          "note1Part3": {
+            "label": {
+              "v1": "if you need to change this address."
+            }
+          },
+          "payoffFaqLink": {
+            "label": {
+              "v1": "https://www.capitalone.com/auto-financing/faq"
+            }
+          },
+          "note2Full": {
+            "label": {
+              "v1": "It can take up to 15 days for your car title to be released when paying your loan off online. Click here for more details."
+            }
+          },
+          "note2Part1": {
+            "label": {
+              "v1": "It can take up to 15 days for your car title to be released when paying your loan off online. Click "
+            }
+          },
+          "note2Part2": {
+            "label": {
+              "v1": "here"
+            }
+          },
+          "note2Part3": {
+            "label": {
+              "v1": "for more details."
+            }
+          },
+          "payoffContactNewWindowMessage": {
+            "label": {
+              "v1": "Contact us opens in new window"
+            }
+          },
+          "payoffFaqNewWindowMessage": {
+            "label": {
+              "v1": "Click here opens in new window"
+            }
+          },
+          "payoffDate": {
+            "label": {
+              "v1": "Date"
+            }
+          },
+          "payoffPaymentDetails": {
+            "label": {
+              "v1": "Payment Details"
+            }
+          },
+          "payFromText": {
+            "label": {
+              "v1": "From"
+            }
+          },
+          "payoffAmount": {
+            "label": {
+              "v1": "Amount"
+            }
+          },
+          "payoffEditText": {
+            "label": {
+              "v1": "Edit"
+            }
+          }
+        }
+      },
+      "payDownView": {
+        "payDownViewHeader": {
+          "label": {
+            "v1": "Loan Tracker"
+          }
+        },
+        "payDownViewDetails": {
+          "label": {
+            "v1": "View Details"
+          }
+        },
+        "payDownViewDetailsBackTo": {
+          "label": {
+            "v1": " BACK TO "
+          }
+        },
+        "payDownViewLoanTrackerStatus": {
+          "label": {
+            "v1": "Loan Tracker Status"
+          }
+        },
+        "scheduleRecurringPayments": {
+          "label": {
+            "v1": "Schedule recurring payments"
+          }
+        },
+        "amountValidation": {
+          "label": {
+            "v1": "Please enter a valid amount."
+          }
+        },
+        "calculatedPaymentError": {
+          "errorHeader": {
+            "label": {
+              "v1": "Oops, We Hit a Snag!"
+            }
+          },
+          "errorMessage": {
+            "label": {
+              "v1": "Looks like we can’t display your Auto Loan Tracker details right now, but we’re working on it! Try again in a bit."
+            }
+          },
+          "errorMessageCalculator": {
+            "label": {
+              "v1": "Looks like we can't complete your calculation right now, but we’re working on it! Try again in a bit."
+            }
+          }
+        },
+        "autoLoanTracker": {
+          "projectedPayOffBalance": {
+            "label": {
+              "v1": "On your payoff date, you're projected to still owe"
+            }
+          },
+          "earlyPayOffDesc1": {
+            "label": {
+              "v1": "Congrats, you've"
+            }
+          },
+          "earlyPayOffDesc2": {
+            "label": {
+              "v1": "paid off"
+            }
+          },
+          "earlyPayOffDesc3": {
+            "label": {
+              "v1": "your loan!"
+            }
+          },
+          "earlyPayOffDesc4": {
+            "label": {
+              "v1": "early!"
+            }
+          },
+          "earlyPayOffDesc5": {
+            "label": {
+              "v1": "Give yourself a pat on the back. This is a huge accomplishment."
+            }
+          },
+          "additionToLastPayment": {
+            "label": {
+              "v1": "(In addition to your last payment)"
+            }
+          },
+          "financialEvents": {
+            "label": {
+              "v1": "How did this happen?"
+            }
+          },
+          "usabillaFeedback": {
+            "label": {
+              "v1": "Is this helpful?"
+            }
+          },
+          "options": {
+            "label": {
+              "v1": "What are my options?"
+            }
+          },
+          "pastDueOptions": {
+            "label": {
+              "v1": "If I pay my past due amount today, what are my options?"
+            }
+          },
+          "additionalMonthlyPayment": {
+            "label": {
+              "v1": "Pay More Monthly"
+            }
+          },
+          "additionalMonthlyPaymentDesc1": {
+            "label": {
+              "v1": "Paying additional principal each month will reduce the amount of interest you accrue. If you increase your monthly payment to "
+            }
+          },
+          "additionalMonthlyPaymentDesc2": {
+            "label": {
+              "v1": "for the rest of your loan—you won't owe an additional amount on your payoff date."
+            }
+          },
+          "additionalMonthlyPaymentDesc3": {
+            "label": {
+              "v1": "Need help remembering?"
+            }
+          },
+          "additionalMonthlyPaymentDesc4": {
+            "label": {
+              "v1": "Schedule recurring payments"
+            }
+          },
+          "additionalMonthlyPaymentDesc5": {
+            "label": {
+              "v1": "to help stay on track."
+            }
+          },
+          "payAtEnd": {
+            "label": {
+              "v1": "Pay At The End"
+            }
+          },
+          "payAtEndDesc1": {
+            "label": {
+              "v1": "Do nothing and pay "
+            }
+          },
+          "payAtEndDesc2": {
+            "label": {
+              "v1": "in addition to your final payment of "
+            }
+          },
+          "payAtEndDesc3": {
+            "label": {
+              "v1": "By choosing not to pay additional principal now, you’ll accrue extra interest over the life of your loan."
+            }
+          },
+          "note": {
+            "label": {
+              "v1": "Note: All calculations are based on on-time payments and no additional loan modifications.  When making additional payments, be sure to choose \"principal only\" as the Payment Type."
+            }
+          },
+          "projectedMaturedWithBalance": {
+            "label": {
+              "v1": "You've reached your payoff date and your loan still has a balance of"
+            }
+          },
+          "maturedWithBalance": {
+            "label": {
+              "v1": "Pay Off Balance"
+            }
+          },
+          "maturedOptions": {
+            "label": {
+              "v1": "Discuss More Options"
+            }
+          },
+          "maturedDesc1": {
+            "label": {
+              "v1": "Make a final payment of "
+            }
+          },
+          "maturedDesc2": {
+            "label": {
+              "v1": "and go celebrate! Paying off your car is a huge accomplishment."
+            }
+          },
+          "maturedOptionsDesc1": {
+            "label": {
+              "v1": "We understand things happen and if you can’t pay off your remaining balance today don’t worry.  We've put together a team of experts who specialize in finding personalized solutions to keep you in your car and prevent your credit from being negatively impacted. Give them a call today at 1-855-238-8897."
+            }
+          },
+          "makeAPayment": {
+            "label": {
+              "v1": "Make A Payment"
+            }
+          },
+          "savingsCalculator": {
+            "label": {
+              "v1": "Savings Calculator"
+            }
+          },
+          "oneTimePaymentAmountHeader": {
+            "label": {
+              "v1": "One-Time"
+            }
+          },
+          "orDivider": {
+            "label": {
+              "v1": "or"
+            }
+          },
+          "oneTimePaymentAmount": {
+            "label": {
+              "v1": "Payment Amount"
+            }
+          },
+          "save": {
+            "label": {
+              "v1": "Save"
+            }
+          },
+          "calculate": {
+            "label": {
+              "v1": "Calculate"
+            }
+          },
+          "payOff": {
+            "label": {
+              "v1": "Payoff "
+            }
+          },
+          "paymentExceedsPrincipal": {
+            "label": {
+              "v1": "Amount exceeds Principal Balance."
+            }
+          },
+          "recurringPaymentAmountHeader": {
+            "label": {
+              "v1": "Recurring"
+            }
+          },
+          "scheduleRecurringPayment": {
+            "label": {
+              "v1": "Schedule Payments"
+            }
+          },
+          "additionalMonthlyPaymentAmount": {
+            "label": {
+              "v1": "Addition To Monthly Payment"
+            }
+          },
+          "infoUseCalculator1": {
+            "label": {
+              "v1": "Interested in saving some money? Use our"
+            }
+          },
+          "infoUseCalculator2": {
+            "label": {
+              "v1": "Savings Calculator"
+            }
+          },
+          "infoUseCalculator3": {
+            "label": {
+              "v1": "to see how much impact extra payments can make."
+            }
+          },
+          "earlyPayoffInfo1": {
+            "label": {
+              "v1": "You’re projected to pay off your loan on "
+            }
+          },
+          "earlyPayoffInfo2": {
+            "label": {
+              "v1": "That’s earlier than your original payoff date of "
+            }
+          },
+          "onTimePayoffInfo1": {
+            "label": {
+              "v1": "You're currently"
+            }
+          },
+          "onTimePayoffInfo2": {
+            "label": {
+              "v1": "on schedule"
+            }
+          },
+          "onTimePayoffInfo3": {
+            "label": {
+              "v1": "to payoff your loan on "
+            }
+          }
+        },
+        "amount": {
+          "paid": {
+            "label": {
+              "v1": "Paid"
+            }
+          },
+          "unpaid": {
+            "label": {
+              "v1": "Left"
+            }
+          }
+        },
+        "iconText": {
+          "earlyPayOff": {
+            "label": {
+              "v1": "You will be paid off early"
+            }
+          },
+          "balanceAtMaturity": {
+            "label": {
+              "v1": "You will have balance at maturity"
+            }
+          },
+          "pastDue": {
+            "label": {
+              "v1": "You are currently past due on your loan"
+            }
+          },
+          "progressBarPart1": {
+            "label": {
+              "v1": "You have paid "
+            }
+          },
+          "progressBarPart2": {
+            "label": {
+              "v1": " towards your auto loan and are estimated to pay "
+            }
+          },
+          "progressBarPart3": {
+            "label": {
+              "v1": " more."
+            }
+          },
+          "earlyPayoff": {
+            "label": {
+              "v1": "Early Payoff"
+            }
+          },
+          "isAtMature": {
+            "label": {
+              "v1": "Extra"
+            }
+          },
+          "isAtMature2": {
+            "label": {
+              "v1": "Due"
+            }
+          }
+        },
+        "eventsModal": {
+          "heading": {
+            "label": {
+              "v1": "How did this happen?"
+            }
+          },
+          "headerText": {
+            "label": {
+              "v1": "Interest accrues daily. Paying late or taking an extension increases the amount of interest that will accrue, while principal and early payments decrease that amount."
+            }
+          },
+          "loadMore": {
+            "label": {
+              "v1": "Load More"
+            }
+          },
+          "progressiveButton": {
+            "label": {
+              "v1": "Okay, I got it"
+            }
+          }
+        }
+      },
+      "dueDateChange":{
+        "headline":{
+          "label": {
+            "v1": "Due Date Change"
+          }
+        },
+        "ddcDesc1":{
+          "label": {
+            "v1": "Choose your new due date."
+          }
+        },
+        "ddcDesc2":{
+          "label": {
+            "v1": "What are the restrictions on changing my due date?"
+          }
+        },
+        "ddcDesc3":{
+          "label": {
+            "v1": "Changing your due date will result in additional accrued interest."
+          }
+        },
+        "ddcButtonText1":{
+          "label": {
+            "v1": "Pay it all up front"
+          }
+        },
+        "ddcButtonText2":{
+          "label": {
+            "v1": "Increase monthly payment"
+          }
+        },
+        "ddcButtonText3":{
+          "label": {
+            "v1": "Do nothing and pay at the end"
+          }
+        },
+        "ddcProgressButtonText":{
+          "label": {
+            "v1": "Continue to Sign"
+          }
+        },
+        "ddcTooltipTriggerText1":{
+          "label": {
+            "v1": "What are the restrictions on changing my due date?"
+          }
+        },
+        "ddcTooltipText1":{
+          "label": {
+            "v1": "We allow you to move your due date back a maximum of 15 days from your original due date. Over the course of your loan, you can change your due date 3 times, but the 15 day limit still applies."
+          }
+        },
+        "ddcTooltipTriggerText2":{
+          "label": {
+            "v1": "Why does additional interest accrue?"
+          }
+        },
+        "ddcTooltipText2":{
+          "label": {
+            "v1": "Because interest accrues daily, when you make your payment really makes a difference even if it's just a day or two. A general rule for saving money on a loan is - the faster you pay down your balance, the less interest you'll pay."
+          }
+        },
+        "ddcDisclaimer":{
+          "label": {
+            "v1": "This is an estimate based on your account status at this time. You will be provided with a final payment figure once your Due Date Change has been processed."
+          }
+        },
+        "dueDateChangeEDoc":{
+          "headline":{
+            "label": {
+              "v1": "Review and Sign"
+            }
+          },
+          "eDocEsignDisclaimerADAText":{
+            "label": {
+              "v1": "E-Sign Disclaimer"
+            }
+          },
+          "eDocDescription1":{
+            "label": {
+              "v1": "Please review the terms and conditions for changing your due date before submitting your request."
+            }
+          },
+          "eDocPlaceholderTextView":{
+            "label": {
+              "v1": "View"
+            }
+          },
+          "eDocAcknowledgement":{
+            "label": {
+              "v1": "I acknowledge I have reviewed and approve this document."
+            }
+          },
+          "eDocDisclaimer1":{
+            "label": {
+              "v1": "By electronically signing this, you are agreeing to the "
+            }
+          },
+          "eDocDisclaimer2":{
+            "label": {
+              "v1": " and have reviewed the Due Date Change Terms and Conditions "
+            }
+          },
+          "eDocDisclaimerLinkText2":{
+            "label": {
+              "v1": "Electronic Delivery Disclosure Notice"
+            }
+          },
+          "eDocSubmitText":{
+            "label": {
+              "v1": "Sign & Submit"
+            }
+          },
+          "changeEmailDesc1":{
+            "label": {
+              "v1": "Once submitted, we'll send a signed copy to "
+            }
+          },
+          "changeEmailDesc2":{
+            "label": {
+              "v1": "jan.smith@email.com"
+            }
+          },
+          "changeEmailDesc3":{
+            "label": {
+              "v1": "Need to edit this email?"
+            }
+          },
+          "addEmailDesc1":{
+            "label": {
+              "v1": "Please add an email address"
+            }
+          },
+          "addEmailDesc2":{
+            "label": {
+              "v1": "Once submitted, we'll send a signed copy to your email."
+            }
+          },
+          "addEmailDesc3":{
+            "label": {
+              "v1": "Add an email address now."
+            }
+          }
+
+
+        },
+        "dueDateChangeSuccess":{
+          "headline":{
+            "label": {
+              "v1": "Success!"
+            }
+          },
+          "headlineWithCoborrower":{
+            "label": {
+              "v1": "Your Part's Done!"
+            }
+          },
+          "successDescription1":{
+            "label": {
+              "v1": "Your due date change request has been successfully submitted."
+            }
+          },
+          "successDescriptionWithCoBorrower":{
+            "label": {
+              "v1": "We've received your authorization and now we need your co-borrower to sign off as well."
+            }
+          },
+          "oldDueDateTitle":{
+            "label": {
+              "v1": "Old Due Date"
+            }
+          },
+          "newDueDateTitle":{
+            "label": {
+              "v1": "New Due Date"
+            }
+          },
+          "dateSuffix":{
+            "label": {
+              "v1": " of the Month"
+            }
+          },
+          "successDescription2":{
+            "label": {
+              "v1": "We will send you an email confirmation once everything is processed."
+            }
+          },
+          "successDescription2WithCoBorrower":{
+            "label": {
+              "v1": "Have them look out for a letter with instructions on how to approve the due date change."
+            }
+          },
+          "successDescription3":{
+            "label": {
+              "v1": "Continue to make payments by your current due date until we notify you that your request has been completed."
+            }
+          },
+          "returnToAccount":{
+            "label": {
+              "v1": "Return to Account"
+            }
+          },
+          "pleaseNoteLabel":{
+            "label": {
+              "v1": "Please Note:"
+            }
+          },
+          "pleaseNoteText":{
+            "label": {
+              "v1": "You have 15 days to complete your requirements before you'd have to start all over. "
+            }
+          },
+          "pleaseNoteTextWithRequirements":{
+            "label": {
+              "v1": "Because of the timing of your request, you'll still need to make your next payment according to your old due date. After that your due date will be the {day} of each month."
+            }
+          },
+          "dueDateChangeSuccessPlaceholderText":{
+            "label": {
+              "v1": "New Date"
+            }
+          }
+        },
+        "dueDateChangeError": {
+          "headline":{
+            "label": {
+              "v1": "It's Not You, It's Us"
+            }
+          },
+          "errorDescription1":{
+            "label": {
+              "v1": "We're experiencing some technical difficulties with our server. You can try again but if it's still giving you fits, come back in 30 min."
+            }
+          },
+          "errorDescription2":{
+            "label": {
+              "v1": "If it's urgent, give us a call at 1-800-946-0332 and we can submit your due date change over the phone."
+            }
+          },
+          "tryAgainButtonText":{
+            "label": {
+              "v1": "Try Again"
+            }
+          },
+          "contactUsButtonText":{
+            "label": {
+              "v1": "Contact Us"
+            }
+          },
+          "dueDateChangeEdocError": {
+            "errorHeader": {
+              "label": {
+                "v1": "Oops, We Hit a Snag!"
+              }
+            },
+            "errorMessage": {
+              "label": {
+                "v1": "Looks like we've hit a snag while retrieving the due date change information. Please try again in a bit."
+              }
+            }
+          }
+        },
+        "dueDateChangeCompletedMessage": {
+          "message": {
+            "v1": "Your due date change request for {nickName} - {last4LoanCust} has been completed! Your new due date is {newDueDate}."
+          }
+        },
+        "dueDateChangeIncompleteMessage": {
+          "message": {
+            "v1": "Unfortunately, we've declined your due date change request for {nickName} - {last4LoanCust}. Please continue to make your loan payments in accordance with your next due date of {oldDueDate}. If you'd like additional info on why your request was declined, give us a call at 1-800-946-0332."
+          }
+        },
+        "dueDateChangePendingMessage": {
+          "message": {
+            "v1": "Your recent due date change is still processing. On average it takes one to two business days to be finalized."
+          }
+        },
+        "dueDateChangeNeedCoBorrowerSignatureMessage": {
+          "message": {
+            "v1": "We're still waiting on your co-borrower to authorize the due date change. After both of you have signed, it usually takes one to two business days to be finalized."
+          }
+        },
+        "ddcBothBorrowersSignMessage": {
+          "message": {
+            "v1": "We're still waiting on signatures from you and co-borrower to authorize the due date change. After both of you have signed, it usually takes one to two business days to be finalized."
+          }
+        },
+        "dueDateChangeEsignLinkMessage": {
+          "message": {
+            "v1": "You can eSign the Due Date Change Request Letter now."
+          }
+        },
+        "ddcBorrowerOnlySignMessage": {
+          "message": {
+            "v1": "We're still waiting on your signature to authorize the due date change. After you have signed, it usually takes one to two business days to be finalized."
+          }
+        },
+        "electronicDeliveryDisclosureNotice": {
+          "headline": {
+            "label": {
+              "v1": "Account Disclosures"
+            }
+          },
+          "headline2": {
+            "label": {
+              "v1": "Electronic Delivery Disclosure Notice"
+            }
+          },
+          "eddnDesc1": {
+            "label": {
+              "v1": "This consent for electronic delivery applies to all required disclosures regarding all accounts you have with Capital One Auto Finance (“we,” “us,” or “Capital One”)®, a division of Capital One, N.A., and is effective until withdrawn by you. Agreeing to accept disclosures electronically means that once we present them to you, and if necessary, you click to accept them, they will apply to you and your accounts with us."
+            }
+          },
+          "eddnDesc2p1": {
+            "label": {
+              "v1": "Open a "
+            }
+          },
+          "eddnDesc2p2": {
+            "label": {
+              "v1": "sample eStatement"
+            }
+          },
+          "eddnDesc2p3": {
+            "label": {
+              "v1": "to make sure you can view/print statements."
+            }
+          },
+          "eddnDesc3": {
+            "label": {
+              "v1": "Electronic acceptance of disclosures means that Capital One will not mail them to you unless requested by you at a later date. To request a hard copy of a disclosure or to have all future disclosures provided to you in hard copy, you may contact us at 1-800-946-0332, or use a method that may be made available to you on this web site. In general, disclosures that are posted to our website will be available to Customers in good standing for 24 months after they are posted. Here is a list of some of the disclosures you may get electronically:"
+            }
+          },
+          "listOfDisclosures1": {
+            "label": {
+              "v1": "Account opening Documents"
+            }
+          },
+          "listOfDisclosures2": {
+            "label": {
+              "v1": "Statements"
+            }
+          },
+          "listOfDisclosures3": {
+            "label": {
+              "v1": "Year-end tax information"
+            }
+          },
+          "listOfDisclosures4": {
+            "label": {
+              "v1": "Preauthorize electronic funds transfers"
+            }
+          },
+          "listOfDisclosures5": {
+            "label": {
+              "v1": "Change-in-terms information for your account"
+            }
+          },
+          "listOfDisclosures6": {
+            "label": {
+              "v1": "Annual notices re: electronic funds transfers and our Privacy Policy"
+            }
+          },
+          "listOfDisclosures7": {
+            "label": {
+              "v1": "Any other disclosures that we are required to provide; and"
+            }
+          },
+          "listOfDisclosures8": {
+            "label": {
+              "v1": "Notices related to any dispute you might raise under the Electronic Funds Transfer Act or Truth in Lending Act."
+            }
+          },
+          "eddnDesc4": {
+            "label": {
+              "v1": "If Capital One determines that an e-mail message to you regarding any disclosure is undeliverable, we may, at our discretion, choose to mail that disclosure to you using United States mail."
+            }
+          },
+          "eddnDesc5": {
+            "label": {
+              "v1": "You may withdraw consent for electronic delivery of disclosures, but doing so will not affect the legal effectiveness, validity, or enforceability of electronic records that were made available to you prior to the implementation of your withdrawal. To withdraw consent, or to provide updated information on how Capital One may contact you electronically, you must write to Capital One at P.O. Box 360, Wilmington, DE 19899 or use a method that may be made available to you on this website. If you withdraw consent for electronic delivery, Capital One will provide required disclosures to you using United States mail."
+            }
+          },
+          "eddnDesc6": {
+            "label": {
+              "v1": "We don't officially support a specific operating system or browser; however, we recommend the following when accessing our site:"
+            }
+          },
+          "listOfBrowsers1": {
+            "label": {
+              "v1": "Internet Explorer 11"
+            }
+          },
+          "listOfBrowsers2": {
+            "label": {
+              "v1": "Chrome 50"
+            }
+          },
+          "listOfBrowsers3": {
+            "label": {
+              "v1": "Firefox 46"
+            }
+          },
+          "listOfBrowsers4": {
+            "label": {
+              "v1": "Safari 9"
+            }
+          }
+        },
+        "changeEmail": {
+          "headline":{
+            "label": {
+              "v1": "Edit Email"
+            }
+          },
+          "helpText":{
+            "label": {
+              "v1": "Enter your updated email address."
+            }
+          },
+          "yourEmail":{
+            "label": {
+              "v1": "Your Email"
+            }
+          },
+          "retypeYourEmail":{
+            "label": {
+              "v1": "Retype Your Email"
+            }
+          },
+          "nomatchError":{
+            "label":{
+              "v1":"Try again. These emails do not match."
+            }
+          },
+          "maxError":{
+            "label":{
+              "v1":"Email must not exceed 50 characters."
+            }
+          },
+          "saveAndContinue":{
+            "label": {
+              "v1": "Save and Continue"
+            }
+          },
+          "emailDisclaimer":{
+            "label": {
+              "v1": "When you update your primary email address, we will apply the change to all Capital One accounts that are linked to this user name.  Furthermore, when you provide your email address, we may use it to send you important information about your application and account(s), as well as other useful products and services."
+            }
+          }
+        },
+        "addEmail": {
+          "headline":{
+            "label": {
+              "v1": "Add Email"
+            }
+          },
+          "helpText":{
+            "label": {
+              "v1": "Enter your new email address."
+            }
+          }
+        }
+      },
+      "carPayCatchUp":{
+        "pastDuePaymentOptions":{
+          "pastDueMessage": {
+            "label": {
+              "v1": "View Options"
+            }
+          },
+          "productHeading": {
+            "label": {
+              "v1": "Payment Options"
+            }
+          },
+          "iconAltText": {
+            "label": {
+              "v1": "Warning, your account is past due."
+            }
+          },
+          "accountDueHeading": {
+            "label": {
+              "v1": "Your account is <strong>{pasDueDays} days</strong> "
+            }
+          },
+          "pastDueAmountMessage" : {
+            "label": {
+              "v1": "Your account is ${pastDueAmount} past due."
+            }
+          },
+          "paymentCatchupPlanMessage": {
+            "label": {
+              "v1": "You're on track to get current."
+            }
+          },
+          "accountDueHeadingSingular": {
+            "label": {
+              "v1": "Your account is <strong>{pasDueDays} day</strong> "
+            }
+          },
+          "sliderTooltipLabel": {
+            "label": {
+              "v1": "Your account is {pasDueDays} day past due."
+            }
+          },
+          "accountDueHeadingPastDue": {
+            "label": {
+              "v1": "past due."
+            }
+          },
+          "zeroDaysLate": {
+            "label": {
+              "v1": "0<br />Day(s)"
+            }
+          },
+          "thirtyDaysLate": {
+            "label": {
+              "v1": "30<br />Days"
+            }
+          },
+          "sixtyDaysLate": {
+            "label": {
+              "v1": "60<br />Days"
+            }
+          },
+          "ninetyDaysLate": {
+            "label": {
+              "v1": "90<br />Days"
+            }
+          },
+          "optionsHeading": {
+            "label": {
+              "v1": "What are my options?"
+            }
+          },
+          "optionsDesc1": {
+            "label": {
+              "v1": "We understand things happen and we may have a few options to help you get caught up."
+            }
+          },
+          "optionsOneHeading": {
+            "label": {
+              "v1": "Pay My Total Due"
+            }
+          },
+          "optionsOneDesc1": {
+            "label": {
+              "v1": "This includes your past due amount, any outstanding fees and your next payment that is due on {dueDate}."
+            }
+          },
+          "optionsTwoHeading": {
+            "label": {
+              "v1": "Pay My Past Due"
+            }
+          },
+          "optionsTwoDesc1": {
+            "label": {
+              "v1": "Paying your past due amount will bring your account current. Just don't forget to make your next monthly payment on {dueDate}."
+            }
+          },
+          "optionsThreeHeading": {
+            "label": {
+              "v1": "Create a Payment Plan"
+            }
+          },
+          "optionsThreeDesc1": {
+            "label": {
+              "v1": "If you can't pay the full amount today don't worry, we may have other options to help you get back on track."
+            }
+          },
+          "optionsThreeLinkCreatePlan": {
+            "label": {
+              "v1": "Create a payment plan."
+            }
+          },
+          "optionsThreeLinkCallForHelp": {
+            "label": {
+              "v1": "More information."
+            }
+          },
+          "restrictionsTooltipTrigger": {
+            "label": {
+              "v1": "What happens if I do nothing?"
+            }
+          },
+          "restrictionsTooltipText": {
+            "label": {
+              "v1": "If your account is past due, you may be assessed late fees and reported to the credit bureaus when your account status reaches 30 days past due.  Your account will also accrue additional interest that you’ll have to pay by the end of your loan."
+            }
+          },
+          "currentStatusTooltipText": {
+            "label": {
+              "v1": "If your account is 30, 60, or 90 days past due at the end of the month, we will report you as such to the credit agencies."
+            }
+          }
+        },
+        "monthlyPayment":{
+          "modalTitle": {
+            "label": {
+              "v1": "Are you able to make your minimum required payment?"
+            }
+          },
+          "descriptionOne": {
+            "label": {
+              "v1": "Are you able to make your minimum required payment of ${monthlyPaymentAmount} {dayDateDescription}?"
+            }
+          },
+          "todayText": {
+            "label": {
+              "v1": "today"
+            }
+          },
+          "onText": {
+            "label": {
+              "v1": "on "
+            }
+          },
+          "tooltipOneText": {
+            "label": {
+              "v1": "Making the minimum required payment will reduce your days past due by 1 month. This gets you closer to being caught up on your payments."
+            }
+          },
+          "tooltipOneTriggerText": {
+            "label": {
+              "v1": "Why do I need to make the minimum required payment?"
+            }
+          },
+          "tooltipTwoText": {
+            "label": {
+              "v1": "If your account is 30, 60, or 90 days past due at the end of the month, we will report you as such to the credit agencies."
+            }
+          },
+          "tooltipTwoTriggerText": {
+            "label": {
+              "v1": "How does this impact my credit?"
+            }
+          },
+          "progressiveButtonText": {
+            "label": {
+              "v1": "Yes"
+            }
+          },
+          "cancelButtonText": {
+            "label": {
+              "v1": "No"
+            }
+          }
+        },
+        "beforeBy" : {
+          "modalTitle": {
+            "label": {
+              "v1": "What about by"
+            }
+          },
+          "descriptionOne": {
+            "label":{
+              "v1": "Can you pay"
+            }
+          },
+          "descriptionTwo": {
+            "label": {
+              "v1": "If so, what day will you make that payment?"
+            }
+          },
+          "by": {
+            "label": {
+              "v1": "by"
+            }
+          },
+          "datePickerLabel": {
+            "label": {
+              "v1": "Payment Date"
+            }
+          },
+          "progressiveButtonText": {
+            "label": {
+              "v1": "Yes"
+            }
+          },
+          "cancelButtonText": {
+            "label": {
+              "v1": "No"
+            }
+          }
+        },
+        "contactUs":{
+          "modalTitle": {
+            "label": {
+              "v1": "We understand your situation."
+            }
+          },
+          "descriptionOne": {
+            "label": {
+              "v1": "Give us a call at 1-800-946-0332 as soon as possible and we'll discuss if there are more options to help you get back on track."
+            }
+          },
+          "closeButtonText": {
+            "label": {
+              "v1": "Exit"
+            }
+          }
+        },
+        "planSummary":{
+          "modalTitle": {
+            "label": {
+              "v1": "Great! Now let's plan out the rest."
+            }
+          },
+          "description": {
+            "label": {
+              "v1": "After {firstPaymentDate} payment, we'll divide what is left and add it to your <span id=\"nextPayments\" class=\"next-payments\">next {numberOfRemainingCatchupPayments} monthly payments.</span>"
+            }
+          },
+          "plusLabel": {
+            "label": {
+              "v1": "Plus"
+            }
+          },
+          "reassuranceText": {
+            "label": {
+              "v1": "If everything looks good, next you'll choose the account you'd like to use."
+            }
+          },
+          "highFive": {
+            "label": {
+              "v1": "High five! Making this payment will reduce your past due amount."
+            }
+          },
+          "progressButtonText": {
+            "label": {
+              "v1": "Choose Account"
+            }
+          },
+          "customizeButtonText": {
+            "label": {
+              "v1": "Customize This Plan"
+            }
+          }
+        },
+		"customizePlan":{
+		  "distribute": {
+			  "label": {
+				  "v1": "Distribute the remaining:"
+			  }
+		  },
+		  "doubleCheck": {
+			  "label": {
+				  "v1": "If everything looks good, next you'll choose the account you'd like to make payments from."
+			  }
+		  },
+		  "chooseAccountButton": {
+			  "label": {
+				  "v1": "Choose Account"
+			  }
+		  }
+		},
+        "reviewPlan": {
+          "header": {
+            "label": {
+              "v1": "Look over your payments and if everything looks doable, go ahead and submit your plan."
+            }
+          },
+          "disclaimerOne": {
+            "label": {
+              "v1": "By clicking the \"Submit\" Payment button, I authorize Capital One to make a one-time debit today, and three recurring payments in the amounts and dates shown above from my account ending on the last date as outlined in my payment summary."
+            }
+          },
+          "disclaimerTwo": {
+            "label": {
+              "v1": "I understand that I have until 5 PM ET on the scheduled payment dates to cancel a payment."
+            }
+          },
+          "disclaimerThree": {
+            "label": {
+              "v1": "If you have any questions please call us at 1-800-946-0332."
+            }
+          },
+          "confirmButton": {
+            "button": {
+              "v1": "Submit Payments"
+            }
+          },
+          "date": {
+            "label": {
+              "v1": "Date"
+            }
+          },
+          "from": {
+            "label": {
+              "v1": "From"
+            }
+          },
+          "amount": {
+            "label": {
+              "v1": "Amount"
+            }
+          }
+        },
+        "cpcuConfirmation":{
+          "highFive": {
+            "label": {
+              "v1": "High five!"
+            }
+          },
+          "confirmationModalText": {
+            "label": {
+              "v1": "You've submitted {paymentDay} payment and are closer to getting back on track."
+            }
+          },
+          "confirmationModalTextNotToday": {
+            "label": {
+              "v1": "You've scheduled your payments and are closer to getting back on track."
+            }
+          },
+          "todayText": {
+            "label": {
+              "v1": "today's"
+            }
+          },
+          "confirmationCodeText": {
+            "label": {
+              "v1": "CONFIRMATION CODE"
+            }
+          },
+          "confirmationPaymentHeading":{
+            "label":{
+              "v1":"Current Payment Information"
+            }},
+            "submittedText":{
+              "label": {
+                "v1": "Submitted"
+              }
+              },
+              "scheduledText":{
+                "label":{
+                  "v1":"Scheduled"
+                }
+          }
+        },
+		"areYouSure":{
+		  "title": {
+			  "label": {
+				  "v1": "Are you sure?"
+			  }
+		  },
+		  "explanation": {
+			  "label": {
+				  "v1": "<p>Exiting now will cancel this plan and your account will remain past due.</p><p>If you need assistance please give us a call at 1-800-946-0332 as soon as possible.</p>"
+			  }
+		  },
+		  "goBack": {
+			  "label": {
+				  "v1": "Go Back"
+			  }
+		  }
+		},
+
+
+
+		"selectPaymentAccount":{
+			"modalTitle": {
+				"label": {
+					"v1": "Where would you like to pay from?"
+				}
+			},
+			"description": {
+				"label": {
+					"v1": "Select which account you would like us to use to withdraw your payments."
+				}
+			},
+			"tooltipText": {
+				"label": {
+					"v1": "Making one monthly payment today will move your account from 60 to 30 days past due. This improves what is being reported to the credit bureaus and gets you much closer to being caught up on your payments."
+			 	}
+			},
+      "defaultBlankAccount": {
+        "label": {
+          "v1": "true"
+        }
+      },
+          "tooltipTrigger": {
+            "label": {
+              "v1": "Why should I make one monthly payment?"
+            }
+          },
+          "tooltipText2": {
+            "label": {
+              "v1": "Whenever your account becomes 30, 60 or 90 days past due we're required to report you as such. Going from 60 to 30 days can lessen the impact to your credit."
+            }
+          },
+          "tooltipTrigger2": {
+            "label": {
+              "v1": "Why should I make one monthly payment?"
+            }
+          },
+          "reviewPlanButton": {
+            "label": {
+              "v1": "Review Plan"
+            }
+          },
+          "useMultipleAccountButton": {
+            "label": {
+              "v1": "Use Multiple Account"
+            }
+          }
+		},
+
+
+
+
+
+        "helpIsOnTheWay":{
+          "header":{
+            "label":{
+              "v1": "Help is on the way!"
+            }
+          },
+          "description":{
+            "label":{
+              "v1": "<p>We're currently building a tool that will allow you to break up your past due amount into multiple smaller payments.</p><p>In the meantime, give us a call at 1-800-946-0332 and we can set up this plan over the phone or discuss other options you may have.</p>"
+            }
+          }
+        },
+
+
+
+        "labels":{
+          "from": {
+            "label": {
+              "v1": "From"
+            }
+          },
+          "scheduled": {
+            "label": {
+              "v1": "Scheduled"
+            }
+          },
+          "Payment": {
+            "label": {
+              "v1": "Payment"
+            }
+          },
+          "amount": {
+            "label": {
+              "v1": "Amount"
+            }
+          },
+          "pastDuePayment": {
+            "label": {
+              "v1": "past due payment"
+            }
+          },
+          "monthlyPayment": {
+            "label": {
+              "v1": "monthly payment"
+            }
+          },
+          "totalPayment": {
+            "label": {
+              "v1": "total payment"
+            }
+          },
+          "paymentDate": {
+            "label": {
+              "v1": "Payment Date:"
+            }
+          },
+          "todaysDate": {
+            "label": {
+              "v1": "Today's Date:"
+            }
+          },
+          "yourLabel": {
+            "label": {
+              "v1": "your "
+            }
+          },
+          "todayLabel": {
+            "label": {
+              "v1": "Today's"
+            }
+          },
+          "todayTextWithQuote": {
+            "label": {
+              "v1": "today's"
+            }
+          },
+          "todaysPayment": {
+            "label": {
+              "v1": "{firstPaymentDate} Payment"
+            }
+          },
+          "exit": {
+            "label": {
+              "v1": "Exit"
+            }
+          },
+          "firstLabel": {
+            "label": {
+              "v1": "First"
+            }
+          }
+        }
+      },
+      "pastDuePayment": {
+        "headline": {
+          "label": {
+            "v1": "Loan Tracker Status"
+          }
+        },
+        "pastDuePaymentDesc1": {
+          "label": {
+            "v1": "To take full advantage of the Loan Tracker tool we need to get your account current."
+          }
+        },
+        "pastDuePaymentDesc2": {
+          "label": {
+            "v1": "We understand things happen. You can make a payment now or contact us for more options."
+          }
+        },
+        "pastDuePaymentDesc3": {
+          "label": {
+            "v1": "Past Due."
+          }
+        },
+        "pastDuePaymentTooltipTriggerText": {
+          "label": {
+            "v1": "How does this affect me?"
+          }
+        },
+        "pastDuePaymentTooltipText": {
+          "label": {
+            "v1": "Each day your account is past due, you're accruing more and more unnecessary interest. This will impact your loan long term, so the faster you get current, the better."
+          }
+        },
+        "pastDuePaymentMakePayment": {
+          "label": {
+            "v1": "Make a Payment"
+          }
+        },
+        "pastDuePaymentContinue": {
+          "label": {
+            "v1": "Continue to Loan Tracker"
+          }
+        },
+        "disclaimerAriaText": {
+          "label": {
+            "v1": " is your past due amount. Click this link to view Legal Rights and Obligations Disclaimer."
+          }
+        },
+        "disclaimerModal":{
+          "header": {
+            "label": {
+              "v1": "Legal Rights and Obligations"
+            }
+          },
+          "paragraphOne": {
+            "label": {
+              "v1": "If you're behind on your auto loan account payments, we want to inform you of your legal rights and obligations."
+            }
+          },
+          "paragraphTwo": {
+            "label": {
+              "v1": "<strong>State and Local Disclosures.</strong> If you receive this communication in Connecticut, the District of Columbia, Hawaii, Iowa, New York City, North Carolina, or Oregon and your account involves a debt owed primarily for personal, family, household, or other consumer purpose(s), or if you receive this communication in Vermont irrespective of the nature of the debt associated with your account, the following disclosure is required by state or local law: <strong>This is an attempt to collect a (consumer) debt (claim). Any information obtained will be used for that purpose.</strong>"
+            }
+          },
+          "paragraphThree": {
+            "label": {
+              "v1": "The following disclosure is required by state law if your account involves a debt owed primarily for personal, family, household, or other consumer purpose(s) and you receive this communication in Hawaii, Iowa, or Oregon. <strong>This communication is from a debt collector.</strong> The following disclosure is required by state law if your account involves a debt owed primarily for personal, family, household, or other consumer purpose(s) and you receive this communication in Massachusetts: <strong>NOTICE OF IMPORTANT RIGHTS: YOU HAVE THE RIGHT TO MAKE A WRITTEN OR ORAL REQUEST THAT TELEPHONE CALLS REGARDING YOUR DEBT NOT BE MADE TO YOU AT YOUR PLACE OF EMPLOYMENT. ANY SUCH ORAL REQUEST WILL BE VALID FOR ONLY 10 DAYS UNLESS YOU PROVIDE WRITTEN CONFIRMATION OF THE REQUEST POSTMARKED OR DELIVERED WITHIN SEVEN DAYS OF SUCH REQUEST. YOU MAY TERMINATE THIS REQUEST BY WRITING TO THE CREDITOR.</strong>"
+            }
+          },
+          "paragraphFour": {
+            "label": {
+              "v1": "This is not a complete list of the rights that you might have. The terms above in this Section are defined by applicable state or local law. Pursuant 15 USC 1692a(6)(B) and (F) of the Fair Debt Collection Practices Act, Capital One Services, LLC is not a debt collector under federal law. <strong>Bankruptcy.</strong> If you are entitled to bankruptcy protections for your account, this communication is only for informational purposes. It is not an attempt to collect, assess, or recover a debt or claim. Do not send any payments directly to us without speaking with your attorney or Bankruptcy Trustee."
+            }
+          },
+          "close": {
+            "label": {
+              "v1": "I understand"
+            }
+          }
+        }
+      },
+
+
+      "carousel":{
+        "container":{
+          "title":{
+            "label":{
+              "v1": "Did you know?"
+            }
+          }
+        },
+        "slideOne":{
+          "title":{
+            "label":{
+              "v1": "About Auto Loan Tracker"
+            }
+          },
+          "content":{
+            "label":{
+              "v1": "We calculate the amount left on your loan based on your principal balance, interest rate, and the assumption that you make your payments each month on your due date for the remainder of your loan without additional loan modifications."
+            }
+          }
+        },
+        "slideTwo":{
+          "title":{
+            "label":{
+              "v1": "Simple Interest Loans: Simplified (Video)"
+            }
+          },
+          "content":{
+            "label":{
+              "v1": "<a id='video-link-2' href='https://www.youtube.com/watch?v=zWU0SGhtUKY' target='_blank'><img id='carousel-item-content-2' class='video-preview' src='/ease-ui/bower_components/AutoLoan/ver01.01.01.1566/directives/autoloan-carousel/assets/video-preview.png' alt='Links to Simple Interest Loans: Simplified (Video) on YouTube'></a>"
+            }
+          },
+          "altText":{
+            "label":{
+              "v1": "Links to Simple Interest Loans: Simplified (Video) on YouTube"
+            }
+          }
+        },
+        "slideThree":{
+          "title":{
+            "label":{
+              "v1": "When You Pay Matters"
+            }
+          },
+          "content":{
+            "label":{
+              "v1": "Because interest accrues daily, when you make your payment really makes a difference. A general rule for saving money on a loan is - the faster you pay down the total amount you owe, the less interest you'll pay."
+            }
+          }
+        },
+        "slideFour":{
+          "title":{
+            "label":{
+              "v1": "Pay Down Your Loan Faster"
+            }
+          },
+          "content":{
+            "label":{
+              "v1": "Making a payment before your due date, adding a little more to your regular monthly payment each month, or making an additional principal payment will help lower your loan balance faster and reduce the interest that accrues on your loan."
+            }
+          }
+        },
+        "slideFive":{
+          "title":{
+            "label":{
+              "v1": "Late Payments Mean More Interest"
+            }
+          },
+          "content":{
+            "label":{
+              "v1": "Paying late or taking an extension increases the amount of interest that will accrue. A repeated pattern of late payments makes it more likely that you will owe money at the end of your loan term."
+            }
+          }
+        },
+        "controls":{
+          "previousButton":{
+            "label":{
+              "v1": "Previous Slide"
+            }
+          },
+          "nextButton":{
+            "label":{
+              "v1": "Next Slide"
+            }
+          }
+
+        }
+      },
+      "paperlessModal" : {
+        "paperlessMakeEdit": {
+          "label": {
+            "v1": "Update settings"
+          }
+        },
+      "paperlessHeaderMessage": {
+        "label": {
+          "v1": "Receive your monthly statements online only."
+        }
+      },
+      "disclaimerMessage": {
+        "label": {
+          "v1": "By turning Paperless on you agree to Paperless <a id=\"{0}\" class=\"cancel\" target = \"_target\" href=\"https://www.capitalone.com/terms-autoloans/\">Terms and Conditions</a> and will no longer receive paper statements in the mail.",
+          "v2": "By turning Paperless on you agree to Paperless Terms and Conditions and will no longer receive paper statements in the mail."
+
+        }
+      },
+
+      "title": {
+        "label": {
+          "v1": "Paperless Settings"
+        }
+      },
+       "goPaperless": {
+          "label": {
+            "v1": "Go Paperless"
+          }
+      },
+       "errorMessage":{
+         "label": {
+           "v1": "Looks like we ran into a snag and can't display paperless details right now.  Please try again later, or give us a call at 1-800-464-0322."
+         }
+       }
+    },
+      "moreServices": {
+        "ease.autoloan.moreServices.headline": "More Services",
+        "headlines": {
+          "accountManagement": "Account Management",
+          "preferences": "Settings & Preferences",
+          "documentsForms": "Documents & Forms",
+          "checks": "Checks",
+          "transfersPayments": "Transfers & Payments",
+          "messages": "Alerts & Messages"
+        },
+        "sections": {
+          "account": {
+            "activate": "Activate Your Card",
+            "deactivate": "Deactivate Your Card",
+            "activationDefault": "Card Activation",
+            "pinManagement": "Pin Management",
+            "travelNotify": "Notify Us of Travel",
+            "externalAccounts": "Manage External Accounts",
+            "accessCode": "Get Access Code",
+            "dueDateChange": "Due Date Change",
+            "manageAddressAndPhoneNumber": "Manage Contact Information",
+            "paperlessPreference": "Paperless Preference"
+          },
+          "documentsForms": {
+            "documents": "Documents",
+            "statements": "eStatements",
+            "taxForms": "Tax Forms",
+            "directDeposit": "Direct Deposit",
+            "paperless": "Go Paperless",
+            "EASEStatements": "View Statements"
+          },
+          "transfersPayments": {
+            "person": "Person 2 Person Payment",
+            "billPay": "Bill Pay",
+            "transfer": "Transfer Money",
+            "transferActivity": "View Transfer Activity",
+            "paymentActivity": "View Payment Activity",
+            "automaticSavings": "Automatic Savings Plan"
+          },
+          "messages": {
+            "view": "View Messages",
+            "deliveryOptions": "Message Delivery Options",
+            "alerts": "Manage Alerts",
+            "textCommands": "Text Commands"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1 @@
+define(["angular"],function(n){n.module("CreditCardCosLink",[]).constant("CreditCardCosLink",{cosUrl:"https://cosqa3.kdc.capitalone.com"})});

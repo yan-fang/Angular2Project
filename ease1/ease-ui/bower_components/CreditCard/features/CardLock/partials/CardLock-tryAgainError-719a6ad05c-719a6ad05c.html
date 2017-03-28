@@ -1,0 +1,28 @@
+<div class="bk-btn-cl" id="bt-back" ng-click="ccCardLock.back();" tabindex="0" role="link">
+    <i class="icon-arrow-back"></i>
+    <span class="back-btn-off-screen" aria-label="{{'ease.card.cardlock.lockthiscard.back.button.v1' | translate}}">
+        {{'ease.card.cardlock.lockthiscard.back.button.v1' | translate}}
+    </span>
+</div>
+<h2 class="card-lock-h2text" id="cc-card-lock-try-again" aria-label="{{'ease.card.cardlock.tryagain.title.text.v1' | translate}}">
+  {{'ease.card.cardlock.tryagain.title.text.v1' | translate}}
+  </h2>
+<p class="card-lock-msg" id="cc-card-lock-try-again-info-text" aria-label="{{'ease.card.cardlock.tryagain.info.text.v1' | translate}}">
+    {{'ease.card.cardlock.tryagain.info.text.v1' | translate}}
+</p>
+<button ng-if="previousState==='lockThisCard'" class="btn destructive cc-modal-button cc-card-lock-yes" id="cc-card-lock-try-again-confirm-button" tabindex="0" ng-click="ccCardLock.postService(false)" aria-label="{{'ease.card.cardlock.tryagain.confirm.button.v1' | translate}}">
+    <span ng-hide="ccCardLock.loading">
+              {{'ease.card.cardlock.tryagain.confirm.button.v1' | translate}}
+    </span>
+    <div class="cc-spinner" ng-class="{'loading':ccCardLock.loading}"></div>
+</button>
+<button ng-if="previousState==='turnItOn'" class="btn destructive cc-modal-button cc-card-lock-yes" id="cc-card-lock-try-again-confirm-button" tabindex="0" ng-click="ccCardLock.postService(true)" aria-label="{{'ease.card.cardlock.tryagain.confirm.button.v1' | translate}}">
+    <span ng-hide="ccCardLock.loading">
+              {{'ease.card.cardlock.tryagain.confirm.button.v1' | translate}}
+    </span>
+    <div class="cc-spinner" ng-class="{'loading':ccCardLock.loading}"></div>
+</button>
+<button class="btn ghost progressive cc-modal-button cc-card-lock-cancel" id="cc-card-lock-try-again-cancel-button" tabindex="0" data-ng-click="::ccCardLock.closeModal($event)" aria-label="{{'ease.card.cardlock.tryagain.cancel.button.v1' | translate}}">
+    {{'ease.card.cardlock.tryagain.cancel.button.v1' | translate}}
+</button>
+

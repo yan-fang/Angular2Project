@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/AutoLoan/ver01.01.01.1566/styles/auto-loan-override.css">
+<div data-ng-controller="AutoLoanPaymentCancelSuccess as cancelOneTimeSuccess">
+  <div style="z-index:100;" ease-modal toggle-close="cancelOneTimeSuccess.close()" modal-role="cancelOneTimeSuccess.modalRole" init-close="cancelOneTimeSuccess.initClose"
+       modal-class="cancelOneTimeSuccess.modalClass" modal-type="cancelOneTimeSuccess.modalType" focus-id="focusId">
+    <h2  id="cancelOneTimePaymentSuccessHeader"
+      data-ng-bind="cancelOneTimeSuccess.i18n.coaf.payment.cancelPaymentSuccess.successHeader.label.v1"
+      aria-label="{{cancelOneTimeSuccess.i18n.coaf.payment.cancelPaymentSuccess.successHeader.label.v1}}">
+    </h2>
+    <p  class="successMessage" id="cancelOneTimePaymentSuccessMessage"
+          data-ng-bind="cancelOneTimeSuccess.i18n.coaf.payment.cancelPaymentSuccess.successMessage1.label.v1 + ' ' +
+                        (cancelOneTimeSuccess.cancelOneTimePaymentSuccessDetails.oneTimePaymentToCancelTransactionAmount | currency) + ' ' +
+                        cancelOneTimeSuccess.i18n.coaf.payment.cancelPaymentSuccess.successMessage2.label.v1 + ' ' +
+                        cancelOneTimeSuccess.cancelOneTimePaymentSuccessDetails.oneTimePaymentToCancelDate + ' ' +
+                        cancelOneTimeSuccess.i18n.coaf.payment.cancelPaymentSuccess.successMessage3.label.v1"
+          aria-label="{{cancelOneTimeSuccess.i18n.coaf.payment.cancelPaymentSuccess.successMessage1.label.v1}}
+                      {{cancelOneTimeSuccess.cancelOneTimePaymentSuccessDetails.oneTimePaymentToCancelTransactionAmount | currency}}
+                      {{cancelOneTimeSuccess.i18n.coaf.payment.cancelPaymentSuccess.successMessage2.label.v1}}
+                      {{cancelOneTimeSuccess.cancelOneTimePaymentSuccessDetails.oneTimePaymentToCancelDate}}
+                      {{cancelOneTimeSuccess.i18n.coaf.payment.cancelPaymentSuccess.successMessage3.label.v1}}">
+    </p>
+  </div>
+</div>

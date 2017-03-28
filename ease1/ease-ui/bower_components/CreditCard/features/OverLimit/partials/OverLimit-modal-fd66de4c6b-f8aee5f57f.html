@@ -1,0 +1,9 @@
+<div ng-controller="OverLimitModalController as ccOverLimit">
+    <ease-ui-modal ng-class="overlimitModalClass" focus-id="ccOverLimit.focusId" close-modal="ccOverLimit.closeModal()" modal-id="'ccOverLimitModal'" ng-show="overLimitTemplate">
+    	<div cc-load-screen id="ccOverLimitSpinner"></div>
+        <div ng-if="overLimitState === 'overLimit'" data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/OverLimit/partials/OverLimit-e847addc86-e847addc86.html'"></div>
+        <div ng-if="overLimitState ==='olLearnMore'" data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/OverLimit/partials/OverLimit-learnmore-d0b83c22c4-d0b83c22c4.html'"></div>
+        <div ng-if="overLimitState ==='olSnagError'" data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/OverLimit/partials/overlimit-snagError-217d5824e8-217d5824e8.html'"></div>
+        <div ng-if="overLimitState ==='capitaloneCustomerServices'" data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/OverLimit/partials/OverLimit-contactUsError-93be773ec0-93be773ec0.html'"></div>
+    </ease-ui-modal>
+</div>

@@ -1,0 +1,95 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/HomeLoans/ver1490643033478/styles/home-loan-override.css">
+<div data-ng-controller="SuccessHLPaymentCtrl as paymentSuccess">
+  <div ease-modal toggle-close="paymentSuccess.close()" init-close="paymentSuccess.initClose" modal-class="paymentSuccess.modalClass" modal-type="paymentSuccess.modalType" focus-class="paymentSuccess.focusClass" focus-id="focusId">
+    <h2 ng-show="paymentSuccess.successMsg.editPaymentInfo.paymentTypeOption =='onetime'">{{paymentSuccess.i18n.payment.success}}</h2>
+    <h2 id="successRecurringId" ng-show="paymentSuccess.successMsg.editPaymentInfo.paymentTypeOption =='recurring'"> {{paymentSuccess.i18n.payment.successRecurring}}</h2>
+
+    <div>
+      <p class="successMessage">
+        <div class="homeLoanStyleSuccessMessage" ng-show="paymentSuccess.successMsg.editPaymentInfo.paymentTypeOption =='onetime'">
+          {{paymentSuccess.i18n.payment.your}} <span id="paymentOption">{{paymentSuccess.successMsg.paymentOption}}</span> {{paymentSuccess.i18n.payment.paymentWillBe}}
+          <br> {{paymentSuccess.i18n.payment.processedOn}}
+          <span id="paymentDate">{{paymentSuccess.successMsg.payDate | date:'MMM dd, yyyy'}}</span>
+        </div>
+        <div class="homeLoanStyleSuccessMessage" ng-show="paymentSuccess.isRecurringNotPushedDate()">
+          <span ng-show="!paymentSuccess.isBiWeekly()" id="successMessageRecurringMonthlyId" aria-label="{{paymentSuccess.i18n.payment.successMessageMonthlyRecurring}}">
+        {{paymentSuccess.i18n.payment.successMessageMonthlyRecurring}} </span>
+          <span ng-show="paymentSuccess.isBiWeekly()" id="successMessageRecurringBiweeklyId" aria-label="{{paymentSuccess.i18n.payment.successMessageBiWeeklyRecurring}}">
+        {{paymentSuccess.i18n.payment.successMessageBiWeeklyRecurring}}</span>  <span id="willbeProcessRecurringId">{{paymentSuccess.i18n.payment.willbeProcessed}} </span> <br>
+          <span id="successMsgPayDate" aria-label="{{paymentSuccess.i18n.payment.successMessageRecurring}}">{{paymentSuccess.successMsg.payDate | date:'MMM dd, yyyy'}}</span>
+        </div>
+
+        <div class="homeLoanStyleSuccessMessage" ng-show="paymentSuccess.isRecurringPushedDate()">
+          <span ng-show="!paymentSuccess.isBiWeekly()" id="successMessageRecurringPushedDateMonthlyId" aria-label="{{paymentSuccess.i18n.payment.successMonthlyRecurringPushedDate}}">
+        {{paymentSuccess.i18n.payment.successMonthlyRecurringPushedDate}} </span>
+          <span ng-show="paymentSuccess.isBiWeekly()" id="successMessageRecurringPushedDateBiweeklyId" aria-label="{{paymentSuccess.i18n.payment.successBiweeklyRecurringPushedDate}}">
+        {{paymentSuccess.i18n.payment.successBiweeklyRecurringPushedDate}}</span>
+
+        </div>
+
+
+      </p>
+    </div>
+    <div class="container">
+      <ul class="successDetails">
+        <div ng-show="paymentSuccess.successMsg.editPaymentInfo.paymentTypeOption =='onetime' ">
+
+          <li>
+
+            <label>{{paymentSuccess.i18n.payment.payFrom}}</label>
+            <span id="payFromInformation">
+            <div class="TLNPI">
+              {{paymentSuccess.successMsg.payFrom.substring(0,12)}} ...
+              {{ paymentSuccess.successMsg.payFromAccountNumber.
+              substring(paymentSuccess.successMsg.payFromAccountNumber.length-4,
+              paymentSuccess.successMsg.payFromAccountNumber.length) }}
+            </div></span>
+          </li>
+          <li data-ng-show="paymentSuccess.successMsg.paymentDue > 0">
+            <label>{{paymentSuccess.i18n.payment.paymentDue}}</label>
+            <span id="paymentDueAmount">{{paymentSuccess.successMsg.paymentDue | currency}}</span>
+          </li>
+          <li data-ng-show="paymentSuccess.successMsg.lateCharges > 0">
+            <label>{{paymentSuccess.i18n.payment.lateCharges}}</label>
+            <span id="lateChargesAmount">{{paymentSuccess.successMsg.lateCharges | currency}}</span>
+          </li>
+          <li data-ng-show="paymentSuccess.successMsg.principalOnly > 0">
+            <label>{{paymentSuccess.i18n.payment.principalOnly}}</label>
+            <span id="principalOnlyAmount">{{paymentSuccess.successMsg.principalOnly | currency}}</span>
+          </li>
+          <li data-ng-show="paymentSuccess.successMsg.payAmount > 0" id="paymentSuccessTotalPayment">
+            <label>{{paymentSuccess.i18n.payment.totalPayment}}</label>
+            <span id="totalPaymentAmount">{{paymentSuccess.successMsg.payAmount | currency}}</span>
+          </li>
+        </div>
+
+        <div ng-show="paymentSuccess.successMsg.editPaymentInfo.paymentTypeOption =='recurring'">
+          <ng-include src="'ease-ui/bower_components/HomeLoans/ver1490643033478/partials/HomeLoans-PaymentInfo.html'"></ng-include>
+        </div>
+      </ul>
+    </div>
+    <div class="confirmCode">
+      <span class="confirmCode" id="confirmationCodeNumeric" ng-show="paymentSuccess.successMsg.editPaymentInfo.paymentTypeOption =='onetime'">{{paymentSuccess.successMsg.confirmCode}}</span>
+      <span class="confirmCode" id="confirmationCodeNumericRecur" ng-show="paymentSuccess.successMsg.editPaymentInfo.paymentTypeOption =='recurring'">{{paymentSuccess.successMsg.confirmCode}}</span>
+
+      <br>
+
+      <span class="confirmMsg" id="confirmationCodeText">{{paymentSuccess.i18n.payment.confirmationCode}}</span>
+    </div>
+    <div class="buttons">
+      <a id="cancelPaymentId" tabindex="0" role="link" id="paymentSuccessCancelButton" aria-label="{{paymentSuccess.i18n.payment.cancelPayment}}" title="{{paymentSuccess.i18n.payment.ariaCancelsPaymentLinkMessage}}" data-ng-click="paymentSuccess.cancel();paymentSuccess.inProgress = true"
+        data-ng-if="paymentSuccess.accountDetailsData.features.cancelPaymentEnabled" href>{{paymentSuccess.i18n.payment.cancelPayment}}</a> |
+      <a id="editPaymentId" tabindex="0" role="link" id="paymentSuccessEditButton" aria-label="{{paymentSuccess.i18n.payment.editPayment}}" title="{{paymentSuccess.i18n.payment.ariaEditPaymentLinkMessage}}" data-ng-click="paymentSuccess.editPayment();paymentSuccess.inProgress = true"
+        href>
+      {{paymentSuccess.i18n.payment.editPayment}}</a>
+
+
+
+    </div>
+    <div ng-show="paymentSuccess.successMsg.editPaymentInfo.paymentTypeOption =='recurring'">
+      <p class="ccDisclaimerScheduled">{{i18n.payment.recurringConfirmation}}</p>
+    </div>
+
+
+  </div>
+</div>

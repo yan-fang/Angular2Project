@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/CreditCard/styles/card-override-d0ea6fe2a9-34f545de2b.css">
+<!-- <div data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/ManageAuthorizedUsers/partials/manageauthorizedusers-header.html'"></div> -->
+<div id="cc-accountUsers-header" class="cc-accountUsers-header-bg" ng-style="auCtrl.heroBgImg">
+	<div class="container">
+		<div class="cc-accountUsers-header-container">
+			<h1 class="cc-accountUsers-header-text" translate >ease.card.accountusers.view.header.text</h1>
+			<!-- <h2 class="cc-accountUsers-breadcrumb-text"><a href="">...5520</a></h2> -->
+		</div>
+	</div>
+</div>
+<div ui-view></div>
+<div class="container" id="cc-accountUsers-container">
+    <div id="cc-accountUsers-accountLimits" class="cc-accountUsers-accountLimits-holder container">
+		<div id="cc-accountUsers-accountCreditLimit" class="cc-accountUsers-accountCreditLimit-holder"><span class="cc-accountUsers-accountCreditLimit-value">{{auCtrl.accountDetails.creditLimit | creditCardNoFractionCurrency}}</span><span class="cc-accountUsers-accountCreditLimit-label" translate>ease.card.accountusers.view.creditLimit.label</span></div>
+		<div id="cc-accountUsers-accountCashLimit" class="cc-accountUsers-accountCashLimit-holder"><span class="cc-accountUsers-accountCashLimit-value">{{auCtrl.accountDetails.cashLimit | creditCardNoFractionCurrency}}</span><span class="cc-accountUsers-accountCashLimit-label" translate>ease.card.accountusers.view.cashLimit.label</span></div>
+	</div>
+	<div class="cc-accountUsers-add-user" ng-if="auCtrl.addAccountUsersFeatureToggle">
+      <a ng-click="auCtrl.goToAddAuthUser();" href><i class="icon-filled-plus"></i> {{'ease.card.accountusers.view.addnewuser.link.text' | translate}}</a></div>
+	<table style=" border-spacing: 0; border-collapse: collapse;">
+		<thead>
+			<tr>
+				<td id="cc-accountUsers-badge-column-header" role="presentation"><span aria-hidden="true" translate>ease.card.accountusers.view.badge.title</span></td>
+				<th id="cc-accountUsers-name-column-header" scope="col" translate>ease.card.accountusers.view.name.title</th>
+				<th id="cc-accountUsers-role-column-header" scope="col" translate>ease.card.accountusers.view.role.title</th>
+				<th ng-if="auCtrl.displayAccountUsersLimitAndBalanceInfoFlag" id="cc-accountUsers-spendLimit-column-header" scope="col" translate>ease.card.accountusers.view.spendLimit.title</th>
+				<th ng-if="auCtrl.displayAccountUsersLimitAndBalanceInfoFlag" id="cc-accountUsers-currentBalance-column-header" scope="col" translate>ease.card.accountusers.view.currentBalance.title</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr data-ng-repeat="accountUser in auCtrl.accountUsers | orderBy : ['name.last', 'name.first']" ng-click="auCtrl.showAccountUserDetailsModal(accountUser)" ng-class="{'clickable': auCtrl.canViewDetails}">
+				<td class="cc-accountUsers-badge-column" role="presentation"><div class="cc-accountUsers-badge-data" aria-hidden="true">{{accountUser.name.first | limitTo:1}}{{accountUser.name.last | limitTo:1}}</div></td>
+				<td class="cc-accountUsers-name-column"><div class="cc-accountUsers-name-data">{{:: accountUser.name.first | lowercase}} {{:: accountUser.name.last | lowercase}}</div><div ng-if="::accountUser.cardLastFour" class="cc-accountUsers-cardLastFour-data">{{::'ease.card.accountusers.view.cardLastFour.prefix.text' | translate}}{{:: accountUser.cardLastFour}}</div></td>
+				<td class="cc-accountUsers-role-column"><div class="cc-accountUsers-role-data" translate>{{'ease.card.accountusers.view.role.' + accountUser.role + '.text'}}</div></td>
+				<td ng-if="auCtrl.displayAccountUsersLimitAndBalanceInfoFlag" class="cc-accountUsers-spendLimit-column"><div class="cc-accountUsers-spendLimit-data" ng-if="!auCtrl.isEmpty(accountUser.spendLimit)">{{accountUser.spendLimit | creditCardNoFractionCurrency}}</div><div class="cc-accountUsers-null-data" ng-if="auCtrl.isEmpty(accountUser.spendLimit)" translate>ease.card.accountusers.view.spendLimit.none.text</div></td>
+				<td ng-if="auCtrl.displayAccountUsersLimitAndBalanceInfoFlag" class="cc-accountUsers-currentBalance-column"><div class="cc-accountUsers-currentBalance-data" ng-if="!auCtrl.isEmpty(accountUser.spendLimitUsedThisCycle)">{{accountUser.spendLimitUsedThisCycle | creditCardCurrency}}</div> <span ng-if="auCtrl.isEmpty(accountUser.spendLimitUsedThisCycle)" class="cc-accountUsers-currentBalance-mobileLabel" translate>ease.card.accountusers.view.currentBalance.mobile.label</span><div class="cc-accountUsers-null-data" ng-if="accountUser.spendLimitUsedThisCycle == null" translate>ease.card.accountusers.view.currentBalance.none.text</div></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

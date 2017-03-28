@@ -1,0 +1,53 @@
+<div class="details">
+    <div class="container transactions extensibility-transactions">
+        <div data-ng-class="{'leftpanel': alPayDownView.isPaymentCalculationAllowed, 'fullpanel': !alPayDownView.isPaymentCalculationAllowed}">
+            <div>
+                <div class="circle thumbsUpEarlyPayoff">
+                    <i class="icon icon-thumbsUp"></i>
+                </div>
+
+                <div data-ng-if="alPayDownView.isEarlyPayoff" class="paymentInfoAlign" id="earlyPayOffInfoLabel">
+                    <h2 tabindex="0" >
+                        <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.earlyPayoffInfo1.label.v1"></span>
+                        <span class="boldText" data-ng-bind="alPayDownView.earlyPayoffDate |  date:'MMMM dd, yyyy.'"></span>
+                        <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.earlyPayoffInfo2.label.v1"></span>
+                        <span class="boldText" data-ng-bind="alPayDownView.originalPayoffDate |  date:'MMMM dd, yyyy.'"></span>
+                    </h2>
+                </div>
+
+                <div data-ng-if="alPayDownView.isOnTime" class="paymentInfoAlign" id="onTimePayOffInfoLabel">
+                    <h2 tabindex="0">
+                        <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.onTimePayoffInfo1.label.v1"></span>
+                        <span class="boldText" data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.onTimePayoffInfo2.label.v1"></span>
+                        <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.onTimePayoffInfo3.label.v1"></span>
+                        <span class="boldText" data-ng-bind="alPayDownView.originalPayoffDate |  date:'MMMM dd, yyyy.'"></span>
+                    </h2>
+                </div>
+
+                <div class="messages" aria-label="account messages">
+                    <ul>
+                        <li>
+                            <span data-ng-if="showEventsLink" class="blueLink" role="link" id="financialEventsId" data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.financialEvents.label.v1" data-ng-click="alPayDownView.loadEventsModal()"></span>
+                        </li>
+                    </ul>
+                </div>
+                <div tabindex="0" class="paymentInfoAlign calculatorInfo" id="additionToLastPaymentLabel" data-ng-if="alPayDownView.isOneTimePaymentCalculationAllowed || alPayDownView.isRecurringPaymentAllowed">
+                    <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.infoUseCalculator1.label.v1"></span>
+                    <span class="boldText" data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.infoUseCalculator2.label.v1"></span>
+                    <span data-ng-bind="alPayDownView.i18N.coaf.payDownView.autoLoanTracker.infoUseCalculator3.label.v1"></span>
+                </div>
+            </div>
+        </div>
+        <div data-ng-include data-src="'ease-ui/bower_components/AutoLoan/ver01.01.01.1566/partials/autoloantracker/AutoLoan-payDownViewCalculator.html'"></div>
+
+      <div id="altFeedback" class="feedBack">
+        <div ub-in-page={{alPayDownView.WidgetId}} ub-in-page-Loan-Status={{alPayDownView.payoffStatus}}></div>
+        <!-- begin usabilla embed code -->
+        <script>/*{literal}<![CDATA[*/window.usabilla||function(){var a=window,d=a.document,c={},f=d.createElement("div"),h=!1,a=a.usabilla=function(){(c.a=c.a||[]).push(arguments)};a._=c;c.ids={};f.style.display="none";(function(){if(!d.body)return setTimeout(arguments.callee,100);d.body.insertBefore(f,d.body.firstChild).id="usabilla";h=!0})();a.load=function(a,g,k){if(!c.ids[g]){var e=c.ids={};e.url="//"+a+"/"+g+".js?s1";e.config=k;setTimeout(function(){if(!h)return setTimeout(arguments.callee,100);var b=d.createElement("iframe"),a;b.id="usabilla-"+g;/MSIE[ ]+6/.test(navigator.userAgent)&&(b.src="javascript:false");f.appendChild(b);try{b.contentWindow.document.open()}catch(c){e.domain=d.domain,a="javascript:var d=document.open();d.domain='"+e.domain+"';",b.src=a+"void(0);"}try{var l=b.contentWindow.document;l.write(["<!DOCTYPE html><html><head></head><body onload=\"var d = document;d.getElementsByTagName('head')[0].appendChild(d.createElement('script')).src='",e.url,"'\"></body></html>"].join(""));l.close()}catch(m){b.src=a+'d.write("'+loaderHtml().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}b.contentWindow.config=k;b.contentWindow.SCRIPT_ID=g},0)}}}();
+        window.usabilla.load("w.usabilla.com", "a1aaca3f21a7");
+        /*]]>{/literal}*/</script>
+      </div>
+    </div>
+</div>
+
+

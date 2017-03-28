@@ -1,0 +1,12 @@
+<div ease-modal
+	modal-type="autoLoanCarPayCatchupErrorController.modalType"
+	toggle-close="autoLoanCarPayCatchupErrorController.close()"
+	modal-class="autoLoanCarPayCatchupErrorController.modalClass">
+	<h2 class="modal-heading" id="modalTitle" data-ng-bind="autoLoanCarPayCatchupErrorController.i18n.coaf.dueDateChange.dueDateChangeError.headline.label.v1"></h2>
+	<p id="errorDescription1" data-ng-bind="autoLoanCarPayCatchupErrorController.i18n.coaf.dueDateChange.dueDateChangeError.errorDescription1.label.v1"></p>
+	<p id="errorDescription2" data-ng-bind="autoLoanCarPayCatchupErrorController.i18n.coaf.dueDateChange.dueDateChangeError.errorDescription2.label.v1"></p>
+
+	<div class="modal-controls">
+		<button id="tryAgain" class="btn progressive full-width" ng-click="autoLoanCarPayCatchupErrorController.tryAgain($event)" data-ng-bind="autoLoanCarPayCatchupErrorController.i18n.coaf.dueDateChange.dueDateChangeError.tryAgainButtonText.label.v1"></button>
+	</div>
+</div>

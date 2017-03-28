@@ -1,0 +1,13 @@
+{
+  "name": "angular-pdf-viewer",
+  "version": "0.2.6",
+  "_release": "0.2.6",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.2.6",
+    "commit": "0a0b830de382786840730c40a4a2c463feaa571c"
+  },
+  "_source": "https://github.kdc.capitalone.com/bower-dependencies/angular-pdf-viewer.git",
+  "_target": "0.2.6",
+  "_originalSource": "https://github.kdc.capitalone.com/bower-dependencies/angular-pdf-viewer.git"
+}

@@ -1,0 +1,435 @@
+{
+  "fields": {
+    "CUSTOMERINFO" : [
+      {
+        "templateOptions": {
+          "label" : "",
+          "wrapperLabel": "What's the best phone number to contact you if we have additional questions?"
+        }
+      },
+      {
+        "templateOptions": {
+          "label" : "",
+          "wrapperLabel": "Do you want to receive emails regarding the status of your claim?",
+          "tooltipMessage" : "If you opt out of email notification, we will send your notification to the mailing address on file.",
+          "tooltipOptions" : {
+            "header": {
+              "position": {
+                "desktop": "top-left",
+                "phone": "top"
+              },
+              "size": "medium"
+            },
+            "entry": {
+              "position": {
+                "desktop": "top",
+                "phone": "top"
+              },
+              "size": "large"
+            }
+          },
+          "options": [
+            {
+              "name": "Yes",
+              "value": true
+            },
+            {
+              "name": "No",
+              "value": false
+            }
+          ]
+        }
+      },
+      {
+        "templateOptions": {
+          "label" : "",
+          "wrapperLabel": "Email"
+        }
+      }
+    ],
+    "billPayGeneral": [
+      {
+        "templateOptions": {
+          "label" : "",
+          "wrapperLabel" : "Have you contacted the person or business you sent the payment to?",
+          "options": [
+            {
+              "name": "Yes",
+              "value": true
+            },
+            {
+              "name": "No",
+              "value": false
+            }
+          ]
+        }
+      },
+      {
+        "templateOptions": {
+          "label" : "",
+          "wrapperLabel" : "How much should you have been charged?",
+          "placeholder": "0.00"        
+        }
+      },
+      {
+        "templateOptions": {
+          "label" : "",
+          "wrapperLabel" : "Did the payee charge you any fees?",
+          "options": [
+            {
+              "name": "Yes",
+              "value": true
+            },
+            {
+              "name": "No",
+              "value": false
+            }
+          ]
+        }
+      },
+      {
+        "templateOptions": {
+          "label" : "",
+          "wrapperLabel" : "What was the dollar amount of the payment fee?",
+          "placeholder" : "0.00"
+        }
+      },
+      {
+        "templateOptions": {
+          "label" : "",
+          "wrapperLabel" : "Would you like us to stop the payment?",
+          "options": [
+            {
+              "name": "Yes",
+              "value": true
+            },
+            {
+              "name": "No",
+              "value": false
+            }
+          ]
+        }
+      },
+      {
+        "templateOptions": {
+          "label" : "",
+          "wrapperLabel" : "Would you like us to reissue the payment to the payee or credit the amount back to your account?",
+          "options": [
+            {
+              "name": "Payee",
+              "value": "SR"
+            },
+            {
+              "name": "Credit my account",
+              "value": "SC"
+            }
+          ]
+        }
+      }
+    ],
+    "fraudGeneralQuestions": [
+      {
+        "templateOptions": {
+          "label" : "",
+          "wrapperLabel" : "Did Capital One recently contact you regarding this payment?",
+          "options": [
+            {
+              "name": "Yes",
+              "value": true
+            },
+            {
+              "name": "No",
+              "value": false
+            }
+          ]
+        }
+      },
+      {
+        "templateOptions": {
+          "label" : "",
+          "wrapperLabel" : "Do you know who made this transaction?",
+          "options": [
+            {
+              "name": "Yes",
+              "value": true
+            },
+            {
+              "name": "No",
+              "value": false
+            }
+          ]
+        }
+      },
+      {
+        "templateOptions": {
+          "label" : "",
+          "wrapperLabel" : "Please provide additional information.",
+          "placeholder": ""
+        }
+      },
+      {
+        "templateOptions": {
+          "label" : "",
+          "wrapperLabel" : "Did you file a police report?",
+          "options": [
+            {
+              "name": "Yes",
+              "value": true
+            },
+            {
+              "name": "No",
+              "value": false
+            }
+          ]
+        }
+      },
+      {
+        "templateOptions": {
+          "label" : "",
+          "wrapperLabel" : "Please provide additional information.",
+          "placeholder" : ""
+        }
+      }
+    ],
+    "fraudDetailQuestions": [
+      {
+        "templateOptions": {
+          "label" : "",
+          "wrapperLabel": "Was the transaction made on a joint account?",
+          "options": [
+            {
+              "name": "Yes",
+              "value": true
+            },
+            {
+              "name": "No",
+              "value": false
+            }
+          ]
+        }
+      },
+      {
+        "templateOptions": {
+          "label" : "",
+          "wrapperLabel" : "Would you like us to stop the payment?",
+          "options": [
+            {
+              "name": "Yes",
+              "value": true
+            },
+            {
+              "name": "No",
+              "value": false
+            }
+          ]
+        }
+      },
+      {
+        "templateOptions": {
+          "label" : "",
+          "wrapperLabel" : "Would you like us to reissue the payment to the payee or credit the amount back to your account?",
+          "options": [
+            {
+              "name": "Payee",
+              "value": "SR"
+            },
+            {
+              "name": "Credit my account",
+              "value": "SC"
+            }
+          ]
+        }
+      },
+      {
+        "templateOptions": {
+          "label" : "Do you have any additional information you’d like to provide?",
+          "placeholder" : "Optional"
+        }
+      }
+    ],
+    "PYMTNOTRECEIVED": [
+      {
+        "templateOptions": {
+          "label" : "",
+          "wrapperLabel" : "Did you enter the correct account number?",
+          "options": [
+            {
+              "name": "Yes",
+              "value": true
+            },
+            {
+              "name": "No",
+              "value": false
+            }
+          ]
+        }
+      },
+      {
+        "templateOptions": {
+          "label" : "",
+          "wrapperLabel" : "Did you enter the payee name correctly?",
+          "options": [
+            {
+              "name": "Yes",
+              "value": true
+            },
+            {
+              "name": "No",
+              "value": false
+            }
+          ]
+        }
+      },
+      {
+        "templateOptions": {
+          "label" : "",
+          "wrapperLabel" : "Did you enter the payment address correctly?",
+          "options": [
+            {
+              "name": "Yes",
+              "value": true
+            },
+            {
+              "name": "No",
+              "value": false
+            }
+          ]
+        }
+      },
+      {
+        "templateOptions": {
+          "label" : "Do you have any additional information you’d like to provide?",
+          "placeholder" : "Optional"
+        }
+      }
+    ],
+    "PYMTLATE": [
+      {
+        "templateOptions": {
+          "label" : "",
+          "wrapperLabel" : "Did you enter the correct account number?",
+          "options": [
+            {
+              "name": "Yes",
+              "value": true
+            },
+            {
+              "name": "No",
+              "value": false
+            }
+          ]
+        }
+      },
+      {
+        "templateOptions": {
+          "label" : "",
+          "wrapperLabel" : "Did you enter the payee name correctly?",
+          "options": [
+            {
+              "name": "Yes",
+              "value": true
+            },
+            {
+              "name": "No",
+              "value": false
+            }
+          ]
+        }
+      },
+      {
+        "templateOptions": {
+          "label" : "",
+          "wrapperLabel" : "Did you enter the payment address correctly?",
+          "options": [
+            {
+              "name": "Yes",
+              "value": true
+            },
+            {
+              "name": "No",
+              "value": false
+            }
+          ]
+        }
+      },
+      {
+        "templateOptions": {
+          "label" : "Do you have any additional information you’d like to provide?",
+          "placeholder" : "Optional"
+        }
+      }
+    ],
+    "PYMTERROR": [
+      {
+        "templateOptions": {
+          "label" : "",
+          "wrapperLabel" : "Did you submit the payment in error?",
+          "options": [
+            {
+              "name": "Yes",
+              "value": true
+            },
+            {
+              "name": "No",
+              "value": false
+            }
+          ]
+        }
+      },
+      {
+        "templateOptions": {
+          "label" : "Do you have any additional information you’d like to provide?",
+          "placeholder" : "Optional"
+        }
+      }
+    ],
+    "PYMTCANCEL": [
+      {
+        "templateOptions": {
+          "label" : "",
+          "wrapperLabel" : "Did you submit the payment in error?",
+          "options": [
+            {
+              "name": "Yes",
+              "value": true
+            },
+            {
+              "name": "No",
+              "value": false
+            }
+          ]
+        }
+      },
+      {
+        "templateOptions": {
+          "label" : "Do you have any additional information you’d like to provide?",
+          "placeholder" : "Optional"
+        }
+      }
+    ],
+    "PYMTINCORRECT": [
+      {
+        "templateOptions": {
+          "label" : "",
+          "wrapperLabel" : "Did you submit the correct amount when you set up the payment?",
+          "options": [
+            {
+              "name": "Yes",
+              "value": true
+            },
+            {
+              "name": "No",
+              "value": false
+            }
+          ]
+        }
+      },
+      {
+        "templateOptions": {
+          "label" : "Do you have any additional information you’d like to provide?",
+          "placeholder" : "Optional"
+        }
+      }
+    ]
+  }
+}

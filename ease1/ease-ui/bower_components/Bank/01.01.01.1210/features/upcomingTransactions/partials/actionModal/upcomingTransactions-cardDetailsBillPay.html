@@ -1,0 +1,62 @@
+<div class="group">
+  <ul data-ng-if="upcomingCardDetailsCtrl.UpcomingHelpers.isUnscheduledBill(upComingTrans)">
+    <li>
+      <div class="field-key">
+        <p class="send-date-label-eBills">{{::upcomingCardDetailsCtrl.i18nUpcomingTransactions['ease.bank.upcomingTransactions.card.billPay.dueOn']}}</p>
+      </div>
+      <div class="field-value">
+        <p class="send-date-value-eBills">{{::upComingTrans.availableFundsDate | date : "MMM dd, y"}}</p>
+      </div>
+    </li>
+  </ul>
+  <!--Scheduled eBill-->
+  <ul data-ng-if="!upcomingCardDetailsCtrl.UpcomingHelpers.isUnscheduledBill(upComingTrans)">
+    <li data-ng-class="{'send-date-label-retail' : !upcomingCardDetailsCtrl.UpcomingHelpers.is360Account()}" >
+      <div class="field-key">
+        <p class="send-date-label-billPay">{{::upcomingCardDetailsCtrl.i18nUpcomingTransactions['ease.bank.upcomingTransactions.card.send']}}</p>
+      </div>
+      <div class="field-value">
+        <p class="send-date-value-billPay">{{::upComingTrans.availableFundsDate | date :  "MMM dd, y"}}</p>
+      </div>
+    </li>
+
+    <li data-ng-if="upcomingCardDetailsCtrl.UpcomingHelpers.is360Account()">
+      <div class="field-key">
+        <p class="deliverBy-type-label">{{::upcomingCardDetailsCtrl.i18nUpcomingTransactions['ease.bank.upcomingTransactions.card.arriveBy']}}</p>
+      </div>
+      <div class="field-value">
+        <p class="deliverBy-type-value">{{::upComingTrans.deliverBy}}</p>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="field"></div>
+<div class="scheduled-date-label"  data-ng-if="!upcomingCardDetailsCtrl.UpcomingHelpers.isUnscheduledBill(upComingTrans)">
+  <i class="icon-scheduled scheduled-icon-green" data-ng-class="upcomingCardCtrl.UpcomingHelpers.getTransactionSource(upcomingCardCtrl.transactions)"></i>{{upcomingCardDetailsCtrl.i18nUpcomingTransactions['ease.bank.upcomingTransactions.card.category.upcoming.card.scheduled.for']}}{{::upComingTrans.availableFundsDate | date :  "MMM dd"}}
+</div>
+<!--Scheduled eBill-->
+<div id="{{'actionBillPay-' + upComingTrans.cardNumber}}" data-ng-if="!upcomingCardDetailsCtrl.UpcomingHelpers.isUnscheduledBill(upComingTrans) && upComingTrans.billPayShowDeleteIndicator">
+  <div data-ng-class="upcomingCardDetailsCtrl.getOperationBasedOnSourceKey(upComingTrans,'buttonCls')" data-ng-if="upcomingCardDetailsCtrl.upcomingTxnFeatureToggleValue('editBillPay')">
+    <button id="{{'btnManageBillPay-' + upComingTrans.cardNumber}}" data-ng-click="upcomingCardDetailsCtrl.UpcomingHelpers.scheduleBillPayment('actionModal' ,$event, upComingTrans)">
+      <div data-ng-class="upComingTrans.actionModalLoadingClass">
+        <span>{{upcomingCardDetailsCtrl.getOperationBasedOnSourceKey(upComingTrans,'buttonName')}}</span>
+      </div>
+    </button>
+  </div>
+  <div class="transaction-operation-link" data-ng-if="upcomingCardDetailsCtrl.upcomingTxnFeatureToggleValue('cancelBillPay')">
+    <button did="{{'linkCancelBillPay-' + upComingTrans.cardNumber}}" class="linkCursor" data-ng-click="upcomingCardDetailsCtrl.cancelBillPayment(upComingTrans.transactionReferenceId, upComingTrans.planReferenceId)">
+      {{upcomingCardDetailsCtrl.getOperationBasedOnSourceKey(upComingTrans,'link')}}
+    </button>
+  </div>
+</div>
+<!--Unscheduled eBill-->
+<div data-ng-if="upcomingCardDetailsCtrl.UpcomingHelpers.isUnscheduledBill(upComingTrans)">
+  <div ng-class="upcomingCardDetailsCtrl.getOperationBasedOnSourceKey(upComingTrans,'buttonCls')" data-ng-if="upcomingCardDetailsCtrl.upcomingTxnFeatureToggleValue('createBillPay')">
+    <button id="{{'btnScheduleBillPay-' + upComingTrans.cardNumber}}" data-ng-click="upcomingCardDetailsCtrl.UpcomingHelpers.scheduleBillPayment('actionModal' ,$event, upComingTrans)">
+      <div data-ng-class="upComingTrans.actionModalLoadingClass">
+        <span>{{upcomingCardDetailsCtrl.getOperationBasedOnSourceKey(upComingTrans,'buttonName')}}</span>
+      </div>
+    </button>
+  </div>
+</div>

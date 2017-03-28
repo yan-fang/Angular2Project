@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/CreditCard/styles/card-override-d0ea6fe2a9-34f545de2b.css">
+<div class="documents-container">
+  <div class="documents-header-wrapper" ng-style="docsCtrl.bgImageStyle">
+    <ease-account-detail class="document-online-header" content="docsCtrl.content"></ease-account-detail>
+  </div>
+  <div class="documents-body-container">
+    <div class="container message-flap" data-ng-show="docsCtrl.showErrorFlap">
+      <span class="message-flap-description">{{::'ease.card.viewonlinedocuments.getdocumentserror.text' | translate}}</span>
+    </div>
+    <div class="documents-body-container" ng-if="docsCtrl.noDocuments" >
+      <img class="documents-icon" ng-src="{{docsCtrl.documentIconSource}}" alt="chat-icon" />
+      <div tabindex="0">
+      <h3 class="no-documents-header">{{::'ease.card.viewonlinedocuments.noDocuments.text' | translate}}</h3>
+      <div class="no-documents-message" >
+        <h4>{{::'ease.card.viewonlinedocuments.noDocumentsStatements.text' | translate}}
+          <a class="no-documents-link" ng-click="showStatementsModal()" href="">{{::'ease.card.viewonlinedocuments.noDocumentsStatements.link.text' | translate}}</a>
+        </h4>
+      </div>
+      </div>
+    </div>
+    <div class="documents" ng-if="!docsCtrl.noDocuments">
+      <div data-ng-repeat="year in docsCtrl.years" class="document-year-container">
+        <h2 class="document-year">{{year}}</h2>
+        <ul class="documents-list-wrapper">
+        <li class="documents-list"
+          data-ng-repeat="document in docsCtrl.documentEntries[year]"
+           id="{{year}}-document{{$index}}">
+          <div class="document-wrapper">
+            <p>
+              <span id="{{year}}-document{{$index}}-date" class="document-date">
+                {{::document.documentDate | date:'MMM':'UTC'}}
+                <span class="day">{{::document.documentDate | date:'dd':'UTC'}}</span>
+              </span>
+              <span id="{{year}}-document{{$index}}-description" class="document-description">{{::document.documentDescription}}
+              <span id="{{year}}-document{{$index}}-date-phone" class="document-date-phone">{{::document.documentDate| date:'MMM d, y'}}</span></span>
+              <div class="documents-link-wrapper">
+                <span id="{{year}}-document{{$index}}-view-button" role="button" aria-label="{{::document.documentDate| date:'MMM d, y'}} {{::document.documentDescription}}. {{::'ease.card.viewonlinedocuments.viewButton.aria.text' | translate}}" class="view-document-link" ng-click="docsCtrl.openPDF(document)">{{::'ease.card.viewonlinedocuments.viewButton.text' | translate}}</span>
+              </div>
+            </p>
+          </div>
+        </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+

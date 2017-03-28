@@ -1,0 +1,72 @@
+
+<div id="report_problem_title_label"class="cc-fraud-modal-header">
+
+
+    <h2 aria-label="{{::'ease.card.reportfraud.modal.label' | translate}}">
+        {{::'ease.card.reportfraud.modal.label' | translate}}</h2>
+
+</div>
+<div id="report_problem_purchase_info_label" class="cc-fraud-modal-body">
+    <p class="subheader">{{::reportFraudModal.purchaseInfo}}</p>
+
+    <div id="report_problem_trasaction_details_text" class="cc-fraud-transaction-details">
+        <div id="report_problem_merchant_details_text" class="cc-fraud-merchant-details">
+            <span class="larger" id="report_problem_merchant_name">{{ ::reportFraudModal.transaction.merchant.name }}</span><br>
+            <div ng-if="reportFraudModal.transaction.merchant.transactionAddress.addressLine1" class="" id="report_problem_address_line1">
+                {{::reportFraudModal.transaction.merchant.transactionAddress.addressLine1}}</div>
+            <div ng-if="reportFraudModal.transaction.merchant.transactionAddress.addressLine2" class="" id="report_problem_address_line2">
+                {{::reportFraudModal.transaction.merchant.transactionAddress.addressLine2}}</div>
+            <span>
+              <span ng-if="::reportFraudModal.transaction.merchant.transactionAddress.locality"
+                    class="locality" id="report_problem_locality">{{::reportFraudModal.transaction.merchant.transactionAddress.locality}}, </span>
+              <span ng-if="::reportFraudModal.transaction.merchant.transactionAddress.regionCode" id="report_problem_regionCode">
+                {{::reportFraudModal.transaction.merchant.transactionAddress.regionCode}} </span>
+              <span ng-if="::reportFraudModal.transaction.merchant.transactionAddress.postalCode" id="report_problem_postalCode">
+                {{::reportFraudModal.transaction.merchant.transactionAddress.postalCode}}</span>
+            </span>
+        </div>
+        <div id="report_problem_purchase_details_text" class="cc-fraud-purchase-details">
+            <span id="report_problem_transaction_amount_text" class="larger">{{::reportFraudModal.transaction.amount.amount | creditCardCurrency}}</span><br>
+            <span id="report_problem_purchased_label" class="cc-fraud-bold" ng-if="::reportFraudModal.transaction.displayDate" style="padding-right: 5px;">
+              {{::'ease.card.reportfraud.purchase.label' |translate}} </span>
+            <span id="report_problem_transaction_date">{{::reportFraudModal.transaction.displayDate|date:'EEE, MMM dd, yyyy':'UTC'}}</span>
+        </div>
+    </div>
+
+    <div class="cc-fraud-problem-type">
+
+        <form>
+            <fieldset>
+                <legend class="legend-hidden">{{::'ease.card.reportfraud.modal.label' | translate}}</legend>
+                <label id="report_problem_fraud_radio_label" for="report_problem_fraud_radio_button">
+                  <span data-ng-if="reportFraudModal.isMultiUser">
+                    <span translate>ease.card.reportfraud.multi_user.no_purchase.text</span>
+                  </span>
+              <span data-ng-if="!reportFraudModal.isMultiUser">
+                <span translate>ease.card.reportfraud.no_purchase.label</span>
+              </span>
+                </label>
+                <input id="report_problem_fraud_radio_button" type="radio" name="isFraud" data-ng-model="isFraud"
+                       ng-change="reportFraudModal.radioButtonClicked()" ng-value=true tabindex="0">
+            <br>
+            <label id="report_problem_dispute_radio_label" for="report_problem_dispute_radio_button">
+              {{::reportFraudModal.disputeRadioOption}}
+            </label>
+            <input id="report_problem_dispute_radio_button" type="radio" name="isFraud" data-ng-model="isFraud"
+                   ng-change="reportFraudModal.radioButtonClicked()" ng-value=false tabindex="0">
+            </fieldset>
+
+            <div class="cc-fraud-problem-buttons">
+                <button class="progressive" id="report_problem_continue_button" ng-disabled="!reportFraudModal.isRadioBtnClicked"
+                        data-ng-click="reportFraudModal.handleContinueClick(isFraud);" tabindex="0">
+              <span ng-hide="reportFraudModal.loading">
+                {{'ease.card.reportfraud.button_continue.label' |translate}}
+              </span>
+                    <div class="cc-spinner" ng-class="{'loading':reportFraudModal.loading}"></div>
+
+                </button>
+
+            </div>
+        </form>
+    </div>
+</div>

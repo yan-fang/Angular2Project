@@ -1,0 +1,157 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/CreditCard/styles/card-override-d0ea6fe2a9-34f545de2b.css">
+<div ng-controller="ViewOnlineTermsDetailsController as viewOnlineTermsDetails">
+  <ease-ui-modal close-modal="closeModal()" class="viewAccountDetails">
+    <div class="heading">
+      <h1 class="title">{{viewOnlineTermsDetails.accountDetailsData.accountDetails.cardAccount.nameInfo.nickname}}</h1>
+      <h1 ng-if="!viewOnlineTermsDetails.accountDetailsData.accountDetails.cardAccount.nameInfo.nickname" class="title">{{viewOnlineTermsDetails.accountDetailsData.accountDetails.cardAccount.nameInfo.productName}}</h1>
+      <p class="account-additional subtitle">{{'ease.card.l2page.detail.ellipses' | translate}}{{viewOnlineTermsDetails.accountDetailsData.accountDetails.cardAccount.plasticIdLastFour}}</p>
+    </div>
+    <div ng-switch="viewOnlineTermsDetails.currentState">
+    <div class="rowdata" ng-switch-when="main">
+      <table ng-if="viewOnlineTermsDetails.onlineTermsResponse!==undefined  && viewOnlineTermsDetails.onlineTermsResponse.purchaseApr.currentRatePercent!==undefined" width="100%">
+        <tr>
+          <td id= "purchaseApr_purchaseApr_label" class="key sectionhead">{{ 'ease.card.viewaccountdetails.purchaseapr' | translate}}</td>
+          <td id= "purchaseApr_purchaseApr_value" class="amt">
+            <span id="purchaseApr_value" class="amtApr" data-istitle="true">{{viewOnlineTermsDetails.purchaseCurrentRatePercent}}%</span>
+            <span id="purchaseApr_rateIndex_label" class="greyout" ng-if="viewOnlineTermsDetails.onlineTermsResponse.purchaseApr.currentRateIndexCode!=='Fixed'">{{'ease.card.viewaccountdetails.apr.variable' | translate}}</span>
+            <span id="purchaseApr_expires_label" class="greyout" ng-if="viewOnlineTermsDetails.onlineTermsResponse.purchaseApr.currentRateEndDate!==undefined">{{'ease.card.viewaccountdetails.apr.expires' | translate}} {{viewOnlineTermsDetails.purchaseCurrentRateEndDate}}</span>
+            <span class="greyout"><a tabindex="0" id="PurchaseMoreInfoLink" data-ng-click="viewOnlineTermsDetails.switchView('purchaseApr')" aria-label="{{'ease.card.viewaccountdetails.moreinfo' | translate}}" href ng-if="viewOnlineTermsDetails.onlineTermsResponse.purchaseApr.verbiages.length!==0" class="links">
+            {{'ease.card.viewaccountdetails.moreinfo' | translate}}</a></span>
+        </tr>
+      </table>
+      <table ng-if="viewOnlineTermsDetails.rewardsDisplay" width="100%">
+        <tr>
+          <td id ="rewards_section" class="key sectionhead" data-isTitle=true>{{'ease.card.viewaccountdetails.rewards' | translate}}</td>
+        </tr>
+        <tr ng-if="viewOnlineTermsDetails.accountDetailsData.accountDetails.cardAccount.reward!==undefined">
+          <td id = "rewards_rewardsBalance_label" class="key"> {{'ease.card.viewaccountdetails.rewards.balance' | translate}}</td>
+          <td id="rewards_rewardsBalance_value" class="amt">
+            <span id="rewards_value" class="amtApr">{{viewOnlineTermsDetails.rewardsBalance}}</span>
+            <span id="rewards_rewardsBalance_type" class="greyout">{{viewOnlineTermsDetails.rewards | translate}}</span>
+            <span class="greyout"><a tabindex="0" id="reedemLink" href="{{rewardsRedeemURL}}" data-ng-click="viewOnlineTermsDetails.handleLinkEvents($event,'rewardsReedemLink')" aria-label="{{'ease.card.viewaccountdetails.rewards.reedemlink' | translate}}" class="links" href>
+            {{'ease.card.viewaccountdetails.rewards.reedemlink' | translate}}
+           </a></span>
+          </td>
+        </tr>
+      </table>
+      <table width="100%">
+        <tr>
+          <td id="accountActivity_section" class="key sectionhead" data-isTitle=true> {{'ease.card.viewaccountdetails.accountactivity' | translate}} </td>
+        </tr>
+        <tr ng-if="viewOnlineTermsDetails.accountDetailsData.accountDetails.cardAccount.lastStatement!==undefined &&viewOnlineTermsDetails.accountDetailsData.accountDetails.cardAccount.lastStatement.balance!==undefined">
+          <td id ="accountActivity_lastStmtBalance_label" class="key">{{'ease.card.viewaccountdetails.laststmtbalance' | translate}} </td>
+          <td id ="accountActivity_lastStmtBalance_value" class="amt">{{viewOnlineTermsDetails.accountDetailsData.accountDetails.cardAccount.lastStatement.balance | currency}} </td>
+        </tr>
+        <tr ng-if="viewOnlineTermsDetails.isShowCycleInfo && cycleToDatePaymentAmount">
+          <td id ="accountActivity_cycleToDatePaymentAmount_label" class="key">{{'ease.card.viewaccountdetails.cycletodatepaymentamount' | translate}} </td>
+          <td id ="accountActivity_cycleToDatePaymentAmount_value" class="amt">{{'ease.card.viewaccountdetails.minussymbol' | translate}}{{cycleToDatePaymentAmount | currency}} </td>
+        </tr>
+        <tr ng-if="viewOnlineTermsDetails.isShowCycleInfo && cycleToDateDebitAmount">
+          <td id ="accountActivity_cycleToDateDebitAmount_label" class="key">{{'ease.card.viewaccountdetails.cycletodatedebitamount' | translate}} </td>
+          <td id ="accountActivity_cycleToDateDebitAmount_value" class="amt">{{'ease.card.viewaccountdetails.plussymbol' | translate}}{{cycleToDateDebitAmount | currency}} </td>
+        </tr>
+        <tr ng-if="viewOnlineTermsDetails.isShowCycleInfo && cycleToDateCreditAmount">
+          <td id ="accountActivity_cycleToDateCreditAmount_label" class="key">{{'ease.card.viewaccountdetails.cycletodatecreditamount' | translate}} </td>
+          <td id ="accountActivity_cycleToDateCreditAmount_value" class="amt">{{'ease.card.viewaccountdetails.minussymbol' | translate}}{{cycleToDateCreditAmount | currency}} </td>
+        </tr>
+        <tr ng-if="viewOnlineTermsDetails.accountDetailsData.accountDetails.cardAccount.cycleInfo.currentBalance!==undefined">
+          <td id ="accountActivity_currentBalance_label" class="key">{{'ease.card.viewaccountdetails.currentbalance' | translate}} </td>
+          <td ng-if="cycleToDatePaymentAmount || cycleToDateDebitAmount || cycleToDateCreditAmount" id ="accountActivity_currentBalance_value" class="amt">{{'ease.card.viewaccountdetails.equalssymbol' | translate}} {{viewOnlineTermsDetails.accountDetailsData.accountDetails.cardAccount.cycleInfo.currentBalance | currency}} </td>
+          <td ng-if="cycleToDatePaymentAmount===undefined &&  cycleToDateDebitAmount===undefined &&cycleToDateCreditAmount===undefined" id ="accountActivity_currentBalance_value" class="amt"> {{viewOnlineTermsDetails.accountDetailsData.accountDetails.cardAccount.cycleInfo.currentBalance | currency}} </td>
+        </tr>
+      </table>
+      <table ng-if = "viewOnlineTermsDetails.onlineTermsResponse!==undefined  &&viewOnlineTermsDetails.onlineTermsResponse.fees!==undefined && (viewOnlineTermsDetails.onlineTermsResponse.fees.membershipFeeFrequency!==undefined ||
+      viewOnlineTermsDetails.overLimitFeeCheck || viewOnlineTermsDetails.lateFeeCheck)"id="fee" width="100%">
+        <tr>
+          <td id ="fees_section" class="key sectionhead" data-isTitle=true>{{'ease.card.viewaccountdetails.fees' | translate}}</td>
+          <td id= "fees_moreInfo_label" class="links">
+           <a tabindex="0" id="feeMoreInfoLink" data-ng-click="viewOnlineTermsDetails.switchView('fees')" aria-label="{{'ease.card.viewaccountdetails.moreinfo' | translate}}" href>
+            {{'ease.card.viewaccountdetails.moreinfo' | translate}}
+           </a>
+          </td>
+        </tr>
+        <tr ng-if="viewOnlineTermsDetails.onlineTermsResponse.fees.membershipFeeFrequency!==undefined">
+          <td id ="fees_membershipFeeAmount_label" class="key">{{viewOnlineTermsDetails.membershipFee | translate}}</td>
+          <td id ="fees_membershipFeeAmount_value" class="amt">{{viewOnlineTermsDetails.membershipFeeAmount}}</td>
+        </tr>
+        <tr ng-if="viewOnlineTermsDetails.overLimitFeeCheck">
+          <td id ="fees_overLimitFee_label" class="key">{{'ease.card.viewaccountdetails.fees.overlimitfees' | translate}}</td>
+          <td id ="fees_overLimitFee_value" class="amt">{{viewOnlineTermsDetails.overLimitFeeAmount}}</td>
+        </tr>
+        <tr ng-if="viewOnlineTermsDetails.lateFeeCheck">
+          <td id ="fees_lateFee_label" class="key">{{'ease.card.viewaccountdetails.fees.latefees' | translate}}</td>
+          <td id ="fees_lateFee_value" class="amt">{{viewOnlineTermsDetails.lateFeeAmount | translate : {'percentage' : viewOnlineTermsDetails.lateFeePercent, 'minimumvalue' : viewOnlineTermsDetails.lateFeeMinimumAmount, 'fixedvalue' : viewOnlineTermsDetails.currentLateFeeAmount} }}</td>
+        </tr>
+      </table>
+      <table width="100%">
+        <tr>
+          <td id ="cashAdvance_section" class="key sectionhead" data-isTitle=true>{{'ease.card.viewaccountdetails.cashadvance' | translate}}</td>
+          <td ng-if="viewOnlineTermsDetails.onlineTermsResponse!==undefined &&viewOnlineTermsDetails.onlineTermsResponse.cashAdvanceApr!==undefined" id= "cashAdvance_moreInfo_label" class="links">
+           <a tabindex="0" id="CashAdvanceMoreInfoLink" data-ng-click="viewOnlineTermsDetails.switchView('cashAdvance')" aria-label="{{'ease.card.viewaccountdetails.moreinfo' | translate}}" href>
+            {{'ease.card.viewaccountdetails.moreinfo' | translate}}
+           </a>
+          </td>
+        </tr>
+        <tr ng-if="viewOnlineTermsDetails.onlineTermsResponse!==undefined &&viewOnlineTermsDetails.onlineTermsResponse.cashAdvanceApr!==undefined &&viewOnlineTermsDetails.onlineTermsResponse.cashAdvanceApr.currentRatePercent!==undefined">
+          <td id = "cashAdvance_cashAdvanceApr_label" class="key"> {{'ease.card.viewaccountdetails.cashadvance.apr' | translate}}</td>
+          <td id = "cashAdvance_cashAdvanceApr_value" class="amt">
+            <span id="cashAdvance_value" class="amtApr">{{viewOnlineTermsDetails.cashCurrentRatePercent}}%</span>
+            <span id= "cashAdvance_rateIndex_label" class="greyout" ng-if="viewOnlineTermsDetails.onlineTermsResponse!==undefined && viewOnlineTermsDetails.onlineTermsResponse.cashAdvanceApr!==undefined && viewOnlineTermsDetails.onlineTermsResponse.cashAdvanceApr.currentRatePercent!==undefine&& viewOnlineTermsDetails.onlineTermsResponse.cashAdvanceApr.currentRateIndexCode!=='Fixed'">{{'ease.card.viewaccountdetails.apr.variable' | translate}}</span>
+            <span id= "cashAdvance_expires_label" class="greyout" ng-if="viewOnlineTermsDetails.onlineTermsResponse!==undefined  && viewOnlineTermsDetails.onlineTermsResponse.cashAdvanceApr!==undefined && viewOnlineTermsDetails.onlineTermsResponse.cashAdvanceApr.currentRatePercent!==undefine&&viewOnlineTermsDetails.onlineTermsResponse.cashAdvanceApr.currentRateEndDate!==undefined">{{'ease.card.viewaccountdetails.apr.expires' | translate}} {{viewOnlineTermsDetails.cashCurrentRateEndDate}}</span>
+          </td>
+        </tr>
+
+        <tr ng-if="viewOnlineTermsDetails.onlineTermsResponse!==undefined  &&  viewOnlineTermsDetails.onlineTermsResponse.fees!==undefined">
+          <td id = "cashAdvance_cashAdvanceFee_label" class="key"> {{'ease.card.viewaccountdetails.cashadvance.fees' | translate}}</td>
+          <td id = "cashAdvance_cashAdvanceFee_value" class="amt"> {{viewOnlineTermsDetails.cashAdvanceFee | translate : {'percentage' : viewOnlineTermsDetails.cashAdvanceFeePercent, 'minimumvalue' : viewOnlineTermsDetails.cashAdvanceMinimumFeeAmount, 'fixedvalue' : viewOnlineTermsDetails.cashAdvanceFeeAmount} }}</td>
+        </tr>
+        <tr>
+          <td id = "cashAdvance_cashAdvanceLimit_label" class="key"> {{'ease.card.viewaccountdetails.cashlimit' | translate}}</td>
+          <td id = "cashAdvance_cashAdvanceLimit_value" class="amt">{{viewOnlineTermsDetails.accountDetailsData.accountDetails.cardAccount.cashLimit | currency}}</td>
+        </tr>
+        <tr>
+          <td id = "cashAdvance_availableCash_label" class="key"> {{'ease.card.viewaccountdetails.availablecash' | translate}}</td>
+          <td id = "cashAdvance_availableCash_value" class="amt">{{viewOnlineTermsDetails.accountDetailsData.accountDetails.cardAccount.cashAvailable | currency}}</td>
+        </tr>
+      </table>
+      <table width="100%">
+        <tr>
+          <td id="statementDetails_section" class="key sectionhead" data-isTitle=true> {{'ease.card.viewaccountdetails.statementdetails' | translate}} </td>
+        </tr>
+        <tr ng-if="viewOnlineTermsDetails.showLastStatementDate">
+          <td id ="statementDetails_lastStmtDate_label" class="key">{{'ease.card.viewaccountdetails.laststmtdate' | translate}} </td>
+          <td id ="statementDetails_lastStmtDate_value" class="amt">{{viewOnlineTermsDetails.accountDetailsData.accountDetails.cardAccount.lastStatement.date | date : 'MMM dd, yyyy' : 'UTC'}} </td>
+        </tr>
+        <tr ng-if="viewOnlineTermsDetails.showMinPaymentDate">
+          <td id ="statementDetails_minimumPaymentDate_label" class="key">{{'ease.card.viewaccountdetails.minpaymentduedate' | translate}} </td>
+          <td id ="statementDetails_minimumPaymentDate_value" class="amt">{{viewOnlineTermsDetails.accountDetailsData.accountDetails.cardAccount.minimumPayment.date | date : 'MMM dd, yyyy' : 'UTC'}} </td>
+        </tr>
+        <tr ng-if="viewOnlineTermsDetails.showMinPaymentDue">
+          <td id ="statementDetails_minimumPaymentAmount_label" class="key">{{'ease.card.viewaccountdetails.minpaymentamount' | translate}} </td>
+          <td id ="statementDetails_minimumPaymentAmount_value" class="amt">{{viewOnlineTermsDetails.accountDetailsData.accountDetails.cardAccount.minimumPayment.amount | currency}} </td>
+        </tr>
+        <tr ng-if="viewOnlineTermsDetails.showFirstPaymentDate">
+          <td id ="statementDetails_firstPaymentDate_label" class="key">{{'ease.card.viewaccountdetails.cyclezero.firstpaymentduedate' | translate}} </td>
+          <td id ="statementDetails_firstPaymentDate_value" class="amt">{{viewOnlineTermsDetails.accountDetailsData.accountDetails.cardAccount.minimumPayment.date | date : 'MMM dd, yyyy' : 'UTC'}} </td>
+        </tr>
+        <tr ng-if="viewOnlineTermsDetails.showCycleZeroDate">
+          <td id ="statementDetails_cyclezeroPaymentAmount_label" class="key">{{'ease.card.viewaccountdetails.minpaymentamount' | translate}} </td>
+          <td id ="statementDetails_cyclezeroCalculationMsg_value" class="amt">
+            <span id="statementDetails_cyclezeroCalculationMsg" class="basic">{{'ease.card.viewaccountdetails.cyclezero.calculation' | translate}}</span>
+            <span id="statementDetails_cyclezeroCalculationdate" class="basic">{{'ease.card.viewaccountdetails.cyclezero.calculationafter' | translate}} {{viewOnlineTermsDetails.accountDetailsData.accountDetails.cardAccount.cycleInfo.cycleZeroDate | date : 'MMM dd, yyyy' : 'UTC'}}</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="rowdata" ng-switch-when="fees">
+      <div data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/ViewAccountDetails/partials/View-Fees-MoreInfo-18cdc57b6c-18cdc57b6c.html'"></div>
+    </div>
+    <div class="rowdata" ng-switch-when="cashAdvance">
+      <div data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/ViewAccountDetails/partials/View-CashAdvance-MoreInfo-a7b463f718-a7b463f718.html'"></div>
+    </div>
+    <div class="rowdata" ng-switch-when="purchaseApr">
+      <div data-ng-include data-src="'/ease-ui/bower_components/CreditCard/features/ViewAccountDetails/partials/View-PurchaseApr-MoreInfo-ca90ac0212-ca90ac0212.html'"></div>
+    </div>
+    </div>
+  </ease-ui-modal>
+</div>

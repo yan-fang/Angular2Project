@@ -1,0 +1,27 @@
+<div class="cos-bridge-mode cc-bridge">
+    <div id="coscontent" class="cos-content">
+        <h2 id="cc-cos-over-limit-title-text" aria-label="{{'ease.card.overlimit.goingovercredit.title.text.v1' | translate}}">
+            {{'header.text' | translate}}
+        </h2>
+        <h3 id="cc-cos-over-limit-subtitle-text" aria-label="{{'card.cosbridge.overlimit.subtitle.text.v1' | translate}}">
+            {{'subheader.text' | translate}}
+        </h3>
+        <div ng-repeat="account in cosBridgeReportFraudAccountPicker.cardAccounts" class="cc-bridge-account-block">
+            <span id="bridge-reportFraud-selectAccount" class="cc-bridge-account-details">
+                <span id="bridgeAccountName{{$index}}" class="cc-bridge-account-name"
+                      data-ng-bind="::cosBridgeReportFraudAccountPicker.getFormattedDisplayName(account)">
+                </span>
+                <span id="bridgeEllipses" translate>
+                    {{'ellipses.text' | translate}}
+                </span>
+                <span id="bridgeEndOfPlastic{{$index}}" data-ng-bind="::account.cardAccount.plasticIdLastFour"></span>
+            </span>
+            <span class="cc-bridge-account-button">
+                <button id="selectButton{{$index}}" class="progressive" data-ng-click="cosBridgeReportFraudAccountPicker.goToSelectCardModal(account)">
+                    {{'selectbutton.text' | translate}}
+                </button>
+            </span>
+        </div>
+    </div>
+</div>
+<div ui-view></div>

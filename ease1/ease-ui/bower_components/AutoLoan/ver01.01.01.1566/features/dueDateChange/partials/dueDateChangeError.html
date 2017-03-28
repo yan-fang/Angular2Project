@@ -1,0 +1,13 @@
+<div ease-modal
+	modal-type="autoLoanDueDateChangeErrorController.modalType"
+	toggle-close="autoLoanDueDateChangeErrorController.close()"
+	modal-class="autoLoanDueDateChangeErrorController.modalClass">
+	<h2 class="modal-heading" id="modalTitle" data-ng-bind="autoLoanDueDateChangeErrorController.i18n.coaf.dueDateChange.dueDateChangeError.headline.label.v1"></h2>
+	<p data-ng-bind="autoLoanDueDateChangeErrorController.i18n.coaf.dueDateChange.dueDateChangeError.errorDescription1.label.v1"></p>
+	<p data-ng-bind="autoLoanDueDateChangeErrorController.i18n.coaf.dueDateChange.dueDateChangeError.errorDescription2.label.v1"></p>
+
+	<div class="modal-controls">
+		<button id="tryAgain" class="btn progressive full-width" ng-click="autoLoanDueDateChangeErrorController.tryAgain($event)" data-ng-bind="autoLoanDueDateChangeErrorController.i18n.coaf.dueDateChange.dueDateChangeError.tryAgainButtonText.label.v1"></button>
+		<!--<button id="ContactUs" class="btn progressive ghost full-width" ng-click="autoLoanDueDateChangeErrorController.returnToAccount($event)" data-ng-bind="autoLoanDueDateChangeErrorController.i18n.coaf.dueDateChange.dueDateChangeError.contactUsButtonText.label.v1"></button>-->
+	</div>
+</div>

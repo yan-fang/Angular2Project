@@ -1,0 +1,13 @@
+{
+  "name": "adobe-target",
+  "version": "0.9.2",
+  "_release": "0.9.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.9.2",
+    "commit": "c87415cd11f81a646aba869995855a88c20167ef"
+  },
+  "_source": "https://github.kdc.capitalone.com/bower-dependencies/adobe-target.git",
+  "_target": "0.9.2",
+  "_originalSource": "https://github.kdc.capitalone.com/bower-dependencies/adobe-target.git"
+}

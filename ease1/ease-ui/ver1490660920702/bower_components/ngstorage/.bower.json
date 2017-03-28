@@ -1,0 +1,13 @@
+{
+  "name": "ngstorage",
+  "version": "0.3.0",
+  "_release": "0.3.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.3.0",
+    "commit": "02f5b0376943b80e518904330c03f446230fb246"
+  },
+  "_source": "https://github.kdc.capitalone.com/bower-dependencies/ngstorage.git",
+  "_target": "0.3.0",
+  "_originalSource": "https://github.kdc.capitalone.com/bower-dependencies/ngstorage.git"
+}

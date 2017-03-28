@@ -1,0 +1,34 @@
+<div id="report_fraud_title_label"class="cc-fraud-modal-header">
+  <h2 aria-label="{{::'ease.card.reportfraud.fraud.title.label' | translate}}">{{::'ease.card.reportfraud.fraud.title.label' | translate}}</h2>
+</div>
+<div id="purchase_info_label" class="cc-fraud-modal-body">
+  <div class="center subheader" id="report_fraud_lock_card_header">
+    {{::reportFraudModal.suspectedFraudCardLock | translate}}
+  </div>
+  <div>
+    <hr />
+    <ul>
+      <li id="report_fraud_instruction_step_1_text">
+        <span class="report-fraud-step-header">{{::'ease.card.reportfraud.suspected_fraud.step1.label' |translate}}</span><br />
+        {{::'ease.card.reportfraud.suspected_fraud.step1.instruction.text' |translate}}
+      </li>
+      <li id="report_fraud_instruction_step_2_text" class="disabled-text">
+        <span class="report-fraud-step-header">{{::'ease.card.reportfraud.suspected_fraud.step2.label' |translate}}</span><br />
+        {{::'ease.card.reportfraud.suspected_fraud.step2.instruction.text' |translate}}
+      </li>
+    </ul>
+  </div>
+  <form>
+    <div class="cc-fraud-problem-type">
+      <div class="cc-fraud-problem-buttons">
+        <button class="destructive" id="report_problem_lock_card_button"
+                data-ng-click="reportFraudModal.handleLockCardClick();">
+          <span ng-hide="reportFraudModal.loading">
+            {{::'ease.card.reportfraud.button_lock_card.label' |translate}}
+          </span>
+          <div class="cc-spinner" ng-class="{'loading':reportFraudModal.loading}"></div>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

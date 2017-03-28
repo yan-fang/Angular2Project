@@ -1,0 +1,191 @@
+<div class="atmFinderContainer">
+  <ease-ui-modal close-modal="close()" double-wide="true" update-dom>
+    <div class="map-tabs">
+      <span data-ng-click="handleTabShow('Map')"
+            data-ng-class="{'active': tab.currenttab === 'Map'}"
+            aria-label="{{::contentData['ease.core.widget.atmfinder.mapbutton.label']}}">{{::contentData['ease.core.widget.atmfinder.mapbutton.label']}}</span>
+
+      <span data-ng-click="handleTabShow('List')"
+            data-ng-class="{'active': tab.currenttab === 'List'}"
+            aria-label="{{::contentData['ease.core.widget.atmfinder.listbutton.label']}}">{{::contentData['ease.core.widget.atmfinder.listbutton.label']}}</span>
+    </div>
+    <form name="atmFinderForm" data-ng-submit="submitSearch(searchInput)" autocomplete="off" novalidate>
+      <div data-ng-class="{'search-input-invalid': isInvalidInput , 'search-input': !isInvalidInput}">
+        <div data-ng-style="{'background-image': 'url(/ease-ui/dist/images/Icon_Search.png)'};"
+             class="search-icon"
+             alt="{{::contentData['ease.core.widget.atmfinder.search.icon.alt.label']}}"
+             title="{{::contentData['ease.core.widget.atmfinder.search.icon.alt.label']}}"
+             draggable="false" >
+        </div>
+        <input type="text"
+               data-ng-model="searchInput"
+               placeholder="{{::contentData['ease.core.widget.atmfinder.searchmobile.ghost.label']}}"
+               aria-label="{{::contentData['ease.core.widget.atmfinder.search.ghost.label']}}"
+               data-ng-class="{'input-invalid': isInvalidInput}"
+               id="InputFocusId"/>
+        <img id="af_clear_search_button"
+             clear-search-button
+             type="button"
+             data-ng-show="searchInput.length"
+             data-ng-src="/ease-ui/dist/images/Icon_SearchClear.png"
+             class="clear-search-button"
+             alt="{{::contentData['ease.core.widget.atmfinder.clearsearch.alt.label']}}"
+             title="{{::contentData['ease.core.widget.atmfinder.clearsearch.alt.label']}}"
+             tabindex="0"
+             draggable="false"
+             role="button"/>
+        <div role="alert"
+             class="input-invalid-msg"
+             data-ng-if="isInvalidInput"
+             tabindex="0"
+             focus-after-search="isInvalidInput">
+          {{::contentData['ease.core.widget.atmfinder.search.filter.error2.label']}}
+        </div>
+      </div>
+      <div role="tablist" id="af_filter">
+        <div id="af_button" class="atm-filter-button" tabindex="0" role="tab" aria-labelledby="filter-label" data-ng-click="toggleFilterView()">
+            <img class="atm-filter-icon" data-ng-src="{{::loadSearchFilterImage}}" alt="{{::contentData['ease.core.widget.atmfinder.search.filter.label']}}"/>
+            <span class="atm-button-content" id="filter-label">{{::contentData['ease.core.widget.atmfinder.search.filter.label']}}</span>
+        </div>
+        <ease-drawer data-ng-click="onResultDetailsClick($event)" tabindex="-1" role="tabpanel">
+          <div class="filter-options">
+            <p>{{::contentData['ease.core.widget.atmfinder.search.filter.title.label']}}</p>
+            <ul>
+              <li tabindex="-1">
+                <label value="{{::contentData['ease.core.widget.atmfinder.search.filter.branches.label']}}">
+                  <input id="af_branch_checkbox" type="checkbox" checked="checked" data-ng-click="toggleFilterParams($event, 'Branch')" data-ng-keydown="preventFormSubmission($event)">
+                  <span class="checkbox"></span>
+                  <span>{{::contentData['ease.core.widget.atmfinder.search.filter.branches.label']}}</span>
+                </label>
+              </li>
+              <li tabindex="-1">
+                <label value="{{::contentData['ease.core.widget.atmfinder.search.filter.atm1.label']}}">
+                  <input id="af_atm_retail_checkbox" type="checkbox" checked="checked" data-ng-click="toggleFilterParams($event, 'ATM-Retail')" data-ng-keydown="preventFormSubmission($event)">
+                  <span class="checkbox"></span>
+                  <span>{{::contentData['ease.core.widget.atmfinder.search.filter.atm1.label']}}</span>
+                </label>
+              </li>
+              <li tabindex="-1">
+                <label value="{{::contentData['ease.core.widget.atmfinder.search.filter.atm2.label']}}">
+                  <input id="af_360_checkbox" type="checkbox" checked="checked" data-ng-click="toggleFilterParams($event, 'ATM-360')" data-ng-keydown="preventFormSubmission($event)">
+                  <span class="checkbox"></span>
+                  <span>{{::contentData['ease.core.widget.atmfinder.search.filter.atm2.label']}}</span>
+                </label>
+              </li>
+              <li tabindex="-1">
+                <label value="{{::contentData['ease.core.widget.atmfinder.search.filter.cashback.label']}}">
+                  <input id="af_cash_back_checkbox" type="checkbox" data-ng-click="toggleFilterParams($event, 'CB')" data-ng-keydown="preventFormSubmission($event)">
+                  <span class="checkbox"></span>
+                  <span>{{::contentData['ease.core.widget.atmfinder.search.filter.cashback.label']}}</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </ease-drawer>
+      </div>
+    </form>
+    <div data-ng-class="{'panels': (!isFilterExpanded && !isInvalidInput),
+                         'error-panels': (isInvalidInput && !isFilterExpanded),
+                         'filter-expanded-panels': (isFilterExpanded && !isInvalidInput),
+                         'filter-and-error-panels': (isFilterExpanded && isInvalidInput)}">
+      <div class="left-panel-wrap">
+        <div class="left-panel panel"
+           data-ng-if="noResultsFound"
+           data-ng-class="{'active': tab.currenttab === 'List'}">
+        <div class="no-results-error ">
+          <img class="error-icon"
+               data-ng-src="{{::contentData['ease.core.widget.atmfinder.noResultsIcon']}}"
+               alt="{{::contentData['ease.core.widget.atmfinder.search.filter.noresults.imagealt.label']}}"
+               title="{{::contentData['ease.core.widget.atmfinder.search.filter.noresults.imagealt.label']}}"
+               tabindex="0" />
+          <div role="alert"
+               data-ng-bind-html="::contentData['ease.core.widget.atmfinder.search.filter.noresults1.label'] + '2 ' + contentData['ease.core.widget.atmfinder.search.filter.noresults2.label']"
+               tabindex="0"
+               focus-after-search="noResultsFound && !isInvalidInput">
+          </div>
+        </div>
+      </div>
+      <div data-ng-if="!noResultsFound" class="left-panel panel"
+           tabindex="0"
+           aria-label="{{::contentData['ease.core.widget.atmfinder.list.aria.label']}}"
+           data-ng-class="{'active': tab.currenttab === 'List'}"
+           role="list">
+        <div class="result"
+             data-ng-repeat="listItem in locationsData.atmListData"
+             data-ng-click="onListItemClick($event, listItem.locationId)"
+             data-ng-keydown="onListItemClick($event, listItem.locationId)"
+             scroll-to-view="listItem.drawerOpen"
+             role="listitem"
+             aria-label="{{::listItem.name}}{{::listItem.addressLine1}}"
+             focus-after-search="$first && !noResultsFound && !isInvalidInput">
+          <ease-content-tile class="result-content" data-tile-id="{{'tile_' + $index}}"
+            data-first-id="{{'first_' + $index}}"
+            data-second-id="{{'second_' + $index}}" >
+            <first-part class="result-icon">
+              <img data-ng-src="{{::listItem.locationIcon}}"
+                   alt="{{::contentData[listItem.locationIconAlt]}}"
+                   draggable="false"
+                   id="af_img_{{$index}}"/>
+            </first-part>
+            <second-part>
+              <div class="result-title-section">{{::listItem.name}}</div>
+              <div class="result-title-section result-subtitle" data-ng-hide="listItem.drawerOpen">
+                {{::listItem.addressLine1}}
+              </div>
+              <div>
+                <ease-drawer class="result-details"
+                             data-ng-click="onResultDetailsClick($event)"
+                             data-ng-keydown="onResultDetailsClick($event)"
+                             drawer-id="listItem.locationId"
+                             isClickEnabled="false"
+                             tabindex="-1"
+                             role="listitem">
+                  <div class="result-map-link drawer-item">
+                    <a data-ng-href="{{::listItem.mapUrl}}" target="_blank">{{::listItem.addressLine1}}<br>{{::listItem.addressLine2}}</a>
+                    <img class="result-map-link-icon"
+                         alt="{{::contentData['ease.core.widget.atmfinder.resultslink.imagealt.label']}}"
+                         data-ng-src="{{::contentData['ease.core.widget.atmfinder.externalLinkIcon']}}"/>
+                    </a>
+                  </div>
+                  <div class="result-phone drawer-item show-on-desktop" data-ng-if="::listItem.telephone">
+                    {{::listItem.telephone}}
+                  </div>
+                  <a class="result-phone drawer-item show-on-mobile" data-ng-if="::listItem.telephone" data-ng-href="tel:{{::listItem.telephone}}">
+                    {{::listItem.telephone}}
+                  </a>
+                  <div class="result-hours drawer-item" data-ng-if="checkAccessHoursAvailablity(listItem.accessHours)">
+                    <section class="content-tile" data-ng-repeat="listItemHours in ::listItem.accessHours">
+                      <span class="access-days">{{::listItemHours.dayOfWeek}}</span>
+                      <span class="access-hours">{{::listItemHours.operatingHours}}</span>
+                    </section>
+                  </div>
+                  <div class="result-services drawer-item">
+                    <ul>
+                      <li data-ng-repeat="service in ::listItem.services">{{::service}}</li>
+                    </ul>
+                  </div>
+                </ease-drawer>
+              </div>
+            </second-part>
+          </ease-content-tile>
+        </div>
+      </div>
+      </div>
+      <div class="right-panel panel"
+           aria-label="{{::contentData['ease.core.widget.atmfinder.map.aria.label']}}"
+           role="button"
+           aria-pressed="true"
+           tabindex="0"
+           data-ng-class="{'active': tab.currenttab === 'Map'}">
+        <ease-ui-google-map lat="locationsData.lat"
+                            long="locationsData.long"
+                            show-ui-controls = true
+                            is-street-view="false"
+                            zoom="13"
+                            marker-config="locationsData.markerConfig"
+                            rendered-markers = "renderedMarkers"
+        ></ease-ui-google-map>
+      </div>
+    </div>
+  </ease-ui-modal>
+</div>

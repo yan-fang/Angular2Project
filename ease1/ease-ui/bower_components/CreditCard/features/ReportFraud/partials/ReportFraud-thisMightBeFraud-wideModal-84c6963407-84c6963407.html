@@ -1,0 +1,70 @@
+<div id="report_fraud_title_label"class="cc-fraud-modal-header">
+  <h2 aria-label="{{::'ease.card.reportfraud.fraud.title.label' | translate}}">{{::reportFraudModal.mightBeFraudHeader}}</h2>
+</div>
+<div id="purchase_info_label" class="cc-fraud-modal-body">
+  <p id="report_fraud_instruction_header" class="subheader">
+    {{::reportFraudModal.mightBeFraudSubheader}}
+  </p>
+
+  <div class="fraud-steps">
+    <div id="report_fraud_step_lock_card" class="column left">
+      <span class="column-icon icon-card-lock"></span>
+      <br />
+
+      <div class="column-header">
+        {{::'ease.card.reportfraud.fraud.steps.step1.label' | translate}}
+      </div>
+      <div class="column-text">
+        {{::'ease.card.reportfraud.fraud.steps.step1.text' | translate}}
+      </div>
+    </div>
+
+    <div id="report_fraud_step_review_purchase" class="column center">
+      <span class="column-icon icon-review"></span>
+      <br />
+
+      <div class="column-header">
+        {{::'ease.card.reportfraud.fraud.steps.step2.label' | translate}}
+      </div>
+      <div class="column-text">
+        {{::'ease.card.reportfraud.fraud.steps.step2.text' | translate}}
+      </div>
+    </div>
+
+    <div id="report_fraud_step_get_new_card" class="column right">
+      <span class="column-icon icon-mailbox"></span>
+      <br />
+
+      <div class="column-header">
+        {{::'ease.card.reportfraud.fraud.steps.step3.label' | translate}}
+      </div>
+      <div class="column-text">
+        {{::reportFraudModal.mightBeFraudStep}}
+      </div>
+    </div>
+  </div>
+
+  <div ng-if="reportFraudModal.showWalletMessages" class="grey-callout-box">
+    <div class="app-phone-icon"></div>
+
+    <div class="app-promo-text">
+      {{::'ease.card.reportfraud.fraud.wallet_message.text' | translate}}
+    </div>
+  </div>
+</div>
+
+<div class="button-footer">
+  <form>
+    <div class="cc-fraud-problem-type">
+      <div class="cc-fraud-problem-buttons">
+        <button class="action small no-API" id="report_problem_fraud_continue_button"
+                data-ng-click="reportFraudModal.handleFraudGetStartedClick();">
+              <span ng-hide="reportFraudModal.loading">
+                {{::'ease.card.reportfraud.fraud.steps.getStarted' | translate}}
+              </span>
+          <div class="cc-spinner" ng-class="{'loading':reportFraudModal.loading}"></div>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

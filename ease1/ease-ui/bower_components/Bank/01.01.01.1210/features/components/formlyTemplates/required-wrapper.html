@@ -1,0 +1,8 @@
+<div class="formly-template-wrapper">
+    <label for="{{::id}}" class="control-label">{{options.templateOptions.wrapperLabel}}</label>
+    <formly-transclude></formly-transclude>
+    <div class="invalid-field-message" ng-if="showError" ng-messages="fc.$error">
+    <div ng-message="required">This field is required</div>
+    <div ng-message="amountInvalid">Amount should be less than the transaction amount</div>
+</div>
+</div>

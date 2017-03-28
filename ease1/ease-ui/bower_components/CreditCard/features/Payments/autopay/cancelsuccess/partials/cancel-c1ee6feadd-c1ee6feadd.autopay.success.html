@@ -1,0 +1,23 @@
+<div ng-controller="ccCancelAutoPaySuccessController as ccCancelAutoPaySuccess">
+  <ease-ui-modal close-modal="ccCancelAutoPaySuccess.modal.close()" modal-id="'cancelAutoPaySuccessModal'"
+                 class="cc-modal ccPayModal successModal paymentModal cc-cancel-autopay-success-modal cc-modal-icon-success">
+    <div class="paymentContainer">
+      <img class="cc-pay-modal-logo" ng-src="{{ccCancelAutoPaySuccess.imageSRC}}"
+           alt="{{'ease.card.autopay.setup.step2.img.alt.text' | translate}}"
+           title="{{'ease.card.autopay.setup.step2.img.title' | translate}}">
+
+      <h2 class="spoke-header" translate>ease.card.autopay.cancel.success.header.text</h2>
+
+      <p class="cc-modal-subtext"
+         ng-bind="::'ease.card.autopay.cancel.success.confirmation.text' | translate: {'cardDisplayName': ccCancelAutoPaySuccess.accountDetailsData.accountDetails.cardAccount.cardDisplayName}">
+      </p>
+
+      <div class="modal-footer" ng-if="ccCancelAutoPaySuccess.showSetupAutoPayLink()">
+        <button id="cc-autopay-new-autopay-button" data-ng-click="ccCancelAutoPaySuccess.setup();" class="cancel-success-button progressive"
+                tabindex="0"
+                ng-bind="::'ease.card.autopay.cancel.success.button.text' | translate">
+        </button>
+      </div>
+    </div>
+  </ease-ui-modal>
+</div>

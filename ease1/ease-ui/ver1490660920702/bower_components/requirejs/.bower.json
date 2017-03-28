@@ -1,0 +1,13 @@
+{
+  "name": "requirejs",
+  "version": "2.1.22",
+  "_release": "2.1.22",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.1.22",
+    "commit": "02708ba39f9dcf0cf9e728288993afa96bc7ccac"
+  },
+  "_source": "https://github.kdc.capitalone.com/bower-dependencies/requirejs.git",
+  "_target": "2.1.22",
+  "_originalSource": "https://github.kdc.capitalone.com/bower-dependencies/requirejs.git"
+}

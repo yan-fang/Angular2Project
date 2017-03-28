@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/HomeLoans/ver1490643033478/styles/home-loan-override.css">
+<div> <ease-extensibility-bar content="::json" modal-controller="modalController" mobile-columns=3></ease-extensibility-bar></div>
+<div class="container transactions-header">
+  <div data-ng-show="displayTransactions.length == 0 && scheduledTransactions.length == 0 && pendingTransactions.length == 0" class="warning">
+    <br><br><br>
+    <h2>{{i18nHL.transactions.transactionError}}</h2>
+    <br><br>
+  </div>
+  <ul class="transactionsList" role="list" aria-label="List of transactions" >
+    <li class="sortTransactions" role="listitem" aria-label="Sort through transactions"
+        data-ng-show="displayTransactions.length > 0 || scheduledTransactions.length > 0 || pendingTransactions.length > 0">
+      <p>
+        <span class="transactions-date" aria-label="{{i18nHL.transactions.date}}"
+        >{{i18nHL.transactions.date}}</span>
+        <span class="transactions-name">
+          <span class="transactions-description-header" aria-label="{{i18nHL.transactions.description}}"
+          >{{i18nHL.transactions.description}}</span>
+          <span class="hl-transactions-amount-header" aria-label="{{i18nHL.transactions.amount}}"
+          >{{i18nHL.transactions.amount}}</span>
+        </span>
+        <span class="transactions-amount-details">
+          <span class="hl-principal-paid-header" aria-label="{{i18nHL.transactions.principalPaid}}">{{i18nHL.transactions.principalPaid}}</span>
+          <span class="hl-principal-balance-header" aria-label="{{i18nHL.transactions.principalBalance}}">{{i18nHL.transactions.principalBalance}}</span>
+        </span>
+      </p>
+    </li>
+</ul>
+</div>
+
+<div class="container transactions extensibility-transactions div-border-bottom-curve hl-transactions">
+  <ul class="transactionsList" role="list" aria-label="List of transactions" >
+    <li data-ng-if="pendingTransactions.length > 0" ease-accordion accordion-elements="pendingTransactions" only-open-one="false" accordion-Parent="hlController" template-override="/ease-ui/bower_components/HomeLoans/ver1490643033478/partials/enhancedTransactions/HomeLoans-enhanced-transactions.html"></li>
+    <li data-ng-if="scheduledTransactions.length > 0" ease-accordion accordion-elements="scheduledTransactions" only-open-one="false" accordion-Parent="hlController" template-override="/ease-ui/bower_components/HomeLoans/ver1490643033478/partials/enhancedTransactions/HomeLoans-enhanced-transactions.html"></li>
+    <li data-ng-if="displayTransactions.length > 0" ease-accordion accordion-elements="displayTransactions" only-open-one="false" accordion-Parent="hlController" template-override="/ease-ui/bower_components/HomeLoans/ver1490643033478/partials/enhancedTransactions/HomeLoans-enhanced-transactions.html"></li>
+  </ul>
+</div>
+<div ui-view ng-animate-children></div>

@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/HomeLoans/ver1490643033478/styles/home-loan-override.css">
+<div style="z-index:100;" ease-modal toggle-close="payOffQuote.close()" init-close="payOffQuote.initClose"
+     modal-class="payOffQuote.modalClass" modal-type="payOffQuote.modalType"
+     focus-class="payOffQuote.focusClass" focus-id="focusId" id="payOffQuoteDatePicker">
+  <div class="payOffQuoteDatePicker">
+    <h2 align="center" class="title" aria-label="{{i18nHL.payOffQuote.datePicker}}">{{i18nHL.payOffQuote.datePicker}}</h2>
+
+    <h3 align="center">
+      <div id="hlAccountNumber_TLNPI">
+        {{i18nHL.paymentDetails.accountNo}}: {{accountDetailsData.accountDetails.accountNumber}}
+      </div>
+    </h3>
+
+    <div class="paymentError" ng-show="payOffQuote.payOffQuoteFailureReason"
+         aria-label="{{payOffQuote.payOffQuoteFailureReason}}">
+      <i class = "icon-warning"></i>
+      <div class="message" id="failureMessage"><span> {{payOffQuote.payOffQuoteFailureReason}}</span></div>
+    </div>
+
+    <h4 aria-label="{{i18nHL.payOffQuote.selectDateVerbiage}} {{payOffQuote.endDate}}">
+      {{i18nHL.payOffQuote.selectDateVerbiage}}
+      <span id="quoteEndDate"> {{payOffQuote.quoteEndDate | date:'MMMM d, y'}}</span>
+    </h4>
+
+    <div class="container">
+        <ease-calendar
+          ng-model="payOffQuote.selectedDate" data-ng-click="payOffQuote.enableGetQuote($event)"
+          calendar-options="payOffQuote.inlineOptions"
+        />
+      </div>
+
+
+      <button role="button" aria-label="{{payOffQuote.ariaLabelPayOffQuoteButton}}"
+              data-ng-show="accountDetailsData.features.payoffQuotesEnabled" id="getQuoteButton" class="getQuoteButton"
+              tabindex="0" class="button" data-ng-click="payOffQuote.getPayOffQuote(true)"
+              data-ng-class="payOffQuote.disableGetQuote" ng-disabled="payOffQuote.isGetQuoteDisabled()">
+        <div><span>{{i18nHL.payOffQuote.getQuoteButton}}</span></div>
+
+      </button>
+
+    </div>
+  </div>
+
+</div>

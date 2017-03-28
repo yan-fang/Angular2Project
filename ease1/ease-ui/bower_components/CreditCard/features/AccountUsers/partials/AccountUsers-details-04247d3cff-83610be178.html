@@ -1,0 +1,132 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/CreditCard/styles/card-override-d0ea6fe2a9-34f545de2b.css">
+<ease-ui-modal id="cc-account-users-modal" class="cc-accountUsers-modal" close-modal="audCtrl.close()" modal-class="accountUserDetails"
+    ng-class="audCtrl.modalView != 'delete' ? audCtrl.defaultModal.defaultModalType : audCtrl.defaultModal.deleteModalType" focus-id="closeModal" modal-title="audCtrl.title">
+    <div ng-switch="audCtrl.modalView">
+        <div ng-if="audCtrl.modalView === 'details'">
+            <div id="cc-account-users-modal-badge-data" class="cc-accountUsers-modal-badge-data-class">{{audCtrl.selectedAccount.name.first | limitTo:1}}{{audCtrl.selectedAccount.name.last | limitTo:1}}</div>
+            <h2 class="cc-accountUsers-modal-userName-class" id="cc-account-users-modal-user-name">{{audCtrl.selectedAccount.name.first | lowercase}} {{audCtrl.selectedAccount.name.last | lowercase}}</h2>
+            <h3 id="cc-account-users-account-role">{{'ease.card.accountusers.view.role.' + audCtrl.selectedAccount.role + '.text'|translate}}</h3>
+            <div ng-if="(audCtrl.selectedAccount.spendLimit || audCtrl.selectedAccount.spendLimit === 0) && auCtrl.displayAccountUsersLimitAndBalanceInfoFlag">
+                <h4 id="cc-account-users-spend-cycle">{{'ease.card.accountusers.view.details.spending.label'|translate}}</h4>
+                <spend-bar value="audCtrl.selectedAccount.spendLimitUsedThisCycle" out-of="audCtrl.selectedAccount.spendLimit"></spend-bar>
+                <div id="cc-account-users-modal-spend-data" class="cc-accountUsers-modal-spend-data-class">{{audCtrl.selectedAccount.spendLimitUsedThisCycle | creditCardCurrency}}<span>{{audCtrl.selectedAccount.spendLimit | creditCardNoFractionCurrency}}</span></div>
+                <div id="cc-account-users-modal-cash-container" class="cc-accountUsers-modal-cash-container-class">{{audCtrl.selectedAccount.cashAdvanceLimit | creditCardNoFractionCurrency}}
+                    <h5 id="cc-account-users-modal-cash-withdrawn">{{'ease.card.accountusers.view.details.cashWithdrawn'|translate}}</h5>
+                </div>
+            </div>
+            <button id="cc-account-users-modal-reset-spend" ng-if="(audCtrl.selectedAccount.spendLimit || audCtrl.selectedAccount.spendLimit === 0) && auCtrl.displayAccountUsersLimitAndBalanceInfoFlag"   ng-click='audCtrl.resetSpend(); audCtrl.clickedResetSpend()'
+                ng-disabled="audCtrl.processingEdit === true || audCtrl.selectedAccount.spendLimitUsedThisCycle===0">{{'ease.card.accountusers.view.details.reset.button.text'|translate}}</button>
+            <p id="cc-account-users-modal-reset-spend-description" ng-if="(audCtrl.selectedAccount.spendLimit || audCtrl.selectedAccount.spendLimit === 0) && auCtrl.displayAccountUsersLimitAndBalanceInfoFlag"  >{{'ease.card.accountusers.view.details.reset.description'|translate}}</p>
+            <div ng-if="auCtrl.canChangeAccountUserSettings && (auCtrl.canChangeAccountUserType || (auCtrl.displayAccountUsersLimitAndBalanceInfoFlag && audCtrl.selectedAccount.cardLastFour))" id="cc-account-users-modal-settings" class="cc-accountUsers-modal-link">
+                <a href="" ng-click='audCtrl.modalView = "settings"; audCtrl.clickedSettingsLink()'>{{'ease.card.accountusers.view.details.settings.link.text'|translate}}</a>
+            </div>
+            <div ng-if="audCtrl.canDeleteAccountUsers()" id="cc-account-users-modal-deleteUser" class="cc-accountUsers-modal-link">
+                <a href="" class="cc-accountUsers-modal-deleteLink" ng-click='audCtrl.modalView = "delete"; audCtrl.clickedDeleteLink()'>{{'ease.card.accountusers.view.details.delete.link.text'|translate}}</a>
+            </div>
+        </div>
+        <div ng-if="audCtrl.modalView === 'settings'" aria-live="assertive" class ="cc-setting-modal">
+            <div id="cc-account-users-modal-badge-data" class="cc-accountUsers-modal-badge-data-class">{{audCtrl.selectedAccount.name.first | limitTo:1}}{{audCtrl.selectedAccount.name.last | limitTo:1}}</div>
+            <a id=cc-AccountUsers-arrow-back href="" ng-click='audCtrl.modalView = "details"; audCtrl.goToDetails(); audCtrl.resetRoleAndLimitsToDefault()' ng-hide="audCtrl.processingEdit" class="cc-accountUsers-modal-back" role="button">
+                <span class="cc-offscreen">{{'ease.card.accountusers.view.settings.modal.back'|translate}}</span>
+                <i class="icon-arrow-back"></i>
+            </a>
+            <h2 autofocus auto-focus class="cc-accountUsers-modal-header" tabindex="-1">{{'ease.card.accountusers.view.settings.modal.header'|translate}}</h2>
+            <form ng-submit="audCtrl.submit(audCtrl.userForm)" name="form">
+                <div ng-if="(auCtrl.canChangeAccountUserType && auCtrl.showUserType)" id="cc-account-users-settings-modal-user-type-container" class="cc-accountusers-modal-settings-userType">
+                    <h4 id="cc-account-users-settings-modal-user-type-header">{{'ease.card.accountusers.view.settings.userType.header'|translate}}</h4>
+                    <ul>
+                        <li ng-repeat="userType in audCtrl.userTypes">
+                            <label id="cc-account-users-settings-modal-{{userType}}-role-label" class="form-radio" for="cc-account-users-settings-modal-{{userType}}-role-radio-button"><input id="cc-account-users-settings-modal-{{userType}}-role-radio-button" type="radio" name="userType" ng-value="userType" ng-disabled="audCtrl.processingEdit" ng-model="audCtrl.userForm.role"><span class="nub"></span>{{'ease.card.accountusers.view.role.' + userType + '.text'|translate}}</label></li>
+                    </ul>
+                </div>
+                <div ng-if="auCtrl.displayAccountUsersLimitAndBalanceInfoFlag && audCtrl.selectedAccount.cardLastFour" id="cc-account-users-settings-modal-card-limits-container"
+                    class="cc-accountusers-modal-settings-cardLimits">
+                    <h4 id="cc-account-users-settings-modal-card-limits-header">{{'ease.card.accountusers.view.settings.cardLimits.header'|translate}}</h4>
+                    <div class="cc-edit-toggle-container">
+                    <label id="cc-editAccountUsers-limitsCheckBox-label">
+                    <input type="checkbox"
+                        class="toggle"
+                        tabindex="0"
+                        id="cc-editAccountUsers-limitsCheckBox-text"
+                        ng-disabled="audCtrl.processingEdit"
+                        aria-label="{{::'ease.card.accountusers.view.settings.limitsCheckbox.text' | translate}} {{audCtrl.getLimitsToggleAccessibilityValue(form)}}"
+                        ng-checked="audCtrl.setLimitsCheckBoxChecked" ng-click="audCtrl.toggleSetLimitsToggle(form)"
+                    >{{::'ease.card.accountusers.view.settings.limitsCheckbox.text' | translate}}</label></br>
+                    </div>
+                    <div ng-if="audCtrl.setLimitsCheckBoxChecked">
+                    <label id="cc-account-users-settings-modal-spend-limit-label" for="cc-account-users-settings-modal-spend-limit-text-field" class="cc-accountusers-spendlimit-label">{{'ease.card.accountusers.view.settings.spendLimit.label'|translate}} <span class="cc-account-users-settings-modal-label-desc" id="cc-account-users-settings-modal-label-desc">{{'ease.card.accountusers.view.settings.optional.label'|translate}}</span></label>
+                    <input minimum="{{audCtrl.selectedAccount.spendLimitUsedThisCycle}}" maximum="{{auCtrl.accountDetails.creditLimit}}"
+                        validate-spend-limit credit-limit='auCtrl.accountDetails.creditLimit' ng-required="!auCtrl.isEmpty(audCtrl.userForm.cashLimit)" id="cc-account-users-settings-modal-spend-limit-text-field"
+                        type="text" name="spendInput" placeholder="$" ng-model="audCtrl.userForm.spendLimit" ng-class="{'invalid-field' : form.spendInput.$invalid}"
+                        ng-disabled="audCtrl.processingEdit"
+                        ng-model-options="{ updateOn: 'paste keydown keyup blur' }"></input>
+                    <span class="invalid-field-error-message" aria-describedby="cc-account-users-spend-limit-error-lessThanMin" id="cc-account-users-spend-limit-error-lessThanMin"
+                        ng-show="form.spendInput.$error.lessThanMinimum">{{::'ease.card.accountusers.view.spendlimit.invalidspendlessthanbalance.text' | translate}}</span>
+                    <span class="invalid-field-error-message" aria-describedby="cc-accountUsers-spend-limit-error" id="cc-account-users-spend-limit-error"
+                        ng-show="form.spendInput.$error.moreThanMaximum">{{::'ease.card.accountusers.view.spendlimit.invalidspendlimit.text' | translate}}</span>
+                    <div id="cc-account-users-settings-modal-cash-limits-container" class="cc-accountusers-spend-cashlimit">
+                        <label id="cc-account-users-settings-modal-cash-limit-description" for="cc-account-users-settings-modal-cash-limit-text-field">{{'ease.card.accountusers.view.settings.cashLimit.description.text'|translate}}</label>
+                        <input minimum="0" maximum="audCtrl.userForm.spendLimit" ng-required="!auCtrl.isEmpty(audCtrl.userForm.spendLimit)" ng-disabled="!audCtrl.userForm.spendLimit || audCtrl.processingEdit" validate-cash-limit spend-limit='audCtrl.userForm.spendLimit'
+                            current-cash-limit='auCtrl.accountDetails.cashLimit' id="cc-account-users-settings-modal-cash-limit-text-field"
+                            type="text" name="cashInput" placeholder="$" ng-model="audCtrl.userForm.cashLimit" ng-model-options="{ updateOn: 'paste keydown keyup blur' }"
+                            ng-class="{'invalid-field' : form.cashInput.$invalid}" aria-describedby="cc-account-users-settings-modal-label-desc"></input>
+                        <span class="invalid-field-error-message" aria-describedby="cc-accountUsers-cash-limit-error" id="cc-account-users-cash-limit-error"
+                            ng-show="form.cashInput.$error.validCashLimit">{{::'ease.card.accountusers.view.cashLimit.invalidcashlimit.text' | translate}}</span>
+                        <span class="invalid-field-error-message" aria-describedby="cc-accountUsers-exceeds-spend-limit-error" id="cc-account-users-exceeds-spend-limit-error"
+                            ng-show="audCtrl.userForm.cashLimit/1 > audCtrl.userForm.spendLimit/1">{{::'ease.card.accountusers.view.cashLimit.exceedspendlimit.text' | translate}}</span>
+                    </div>
+                    </div>
+                </div>
+                <div ng-if="audCtrl.selectedAccount.role === 'AU' && audCtrl.userForm.role === 'POAM'" id="cc-accountUsers-settings-modal-TCs" class="cc-accountUsers-acceptTermsAndConditions-labelStyle"
+                    <span id="cc-addAccountUsers-settings-modal-acceptTermsAndConditions-checkBox-text">
+                        <label for="cc-AccountUsers-settings-modal-acceptTermsAndConditions-button" id="cc-AccountUsers-settings-modal-acceptTermsAndConditions-label" class="form-checkbox">
+                            <input autofocus auto-focus type="checkbox" id="cc-AccountUsers-settings-modal-acceptTermsAndConditions-button" ng-disabled="audCtrl.processingEdit" ng-model="audCtrl.termsAndConditionsCheckBoxChecked" name="tcCheckbox" required><span class="nub"></span>
+                {{::'ease.card.accountusers.view.acceptTermsAndConditions.text' | translate}}
+                            <a id="cc-addAccountUsers-acceptTermsAndConditions-link" ng-disabled="audCtrl.processingEdit" ng-click='!audCtrl.processingEdit && audCtrl.getSmallBusinessAuthTermsAndConditions() && audCtrl.clickedTsandCs()'>{{::'ease.card.accountusers.view.acceptTermsAndConditions.link' | translate}}
+                            </a>
+                        </label>
+                    </span>
+                </div>
+                <button ng-click='audCtrl.clickedSave(); audCtrl.auRoleChanged(); audCtrl.amRoleChanged(); audCtrl.spendLimitChanged(); audCtrl.cashLimitChanged()' class="cc-accountUsers-settings-save-button" id="cc-account-users-settings-modal-save-button" ng-disabled="!audCtrl.formIsDifferent(audCtrl.userForm) || audCtrl.processingEdit || form.$invalid" class="btn-primary">
+                    <div class="cc-spinner-delete" ng-class="{'loading':audCtrl.processingEdit}"></div>
+                <span
+                  ng-if="!audCtrl.processingEdit">{{'ease.card.accountusers.view.settings.save.button.text'|translate}}</span></button>
+            </form>
+            </div>
+            <div ng-show="audCtrl.modalView === 'delete'" id="cc-account-users-settings-modal-DeleteUser">
+                <div id="cc-account-users-modal-DeleteUser-badge-data" class="cc-accountUsers-modal-badge-data-class cc-modal-icon-DeleteUser"></div>
+                <h2 autofocus auto-focus id="cc-accountUsers-DeleteUser-header" class="cc-accountUsers-DeleteUser-header">{{'ease.card.accountusers.view.DeleteUser.modal.header'|translate}}</h2>
+                <div class="cc-accountUsers-DeleteUser-description-text">
+                <h3 class="cc-accountUsers-DeleteUser-subTitle-text" id="cc-accountUsers-DeleteUser-subHeader1">{{'ease.card.accountusers.view.DeleteUser.description.text1'|translate}}</h3>
+                <h3 class="cc-accountUsers-DeleteUser-subTitle-text" id="cc-accountUsers-DeleteUser-subHeader2">{{'ease.card.accountusers.view.DeleteUser.description.text2'|translate}}</h3>
+                </div>
+                <div>
+                <button class="deleteButton" id="cc-accountUsers-deleteButton-btn" ng-disabled="audCtrl.loading" ng-click="audCtrl.clickedDeleteUser()" aria-label="{{'ease.card.accountusers.view.DeleteUser.button.agree.text' | translate}}">
+                    <div class="cc-spinner-delete" ng-class="{'loading':audCtrl.loading}"></div>
+                <span
+                  ng-if="!audCtrl.loading">{{::'ease.card.accountusers.view.DeleteUser.button.agree.text' | translate}}</span>
+                  </button><br>
+                 <button class="cancelButton" id="cc-accountUsers-cancelButton-btn" ng-disabled="audCtrl.loading" ng-click='audCtrl.modalView = "details"; audCtrl.goToDetailsFromDeleteUserModal()' aria-label="{{'ease.card.accountusers.view.DeleteUser.button.cancel.text' | translate}}">{{::'ease.card.accountusers.view.DeleteUser.button.cancel.text' | translate}}</button>
+                <br>
+                </div>
+            </div>
+            <div ng-if="audCtrl.modalView === 'termsAndConditions'" id="cc-account-users-settings-modal-tc-content-info">
+                <div id="cc-account-users-modal-TCs-badge-data" class="cc-accountUsers-modal-badge-data-class cc-modal-icon-TermsAndConditions"></div>
+                <a autofocus auto-focus id=cc-account-users-tcs-arrow-back href="" ng-click='audCtrl.modalView = "settings"; audCtrl.clickedSettingsLink()' aria-hidden="true" class="cc-accountUsers-modal-back">
+                    <span class="cc-offscreen">{{'ease.card.accountusers.view.TermsAndConditions.modal.back'|translate}}</span>
+                    <i class="icon-arrow-back"></i>
+                </a>
+                <h2 id="cc-accountUsers-TCs-header" class="cc-accountUsers-TermsAndConditions-header">{{'ease.card.accountusers.view.TermsAndConditions.modal.header'|translate}}</h2>
+                <h3 class="cc-accountUsers-TermsAndConditions-subTitle-text" id="cc-accountUsers-TCs-subHeader">{{'ease.card.accountusers.view.TermsAndConditions.description.text'|translate}}</h3>
+                <div class="tcLabel">
+                    <div id="cc-accountUSers-TCs-bodyHeader" class = "termsAndConditionsHeader" ng-bind-html="audCtrl.smallBusinessAuthUserTermsAndConditionContent.headline"></div>
+                    <div class="termsAndConditionsBody" ng-bind-html="audCtrl.smallBusinessAuthUserTermsAndConditionContent.body"></div>
+                </div>
+                <div>
+                    <button class="termsAndConditionsAgree" id="cc-accountUsers-issueCard-termsAndConditions-agree-btn" ng-click="audCtrl.enableSave('Accepted'); audCtrl.clickedSettingsLink()" aria-label="{{'ease.card.accountusers.view.TermsAndConditions.button.agree.text' | translate}}">{{::'ease.card.accountusers.view.TermsAndConditions.button.agree.text' | translate}}</button>
+                    <br>
+                    <div class="userTypeLink" ng-click="audCtrl.enableSave('Declined'); audCtrl.clickedSettingsLink()" id="cc-accountUsers-tc-content-decline-tc">{{::'ease.card.accountusers.view.TermsAndConditions.button.decline.text' | translate}}</div>
+                </div>
+            </div>
+            </div>
+</ease-ui-modal>

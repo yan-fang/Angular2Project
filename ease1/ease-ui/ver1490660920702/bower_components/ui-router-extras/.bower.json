@@ -1,0 +1,13 @@
+{
+  "name": "ui-router-extras",
+  "version": "0.0.13",
+  "_release": "0.0.13",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.13",
+    "commit": "0a59c5ad8b1392d12fc1a4096f8874e74dbb3f37"
+  },
+  "_source": "https://github.kdc.capitalone.com/bower-dependencies/ui-router-extras.git",
+  "_target": "0.0.13",
+  "_originalSource": "https://github.kdc.capitalone.com/bower-dependencies/ui-router-extras.git"
+}

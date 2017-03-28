@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="/ease-ui/bower_components/AutoLoan/ver01.01.01.1566/styles/auto-loan-override.css">
+<div data-ng-controller="AutoLoanPaymentSuccessController as success">
+<div style="z-index:100;" ease-modal toggle-close="success.close()" modal-role="success.modalRole" init-close="success.initClose" modal-class="success.modalClass"
+     modal-type="success.modalType" focus-id="focusId">
+  <h2 id="autoLoan.confirmation.header" data-ng-bind="success.i18n.coaf.payment.paymentSuccess.successHeader.label.v1"
+    aria-label="{{success.i18n.coaf.payment.paymentSuccess.successHeader.label.v1}}" >
+  </h2>
+
+  <p class="successMessage" id="autoLoan.confirmation.message"
+    data-ng-bind="success.i18n.coaf.payment.paymentSuccess.successMessage.label.v1"
+    aria-label="{{success.i18n.coaf.payment.paymentSuccess.successMessage.label.v1}}">
+  </p>
+
+  <ul class="paymentSuccess">
+    <li>
+      <label id="autoLoan.confirmation.scheduled.label" data-ng-bind="success.i18n.coaf.payment.paymentSuccess.scheduledFor.label.v1"></label>
+      <span id="autoLoan.confirmation.scheduled.value" data-ng-bind="success.successMsg.payDate| date:'longDate'"></span>
+    </li>
+    <li >
+      <label id="autoLoan.confirmation.from.label">{{success.i18n.coaf.payment.paymentSuccess.payFrom.label.v1}}</label>
+      <span id="autoLoan.confirmation.from.value" class="accnumbertrail">{{success.successMsg.payFromTxt}}</span>
+    </li>
+    <li >
+      <label id="autoLoan.confirmation.amount.label">{{success.i18n.coaf.payment.paymentSuccess.payAmount.label.v1}}</label>
+      <span id="autoLoan.confirmation.amount.value">{{success.successMsg.payAmount | currency}}</span>
+    </li>
+
+  </ul>
+
+  <div class="confirmCode">
+    <span aria-label="{{success.i18n.coaf.payment.paymentSuccess.ConfirmationCode.label.v1}} {{success.successMsg.confirmCode}}">
+        <span id="autoLoan.confirmation.code.value" data-ng-bind="success.successMsg.confirmCode"></span>
+        <span id="autoLoan.confirmation.code.label" class="confirmMsg" data-ng-bind="success.i18n.coaf.payment.paymentSuccess.ConfirmationCode.label.v1"></span>
+    </span>
+
+    <button id="print" tabindex="0" aria-label="print" class="print" onclick="window.print()">
+      <i class="icon-print"></i>
+    </button>
+  </div>
+
+</div>
+</div>

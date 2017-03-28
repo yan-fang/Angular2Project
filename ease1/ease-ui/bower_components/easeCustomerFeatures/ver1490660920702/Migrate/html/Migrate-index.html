@@ -1,0 +1,220 @@
+<div class="migrateContainer">
+  <div class="migrateLogo"></div>
+  <div class="migrateHeader">
+    <h2>{{migrateCtrl.contentDataMigration['ease.core.migrationacctsetup.migration.header.label']}}</h2>
+    <p data-ng-bind-html="migrateCtrl.contentDataMigration['ease.core.migrationacctsetup.migration.instructions.label']"></p>
+  </div>
+  <form id="custMigrate" name="custMigrate" novalidate>
+    <div class="migrateContent">
+
+      <div class="phoneContentDiv" ng-if="migrateCtrl.isDisplayPhoneEnabled">
+        <div id="verifyPhone" class="verifyDiv">
+          <span class="verifyPoints">{{migrateCtrl.contentDataMigration['ease.core.migrationacctsetup.migration.verify.phonepoint.label']}}</span>
+          <span class="verifyPointsLabel">{{migrateCtrl.contentDataMigration['ease.core.migrationacctsetup.migration.verify.phone.label']}}</span></div>
+        <div class="mobileContent">
+          <label class="ease-ui-dropdown-title" id="ease-dropdown-filter-Mobile-label">
+            <span class="numLabel">{{migrateCtrl.contentDataMigration['ease.core.migrationacctsetup.migration.mobile.label']}}</span>
+            <span class="primarySpan">
+              <span class="primaryLabel" data-ng-class="{'hide':!(migrateCtrl.phoneObj.selectedPhoneCriteria.mobile.primaryFlag)}">
+                {{migrateCtrl.contentDataMigration['ease.core.migrationacctsetup.migration.primary.label']}}</span>
+              <span id="mobileStar" aria-label="{{migrateCtrl.contentDataMigration['ease.core.migrationacctsetup.migration.primary.label']}}">
+                <i id='mobilePrimary' role="button" class="togglePrimary"
+                   aria-label="{{migrateCtrl.contentDataMigration['ease.core.migrationacctsetup.migration.primary.aria.label']}}"
+                   data-ng-click='migrateCtrl.primaryToggle($event, "mobile")'
+                   data-ng-class="{'icon-star-filled':migrateCtrl.mobilePri, 'icon-star-outline':(!migrateCtrl.mobilePri
+                   && !migrateCtrl.phoneObj.selectedPhoneCriteria.mobile.phonePrimaryDisable),
+                   'icon-star-disable':migrateCtrl.phoneObj.selectedPhoneCriteria.mobile.phonePrimaryDisable}"
+                   toggle-primary="migrateCtrl.phoneObj.selectedPhoneCriteria"></i>
+              </span>
+            </span>
+          </label>
+          <div role="application">
+            <ease-ui-dropdown
+              is-open="migrateCtrl.isMobileOpen"
+              persist-items="migrateCtrl.phoneObj.dataHolder.mobile"
+              items="migrateCtrl.mobileItems"
+              model-value="migrateCtrl.phoneObj.selectedPhoneCriteria.mobile.label"
+              filter-by="label"
+              required=migrateCtrl.required
+              disable-search="true"
+              select="migrateCtrl.selectedPhoneNum(item, 'mobile', $event)"
+              combobox="migrateCtrl.mobileData">
+              <ease-ui-dropdown-menu
+                select="migrateCtrl.selectedPhoneNum(item, 'mobile', $event)"
+                items="migrateCtrl.mobileItems"
+                template=true
+                is-open="migrateCtrl.isMobileOpen"
+                component-id="{{migrateCtrl.mobileData.id}}">
+                <li data-ng-repeat="item in migrateCtrl.mobileItems"
+                    data-index={{$index}}
+                    role="option"
+                    tabindex="-1"
+                    id="{{migrateCtrl.mobileData.id}}-{{$index}}"
+                    aria-label = "{{migrateCtrl.getAriaLabel(item.label)}}"
+                    data-ng-click = "migrateCtrl.editPhoneNumber('mobile',item.label)"
+                    data-ng-keydown="migrateCtrl.editPhoneNumberKeyDown('mobile',item.label, $event)"
+                >
+                  <span class="ease-itemlabel">{{item.label}}</span>
+                </li>
+              </ease-ui-dropdown-menu>
+            </ease-ui-dropdown>
+          </div>
+          <div class="tcpaMsg">
+            <p ng-if="migrateCtrl.phoneObj.selectedPhoneCriteria.mobile.tcpaMsg">{{migrateCtrl.phoneObj.selectedPhoneCriteria.mobile.tcpaMsg}}
+              <a id="mobileChgLink" href="#"
+                 aria-label="{{migrateCtrl.phoneObj.selectedPhoneCriteria.mobile.tcpaMsg}}
+                 {{migrateCtrl.contentDataMigration['ease.core.migrationacctsetup.migration.changelink.label']}}"
+                 ng-click="migrateCtrl.openEditTcpaSettingsModal('mobile')">
+                {{migrateCtrl.contentDataMigration['ease.core.migrationacctsetup.migration.changelink.label']}}
+              </a>
+            </p>
+          </div>
+        </div>
+        <div class="workContent">
+          <label class="ease-ui-dropdown-title" id="ease-dropdown-filter-Work-label">
+            <span class="numLabel">{{migrateCtrl.contentDataMigration['ease.core.migrationacctsetup.migration.work.label']}}</span>
+            <span class="primarySpan">
+              <span  class="primaryLabel" data-ng-class="{'hide':!(migrateCtrl.phoneObj.selectedPhoneCriteria.work.primaryFlag)}">
+                {{migrateCtrl.contentDataMigration['ease.core.migrationacctsetup.migration.primary.label']}}</span>
+              <span id="workStar" aria-label="{{migrateCtrl.contentDataMigration['ease.core.migrationacctsetup.migration.primary.label']}}"
+              ><i class="togglePrimary" role="button" id='workPrimary'
+                  aria-label="{{migrateCtrl.contentDataMigration['ease.core.migrationacctsetup.migration.primary.aria.label']}}"
+                  data-ng-click='migrateCtrl.primaryToggle($event, "work")'
+                  data-ng-class="{'icon-star-filled':migrateCtrl.workPri, 'icon-star-outline':(!migrateCtrl.workPri && !migrateCtrl.phoneObj.selectedPhoneCriteria.work.phonePrimaryDisable),
+                  'icon-star-disable':migrateCtrl.phoneObj.selectedPhoneCriteria.work.phonePrimaryDisable}"
+                  toggle-primary="migrateCtrl.phoneObj.selectedPhoneCriteria"></i>
+             </span>
+            </span>
+          </label>
+          <div role="application">
+            <ease-ui-dropdown
+              is-open="migrateCtrl.isWorkOpen"
+              persist-items="migrateCtrl.phoneObj.dataHolder.work"
+              items="migrateCtrl.workItems"
+              model-value="migrateCtrl.phoneObj.selectedPhoneCriteria.work.label"
+              filter-by="label"
+              required=migrateCtrl.required
+              disable-search="true"
+              select="migrateCtrl.selectedPhoneNum(item, 'work')"
+              combobox="migrateCtrl.workData">
+              <ease-ui-dropdown-menu
+                select="migrateCtrl.selectedPhoneNum(item, 'work')"
+                items="migrateCtrl.workItems"
+                template=true
+                is-open="migrateCtrl.isWorkOpen"
+                component-id="{{migrateCtrl.workData.id}}">
+                <li data-ng-repeat="item in migrateCtrl.workItems"
+                    data-index={{$index}}
+                    role="option"
+                    tabindex="-1"
+                    aria-label = "{{migrateCtrl.getAriaLabel(item.label)}}"
+                    data-ng-click = "migrateCtrl.editPhoneNumber('work',item.label)"
+                    id="{{migrateCtrl.workData.id}}-{{$index}}"
+                    data-ng-keydown="migrateCtrl.editPhoneNumberKeyDown('work',item.label, $event)">
+                  <span class="ease-itemlabel">{{item.label}}</span>
+                </li>
+              </ease-ui-dropdown-menu>
+            </ease-ui-dropdown>
+          </div>
+          <div class="tcpaMsg">
+            <p ng-if="migrateCtrl.phoneObj.selectedPhoneCriteria.work.tcpaMsg">{{migrateCtrl.phoneObj.selectedPhoneCriteria.work.tcpaMsg}}
+              <a id="workChgLink" href="#"
+                 aria-label="{{migrateCtrl.phoneObj.selectedPhoneCriteria.work.tcpaMsg}}
+                 {{migrateCtrl.contentDataMigration['ease.core.migrationacctsetup.migration.changelink.label']}}"
+                 ng-click="migrateCtrl.openEditTcpaSettingsModal('work')">
+                {{migrateCtrl.contentDataMigration['ease.core.migrationacctsetup.migration.changelink.label']}}
+              </a>
+            </p>
+          </div>
+        </div>
+        <div class="HomeContent">
+          <label class="ease-ui-dropdown-title" id="ease-dropdown-filter-Home-label">
+            <span class="numLabel">{{migrateCtrl.contentDataMigration['ease.core.migrationacctsetup.migration.home.label']}}</span>
+            <span class="primarySpan">
+              <span class="primaryLabel" data-ng-class="{'hide':!(migrateCtrl.phoneObj.selectedPhoneCriteria.home.primaryFlag)}">
+                {{migrateCtrl.contentDataMigration['ease.core.migrationacctsetup.migration.primary.label']}}</span>
+              <span id="homeStar" aria-label="{{migrateCtrl.contentDataMigration['ease.core.migrationacctsetup.migration.primary.label']}}"
+              ><i id='homePrimary' role="button" class="togglePrimary"
+                  aria-label="{{migrateCtrl.contentDataMigration['ease.core.migrationacctsetup.migration.primary.aria.label']}}"
+                  data-ng-click='migrateCtrl.primaryToggle($event, "home")'
+                  data-ng-class="{'icon-star-filled':migrateCtrl.homePri, 'icon-star-outline':(!migrateCtrl.homePri && !migrateCtrl.phoneObj.selectedPhoneCriteria.home.phonePrimaryDisable),
+              'icon-star-disable':migrateCtrl.phoneObj.selectedPhoneCriteria.home.phonePrimaryDisable}"
+                  toggle-primary="migrateCtrl.phoneObj.selectedPhoneCriteria"></i>
+              </span>
+            </span>
+          </label>
+          <div role="application">
+            <ease-ui-dropdown
+              is-open="migrateCtrl.isHomeOpen"
+              persist-items="migrateCtrl.phoneObj.dataHolder.home"
+              items="migrateCtrl.homeItems"
+              model-value="migrateCtrl.phoneObj.selectedPhoneCriteria.home.label"
+              filter-by="label"
+              required=migrateCtrl.required
+              disable-search="true"
+              select="migrateCtrl.selectedPhoneNum(item, 'home')"
+              combobox="migrateCtrl.homeData">
+              <ease-ui-dropdown-menu
+                select="migrateCtrl.selectedPhoneNum(item, 'home')"
+                items="migrateCtrl.homeItems"
+                template=true
+                is-open="migrateCtrl.isHomeOpen"
+                component-id="{{migrateCtrl.homeData.id}}">
+                <li data-ng-repeat="item in migrateCtrl.homeItems"
+                    data-index={{$index}}
+                    role="option"
+                    tabindex="-1"
+                    aria-label = "{{migrateCtrl.getAriaLabel(item.label)}}"
+                    data-ng-click = "migrateCtrl.editPhoneNumber('home',item.label)"
+                    data-ng-keydown="migrateCtrl.editPhoneNumberKeyDown('home',item.label, $event)"
+                    id="{{migrateCtrl.homeData.id}}-{{$index}}">
+                  <span class="ease-itemlabel">{{item.label}}</span>
+                </li>
+              </ease-ui-dropdown-menu>
+            </ease-ui-dropdown>
+          </div>
+          <div class="tcpaMsg">
+            <p ng-if="migrateCtrl.phoneObj.selectedPhoneCriteria.home.tcpaMsg">{{migrateCtrl.phoneObj.selectedPhoneCriteria.home.tcpaMsg}}
+              <a id="homeChgLink" href="#"
+                 aria-label="{{migrateCtrl.phoneObj.selectedPhoneCriteria.home.tcpaMsg}}
+                 {{migrateCtrl.contentDataMigration['ease.core.migrationacctsetup.migration.changelink.label']}}"
+                 ng-click="migrateCtrl.openEditTcpaSettingsModal('home')">
+                {{migrateCtrl.contentDataMigration['ease.core.migrationacctsetup.migration.changelink.label']}}
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <p data-ng-show="migrateCtrl.displayError()" class="error-message" tabindex="0">
+            {{migrateCtrl.migrationErrorForDefaultPrimary}}</p>
+        </div>
+      </div>
+      <div class="emailContentDiv" ng-if="migrateCtrl.isDisplayEmailEnabled">
+      <div id="verifyEmail" class="verifyDiv">
+      <span class="verifyPoints">{{migrateCtrl.contentDataMigration['ease.core.migrationacctsetup.migration.verify.emailpoint']}}</span>
+      <span class="verifyPointsLabel">
+      {{migrateCtrl.contentDataMigration['ease.core.migrationacctsetup.migration.verify.email.label']}}</span></div>
+      <p>
+      <span class="emailValue">{{migrateCtrl.displayEmailText()}}</span>
+      <span class="editLogo">
+      <a href="#" id="edit_migration_email" aria-label="Edit your email" data-ng-click="migrateCtrl.editEmail(migrateCtrl.primaryEmailObject())">Edit</a>
+      </span>
+      </p>
+      </div>
+
+      <div class="btnContainer">
+        <button click-button-once type="submit" id="migrateContinue"
+                data-ng-disabled="migrateCtrl.isContinueDisabled()"
+                tabindex="0"
+                class="button btnContinue" ng-click="migrateCtrl.migrateContinue()">
+          <span data-ng-class="migrateCtrl.loading"></span>
+          <span>
+            {{migrateCtrl.contentDataMigration['ease.core.migrationacctsetup.migration.continue.label']}}
+          </span>
+        </button>
+      </div>
+
+    </div>
+  </form>
+</div>

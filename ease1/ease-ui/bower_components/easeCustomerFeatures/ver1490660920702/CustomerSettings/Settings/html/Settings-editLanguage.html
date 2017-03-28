@@ -1,0 +1,38 @@
+ <ease-ui-modal class="profileContactModal" close-modal="close()" modal-title="::content['ease.core.settings.language.edit.title.label']">
+    <div class="contactHolder">
+      <div class="languageText" tabindex="0"
+           aria-label="{{::content['ease.core.settings.language.edit.subtitle.label']}}">
+        {{::content['ease.core.settings.language.edit.subtitle.label']}}
+      </div>
+      <form id="addLanguageForm" name="addLanguageForm">
+        <div class="languageContainer">
+          <input class="languageInput"
+                 type="radio"
+                 value="{{::kEnglishLocale}}"
+                 id="{{::kEnglishLocale}}"
+                 tabindex="0"
+                 data-ng-model="language">
+          <span class="radioButton"></span>
+          <label for="{{::kEnglishLocale}}" id="English_label">{{::content['ease.core.settings.language.english.label']}}</label>
+        </div>
+        <div class="languageContainer">
+          <input class="languageInput"
+                 type="radio"
+                 value="{{::kSpanishLocale}}"
+                 id="{{::kSpanishLocale}}"
+                 tabindex="0"
+                 data-ng-model="language">
+          <span class="radioButton"></span>
+          <label for="{{::kSpanishLocale}}" id="Spanish">{{::content['ease.core.settings.language.spanish.label']}}</label>
+        </div>
+        <button type="button" id="editLanguageButton" tabindex="0"
+                data-ng-click="editLanguage(language)"
+                class="contactBtnSave button contactBtnSavePrimary"
+                aria-label="{{::content['ease.core.settings.account.nickname.submit.label']}}">
+          <span data-ng-class="loading"></span>
+          <span>{{::content['ease.core.settings.account.nickname.submit.label']}}</span>
+        </button>
+      </form>
+    </div>
+  </ease-ui-modal>
+

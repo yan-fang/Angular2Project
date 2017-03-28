@@ -1,0 +1,13 @@
+{
+  "name": "angular-ui-router",
+  "version": "0.2.13",
+  "_release": "0.2.13",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.2.13",
+    "commit": "79fe06d3715a699be800cafee1d2375f510f2ee5"
+  },
+  "_source": "https://github.kdc.capitalone.com/bower-dependencies/angular-ui-router.git",
+  "_target": "0.2.13",
+  "_originalSource": "https://github.kdc.capitalone.com/bower-dependencies/angular-ui-router.git"
+}

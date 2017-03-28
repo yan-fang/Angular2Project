@@ -1,0 +1,38 @@
+<div class="recurring-payment">
+  <div ng-switch="$ctrl.pageName">
+    <recurring-main 
+      ng-switch-when="MAIN"
+      mode="{{$ctrl.mode}}"
+      recurring-form="$ctrl.recurringForm"
+      is-submitted="$ctrl.isSubmitted"
+      switch-fn="$ctrl.switchPage(name)">
+    </recurring-main>
+    
+    <recurring-stop-by-date 
+      ng-switch-when="STOP_BY_DATE"
+      mode="{{$ctrl.mode}}"
+      recurring-form="$ctrl.recurringForm"
+      switch-fn="$ctrl.switchPage(name)">
+    </recurring-stop-by-date>
+    
+    <recurring-stop-by-payments
+      ng-switch-when="STOP_BY_PAYMENTS" 
+      mode="{{$ctrl.mode}}"
+      recurring-form="$ctrl.recurringForm"
+      switch-payment-mode-fn="$ctrl.switchPaymentModeFn()"
+      switch-fn="$ctrl.switchPage(name)">
+    </recurring-stop-by-payments>
+
+    <billpay-datepicker
+      ng-switch-when="FIRST_DATE" 
+      date="$ctrl.recurringForm.firstPaymentDate"
+      min-date='{{$ctrl.datepickerConfig.minDate}}'
+      max-date='{{$ctrl.datepickerConfig.maxDate}}'
+      lead-days='{{$ctrl.datepickerConfig.leadDays}}'
+      selected-date-label='{{$ctrl.datepickerConfig.selectedDatelabel}}'
+      arrived-date-label="{{$ctrl.datepickerConfig.arrivedDatelabel}}"
+      next-page="{{$ctrl.datepickerConfig.nextPage}}"
+      switch-fn="$ctrl.switchPage(name)">
+    </billpay-datepicker>
+  </div>
+</div> 

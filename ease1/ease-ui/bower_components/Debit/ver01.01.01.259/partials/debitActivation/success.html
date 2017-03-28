@@ -1,0 +1,43 @@
+<h1 class="title" tabindex="0">
+  {{debitActivation.i18n.ready.title}}
+</h1>
+<p class="debit-description" tabindex="0">
+  {{debitActivation.i18n.ready.description}}
+</p>
+
+  <div class="debit-card">
+    <div class="card-info">
+      <div class="card-number">{{debitActivation.selectedCard.cardNumberTLNPI | limitTo:-4  }}</div>
+      <div class="obscured-date form-input">
+        {{debitActivation.models.expiration.month}} / {{debitActivation.models.expiration.year}}
+      </div>
+      <div class="customer-name">{{debitActivation.selectedCard.embossedCustomerName}}</div>
+      <div class="card-network mastercard"></div>
+      <!-- all capital one 360 checking debit cards are mastercard -->
+    </div>
+  </div>
+
+<button type="submit"
+        id="back-button"
+        class="btn progressive"
+        tabindex="0"
+        data-ng-if="debitActivation.cards.length<1"
+        data-ui-sref="{{debitActivation.returnState}}">
+  {{debitActivation.i18n.ready.action}}
+</button>
+
+<button type="submit"
+        id="next-button"
+        class="btn progressive"
+        tabindex="0"
+        data-ng-if="debitActivation.cards.length>0"
+        data-ng-click="debitActivation.initializeState()">
+  {{debitActivation.i18n.ready.next}}
+</button>
+
+<div class="disclaimer">
+  <p class="small-text"
+     data-ng-if="debitActivation.selectedCard.cardType === 'Retail'">
+    {{debitActivation.i18n.ready.disclaimer.retail}}
+  </p>
+</div>

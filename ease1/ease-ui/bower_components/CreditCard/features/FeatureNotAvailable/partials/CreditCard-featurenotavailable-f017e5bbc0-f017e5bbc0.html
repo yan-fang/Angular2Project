@@ -1,0 +1,12 @@
+<div ng-controller="FeatureNotAvailableController as ccFeatureNotAvailableModal">
+  <ease-ui-modal close-modal="ccFeatureNotAvailableModal.closeModal()" modal-id="'cc-feature-unavailable-modal'"
+                 class="errorModalFeatureUnavailable cc-modal-icon-caution" >
+
+    <h2 id="error-modal-header" class="error-modal-header" ng-bind-html="'ease.card.payment.error.featureunavailable.header.text' | translate"></h2>
+    <p id="error-modal-body" class="error-modal-body" ng-bind-html="'ease.card.payment.error.featureunavailable.body.text' | translate"></p>
+    <div class="error-modal-button-wrapper">
+      <button id="error-modal-button" class="error-modal-button progressive" ng-bind-html="'ease.card.payment.error.featureunavailable.button.text' | translate" ng-click="ccFeatureNotAvailableModal.closeModal()"></button>
+    </div>
+
+  </ease-ui-modal>
+</div>

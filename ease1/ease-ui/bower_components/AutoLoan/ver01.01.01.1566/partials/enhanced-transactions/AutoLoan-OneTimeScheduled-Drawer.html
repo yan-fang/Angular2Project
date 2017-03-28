@@ -1,0 +1,50 @@
+<div aria-expanded="true" ng-if="accordionVM.isOpen($index)" class="auto-enhanced-transaction">
+  <div class="cleansed-data">
+    <div class="key-block">
+      <span class="single-line prox-bold" id="schDrawerAmountLabel{{$index}}">{{accordionVM.i18n.coaf.accountSummary.transactions.amount.label.v1}}:</span>
+    </div>
+    <div class="value-block">
+      <span class="single-line" id="schDrawerAmount{{$index}}">{{transaction.transactionAmount | nonNegativeAmount}}&nbsp;{{transaction.paymentType}}</span>
+    </div>
+  </div>
+  <div class="cleansed-data">
+    <div class="key-block">
+      <span class="single-line prox-bold" id="schDrawerPostingDateLabel{{$index}}">{{accordionVM.i18n.coaf.accountSummary.transactions.submittedOn.label.v1}}:</span>
+    </div>
+    <div class="value-block">
+      <span class="single-line" id="schDrawerPostingDate{{$index}}">{{transaction.transactionDate | date:'MMMM dd, yyyy'}}</span>
+    </div>
+  </div>
+  <div class="cleansed-data">
+    <div class="key-block">
+      <span class="single-line prox-bold" id="schDrawerEffDateLabel{{$index}}">{{accordionVM.i18n.coaf.accountSummary.transactions.payson.label.v1}}:</span>
+    </div>
+    <div class="value-block">
+      <span class="single-line" id="schDrawerEffDate{{$index}}">{{transaction.effectiveDate | date:'MMMM dd, yyyy'}}</span>
+    </div>
+  </div>
+  <div class="cleansed-data">
+    <div class="key-block">
+      <span class="single-line prox-bold" id="schDrawerFromLabel{{$index}}">{{accordionVM.i18n.coaf.accountSummary.transactions.payFrom.label.v1}}:</span>
+    </div>
+    <div class="value-block">
+      <span class="single-line" id="schDrawerFrom{{$index}}">{{transaction.bankName}}...{{transaction.fromAccountNumber}}</span>
+    </div>
+  </div>
+  <div class="cleansed-data">
+    <div class="key-block">
+      <span class="single-line prox-bold" id="schDrawerToLabel{{$index}}">{{accordionVM.i18n.coaf.accountSummary.transactions.payTo.label.v1}}:</span>
+    </div>
+    <div class="value-block">
+      <span class="single-line" id="schDrawerTo{{$index}}">{{accordionVM.accountNickname}}....{{accordionVM.displayLast4AcctNumber}}</span>
+    </div>
+  </div>
+  <div class="cleansed-data">
+    <div class="key-block">
+      <span class="single-line prox-bold" id="schDrawerConfirmationLabel{{$index}}">{{accordionVM.i18n.coaf.accountSummary.transactions.confirmationNum.label.v1}}:</span>
+    </div>
+    <div class="value-block">
+      <span class="single-line" id="schDrawerConfirmation{{$index}}">{{transaction.confirmationNumber}}</span>
+    </div>
+  </div>
+</div>

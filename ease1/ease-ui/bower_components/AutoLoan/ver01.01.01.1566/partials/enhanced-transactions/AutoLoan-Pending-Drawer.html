@@ -1,0 +1,50 @@
+<div aria-expanded="true" ng-if="accordionVM.isOpen($index)" class="auto-enhanced-transaction">
+  <div class="cleansed-data">
+    <div class="key-block">
+      <span class="single-line prox-bold" id="pendingDrawerAmountLabel{{transaction.id}}">{{accordionVM.i18n.coaf.accountSummary.transactions.amount.label.v1}}:</span>
+    </div>
+    <div class="value-block">
+      <span class="single-line" id="pendingDrawerAmount{{transaction.id}}">{{transaction.transactionAmount | nonNegativeAmount}} {{transaction.paymentType}}</span>
+    </div>
+  </div>
+  <div class="cleansed-data">
+    <div class="key-block">
+      <span class="single-line prox-bold" id="pendingDrawerPostingDateLabel{{transaction.id}}">{{accordionVM.i18n.coaf.accountSummary.transactions.postingDate.label.v1}}:</span>
+    </div>
+    <div class="value-block">
+      <span class="single-line" id="pendingDrawerPostingDate{{transaction.id}}">{{transaction.transactionDate | date:'MMMM dd, yyyy'}}</span>
+    </div>
+  </div>
+  <div class="cleansed-data">
+    <div class="key-block">
+      <span class="single-line prox-bold" id="pendingDrawerEffDateLabel{{transaction.id}}">{{accordionVM.i18n.coaf.accountSummary.transactions.payson.label.v1}}:</span>
+    </div>
+    <div class="value-block">
+      <span class="single-line" id="pendingDrawerEffDate{{transaction.id}}">{{transaction.effectiveDate | date:'MMMM dd, yyyy'}}</span>
+    </div>
+  </div>
+  <div class="cleansed-data">
+    <div class="key-block">
+      <span class="single-line prox-bold" id="pendingDrawerPayFromLabel{{transaction.id}}">{{accordionVM.i18n.coaf.accountSummary.transactions.payFrom.label.v1}}:</span>
+    </div>
+    <div class="value-block">
+      <span class="single-line" id="pendingDrawerPayFrom{{transaction.id}}">{{transaction.bankName}}...{{transaction.fromAccountNumber}}</span>
+    </div>
+  </div>
+  <div class="cleansed-data">
+    <div class="key-block">
+      <span class="single-line prox-bold" id="pendingDrawerPayToLabel{{transaction.id}}">{{accordionVM.i18n.coaf.accountSummary.transactions.payTo.label.v1}}:</span>
+    </div>
+    <div class="value-block">
+      <span class="single-line" id="pendingDrawerPayTo{{transaction.id}}">{{accordionVM.accountNickname}}....{{accordionVM.displayLast4AcctNumber}}</span>
+    </div>
+  </div>
+  <div class="cleansed-data">
+    <div class="key-block">
+      <span class="single-line prox-bold" id="pendingDrawerPayConfirmationLabel{{transaction.id}}" data-ng-if="transaction.confirmationNumber">{{accordionVM.i18n.coaf.accountSummary.transactions.confirmationNum.label.v1}}:</span>
+    </div>
+    <div class="value-block">
+      <span class="single-line" id="pendingDrawerConfirmation{{transaction.id}}" data-ng-if="transaction.confirmationNumber">{{transaction.confirmationNumber}}</span>
+    </div>
+  </div>
+</div>

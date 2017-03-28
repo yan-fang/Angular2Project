@@ -1,0 +1,24 @@
+<i id='back-button'
+   role="button" type="button"
+   class="top-left-icon icon-arrow-back"
+   aria-describedby="back-button-description"
+   ng-click="RetailDispute.goToPreviousView()">
+  <span id="back-button-description" class="off-screen">Back to Previous Modal</span>
+</i>
+
+<form id="super-form" class="dispute-form" name="superForm">
+  <formly-form model="RetailDispute.formly.models[RetailDispute.pageProperties.formlyFormId]"
+               fields="RetailDispute.formly.fields[RetailDispute.pageProperties.formlyFormId]">
+    <button id='continue-button'
+            type="submit"
+            class="final-button submit-form-button"
+            ng-click="RetailDispute.submitRetailDispute(RetailDispute.pageProperties.nextPage, RetailDispute.pageProperties.submissionEvent)"
+            data-ng-disabled="superForm.$invalid || RetailDispute.disableButton">
+      <div ng-class="RetailDispute.loading">
+        <span class="button-text">{{RetailDispute.pageProperties.buttonText}}</span>
+      </div>
+    </button>
+  </formly-form>
+</form>
+
+
