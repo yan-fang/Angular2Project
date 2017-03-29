@@ -33,6 +33,7 @@
   "exclude": [
     "node_modules",
     "_dist",
-    "ease1"
+    "ease1",
+    "e2e"
   ]
 }

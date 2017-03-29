@@ -35,10 +35,8 @@
     "_dist",
     "./src/*test.ts",
     "./src/*.spec.ts",
-    "./src/vendor_test.ts"
-  ],
-  "include": [
-    "src"
+    "./src/vendor_test.ts",
+    "e2e"
   ],
   "compileOnSave": false,
   "buildOnSave": false,
