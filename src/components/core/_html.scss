@@ -1,11 +1,79 @@
-html { }
+@import './_typography.scss';
+@import '/public/static/fonts/ProximaNova/font.css';
+@import './_core.scss';
+
+// List the parts of OneUI you want to bootstrap in a map object.
+// If you want to use normalize, it should be listed first.
+$items-to-setup : (
+  'normalize',
+  'a11y',
+  'buttons',
+  'inputs',
+  'headings',
+  'anchors',
+  'unordered-lists',
+  'ordered-lists'
+);
+
+//this master mixin will call all the other setup mixins automatically to bootstrap OneUI defaults in your app/component
+@include setup-oneui( $items-to-setup );
+
+html {
+  /**
+   * 1. Change the default font family in all browsers (opinionated).
+   * 2. Correct the line height in all browsers.
+   * 3. Prevent adjustments of font size after orientation changes in
+   *    IE on Windows Phone and in iOS.
+   */
+   font-family: $font-stack; /* 1 */
+   line-height: 1.5; /* 2 */
+  -ms-text-size-adjust: 100%; /* 3 */
+  -webkit-text-size-adjust: 100%; /* 3 */
+}
+
+*::before, *::after {
+    box-sizing: border-box;
+}
+
+
+body {
+  font-family: $font-stack; /* 1 */
+  font-size: 1em;
+  line-height: 1.5;
+  margin: 0;
+  box-sizing: border-box;
+}
 
 h1 {
-  font-size: 7.2rem;
-  line-height: 1em;
+  font-size: $font-size--xxxlarge;
+  font-weight: $font-weight--thin;
 }
-h2 { }
-h3 { }
-h4 { }
-h5 { }
-h6 { }
+
+h2 {
+  font-size: $font-size--xxlarge;
+  font-weight: $font-weight--light;
+}
+
+h3 {
+  font-size: $font-size--xlarge;
+  font-weight: $font-weight--light;
+}
+
+h4 {
+  font-size: $font-size--large;
+  font-weight: $font-weight--regular;
+}
+
+h5 {
+  font-size: $font-size--medium;
+  font-weight: $font-weight--regular;
+}
+
+h6 {
+  font-size: $font-size--small;
+  font-weight: $font-weight--sbold;
+}
+
+p, a {
+  font-size: $font-size--medium;
+}

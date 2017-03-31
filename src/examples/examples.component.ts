@@ -6,6 +6,39 @@ import { MenuComponent } from '@c1/components';
   styleUrls: ['./examples.component.scss'],
   template: `
     <h2>{{title}}</h2>
+    <h3>OneUI Core Styles</h3>
+    <form class="form-group" style="width: 30%">
+      <div class="form-group">
+        <label class="form-label" for="exampleTextInput">Label</label>
+        <input type="text" id="exampleTextInput" name="exampleTextInput" />
+      </div>
+      <fieldset class="form-group">Radios
+        <div class="radio">
+          <input type="radio" id="freq0" name="frequency" value="daily">
+          <label for="freq0">Daily</label>
+        </div>
+        <div class="radio">
+          <input type="radio" id="freq1" name="frequency" value="weekly">
+          <label for="freq1">Weekly</label>
+        </div>
+        <div class="radio">
+          <input type="radio" id="freq2" name="frequency" value="monthly">
+          <label for="freq2">Monthly</label>
+        </div>
+        <div class="radio">
+          <input type="radio" id="freq3" name="frequency" value="yearly">
+          <label for="freq3">Yearly</label>
+        </div>
+      </fieldset>
+      <div class="form-group">
+        <input type="checkbox" id="toggle_field" name="toggle_field">
+        <label for="toggle_field" class="toggle"><span></span>Toggle Example</label>
+      </div>
+      <div class="form-group">
+        <input type="checkbox" id="checkbox_field" name="checkbox_field">
+        <label for="checkbox_field" class="checkbox"><span></span>Checkbox Example</label>
+      </div>
+    </form>
     <h3>Buttons</h3>
     <div>
       <h4>Default</h4>

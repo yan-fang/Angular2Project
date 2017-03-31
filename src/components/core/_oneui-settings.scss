@@ -1,0 +1,92 @@
+/*------------------------------------*\
+    Global Settings
+\*------------------------------------*/
+
+// Typography Options
+$base-font-url: '../../../node_modules/@c1/oneui-core-style/dist/fonts/' !default;
+$icon-font-path: '../../../node_modules/@c1/oneui-icons/fonts';
+// $font-list: 'Optimist' 'Proxima Nova';
+$font-list: 'Proxima Nova';
+// $font-list: 'Optimist';
+$base-font-family: 'Proxima Nova';
+// $base-font-family: 'Optimist';
+
+$base-font-size: 1em; //16px
+$base-line-height: 1.5;
+
+// Modular Scale Settings
+// Scaling Variables
+// defined in: _globals.scss
+//
+// Uncomment the desired ratio and set the $modular-scale-ratio variable
+// to that ratio variable.
+
+// $golden: 1.618;
+// $minor-second: 1.067;
+// $major-second: 1.125;
+// $minor-third: 1.2;
+// $major-third: 1.25;
+$perfect-fourth: 1.333;
+// $augmented-fourth: 1.414;
+// $perfect-fifth: 1.5;
+// $minor-sixth: 1.6;
+// $major-sixth: 1.667;
+// $minor-seventh: 1.778;
+// $major-seventh: 1.875;
+// $octave: 2;
+// $major-tenth: 2.5;
+// $major-eleventh: 2.667;
+// $major-twelfth: 3;
+// $double-octave: 4;
+
+$double-strand : 0.875em; //14px
+$modular-scale-ratio: $perfect-fourth;
+$modular-scale-base: $base-font-size $double-strand;
+
+// Responsive breakpoints
+$large-screen-min: 72em !default;
+$desktop-screen-max: 60em !default;
+$tablet-screen-max: 48em !default;
+$small-tablet-screen-max: 32em !default;
+$mobile-screen-max: 47.9375em !default;
+
+// Transition duration
+$default-transition-duration: .5s;
+$slower-transition-duration: .5s;
+$slow-transition-duration: .3s;
+$fast-transition-duration: .2s;
+$faster-transition-duration: .1s;
+
+// Scale Factors Defaults
+$default-scale: 1;
+$extra-large-scale: 1.75;
+$large-scale: 1.5;
+$medium-scale: 1.25;
+$small-scale: .75;
+$extra-small-scale: .50;
+
+
+// GRID Settings for oneui-grid
+
+// Set the number of columns you want to use on your layout.
+$grid-columns: 12;
+// Set the gutter between columns.
+$gutter-width: 1rem;
+// Set a margin for the container sides.
+$outer-margin: 2rem;
+
+
+/* establish the grid container sizes at all the responsive breakpoints
+* oneui-grid will change the size of your .container elements automatically according to these settings
+*/
+$mobile-container-size: 100%;
+$small-tablet-container-size : 100%;
+$tablet-container-size : 100%;
+$desktop-container-size : 1120px;
+$large-desktop-container-size : 1200px;
+
+/* set the max-width of your grid container for your project */
+$flexboxgrid-max-width: 1200px;
+
+/* debug: show/hide the grid overlay */
+$debug-show-grid : false;
