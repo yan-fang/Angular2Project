@@ -4,10 +4,21 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import {
+  HeaderComponent, NotesComponent,
+  NoteMakerComponent,
+  NoteCardsComponent,
+  ColorPickerComponent
+} from './ui';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    NotesComponent,
+    NoteMakerComponent,
+    NoteCardsComponent,
+    ColorPickerComponent
   ],
   imports: [
     BrowserModule,
