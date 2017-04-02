@@ -6,58 +6,8 @@ import {
 
 @Component({
   selector: 'app-note-maker',
-  styles: [`
-    .note-creator {
-      padding: 20px;
-      background-color: white;
-      border-radius: 3px;
-    }
-    .title {
-      font-weight: bold;
-      color: rgba(0,0,0,0.8);
-    }
-    .full {
-      height: 100px;
-    }
-  `],
-  template: `
-    <div class="note-creator shadow-2" [ngStyle]="{'background-color': newNote.color}">
-      <form class="row" (ngSubmit)="onCreateNote()">
-        <input
-          type="text"
-          (focus)="toggle(true)"
-          [(ngModel)]="newNote.title"
-          name="newNoteTitle"
-          placeholder="Title"
-          class="col-xs-10 title"
-          *ngIf="fullForm"
-        >
-        <input
-          type="text"
-          (focus)="toggle(true)"
-          [(ngModel)]="newNote.value"
-          name="newNoteValue"
-          placeholder="Take a note..."
-          class="col-xs-10"
-        >
-        <div class="actions col-xs-12 row between-xs" *ngIf="fullForm">
-          <div class="col-xs-3">
-            <app-color-picker
-              (selected)="onColorSelect($event)"
-              [colors]="colors"
-            >
-            </app-color-picker>
-          </div>
-          <button
-            type="submit"
-            class="btn-light"
-           >
-            Done
-          </button>
-        </div>
-      </form>
-    </div>
-  `
+  styleUrls: ['./noteMaker.css'],
+  templateUrl: './noteMaker.html'
 })
 export class NoteMakerComponent {
   @Output() createNote = new EventEmitter();
