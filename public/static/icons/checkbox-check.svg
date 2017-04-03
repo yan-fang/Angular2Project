@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Check</title>
+    <defs></defs>
+    <g id="Checkbox" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Checkboxes" transform="translate(-161.000000, -262.000000)" fill="#FFFFFF">
+            <g id="Checkbox-label-/-Default-/-Selected-/-Desktop" transform="translate(155.000000, 256.000000)">
+                <g id="Checkbox-Form-/-Selected-/-Desktop">
+                    <g id="Checkbox-/-Selected-/-Desktop">
+                        <polygon id="Check" points="16.4349848 6 18 7.25701484 9.37859485 18 6 13.5119354 7.40353487 11.9469335 9.40678583 14.8775248"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

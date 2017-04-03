@@ -1,0 +1,85 @@
+@import '../core/_core.scss';
+
+$checkbox-size: 20px;
+
+:host {
+  display: inline-block;
+  box-sizing: border-box;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+
+
+.c1-checkbox__layout {
+  display: flex;
+  position: relative;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.c1-checkbox__inner-container {
+  display: block;
+}
+
+.c1-checkbox__input {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  text-transform: none;
+  width: 1px;
+}
+
+.c1-checkbox__input:focus + .c1-checkbox__background {
+   border: 2px solid $accent-blue--light;
+}
+
+.c1-checkbox__label {
+  font-size: $font-size--small;
+  display: inline-block;
+  font-family: $proxima-nova;
+}
+
+.c1-checkbox__background {
+  display: inline-block;
+  background: transparent;
+  border: 2px solid $ease-silver;
+  border-radius: 4px;
+  height:  $checkbox-size;
+  width:  $checkbox-size;
+  box-sizing: border-box;
+  position: relative;
+}
+
+
+.c1-checkbox__check {
+  width:  $checkbox-size;
+  height:  $checkbox-size;
+  position: absolute;
+  left: -4px;
+  top: -5px;
+}
+
+:host.c1-checkbox--label-modifier-after .c1-checkbox__inner-container {
+  position: absolute;
+  left:0;
+  margin-right: 6px;
+}
+
+:host.c1-checkbox--label-modifier-after .c1-checkbox__layout {
+  padding-left: $checkbox-size + 6px;
+}
+
+:host.c1-checkbox--checked .c1-checkbox__background {
+  background: $accent-green;
+  border: 2px solid $accent-green;
+}
+:host.c1-checkbox--disabled .c1-checkbox__background {
+  opacity: 0.5;
+}

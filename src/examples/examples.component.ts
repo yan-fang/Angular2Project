@@ -6,6 +6,11 @@ import { MenuComponent } from '@c1/components';
   styleUrls: ['./examples.component.scss'],
   template: `
     <h2>{{title}}</h2>
+    <c1-checkbox
+      value="something"
+      checked="true"
+      name="myCheckbox"
+    >Check Me</c1-checkbox>
     <h3>OneUI Core Styles</h3>
     <form class="form-group" style="width: 30%">
       <div class="form-group">

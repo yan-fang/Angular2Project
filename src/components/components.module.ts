@@ -8,17 +8,20 @@ import { MenuModule } from './menu';
 import { ButtonComponent } from './button/button.component';
 import { AccountTileComponent } from './account-tile/account-tile.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { CheckboxComponent } from './checkbox/checkbox.component';
 
 @NgModule({
   declarations: [
     ButtonComponent,
     AccountTileComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    CheckboxComponent
   ],
   exports: [
     ButtonComponent,
     AccountTileComponent,
     ToolbarComponent,
+    CheckboxComponent,
     MenuModule
   ],
   imports: [

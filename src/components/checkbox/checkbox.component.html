@@ -1,0 +1,34 @@
+<label class="c1-checkbox__layout" #label>
+  <span class="c1-checkbox__inner-container">
+    <input #input
+           class="c1-checkbox__input" type="checkbox"
+           [id]="inputId"
+           [checked]="checked"
+           [value]="value"
+           [disabled]="disabled"
+           [name]="name"
+           [tabIndex]="tabIndex"
+           [attr.aria-label]="ariaLabel"
+           [attr.aria-labelledby]="ariaLabelledby"
+           (blur)="onInputBlur()"
+           (change)="onInteractionEvent($event)"
+           (click)="onInputClick($event)">
+    <span class="c1-checkbox__background">
+      <span class="c1-checkbox__check">
+        <svg version="1.1"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 20 20"
+             xml:space="preserve">
+              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g fill="#FFFFFF">
+                      <polygon points="16.4349848 6 18 7.25701484 9.37859485 18 6 13.5119354 7.40353487 11.9469335 9.40678583 14.8775248"></polygon>
+                  </g>
+              </g>
+        </svg>
+      </span>
+    </span>
+  </span>
+  <span class="c1-checkbox__label">
+    <ng-content></ng-content>
+  </span>
+</label>
