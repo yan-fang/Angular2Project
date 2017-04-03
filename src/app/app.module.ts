@@ -3,7 +3,7 @@ import '../components/core/global.scss';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, UrlSerializer } from '@angular/router';
 
 import { StoreModule } from '@ngrx/store';
 import { routerReducer, RouterStoreModule } from '@ngrx/router-store';
@@ -12,7 +12,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { C1ComponentsModule } from '@c1/components';
 import { PerfMeasureModule } from '@c1/perf-measure';
-import { environment, NoOpModule, Environments, StateManagerService } from '@c1/shared';
+import { environment, Environments, NoOpModule, StateManagerService } from '@c1/shared';
 import { MockabilityModule } from '@c1/mockability';
 import { mocks } from '@c1/mocks';
 
@@ -22,6 +22,7 @@ import { appRoutes } from './app.routes';
 import { HeaderComponent } from './header/header.component';
 import { UserMenuComponent } from './user-menu/user-menu.component';
 import { Angular1Ease } from './angular1ease/angular1ease.service';
+import { UrlSerializerHandlingIds } from './url_serializer';
 
 @NgModule({
   imports: [
@@ -31,7 +32,7 @@ import { Angular1Ease } from './angular1ease/angular1ease.service';
 
     C1ComponentsModule,
 
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, {enableTracing: true}),
     StoreModule.provideStore({router: routerReducer}),
     RouterStoreModule.connectRouter(),
     EffectsModule,
@@ -46,7 +47,8 @@ import { Angular1Ease } from './angular1ease/angular1ease.service';
   ],
   providers: [
     StateManagerService,
-    Angular1Ease
+    Angular1Ease,
+    { provide: UrlSerializer, useClass: UrlSerializerHandlingIds }
   ],
   bootstrap: [ AppComponent ]
 })

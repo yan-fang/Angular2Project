@@ -33,7 +33,7 @@ export function prepareAngular1Ease(upgrade: UpgradeModule): Promise<any> {
 
     /* tslint:disable:variable-name */
     requirejs(requireDeps, (_require: any, angular: any) => {
-      const m = angular.module('Ng1EaseApp', angularDeps).config(configFunction()).run(runFunction());
+      const m = angular.module('Ng1EaseApp', angularDeps).run(runFunction());
       runFunctions.forEach(f => m.run(f));
       upgrade.bootstrap(document.body, ['Ng1EaseApp']);
       setUpLocationSync(upgrade);
@@ -47,18 +47,6 @@ export function prepareAngular1Ease(upgrade: UpgradeModule): Promise<any> {
     res(true);
   }
   return r;
-}
-
-function configFunction(): Function {
-  function configFn($ocLazyLoadProvider: any, $locationProvider: any) {
-    $locationProvider.html5Mode(true);
-
-    $ocLazyLoadProvider.config({
-      jsLoader: requirejs
-    });
-  }
-  (<any>configFn).$inject = ['$ocLazyLoadProvider', '$locationProvider'];
-  return configFn;
 }
 
 function runFunction(): Function {

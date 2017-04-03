@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
     selector: 'c1-web-app',
     template: `
       <router-outlet></router-outlet>
-      <div ui-view></div>
+      <div ui-view ng-animate-children></div>
     `
 })
 export class AppComponent {}
