@@ -1,7 +1,7 @@
-export function showDialog(module: any, $injector: any, targetState: string): Promise<any> {
+export function showDialog(module: any, $injector: any, targetState: string, stateParams: any = {}): Promise<any> {
   return $injector.get('$ocLazyLoad').load(module).then(() => {
     const $state = $injector.get('$state');
-    $state.go(targetState, {}, { location: false });
+    $state.go(targetState, stateParams, { location: false });
 
     const $rootScope = $injector.get('$rootScope');
     $rootScope.close = () => {

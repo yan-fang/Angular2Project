@@ -19,7 +19,7 @@
     "e2e-live": "protractor --elementExplorer",
     "i18n": "ng-xi18n -p tsconfig.json",
     "i18n:extract": "yarn i18n && cp _dist/aot/messages.xlf i18n/",
-    "lint": "tslint \"src/**/*.ts\" \"e2e/**/*.ts\"",
+    "lint": "tslint \"src/**/*.ts\" \"e2e/**/*.ts\" --exclude \"src/mocks/**/*.model.ts\"",
     "ngc": "yarn cleanup && ngc -p tsconfig.json",
     "postbuild": "yarn explore:all",
     "precommit": "yarn lint && yarn ngc && yarn test",

@@ -5,7 +5,7 @@ export const accounts = [
     'availableBalance': 9325.48,
     'category': 'CC',
     'subCategory': '',
-    'referenceId': 'T1n5Mb38p1w5l78Fn+HkcU+pW+b/8Tt8pnkaGhRuuwU=',
+    'referenceId': 'XqLuxBTABbIDvpw56ba34sThn9M8ukAc6MRRn/wmgpo=',
     'displayBalance': 674.52,
     'originalProductName': 'Sony Card℠visa Signature',
     'accountMessage': {
@@ -34,7 +34,7 @@ export const accounts = [
     'availableBalance': 6733.39,
     'category': 'CC',
     'subCategory': '',
-    'referenceId': 'T1n5Mb38p1w5l78Fn+HkcUk/2ErjghctRaNVRBqPrhM=',
+    'referenceId': 'XqLuxBTABbIDvpw56ba34sThn9M8ukAc6MRRn/fromnewuserwmgpo=',
     'displayBalance': 3266.61,
     'originalProductName': 'Playstation®cardvisa Signature',
     'accountMessage': {
@@ -63,7 +63,7 @@ export const accounts = [
     'availableBalance': 7718.77,
     'category': 'CC',
     'subCategory': '',
-    'referenceId': 'T1n5Mb38p1w5l78Fn+HkcZcIh3/gf8wbxsyyh5FugSM=',
+    'referenceId': 'XqLuxBTABbIDvpw56ba34sThn9M8ukAc6MRRn/fefwmgpo=',
     'displayBalance': 2281.23,
     'originalProductName': 'Platinum MasterCard',
     'accountMessage': {

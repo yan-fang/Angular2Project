@@ -15,6 +15,9 @@ export class AccountTileComponent implements OnInit {
   @HostBinding('style.backgroundImage') public backgroundImage: string;
   @Input() public account: Account;
 
+  get encodedReferenceId() {
+    return encodeURIComponent(this.account.referenceId);
+  }
 
   ngOnInit() {
     let amount = CurrencyService.splitAtDecimalPoint(this.account.availableBalance);

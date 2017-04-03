@@ -1,6 +1,4 @@
 import { MockabilityResponses } from '@c1/mockability';
-import { cardDetailsToggles } from './card_details_toggles';
+import { responseDefinitions } from './response-definitions';
 
-export const creditCardMocks: MockabilityResponses = [
-  ...cardDetailsToggles
-];
+export const creditCardMocks: MockabilityResponses = responseDefinitions;

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '@c1/shared';
 import { MenuModule } from './menu';
@@ -23,7 +24,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
   imports: [
     SharedModule,
     CommonModule,
-    MenuModule
+    MenuModule,
+    RouterModule
   ]
 })
 export class C1ComponentsModule {}

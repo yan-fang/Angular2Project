@@ -13,7 +13,7 @@
 <div class="account-tile__grid account-tile__grid--right">
   <p class="account-tile__action-label">min $86.87 due dec 15</p>
   <div>
-    <c1-button ghost="true" type="white">
+    <c1-button ghost="true" type="white" [routerLink]="['/account-summary', encodedReferenceId, 'pay']">
       Make Payment
     </c1-button>
   </div>
