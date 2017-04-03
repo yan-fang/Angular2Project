@@ -22,7 +22,7 @@
     "lint": "tslint \"src/**/*.ts\" \"e2e/**/*.ts\" --exclude \"src/mocks/**/*.model.ts\"",
     "ngc": "yarn cleanup && ngc -p tsconfig.json",
     "postbuild": "yarn explore:all",
-    "precommit": "yarn lint && yarn ngc && yarn test",
+    "precommit": "yarn lint-core-scss && yarn lint && yarn ngc && yarn cover",
     "pree2e": "yarn webdriver-update",
     "pretest": "webpack --env.mode=pretest",
     "proxy": "node proxy.js",
@@ -35,7 +35,8 @@
     "webdriver-update": "webdriver-manager update",
     "webdriver-start": "webdriver-manager start",
     "lighthouse:sequence": "yarn build:aot && cd lighthouse && ./run-lighthouse.sh http://127.0.0.1:3000/ && cd ..",
-    "lighthouse": "run-p --race serve:prod lighthouse:sequence"
+    "lighthouse": "run-p --race serve:prod lighthouse:sequence",
+    "lint-core-scss": "if [[ $(node-sass --output-style compressed --include-path scss ./src/components/core/_core.scss | tail -n +2)  -eq 0 ]] ; then exit 0; else exit 1 ; fi"
   },
   "repository": {
     "type": "git",
