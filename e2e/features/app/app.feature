@@ -5,14 +5,14 @@ Scenario: Default route should be account-summary
   Given I login
   Then The url should be 'http://localhost:3001/account-summary'
 
-Scenario: Should display message 'SCSS Sample'
+Scenario: Page should have an angular 2 shell
   Given I login to 'http://localhost:3001/account-summary'
-  Then The text of 'c1-web-app > div > p' should be 'SCSS Sample'
+  Then 'c1-web-app > c1-web-app-shell' on 'Account Summary' should appear
 
-Scenario: Should have the correct color
+Scenario: Page should have a header
   Given I login to 'http://localhost:3001/account-summary'
-  Then The 'color' of 'c1-web-app > div > p' should be 'rgba(1, 139, 187, 1)'
+  Then 'c1-web-app > c1-web-app-shell > c1-header' on 'Account Summary' should appear
 
-Scenario: Should have the correct font-size
+Scenario: Page should have an Account Summary Component
   Given I login to 'http://localhost:3001/account-summary'
-  Then The 'font-size' of 'c1-web-app > div > p' should be '32px'
+  Then 'c1-web-app > c1-web-app-shell > c1-account-summary' on 'Account Summary' should appear
