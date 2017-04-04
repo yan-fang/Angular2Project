@@ -1,6 +1,6 @@
 <div class="color-selector">
-  <i (click)="showSelector(true)" class="material-icons icon">color_lens</i>
-  <div class="selector row center-xs" *ngIf="isSelectorVisible">
+  <i (mouseenter)="showSelector(true)" class="material-icons icon">color_lens</i>
+  <div class="selector row center-xs" *ngIf="isSelectorVisible" (mouseleave)="showSelector(false)">
     <div class="color" *ngFor="let color of colors" [ngStyle]="{'background-color': color}" (click)="selectColor(color)">
     </div>
   </div>
