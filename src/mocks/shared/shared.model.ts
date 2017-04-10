@@ -1572,3 +1572,12 @@ export const customerPhones = {
   ]
 };
 
+export const customerRetrieveMessage = {
+  'easeDisplayError': {
+    'severity': null,
+    'headerMessage': null,
+    'displayMessage': null
+  },
+  'global': [],
+  'accounts': []
+};

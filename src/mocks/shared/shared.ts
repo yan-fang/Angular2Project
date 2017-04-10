@@ -13,7 +13,8 @@ import {
   customerContentAcctpreferences,
   customerContentAddExternalAccount,
   customerContactPointsEmails,
-  customerPhones
+  customerPhones,
+  customerRetrieveMessage
 } from './shared.model';
 
 export const sharedMocks: MockabilityResponses = [
@@ -76,5 +77,10 @@ export const sharedMocks: MockabilityResponses = [
     url: /customer\/phones/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(customerPhones) }))
+  },
+  {
+    url: /customer\/messages\/retrieveMessage/,
+    method: RequestMethod.Post,
+    response: new Response(new ResponseOptions({ body: JSON.stringify(customerRetrieveMessage) }))
   }
 ];
