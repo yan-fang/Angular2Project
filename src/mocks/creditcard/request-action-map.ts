@@ -35,7 +35,7 @@ export const requestActionsMap: RequestActionsMap = {
     responseData: successfulPaymentModel
   },
   cardDetailsToggles: {
-    urlRegex: /ease-app-web\/CreditCard\/ease\/card_details_toggles/,
+    urlRegex: /.*\/ease\/card_details_toggles/,
     method: RequestMethod.Get,
     responseData: cardDetailsTogglesModel
   },
