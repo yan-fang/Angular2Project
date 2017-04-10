@@ -1,9 +1,11 @@
 import 'angular'; // imports angular 1.3
+
 import { UpgradeModule } from '@angular/upgrade/static';
+import { setUpLocationSync } from '@angular/router/upgrade';
+
 import { requirejs } from './ng1-connector';
 import { addEnvDeps } from './env.ng1';
 import { Angular1Ease } from './angular1ease.service';
-import { setUpLocationSync } from '@angular/router/upgrade';
 
 const REQUIRE_DEPS = [
   'require',
@@ -18,7 +20,11 @@ const ANGULAR_DEPS = [
   'EASEApp'
 ];
 
-const buildVersion = 'ver1490660920702';
+declare const NG1EASE_BUILD_VERSION: string;
+const buildVersion = NG1EASE_BUILD_VERSION;
+
+export const NG1EASE_STYLES = '';
+export const angular1EaseStyles = [ NG1EASE_STYLES ];
 
 export function prepareAngular1Ease(upgrade: UpgradeModule): Promise<any> {
   let res: any = null;

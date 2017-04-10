@@ -57,6 +57,7 @@
     "@angular/compiler": "2.4.4",
     "@angular/compiler-cli": "2.4.4",
     "@angular/platform-server": "2.4.4",
+    "@c1/ease-ui": "0.0.53",
     "@c1/git-commit-conventions": "^3.2.1",
     "@c1/proxy": "^1.0.0",
     "@c1/tslintrules": "^0.0.3",

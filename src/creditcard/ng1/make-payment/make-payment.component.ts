@@ -1,16 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UpgradeModule } from '@angular/upgrade/static';
-import { prepareMakePayment } from './make-payment.ng1';
 
-import { Angular1Ease, prepareAngular1Ease } from '@c1/app';
+import { prepareMakePayment } from './make-payment.ng1';
+import { Angular1Ease, prepareAngular1Ease, angular1EaseStyles } from '@c1/app';
 
 @Component({
   selector: 'c1-creditcard-make-payment',
   template: '',
-  styles: [`
-    @import '/ease-ui/ver1490660920702/dist/styles/main.min.css';
-    @import '/ease-ui/ver1490660920702/bower_components/easeUIComponents/dist/ease-ui-components.css';
-  `]
+  styles: angular1EaseStyles
 })
 export class MakePaymentComponent implements OnInit, OnDestroy {
   constructor( private upgrade: UpgradeModule, private angular1Ease: Angular1Ease ) {}

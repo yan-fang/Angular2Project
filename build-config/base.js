@@ -5,6 +5,7 @@ const ngtools = require('@ngtools/webpack');
 const copyPlugin = require('copy-webpack-plugin');
 const htmlPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ng1Ease = require('@c1/ease-ui/package.json').c1 || {};
 
 // Used primarily to set runtime environment variable. Just looks for `--env.build=prod` flag.
 // TODO: [Youssef] We will switch to `-p` flag once the following issue is fixed: https://github.com/webpack/webpack/issues/4468.
@@ -78,6 +79,13 @@ const basePlugins = (() => {
   const srcMapPath = isProd ? 'http://<PROD_INTERNAL_DOMAIN>/' : `http://localhost:${devPort}/`;
 
   const baseDefaultPlugins = [
+    new webpack.DefinePlugin({
+      'NG1EASE_BUILD_VERSION': JSON.stringify(ng1Ease.buildVersion),
+      'NG1EASE_STYLES': JSON.stringify(`
+          @import url('/ease-ui/${ng1Ease.buildVersion}/dist/styles/main.min.css');
+          @import url('/ease-ui/${ng1Ease.buildVersion}/bower_components/easeUIComponents/dist/ease-ui-components.css');
+      `)
+    }),
     new ExtractTextPlugin('[name].css'),
     new webpack.SourceMapDevToolPlugin({
       filename: '[file].map', // if no value is provided the sourcemap is inlined
@@ -91,7 +99,8 @@ const basePlugins = (() => {
     // Copy over the public assets to the build directory: ./_dist
     new copyPlugin([
       { from: 'public', to: 'public' },
-      { from: 'ease1/ease-ui', to: 'ease-ui' }
+      { from: 'node_modules/@c1/ease-ui', to: 'ease-ui' }
+      // { from: 'ease1/ease-ui', to: 'ease-ui' }
     ]),
     // BrowserSync options
     new browserSyncPlugin(
