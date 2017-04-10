@@ -1,7 +1,0 @@
-{    
-  "name": "requirejs-domready",
-  "version": "2.0.1",
-  "volo": {
-    "url": "https://raw.github.com/requirejs/domReady/{version}/domReady.js"
-  }
-}

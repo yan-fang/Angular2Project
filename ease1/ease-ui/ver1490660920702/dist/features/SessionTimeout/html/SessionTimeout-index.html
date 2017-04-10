@@ -1,7 +1,0 @@
-<div ease-modal toggle-close="timeout.close()" init-close="timeout.initClose" modal-type="timeout.modalType" modal-class="timeout.modalClass">
-  <h1 tabindex="0">{{timeout.contentData['ease.core.session.timeout.header.label']}}</h1>
-  <p>{{timeout.contentData['ease.core.session.timeout.description.label']}}</p>
-  <h2><span ng-show="timeout.isIdle" idle-countdown="countdown" data-ng-class="{'timerCountdown': countdown < 60}">{{countdown}} {{timeout.contentData['ease.core.session.timeout.time.seconds.label']}}</span>&nbsp;</h2>
-  <button class="progressive" data-ng-click="timeout.close()" tabindex="0">{{timeout.contentData['ease.core.session.timeout.button.stay.label']}}</button>
-  <button class="regressive" data-ng-click="timeout.signOut()" tabindex="0">{{timeout.contentData['ease.core.session.timeout.button.leave.label']}}</button>
-</div>

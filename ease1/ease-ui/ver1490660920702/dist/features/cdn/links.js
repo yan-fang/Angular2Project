@@ -1,1 +1,0 @@
-define(["angular"],function(n){n.module("ContentAccountLinks",[]).constant("ContentAccountLinks",{urlContent:"https://qa-content.kdc.capitalone.com"})});

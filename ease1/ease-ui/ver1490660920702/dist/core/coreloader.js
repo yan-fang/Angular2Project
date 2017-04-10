@@ -1,1 +1,0 @@
-define("coreloader",["microajax"],function(e){function t(t){var r=t.timeout||"1000",n=t.customerActivityHeader;return e.setTimeout(r),e.setCustomerActivityHeader(n),e.get(t.url)}function r(e){e&&(c=e)}function n(){return c}var c="en-US";return{callPreferenceLanguage:t,setLocale:r,getLocale:n}});

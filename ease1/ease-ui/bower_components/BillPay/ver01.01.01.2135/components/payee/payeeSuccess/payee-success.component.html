@@ -1,7 +1,0 @@
-<p ng-if="$ctrl.flowType === 'editRegistered' || $ctrl.flowType === 'editManual'" class="sub-heading" id="success-message">
-  <span>You updated <span class="payee-name bold">{{$ctrl.payeeInfo.payeeName}}</span>.</span>
-  <span ng-if="$ctrl.payeeInfo.nickname">It'll show in your list of payees as <span class="payee-name bold">{{$ctrl.payeeInfo.nickname}}</span>.</span>
-  <span ng-if="$ctrl.payeeInfo.originalNickname && !$ctrl.payeeInfo.nickname">It'll show in your list of payees as <span class="payee-name bold">{{$ctrl.payeeInfo.payeeName}}</span>.</span>
-</p>
-
-<p ng-if="$ctrl.payeeInfo.pendingPayments" id="success-pending-payments" class="sub-heading">Pending payments you have scheduled have been updated</p>

@@ -4,7 +4,8 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { UpgradeModule } from '@angular/upgrade/static';
 
-import { prepareAngular1Ease, angular1EaseStyles } from './angular1ease.ng1';
+import { prepareAngular1Ease } from './angular1ease.ng1';
+import { angular1EaseStyles } from './angular1ease.styles';
 
 @Component({
   selector: 'c1-angular1ease',

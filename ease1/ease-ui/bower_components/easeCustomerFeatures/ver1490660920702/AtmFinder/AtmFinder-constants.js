@@ -1,1 +1,0 @@
-define(["angular","AtmFinderModule"],function(){angular.module("AtmFinderModule").constant("AtmFinderConstant",{kMapUrl:"https://www.google.com/maps/place/",kOmniBoxAddressKey:"omniBoxAddress",kSearchRadiusKey:"searchRadius"})});

@@ -1,2 +1,0 @@
-angular-google-maps
-===================

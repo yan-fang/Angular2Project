@@ -1,1 +1,0 @@
-define(["AlertsModule","AlertsServices","AlertsController","AlertsDirectives"],function(){});

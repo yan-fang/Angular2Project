@@ -23,9 +23,6 @@ const ANGULAR_DEPS = [
 declare const NG1EASE_BUILD_VERSION: string;
 const buildVersion = NG1EASE_BUILD_VERSION;
 
-export const NG1EASE_STYLES = '';
-export const angular1EaseStyles = [ NG1EASE_STYLES ];
-
 export function prepareAngular1Ease(upgrade: UpgradeModule): Promise<any> {
   let res: any = null;
   const r = new Promise(resolve => res = resolve);
