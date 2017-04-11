@@ -3,6 +3,7 @@ import { RequestMethod, Response, ResponseOptions } from '@angular/http';
 import { MockabilityResponses } from '@c1/mockability';
 import {
   customerAccountSummary,
+  customerContentAccountSummary,
   customerRetrieveMoneyMovementAccountsInternal,
   customerRetrieveMoneyMovementAccountsExternal,
   customerContentSnag,
@@ -29,6 +30,11 @@ export const sharedMocks: MockabilityResponses = [
     url: /ease-app-web\/customer\/accountsummary$/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(customerAccountSummary) }))
+  },
+  {
+    url: /ease-app-web\/customer\/content\/accountsummary\?localeInfo\=en-us$/,
+    method: RequestMethod.Get,
+    response: new Response(new ResponseOptions({ body: JSON.stringify(customerContentAccountSummary) }))
   },
   {
     url: /ease-app-web\/customer\/retrieveMoneyMovementAccounts\?retrieveInternalAccount=Internal$/,

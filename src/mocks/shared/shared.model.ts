@@ -1608,6 +1608,29 @@ export const customerAccountSummary = {
   'enableNickname': true
 };
 
+export const customerContentAccountSummary = {
+  'alert_icon_yellow': '/EASE/images/CORE/AcctSummary/alert_icon_yellow.png',
+  'core_acctsummary_en_US': {
+    'ease.core.acctsummary.single.more.label': 'View More',
+    'ease.core.acctsummary.availcred.label': 'AVAILABLE CREDIT',
+    'ease.core.acctsummary.single.norecent.label': 'You have no recent transactions.',
+    'ease.core.acctsummary.single.recent.label': 'Recent Transactions',
+    'ease.core.widget.atmfinder.iconalt.label': 'ATM Finder Icon',
+    'ease.core.acctsummary.header.label': 'YOUR ACCOUNTS',
+    'ease.core.acctsummary.principal.label': 'PRINCIPAL BALANCE',
+    'ease.core.acctsummary.payoff.label': 'TODAY\'S PAYOFF',
+    'ease.core.acctsummary.availbal.label': 'AVAILABLE BALANCE',
+    'ease.core.acctsummary.title.label': 'Account Summary',
+    'ease.core.widget.atmfinder.thnheader.label': 'Branch / ATM Finder',
+    'core.common.loading.imgalt.label': 'Loading',
+    'ease.core.acctsummary.currbal.label': 'CURRENT BALANCE',
+    'ease.core.acctsummary.accval.label': 'TOTAL ACCOUNT VALUE',
+    'ease.core.acctsummary.cdbal.label': 'CD BALANCE'
+  },
+  'bg_cofi_sml': '/EASE/images/COFI/L1/bg_cofi_sml.png',
+  'ATM_Finder_Icon': '/EASE/images/CORE/ATMFinder/ATM_Finder_Icon.png'
+};
+
 export const customerSessionTimeout = {
   'core_session_en_US': {
     'ease.core.session.timeout.button.stay.label': 'Wait, I\'m still here!',
@@ -1791,3 +1814,4 @@ export const customerFeaturesGroupName = {
 export const customerPlatformDetails = {
   'customerPlatform': '360, EASE, EOS, OLB'
 };
+

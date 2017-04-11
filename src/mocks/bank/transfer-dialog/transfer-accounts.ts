@@ -12,7 +12,7 @@ import {
 
 export const transferAccountsMocks: MockabilityResponses = [
   {
-    url: /ease-app-web\/transfer\/getAccounts$/,
+    url: /ease-app-web\/customer\/transfer\/getAccounts$/,
     method: RequestMethod.Post,
     response: new Response(new ResponseOptions({ body: JSON.stringify(transferGetAccounts) }))
   },
