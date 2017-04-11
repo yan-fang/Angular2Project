@@ -23,87 +23,87 @@ import {
 
 export const autoLoanMocks: MockabilityResponses = [
   {
-    url: /AutoLoan\/getAccountById/,
+    url: /ease-app-web\/AutoLoan\/getAccountById/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(getAccountById) }))
   },
   {
-    url: /AutoLoan\/dynamicAccountService/,
+    url: /ease-app-web\/AutoLoan\/dynamicAccountService/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(dynamicAccountService) }))
   },
   {
-    url: /AutoLoan\/paymentPlan/,
+    url: /ease-app-web\/AutoLoan\/paymentPlan/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(paymentPlan) }))
   },
   {
-    url: /AutoLoan\/paymentPlan\/(.*)\/getCurrentDate/,
+    url: /ease-app-web\/AutoLoan\/paymentPlan\/(.*)\/getCurrentDate/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(paymentPlanGetCurrentDate) }))
   },
   {
-    url: /AutoLoan\/paymentPlan\/(.*)\/getPaymentPlan/,
+    url: /ease-app-web\/AutoLoan\/paymentPlan\/(.*)\/getPaymentPlan/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(paymentPlanGetPaymentPlan) }))
   },
   {
-    url: /AutoLoan\/accounts\/(.*)\/due\-date\-change\-history/,
+    url: /ease-app-web\/AutoLoan\/accounts\/(.*)\/due\-date\-change\-history/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(dueDateChangeHistory) }))
   },
   {
-    url: /AutoLoan\/accounts\/(.*)\/payment-catchup/,
+    url: /ease-app-web\/AutoLoan\/accounts\/(.*)\/payment-catchup/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(paymentCatchup) }))
   },
   {
-    url: /AutoLoan\/accounts\/(.*)\/calculator/,
+    url: /ease-app-web\/AutoLoan\/accounts\/(.*)\/calculator/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(calculator) }))
   },
   {
-    url: /AutoLoan\/UmmPayments/,
+    url: /ease-app-web\/AutoLoan\/UmmPayments/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(ummPayments) }))
   },
   {
-    url: /AutoLoan\/getPaymentAmounts/,
+    url: /ease-app-web\/AutoLoan\/getPaymentAmounts/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(getPaymentAmounts) }))
   },
   {
-    url: /AutoLoan\/paymentInstruction/,
+    url: /ease-app-web\/AutoLoan\/paymentInstruction/,
     method: RequestMethod.Post,
     response: new Response(new ResponseOptions({ body: JSON.stringify(paymentInstruction) }))
   },
   {
-    url: /AutoLoan\/accounts\/(.*)\/events/,
+    url: /ease-app-web\/AutoLoan\/accounts\/(.*)\/events/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(accounts) }))
   },
   {
-    url: /AutoLoan\/accounts\/(.*)\/calculator\?oneTimePaymentAmount/,
+    url: /ease-app-web\/AutoLoan\/accounts\/(.*)\/calculator\?oneTimePaymentAmount/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(accountsCalculatoroneTimePaymentAmount) }))
   },
   {
-    url: /AutoLoan\/accounts\/(.*)\/calculator\?totalMonthlyPaymentAmount/,
+    url: /ease-app-web\/AutoLoan\/accounts\/(.*)\/calculator\?totalMonthlyPaymentAmount/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(accountsCalculatorTotalMonthlyPaymentAmount) }))
   },
   {
-    url: /AutoLoan\/accounts\/(.*)\/documents\?fromDate/,
+    url: /ease-app-web\/AutoLoan\/accounts\/(.*)\/documents\?fromDate/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(accountDocumentsFromDate) }))
   },
   {
-    url: /AutoLoan\/accounts\/(.*)\/ddceligibility/,
+    url: /ease-app-web\/AutoLoan\/accounts\/(.*)\/ddceligibility/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(accountDdcEligibility) }))
   },
   {
-    url: /AutoLoan\/preferences\/paperless/,
+    url: /ease-app-web\/AutoLoan\/preferences\/paperless/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(preferencesPaperless) }))
   }

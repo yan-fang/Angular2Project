@@ -2,85 +2,127 @@ import { RequestMethod, Response, ResponseOptions } from '@angular/http';
 
 import { MockabilityResponses } from '@c1/mockability';
 import {
-  customerRetrieveMoneyMovementAccounts,
-  contentSnag,
+  customerAccountSummary,
+  customerRetrieveMoneyMovementAccountsInternal,
+  customerRetrieveMoneyMovementAccountsExternal,
+  customerContentSnag,
   customerRetrievePaymentAccounts,
   customerContentAlertPrefs,
   customerContentProfileprefs,
   customerFeatures,
+  customerFeaturesGroupName,
   customerAlertsCoaf,
   customerAlertsCard,
   customerContentAcctpreferences,
   customerContentAddExternalAccount,
   customerContactPointsEmails,
   customerPhones,
-  customerRetrieveMessage
+  customerRetrieveMessage,
+  customerContentHeader,
+  customerSessionTimeout,
+  customerProfilePreferences,
+  customerPlatformDetails
 } from './shared.model';
 
 export const sharedMocks: MockabilityResponses = [
   {
-    url: /customer\/retrieveMoneyMovementAccounts/,
+    url: /ease-app-web\/customer\/accountsummary$/,
     method: RequestMethod.Get,
-    response: new Response(new ResponseOptions({ body: JSON.stringify(customerRetrieveMoneyMovementAccounts) }))
+    response: new Response(new ResponseOptions({ body: JSON.stringify(customerAccountSummary) }))
   },
   {
-    url: /customer\/retrievePaymentAccounts/,
+    url: /ease-app-web\/customer\/retrieveMoneyMovementAccounts\?retrieveInternalAccount=Internal$/,
+    method: RequestMethod.Get,
+    response: new Response(new ResponseOptions({ body: JSON.stringify(customerRetrieveMoneyMovementAccountsInternal) }))
+  },
+  {
+    url: /ease-app-web\/customer\/retrieveMoneyMovementAccounts\?retrieveInternalAccount=External$/,
+    method: RequestMethod.Get,
+    response: new Response(new ResponseOptions({ body: JSON.stringify(customerRetrieveMoneyMovementAccountsExternal) }))
+  },
+  {
+    url: /ease-app-web\/customer\/retrievePaymentAccounts$/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(customerRetrievePaymentAccounts) }))
   },
   {
-    url: /content\/snag/,
+    url: /ease-app-web\/customer\/content\/snag\?localeInfo\=en-us$/,
     method: RequestMethod.Get,
-    response: new Response(new ResponseOptions({ body: JSON.stringify(contentSnag) }))
+    response: new Response(new ResponseOptions({ body: JSON.stringify(customerContentSnag) }))
   },
   {
-    url: /customer\/content\/alertprefs/,
+    url: /ease-app-web\/customer\/content\/alertprefs\?localeInfo\=en-us$/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(customerContentAlertPrefs) }))
   },
   {
-    url: /customer\/content\/profileprefs/,
+    url: /ease-app-web\/customer\/content\/profileprefs\?localeInfo\=en-us$/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(customerContentProfileprefs) }))
   },
   {
-    url: /customer\/features/,
+    url: /ease-app-web\/customer\/features$/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(customerFeatures) }))
   },
   {
-    url: /customer\/alerts\/coaf/,
+    url: /ease-app-web\/customer\/features?groupName=EASE.moneymovement$/,
+    method: RequestMethod.Get,
+    response: new Response(new ResponseOptions({ body: JSON.stringify(customerFeaturesGroupName) }))
+  },
+  {
+    url: /ease-app-web\/customer\/alerts\/coaf/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(customerAlertsCoaf) }))
   },
   {
-    url: /customer\/alerts\/card/,
+    url: /ease-app-web\/customer\/alerts\/card/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(customerAlertsCard) }))
   },
   {
-    url: /customer\/content\/acctpreferences/,
+    url: /ease-app-web\/customer\/content\/acctpreferences\?localeInfo\=en-us$/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(customerContentAcctpreferences) }))
   },
   {
-    url: /customer\/content\/addexternalaccount/,
+    url: /ease-app-web\/customer\/content\/addexternalaccount\?localeInfo\=en-us$/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(customerContentAddExternalAccount) }))
   },
   {
-    url: /customer\/contact\-points\/emails/,
+    url: /ease-app-web\/customer\/contact-points\/emails$/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(customerContactPointsEmails) }))
   },
   {
-    url: /customer\/phones/,
+    url: /ease-app-web\/customer\/phones$/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(customerPhones) }))
   },
   {
-    url: /customer\/messages\/retrieveMessage/,
+    url: /ease-app-web\/customer\/messages\/retrieveMessage$/,
     method: RequestMethod.Post,
     response: new Response(new ResponseOptions({ body: JSON.stringify(customerRetrieveMessage) }))
+  },
+  {
+    url: /ease-app-web\/customer\/content\/header\?localeInfo\=en-us$/,
+    method: RequestMethod.Get,
+    response: new Response(new ResponseOptions({ body: JSON.stringify(customerContentHeader) }))
+  },
+  {
+    url: /ease-app-web\/customer\/content\/sessiontimeout\?localeInfo\=en-us$/,
+    method: RequestMethod.Get,
+    response: new Response(new ResponseOptions({ body: JSON.stringify(customerSessionTimeout) }))
+  },
+  {
+    url: /ease-app-web\/customer\/profile\/preferences$/,
+    method: RequestMethod.Get,
+    response: new Response(new ResponseOptions({ body: JSON.stringify(customerProfilePreferences) }))
+  },
+  {
+    url: /ease-app-web\/customer\/customerPlatformDetails$/,
+    method: RequestMethod.Get,
+    response: new Response(new ResponseOptions({ body: JSON.stringify(customerPlatformDetails) }))
   }
 ];

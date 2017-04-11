@@ -11,27 +11,27 @@ import {
 
 export const bankMocks: MockabilityResponses = [
   {
-    url: /Bank\/getAccountById\/(.*)productId\=3000/,
+    url: /ease-app-web\/Bank\/getAccountById\/(.*)productId\=3000/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(savingsAccount) }))
   },
   {
-    url: /Bank\/getAccountById\/(.*)productId\=IM218/,
+    url: /ease-app-web\/Bank\/getAccountById\/(.*)productId\=IM218/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(checkingAccount) }))
   },
   {
-    url: /Bank\/upcoming\-transactions\/(.*)productId\=3000/,
+    url: /ease-app-web\/Bank\/upcoming\-transactions\/(.*)productId\=3000/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(savingsUpcomingTransactions) }))
   },
   {
-    url: /Bank\/upcoming\-transactions\/(.*)productId\=IM218/,
+    url: /ease-app-web\/Bank\/upcoming\-transactions\/(.*)productId\=IM218/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(checkingUpcomingTransactions) }))
   },
   {
-    url: /Bank\/accounts/,
+    url: /ease-app-web\/Bank\/accounts$/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(accounts) }))
   }
