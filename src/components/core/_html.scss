@@ -15,10 +15,10 @@ $items-to-setup : (
   'ordered-lists'
 );
 
-//this master mixin will call all the other setup mixins automatically to bootstrap OneUI defaults in your app/component
-@include setup-oneui( $items-to-setup );
-
 html {
+  //this master mixin will call all the other setup mixins automatically to bootstrap OneUI defaults in your app/component
+  @include setup-oneui( $items-to-setup );
+
   /**
    * 1. Change the default font family in all browsers (opinionated).
    * 2. Correct the line height in all browsers.
