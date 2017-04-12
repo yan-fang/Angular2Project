@@ -130,5 +130,15 @@ export const sharedMocks: MockabilityResponses = [
     url: /ease-app-web\/customer\/customerPlatformDetails$/,
     method: RequestMethod.Get,
     response: new Response(new ResponseOptions({ body: JSON.stringify(customerPlatformDetails) }))
+  },
+  {
+    url: /ease-app-web\/.*\/prefetch$/,
+    method: RequestMethod.Post,
+    response: new Response(new ResponseOptions({ body: '' }))
+  },
+  {
+    url: /ease-app-web\/customer\/keepalive$/,
+    method: RequestMethod.Get,
+    response: new Response(new ResponseOptions({ body: '' }))
   }
 ];

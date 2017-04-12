@@ -56,7 +56,7 @@
   "devDependencies": {
     "@angular/compiler-cli": "4.0.2",
     "@angular/tsc-wrapped": "^4.0.2",
-    "@c1/ease-ui": "0.0.56",
+    "@c1/ease-ui": "0.0.57",
     "@c1/git-commit-conventions": "^3.2.1",
     "@c1/proxy": "^1.0.0",
     "@c1/tslintrules": "^0.0.3",
