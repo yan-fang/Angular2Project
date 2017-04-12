@@ -1,8 +1,10 @@
-import { Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 import { ShellComponent } from './shell.component';
+import { SelectivePreloadingStrategy } from './preloading-strategy';
 
 // TODO: EWE-1911 - figure out how to import routes from other modules
-export const appRoutes: Routes = [
+const appRoutes: Routes = [
   {
     path: '',
     component: ShellComponent,
@@ -22,7 +24,8 @@ export const appRoutes: Routes = [
       },
       {
         path: 'examples',
-        loadChildren: '@c1/examples/examples.module#ExamplesModule'
+        loadChildren: '@c1/examples/examples.module#ExamplesModule',
+        data: { preload: true }
       }
     ]
   },
@@ -32,3 +35,16 @@ export const appRoutes: Routes = [
     loadChildren: './angular1ease/angular1ease.module#Angular1EaseModule'
   }
 ];
+
+@NgModule({
+  imports: [
+    RouterModule.forRoot(appRoutes, {enableTracing: true , preloadingStrategy: SelectivePreloadingStrategy})
+  ],
+  providers: [
+    SelectivePreloadingStrategy
+  ],
+  exports: [
+    RouterModule
+  ]
+})
+export class AppRoutingModule {}
